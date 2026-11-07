@@ -96,6 +96,8 @@ namespace CaseClosed.CaseCore.Gemini
         /// </summary>
         public bool AskCurrentSuspect(string question, string evidenceId = null, bool aggressive = false)
         {
+            EnsureBarkPlayer();
+
             if (isBusy)
             {
                 Debug.LogWarning("InterrogationDialogueService is already waiting on a reply.");

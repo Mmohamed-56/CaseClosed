@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using CaseClosed.Voice;
 using UnityEngine;
 
 namespace CaseClosed.CaseCore
@@ -162,11 +163,7 @@ namespace CaseClosed.CaseCore
         {
             if (caseDefinition == null) throw new ArgumentNullException("caseDefinition");
 
-            if (interrogationController == null)
-            {
-                interrogationController = GetComponent<InterrogationController>();
-                if (interrogationController == null) interrogationController = gameObject.AddComponent<InterrogationController>();
-            }
+            EnsureInterrogationAndBark();
 
             activeSession = new CaseSession(caseDefinition);
             interrogationController.BeginCase(activeSession);
@@ -443,6 +440,23 @@ namespace CaseClosed.CaseCore
         {
             if (activeSession == null) throw new InvalidOperationException("Begin a shift before using the case controls.");
             if (activeSession.IsResolved) throw new InvalidOperationException("This shift has already been resolved.");
+        }
+
+        /// <summary>
+        /// Guarantees InterrogationController + BarkPlayer exist and are wired so submit barks
+        /// fire even when Gemini/ElevenLabs are still loading.
+        /// </summary>
+        private void EnsureInterrogationAndBark()
+        {
+            if (interrogationController == null)
+                interrogationController = GetComponent<InterrogationController>();
+            if (interrogationController == null)
+                interrogationController = gameObject.AddComponent<InterrogationController>();
+
+            BarkPlayer barkPlayer = GetComponent<BarkPlayer>();
+            if (barkPlayer == null)
+                barkPlayer = gameObject.AddComponent<BarkPlayer>();
+            barkPlayer.Configure(interrogationController);
         }
 
         private void SetPhase(CaseShiftPhase phase)

@@ -112,3 +112,9 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# Local API keys (never commit)
+elevenlabs.key
+gemini.key
+.env
+.env.local

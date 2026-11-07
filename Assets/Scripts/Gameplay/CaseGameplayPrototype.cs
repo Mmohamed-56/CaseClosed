@@ -132,12 +132,14 @@ namespace CaseClosed.Gameplay
         private void DrawActiveTab()
         {
             CaseShiftPhase phase = shiftController.Phase;
-            if (resolution != null || phase == CaseShiftPhase.Resolved)
+            if (resolution != null || phase == CaseShiftPhase.Headline || phase == CaseShiftPhase.Resolved)
             {
+                if (resolution == null)
+                    resolution = shiftController.LastResolution;
                 if (activeTab == 3)
                     DrawResolution();
                 else
-                    GUILayout.Label("Case resolved. Open Decision to review the outcome.", wrappedLabelStyle);
+                    GUILayout.Label("Morning headline ready. Open Decision to read it.", wrappedLabelStyle);
                 return;
             }
 
@@ -319,14 +321,14 @@ namespace CaseClosed.Gameplay
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("HOLD"))
             {
-                shiftController.DecideCurrentSuspect(SuspectDecision.Hold);
-                feedbackText = "Suspect held. Review the next file.";
+                shiftController.StampHold();
+                feedbackText = "HOLD stamped. Next suspect or charge.";
                 selectedEvidenceId = "";
             }
             if (GUILayout.Button("RELEASE"))
             {
-                shiftController.DecideCurrentSuspect(SuspectDecision.Release);
-                feedbackText = "Suspect released. Review the next file.";
+                shiftController.StampRelease();
+                feedbackText = "RELEASE stamped. Next suspect or charge.";
                 selectedEvidenceId = "";
             }
             GUILayout.EndHorizontal();
@@ -338,19 +340,28 @@ namespace CaseClosed.Gameplay
             GUILayout.Label(session.Case.Title);
             GUILayout.Label("FINAL CHARGE", GUI.skin.box);
             GUILayout.Label("Choose a held suspect, or charge nobody. The culprit is not displayed before resolution.", wrappedLabelStyle);
-            for (int i = 0; i < session.Case.Suspects.Count; i++)
+            System.Collections.Generic.IReadOnlyList<SuspectRecord> held = shiftController.GetHeldSuspects();
+            for (int i = 0; i < held.Count; i++)
             {
-                SuspectRecord suspect = session.Case.Suspects[i];
-                if (shiftController.GetDecision(suspect.Id) == SuspectDecision.Hold &&
-                    GUILayout.Button("Charge " + suspect.DisplayName))
+                SuspectRecord suspect = held[i];
+                if (GUILayout.Button("Charge " + suspect.DisplayName))
                     Resolve(suspect.Id);
             }
-            if (GUILayout.Button("Charge nobody")) Resolve(null);
+            if (GUILayout.Button("Charge nobody"))
+            {
+                shiftController.ChargeNobody();
+                resolution = shiftController.LastResolution;
+            }
         }
 
         private void DrawResolution()
         {
-            GUILayout.Label("CASE RESOLVED", GUI.skin.box);
+            GUILayout.Label("MORNING HEADLINE", GUI.skin.box);
+            if (!string.IsNullOrEmpty(resolution.Headline))
+                GUILayout.Label(resolution.Headline, wrappedLabelStyle);
+            if (!string.IsNullOrEmpty(resolution.Subheadline))
+                GUILayout.Label(resolution.Subheadline, wrappedLabelStyle);
+            GUILayout.Space(6f);
             GUILayout.Label("Outcome: " + resolution.Outcome);
             GUILayout.Label("Charged: " + (string.IsNullOrEmpty(resolution.ChargedSuspectName) ? "Nobody" : resolution.ChargedSuspectName));
             GUILayout.Label("Score: " + resolution.Score + " | innocent suspects held: " + resolution.InnocentSuspectsHeld);
