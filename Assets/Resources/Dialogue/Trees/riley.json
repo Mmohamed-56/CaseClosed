@@ -357,7 +357,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The person in the next carrel heard me on a call about dues. I was in there."
+              "line": "The person in the next room heard me on a call about dues. I was in there."
             },
             {
               "minStress": 85,
@@ -413,7 +413,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The student in the next carrel. They knocked once about the outlet. They saw me."
+              "line": "The student in the next room. They knocked once about the outlet. They saw me."
             },
             {
               "minStress": 30,
@@ -427,14 +427,14 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Ask the carrel next door before you ask me to invent a witness. They were there."
+              "line": "Ask the room next door before you ask me to invent a witness. They were there."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Next carrel. That's a real person. I'm not adding a friend I didn't have."
+              "line": "Next room. That's a real person. I'm not adding a friend I didn't have."
             }
           ]
         }

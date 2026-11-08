@@ -183,7 +183,7 @@ namespace CaseClosed.CaseCore
                 "At their residence hall after clock-out.",
                 new[]
                 {
-                    new EvidenceRecord("morgan_access", "Mezzanine catwalk camera still", "A 6:21 PM still from catwalk cam FH-M3 shows a figure matching Morgan Lee's clothing profile on the banner walkway — after Morgan Lee claimed to be at dinner across campus.", EvidenceKind.Contradiction, "Morgan Lee climbed the Field House mezzanine and cut down the spirit banner."),
+                    new EvidenceRecord("morgan_access", "Photo over the court", "A 6:21 PM photo over the court shows someone in Morgan Lee's clothes on the banner walkway, after Morgan Lee said they were at dinner across campus.", EvidenceKind.Contradiction, "Morgan Lee went up over the court and cut down the spirit banner."),
                     new EvidenceRecord("morgan_schedule", "Events desk schedule", "Morgan's posted events desk shift ended on time according to the roster.", EvidenceKind.Context, string.Empty),
                     new EvidenceRecord("morgan_hall", "Hall exterior door log", "Morgan's hall exterior door registered an entry after their stated departure from work.", EvidenceKind.Context, string.Empty),
                     new EvidenceRecord("morgan_sign_in", "Athletics volunteer day sheet", "Morgan Lee signed the afternoon Field House athletics volunteer sheet before the cutdown window.", EvidenceKind.Context, string.Empty)
@@ -193,11 +193,11 @@ namespace CaseClosed.CaseCore
             return new CaseFile(
                 "UB-001",
                 "Field House Spirit Banner Cutdown",
-                "WHERE: Field House, mezzanine over the court.\nWHEN: 6:05 PM to 6:35 PM.\nWHAT: Somebody cut down the Founders Weekend spirit banner.\nMOTIVE: Embarrass the weekend before anyone could hang it back up.",
+                "WHAT: Somebody cut down the Founders Weekend spirit banner.\nWHERE: Over the court in the Field House.\nWHEN: 6:05 PM to 6:35 PM.\nMOTIVE: Embarrass the weekend before anyone could hang it back up.",
                 culprit.Id,
                 new[] { innocent, culprit },
                 null,
-                "Field House, mezzanine over the court",
+                "Over the court in the Field House",
                 "cut down the spirit banner");
         }
     }

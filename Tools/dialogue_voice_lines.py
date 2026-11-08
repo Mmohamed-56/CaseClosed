@@ -536,7 +536,7 @@ PEOPLE = {
             [
                 "Yes. I was in study room B. The booking and the night I described are the same block.",
                 "Once I sat down I stayed through the block. Leaving would've been a second line.",
-                "The person in the next carrel heard me on a call about dues. I was in there.",
+                "The person in the next room heard me on a call about dues. I was in there.",
                 "If you toss the booking, the dues call still happened in that room. I was there.",
             ],
             [
@@ -546,10 +546,10 @@ PEOPLE = {
                 "No. I didn't go back out. The room was the rest of the night.",
             ],
             [
-                "The student in the next carrel. They knocked once about the outlet. They saw me.",
+                "The student in the next room. They knocked once about the outlet. They saw me.",
                 "Library staff who confirmed the booking. They saw the room occupied. That was me.",
-                "Ask the carrel next door before you ask me to invent a witness. They were there.",
-                "Next carrel. That's a real person. I'm not adding a friend I didn't have.",
+                "Ask the room next door before you ask me to invent a witness. They were there.",
+                "Next room. That's a real person. I'm not adding a friend I didn't have.",
             ],
         ],
         "roster": [

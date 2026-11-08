@@ -160,27 +160,27 @@ namespace CaseClosed.CaseCore
                     id = "banner_cutdown",
                     title = "Field House Spirit Banner Cutdown",
                     briefing =
-                        "WHERE: Field House, mezzanine over the court.\nWHEN: 6:05 PM to 6:35 PM.\nWHAT: Somebody cut down the Founders Weekend spirit banner.\nMOTIVE: Embarrass the weekend before anyone could hang it back up.\n\nMezzanine camera still.\nAthletics volunteer sheet.\nA hardware receipt for a folding knife.",
+                        "WHAT: Somebody cut down the Founders Weekend spirit banner.\nWHERE: Over the court in the Field House.\nWHEN: 6:05 PM to 6:35 PM.\nMOTIVE: Embarrass the weekend before anyone could hang it back up.",
                     treeHook = "banner_cutdown",
-                    scene = "Field House mezzanine",
+                    scene = "Over the court in the Field House",
                     act = "cut down the spirit banner",
                     windowStart = "6:05 PM",
                     windowEnd = "6:35 PM",
                     accessTime = "6:21 PM",
-                    accessTitle = "Mezzanine catwalk camera still",
+                    accessTitle = "Photo over the court",
                     accessDescription =
-                        "A 6:21 PM still from catwalk cam FH-M3 shows a figure matching {name}'s clothing profile on the banner walkway — after {name} claimed to be at dinner across campus.",
-                    contradictionExplanation = "{name} climbed the Field House mezzanine and cut down the spirit banner.",
-                    signInTitle = "Athletics volunteer day sheet",
+                        "A 6:21 PM photo over the court shows someone in {name}'s clothes on the banner walkway, after {name} said they were at dinner across campus.",
+                    contradictionExplanation = "{name} went up over the court and cut down the spirit banner.",
+                    signInTitle = "Volunteer sign-in sheet",
                     signInDescription =
-                        "{name} signed the afternoon Field House athletics volunteer sheet before the cutdown window.",
-                    redHerringTitle = "Utility-knife purchase",
+                        "{name} signed the afternoon Field House volunteer sheet before the banner came down.",
+                    redHerringTitle = "Hardware receipt",
                     redHerringDescription =
-                        "A campus-adjacent hardware debit under {name}'s card bought a folding utility knife the same afternoon.",
+                        "A hardware receipt on {name}'s card. A folding knife, bought that afternoon.",
                     redHerringExplanation =
-                        "{name} used the knife to open taped spirit posters for a club table — not the banner ropes.",
+                        "{name} used the knife to open taped posters for a club table.",
                     statementTemplate =
-                        "I never went up to the Field House mezzanine. I was at dinner when the banner came down.",
+                        "I never went up over the court. I was at dinner when the banner came down.",
                     preferSuspectIds = new[] { "jamie", "casey", "quinn", "sam", "drew", "morgan", "reese", "jordan" }
                 })
             };
