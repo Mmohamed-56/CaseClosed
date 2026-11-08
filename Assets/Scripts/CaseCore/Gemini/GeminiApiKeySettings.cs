@@ -21,15 +21,15 @@ namespace CaseClosed.CaseCore.Gemini
 
         [Header("Model")]
         [Tooltip("Fast Gemini model id for short interrogation replies.")]
-        [SerializeField] private string modelId = "gemini-2.0-flash";
+        [SerializeField] private string modelId = "gemini-3.8-flash";
 
         [Tooltip("Hard cap on generated tokens. Keep low for snappy replies.")]
-        [SerializeField, Range(40, 160)] private int maxOutputTokens = 90;
+        [SerializeField, Range(40, 256)] private int maxOutputTokens = 120;
 
         [SerializeField, Range(0f, 1.5f)] private float temperature = 0.6f;
 
-        public string ModelId { get { return string.IsNullOrWhiteSpace(modelId) ? "gemini-2.0-flash" : modelId.Trim(); } }
-        public int MaxOutputTokens { get { return Mathf.Clamp(maxOutputTokens, 40, 160); } }
+        public string ModelId { get { return string.IsNullOrWhiteSpace(modelId) ? "gemini-3.8-flash" : modelId.Trim(); } }
+        public int MaxOutputTokens { get { return Mathf.Clamp(maxOutputTokens, 40, 256); } }
         public float Temperature { get { return Mathf.Clamp(temperature, 0f, 1.5f); } }
 
         /// <summary>True when a direct (non-proxy) key is available. Prefer proxy in player builds.</summary>

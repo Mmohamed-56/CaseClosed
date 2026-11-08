@@ -7,8 +7,8 @@
  * {
  *   "systemPrompt": string,
  *   "userPrompt": string,
- *   "model"?: string,            // default gemini-2.0-flash
- *   "maxOutputTokens"?: number,  // default 90, clamp 40–160
+ *   "model"?: string,            // default gemini-3.8-flash
+ *   "maxOutputTokens"?: number,  // default 120, clamp 40–256
  *   "temperature"?: number       // default 0.6, clamp 0–1.5
  * }
  *
@@ -25,11 +25,31 @@ import {
 
 const MAX_BODY = 24 * 1024; // 24 KB — short interrogation prompts only
 const MAX_RPM = 40;
+const DEFAULT_MODEL = "gemini-3.8-flash";
+
+/** Retired / blocked-for-new-users model ids → current flash default. */
+const RETIRED_MODEL_MAP = {
+  "gemini-2.0-flash": DEFAULT_MODEL,
+  "gemini-2.0-flash-001": DEFAULT_MODEL,
+  "gemini-2.0-flash-lite": DEFAULT_MODEL,
+  "gemini-2.0-flash-lite-001": DEFAULT_MODEL,
+  "gemini-2.5-flash": DEFAULT_MODEL,
+  "gemini-2.5-flash-lite": DEFAULT_MODEL,
+  "gemini-1.5-flash": DEFAULT_MODEL,
+  "gemini-1.5-flash-latest": DEFAULT_MODEL,
+  "gemini-1.5-pro": DEFAULT_MODEL,
+};
 
 function clamp(n, lo, hi, fallback) {
   const x = Number(n);
   if (!Number.isFinite(x)) return fallback;
   return Math.min(hi, Math.max(lo, x));
+}
+
+function resolveModel(requested) {
+  const raw = String(requested || env("GEMINI_MODEL", DEFAULT_MODEL)).trim();
+  const mapped = RETIRED_MODEL_MAP[raw.toLowerCase()] || raw;
+  return mapped;
 }
 
 function extractModelText(responseJson) {
@@ -38,7 +58,11 @@ function extractModelText(responseJson) {
     const parts = data?.candidates?.[0]?.content?.parts;
     if (!Array.isArray(parts)) return "";
     return parts
-      .map((p) => (typeof p?.text === "string" ? p.text : ""))
+      .map((p) => {
+        // Gemini 3 thinking models may include thought parts — skip those.
+        if (p?.thought === true) return "";
+        return typeof p?.text === "string" ? p.text : "";
+      })
       .join("")
       .trim();
   } catch {
@@ -77,13 +101,14 @@ export async function handler(event) {
     );
   }
 
-  const modelRaw = String(body.model || env("GEMINI_MODEL", "gemini-2.0-flash")).trim();
+  const modelRaw = resolveModel(body.model);
   // Allow only gemini-* model ids (block URL injection)
   if (!/^gemini-[a-z0-9._-]+$/i.test(modelRaw)) {
     return json(400, { error: "Invalid model id" }, headers);
   }
 
-  const maxOutputTokens = clamp(body.maxOutputTokens, 40, 160, 90);
+  // Slightly higher cap: Gemini 3 thinking still reserves some budget even at "low".
+  const maxOutputTokens = clamp(body.maxOutputTokens, 40, 256, 120);
   const temperature = clamp(body.temperature, 0, 1.5, 0.6);
 
   const url =
@@ -99,6 +124,8 @@ export async function handler(event) {
       temperature,
       maxOutputTokens,
       responseMimeType: "application/json",
+      // Default thinking is "medium" on 3.8-flash — too slow for interrogation barks.
+      thinkingConfig: { thinkingLevel: "low" },
     },
   };
 
@@ -132,7 +159,21 @@ export async function handler(event) {
 
   const text = extractModelText(raw);
   if (!text) {
-    return json(502, { error: "Gemini returned empty payload" }, headers);
+    let finishReason = "";
+    try {
+      finishReason = JSON.parse(raw)?.candidates?.[0]?.finishReason || "";
+    } catch {
+      /* ignore */
+    }
+    return json(
+      502,
+      {
+        error: "Gemini returned empty payload",
+        finishReason: finishReason || undefined,
+        detail: raw.slice(0, 300),
+      },
+      headers
+    );
   }
 
   return json(200, { text }, headers);

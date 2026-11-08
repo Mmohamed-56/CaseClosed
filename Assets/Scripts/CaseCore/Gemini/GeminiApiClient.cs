@@ -96,7 +96,7 @@ namespace CaseClosed.CaseCore.Gemini
             string url = proxySettings.GeminiProxyUrl;
             int maxTokens = settings != null ? settings.MaxOutputTokens : 90;
             float temperature = settings != null ? settings.Temperature : 0.6f;
-            string model = settings != null ? settings.ModelId : "gemini-2.0-flash";
+            string model = settings != null ? settings.ModelId : "gemini-3.8-flash";
 
             string body = BuildProxyRequestJson(systemPrompt, userPrompt, model, maxTokens, temperature);
             yield return PostJsonForModelText(

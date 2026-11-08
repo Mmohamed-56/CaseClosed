@@ -10,6 +10,10 @@
   node_bundler = "esbuild"
   directory = "netlify/functions"
 
+# Interrogation replies should stay under ~a few seconds; give headroom for cold starts.
+[functions.gemini]
+  timeout = 60
+
 # Pretty API paths for Unity clients
 [[redirects]]
   from = "/api/gemini"
