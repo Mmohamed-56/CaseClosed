@@ -10,11 +10,14 @@ namespace CaseClosed.UI
     /// <summary>
     /// Desk evidence board: rebuilds cards from <see cref="CaseShiftController"/> collected evidence
     /// (including records added via <see cref="CaseWebsiteBridge"/> → CollectEvidence).
+    /// Clipboard tabs: All + one per suspect so switching people does not look like the same pile.
     /// Bezi owns canvas / card prefab placement; Cursor owns CaseCore wiring.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class EvidenceBoardController : MonoBehaviour
     {
+        private const string AllTabId = "";
+
         [Header("Case Connection")]
         [Tooltip("Active shift controller. Auto-found when empty.")]
         [SerializeField] private CaseShiftController shiftController;
@@ -26,17 +29,26 @@ namespace CaseClosed.UI
         [Tooltip("Parent transform that receives spawned evidence card instances.")]
         [SerializeField] private Transform cardContainer;
 
-        [Tooltip("Optional prefab with EvidenceCardView. When empty, a simple runtime card is created.")]
+        [Tooltip("Optional row for All + per-suspect tab buttons. Created at runtime when empty.")]
+        [SerializeField] private Transform tabContainer;
+
+        [Tooltip("Optional prefab with EvidenceCardView. When empty, tries Bezi Assets/EvidenceCardView then a runtime fallback.")]
         [SerializeField] private EvidenceCardView cardPrefab;
 
         [Tooltip("Optional toast label shown when a new record is added from the browser.")]
         [SerializeField] private Text toastLabel;
+
+        [Tooltip("Optional empty-state hint when the active tab has no filed cards.")]
+        [SerializeField] private Text emptyHintLabel;
 
         [Tooltip("Seconds the toast stays visible.")]
         [SerializeField, Min(0.5f)] private float toastSeconds = 2.4f;
 
         [Tooltip("Keep the board root active even with zero cards (desk prop always visible).")]
         [SerializeField] private bool keepBoardVisibleWhenEmpty = true;
+
+        [Tooltip("When the next suspect is ready, auto-select that suspect's tab.")]
+        [SerializeField] private bool followCurrentSuspectTab = true;
 
         [Header("Stress Meter (optional desk readout)")]
         [Tooltip("Optional stress value text on the board side of the desk.")]
@@ -46,8 +58,12 @@ namespace CaseClosed.UI
         [SerializeField] private InterrogationController interrogationController;
 
         private readonly List<EvidenceCardView> activeCards = new List<EvidenceCardView>();
+        private readonly List<Button> tabButtons = new List<Button>();
+        private readonly List<string> tabSuspectIds = new List<string>();
         private Coroutine toastRoutine;
         private string selectedEvidenceId = string.Empty;
+        private string activeTabSuspectId = AllTabId;
+        private Font uiFont;
 
         /// <summary>Raised when the player selects or clears a card for confrontation.</summary>
         public event Action<string> EvidenceSelectionChanged;
@@ -58,10 +74,16 @@ namespace CaseClosed.UI
         /// <summary>Raised when a newly collected record is shown (toast / SFX hook).</summary>
         public event Action<EvidenceRecord> EvidenceAddedVisual;
 
+        /// <summary>Raised when the All / per-suspect tab changes.</summary>
+        public event Action<string> ActiveTabChanged;
+
         /// <summary>Currently selected evidence id for interrogation present, or empty.</summary>
         public string SelectedEvidenceId { get { return selectedEvidenceId; } }
 
-        /// <summary>Live card views currently on the board.</summary>
+        /// <summary>Active clipboard tab suspect id, or empty for All.</summary>
+        public string ActiveTabSuspectId { get { return activeTabSuspectId ?? AllTabId; } }
+
+        /// <summary>Live card views currently on the board (after tab filter).</summary>
         public IReadOnlyList<EvidenceCardView> ActiveCards { get { return activeCards; } }
 
         /// <summary>True when a card container is assigned (Inspector or <see cref="SetBoardSceneHooks"/>).</summary>
@@ -69,6 +91,8 @@ namespace CaseClosed.UI
 
         private void Awake()
         {
+            uiFont = DeskUiPalette.ResolveFont();
+
             if (shiftController == null)
                 shiftController = GetComponent<CaseShiftController>();
             if (shiftController == null)
@@ -82,8 +106,13 @@ namespace CaseClosed.UI
             if (cardContainer == null && boardRoot != null)
                 cardContainer = boardRoot.transform;
 
+            if (cardPrefab == null)
+                cardPrefab = TryLoadBeziCardPrefab();
+
             if (toastLabel != null)
                 toastLabel.gameObject.SetActive(false);
+            if (emptyHintLabel != null)
+                emptyHintLabel.gameObject.SetActive(false);
         }
 
         private void OnEnable()
@@ -92,6 +121,7 @@ namespace CaseClosed.UI
             {
                 shiftController.EvidenceCollected += HandleEvidenceCollected;
                 shiftController.PhaseChanged += HandlePhaseChanged;
+                shiftController.NextSuspectReady += HandleNextSuspectReady;
             }
             RefreshBoard();
         }
@@ -102,6 +132,7 @@ namespace CaseClosed.UI
             {
                 shiftController.EvidenceCollected -= HandleEvidenceCollected;
                 shiftController.PhaseChanged -= HandlePhaseChanged;
+                shiftController.NextSuspectReady -= HandleNextSuspectReady;
             }
             if (toastRoutine != null)
             {
@@ -116,12 +147,22 @@ namespace CaseClosed.UI
         }
 
         /// <summary>Bezi / Magdy can assign desk board anchors if not wired in the Inspector.</summary>
-        public void SetBoardSceneHooks(GameObject root, Transform container, EvidenceCardView prefab = null, Text toast = null)
+        public void SetBoardSceneHooks(
+            GameObject root,
+            Transform container,
+            EvidenceCardView prefab = null,
+            Text toast = null,
+            Transform tabs = null,
+            Text emptyHint = null)
         {
             boardRoot = root;
             cardContainer = container != null ? container : (root != null ? root.transform : cardContainer);
             if (prefab != null) cardPrefab = prefab;
             if (toast != null) toastLabel = toast;
+            if (tabs != null) tabContainer = tabs;
+            if (emptyHint != null) emptyHintLabel = emptyHint;
+            if (cardPrefab == null)
+                cardPrefab = TryLoadBeziCardPrefab();
             RefreshBoard();
         }
 
@@ -132,6 +173,7 @@ namespace CaseClosed.UI
             {
                 shiftController.EvidenceCollected -= HandleEvidenceCollected;
                 shiftController.PhaseChanged -= HandlePhaseChanged;
+                shiftController.NextSuspectReady -= HandleNextSuspectReady;
             }
 
             shiftController = controller;
@@ -139,38 +181,81 @@ namespace CaseClosed.UI
             {
                 shiftController.EvidenceCollected += HandleEvidenceCollected;
                 shiftController.PhaseChanged += HandlePhaseChanged;
+                shiftController.NextSuspectReady += HandleNextSuspectReady;
             }
             RefreshBoard();
         }
 
-        /// <summary>Rebuilds card views from CaseSession collected evidence.</summary>
+        /// <summary>Selects All (empty id) or a per-suspect clipboard tab.</summary>
+        public void SetActiveSuspectTab(string suspectId)
+        {
+            string next = suspectId ?? AllTabId;
+            if (next == activeTabSuspectId)
+            {
+                RefreshBoard();
+                return;
+            }
+
+            activeTabSuspectId = next;
+            ActiveTabChanged?.Invoke(activeTabSuspectId);
+            RefreshBoard();
+        }
+
+        /// <summary>Rebuilds tab buttons + card views from CaseSession collected evidence.</summary>
         public void RefreshBoard()
         {
+            RebuildTabs();
             ClearCards();
 
             IReadOnlyList<EvidenceRecord> collected = shiftController != null
                 ? shiftController.GetCollectedEvidence()
                 : Array.Empty<EvidenceRecord>();
 
-            bool hasCards = collected.Count > 0;
-            if (boardRoot != null)
-                boardRoot.SetActive(keepBoardVisibleWhenEmpty || hasCards);
-
+            int visibleCount = 0;
             for (int i = 0; i < collected.Count; i++)
             {
                 EvidenceRecord record = collected[i];
                 if (record == null) continue;
+
+                string ownerId = shiftController != null
+                    ? shiftController.FindEvidenceOwnerId(record.Id)
+                    : string.Empty;
+
+                if (!PassesActiveTab(ownerId))
+                    continue;
+
                 EvidenceCardView card = SpawnCard();
                 if (card == null) continue;
-                card.Bind(record);
+                card.Bind(record, ownerId);
                 card.Clicked += HandleCardClicked;
                 card.SetSelected(record.Id == selectedEvidenceId);
                 activeCards.Add(card);
+                visibleCount++;
+            }
+
+            bool hasAnyCollected = collected.Count > 0;
+            if (boardRoot != null)
+                boardRoot.SetActive(keepBoardVisibleWhenEmpty || hasAnyCollected);
+
+            if (emptyHintLabel != null)
+            {
+                if (visibleCount == 0)
+                {
+                    emptyHintLabel.gameObject.SetActive(true);
+                    emptyHintLabel.text = hasAnyCollected
+                        ? "No records on this tab. Switch to All or another suspect."
+                        : "No records filed yet. Collect from the computer / public records site.";
+                }
+                else
+                {
+                    emptyHintLabel.gameObject.SetActive(false);
+                }
             }
 
             if (!string.IsNullOrEmpty(selectedEvidenceId) && !ContainsEvidenceId(collected, selectedEvidenceId))
                 ClearSelection();
 
+            RefreshTabVisuals();
             BoardRefreshed?.Invoke();
         }
 
@@ -193,6 +278,20 @@ namespace CaseClosed.UI
 
             if (!found)
             {
+                // Card may live on another tab — jump to its owner tab then select.
+                string ownerId = shiftController != null
+                    ? shiftController.FindEvidenceOwnerId(evidenceId)
+                    : string.Empty;
+                if (!string.IsNullOrEmpty(ownerId) && ownerId != activeTabSuspectId)
+                {
+                    activeTabSuspectId = ownerId;
+                    ActiveTabChanged?.Invoke(activeTabSuspectId);
+                    selectedEvidenceId = evidenceId;
+                    RefreshBoard();
+                    EvidenceSelectionChanged?.Invoke(selectedEvidenceId);
+                    return;
+                }
+
                 ClearSelection();
                 return;
             }
@@ -220,6 +319,13 @@ namespace CaseClosed.UI
 
         private void HandleEvidenceCollected(EvidenceRecord record)
         {
+            if (record != null && shiftController != null && followCurrentSuspectTab)
+            {
+                string ownerId = shiftController.FindEvidenceOwnerId(record.Id);
+                if (!string.IsNullOrEmpty(ownerId))
+                    activeTabSuspectId = ownerId;
+            }
+
             RefreshBoard();
             if (record != null)
             {
@@ -230,11 +336,21 @@ namespace CaseClosed.UI
 
         private void HandlePhaseChanged(CaseShiftPhase phase)
         {
-            // New shift / next suspect: keep collected cards across the shift, clear confrontation pick.
             if (phase == CaseShiftPhase.Inactive || phase == CaseShiftPhase.Briefing)
                 ClearSelection();
+
+            if (followCurrentSuspectTab && shiftController != null && shiftController.CurrentSuspect != null)
+                activeTabSuspectId = shiftController.CurrentSuspect.Id;
+
             RefreshBoard();
             RefreshStressMeter();
+        }
+
+        private void HandleNextSuspectReady(NextSuspectEvent next)
+        {
+            if (!followCurrentSuspectTab || next == null || string.IsNullOrWhiteSpace(next.SuspectId))
+                return;
+            SetActiveSuspectTab(next.SuspectId);
         }
 
         private void HandleCardClicked(EvidenceCardView card)
@@ -244,6 +360,120 @@ namespace CaseClosed.UI
                 ClearSelection();
             else
                 SelectEvidence(card.EvidenceId);
+        }
+
+        private bool PassesActiveTab(string ownerId)
+        {
+            if (string.IsNullOrEmpty(activeTabSuspectId))
+                return true;
+            return string.Equals(ownerId, activeTabSuspectId, StringComparison.Ordinal);
+        }
+
+        private void RebuildTabs()
+        {
+            EnsureTabContainer();
+            ClearTabs();
+            if (tabContainer == null) return;
+
+            AddTabButton("All", AllTabId);
+
+            if (shiftController == null || shiftController.ActiveSession == null)
+                return;
+
+            IReadOnlyList<SuspectRecord> suspects = shiftController.ActiveSession.Case.Suspects;
+            for (int i = 0; i < suspects.Count; i++)
+            {
+                SuspectRecord suspect = suspects[i];
+                if (suspect == null || string.IsNullOrWhiteSpace(suspect.Id))
+                    continue;
+                string label = string.IsNullOrWhiteSpace(suspect.DisplayName)
+                    ? suspect.Id
+                    : ShortName(suspect.DisplayName);
+                AddTabButton(label, suspect.Id);
+            }
+        }
+
+        private void EnsureTabContainer()
+        {
+            if (tabContainer != null || boardRoot == null)
+                return;
+
+            GameObject tabs = new GameObject("SuspectTabs", typeof(RectTransform), typeof(HorizontalLayoutGroup));
+            tabs.transform.SetParent(boardRoot.transform, false);
+            RectTransform rect = tabs.GetComponent<RectTransform>();
+            rect.anchorMin = new Vector2(0f, 1f);
+            rect.anchorMax = new Vector2(1f, 1f);
+            rect.pivot = new Vector2(0.5f, 1f);
+            rect.anchoredPosition = new Vector2(0f, -72f);
+            rect.sizeDelta = new Vector2(-24f, 34f);
+            HorizontalLayoutGroup layout = tabs.GetComponent<HorizontalLayoutGroup>();
+            layout.spacing = 4f;
+            layout.childForceExpandWidth = true;
+            layout.childForceExpandHeight = true;
+            layout.childControlWidth = true;
+            layout.childControlHeight = true;
+            tabContainer = tabs.transform;
+        }
+
+        private void AddTabButton(string label, string suspectId)
+        {
+            GameObject go = new GameObject("Tab_" + (string.IsNullOrEmpty(suspectId) ? "All" : suspectId),
+                typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
+            go.transform.SetParent(tabContainer, false);
+            Image image = go.GetComponent<Image>();
+            image.color = DeskUiPalette.Navy;
+            LayoutElement layout = go.GetComponent<LayoutElement>();
+            layout.minHeight = 28f;
+            layout.preferredHeight = 28f;
+
+            GameObject labelGo = new GameObject("Label", typeof(RectTransform), typeof(Text));
+            labelGo.transform.SetParent(go.transform, false);
+            Text text = labelGo.GetComponent<Text>();
+            text.font = uiFont != null ? uiFont : DeskUiPalette.ResolveFont();
+            text.fontSize = 12;
+            text.fontStyle = FontStyle.Bold;
+            text.alignment = TextAnchor.MiddleCenter;
+            text.color = DeskUiPalette.White;
+            text.text = label;
+            RectTransform textRect = labelGo.GetComponent<RectTransform>();
+            textRect.anchorMin = Vector2.zero;
+            textRect.anchorMax = Vector2.one;
+            textRect.offsetMin = Vector2.zero;
+            textRect.offsetMax = Vector2.zero;
+
+            Button button = go.GetComponent<Button>();
+            string id = suspectId;
+            button.onClick.AddListener(() => SetActiveSuspectTab(id));
+            tabButtons.Add(button);
+            tabSuspectIds.Add(id);
+        }
+
+        private void RefreshTabVisuals()
+        {
+            for (int i = 0; i < tabButtons.Count; i++)
+            {
+                Button button = tabButtons[i];
+                if (button == null) continue;
+                string id = i < tabSuspectIds.Count ? tabSuspectIds[i] : AllTabId;
+                bool active = string.Equals(id, activeTabSuspectId, StringComparison.Ordinal);
+                Image image = button.GetComponent<Image>();
+                if (image != null)
+                    image.color = active ? DeskUiPalette.TabActive : DeskUiPalette.Navy;
+                Text label = button.GetComponentInChildren<Text>();
+                if (label != null)
+                    label.color = active ? DeskUiPalette.Ink : DeskUiPalette.White;
+            }
+        }
+
+        private void ClearTabs()
+        {
+            for (int i = 0; i < tabButtons.Count; i++)
+            {
+                if (tabButtons[i] != null)
+                    Destroy(tabButtons[i].gameObject);
+            }
+            tabButtons.Clear();
+            tabSuspectIds.Clear();
         }
 
         private EvidenceCardView SpawnCard()
@@ -256,6 +486,9 @@ namespace CaseClosed.UI
                 return null;
             }
 
+            if (cardPrefab == null)
+                cardPrefab = TryLoadBeziCardPrefab();
+
             if (cardPrefab != null)
             {
                 EvidenceCardView instance = Instantiate(cardPrefab, cardContainer);
@@ -266,7 +499,21 @@ namespace CaseClosed.UI
             return CreateRuntimeFallbackCard(cardContainer);
         }
 
-        private static EvidenceCardView CreateRuntimeFallbackCard(Transform parent)
+        private static EvidenceCardView TryLoadBeziCardPrefab()
+        {
+            EvidenceCardView fromResources = Resources.Load<EvidenceCardView>("EvidenceCardView");
+            if (fromResources != null)
+                return fromResources;
+
+#if UNITY_EDITOR
+            GameObject asset = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/EvidenceCardView.prefab");
+            if (asset != null)
+                return asset.GetComponent<EvidenceCardView>();
+#endif
+            return null;
+        }
+
+        private EvidenceCardView CreateRuntimeFallbackCard(Transform parent)
         {
             GameObject root = new GameObject("EvidenceCard", typeof(RectTransform), typeof(Image), typeof(Button), typeof(EvidenceCardView));
             root.transform.SetParent(parent, false);
@@ -280,9 +527,7 @@ namespace CaseClosed.UI
             GameObject titleGo = new GameObject("Title", typeof(RectTransform), typeof(Text));
             titleGo.transform.SetParent(root.transform, false);
             Text title = titleGo.GetComponent<Text>();
-            title.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            if (title.font == null)
-                title.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+            title.font = uiFont != null ? uiFont : DeskUiPalette.ResolveFont();
             title.fontSize = 15;
             title.fontStyle = FontStyle.Bold;
             title.color = DeskUiPalette.Ink;
@@ -377,6 +622,17 @@ namespace CaseClosed.UI
                     return true;
             }
             return false;
+        }
+
+        private static string ShortName(string displayName)
+        {
+            string trimmed = displayName.Trim();
+            int space = trimmed.IndexOf(' ');
+            if (space > 0 && space < trimmed.Length - 1)
+                return trimmed.Substring(0, space);
+            if (trimmed.Length > 10)
+                return trimmed.Substring(0, 10);
+            return trimmed;
         }
     }
 }

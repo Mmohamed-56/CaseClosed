@@ -7,9 +7,9 @@ using UnityEngine.UI;
 namespace CaseClosed.UI
 {
     /// <summary>
-    /// Prototype Play Mode wiring for evidence board + HOLD/RELEASE when Bezi desk props
-    /// are not yet assigned. Skips the right-side overlay when <see cref="InterrogationActionHud"/>
-    /// already owns Case File + stamp chrome (hud-split top tags).
+    /// Prototype Play Mode wiring for the right-side evidence clipboard (CollectEvidence → cards)
+    /// when Bezi desk props are not yet assigned. Skips the duplicate stamp pad when
+    /// <see cref="InterrogationActionHud"/> already owns HOLD/RELEASE on DECISION.
     /// </summary>
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(-50)]
@@ -25,7 +25,7 @@ namespace CaseClosed.UI
         [SerializeField] private InterrogationActionHud actionHud;
 
         [Header("Prototype Overlay")]
-        [Tooltip("When true, spawn a temporary Overlay canvas if board/stamp hooks are empty AND no InterrogationActionHud owns Case File.")]
+        [Tooltip("When true, spawn a temporary Overlay board if board hooks are empty.")]
         [SerializeField] private bool createOverlayWhenUnwired = true;
 
         [Tooltip("Anchor the prototype board on the right side of the screen.")]
@@ -69,12 +69,17 @@ namespace CaseClosed.UI
             if (actionHud == null)
                 actionHud = GetComponent<InterrogationActionHud>() ?? FindAnyObjectByType<InterrogationActionHud>();
 
-            // HUD Case File footer owns stamps — do not stack a second CASE FILE / EVIDENCE panel.
-            if (actionHud != null && actionHud.OwnsCaseFileChrome)
+            if (!createOverlayWhenUnwired || overlayRoot != null)
                 return;
 
-            if (createOverlayWhenUnwired && NeedsPrototypeOverlay() && overlayRoot == null)
-                BuildPrototypeOverlay();
+            bool boardReady = evidenceBoard != null && evidenceBoard.HasBoardHooks;
+            bool hudOwnsStamps = actionHud != null && actionHud.OwnsCaseFileChrome;
+            bool stampReady = stampPad != null && stampPad.HasStampHooks;
+
+            // Always restore the right EVIDENCE clipboard when Bezi has not wired board hooks.
+            // Skip only the duplicate stamp pad when the HUD owns HOLD/RELEASE on DECISION.
+            if (!boardReady || (!hudOwnsStamps && !stampReady))
+                BuildPrototypeOverlay(boardReady, hudOwnsStamps || stampReady);
         }
 
         private void OnDestroy()
@@ -83,14 +88,7 @@ namespace CaseClosed.UI
                 Destroy(overlayRoot);
         }
 
-        private bool NeedsPrototypeOverlay()
-        {
-            bool boardReady = evidenceBoard != null && evidenceBoard.HasBoardHooks;
-            bool stampReady = stampPad != null && stampPad.HasStampHooks;
-            return !(boardReady && stampReady);
-        }
-
-        private void BuildPrototypeOverlay()
+        private void BuildPrototypeOverlay(bool boardAlreadyReady, bool stampAlreadyReady)
         {
             overlayRoot = new GameObject("StampUiPrototypeOverlay", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             overlayRoot.transform.SetParent(transform, false);
@@ -104,6 +102,15 @@ namespace CaseClosed.UI
             scaler.referenceResolution = new Vector2(1920f, 1080f);
             scaler.matchWidthOrHeight = 0.5f;
 
+            if (!boardAlreadyReady)
+                BuildEvidenceBoardPanel();
+
+            if (!stampAlreadyReady)
+                BuildStampPadPanel();
+        }
+
+        private void BuildEvidenceBoardPanel()
+        {
             GameObject boardPanel = CreatePanel(overlayRoot.transform, "EvidenceBoardPanel",
                 rightSideBoard ? new Vector2(1f, 0.5f) : new Vector2(0f, 0.5f),
                 rightSideBoard ? new Vector2(1f, 0.5f) : new Vector2(0f, 0.5f),
@@ -111,26 +118,48 @@ namespace CaseClosed.UI
                 new Vector2(520f, 640f));
             boardPanel.GetComponent<Image>().color = DeskUiPalette.NavyDark;
 
-            GameObject titleGo = CreateText(boardPanel.transform, "BoardTitle", "CASE FILE", 18, FontStyle.Bold,
-                new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -28f), new Vector2(480f, 36f));
+            GameObject titleGo = CreateText(boardPanel.transform, "BoardTitle", "EVIDENCE", 18, FontStyle.Bold,
+                new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -22f), new Vector2(480f, 32f));
             titleGo.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
             titleGo.GetComponent<Text>().color = DeskUiPalette.ManilaLight;
 
             GameObject toastGo = CreateText(boardPanel.transform, "Toast", string.Empty, 14, FontStyle.Normal,
-                new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -58f), new Vector2(480f, 28f));
+                new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -50f), new Vector2(480f, 24f));
             Text toast = toastGo.GetComponent<Text>();
             toast.alignment = TextAnchor.MiddleCenter;
             toast.color = DeskUiPalette.Manila;
             toastGo.SetActive(false);
 
+            GameObject tabsGo = new GameObject("SuspectTabs", typeof(RectTransform), typeof(HorizontalLayoutGroup));
+            tabsGo.transform.SetParent(boardPanel.transform, false);
+            RectTransform tabsRect = tabsGo.GetComponent<RectTransform>();
+            tabsRect.anchorMin = new Vector2(0f, 1f);
+            tabsRect.anchorMax = new Vector2(1f, 1f);
+            tabsRect.pivot = new Vector2(0.5f, 1f);
+            tabsRect.anchoredPosition = new Vector2(0f, -78f);
+            tabsRect.sizeDelta = new Vector2(-24f, 34f);
+            HorizontalLayoutGroup tabLayout = tabsGo.GetComponent<HorizontalLayoutGroup>();
+            tabLayout.spacing = 4f;
+            tabLayout.childForceExpandWidth = true;
+            tabLayout.childForceExpandHeight = true;
+            tabLayout.childControlWidth = true;
+            tabLayout.childControlHeight = true;
+
+            GameObject emptyGo = CreateText(boardPanel.transform, "EmptyHint", string.Empty, 13, FontStyle.Italic,
+                new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0f, 40f), new Vector2(440f, 80f));
+            Text emptyHint = emptyGo.GetComponent<Text>();
+            emptyHint.alignment = TextAnchor.MiddleCenter;
+            emptyHint.color = DeskUiPalette.ManilaLight;
+            emptyGo.SetActive(false);
+
             GameObject cardContainerGo = new GameObject("CardContainer", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
             cardContainerGo.transform.SetParent(boardPanel.transform, false);
             RectTransform cardRect = cardContainerGo.GetComponent<RectTransform>();
-            cardRect.anchorMin = new Vector2(0.5f, 0.5f);
-            cardRect.anchorMax = new Vector2(0.5f, 0.5f);
+            cardRect.anchorMin = new Vector2(0.5f, 0f);
+            cardRect.anchorMax = new Vector2(0.5f, 1f);
             cardRect.pivot = new Vector2(0.5f, 0.5f);
-            cardRect.anchoredPosition = new Vector2(0f, -20f);
-            cardRect.sizeDelta = new Vector2(480f, 520f);
+            cardRect.anchoredPosition = new Vector2(0f, -24f);
+            cardRect.sizeDelta = new Vector2(480f, -140f);
             VerticalLayoutGroup layout = cardContainerGo.GetComponent<VerticalLayoutGroup>();
             layout.childAlignment = TextAnchor.UpperCenter;
             layout.spacing = 8f;
@@ -142,8 +171,18 @@ namespace CaseClosed.UI
             ContentSizeFitter fitter = cardContainerGo.GetComponent<ContentSizeFitter>();
             fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
-            evidenceBoard.SetBoardSceneHooks(boardPanel, cardContainerGo.transform, null, toast);
+            EvidenceCardView prefab = TryLoadBeziCardPrefab();
+            evidenceBoard.SetBoardSceneHooks(
+                boardPanel,
+                cardContainerGo.transform,
+                prefab,
+                toast,
+                tabsGo.transform,
+                emptyHint);
+        }
 
+        private void BuildStampPadPanel()
+        {
             GameObject stampPanel = CreatePanel(overlayRoot.transform, "StampPadPanel",
                 new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 90f), new Vector2(420f, 120f));
             stampPanel.GetComponent<Image>().color = DeskUiPalette.NavyDark;
@@ -159,6 +198,20 @@ namespace CaseClosed.UI
                 new Vector2(100f, -20f), DeskUiPalette.StampRelease);
 
             stampPad.SetStampSceneHooks(holdButton, releaseButton, null, stampPanel);
+        }
+
+        private static EvidenceCardView TryLoadBeziCardPrefab()
+        {
+            EvidenceCardView fromResources = Resources.Load<EvidenceCardView>("EvidenceCardView");
+            if (fromResources != null)
+                return fromResources;
+
+#if UNITY_EDITOR
+            GameObject asset = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>("Assets/EvidenceCardView.prefab");
+            if (asset != null)
+                return asset.GetComponent<EvidenceCardView>();
+#endif
+            return null;
         }
 
         private static GameObject CreatePanel(Transform parent, string name, Vector2 anchorMin, Vector2 anchorMax, Vector2 anchoredPos, Vector2 size)

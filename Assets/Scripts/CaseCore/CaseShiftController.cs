@@ -215,6 +215,12 @@ namespace CaseClosed.CaseCore
             return activeSession == null ? Array.Empty<EvidenceRecord>() : activeSession.GetCollectedEvidence();
         }
 
+        /// <summary>Owner suspect / directory id for a case record, or empty when unknown.</summary>
+        public string FindEvidenceOwnerId(string evidenceId)
+        {
+            return activeSession == null ? string.Empty : activeSession.FindEvidenceOwnerId(evidenceId);
+        }
+
         /// <summary>Asks the active suspect a question and applies code-owned stress rules.</summary>
         public InterrogationResult AskCurrentSuspect(string question, string evidenceId = null, bool aggressive = false)
         {

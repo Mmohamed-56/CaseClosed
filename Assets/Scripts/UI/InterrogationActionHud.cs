@@ -11,7 +11,8 @@ using UnityEngine.UI;
 namespace CaseClosed.UI
 {
     /// <summary>
-    /// Player desk HUD with top-level tags: ACTIONS (interview) | CASE FILE (records + stamps) | DECISION.
+    /// Player desk HUD with top-level tags: ACTIONS (interview) | CASE FILE (briefing) | DECISION (HOLD/RELEASE).
+    /// CASE FILE does not pick evidence — collect via the computer / public records → right EVIDENCE board.
     /// Builds a Screen Space Overlay canvas at runtime when Bezi has not assigned scene refs.
     /// Ask turns go through <see cref="InterrogationDialogueService"/> → ScenarioDialogueClient (offline bank).
     /// </summary>
@@ -87,7 +88,7 @@ namespace CaseClosed.UI
         /// <summary>True while the desk file panel is visible.</summary>
         public bool IsOpen { get { return panelOpen; } }
 
-        /// <summary>True when this HUD owns Case File + stamp chrome (Aqua overlay should stay off).</summary>
+        /// <summary>True when this HUD owns HOLD/RELEASE on DECISION (skip duplicate stamp overlay; evidence board still boots).</summary>
         public bool OwnsCaseFileChrome { get { return true; } }
 
         private void Awake()
@@ -174,7 +175,7 @@ namespace CaseClosed.UI
             collectedIds.Clear();
             transcript.Clear();
             statusMessage = string.IsNullOrWhiteSpace(readyMessage)
-                ? "Open CASE FILE → collect ≥2 records → ACTIONS to call the suspect in."
+                ? "Open public records (computer) → collect ≥2 → ACTIONS to call the suspect in."
                 : readyMessage;
             activeTag = HudTag.CaseFile;
             SyncCollectedFromSession();
@@ -394,7 +395,7 @@ namespace CaseClosed.UI
             }
 
             SetPanelOpen(false);
-            statusMessage = "Zoomed to desk computer. Collect ≥" + MinEvidenceToCallIn + " on the CASE FILE clipboard.";
+            statusMessage = "Zoomed to desk computer. Collect ≥" + MinEvidenceToCallIn + " — filed cards land on the EVIDENCE board.";
             RefreshStatus();
         }
 
@@ -603,7 +604,7 @@ namespace CaseClosed.UI
         private void RefreshStampFooter()
         {
             bool show = panelOpen &&
-                        activeTag == HudTag.CaseFile &&
+                        activeTag == HudTag.Decision &&
                         shiftController != null &&
                         shiftController.Phase == CaseShiftPhase.Investigating &&
                         shiftController.CurrentSuspect != null &&
@@ -715,57 +716,19 @@ namespace CaseClosed.UI
                     sb.AppendLine("Statement: " + suspect.Statement.Trim());
                 if (!string.IsNullOrWhiteSpace(suspect.Alibi))
                     sb.AppendLine("Public record: " + suspect.Alibi.Trim());
-
-                sb.AppendLine();
-                sb.AppendLine("RECORDS");
-                sb.AppendLine("Clipboard: " + collectedIds.Count + " filed (need ≥" + MinEvidenceToCallIn + " before call-in).");
-                sb.AppendLine(shiftController.Phase == CaseShiftPhase.Briefing
-                    ? "Collect case records, then open ACTIONS to call the suspect in."
-                    : "Collected records stay on the clipboard.");
             }
+
+            sb.AppendLine();
+            sb.AppendLine("EVIDENCE");
+            sb.AppendLine("Filed on the board: " + collectedIds.Count + " (need ≥" + MinEvidenceToCallIn + " before call-in).");
+            sb.AppendLine("Use the desk computer to collect — cards appear on the right EVIDENCE clipboard (per-suspect tabs).");
 
             SetContentBody(sb.ToString().TrimEnd());
 
             if ((shiftController.Phase == CaseShiftPhase.Briefing || shiftController.Phase == CaseShiftPhase.Investigating) &&
                 HasInGamePublicRecordsPath())
             {
-                AddAction("Open public records", OpenPublicRecords);
-            }
-
-            if (suspect == null || suspect.Evidence == null || suspect.Evidence.Count == 0)
-            {
-                AddAction("No records on file", null, false);
-                return;
-            }
-
-            for (int i = 0; i < suspect.Evidence.Count; i++)
-            {
-                EvidenceRecord evidence = suspect.Evidence[i];
-                if (evidence == null || string.IsNullOrWhiteSpace(evidence.Title))
-                    continue;
-
-                bool collected = collectedIds.Contains(evidence.Id);
-                string label = collected
-                    ? "On clipboard · " + evidence.Title
-                    : "Collect · " + evidence.Title;
-
-                if ((shiftController.Phase == CaseShiftPhase.Briefing ||
-                     shiftController.Phase == CaseShiftPhase.Investigating) && !collected)
-                {
-                    string id = evidence.Id;
-                    string title = evidence.Title;
-                    AddAction(label, () =>
-                    {
-                        bool added = shiftController.CollectEvidence(id);
-                        if (added) collectedIds.Add(id);
-                        statusMessage = added ? "Filed: " + title : "Already on the board.";
-                        RefreshAll();
-                    });
-                }
-                else
-                {
-                    AddAction(label, null, false);
-                }
+                AddAction("Open public records (computer)", OpenPublicRecords);
             }
         }
 
@@ -785,14 +748,14 @@ namespace CaseClosed.UI
                 {
                     SetContentBody(
                         "Need ≥" + MinEvidenceToCallIn + " records before calling " + suspect.DisplayName +
-                        " in.\nFiled so far: " + filed + ".\nOpen CASE FILE to collect, or zoom to the desk computer.");
+                        " in.\nFiled so far: " + filed + ".\nCollect from the desk computer — watch the right EVIDENCE board.");
                     AddAction("Open CASE FILE", () =>
                     {
                         activeTag = HudTag.CaseFile;
                         RefreshAll();
                     });
                     if (HasInGamePublicRecordsPath())
-                        AddAction("Open public records", OpenPublicRecords);
+                        AddAction("Open public records (computer)", OpenPublicRecords);
                     return;
                 }
 
@@ -861,7 +824,7 @@ namespace CaseClosed.UI
 
             if (shiftController.Phase == CaseShiftPhase.Briefing)
             {
-                SetContentBody("Call the suspect in from ACTIONS, finish the interview, then stamp HOLD / RELEASE on the CASE FILE footer.");
+                SetContentBody("Call the suspect in from ACTIONS, finish the interview, then stamp HOLD / RELEASE here on DECISION.");
                 return;
             }
 
@@ -869,8 +832,8 @@ namespace CaseClosed.UI
             {
                 SuspectRecord suspect = shiftController.CurrentSuspect;
                 SetContentBody(suspect == null
-                    ? "Stamp HOLD or RELEASE from CASE FILE, then return here for the final charge."
-                    : "Stamp HOLD or RELEASE on CASE FILE for " + suspect.DisplayName + ".\nFinal charge unlocks after the roster is decided.");
+                    ? "Stamp HOLD or RELEASE below, then return for the final charge when the roster is done."
+                    : "Stamp HOLD or RELEASE for " + suspect.DisplayName + ".\nFinal charge unlocks after the roster is decided.");
                 return;
             }
 
@@ -1154,7 +1117,7 @@ namespace CaseClosed.UI
 
             askButton = CreateChromeButton(askRow.transform, "Ask", "ASK", new Vector2(-10f, 0f), new Vector2(74f, 34f), DeskUiPalette.Navy, DeskUiPalette.White, TextAnchor.MiddleRight);
 
-            // Stamp footer (CASE FILE only)
+            // Stamp footer (DECISION only)
             GameObject stampFooter = new GameObject("StampFooter", typeof(RectTransform), typeof(Image));
             stampFooter.transform.SetParent(panel.transform, false);
             stampFooterRoot = stampFooter;
