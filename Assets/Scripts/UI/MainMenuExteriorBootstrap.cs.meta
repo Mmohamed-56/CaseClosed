@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: e41a9c7b2d6f48a1b3e5f7091c2d4e6a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - nightProfile: {fileID: 11400000, guid: 7c4e9b2a1f8d4e6a9b0c3d5e7f8a9b0c, type: 2}
+  - groundMaterial: {fileID: 2100000, guid: a2b837d3ff939504d9484b3bd1b2189b, type: 2}
+  executionOrder: -200
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
