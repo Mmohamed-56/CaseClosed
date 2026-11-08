@@ -2,29 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-<!-- This site is hosted on Netlify. Anyone can build and deploy a site
-     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=77866f37-2c33-44a0-a846-3d44200be13b
-     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>University Public Safety Records — Search</title>
+  <title>UPSR Records — Search</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <main class="shell">
     <section class="panel">
       <div class="panel-h">
-        <span>Record search</span>
-        <span class="tag">case id · suspect name</span>
+        <span>Records index search</span>
+        <span class="tag">case no. · subject name · subject id</span>
       </div>
       <div class="panel-b">
         <form id="search-form" autocomplete="off">
           <div class="field">
             <label for="q">Query</label>
             <div class="row">
-              <input type="search" id="q" name="q" placeholder="e.g. UB-0000000042 or Jamie Rivera" />
+              <input type="search" id="q" name="q" placeholder="UB-0000000042 or Rivera" />
               <button type="submit" class="btn btn-primary">Search</button>
             </div>
-            <p class="hint">Matches caseId / title, or suspect name / id / role. Fake mainframe delay optional — add <span class="kbd">?slow=1</span>.</p>
+            <p class="hint">Matches case number / title, or subject name / id / campus role. Add <span class="kbd">?slow=1</span> to simulate mainframe queue delay.</p>
           </div>
         </form>
       </div>
@@ -32,25 +29,25 @@
 
     <section class="panel" id="results-panel" hidden>
       <div class="panel-h">
-        <span>Results</span>
+        <span>Search results</span>
         <span class="tag" id="results-tag"></span>
       </div>
       <div class="panel-b">
         <div id="case-hit" hidden>
-          <p><strong>Case match:</strong> <a href='/' id='case-hit-link'></a></p>
+          <p><strong>Case match:</strong> <a href="index.html" id="case-hit-link"></a></p>
         </div>
         <table class="data" id="results-table" hidden>
           <thead>
             <tr>
               <th>Name</th>
-              <th>Role</th>
-              <th>Suspect ID</th>
+              <th>Campus role</th>
+              <th>Subject ID</th>
               <th></th>
             </tr>
           </thead>
           <tbody id="results-body"></tbody>
         </table>
-        <div class="empty" id="results-empty" hidden>No matching public records.</div>
+        <div class="empty" id="results-empty" hidden>No matching records in the active case index.</div>
       </div>
     </section>
   </main>
@@ -100,7 +97,7 @@
             "<td>" + UBPDApp.escapeHtml(s.name) + "</td>" +
             "<td>" + UBPDApp.escapeHtml(s.role || "") + "</td>" +
             '<td class="mono">' + UBPDApp.escapeHtml(s.id) + "</td>" +
-            '<td><a href="suspect.html?id=' + encodeURIComponent(s.id) + '">Open dossier</a></td>';
+            '<td><a href="suspect.html?id=' + encodeURIComponent(s.id) + '">Open subject file</a></td>';
           body.appendChild(tr);
         });
       }
