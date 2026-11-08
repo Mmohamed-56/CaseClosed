@@ -1,0 +1,116 @@
+{
+  "entries": [
+    {
+      "id": "generic_calm_01",
+      "suspectId": "*",
+      "intent": "generic",
+      "keywords": "",
+      "minStress": 0,
+      "maxStress": 29,
+      "emotion": "calm",
+      "slip": false,
+      "line": "I already told you what I know."
+    },
+    {
+      "id": "generic_nervous_01",
+      "suspectId": "*",
+      "intent": "generic",
+      "keywords": "",
+      "minStress": 30,
+      "maxStress": 59,
+      "emotion": "nervous",
+      "slip": false,
+      "line": "Look, I answered that. Why keep circling?"
+    },
+    {
+      "id": "generic_cracking_01",
+      "suspectId": "*",
+      "intent": "generic",
+      "keywords": "",
+      "minStress": 60,
+      "maxStress": 84,
+      "emotion": "scared",
+      "slip": false,
+      "line": "Just give me a moment. This is a lot."
+    },
+    {
+      "id": "generic_broken_01",
+      "suspectId": "*",
+      "intent": "generic",
+      "keywords": "",
+      "minStress": 85,
+      "maxStress": 100,
+      "emotion": "broken",
+      "slip": false,
+      "line": "I can't keep this up."
+    },
+    {
+      "id": "alibi_calm_01",
+      "suspectId": "*",
+      "intent": "alibi",
+      "keywords": "where|alibi|time|when",
+      "minStress": 0,
+      "maxStress": 59,
+      "emotion": "calm",
+      "slip": false,
+      "line": "I was where I said I was. Check the schedule."
+    },
+    {
+      "id": "evidence_nervous_01",
+      "suspectId": "*",
+      "intent": "evidence",
+      "keywords": "evidence|this|prove|log|receipt",
+      "minStress": 0,
+      "maxStress": 100,
+      "emotion": "defensive",
+      "slip": false,
+      "requiresEvidence": true,
+      "line": "That doesn't prove what you think it proves."
+    },
+    {
+      "id": "slip_culprit_01",
+      "suspectId": "*",
+      "intent": "slip",
+      "keywords": "",
+      "minStress": 60,
+      "maxStress": 100,
+      "emotion": "scared",
+      "slip": true,
+      "culpritOnly": true,
+      "line": "I was there that night."
+    },
+    {
+      "id": "shutdown_01",
+      "suspectId": "*",
+      "intent": "shutdown",
+      "keywords": "",
+      "minStress": 0,
+      "maxStress": 100,
+      "emotion": "angry",
+      "slip": false,
+      "line": "I have nothing more to say."
+    },
+    {
+      "id": "hold_01",
+      "suspectId": "*",
+      "intent": "hold",
+      "keywords": "",
+      "minStress": 0,
+      "maxStress": 100,
+      "emotion": "defensive",
+      "slip": false,
+      "line": "You're holding the wrong person."
+    },
+    {
+      "id": "release_01",
+      "suspectId": "*",
+      "intent": "release",
+      "keywords": "",
+      "minStress": 0,
+      "maxStress": 100,
+      "emotion": "calm",
+      "slip": false,
+      "line": "Finally. Don't call me back in."
+    }
+  ]
+}

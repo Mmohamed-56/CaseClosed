@@ -174,7 +174,7 @@ namespace CaseClosed.CaseCore.Gemini
             // Default: scenario / scripted — offline, no ask proxy.
             if (useScenarioDialogue || !useGeminiApi)
             {
-                EmitScenarioOrScripted(suspect, question, evidenceId, stressResult, presented, isCulprit);
+                EmitScenarioOrScripted(suspect, question, evidenceId, stressResult, presented, isCulprit, aggressive);
                 return true;
             }
 
@@ -189,6 +189,7 @@ namespace CaseClosed.CaseCore.Gemini
                     stressResult,
                     presented,
                     isCulprit,
+                    aggressive,
                     allowOfflineMock ? null : "GEMINI_API_KEY missing.");
                 return true;
             }
@@ -233,6 +234,7 @@ namespace CaseClosed.CaseCore.Gemini
                         stressResult,
                         presented,
                         isCulprit,
+                        aggressive,
                         error);
                 });
 
@@ -246,16 +248,32 @@ namespace CaseClosed.CaseCore.Gemini
             InterrogationResult stressResult,
             EvidenceRecord presented,
             bool isCulprit,
+            bool aggressive,
             string error = null)
         {
             GeminiSuspectReply reply;
-            string sourceTag = "scripted";
-
-            if (scenarioDialogue != null &&
-                scenarioDialogue.TryBuildReply(suspect, question, stressResult, presented, isCulprit, out reply, out sourceTag))
+            if (scenarioDialogue != null)
             {
-                EmitTurn(suspect, question, evidenceId, stressResult, reply, sourceTag != "suspect", error, sourceTag);
-                return;
+                var context = new ScenarioAskContext
+                {
+                    SuspectId = suspect != null ? suspect.Id : "*",
+                    SuspectName = suspect != null ? suspect.DisplayName : string.Empty,
+                    Question = question,
+                    EvidenceId = evidenceId ?? string.Empty,
+                    HasEvidence = presented != null,
+                    Aggressive = aggressive,
+                    IsCulprit = isCulprit,
+                    IsShutdown = stressResult != null && stressResult.IsShutdown,
+                    StressResult = stressResult
+                };
+
+                if (scenarioDialogue.TryResolve(context, out reply) && reply != null)
+                {
+                    // Bank hit → [suspect]; empty-bank FallbackLine path still tags [suspect] when CaseCore slip/line is used.
+                    string sourceTag = scenarioDialogue.IsReady ? "suspect" : "scripted";
+                    EmitTurn(suspect, question, evidenceId, stressResult, reply, sourceTag != "suspect", error, sourceTag);
+                    return;
+                }
             }
 
             EmitTurn(suspect, question, evidenceId, stressResult, BuildLegacyMockReply(stressResult), true, error, "scripted");
