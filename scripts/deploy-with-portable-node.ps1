@@ -18,14 +18,14 @@ if (-not $env:NETLIFY_AUTH_TOKEN -or $env:NETLIFY_AUTH_TOKEN.Length -lt 8) {
     throw "NETLIFY_AUTH_TOKEN not set. Set User env NETLIFY_AUTH_TOKEN (Netlify personal access token), open a NEW PowerShell, then re-run this script. Do not paste the token into chat."
 }
 
-$root = "C:\Users\mags5\My project-worktrees\gemini-404"
+$root = Split-Path -Parent $PSScriptRoot
 if (-not (Test-Path "$root\netlify\functions\gemini.mjs")) {
     throw "Expected gemini function missing at $root\netlify\functions\gemini.mjs"
 }
 Set-Location $root
 
 Write-Host "Using node: $(node -v)"
-Write-Host "Deploying site/ + netlify/functions from gemini-404 (non-interactive) ..."
+Write-Host "Deploying site/ + netlify/functions from $root (non-interactive) ..."
 & npx --yes netlify-cli deploy --prod --dir=site --functions=netlify/functions --site=77866f37-2c33-44a0-a846-3d44200be13b --auth $env:NETLIFY_AUTH_TOKEN
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 

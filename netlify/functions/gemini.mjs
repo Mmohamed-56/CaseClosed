@@ -75,6 +75,42 @@ function extractModelText(responseJson) {
   }
 }
 
+/**
+ * Normalize smart quotes + leaked Unicode escapes for Unity HUD/TTS.
+ * Covers real U+2019, JSON \u2019 left in text, and bare u2019 from broken decode.
+ */
+function sanitizeDialogueText(text) {
+  if (!text) return text;
+  return String(text)
+    .replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) => {
+      const code = parseInt(hex, 16);
+      return normalizeQuoteChar(String.fromCharCode(code));
+    })
+    .replace(/u([0-9a-fA-F]{4})/g, (match, hex) => {
+      const code = parseInt(hex, 16);
+      if (
+        code === 0x2018 ||
+        code === 0x2019 ||
+        code === 0x2032 ||
+        code === 0x201c ||
+        code === 0x201d ||
+        code === 0x27 ||
+        code === 0x22
+      ) {
+        return normalizeQuoteChar(String.fromCharCode(code));
+      }
+      return match;
+    })
+    .replace(/[\u2018\u2019\u2032]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"');
+}
+
+function normalizeQuoteChar(ch) {
+  if (ch === "\u2018" || ch === "\u2019" || ch === "\u2032") return "'";
+  if (ch === "\u201C" || ch === "\u201D") return '"';
+  return ch;
+}
+
 export async function handler(event) {
   const gated = withGuards(event, {
     maxBytes: MAX_BODY,
@@ -169,7 +205,7 @@ export async function handler(event) {
     );
   }
 
-  const text = extractModelText(raw);
+  const text = sanitizeDialogueText(extractModelText(raw));
   if (!text) {
     let finishReason = "";
     try {

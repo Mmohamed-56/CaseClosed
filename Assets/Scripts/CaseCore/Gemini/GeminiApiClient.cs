@@ -202,7 +202,7 @@ namespace CaseClosed.CaseCore.Gemini
             if (string.IsNullOrWhiteSpace(responseJson)) return false;
             string text = ExtractJsonStringField(responseJson, "text");
             if (string.IsNullOrWhiteSpace(text)) return false;
-            modelText = text.Trim();
+            modelText = SanitizeDialogueText(text.Trim());
             return true;
         }
 
@@ -243,7 +243,7 @@ namespace CaseClosed.CaseCore.Gemini
                                 string hex = responseJson.Substring(i + 2, 4);
                                 int code;
                                 if (int.TryParse(hex, System.Globalization.NumberStyles.HexNumber, null, out code))
-                                    sb.Append((char)code);
+                                    sb.Append(NormalizeQuoteChar((char)code));
                                 i += 4;
                             }
                             break;
@@ -260,7 +260,7 @@ namespace CaseClosed.CaseCore.Gemini
                 sb.Append(c);
             }
 
-            modelText = sb.ToString().Trim();
+            modelText = SanitizeDialogueText(sb.ToString().Trim());
             return !string.IsNullOrWhiteSpace(modelText);
         }
 
@@ -279,8 +279,54 @@ namespace CaseClosed.CaseCore.Gemini
 
             if (string.IsNullOrWhiteSpace(line)) return false;
 
-            reply = GeminiSuspectReply.CreateFallback(TrimToShortLine(line), emotion, slip);
+            reply = GeminiSuspectReply.CreateFallback(TrimToShortLine(SanitizeDialogueText(line)), emotion, slip);
             return true;
+        }
+
+        /// <summary>
+        /// Normalizes smart quotes and leaked Unicode escapes (e.g. Thatu2019s) to ASCII for HUD + TTS.
+        /// Handles real U+2019, JSON \u2019, and bare u2019 left by a broken escape decode.
+        /// </summary>
+        public static string SanitizeDialogueText(string text)
+        {
+            if (string.IsNullOrEmpty(text)) return text;
+
+            var sb = new StringBuilder(text.Length);
+            for (int i = 0; i < text.Length; i++)
+            {
+                // Literal backslash-u escapes still present in model text: \u2019
+                if (text[i] == '\\' && i + 5 < text.Length && (text[i + 1] == 'u' || text[i + 1] == 'U'))
+                {
+                    string hex = text.Substring(i + 2, 4);
+                    int code;
+                    if (int.TryParse(hex, System.Globalization.NumberStyles.HexNumber, null, out code))
+                    {
+                        sb.Append(NormalizeQuoteChar((char)code));
+                        i += 5;
+                        continue;
+                    }
+                }
+
+                // Bare leaked hex from broken \u decode: u2019 / U2019
+                if ((text[i] == 'u' || text[i] == 'U') && i + 4 < text.Length &&
+                    IsHexDigit(text[i + 1]) && IsHexDigit(text[i + 2]) &&
+                    IsHexDigit(text[i + 3]) && IsHexDigit(text[i + 4]))
+                {
+                    string hex = text.Substring(i + 1, 4);
+                    int code;
+                    if (int.TryParse(hex, System.Globalization.NumberStyles.HexNumber, null, out code) &&
+                        IsSmartOrStraightQuote(code))
+                    {
+                        sb.Append(NormalizeQuoteChar((char)code));
+                        i += 4;
+                        continue;
+                    }
+                }
+
+                sb.Append(NormalizeQuoteChar(text[i]));
+            }
+
+            return sb.ToString();
         }
 
         public static string TrimToShortLine(string line)
@@ -289,6 +335,33 @@ namespace CaseClosed.CaseCore.Gemini
             string trimmed = line.Trim();
             if (trimmed.Length <= 160) return trimmed;
             return trimmed.Substring(0, 157).TrimEnd() + "...";
+        }
+
+        private static bool IsHexDigit(char c)
+        {
+            return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
+        }
+
+        private static bool IsSmartOrStraightQuote(int code)
+        {
+            return code == 0x2018 || code == 0x2019 || code == 0x2032 ||
+                   code == 0x201C || code == 0x201D || code == '\'' || code == '"';
+        }
+
+        private static char NormalizeQuoteChar(char c)
+        {
+            switch (c)
+            {
+                case '\u2018': // ‘
+                case '\u2019': // ’
+                case '\u2032': // ′
+                    return '\'';
+                case '\u201C': // “
+                case '\u201D': // ”
+                    return '"';
+                default:
+                    return c;
+            }
         }
 
         private static string ExtractJsonObject(string text)
@@ -318,7 +391,41 @@ namespace CaseClosed.CaseCore.Gemini
                 char c = json[p];
                 if (c == '\\' && p + 1 < json.Length)
                 {
-                    sb.Append(json[p + 1] == 'n' ? '\n' : json[p + 1]);
+                    char next = json[p + 1];
+                    switch (next)
+                    {
+                        case 'n': sb.Append('\n'); break;
+                        case 'r': sb.Append('\r'); break;
+                        case 't': sb.Append('\t'); break;
+                        case '"': sb.Append('"'); break;
+                        case '\\': sb.Append('\\'); break;
+                        case '/': sb.Append('/'); break;
+                        case 'u':
+                            // Properly decode \uXXXX — the old path appended bare 'u' + hex (Thatu2019s).
+                            if (p + 5 < json.Length)
+                            {
+                                string hex = json.Substring(p + 2, 4);
+                                int code;
+                                if (int.TryParse(hex, System.Globalization.NumberStyles.HexNumber, null, out code))
+                                {
+                                    sb.Append(NormalizeQuoteChar((char)code));
+                                    p += 4;
+                                }
+                                else
+                                {
+                                    sb.Append(next);
+                                }
+                            }
+                            else
+                            {
+                                sb.Append(next);
+                            }
+                            break;
+                        default:
+                            sb.Append(next);
+                            break;
+                    }
+
                     p++;
                     continue;
                 }
