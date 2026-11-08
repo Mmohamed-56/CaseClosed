@@ -307,9 +307,12 @@ namespace CaseClosed.UI
             string name = string.IsNullOrWhiteSpace(turn.SuspectName) ? "Suspect" : turn.SuspectName;
 
             AppendTranscript(name + ": " + (line ?? string.Empty).Trim());
-            statusMessage = name + " — stress " + result.Stress + "/100 · " + result.QuestionsLeft + " left";
+            string source = string.IsNullOrWhiteSpace(turn.ReplySource)
+                ? (turn.UsedMock ? "scripted" : "suspect")
+                : turn.ReplySource.Trim();
+            statusMessage = "[" + source + "] " + name + " — stress " + result.Stress + "/100 · " + result.QuestionsLeft + " left";
             if (!string.IsNullOrEmpty(turn.Error))
-                statusMessage += " · connection note recorded";
+                statusMessage += " · " + turn.Error;
             RefreshAll();
         }
 
