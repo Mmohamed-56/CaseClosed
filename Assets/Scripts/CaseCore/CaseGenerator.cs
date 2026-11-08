@@ -180,7 +180,7 @@ namespace CaseClosed.CaseCore
                     statement,
                     profile.Alibi,
                     BuildEvidenceForSuspect(caseId, profile, isCulprit, template),
-                    CaseClosed.Voice.SuspectVoiceCatalog.Resolve(suspectId)));
+                    CaseClosed.Voice.SuspectVoiceCatalog.GetProfile(suspectId).VoiceId));
             }
 
             Shuffle(suspects, random);

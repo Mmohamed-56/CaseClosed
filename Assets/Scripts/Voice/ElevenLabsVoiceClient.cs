@@ -155,15 +155,17 @@ namespace CaseClosed.Voice
             }
 
             EnsureAudioSource();
-            string voiceId = SuspectVoiceCatalog.Resolve(request.SuspectId, request.VoiceId);
+            // Voice + pitch come from the current suspect's catalog profile (gender/pitch/voiceId).
+            SuspectVoiceProfile profile = SuspectVoiceCatalog.ResolveProfile(request.SuspectId, request.VoiceId);
             string cleaned = request.Line.Trim();
             string suspectId = request.SuspectId ?? string.Empty;
             generation++;
             int gen = generation;
-            activeRoutine = StartCoroutine(SpeakRoutine(gen, useProxy, apiKey, voiceId, cleaned, suspectId, proxy));
+            activeRoutine = StartCoroutine(SpeakRoutine(
+                gen, useProxy, apiKey, profile.VoiceId, profile.Pitch, cleaned, suspectId, proxy));
         }
 
-        /// <summary>Speak using resolved catalog / record voice id.</summary>
+        /// <summary>Speak using the current suspect's catalog profile (voice id + pitch).</summary>
         public void Speak(string suspectId, string line, string voiceId = null)
         {
             Speak(new SuspectSpeechRequest
@@ -227,6 +229,7 @@ namespace CaseClosed.Voice
             bool useProxy,
             string apiKey,
             string voiceId,
+            float pitch,
             string fullText,
             string suspectId,
             ApiProxySettings proxy)
@@ -246,7 +249,7 @@ namespace CaseClosed.Voice
                     AudioClip cached;
                     if (enableClipCache && clipCache.TryGetValue(cacheKey, out cached) && cached != null)
                     {
-                        yield return PlayClip(gen, cached, suspectId);
+                        yield return PlayClip(gen, cached, suspectId, pitch);
                         continue;
                     }
 
@@ -266,7 +269,7 @@ namespace CaseClosed.Voice
                     if (enableClipCache)
                         StoreCache(cacheKey, clip);
 
-                    yield return PlayClip(gen, clip, suspectId);
+                    yield return PlayClip(gen, clip, suspectId, pitch);
                 }
             }
             finally
@@ -276,12 +279,13 @@ namespace CaseClosed.Voice
             }
         }
 
-        private IEnumerator PlayClip(int gen, AudioClip clip, string suspectId)
+        private IEnumerator PlayClip(int gen, AudioClip clip, string suspectId, float pitch)
         {
             EnsureAudioSource();
             audioSource.mute = false;
             if (audioSource.volume <= 0.001f)
                 audioSource.volume = 1f;
+            audioSource.pitch = pitch > 0.01f ? pitch : 1f;
             audioSource.clip = clip;
             audioSource.Play();
             NotifySpeechStarted(suspectId);
