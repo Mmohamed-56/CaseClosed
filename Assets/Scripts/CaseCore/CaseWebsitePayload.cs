@@ -17,6 +17,11 @@ namespace CaseClosed.CaseCore
         public string title;
         public string briefing;
         public List<WebsiteSuspectRecord> suspects = new List<WebsiteSuspectRecord>();
+        /// <summary>
+        /// Optional campus directory (bios / witness hooks). Ids are <c>affiliate_*</c>.
+        /// Older site builds ignore this field; clue ids remain stable on <see cref="suspects"/> records.
+        /// </summary>
+        public List<WebsiteSuspectRecord> affiliates = new List<WebsiteSuspectRecord>();
     }
 
     /// <summary>Public suspect details that may be shown to the player on the records website.</summary>
@@ -97,6 +102,16 @@ namespace CaseClosed.CaseCore
                 }
 
                 payload.suspects.Add(publicSuspect);
+            }
+
+            IReadOnlyList<WebsiteSuspectRecord> directory = caseFile.CampusDirectory;
+            if (directory != null)
+            {
+                for (int i = 0; i < directory.Count; i++)
+                {
+                    if (directory[i] != null)
+                        payload.affiliates.Add(directory[i]);
+                }
             }
 
             return payload;

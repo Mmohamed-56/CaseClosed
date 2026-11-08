@@ -181,8 +181,14 @@
     return q.get(name);
   }
 
+  function peopleLists(caseData) {
+    var suspects = caseData && caseData.suspects ? caseData.suspects : [];
+    var affiliates = caseData && caseData.affiliates ? caseData.affiliates : [];
+    return suspects.concat(affiliates);
+  }
+
   function findSuspect(caseData, suspectId) {
-    var list = caseData.suspects || [];
+    var list = peopleLists(caseData);
     for (var i = 0; i < list.length; i++) {
       if (list[i].id === suspectId) return list[i];
     }
@@ -190,7 +196,7 @@
   }
 
   function findRecord(caseData, recordId) {
-    var list = caseData.suspects || [];
+    var list = peopleLists(caseData);
     for (var i = 0; i < list.length; i++) {
       var s = list[i];
       var recs = s.records || [];
@@ -354,11 +360,12 @@
     var caseMatch =
       String(caseData.caseId || "").toLowerCase().indexOf(q) >= 0 ||
       String(caseData.title || "").toLowerCase().indexOf(q) >= 0;
-    var suspects = (caseData.suspects || []).filter(function (s) {
+    var suspects = peopleLists(caseData).filter(function (s) {
       return (
         String(s.name || "").toLowerCase().indexOf(q) >= 0 ||
         String(s.id || "").toLowerCase().indexOf(q) >= 0 ||
-        String(s.role || "").toLowerCase().indexOf(q) >= 0
+        String(s.role || "").toLowerCase().indexOf(q) >= 0 ||
+        String(s.statement || "").toLowerCase().indexOf(q) >= 0
       );
     });
     return { caseMatch: caseMatch, suspects: suspects, query: query };

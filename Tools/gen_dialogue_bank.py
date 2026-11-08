@@ -311,27 +311,74 @@ def build_suspect(sid: str, meta: dict) -> list:
                 )
             )
 
+    # Extra alibi beats (breadth)
+    extra_alibi = [
+        ("calm", f"Timeline's simple: union, then {alibi}."),
+        ("calm", f"If you need a pin: {detail}."),
+        ("nervous", f"I keep saying {alibi} because the cameras would agree."),
+        ("nervous", f"Don't invent a second stop between me and the {alibi}."),
+        ("cracking", f"Twisting the {detail} won't make me the thief."),
+        ("broken", f"Write {alibi} on the form and stop circling."),
+    ]
+    for i, (stress, line) in enumerate(extra_alibi, 1):
+        rows.append(
+            entry(
+                f"{sid}_alibi_x_{stress}_{i}",
+                sid,
+                "alibi",
+                line,
+                STRESS[stress][2],
+                stress,
+                keywords="where|alibi|were you|what time|when|location",
+            )
+        )
+
+    # Extra evidence beats
+    extra_ev = [
+        ("calm", f"The {herring} is boring and true."),
+        ("nervous", "You're stacking paper. Stack motive next."),
+        ("cracking", f"That file still ends at the {alibi}."),
+        ("broken", "I've explained the sheet. Next question."),
+    ]
+    for i, (stress, line) in enumerate(extra_ev, 1):
+        rows.append(
+            entry(
+                f"{sid}_evidence_x_{i}",
+                sid,
+                "evidence",
+                line,
+                STRESS[stress][2],
+                stress,
+                keywords="evidence|log|receipt|record|prove|access",
+            )
+        )
+
     # Generic fillers
     generic = {
         "calm": [
             "Ask something specific.",
             "I'm listening.",
             f"Go ahead. {name} is here.",
+            "Your move, detective.",
+            f"Clock's ticking. I'm still a {role}.",
         ],
         "nervous": [
             "What now?",
             "Say it clearly.",
             "I'm still answering.",
+            "Don't leave me hanging mid-sentence.",
         ],
         "cracking": [
             "Make it count.",
             "I don't have many answers left in me.",
             "Fine. Ask.",
+            "Pick a lane and ask it.",
         ],
         "broken": [
             "...",
             "Whatever you say.",
             "Just finish it.",
+            "I'm out of speeches.",
         ],
     }
     for stress, lines in generic.items():

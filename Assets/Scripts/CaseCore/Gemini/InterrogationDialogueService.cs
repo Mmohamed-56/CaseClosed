@@ -363,6 +363,7 @@ namespace CaseClosed.CaseCore.Gemini
                 StressResult = stressResult,
                 Reply = reply,
                 UsedMock = usedMock,
+                ReplySource = usedMock ? "scripted" : "suspect",
                 Error = error
             };
 
