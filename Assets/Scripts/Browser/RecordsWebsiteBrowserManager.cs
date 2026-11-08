@@ -271,10 +271,14 @@ namespace CaseClosed.Browser
 
         private void InstallWebsiteEvidenceBridge()
         {
+            // UWB JS methods are void: uwb.ExecuteJsMethod never returns a value to the page.
+            // record.html still reads the synchronous { ok, channel, recordId, offline } object
+            // from UBPDBridge.sendEvidenceRecordId (see site/js/unity-bridge.js), so this
+            // replacement returns that acknowledgement after the call is dispatched.
             browserClient.ExecuteJs(
                 "(function(){if(window.__ubpdBrowserToolbarInstalled)return;" +
                 "function invoke(method,arg){if(arguments.length>1)uwb.ExecuteJsMethod(method,arg);else uwb.ExecuteJsMethod(method);}" +
-                "function sendEvidenceRecordId(recordId){if(recordId===undefined||recordId===null)return;invoke('sendEvidenceRecordId',String(recordId));}" +
+                "function sendEvidenceRecordId(recordId){var id=recordId===undefined||recordId===null?'':String(recordId);if(!id)return {ok:false,channel:'none',recordId:'',offline:false};try{invoke('sendEvidenceRecordId',id);}catch(e){return {ok:false,channel:'uwb.ExecuteJsMethod',recordId:id,offline:false};}return {ok:true,channel:'uwb.ExecuteJsMethod',recordId:id,offline:false};}" +
                 "window.UBPDBridge=window.UBPDBridge||{};" +
                 "window.UBPDBridge.sendEvidenceRecordId=sendEvidenceRecordId;" +
                 "window.UBPD_onAddEvidence=function(recordId,message){sendEvidenceRecordId(recordId);};" +

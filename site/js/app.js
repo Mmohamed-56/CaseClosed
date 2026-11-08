@@ -368,7 +368,24 @@
       showToast("Evidence hook unavailable — record id: " + recordId);
       return;
     }
-    var result = bridge.sendEvidenceRecordId(recordId);
+
+    var result;
+    try {
+      result = bridge.sendEvidenceRecordId(recordId);
+    } catch (err) {
+      showToast("Evidence link failed for " + recordId + ".");
+      updateConnectionStatus();
+      return;
+    }
+
+    // The desk bridge must return { ok, channel, recordId, offline }. A missing
+    // object is a failed confirmation (CEF ExecuteJsMethod is void), not success.
+    if (!result || typeof result !== "object" || typeof result.ok !== "boolean") {
+      showToast("Desk link sent no confirmation for " + recordId + ".");
+      updateConnectionStatus();
+      return;
+    }
+
     if (result.ok) {
       if (result.offline) {
         showToast("Attached to case file (local pin: " + recordId + ")");
