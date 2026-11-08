@@ -9,7 +9,7 @@ using UnityEngine.UI;
 namespace CaseClosed.UI
 {
     /// <summary>
-    /// Player desk file HUD: case brief, records collect, interview ask, HOLD/RELEASE, final charge.
+    /// Player desk HUD with top-level tags: ACTIONS (interview) | CASE FILE (records + stamps) | DECISION.
     /// Builds a Screen Space Overlay canvas at runtime when Bezi has not assigned scene refs.
     /// Does not own Gemini/TTS — only calls <see cref="InterrogationDialogueService"/>.
     /// </summary>
@@ -19,10 +19,18 @@ namespace CaseClosed.UI
         private const int MaxQuestionChars = 180;
         private const int MaxTranscriptLines = 40;
 
+        private enum HudTag
+        {
+            Actions = 0,
+            CaseFile = 1,
+            Decision = 2
+        }
+
         [Header("Case Connection")]
         [SerializeField] private CaseShiftController shiftController;
         [SerializeField] private InterrogationDialogueService dialogueService;
         [SerializeField] private EvidenceBoardController evidenceBoard;
+        [SerializeField] private StampPadController stampPad;
 
         [Header("Optional Scene Hooks (Bezi)")]
         [Tooltip("When empty, a runtime Screen Space Overlay canvas is created.")]
@@ -48,7 +56,7 @@ namespace CaseClosed.UI
         private readonly HashSet<string> collectedIds = new HashSet<string>();
 
         private bool panelOpen;
-        private int activeTab;
+        private HudTag activeTag = HudTag.CaseFile;
         private string selectedEvidenceId = string.Empty;
         private string statusMessage = string.Empty;
         private bool awaitingReply;
@@ -60,14 +68,19 @@ namespace CaseClosed.UI
         private readonly List<Button> runtimeActionButtons = new List<Button>();
         private readonly List<Text> runtimeTranscriptLabels = new List<Text>();
 
-        private Button tabCase;
-        private Button tabRecords;
-        private Button tabInterview;
-        private Button tabDecision;
+        private Button tagActions;
+        private Button tagCaseFile;
+        private Button tagDecision;
         private GameObject askRowRoot;
+        private GameObject stampFooterRoot;
+        private Button holdFooterButton;
+        private Button releaseFooterButton;
 
         /// <summary>True while the desk file panel is visible.</summary>
         public bool IsOpen { get { return panelOpen; } }
+
+        /// <summary>True when this HUD owns Case File + stamp chrome (Aqua overlay should stay off).</summary>
+        public bool OwnsCaseFileChrome { get { return true; } }
 
         private void Awake()
         {
@@ -85,6 +98,8 @@ namespace CaseClosed.UI
 
             if (evidenceBoard == null)
                 evidenceBoard = FindAnyObjectByType<EvidenceBoardController>();
+            if (stampPad == null)
+                stampPad = FindAnyObjectByType<StampPadController>();
 
             EnsureEventSystem();
             if ((hudCanvas == null || panelRoot == null) && buildRuntimeUiIfMissing)
@@ -141,9 +156,9 @@ namespace CaseClosed.UI
             collectedIds.Clear();
             transcript.Clear();
             statusMessage = string.IsNullOrWhiteSpace(readyMessage)
-                ? "Desk file open. Review records, then begin the interview."
+                ? "Open CASE FILE to collect records, then ACTIONS to interview."
                 : readyMessage;
-            activeTab = 0;
+            activeTag = HudTag.CaseFile;
             SyncCollectedFromSession();
             RefreshAll();
         }
@@ -154,10 +169,10 @@ namespace CaseClosed.UI
             panelOpen = open;
             if (panelRoot != null)
                 panelRoot.SetActive(open);
-            if (openButton != null)
-                openButton.gameObject.SetActive(!open);
             if (open)
                 RefreshAll();
+            else
+                RefreshTags();
         }
 
         public void TogglePanel()
@@ -171,6 +186,9 @@ namespace CaseClosed.UI
             {
                 openButton.onClick.RemoveListener(TogglePanel);
                 openButton.onClick.AddListener(TogglePanel);
+                // Legacy single open button — hide when split tags exist.
+                if (tagActions != null)
+                    openButton.gameObject.SetActive(false);
             }
             if (closeButton != null)
             {
@@ -182,25 +200,34 @@ namespace CaseClosed.UI
                 askButton.onClick.RemoveListener(AskQuestion);
                 askButton.onClick.AddListener(AskQuestion);
             }
-            WireTab(tabCase, 0);
-            WireTab(tabRecords, 1);
-            WireTab(tabInterview, 2);
-            WireTab(tabDecision, 3);
-            if (tabButtons != null)
+            if (holdFooterButton != null)
             {
-                for (int i = 0; i < tabButtons.Length; i++)
-                {
-                    int index = i;
-                    WireTab(tabButtons[i], index);
-                }
+                holdFooterButton.onClick.RemoveAllListeners();
+                holdFooterButton.onClick.AddListener(StampHold);
+            }
+            if (releaseFooterButton != null)
+            {
+                releaseFooterButton.onClick.RemoveAllListeners();
+                releaseFooterButton.onClick.AddListener(StampRelease);
+            }
+
+            WireTag(tagActions, HudTag.Actions);
+            WireTag(tagCaseFile, HudTag.CaseFile);
+            WireTag(tagDecision, HudTag.Decision);
+
+            if (tabButtons != null && tabButtons.Length >= 3)
+            {
+                WireTag(tabButtons[0], HudTag.Actions);
+                WireTag(tabButtons[1], HudTag.CaseFile);
+                WireTag(tabButtons[2], HudTag.Decision);
             }
         }
 
-        private void WireTab(Button button, int index)
+        private void WireTag(Button button, HudTag tag)
         {
             if (button == null) return;
             button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => SelectTab(index));
+            button.onClick.AddListener(() => SelectTag(tag));
         }
 
         private void ClosePanel()
@@ -208,10 +235,16 @@ namespace CaseClosed.UI
             SetPanelOpen(false);
         }
 
-        private void SelectTab(int index)
+        private void SelectTag(HudTag tag)
         {
-            activeTab = Mathf.Clamp(index, 0, 3);
-            RefreshAll();
+            if (panelOpen && activeTag == tag)
+            {
+                SetPanelOpen(false);
+                return;
+            }
+
+            activeTag = tag;
+            SetPanelOpen(true);
         }
 
         private void OnPhaseChanged(CaseShiftPhase phase)
@@ -219,7 +252,10 @@ namespace CaseClosed.UI
             if (phase == CaseShiftPhase.Headline || phase == CaseShiftPhase.Resolved)
                 resolution = shiftController != null ? shiftController.LastResolution : resolution;
             if (phase == CaseShiftPhase.Charging)
-                activeTab = 3;
+            {
+                activeTag = HudTag.Decision;
+                SetPanelOpen(true);
+            }
             RefreshAll();
         }
 
@@ -253,7 +289,7 @@ namespace CaseClosed.UI
             string name = string.IsNullOrWhiteSpace(turn.SuspectName) ? "Suspect" : turn.SuspectName;
 
             AppendTranscript(name + ": " + (line ?? string.Empty).Trim());
-            statusMessage = name + " — stress " + result.Stress + "/100 · " + result.QuestionsLeft + " questions left";
+            statusMessage = name + " — stress " + result.Stress + "/100 · " + result.QuestionsLeft + " left";
             if (!string.IsNullOrEmpty(turn.Error))
                 statusMessage += " · connection note recorded";
             RefreshAll();
@@ -294,6 +330,32 @@ namespace CaseClosed.UI
             }
         }
 
+        private void StampHold()
+        {
+            if (stampPad != null && stampPad.CanStamp)
+                stampPad.StampHold();
+            else if (shiftController != null)
+                shiftController.StampHold();
+
+            statusMessage = "HOLD stamped.";
+            selectedEvidenceId = string.Empty;
+            if (evidenceBoard != null) evidenceBoard.ClearSelection();
+            RefreshAll();
+        }
+
+        private void StampRelease()
+        {
+            if (stampPad != null && stampPad.CanStamp)
+                stampPad.StampRelease();
+            else if (shiftController != null)
+                shiftController.StampRelease();
+
+            statusMessage = "RELEASE stamped.";
+            selectedEvidenceId = string.Empty;
+            if (evidenceBoard != null) evidenceBoard.ClearSelection();
+            RefreshAll();
+        }
+
         private string ResolveSelectedEvidenceId()
         {
             if (evidenceBoard != null && !string.IsNullOrWhiteSpace(evidenceBoard.SelectedEvidenceId))
@@ -324,11 +386,12 @@ namespace CaseClosed.UI
         private void RefreshAll()
         {
             RefreshChrome();
-            RefreshTabs();
+            RefreshTags();
             RefreshContent();
             RefreshTranscript();
             RefreshStatus();
             RefreshAskRow();
+            RefreshStampFooter();
         }
 
         private void RefreshChrome()
@@ -338,7 +401,21 @@ namespace CaseClosed.UI
                 : null;
 
             if (headerTitleText != null)
-                headerTitleText.text = "CASE CLOSED";
+            {
+                switch (activeTag)
+                {
+                    case HudTag.Actions:
+                        headerTitleText.text = "ACTIONS";
+                        break;
+                    case HudTag.Decision:
+                        headerTitleText.text = "DECISION";
+                        break;
+                    default:
+                        headerTitleText.text = "CASE FILE";
+                        break;
+                }
+            }
+
             if (headerCaseText != null)
             {
                 if (caseFile == null || string.IsNullOrWhiteSpace(caseFile.Title))
@@ -348,20 +425,22 @@ namespace CaseClosed.UI
             }
         }
 
-        private void RefreshTabs()
+        private void RefreshTags()
         {
-            SetTabVisual(tabCase, activeTab == 0);
-            SetTabVisual(tabRecords, activeTab == 1);
-            SetTabVisual(tabInterview, activeTab == 2);
-            SetTabVisual(tabDecision, activeTab == 3);
+            SetTagVisual(tagActions, panelOpen && activeTag == HudTag.Actions);
+            SetTagVisual(tagCaseFile, panelOpen && activeTag == HudTag.CaseFile);
+            SetTagVisual(tagDecision, panelOpen && activeTag == HudTag.Decision);
         }
 
-        private static void SetTabVisual(Button button, bool active)
+        private static void SetTagVisual(Button button, bool active)
         {
             if (button == null) return;
             Image image = button.GetComponent<Image>();
             if (image != null)
-                image.color = active ? DeskUiPalette.TabActive : DeskUiPalette.TabIdle;
+                image.color = active ? DeskUiPalette.TabActive : DeskUiPalette.Navy;
+            Text label = button.GetComponentInChildren<Text>();
+            if (label != null)
+                label.color = active ? DeskUiPalette.Ink : DeskUiPalette.White;
         }
 
         private void RefreshStatus()
@@ -375,7 +454,8 @@ namespace CaseClosed.UI
         {
             bool interviewing = shiftController != null &&
                                 shiftController.Phase == CaseShiftPhase.Investigating &&
-                                activeTab == 2 &&
+                                activeTag == HudTag.Actions &&
+                                panelOpen &&
                                 resolution == null;
 
             if (askRowRoot != null)
@@ -393,6 +473,25 @@ namespace CaseClosed.UI
             }
         }
 
+        private void RefreshStampFooter()
+        {
+            bool show = panelOpen &&
+                        activeTag == HudTag.CaseFile &&
+                        shiftController != null &&
+                        shiftController.Phase == CaseShiftPhase.Investigating &&
+                        shiftController.CurrentSuspect != null &&
+                        resolution == null;
+
+            if (stampFooterRoot != null)
+                stampFooterRoot.SetActive(show);
+
+            bool can = show && (stampPad == null || stampPad.CanStamp);
+            if (holdFooterButton != null)
+                holdFooterButton.interactable = can;
+            if (releaseFooterButton != null)
+                releaseFooterButton.interactable = can;
+        }
+
         private void RefreshTranscript()
         {
             if (transcriptRoot == null) return;
@@ -404,9 +503,10 @@ namespace CaseClosed.UI
             }
             runtimeTranscriptLabels.Clear();
 
-            if (transcript.Count == 0)
+            bool show = panelOpen && activeTag == HudTag.Actions;
+            if (!show || transcript.Count == 0)
             {
-                transcriptRoot.gameObject.SetActive(activeTab == 2);
+                transcriptRoot.gameObject.SetActive(show && transcript.Count > 0);
                 return;
             }
 
@@ -422,6 +522,9 @@ namespace CaseClosed.UI
         {
             ClearRuntimeActions();
             if (runtimeContentLabel == null && contentRoot == null)
+                return;
+
+            if (!panelOpen)
                 return;
 
             if (shiftController == null || shiftController.ActiveSession == null)
@@ -441,31 +544,28 @@ namespace CaseClosed.UI
             {
                 if (resolution == null)
                     resolution = shiftController.LastResolution;
-                if (activeTab == 3)
+                if (activeTag == HudTag.Decision)
                     DrawResolution();
                 else
-                    SetContentBody("Morning edition is ready. Open Decision for the headline.");
+                    SetContentBody("Morning edition is ready. Open DECISION for the headline.");
                 return;
             }
 
-            switch (activeTab)
+            switch (activeTag)
             {
-                case 0:
-                    DrawCase();
-                    break;
-                case 1:
-                    DrawEvidence();
-                    break;
-                case 2:
+                case HudTag.Actions:
                     DrawInterview();
                     break;
-                default:
+                case HudTag.Decision:
                     DrawDecision();
+                    break;
+                default:
+                    DrawCaseFile();
                     break;
             }
         }
 
-        private void DrawCase()
+        private void DrawCaseFile()
         {
             CaseFile caseFile = shiftController.ActiveSession.Case;
             System.Text.StringBuilder sb = new System.Text.StringBuilder(512);
@@ -488,26 +588,17 @@ namespace CaseClosed.UI
                     sb.AppendLine("Statement: " + suspect.Statement.Trim());
                 if (!string.IsNullOrWhiteSpace(suspect.Alibi))
                     sb.AppendLine("Public record: " + suspect.Alibi.Trim());
+
+                sb.AppendLine();
+                sb.AppendLine("RECORDS");
+                sb.AppendLine(shiftController.Phase == CaseShiftPhase.Briefing
+                    ? "Collect what you need before the interview."
+                    : "Collected records stay on the clipboard.");
             }
 
             SetContentBody(sb.ToString().TrimEnd());
-        }
 
-        private void DrawEvidence()
-        {
-            SuspectRecord suspect = shiftController.CurrentSuspect;
-            if (suspect == null)
-            {
-                SetContentBody("No suspect on the clipboard.");
-                return;
-            }
-
-            System.Text.StringBuilder sb = new System.Text.StringBuilder(256);
-            sb.AppendLine("PUBLIC RECORDS — " + suspect.DisplayName);
-            sb.AppendLine("Collect what you need before the interview.");
-            SetContentBody(sb.ToString().TrimEnd());
-
-            if (suspect.Evidence == null || suspect.Evidence.Count == 0)
+            if (suspect == null || suspect.Evidence == null || suspect.Evidence.Count == 0)
             {
                 AddAction("No records on file", null, false);
                 return;
@@ -521,7 +612,7 @@ namespace CaseClosed.UI
 
                 bool collected = collectedIds.Contains(evidence.Id);
                 string label = collected
-                    ? "Collected · " + evidence.Title
+                    ? "On clipboard · " + evidence.Title
                     : "Collect · " + evidence.Title;
 
                 if (shiftController.Phase == CaseShiftPhase.Briefing && !collected)
@@ -554,12 +645,12 @@ namespace CaseClosed.UI
 
             if (shiftController.Phase == CaseShiftPhase.Briefing)
             {
-                SetContentBody("Collect records first, then begin the interview with " + suspect.DisplayName + ".");
+                SetContentBody("Collect records in CASE FILE first, then begin the interview with " + suspect.DisplayName + ".");
                 AddAction("Begin interview — " + suspect.DisplayName, () =>
                 {
                     shiftController.BeginCurrentInterview();
                     statusMessage = "Interview open. Type a question and press ASK.";
-                    activeTab = 2;
+                    activeTag = HudTag.Actions;
                     RefreshAll();
                 });
                 return;
@@ -568,15 +659,13 @@ namespace CaseClosed.UI
             System.Text.StringBuilder sb = new System.Text.StringBuilder(256);
             sb.AppendLine("INTERVIEW — " + suspect.DisplayName);
             sb.AppendLine("Questions remaining: " + shiftController.GetQuestionsLeft(suspect.Id));
-            string evidenceId = ResolveSelectedEvidenceId();
-            if (!string.IsNullOrWhiteSpace(evidenceId))
-                sb.AppendLine("Presenting: " + FindEvidenceTitle(evidenceId));
-            else
-                sb.AppendLine("Presenting: none");
             if (awaitingReply || (dialogueService != null && dialogueService.IsBusy))
                 sb.AppendLine("Suspect is answering…");
+            else
+                sb.AppendLine("Ask a question. Tap a record below to present it once.");
             SetContentBody(sb.ToString().TrimEnd());
 
+            string evidenceId = ResolveSelectedEvidenceId();
             IReadOnlyList<EvidenceRecord> collected = shiftController.GetCollectedEvidence();
             for (int i = 0; i < collected.Count; i++)
             {
@@ -585,7 +674,8 @@ namespace CaseClosed.UI
                     continue;
                 string id = evidence.Id;
                 bool selected = id == evidenceId;
-                AddAction((selected ? "Selected · " : "Present · ") + evidence.Title, () =>
+                // Single present state on the button — no separate "Selected:" line.
+                AddAction((selected ? "Presenting · " : "Present · ") + evidence.Title, () =>
                 {
                     if (selectedEvidenceId == id)
                         selectedEvidenceId = string.Empty;
@@ -599,6 +689,10 @@ namespace CaseClosed.UI
                         else
                             evidenceBoard.SelectEvidence(selectedEvidenceId);
                     }
+
+                    statusMessage = string.IsNullOrEmpty(selectedEvidenceId)
+                        ? "Nothing presented."
+                        : "Presenting · " + FindEvidenceTitle(selectedEvidenceId);
                     RefreshAll();
                 });
             }
@@ -612,36 +706,22 @@ namespace CaseClosed.UI
                 return;
             }
 
-            SuspectRecord suspect = shiftController.CurrentSuspect;
             if (shiftController.Phase == CaseShiftPhase.Briefing)
             {
-                SetContentBody("Begin the interview before stamping HOLD or RELEASE.");
+                SetContentBody("Begin the interview before filing a final charge.\nHOLD / RELEASE live on the CASE FILE footer.");
                 return;
             }
 
-            if (suspect == null)
+            if (shiftController.Phase == CaseShiftPhase.Investigating)
             {
-                SetContentBody("No suspect decision pending.");
+                SuspectRecord suspect = shiftController.CurrentSuspect;
+                SetContentBody(suspect == null
+                    ? "Stamp HOLD or RELEASE from CASE FILE, then return here for the final charge."
+                    : "Stamp HOLD or RELEASE on CASE FILE for " + suspect.DisplayName + ".\nFinal charge unlocks after the roster is decided.");
                 return;
             }
 
-            SetContentBody("Stamp the clipboard for " + suspect.DisplayName + ".");
-            AddAction("HOLD", () =>
-            {
-                shiftController.StampHold();
-                statusMessage = "HOLD stamped.";
-                selectedEvidenceId = string.Empty;
-                if (evidenceBoard != null) evidenceBoard.ClearSelection();
-                RefreshAll();
-            }, true, DeskUiPalette.StampHold, DeskUiPalette.White);
-            AddAction("RELEASE", () =>
-            {
-                shiftController.StampRelease();
-                statusMessage = "RELEASE stamped.";
-                selectedEvidenceId = string.Empty;
-                if (evidenceBoard != null) evidenceBoard.ClearSelection();
-                RefreshAll();
-            }, true, DeskUiPalette.StampRelease, DeskUiPalette.White);
+            SetContentBody("No decision pending.");
         }
 
         private void DrawCharging()
@@ -661,7 +741,7 @@ namespace CaseClosed.UI
                 {
                     resolution = shiftController.ResolveCharge(id);
                     statusMessage = "Charge filed.";
-                    activeTab = 3;
+                    activeTag = HudTag.Decision;
                     RefreshAll();
                 }, true, DeskUiPalette.Charge, DeskUiPalette.White);
             }
@@ -671,7 +751,7 @@ namespace CaseClosed.UI
                 shiftController.ChargeNobody();
                 resolution = shiftController.LastResolution;
                 statusMessage = "No charge filed.";
-                activeTab = 3;
+                activeTag = HudTag.Decision;
                 RefreshAll();
             });
         }
@@ -747,15 +827,15 @@ namespace CaseClosed.UI
             Image image = go.GetComponent<Image>();
             image.color = fill;
             LayoutElement layout = go.GetComponent<LayoutElement>();
-            layout.minHeight = 34f;
-            layout.preferredHeight = 34f;
+            layout.minHeight = 36f;
+            layout.preferredHeight = 36f;
 
             GameObject labelGo = new GameObject("Label", typeof(RectTransform), typeof(Text));
             labelGo.transform.SetParent(go.transform, false);
             Text text = labelGo.GetComponent<Text>();
             DeskUiPalette.StyleLabel(text, 14, textColor, FontStyle.Bold, TextAnchor.MiddleCenter);
             text.text = label;
-            Stretch(labelGo.GetComponent<RectTransform>(), 8f, 4f);
+            Stretch(labelGo.GetComponent<RectTransform>(), 10f, 4f);
 
             Button button = go.GetComponent<Button>();
             DeskUiPalette.StyleButton(button, image, text, fill, textColor);
@@ -781,13 +861,32 @@ namespace CaseClosed.UI
             canvasGo.transform.SetParent(transform, false);
             hudCanvas = canvasGo.GetComponent<Canvas>();
             hudCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            hudCanvas.sortingOrder = 50;
+            hudCanvas.sortingOrder = 55;
             CanvasScaler scaler = canvasGo.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920f, 1080f);
             scaler.matchWidthOrHeight = 0.5f;
 
-            openButton = CreateChromeButton(canvasGo.transform, "DeskFileOpen", "DESK FILE", new Vector2(12f, -12f), new Vector2(132f, 40f), DeskUiPalette.Navy, DeskUiPalette.White, TextAnchor.UpperLeft);
+            // Top-level tags sit side-by-side (not buried inside the panel).
+            GameObject tags = new GameObject("TopTags", typeof(RectTransform), typeof(HorizontalLayoutGroup));
+            tags.transform.SetParent(canvasGo.transform, false);
+            RectTransform tagsRect = tags.GetComponent<RectTransform>();
+            tagsRect.anchorMin = new Vector2(0f, 1f);
+            tagsRect.anchorMax = new Vector2(0f, 1f);
+            tagsRect.pivot = new Vector2(0f, 1f);
+            tagsRect.anchoredPosition = new Vector2(12f, -12f);
+            tagsRect.sizeDelta = new Vector2(430f, 40f);
+            HorizontalLayoutGroup tagLayout = tags.GetComponent<HorizontalLayoutGroup>();
+            tagLayout.spacing = 6f;
+            tagLayout.childForceExpandWidth = true;
+            tagLayout.childForceExpandHeight = true;
+            tagLayout.childControlWidth = true;
+            tagLayout.childControlHeight = true;
+
+            tagActions = CreateTopTag(tags.transform, "ACTIONS");
+            tagCaseFile = CreateTopTag(tags.transform, "CASE FILE");
+            tagDecision = CreateTopTag(tags.transform, "DECISION");
+            tabButtons = new[] { tagActions, tagCaseFile, tagDecision };
 
             GameObject panel = new GameObject("DeskFilePanel", typeof(RectTransform), typeof(Image));
             panel.transform.SetParent(canvasGo.transform, false);
@@ -799,46 +898,24 @@ namespace CaseClosed.UI
             panelRect.anchorMax = new Vector2(0f, 1f);
             panelRect.pivot = new Vector2(0f, 0.5f);
             panelRect.offsetMin = new Vector2(12f, 12f);
-            panelRect.offsetMax = new Vector2(472f, -58f);
+            panelRect.offsetMax = new Vector2(460f, -60f);
 
-            // Header
             GameObject header = CreateBox(panel.transform, "Header", DeskUiPalette.Navy);
             RectTransform headerRect = header.GetComponent<RectTransform>();
             headerRect.anchorMin = new Vector2(0f, 1f);
             headerRect.anchorMax = new Vector2(1f, 1f);
             headerRect.pivot = new Vector2(0.5f, 1f);
-            headerRect.sizeDelta = new Vector2(0f, 56f);
+            headerRect.sizeDelta = new Vector2(0f, 52f);
             headerRect.anchoredPosition = Vector2.zero;
 
-            headerTitleText = CreateLabel(header.transform, "Title", "CASE CLOSED", 18, DeskUiPalette.White, FontStyle.Bold);
-            AnchorTopLeft(headerTitleText.rectTransform, 14f, -8f, 220f, 24f);
-            headerCaseText = CreateLabel(header.transform, "Case", string.Empty, 13, DeskUiPalette.ManilaLight, FontStyle.Normal);
-            AnchorTopLeft(headerCaseText.rectTransform, 14f, -30f, 360f, 20f);
+            headerTitleText = CreateLabel(header.transform, "Title", "CASE FILE", 17, DeskUiPalette.White, FontStyle.Bold);
+            AnchorTopLeft(headerTitleText.rectTransform, 14f, -8f, 260f, 22f);
+            headerCaseText = CreateLabel(header.transform, "Case", string.Empty, 12, DeskUiPalette.ManilaLight, FontStyle.Normal);
+            AnchorTopLeft(headerCaseText.rectTransform, 14f, -28f, 340f, 18f);
 
             closeButton = CreateChromeButton(header.transform, "Close", "CLOSE", new Vector2(-10f, -10f), new Vector2(72f, 28f), DeskUiPalette.NavyDark, DeskUiPalette.White, TextAnchor.UpperRight);
 
-            // Tabs
-            GameObject tabs = new GameObject("Tabs", typeof(RectTransform), typeof(HorizontalLayoutGroup));
-            tabs.transform.SetParent(panel.transform, false);
-            RectTransform tabsRect = tabs.GetComponent<RectTransform>();
-            tabsRect.anchorMin = new Vector2(0f, 1f);
-            tabsRect.anchorMax = new Vector2(1f, 1f);
-            tabsRect.pivot = new Vector2(0.5f, 1f);
-            tabsRect.anchoredPosition = new Vector2(0f, -56f);
-            tabsRect.sizeDelta = new Vector2(0f, 34f);
-            HorizontalLayoutGroup tabLayout = tabs.GetComponent<HorizontalLayoutGroup>();
-            tabLayout.spacing = 4f;
-            tabLayout.padding = new RectOffset(8, 8, 2, 2);
-            tabLayout.childForceExpandWidth = true;
-            tabLayout.childForceExpandHeight = true;
-
-            tabCase = CreateTabButton(tabs.transform, "Case");
-            tabRecords = CreateTabButton(tabs.transform, "Records");
-            tabInterview = CreateTabButton(tabs.transform, "Interview");
-            tabDecision = CreateTabButton(tabs.transform, "Decision");
-            tabButtons = new[] { tabCase, tabRecords, tabInterview, tabDecision };
-
-            // Content scroll
+            // Content scroll — room for ask row / stamp footer depending on tag.
             GameObject scrollGo = new GameObject("ContentScroll", typeof(RectTransform), typeof(Image), typeof(ScrollRect));
             scrollGo.transform.SetParent(panel.transform, false);
             Image scrollBg = scrollGo.GetComponent<Image>();
@@ -846,8 +923,8 @@ namespace CaseClosed.UI
             RectTransform scrollRect = scrollGo.GetComponent<RectTransform>();
             scrollRect.anchorMin = new Vector2(0f, 0f);
             scrollRect.anchorMax = new Vector2(1f, 1f);
-            scrollRect.offsetMin = new Vector2(10f, 210f);
-            scrollRect.offsetMax = new Vector2(-10f, -96f);
+            scrollRect.offsetMin = new Vector2(10f, 200f);
+            scrollRect.offsetMax = new Vector2(-10f, -60f);
             contentScroll = scrollGo.GetComponent<ScrollRect>();
             contentScroll.horizontal = false;
 
@@ -865,8 +942,8 @@ namespace CaseClosed.UI
             contentRect.anchoredPosition = Vector2.zero;
             contentRect.sizeDelta = new Vector2(0f, 0f);
             VerticalLayoutGroup vlg = content.GetComponent<VerticalLayoutGroup>();
-            vlg.padding = new RectOffset(10, 10, 8, 8);
-            vlg.spacing = 8f;
+            vlg.padding = new RectOffset(12, 12, 10, 10);
+            vlg.spacing = 10f;
             vlg.childAlignment = TextAnchor.UpperLeft;
             vlg.childControlHeight = true;
             vlg.childControlWidth = true;
@@ -888,7 +965,7 @@ namespace CaseClosed.UI
                 bodyFit = runtimeContentLabel.gameObject.AddComponent<ContentSizeFitter>();
             bodyFit.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
-            // Ask row
+            // Ask row (ACTIONS only)
             GameObject askRow = new GameObject("AskRow", typeof(RectTransform), typeof(Image));
             askRow.transform.SetParent(panel.transform, false);
             askRowRoot = askRow;
@@ -924,7 +1001,22 @@ namespace CaseClosed.UI
 
             askButton = CreateChromeButton(askRow.transform, "Ask", "ASK", new Vector2(-10f, 0f), new Vector2(74f, 34f), DeskUiPalette.Navy, DeskUiPalette.White, TextAnchor.MiddleRight);
 
-            // Transcript
+            // Stamp footer (CASE FILE only)
+            GameObject stampFooter = new GameObject("StampFooter", typeof(RectTransform), typeof(Image));
+            stampFooter.transform.SetParent(panel.transform, false);
+            stampFooterRoot = stampFooter;
+            stampFooter.GetComponent<Image>().color = DeskUiPalette.Blotter;
+            RectTransform stampRect = stampFooter.GetComponent<RectTransform>();
+            stampRect.anchorMin = new Vector2(0f, 0f);
+            stampRect.anchorMax = new Vector2(1f, 0f);
+            stampRect.pivot = new Vector2(0.5f, 0f);
+            stampRect.offsetMin = new Vector2(0f, 42f);
+            stampRect.offsetMax = new Vector2(0f, 100f);
+
+            holdFooterButton = CreateChromeButton(stampFooter.transform, "Hold", "HOLD", new Vector2(18f, 0f), new Vector2(180f, 40f), DeskUiPalette.StampHold, DeskUiPalette.White, TextAnchor.MiddleLeft);
+            releaseFooterButton = CreateChromeButton(stampFooter.transform, "Release", "RELEASE", new Vector2(-18f, 0f), new Vector2(180f, 40f), DeskUiPalette.StampRelease, DeskUiPalette.White, TextAnchor.MiddleRight);
+
+            // Transcript (ACTIONS)
             GameObject transcriptGo = new GameObject("Transcript", typeof(RectTransform), typeof(Image), typeof(VerticalLayoutGroup));
             transcriptGo.transform.SetParent(panel.transform, false);
             transcriptGo.GetComponent<Image>().color = DeskUiPalette.TranscriptBg;
@@ -935,8 +1027,8 @@ namespace CaseClosed.UI
             tr.offsetMin = new Vector2(10f, 42f);
             tr.offsetMax = new Vector2(-10f, 142f);
             VerticalLayoutGroup tlg = transcriptGo.GetComponent<VerticalLayoutGroup>();
-            tlg.padding = new RectOffset(8, 8, 4, 4);
-            tlg.spacing = 2f;
+            tlg.padding = new RectOffset(8, 8, 6, 6);
+            tlg.spacing = 3f;
             tlg.childForceExpandWidth = true;
             tlg.childForceExpandHeight = false;
             transcriptRoot = transcriptGo.transform;
@@ -956,17 +1048,17 @@ namespace CaseClosed.UI
             statusText.alignment = TextAnchor.MiddleLeft;
         }
 
-        private Button CreateTabButton(Transform parent, string label)
+        private Button CreateTopTag(Transform parent, string label)
         {
-            GameObject go = new GameObject("Tab_" + label, typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
+            GameObject go = new GameObject("Tag_" + label, typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
             go.transform.SetParent(parent, false);
             Image image = go.GetComponent<Image>();
-            image.color = DeskUiPalette.TabIdle;
-            Text text = CreateLabel(go.transform, "Label", label.ToUpperInvariant(), 13, DeskUiPalette.Ink, FontStyle.Bold);
+            image.color = DeskUiPalette.Navy;
+            Text text = CreateLabel(go.transform, "Label", label, 13, DeskUiPalette.White, FontStyle.Bold);
             text.alignment = TextAnchor.MiddleCenter;
             Stretch(text.rectTransform);
             Button button = go.GetComponent<Button>();
-            DeskUiPalette.StyleButton(button, image, text, DeskUiPalette.TabIdle, DeskUiPalette.Ink);
+            DeskUiPalette.StyleButton(button, image, text, DeskUiPalette.Navy, DeskUiPalette.White);
             return button;
         }
 
@@ -988,6 +1080,10 @@ namespace CaseClosed.UI
                 case TextAnchor.MiddleRight:
                     rect.anchorMin = rect.anchorMax = new Vector2(1f, 0.5f);
                     rect.pivot = new Vector2(1f, 0.5f);
+                    break;
+                case TextAnchor.MiddleLeft:
+                    rect.anchorMin = rect.anchorMax = new Vector2(0f, 0.5f);
+                    rect.pivot = new Vector2(0f, 0.5f);
                     break;
                 default:
                     rect.anchorMin = rect.anchorMax = new Vector2(0.5f, 0.5f);

@@ -66,6 +66,9 @@ namespace CaseClosed.UI
             }
         }
 
+        /// <summary>True when HOLD and RELEASE buttons are assigned (Inspector or <see cref="SetStampSceneHooks"/>).</summary>
+        public bool HasStampHooks { get { return holdButton != null && releaseButton != null; } }
+
         private void Awake()
         {
             if (shiftController == null)

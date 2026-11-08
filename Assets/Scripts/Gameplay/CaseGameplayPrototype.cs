@@ -9,8 +9,10 @@ namespace CaseClosed.Gameplay
     /// <summary>
     /// Boots the first-run case loop and wires Gemini / voice / desk HUD.
     /// Visual interrogation UI lives on <see cref="InterrogationActionHud"/> (UGUI).
+    /// Runs before <see cref="StampUiPlayableBootstrap"/> so the HUD can claim Case File chrome.
     /// </summary>
     [DisallowMultipleComponent]
+    [DefaultExecutionOrder(-90)]
     public sealed class CaseGameplayPrototype : MonoBehaviour
     {
         [Header("Case Setup")]

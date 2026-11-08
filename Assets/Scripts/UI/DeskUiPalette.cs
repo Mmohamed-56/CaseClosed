@@ -21,7 +21,9 @@ namespace CaseClosed.UI
         public static readonly Color Charge = new Color(0.14f, 0.22f, 0.36f, 1f);
         public static readonly Color TranscriptBg = new Color(0.96f, 0.93f, 0.86f, 1f);
         public static readonly Color TabIdle = new Color(0.78f, 0.72f, 0.60f, 1f);
-        public static readonly Color TabActive = new Color(0.92f, 0.87f, 0.76f, 1f);
+        public static readonly Color TabActive = new Color(0.94f, 0.89f, 0.78f, 1f);
+        public static readonly Color TagIdle = new Color(0.105f, 0.20f, 0.325f, 1f);
+        public static readonly Color TagActive = new Color(0.94f, 0.89f, 0.78f, 1f);
         public static readonly Color PanelBorder = new Color(0.35f, 0.28f, 0.18f, 0.85f);
         public static readonly Color White = new Color(0.97f, 0.95f, 0.90f, 1f);
 
