@@ -64,6 +64,9 @@ namespace CaseClosed.UI
         /// <summary>Live card views currently on the board.</summary>
         public IReadOnlyList<EvidenceCardView> ActiveCards { get { return activeCards; } }
 
+        /// <summary>True when a card container is assigned (Inspector or <see cref="SetBoardSceneHooks"/>).</summary>
+        public bool HasBoardHooks { get { return cardContainer != null; } }
+
         private void Awake()
         {
             if (shiftController == null)
@@ -272,7 +275,7 @@ namespace CaseClosed.UI
             rect.sizeDelta = new Vector2(220f, 96f);
 
             Image background = root.GetComponent<Image>();
-            background.color = new Color(0.92f, 0.88f, 0.78f, 0.96f);
+            background.color = DeskUiPalette.ManilaLight;
 
             GameObject titleGo = new GameObject("Title", typeof(RectTransform), typeof(Text));
             titleGo.transform.SetParent(root.transform, false);
@@ -282,7 +285,7 @@ namespace CaseClosed.UI
                 title.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
             title.fontSize = 15;
             title.fontStyle = FontStyle.Bold;
-            title.color = new Color(0.12f, 0.1f, 0.08f, 1f);
+            title.color = DeskUiPalette.Ink;
             title.alignment = TextAnchor.UpperLeft;
             RectTransform titleRect = title.GetComponent<RectTransform>();
             titleRect.anchorMin = new Vector2(0f, 0.55f);
@@ -295,7 +298,7 @@ namespace CaseClosed.UI
             Text body = bodyGo.GetComponent<Text>();
             body.font = title.font;
             body.fontSize = 12;
-            body.color = new Color(0.18f, 0.16f, 0.12f, 1f);
+            body.color = DeskUiPalette.InkMuted;
             body.alignment = TextAnchor.UpperLeft;
             body.horizontalOverflow = HorizontalWrapMode.Wrap;
             body.verticalOverflow = VerticalWrapMode.Truncate;
@@ -309,7 +312,7 @@ namespace CaseClosed.UI
             highlight.transform.SetParent(root.transform, false);
             highlight.SetActive(false);
             Image highlightImage = highlight.GetComponent<Image>();
-            highlightImage.color = new Color(0.75f, 0.55f, 0.15f, 0.35f);
+            highlightImage.color = new Color(DeskUiPalette.Blotter.r, DeskUiPalette.Blotter.g, DeskUiPalette.Blotter.b, 0.35f);
             RectTransform highlightRect = highlight.GetComponent<RectTransform>();
             highlightRect.anchorMin = Vector2.zero;
             highlightRect.anchorMax = Vector2.one;
@@ -357,11 +360,13 @@ namespace CaseClosed.UI
             if (suspect == null || interrogationController == null)
             {
                 stressValueLabel.text = string.Empty;
+                stressValueLabel.gameObject.SetActive(false);
                 return;
             }
 
             int stress = interrogationController.GetStress(suspect.Id);
-            stressValueLabel.text = "Stress " + stress + "/100";
+            stressValueLabel.gameObject.SetActive(true);
+            stressValueLabel.text = suspect.DisplayName + " · stress " + stress + "/100";
         }
 
         private static bool ContainsEvidenceId(IReadOnlyList<EvidenceRecord> records, string evidenceId)

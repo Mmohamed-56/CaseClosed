@@ -70,9 +70,17 @@ namespace CaseClosed.UI
         {
             boundRecord = record;
             if (titleText != null)
-                titleText.text = record == null ? string.Empty : record.Title;
+            {
+                string title = record == null ? string.Empty : record.Title;
+                titleText.text = title ?? string.Empty;
+                titleText.gameObject.SetActive(!string.IsNullOrWhiteSpace(title));
+            }
             if (bodyText != null)
-                bodyText.text = record == null ? string.Empty : record.Description;
+            {
+                string body = record == null ? string.Empty : record.Description;
+                bodyText.text = body ?? string.Empty;
+                bodyText.gameObject.SetActive(!string.IsNullOrWhiteSpace(body));
+            }
             SetSelected(false);
         }
 
