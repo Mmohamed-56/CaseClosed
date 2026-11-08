@@ -6,24 +6,24 @@ using UnityEngine;
 namespace CaseClosed.CaseCore.Dialogue
 {
     /// <summary>
-    /// Offline dialogue client with the same ask → {line, emotion, slip} shape Gemini used.
-    /// Keyword/tag matching + stress gates. Never networks.
+    /// Evidence-driven choice trees: present a record → pick a question → stress-gated reply.
+    /// Same ask → {line, emotion, slip} shape for ElevenLabs via SuspectLineReady.
+    /// Never networks. No free-text keyword matching.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class ScenarioDialogueClient : MonoBehaviour
     {
         [SerializeField] private bool logMatches;
 
-        private readonly ScenarioDialogueBank bank = new ScenarioDialogueBank();
+        private readonly DialogueTreeBank treeBank = new DialogueTreeBank();
         private readonly System.Random rng = new System.Random();
-        private int recentSalt;
 
         public int LoadedEntryCount
         {
             get
             {
-                bank.EnsureLoaded();
-                return bank.EntryCount;
+                treeBank.EnsureLoaded();
+                return treeBank.TreeCount;
             }
         }
 
@@ -31,26 +31,25 @@ namespace CaseClosed.CaseCore.Dialogue
         {
             get
             {
-                bank.EnsureLoaded();
-                return bank.EntryCount > 0;
+                treeBank.EnsureLoaded();
+                return treeBank.TreeCount > 0;
             }
         }
 
         private void Awake()
         {
-            bank.EnsureLoaded();
+            treeBank.EnsureLoaded();
         }
 
-        /// <summary>Reload JSON from Resources (Editor polish / overnight content drops).</summary>
+        /// <summary>Reload tree JSON from Resources (Editor polish / overnight content drops).</summary>
         public void ReloadBank()
         {
-            bank.Reload();
+            treeBank.Reload();
         }
 
         /// <summary>
-        /// Same callback shape as <see cref="GeminiApiClient.Generate"/> consumers expect:
+        /// Same callback shape as Gemini consumers expect:
         /// onComplete receives a JSON string <c>{"line","emotion","slip"}</c>.
-        /// Always succeeds offline when the bank has any lines.
         /// </summary>
         public void Ask(
             ScenarioAskContext context,
@@ -60,54 +59,101 @@ namespace CaseClosed.CaseCore.Dialogue
             GeminiSuspectReply reply;
             if (!TryResolve(context, out reply))
             {
-                onError?.Invoke("Scenario bank returned no line.");
+                onError?.Invoke("Dialogue tree returned no line.");
                 return;
             }
 
             onComplete?.Invoke(ToJson(reply));
         }
 
+        /// <summary>
+        /// Questions the player may ask after presenting <paramref name="evidenceId"/>
+        /// against the current suspect. Empty if no record selected or no tree branch.
+        /// </summary>
+        public List<DialogueQuestionChoice> GetQuestionChoices(string suspectId, string evidenceId)
+        {
+            var list = new List<DialogueQuestionChoice>(4);
+            treeBank.EnsureLoaded();
+
+            DialogueTreeFile tree;
+            if (!treeBank.TryGetTree(suspectId, out tree) || tree == null)
+                return list;
+
+            string key = EvidenceKeyFromId(evidenceId);
+            if (string.IsNullOrEmpty(key) || key == "hold" || key == "release")
+                return list;
+
+            DialogueTreeBranch branch = FindBranch(tree, key);
+            if (branch == null || branch.questions == null) return list;
+
+            for (int i = 0; i < branch.questions.Length; i++)
+            {
+                DialogueTreeQuestion q = branch.questions[i];
+                if (q == null || string.IsNullOrWhiteSpace(q.prompt)) continue;
+                if (string.Equals(q.prompt, "HOLD", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(q.prompt, "RELEASE", StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                list.Add(new DialogueQuestionChoice
+                {
+                    Id = string.IsNullOrWhiteSpace(q.id) ? key + "_" + i : q.id,
+                    Prompt = q.prompt.Trim(),
+                    Aggressive = q.aggressive,
+                    EvidenceKey = key
+                });
+            }
+
+            return list;
+        }
+
         /// <summary>Preferred sync path for interrogation — returns a spoken reply immediately.</summary>
         public bool TryResolve(ScenarioAskContext context, out GeminiSuspectReply reply)
         {
             reply = null;
-            bank.EnsureLoaded();
-            if (bank.EntryCount == 0) return false;
+            treeBank.EnsureLoaded();
+            if (treeBank.TreeCount == 0) return false;
 
-            string intent = DetectIntent(context);
-            int stress = context != null && context.StressResult != null ? context.StressResult.Stress : 0;
-
-            List<ScenarioLineEntry> matches = CollectMatches(context, intent, stress, strict: true);
-            if (matches.Count == 0)
-                matches = CollectMatches(context, intent, stress, strict: false);
-            if (matches.Count == 0)
-                matches = CollectMatches(context, ScenarioIntents.Generic, stress, strict: false);
-
-            if (matches.Count == 0)
+            DialogueTreeFile tree;
+            if (!treeBank.TryGetTree(context != null ? context.SuspectId : null, out tree) || tree == null)
             {
-                reply = GeminiSuspectReply.CreateFallback(
-                    context != null && context.StressResult != null && !string.IsNullOrWhiteSpace(context.StressResult.FallbackLine)
-                        ? context.StressResult.FallbackLine
-                        : "I already answered that.",
-                    EmotionForStress(context),
-                    false);
+                reply = FallbackReply(context);
                 return true;
             }
 
-            ScenarioLineEntry pick = matches[rng.Next(matches.Count)];
-            recentSalt++;
+            string evidenceKey = !string.IsNullOrWhiteSpace(context.AftermathDecision)
+                ? context.AftermathDecision.Trim().ToLowerInvariant()
+                : EvidenceKeyFromId(context.EvidenceId);
+
+            if (string.IsNullOrEmpty(evidenceKey) && !string.IsNullOrWhiteSpace(context.Question))
+            {
+                string q = context.Question.Trim();
+                if (string.Equals(q, "HOLD", StringComparison.OrdinalIgnoreCase)) evidenceKey = "hold";
+                else if (string.Equals(q, "RELEASE", StringComparison.OrdinalIgnoreCase)) evidenceKey = "release";
+            }
+
+            DialogueTreeBranch branch = FindBranch(tree, evidenceKey);
+            DialogueTreeQuestion question = FindQuestion(branch, context);
+            if (question == null)
+            {
+                reply = FallbackReply(context);
+                return true;
+            }
+
+            int stress = context != null && context.StressResult != null ? context.StressResult.Stress : 0;
+            DialogueTreeReply pick = PickReply(question, stress);
+            if (pick == null)
+            {
+                reply = FallbackReply(context);
+                return true;
+            }
 
             bool slip = pick.slip;
-            if (context != null && context.StressResult != null &&
+            if (context != null && context.IsCulprit && context.StressResult != null &&
                 !string.IsNullOrWhiteSpace(context.StressResult.Slip) &&
-                (intent == ScenarioIntents.Slip ||
-                 context.StressResult.Tier == InterrogationStressTier.Cracking ||
-                 context.StressResult.Tier == InterrogationStressTier.Broken) &&
-                context.IsCulprit)
+                (context.StressResult.Tier == InterrogationStressTier.Cracking ||
+                 context.StressResult.Tier == InterrogationStressTier.Broken))
             {
-                // Prefer authored slip lines; still mark slip when CaseCore says so.
-                if (string.Equals(pick.intent, ScenarioIntents.Slip, StringComparison.OrdinalIgnoreCase))
-                    slip = true;
+                slip = true;
             }
 
             string emotion = string.IsNullOrWhiteSpace(pick.emotion)
@@ -117,10 +163,10 @@ namespace CaseClosed.CaseCore.Dialogue
             if (logMatches)
             {
                 Debug.Log(
-                    "ScenarioDialogueClient match intent=" + intent +
+                    "ScenarioDialogueClient tree suspect=" + NormalizeSuspectKey(context.SuspectId) +
+                    " evidence=" + evidenceKey +
+                    " q=" + question.id +
                     " stress=" + stress +
-                    " candidates=" + matches.Count +
-                    " id=" + pick.id +
                     " → " + pick.line,
                     this);
             }
@@ -145,7 +191,7 @@ namespace CaseClosed.CaseCore.Dialogue
                 SuspectId = suspect != null ? suspect.Id : "*",
                 SuspectName = suspect != null ? suspect.DisplayName : string.Empty,
                 Question = decision == SuspectDecision.Hold ? "HOLD" : "RELEASE",
-                AftermathDecision = decision == SuspectDecision.Hold ? ScenarioIntents.Hold : ScenarioIntents.Release,
+                AftermathDecision = decision == SuspectDecision.Hold ? "hold" : "release",
                 IsCulprit = isCulprit,
                 StressResult = lastStress,
                 HasEvidence = false,
@@ -154,148 +200,34 @@ namespace CaseClosed.CaseCore.Dialogue
             return TryResolve(ctx, out reply);
         }
 
-        private List<ScenarioLineEntry> CollectMatches(
-            ScenarioAskContext context,
-            string intent,
-            int stress,
-            bool strict)
+        /// <summary>Maps clue ids like UB-000_drew_access → access; alibi_support kept intact.</summary>
+        public static string EvidenceKeyFromId(string evidenceId)
         {
-            var list = new List<ScenarioLineEntry>(32);
-            string suspectKey = NormalizeSuspectKey(context != null ? context.SuspectId : null);
-            string question = context != null && context.Question != null
-                ? context.Question.Trim().ToLowerInvariant()
-                : string.Empty;
+            if (string.IsNullOrWhiteSpace(evidenceId)) return string.Empty;
+            string id = evidenceId.Trim().ToLowerInvariant();
 
-            IReadOnlyList<ScenarioLineEntry> all = bank.Entries;
-            for (int i = 0; i < all.Count; i++)
+            string[] keys =
             {
-                ScenarioLineEntry e = all[i];
-                if (e == null) continue;
+                "alibi_support",
+                "red_herring",
+                "sign_in",
+                "access",
+                "roster",
+                "hold",
+                "release"
+            };
 
-                if (!SuspectMatches(e.suspectId, suspectKey)) continue;
-                if (stress < e.minStress || stress > e.maxStress) continue;
-
-                if (e.culpritOnly && (context == null || !context.IsCulprit)) continue;
-                if (e.innocentOnly && (context == null || context.IsCulprit)) continue;
-
-                if (e.requiresEvidence && (context == null || !context.HasEvidence)) continue;
-                if (e.requiresAggressive && (context == null || !context.Aggressive)) continue;
-
-                if (context != null && context.IsShutdown &&
-                    !string.Equals(e.intent, ScenarioIntents.Shutdown, StringComparison.OrdinalIgnoreCase) &&
-                    strict)
-                    continue;
-
-                if (!string.Equals(e.intent, intent, StringComparison.OrdinalIgnoreCase) &&
-                    !string.Equals(e.intent, ScenarioIntents.Generic, StringComparison.OrdinalIgnoreCase))
-                {
-                    // Aftermath intents must match exactly.
-                    if (intent == ScenarioIntents.Hold || intent == ScenarioIntents.Release ||
-                        intent == ScenarioIntents.Shutdown || intent == ScenarioIntents.Slip)
-                        continue;
-                    if (strict) continue;
-                }
-
-                if (strict && !string.Equals(e.intent, intent, StringComparison.OrdinalIgnoreCase))
-                    continue;
-
-                if (strict && !string.IsNullOrWhiteSpace(e.keywords) && !string.IsNullOrEmpty(question))
-                {
-                    if (!KeywordsHit(e.keywords, question)) continue;
-                }
-
-                list.Add(e);
+            for (int i = 0; i < keys.Length; i++)
+            {
+                if (id == keys[i] || id.EndsWith("_" + keys[i], StringComparison.Ordinal))
+                    return keys[i];
             }
 
-            // Soft pass: same intent, ignore keyword miss.
-            if (list.Count == 0 && strict)
-            {
-                for (int i = 0; i < all.Count; i++)
-                {
-                    ScenarioLineEntry e = all[i];
-                    if (e == null) continue;
-                    if (!SuspectMatches(e.suspectId, suspectKey)) continue;
-                    if (stress < e.minStress || stress > e.maxStress) continue;
-                    if (e.culpritOnly && (context == null || !context.IsCulprit)) continue;
-                    if (e.innocentOnly && (context == null || context.IsCulprit)) continue;
-                    if (e.requiresEvidence && (context == null || !context.HasEvidence)) continue;
-                    if (e.requiresAggressive && (context == null || !context.Aggressive)) continue;
-                    if (!string.Equals(e.intent, intent, StringComparison.OrdinalIgnoreCase)) continue;
-                    list.Add(e);
-                }
-            }
+            int last = id.LastIndexOf('_');
+            if (last >= 0 && last + 1 < id.Length)
+                return id.Substring(last + 1);
 
-            return list;
-        }
-
-        public static string DetectIntent(ScenarioAskContext context)
-        {
-            if (context == null) return ScenarioIntents.Generic;
-
-            if (!string.IsNullOrWhiteSpace(context.AftermathDecision))
-                return context.AftermathDecision.Trim().ToLowerInvariant();
-
-            if (context.IsShutdown)
-                return ScenarioIntents.Shutdown;
-
-            if (context.StressResult != null &&
-                !string.IsNullOrWhiteSpace(context.StressResult.Slip) &&
-                (context.StressResult.Tier == InterrogationStressTier.Cracking ||
-                 context.StressResult.Tier == InterrogationStressTier.Broken) &&
-                context.IsCulprit &&
-                context.Aggressive)
-                return ScenarioIntents.Slip;
-
-            string q = context.Question != null ? context.Question.ToLowerInvariant() : string.Empty;
-
-            if (context.HasEvidence || ContainsAny(q, "evidence", "this log", "this receipt", "this record", "look at this", "see this", "prove", "card opened", "access log"))
-                return ScenarioIntents.Evidence;
-
-            if (ContainsAny(q, "you took", "you stole", "you're lying", "you did it", "admit", "confess", "guilty", "thief", "mascot head"))
-                return ScenarioIntents.Accusation;
-
-            if (context.Aggressive || ContainsAny(q, "enough", "stop lying", "cut the", "pressure", "don't play", "we know", "last chance"))
-                return ScenarioIntents.Pressure;
-
-            if (ContainsAny(q, "where were", "where was", "alibi", "what time", "when did", "bus", "home", "patrol", "study", "lab", "cafe", "annex", "library"))
-                return ScenarioIntents.Alibi;
-
-            if (ContainsAny(q, "how are", "name", "who are", "tell me about", "what do you do", "role", "job", "major", "hello", "hi "))
-                return ScenarioIntents.SmallTalk;
-
-            return ScenarioIntents.Generic;
-        }
-
-        private static bool KeywordsHit(string keywords, string questionLower)
-        {
-            string[] parts = keywords.Split(new[] { '|', ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < parts.Length; i++)
-            {
-                string k = parts[i].Trim().ToLowerInvariant();
-                if (k.Length > 0 && questionLower.IndexOf(k, StringComparison.Ordinal) >= 0)
-                    return true;
-            }
-
-            return false;
-        }
-
-        private static bool ContainsAny(string haystack, params string[] needles)
-        {
-            if (string.IsNullOrEmpty(haystack)) return false;
-            for (int i = 0; i < needles.Length; i++)
-            {
-                if (haystack.IndexOf(needles[i], StringComparison.Ordinal) >= 0)
-                    return true;
-            }
-
-            return false;
-        }
-
-        private static bool SuspectMatches(string entrySuspectId, string normalizedAskId)
-        {
-            if (string.IsNullOrWhiteSpace(entrySuspectId) || entrySuspectId == "*") return true;
-            string entryKey = NormalizeSuspectKey(entrySuspectId);
-            return entryKey == normalizedAskId || entryKey == "*";
+            return id;
         }
 
         /// <summary>Maps suspect_drew / Drew / drew → drew.</summary>
@@ -308,6 +240,106 @@ namespace CaseClosed.CaseCore.Dialogue
             int space = s.IndexOf(' ');
             if (space > 0) s = s.Substring(0, space);
             return s;
+        }
+
+        private static DialogueTreeBranch FindBranch(DialogueTreeFile tree, string evidenceKey)
+        {
+            if (tree == null || tree.branches == null || string.IsNullOrEmpty(evidenceKey))
+                return null;
+
+            for (int i = 0; i < tree.branches.Length; i++)
+            {
+                DialogueTreeBranch b = tree.branches[i];
+                if (b == null) continue;
+                if (string.Equals(b.evidenceKey, evidenceKey, StringComparison.OrdinalIgnoreCase))
+                    return b;
+            }
+
+            return null;
+        }
+
+        private static DialogueTreeQuestion FindQuestion(DialogueTreeBranch branch, ScenarioAskContext context)
+        {
+            if (branch == null || branch.questions == null || branch.questions.Length == 0)
+                return null;
+
+            if (context != null && !string.IsNullOrWhiteSpace(context.QuestionId))
+            {
+                for (int i = 0; i < branch.questions.Length; i++)
+                {
+                    DialogueTreeQuestion q = branch.questions[i];
+                    if (q != null && string.Equals(q.id, context.QuestionId, StringComparison.OrdinalIgnoreCase))
+                        return q;
+                }
+            }
+
+            if (context != null && !string.IsNullOrWhiteSpace(context.Question))
+            {
+                string prompt = context.Question.Trim();
+                for (int i = 0; i < branch.questions.Length; i++)
+                {
+                    DialogueTreeQuestion q = branch.questions[i];
+                    if (q != null && !string.IsNullOrWhiteSpace(q.prompt) &&
+                        string.Equals(q.prompt.Trim(), prompt, StringComparison.OrdinalIgnoreCase))
+                        return q;
+                }
+            }
+
+            // Aftermath / single-node branches
+            if (branch.questions.Length == 1)
+                return branch.questions[0];
+
+            return null;
+        }
+
+        private DialogueTreeReply PickReply(DialogueTreeQuestion question, int stress)
+        {
+            if (question == null || question.replies == null || question.replies.Length == 0)
+                return null;
+
+            var matches = new List<DialogueTreeReply>(4);
+            for (int i = 0; i < question.replies.Length; i++)
+            {
+                DialogueTreeReply r = question.replies[i];
+                if (r == null) continue;
+                if (stress < r.minStress || stress > r.maxStress) continue;
+                matches.Add(r);
+            }
+
+            if (matches.Count == 0)
+            {
+                // Soft: nearest by mid-band
+                DialogueTreeReply best = null;
+                int bestDist = int.MaxValue;
+                for (int i = 0; i < question.replies.Length; i++)
+                {
+                    DialogueTreeReply r = question.replies[i];
+                    if (r == null) continue;
+                    int mid = (r.minStress + r.maxStress) / 2;
+                    int dist = Math.Abs(mid - stress);
+                    if (dist < bestDist)
+                    {
+                        bestDist = dist;
+                        best = r;
+                    }
+                }
+
+                return best;
+            }
+
+            return matches[rng.Next(matches.Count)];
+        }
+
+        private static GeminiSuspectReply FallbackReply(ScenarioAskContext context)
+        {
+            string line = context != null && context.StressResult != null &&
+                          !string.IsNullOrWhiteSpace(context.StressResult.FallbackLine)
+                ? context.StressResult.FallbackLine
+                : "I already answered that.";
+            return GeminiSuspectReply.CreateFallback(
+                GeminiApiClient.TrimToShortLine(line),
+                EmotionForStress(context),
+                false);
         }
 
         private static string EmotionForStress(ScenarioAskContext context)

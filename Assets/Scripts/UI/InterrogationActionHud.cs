@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using CaseClosed.CaseCore;
+using CaseClosed.CaseCore.Dialogue;
 using CaseClosed.CaseCore.Gemini;
 using CaseClosed.Characters;
 using UnityEngine;
@@ -12,12 +13,12 @@ namespace CaseClosed.UI
     /// <summary>
     /// Player desk HUD with top-level tags: ACTIONS (interview) | CASE FILE (records + stamps) | DECISION.
     /// Builds a Screen Space Overlay canvas at runtime when Bezi has not assigned scene refs.
-    /// Ask turns go through <see cref="InterrogationDialogueService"/> → ScenarioDialogueClient (offline bank).
+    /// Interview: present a collected record → pick a tree question → reply via
+    /// <see cref="InterrogationDialogueService"/> (SuspectLineReady → ElevenLabs).
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class InterrogationActionHud : MonoBehaviour
     {
-        private const int MaxQuestionChars = 180;
         private const int MaxTranscriptLines = 40;
         private const int MinEvidenceToCallIn = 2;
         private const string PublicRecordsUrl = "https://ubcaseclosed.netlify.app/";
@@ -32,6 +33,7 @@ namespace CaseClosed.UI
         [Header("Case Connection")]
         [SerializeField] private CaseShiftController shiftController;
         [SerializeField] private InterrogationDialogueService dialogueService;
+        [SerializeField] private ScenarioDialogueClient scenarioClient;
         [SerializeField] private EvidenceBoardController evidenceBoard;
         [SerializeField] private StampPadController stampPad;
 
@@ -44,8 +46,6 @@ namespace CaseClosed.UI
         [SerializeField] private Text headerTitleText;
         [SerializeField] private Text headerCaseText;
         [SerializeField] private Text statusText;
-        [SerializeField] private InputField questionInput;
-        [SerializeField] private Button askButton;
         [SerializeField] private Transform contentRoot;
         [SerializeField] private Transform transcriptRoot;
         [SerializeField] private ScrollRect contentScroll;
@@ -75,6 +75,7 @@ namespace CaseClosed.UI
         private Button tagCaseFile;
         private Button tagDecision;
         private GameObject askRowRoot;
+        private Text askHintText;
         private GameObject stampFooterRoot;
         private Button holdFooterButton;
         private Button releaseFooterButton;
@@ -103,6 +104,13 @@ namespace CaseClosed.UI
                 dialogueService = GetComponent<InterrogationDialogueService>();
             if (dialogueService == null)
                 dialogueService = FindAnyObjectByType<InterrogationDialogueService>();
+
+            if (scenarioClient == null)
+                scenarioClient = GetComponent<ScenarioDialogueClient>();
+            if (scenarioClient == null)
+                scenarioClient = FindAnyObjectByType<ScenarioDialogueClient>();
+            if (scenarioClient == null && dialogueService != null)
+                scenarioClient = dialogueService.GetComponent<ScenarioDialogueClient>();
 
             if (evidenceBoard == null)
                 evidenceBoard = FindAnyObjectByType<EvidenceBoardController>();
@@ -213,11 +221,6 @@ namespace CaseClosed.UI
                 closeButton.onClick.RemoveListener(ClosePanel);
                 closeButton.onClick.AddListener(ClosePanel);
             }
-            if (askButton != null)
-            {
-                askButton.onClick.RemoveListener(AskQuestion);
-                askButton.onClick.AddListener(AskQuestion);
-            }
             if (holdFooterButton != null)
             {
                 holdFooterButton.onClick.RemoveAllListeners();
@@ -316,33 +319,31 @@ namespace CaseClosed.UI
             RefreshAll();
         }
 
-        private void AskQuestion()
+        private void AskTreeQuestion(DialogueQuestionChoice choice)
         {
+            if (choice == null || string.IsNullOrWhiteSpace(choice.Prompt))
+                return;
             if (awaitingReply || (dialogueService != null && dialogueService.IsBusy))
                 return;
 
-            string ask = questionInput != null ? questionInput.text : string.Empty;
-            ask = ask == null ? string.Empty : ask.Trim();
-            if (ask.Length == 0)
+            string evidenceId = ResolveSelectedEvidenceId();
+            if (string.IsNullOrWhiteSpace(evidenceId))
             {
-                statusMessage = "Type a question first.";
+                statusMessage = "Present a collected record first.";
                 RefreshStatus();
                 return;
             }
 
-            if (ask.Length > MaxQuestionChars)
-                ask = ask.Substring(0, MaxQuestionChars);
-
-            string evidenceId = ResolveSelectedEvidenceId();
+            string ask = choice.Prompt.Trim();
             AppendTranscript("You: " + ask);
-            if (questionInput != null)
-                questionInput.text = string.Empty;
 
             awaitingReply = true;
             statusMessage = "Waiting on the suspect…";
             RefreshAll();
 
-            bool started = dialogueService != null && dialogueService.AskCurrentSuspect(ask, evidenceId);
+            // Emits SuspectLineReady → ElevenLabsVoiceSink → Speak (same path as before).
+            bool started = dialogueService != null &&
+                           dialogueService.AskCurrentSuspect(ask, evidenceId, choice.Aggressive, choice.Id);
             if (!started)
             {
                 awaitingReply = false;
@@ -469,7 +470,7 @@ namespace CaseClosed.UI
                 return;
             }
 
-            statusMessage = "Interview open. Type a question and press ASK.";
+            statusMessage = "Interview open. Present a record, then pick a question.";
             activeTag = HudTag.Actions;
             RefreshAll();
         }
@@ -520,10 +521,14 @@ namespace CaseClosed.UI
 
             if (headerTitleText != null)
             {
+                // ACTIONS header shows the seated suspect so it matches the transcript log name.
+                SuspectRecord current = shiftController != null ? shiftController.CurrentSuspect : null;
                 switch (activeTag)
                 {
                     case HudTag.Actions:
-                        headerTitleText.text = "ACTIONS";
+                        headerTitleText.text = current != null && !string.IsNullOrWhiteSpace(current.DisplayName)
+                            ? current.DisplayName
+                            : "ACTIONS";
                         break;
                     case HudTag.Decision:
                         headerTitleText.text = "DECISION";
@@ -578,17 +583,22 @@ namespace CaseClosed.UI
 
             if (askRowRoot != null)
                 askRowRoot.SetActive(interviewing);
-            if (questionInput != null)
-                questionInput.gameObject.SetActive(interviewing);
-            if (askButton != null)
+
+            if (askHintText == null) return;
+
+            if (!interviewing)
             {
-                askButton.gameObject.SetActive(interviewing);
-                askButton.interactable = interviewing && !awaitingReply &&
-                                         (dialogueService == null || !dialogueService.IsBusy);
-                Text label = askButton.GetComponentInChildren<Text>();
-                if (label != null)
-                    label.text = awaitingReply ? "…" : "ASK";
+                askHintText.text = string.Empty;
+                return;
             }
+
+            string evidenceId = ResolveSelectedEvidenceId();
+            if (awaitingReply || (dialogueService != null && dialogueService.IsBusy))
+                askHintText.text = "Suspect is answering…";
+            else if (string.IsNullOrWhiteSpace(evidenceId))
+                askHintText.text = "Present a collected record, then pick a question below.";
+            else
+                askHintText.text = "Presenting · " + FindEvidenceTitle(evidenceId) + " — pick a question.";
         }
 
         private void RefreshStampFooter()
@@ -793,7 +803,7 @@ namespace CaseClosed.UI
 
                 SetContentBody(
                     "Clipboard ready (" + filed + " records).\nCall " + suspect.DisplayName +
-                    " in to sit and talk — then ask via the offline dialogue bank.");
+                    " in to sit and talk — then present a record and pick a question.");
                 AddAction("Call in — " + suspect.DisplayName, CallSuspectIn);
                 return;
             }
@@ -804,7 +814,7 @@ namespace CaseClosed.UI
             if (awaitingReply || (dialogueService != null && dialogueService.IsBusy))
                 sb.AppendLine("Suspect is answering…");
             else
-                sb.AppendLine("Ask a question. Tap a record below to present it once.");
+                sb.AppendLine("1) Present a record  2) Pick a question choice");
             SetContentBody(sb.ToString().TrimEnd());
 
             string evidenceId = ResolveSelectedEvidenceId();
@@ -816,7 +826,6 @@ namespace CaseClosed.UI
                     continue;
                 string id = evidence.Id;
                 bool selected = id == evidenceId;
-                // Single present state on the button — no separate "Selected:" line.
                 AddAction((selected ? "Presenting · " : "Present · ") + evidence.Title, () =>
                 {
                     if (selectedEvidenceId == id)
@@ -838,6 +847,42 @@ namespace CaseClosed.UI
                     RefreshAll();
                 });
             }
+
+            if (string.IsNullOrWhiteSpace(evidenceId))
+                return;
+
+            if (awaitingReply || (dialogueService != null && dialogueService.IsBusy))
+                return;
+
+            EnsureScenarioClient();
+            List<DialogueQuestionChoice> choices = scenarioClient != null
+                ? scenarioClient.GetQuestionChoices(suspect.Id, evidenceId)
+                : null;
+
+            if (choices == null || choices.Count == 0)
+            {
+                AddAction("(No tree questions for this record)", null, false);
+                return;
+            }
+
+            for (int i = 0; i < choices.Count; i++)
+            {
+                DialogueQuestionChoice choice = choices[i];
+                if (choice == null || string.IsNullOrWhiteSpace(choice.Prompt)) continue;
+                DialogueQuestionChoice captured = choice;
+                string label = (choice.Aggressive ? "Press · " : "Ask · ") + choice.Prompt;
+                AddAction(label, () => AskTreeQuestion(captured), true, DeskUiPalette.Navy, DeskUiPalette.White);
+            }
+        }
+
+        private void EnsureScenarioClient()
+        {
+            if (scenarioClient != null) return;
+            scenarioClient = GetComponent<ScenarioDialogueClient>();
+            if (scenarioClient == null)
+                scenarioClient = FindAnyObjectByType<ScenarioDialogueClient>();
+            if (scenarioClient == null && dialogueService != null)
+                scenarioClient = dialogueService.GetComponent<ScenarioDialogueClient>();
         }
 
         private void DrawDecision()
@@ -968,15 +1013,18 @@ namespace CaseClosed.UI
             go.transform.SetParent(contentRoot, false);
             Image image = go.GetComponent<Image>();
             image.color = fill;
+            bool tall = label.Length > 42;
             LayoutElement layout = go.GetComponent<LayoutElement>();
-            layout.minHeight = 36f;
-            layout.preferredHeight = 36f;
+            layout.minHeight = tall ? 52f : 36f;
+            layout.preferredHeight = tall ? 52f : 36f;
 
             GameObject labelGo = new GameObject("Label", typeof(RectTransform), typeof(Text));
             labelGo.transform.SetParent(go.transform, false);
             Text text = labelGo.GetComponent<Text>();
-            DeskUiPalette.StyleLabel(text, 14, textColor, FontStyle.Bold, TextAnchor.MiddleCenter);
+            DeskUiPalette.StyleLabel(text, tall ? 12 : 14, textColor, FontStyle.Bold, TextAnchor.MiddleCenter);
             text.text = label;
+            text.horizontalOverflow = HorizontalWrapMode.Wrap;
+            text.verticalOverflow = VerticalWrapMode.Truncate;
             Stretch(labelGo.GetComponent<RectTransform>(), 10f, 4f);
 
             Button button = go.GetComponent<Button>();
@@ -1107,7 +1155,7 @@ namespace CaseClosed.UI
                 bodyFit = runtimeContentLabel.gameObject.AddComponent<ContentSizeFitter>();
             bodyFit.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 
-            // Ask row (ACTIONS only)
+            // Hint row (ACTIONS only) — choices live in the content list; no type-in InputField.
             GameObject askRow = new GameObject("AskRow", typeof(RectTransform), typeof(Image));
             askRow.transform.SetParent(panel.transform, false);
             askRowRoot = askRow;
@@ -1119,29 +1167,10 @@ namespace CaseClosed.UI
             askRect.offsetMin = new Vector2(0f, 148f);
             askRect.offsetMax = new Vector2(0f, 200f);
 
-            GameObject inputGo = new GameObject("QuestionInput", typeof(RectTransform), typeof(Image), typeof(InputField));
-            inputGo.transform.SetParent(askRow.transform, false);
-            inputGo.GetComponent<Image>().color = DeskUiPalette.TranscriptBg;
-            RectTransform inputRect = inputGo.GetComponent<RectTransform>();
-            inputRect.anchorMin = new Vector2(0f, 0.5f);
-            inputRect.anchorMax = new Vector2(1f, 0.5f);
-            inputRect.pivot = new Vector2(0f, 0.5f);
-            inputRect.anchoredPosition = new Vector2(10f, 0f);
-            inputRect.sizeDelta = new Vector2(-100f, 34f);
-            inputRect.offsetMax = new Vector2(-92f, 17f);
-            inputRect.offsetMin = new Vector2(10f, -17f);
-
-            Text placeholder = CreateLabel(inputGo.transform, "Placeholder", "Type your question…", 14, DeskUiPalette.InkMuted, FontStyle.Italic);
-            Stretch(placeholder.rectTransform, 8f, 4f);
-            Text inputText = CreateLabel(inputGo.transform, "Text", string.Empty, 14, DeskUiPalette.Ink, FontStyle.Normal);
-            Stretch(inputText.rectTransform, 8f, 4f);
-            questionInput = inputGo.GetComponent<InputField>();
-            questionInput.textComponent = inputText;
-            questionInput.placeholder = placeholder;
-            questionInput.characterLimit = MaxQuestionChars;
-            questionInput.lineType = InputField.LineType.SingleLine;
-
-            askButton = CreateChromeButton(askRow.transform, "Ask", "ASK", new Vector2(-10f, 0f), new Vector2(74f, 34f), DeskUiPalette.Navy, DeskUiPalette.White, TextAnchor.MiddleRight);
+            askHintText = CreateLabel(askRow.transform, "AskHint", "Present a record, then pick a question.", 13, DeskUiPalette.Ink, FontStyle.Normal);
+            Stretch(askHintText.rectTransform, 12f, 8f);
+            askHintText.alignment = TextAnchor.MiddleLeft;
+            askHintText.horizontalOverflow = HorizontalWrapMode.Wrap;
 
             // Stamp footer (CASE FILE only)
             GameObject stampFooter = new GameObject("StampFooter", typeof(RectTransform), typeof(Image));

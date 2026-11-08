@@ -1,0 +1,790 @@
+{
+  "suspectId": "sam",
+  "displayName": "Sam Torvald",
+  "branches": [
+    {
+      "evidenceKey": "access",
+      "questions": [
+        {
+          "id": "sam_access_q1",
+          "prompt": "Storage access at 9:37 \u2014 you said you left before 9:15. Explain.",
+          "aggressive": true,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "That card ping is wrong. I was already gone."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Nine thirty-seven? That can't be my card. I left earlier."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": true,
+              "line": "Okay \u2014 I went back. Just for a second. Not for the head."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Fine. I opened storage after 9:15. I took it."
+            }
+          ]
+        },
+        {
+          "id": "sam_access_q2",
+          "prompt": "Your campus card opened the event-storage room inside the theft window.",
+          "aggressive": true,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "I never went back in. Check the cameras \u2014 not me."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Someone could have borrowed my card. It happens."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": true,
+              "line": "I\u2026 might have swiped back in. I needed something from the cart."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "It was me at 9:37. I took the mascot head."
+            }
+          ]
+        },
+        {
+          "id": "sam_access_q3",
+          "prompt": "You claimed: \"I left the student union before 9:15 PM and finished closing the cafe downstairs.\" How does 9:37 access fit?",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "It doesn't \u2014 because I wasn't there. The log is dirty."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "I stick by that statement. The access log has to be a glitch."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": true,
+              "line": "I left, then panicked and came back. Stupid."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "The statement was a lie. I was in storage at 9:37."
+            }
+          ]
+        },
+        {
+          "id": "sam_access_q4",
+          "prompt": "If you left before 9:15, why is your card on the storage door at 9:37?",
+          "aggressive": true,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "Ask security about false reads. I was not in that room."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "I don't have a clean answer \u2014 but I didn't steal anything."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": true,
+              "line": "Because I went back. I shouldn't have."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Because I stole the head. That's why."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidenceKey": "red_herring",
+      "questions": [
+        {
+          "id": "sam_herring_q1",
+          "prompt": "This record: A supply request shows Sam ordered industrial zip ties that morning. Explain it.",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "Sam used them to reseal bulk snack bags during inventory."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "That looks bad, I know. Sam used them to reseal bulk snack bags during inventory."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I bought / borrowed that for the event \u2014 not for theft."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Believe what you want. It still doesn't put me in storage at 9:37."
+            }
+          ]
+        },
+        {
+          "id": "sam_herring_q2",
+          "prompt": "Looks like prep for cutting or moving something bulky. Was it for the mascot head?",
+          "aggressive": true,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "No. Event work only."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "People always jump to that. It was event gear."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I get why you'd ask. Still not me on the head."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "I didn't take the head. That record is a red herring and you know it."
+            }
+          ]
+        },
+        {
+          "id": "sam_herring_q3",
+          "prompt": "Walk me through this suspicious purchase against your alibi: Union cafe closing checklist from 9:15 PM onward.",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "Easy \u2014 Union cafe closing checklist from 9:15 PM onward.. The purchase was earlier, for setup."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Alibi first: Union cafe closing checklist from 9:15 PM onward.. The purchase is unrelated."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I'm rattled, but the timeline still clears me."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Pin the head on someone with a storage swipe. Not this."
+            }
+          ]
+        },
+        {
+          "id": "sam_herring_q4",
+          "prompt": "Why should we trust you after this shows up under your name?",
+          "aggressive": true,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "Because I'm on camera / logs elsewhere during the window."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Trust the other records \u2014 not one ugly receipt."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I'm nervous because it looks bad. That doesn't make me guilty."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "I've answered. Stamp someone else."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidenceKey": "alibi_support",
+      "questions": [
+        {
+          "id": "sam_alibi_q1",
+          "prompt": "POS closeout stamp: The cafe register closeout was stamped complete under Sam's employee number at 9:33 PM. Does that match your story?",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "Yes. Union cafe closing checklist from 9:15 PM onward."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "That's exactly where I was. Union cafe closing checklist from 9:15 PM onward."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "It should. Unless the clock is off, I was there."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "I need you to believe that log. I wasn't in storage."
+            }
+          ]
+        },
+        {
+          "id": "sam_alibi_q2",
+          "prompt": "You said you left before 9:15. Prove Union cafe closing checklist from 9:15 PM onward..",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "The support record does. Read POS closeout stamp."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "I left early. Then Union cafe closing checklist from 9:15 PM onward.."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I'm telling the same story. Check the timestamp again."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "If that support log is real, I'm clear."
+            }
+          ]
+        },
+        {
+          "id": "sam_alibi_q3",
+          "prompt": "Could you have doubled back to storage after this alibi stamp?",
+          "aggressive": true,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "No. Once I left, I stayed put."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Not without showing up on something else \u2014 and I don't."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I\u2026 don't think so. I was tired. I went straight there."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Doubling back would be insane. I didn't."
+            }
+          ]
+        },
+        {
+          "id": "sam_alibi_q4",
+          "prompt": "Who saw you after 9:15 if POS closeout stamp is wrong?",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "It's not wrong. Ask around the area."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "People were there. I wasn't hiding."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I can't name everyone. The record should be enough."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "I don't have a crowd of witnesses. I have that log."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidenceKey": "roster",
+      "questions": [
+        {
+          "id": "sam_roster_q1",
+          "prompt": "Closing checklist puts you on site that evening. When did you actually leave?",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "Before 9:15. Same as my statement."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Shift / duty ended; I walked out before the window."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I might've lingered a minute \u2014 not until 9:37."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "I left when I said I left. Don't twist the roster."
+            }
+          ]
+        },
+        {
+          "id": "sam_roster_q2",
+          "prompt": "This roster listing: Sam is the named closer on the union cafe evening checklist. Did that give you storage access?",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "Being listed isn't a key to the head."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Lots of people were listed. Only one thief."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I had a job to do. I finished and left."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Roster presence \u2260 theft. Move on."
+            }
+          ]
+        },
+        {
+          "id": "sam_roster_q3",
+          "prompt": "Why does the roster still matter if you claim Union cafe closing checklist from 9:15 PM onward.?",
+          "aggressive": true,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "It just shows I was helping earlier. Then I left."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Context only. The alibi is the point."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "You're stacking paper. My exit time is what counts."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Stamp me or don't \u2014 the roster isn't a confession."
+            }
+          ]
+        },
+        {
+          "id": "sam_roster_q4",
+          "prompt": "Anyone on this roster could've stayed late. Did you?",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "No. Out before 9:15."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "I didn't stay for the theft window."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I wanted to go. I went."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Late stayers exist. I wasn't one."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidenceKey": "sign_in",
+      "questions": [
+        {
+          "id": "sam_sign_q1",
+          "prompt": "Event sign-in shows Sam helping setup. When did you sign out?",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "I was done and gone before 9:15."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Sign-in isn't a life sentence. I left."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I signed in earlier. I did not hang around for the head."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Setup, then exit. That's the whole sheet."
+            }
+          ]
+        },
+        {
+          "id": "sam_sign_q2",
+          "prompt": "Being on the sign-in sheet put you near storage. Convenient?",
+          "aggressive": true,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "Convenient for volunteering. Not for stealing."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Near storage earlier \u2260 inside at 9:37."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I don't like how that sounds, but it's still not proof."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Stop fishing. Sign-in is daytime/evening setup only."
+            }
+          ]
+        },
+        {
+          "id": "sam_sign_q3",
+          "prompt": "Did signing in get you a storage key or card?",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "No special access from a name on a sheet."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Volunteers don't get free storage raids."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "If keys moved, it wasn't because of my signature."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Ask who held keys. My name on paper isn't that."
+            }
+          ]
+        },
+        {
+          "id": "sam_sign_q4",
+          "prompt": "Reconcile the sign-in with: \"I left the student union before 9:15 PM and finished closing the cafe downstairs.\"",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "Signed in, worked, left before 9:15. Consistent."
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Same story every time."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I keep repeating it because it's true."
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Sign-in earlier, departure as stated. Done."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidenceKey": "hold",
+      "questions": [
+        {
+          "id": "sam_hold",
+          "prompt": "HOLD",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 100,
+              "emotion": "scared",
+              "slip": false,
+              "line": "You're holding me? I didn't take the head."
+            },
+            {
+              "minStress": 0,
+              "maxStress": 100,
+              "emotion": "angry",
+              "slip": false,
+              "line": "This is a mistake. I want that on the record."
+            },
+            {
+              "minStress": 60,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "\u2026I can't keep this up. Check storage for my prints."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "evidenceKey": "release",
+      "questions": [
+        {
+          "id": "sam_release",
+          "prompt": "RELEASE",
+          "aggressive": false,
+          "replies": [
+            {
+              "minStress": 0,
+              "maxStress": 100,
+              "emotion": "calm",
+              "slip": false,
+              "line": "Thank you. I told you I wasn't the one."
+            },
+            {
+              "minStress": 0,
+              "maxStress": 100,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Okay. I'm leaving. Don't call me back unless you have proof."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

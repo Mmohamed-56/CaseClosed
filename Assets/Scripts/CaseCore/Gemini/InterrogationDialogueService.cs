@@ -151,9 +151,16 @@ namespace CaseClosed.CaseCore.Gemini
         }
 
         /// <summary>
-        /// Asks the current suspect: CaseCore applies stress/truth first, then scenario (or mock) performs the line.
+        /// Asks the current suspect: CaseCore applies stress/truth first, then the dialogue tree performs the line.
+        /// Always emits <see cref="SuspectLineReady"/> so ElevenLabsVoiceSink can Speak.
         /// </summary>
         public bool AskCurrentSuspect(string question, string evidenceId = null, bool aggressive = false)
+        {
+            return AskCurrentSuspect(question, evidenceId, aggressive, null);
+        }
+
+        /// <param name="questionId">Tree question id from the ACTIONS choice list (preferred over free text).</param>
+        public bool AskCurrentSuspect(string question, string evidenceId, bool aggressive, string questionId)
         {
             EnsureBarkPlayer();
             EnsureScenarioClient();
@@ -203,7 +210,7 @@ namespace CaseClosed.CaseCore.Gemini
                 return true;
             }
 
-            // 1) Offline scenario bank (preferred)
+            // 1) Offline evidence-driven dialogue trees (preferred)
             if (preferScenarioBank && scenarioClient != null && scenarioClient.IsReady)
             {
                 var ctx = new ScenarioAskContext
@@ -211,6 +218,7 @@ namespace CaseClosed.CaseCore.Gemini
                     SuspectId = suspect.Id,
                     SuspectName = suspect.DisplayName,
                     Question = question,
+                    QuestionId = questionId,
                     EvidenceId = evidenceId,
                     HasEvidence = presented != null,
                     Aggressive = aggressive,

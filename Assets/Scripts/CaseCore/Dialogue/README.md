@@ -1,34 +1,45 @@
-# Offline scenario dialogue (Case Closed)
+# Evidence-driven dialogue trees (Case Closed)
 
-Replaces Gemini for interrogation lines. `ScenarioDialogueClient` loads JSON from
-`Assets/Resources/Dialogue/` and returns `{ line, emotion, slip }` for ElevenLabs.
+Interview flow: **present a collected record → pick a question choice → hear a stress/slip reply**.
+
+`ScenarioDialogueClient` loads JSON from `Assets/Resources/Dialogue/Trees/` and returns
+`{ line, emotion, slip }`. Replies still emit `InterrogationDialogueService.SuspectLineReady`
+→ `ElevenLabsVoiceSink` → Speak. No free-text Ask. No Gemini.
 
 ## Play order
 
 1. CaseCore stress / truth (`InterrogationController`)
-2. **`ScenarioDialogueClient`** (preferred, offline)
-3. Optional Gemini (off by default — do not delete Netlify yet)
-4. Mock `FallbackLine` / slip string (last resort)
+2. **`ScenarioDialogueClient` tree resolve** (preferred, offline)
+3. Mock `FallbackLine` / slip string (last resort)
 
-## Add lines
+## Tree layout
 
-1. Edit or add a JSON bank under `Assets/Resources/Dialogue/` (see `drew.json`).
-2. List the file stem in `bank_index.json` (`"drew"` → `Dialogue/drew.json`).
-3. Regenerating everything: `python Tools/gen_dialogue_bank.py`
+```
+Resources/Dialogue/Trees/
+  tree_index.json     # { "trees": ["jamie", "drew", ...] }
+  jamie.json
+  drew.json
+  …
+```
 
-### Entry fields
+### File shape
 
 | Field | Notes |
 | --- | --- |
-| `id` | Unique string |
-| `suspectId` | `drew`, `suspect_drew`, or `*` |
-| `intent` | `alibi` `evidence` `pressure` `small_talk` `accusation` `hold` `release` `slip` `shutdown` `generic` |
-| `keywords` | Pipe-separated; optional |
-| `minStress` / `maxStress` | 0–100 gates |
-| `emotion` | `calm` `defensive` `nervous` `angry` `scared` `broken` |
-| `slip` | Culprit tell |
-| `line` | Spoken text (keep short) |
-| `requiresEvidence` / `requiresAggressive` | Extra gates |
-| `culpritOnly` / `innocentOnly` | Truth gates |
+| `suspectId` | `drew` (normalized; `suspect_drew` also works at runtime) |
+| `displayName` | Full name (HUD / log) |
+| `branches[].evidenceKey` | `access` `red_herring` `alibi_support` `roster` `sign_in` `hold` `release` |
+| `questions[].id` | Stable id for the HUD choice |
+| `questions[].prompt` | Player-facing question text |
+| `questions[].aggressive` | Passed into CaseCore stress |
+| `replies[]` | 2–4 variants gated by `minStress`/`maxStress`, with `emotion` + `slip` + `line` |
 
-Emotions and slips still feed `SuspectLineReady` → ElevenLabs unchanged.
+Evidence ids from CaseGenerator (`{caseId}_{id}_access`, …) map to `evidenceKey` by suffix.
+
+## Regenerate
+
+```bash
+python Tools/gen_dialogue_trees.py
+```
+
+Legacy keyword banks under `Resources/Dialogue/*.json` are unused by the client (kept for reference / rollback).

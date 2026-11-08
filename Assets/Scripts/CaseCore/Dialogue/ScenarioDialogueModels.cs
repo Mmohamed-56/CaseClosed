@@ -46,12 +46,14 @@ namespace CaseClosed.CaseCore.Dialogue
         public ScenarioLineEntry[] entries = Array.Empty<ScenarioLineEntry>();
     }
 
-    /// <summary>Runtime ask context — mirrors what Gemini prompts used to receive.</summary>
+    /// <summary>Runtime ask context for evidence-driven choice trees.</summary>
     public sealed class ScenarioAskContext
     {
         public string SuspectId;
         public string SuspectName;
         public string Question;
+        /// <summary>Tree question id from <see cref="DialogueQuestionChoice.Id"/>.</summary>
+        public string QuestionId;
         public string EvidenceId;
         public bool HasEvidence;
         public bool Aggressive;
