@@ -7,7 +7,8 @@ using UnityEngine;
 namespace CaseClosed.Gameplay
 {
     /// <summary>
-    /// Boots the first-run case loop and wires Gemini / voice / desk HUD.
+    /// Boots the first-run prototype loop and wires offline dialogue / voice / desk HUD.
+    /// Ask path: CaseCore stress → <see cref="InterrogationDialogueService"/> → ScenarioDialogueClient bank.
     /// Visual interrogation UI lives on <see cref="InterrogationActionHud"/> (UGUI).
     /// Runs before <see cref="StampUiPlayableBootstrap"/> so the HUD can claim Case File chrome.
     /// </summary>
@@ -25,12 +26,12 @@ namespace CaseClosed.Gameplay
         [Tooltip("Case state and scoring controller. Added automatically when empty.")]
         [SerializeField] private CaseShiftController shiftController;
 
-        [Header("Gemini Interrogation")]
-        [Tooltip("Optional key settings asset. Env/PlayerPrefs still win when set.")]
+        [Header("Dialogue (offline bank preferred)")]
+        [Tooltip("Optional legacy Gemini key settings. Unused while allowGeminiFallback is OFF.")]
         [SerializeField] private GeminiApiKeySettings geminiApiKeySettings;
-        [Tooltip("Optional cloud proxy settings (Netlify). Assign Assets/Settings/ApiProxySettings.")]
+        [Tooltip("Optional cloud proxy settings (Netlify). Keep assigned; ask path does not need it.")]
         [SerializeField] private ApiProxySettings apiProxySettings;
-        [Tooltip("Dialogue bridge: stress from CaseCore, spoken lines from Gemini via proxy/key.")]
+        [Tooltip("Dialogue bridge: stress from CaseCore, spoken lines from ScenarioDialogueClient.")]
         [SerializeField] private InterrogationDialogueService dialogueService;
 
         [Header("Voice")]
@@ -78,14 +79,17 @@ namespace CaseClosed.Gameplay
             StartCase();
         }
 
-        /// <summary>Starts or restarts the deterministic prototype case.</summary>
+        /// <summary>Starts or restarts the deterministic prototype case (seed 42 / two suspects by default).</summary>
         public void StartCase()
         {
             if (dialogueService != null)
                 dialogueService.BeginShift();
             shiftController.BeginGeneratedShift(caseSeed, suspectCount);
             if (actionHud != null)
-                actionHud.ResetForNewCase("Case ready. Review public records before confronting either suspect.");
+            {
+                actionHud.ResetForNewCase(
+                    "Case ready. CASE FILE → collect ≥2 records → ACTIONS Call in → ASK → stamp HOLD/RELEASE.");
+            }
         }
 
         private void HandleBootstrapStartCase(CaseShiftController controller)

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CaseClosed.CaseCore;
 using CaseClosed.CaseCore.Gemini;
+using CaseClosed.Characters;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
@@ -11,13 +12,15 @@ namespace CaseClosed.UI
     /// <summary>
     /// Player desk HUD with top-level tags: ACTIONS (interview) | CASE FILE (records + stamps) | DECISION.
     /// Builds a Screen Space Overlay canvas at runtime when Bezi has not assigned scene refs.
-    /// Does not own Gemini/TTS — only calls <see cref="InterrogationDialogueService"/>.
+    /// Ask turns go through <see cref="InterrogationDialogueService"/> → ScenarioDialogueClient (offline bank).
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class InterrogationActionHud : MonoBehaviour
     {
         private const int MaxQuestionChars = 180;
         private const int MaxTranscriptLines = 40;
+        private const int MinEvidenceToCallIn = 2;
+        private const string PublicRecordsUrl = "https://ubcaseclosed.netlify.app/";
 
         private enum HudTag
         {
@@ -76,6 +79,11 @@ namespace CaseClosed.UI
         private Button holdFooterButton;
         private Button releaseFooterButton;
 
+        private SuspectEnterController enterController;
+        private SuspectEnterShiftBinder enterBinder;
+        private CaseWebsiteBridge websiteBridge;
+        private bool waitingForSeat;
+
         /// <summary>True while the desk file panel is visible.</summary>
         public bool IsOpen { get { return panelOpen; } }
 
@@ -101,6 +109,10 @@ namespace CaseClosed.UI
             if (stampPad == null)
                 stampPad = FindAnyObjectByType<StampPadController>();
 
+            enterController = FindAnyObjectByType<SuspectEnterController>();
+            enterBinder = FindAnyObjectByType<SuspectEnterShiftBinder>();
+            websiteBridge = FindAnyObjectByType<CaseWebsiteBridge>();
+
             EnsureEventSystem();
             if ((hudCanvas == null || panelRoot == null) && buildRuntimeUiIfMissing)
                 BuildRuntimeUi();
@@ -121,6 +133,8 @@ namespace CaseClosed.UI
             }
             if (evidenceBoard != null)
                 evidenceBoard.EvidenceSelectionChanged += OnBoardSelectionChanged;
+            if (enterController != null)
+                enterController.Seated += OnSuspectSeated;
         }
 
         private void OnDisable()
@@ -134,6 +148,9 @@ namespace CaseClosed.UI
             }
             if (evidenceBoard != null)
                 evidenceBoard.EvidenceSelectionChanged -= OnBoardSelectionChanged;
+            if (enterController != null)
+                enterController.Seated -= OnSuspectSeated;
+            waitingForSeat = false;
         }
 
         /// <summary>Bezi / Magdy: assign canvas + panel after scene placement.</summary>
@@ -152,11 +169,12 @@ namespace CaseClosed.UI
         {
             resolution = null;
             awaitingReply = false;
+            waitingForSeat = false;
             selectedEvidenceId = string.Empty;
             collectedIds.Clear();
             transcript.Clear();
             statusMessage = string.IsNullOrWhiteSpace(readyMessage)
-                ? "Open CASE FILE to collect records, then ACTIONS to interview."
+                ? "Open CASE FILE → collect ≥2 records → ACTIONS to call the suspect in."
                 : readyMessage;
             activeTag = HudTag.CaseFile;
             SyncCollectedFromSession();
@@ -337,6 +355,7 @@ namespace CaseClosed.UI
             else if (shiftController != null)
                 shiftController.StampHold();
 
+            waitingForSeat = false;
             statusMessage = "HOLD stamped.";
             selectedEvidenceId = string.Empty;
             if (evidenceBoard != null) evidenceBoard.ClearSelection();
@@ -350,9 +369,105 @@ namespace CaseClosed.UI
             else if (shiftController != null)
                 shiftController.StampRelease();
 
+            waitingForSeat = false;
             statusMessage = "RELEASE stamped.";
             selectedEvidenceId = string.Empty;
             if (evidenceBoard != null) evidenceBoard.ClearSelection();
+            RefreshAll();
+        }
+
+        private void OpenPublicRecords()
+        {
+            activeTag = HudTag.CaseFile;
+            string url = PublicRecordsUrl;
+            if (websiteBridge == null)
+                websiteBridge = FindAnyObjectByType<CaseWebsiteBridge>();
+            if (websiteBridge != null)
+            {
+                string hash = websiteBridge.GetCurrentCaseHashFragment();
+                if (!string.IsNullOrWhiteSpace(hash))
+                    url = PublicRecordsUrl.TrimEnd('/') + "/index.html" + (hash.StartsWith("#") ? hash : "#" + hash);
+            }
+
+            Application.OpenURL(url);
+            statusMessage = "Public records opened. Collect ≥" + MinEvidenceToCallIn + " on the CASE FILE clipboard.";
+            RefreshAll();
+        }
+
+        private void CallSuspectIn()
+        {
+            if (shiftController == null || shiftController.CurrentSuspect == null)
+                return;
+            if (collectedIds.Count < MinEvidenceToCallIn)
+            {
+                statusMessage = "Collect ≥" + MinEvidenceToCallIn + " records first.";
+                RefreshStatus();
+                return;
+            }
+
+            SuspectRecord suspect = shiftController.CurrentSuspect;
+            if (enterController == null)
+                enterController = FindAnyObjectByType<SuspectEnterController>();
+            if (enterBinder == null)
+                enterBinder = FindAnyObjectByType<SuspectEnterShiftBinder>();
+
+            bool needsEnter = enterController != null &&
+                              enterController.Stage != SuspectEnterStage.Seated;
+
+            if (needsEnter)
+            {
+                waitingForSeat = true;
+                statusMessage = "Calling " + suspect.DisplayName + " in…";
+                if (enterBinder != null)
+                    enterBinder.PlayEnterCurrentSuspect();
+                else
+                    enterController.PlayEnter(suspect.Id);
+
+                // Anchors missing / enter no-op → don't softlock the prototype loop.
+                if (enterController.Stage == SuspectEnterStage.Idle)
+                {
+                    waitingForSeat = false;
+                    BeginInterviewNow();
+                    return;
+                }
+
+                RefreshAll();
+                return;
+            }
+
+            BeginInterviewNow();
+        }
+
+        private void OnSuspectSeated()
+        {
+            if (!waitingForSeat)
+                return;
+            waitingForSeat = false;
+            BeginInterviewNow();
+        }
+
+        private void BeginInterviewNow()
+        {
+            if (shiftController == null)
+                return;
+            if (shiftController.Phase != CaseShiftPhase.Briefing &&
+                shiftController.Phase != CaseShiftPhase.Investigating)
+                return;
+
+            try
+            {
+                if (shiftController.Phase == CaseShiftPhase.Briefing)
+                    shiftController.BeginCurrentInterview();
+            }
+            catch (System.Exception ex)
+            {
+                statusMessage = "Could not start interview: " + ex.Message;
+                RefreshAll();
+                return;
+            }
+
+            statusMessage = "Interview open. Type a question and press ASK.";
+            activeTag = HudTag.Actions;
             RefreshAll();
         }
 
@@ -591,12 +706,18 @@ namespace CaseClosed.UI
 
                 sb.AppendLine();
                 sb.AppendLine("RECORDS");
+                sb.AppendLine("Clipboard: " + collectedIds.Count + " filed (need ≥" + MinEvidenceToCallIn + " before call-in).");
                 sb.AppendLine(shiftController.Phase == CaseShiftPhase.Briefing
-                    ? "Collect what you need before the interview."
+                    ? "Collect case records, then open ACTIONS to call the suspect in."
                     : "Collected records stay on the clipboard.");
             }
 
             SetContentBody(sb.ToString().TrimEnd());
+
+            if (shiftController.Phase == CaseShiftPhase.Briefing || shiftController.Phase == CaseShiftPhase.Investigating)
+            {
+                AddAction("Open public records", OpenPublicRecords);
+            }
 
             if (suspect == null || suspect.Evidence == null || suspect.Evidence.Count == 0)
             {
@@ -615,7 +736,8 @@ namespace CaseClosed.UI
                     ? "On clipboard · " + evidence.Title
                     : "Collect · " + evidence.Title;
 
-                if (shiftController.Phase == CaseShiftPhase.Briefing && !collected)
+                if ((shiftController.Phase == CaseShiftPhase.Briefing ||
+                     shiftController.Phase == CaseShiftPhase.Investigating) && !collected)
                 {
                     string id = evidence.Id;
                     string title = evidence.Title;
@@ -645,14 +767,31 @@ namespace CaseClosed.UI
 
             if (shiftController.Phase == CaseShiftPhase.Briefing)
             {
-                SetContentBody("Collect records in CASE FILE first, then begin the interview with " + suspect.DisplayName + ".");
-                AddAction("Begin interview — " + suspect.DisplayName, () =>
+                int filed = collectedIds.Count;
+                if (filed < MinEvidenceToCallIn)
                 {
-                    shiftController.BeginCurrentInterview();
-                    statusMessage = "Interview open. Type a question and press ASK.";
-                    activeTag = HudTag.Actions;
-                    RefreshAll();
-                });
+                    SetContentBody(
+                        "Need ≥" + MinEvidenceToCallIn + " records before calling " + suspect.DisplayName +
+                        " in.\nFiled so far: " + filed + ".\nOpen CASE FILE to collect, or open the public records site.");
+                    AddAction("Open CASE FILE", () =>
+                    {
+                        activeTag = HudTag.CaseFile;
+                        RefreshAll();
+                    });
+                    AddAction("Open public records", OpenPublicRecords);
+                    return;
+                }
+
+                if (waitingForSeat)
+                {
+                    SetContentBody(suspect.DisplayName + " is walking in… interview unlocks when seated.");
+                    return;
+                }
+
+                SetContentBody(
+                    "Clipboard ready (" + filed + " records).\nCall " + suspect.DisplayName +
+                    " in to sit and talk — then ask via the offline dialogue bank.");
+                AddAction("Call in — " + suspect.DisplayName, CallSuspectIn);
                 return;
             }
 
@@ -708,7 +847,7 @@ namespace CaseClosed.UI
 
             if (shiftController.Phase == CaseShiftPhase.Briefing)
             {
-                SetContentBody("Begin the interview before filing a final charge.\nHOLD / RELEASE live on the CASE FILE footer.");
+                SetContentBody("Call the suspect in from ACTIONS, finish the interview, then stamp HOLD / RELEASE on the CASE FILE footer.");
                 return;
             }
 
