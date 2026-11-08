@@ -88,7 +88,7 @@ namespace CaseClosed.Gameplay
             if (actionHud != null)
             {
                 actionHud.ResetForNewCase(
-                    "Case ready. CASE FILE → collect ≥2 records → ACTIONS Call in → ASK → stamp HOLD/RELEASE.");
+                    "Case ready. Computer collect ≥2 → EVIDENCE board → ACTIONS Call in → ASK → DECISION HOLD/RELEASE.");
             }
         }
 

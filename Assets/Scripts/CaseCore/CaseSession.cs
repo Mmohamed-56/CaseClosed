@@ -63,6 +63,44 @@ namespace CaseClosed.CaseCore
             return result;
         }
 
+        /// <summary>
+        /// Owner id for a case record: interrogated <see cref="SuspectRecord.Id"/>, campus directory
+        /// person id, or empty when unknown. Used by the evidence clipboard tabs.
+        /// </summary>
+        public string FindEvidenceOwnerId(string evidenceId)
+        {
+            if (string.IsNullOrWhiteSpace(evidenceId)) return string.Empty;
+
+            foreach (SuspectRecord suspect in caseFile.Suspects)
+            {
+                if (suspect == null || suspect.Evidence == null) continue;
+                for (int i = 0; i < suspect.Evidence.Count; i++)
+                {
+                    EvidenceRecord evidence = suspect.Evidence[i];
+                    if (evidence != null && evidence.Id == evidenceId)
+                        return suspect.Id;
+                }
+            }
+
+            IReadOnlyList<WebsiteSuspectRecord> directory = caseFile.CampusDirectory;
+            if (directory != null)
+            {
+                for (int i = 0; i < directory.Count; i++)
+                {
+                    WebsiteSuspectRecord person = directory[i];
+                    if (person == null || person.records == null) continue;
+                    for (int j = 0; j < person.records.Count; j++)
+                    {
+                        WebsiteEvidenceRecord row = person.records[j];
+                        if (row != null && row.id == evidenceId)
+                            return person.id ?? string.Empty;
+                    }
+                }
+            }
+
+            return string.Empty;
+        }
+
         /// <summary>Sets a suspect's decision to hold or release.</summary>
         public void SetDecision(string suspectId, SuspectDecision decision)
         {
