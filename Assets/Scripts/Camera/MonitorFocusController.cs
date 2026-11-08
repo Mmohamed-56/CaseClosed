@@ -99,10 +99,8 @@ namespace CaseClosed.CameraControl
 
             if (!isFocused && !isTransitioning)
             {
-                bool togglePressed = Time.timeScale > 0f && keyboard != null && keyboard[focusToggleKey].wasPressedThisFrame &&
-                                     IsPointerOverDisplay(new Vector2(Screen.width * 0.5f, Screen.height * 0.5f));
                 bool surfaceClicked = Time.timeScale > 0f && mouse != null && mouse.leftButton.wasPressedThisFrame && IsPointerOverDisplay(mouse.position.ReadValue());
-                if (togglePressed || surfaceClicked) EnterFocus();
+                if (surfaceClicked) EnterFocus();
             }
             else if (isFocused && !isTransitioning)
             {

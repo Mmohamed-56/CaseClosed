@@ -70,7 +70,8 @@ namespace CaseClosed.UI
         {
             return (monitorFocusController != null &&
                     (monitorFocusController.IsFocused || monitorFocusController.IsTransitioning)) ||
-                   (clipboardFocusController != null && clipboardFocusController.IsClipboardOpen);
+                   (clipboardFocusController != null &&
+                    (clipboardFocusController.IsClipboardOpen || clipboardFocusController.HandledEscapeThisFrame));
         }
 
         private void OnDisable()
@@ -339,8 +340,6 @@ namespace CaseClosed.UI
             Text text = gameObject.GetComponent<Text>();
             text.text = value;
             text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-            if (text.font == null)
-                text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
             text.fontSize = fontSize;
             text.fontStyle = fontStyle;
             text.color = TextColor;

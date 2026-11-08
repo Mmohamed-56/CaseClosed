@@ -21,6 +21,7 @@ namespace CaseClosed.UI
         private const float CanvasWidth = 1920f;
         private const float CanvasHeight = 1080f;
         private const int MaxSortingOrder = 90;
+        private static Font cachedReadableRuntimeFont;
 
         [Header("Case connections")]
         [SerializeField] private CaseShiftController shiftController;
@@ -235,6 +236,8 @@ namespace CaseClosed.UI
         private void HandlePhaseChanged(CaseShiftPhase phase)
         {
             CheckForNewSession();
+            if (phase == CaseShiftPhase.Charging || phase == CaseShiftPhase.Headline || phase == CaseShiftPhase.Resolved)
+                selectedPageIndex = 0;
             RefreshPage();
         }
 
@@ -245,7 +248,24 @@ namespace CaseClosed.UI
 
         private void HandleNextSuspectReady(NextSuspectEvent nextSuspect)
         {
+            if (nextSuspect != null && nextSuspect.SuspectIndex >= 0 && HasRecordedSuspectDecision())
+                selectedPageIndex = nextSuspect.SuspectIndex + 1;
             RefreshPage();
+        }
+
+        private bool HasRecordedSuspectDecision()
+        {
+            if (shiftController == null || shiftController.ActiveSession == null)
+                return false;
+
+            IReadOnlyList<SuspectRecord> suspects = shiftController.ActiveSession.Case.Suspects;
+            for (int i = 0; i < suspects.Count; i++)
+            {
+                SuspectRecord suspect = suspects[i];
+                if (suspect != null && shiftController.GetDecision(suspect.Id) != SuspectDecision.Undecided)
+                    return true;
+            }
+            return false;
         }
 
         private void HandleSuspectLineReady(SuspectVoiceLine line)
@@ -401,16 +421,16 @@ namespace CaseClosed.UI
             GameObject header = CreateImageObject(clipboardRoot.transform, "ClipboardHeader", DeskUiPalette.NavyDark);
             SetTopRect(header.GetComponent<RectTransform>(), 10f, 80f, 10f);
 
-            Text agency = CreateLabel(header.transform, "AgencyLine", "UB CAMPUS POLICE  ·  CASE FILE", 12, DeskUiPalette.AccentOlive, FontStyle.Bold, TextAnchor.UpperLeft);
-            SetTopLeftRect(agency.rectTransform, 14f, -8f, 430f, 18f);
-            headerTitleText = CreateLabel(header.transform, "PageTitle", "CASE FILE", 23, DeskUiPalette.White, FontStyle.Bold, TextAnchor.UpperLeft);
-            SetTopLeftRect(headerTitleText.rectTransform, 14f, -29f, 850f, 30f);
-            headerCaseText = CreateLabel(header.transform, "CaseId", string.Empty, 13, DeskUiPalette.ManilaLight, FontStyle.Normal, TextAnchor.UpperRight);
+            Text agency = CreateLabel(header.transform, "AgencyLine", "UB CAMPUS POLICE  ·  CASE FILE", 15, DeskUiPalette.AccentOlive, FontStyle.Bold, TextAnchor.UpperLeft);
+            SetTopLeftRect(agency.rectTransform, 14f, -7f, 620f, 22f);
+            headerTitleText = CreateLabel(header.transform, "PageTitle", "CASE FILE", 28, DeskUiPalette.White, FontStyle.Bold, TextAnchor.UpperLeft);
+            SetTopLeftRect(headerTitleText.rectTransform, 14f, -29f, 900f, 38f);
+            headerCaseText = CreateLabel(header.transform, "CaseId", string.Empty, 16, DeskUiPalette.ManilaLight, FontStyle.Normal, TextAnchor.UpperRight);
             headerCaseText.rectTransform.anchorMin = new Vector2(1f, 1f);
             headerCaseText.rectTransform.anchorMax = new Vector2(1f, 1f);
             headerCaseText.rectTransform.pivot = new Vector2(1f, 1f);
             headerCaseText.rectTransform.anchoredPosition = new Vector2(-100f, -47f);
-            headerCaseText.rectTransform.sizeDelta = new Vector2(280f, 20f);
+            headerCaseText.rectTransform.sizeDelta = new Vector2(340f, 24f);
 
             Button closeButton = CreateActionButton(header.transform, "CloseClipboard", "CLOSE", DeskUiPalette.Navy, DeskUiPalette.White, CloseClipboard, 38f, 82f);
             RectTransform closeRect = closeButton.GetComponent<RectTransform>();
@@ -429,7 +449,7 @@ namespace CaseClosed.UI
         private void BuildPageTabs(Transform parent)
         {
             GameObject tabHost = CreateImageObject(parent, "PageTabs", DeskUiPalette.Kraft);
-            SetTopRect(tabHost.GetComponent<RectTransform>(), 96f, 48f, 12f);
+            SetTopRect(tabHost.GetComponent<RectTransform>(), 96f, 56f, 12f);
 
             GameObject scrollObject = new GameObject("PageTabScroll", typeof(RectTransform), typeof(Image), typeof(ScrollRect));
             scrollObject.transform.SetParent(tabHost.transform, false);
@@ -542,7 +562,7 @@ namespace CaseClosed.UI
             footerRect.offsetMax = new Vector2(-10f, 82f);
             DeskUiPalette.AddHairline(footer.transform, "FooterRule", 0f, 2f, false);
 
-            footerStatusText = CreateLabel(footer.transform, "FooterStatus", "No active case.", 14, DeskUiPalette.ManilaLight, FontStyle.Normal, TextAnchor.MiddleLeft);
+            footerStatusText = CreateLabel(footer.transform, "FooterStatus", "No active case.", 17, DeskUiPalette.ManilaLight, FontStyle.Normal, TextAnchor.MiddleLeft);
             footerStatusText.rectTransform.anchorMin = new Vector2(0f, 0f);
             footerStatusText.rectTransform.anchorMax = new Vector2(1f, 1f);
             footerStatusText.rectTransform.offsetMin = new Vector2(16f, 8f);
@@ -583,10 +603,11 @@ namespace CaseClosed.UI
             rect.offsetMin = Vector2.zero;
             rect.offsetMax = new Vector2(0f, 76f);
             DeskUiPalette.AddHairline(subtitleRoot.transform, "SubtitleRule", 0f, 2f, false);
-            subtitleText = CreateLabel(subtitleRoot.transform, "SubtitleText", string.Empty, 20, DeskUiPalette.ManilaLight, FontStyle.Normal, TextAnchor.MiddleLeft);
-            Stretch(subtitleText.rectTransform, 42f, 18f, 24f, 10f);
+            subtitleText = CreateLabel(subtitleRoot.transform, "SubtitleText", string.Empty, 23, DeskUiPalette.ManilaLight, FontStyle.Normal, TextAnchor.MiddleLeft);
+            Stretch(subtitleText.rectTransform, 28f, 18f, 10f, 8f);
             subtitleText.alignment = TextAnchor.MiddleLeft;
-            subtitleText.verticalOverflow = VerticalWrapMode.Truncate;
+            subtitleText.horizontalOverflow = HorizontalWrapMode.Wrap;
+            subtitleText.verticalOverflow = VerticalWrapMode.Overflow;
             subtitleRoot.SetActive(false);
         }
 
@@ -620,10 +641,10 @@ namespace CaseClosed.UI
             GameObject tab = new GameObject("PageTab_" + pageIndex, typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
             tab.transform.SetParent(tabContentRoot, false);
             LayoutElement element = tab.GetComponent<LayoutElement>();
-            element.minWidth = pageIndex == 0 ? 150f : 210f;
+            element.minWidth = pageIndex == 0 ? 178f : 238f;
             element.preferredWidth = element.minWidth;
-            Text text = CreateLabel(tab.transform, "Label", label, 13, DeskUiPalette.Ink, FontStyle.Bold, TextAnchor.MiddleCenter);
-            Stretch(text.rectTransform, 6f, 2f);
+            Text text = CreateLabel(tab.transform, "Label", label, 16, DeskUiPalette.Ink, FontStyle.Bold, TextAnchor.MiddleCenter);
+            Stretch(text.rectTransform, 7f, 3f);
             Button button = tab.GetComponent<Button>();
             button.onClick.AddListener(() =>
             {
@@ -631,6 +652,7 @@ namespace CaseClosed.UI
                 RefreshPage();
             });
             DeskUiPalette.StyleFolderTag(button, pageIndex == selectedPageIndex);
+            ApplyReadableFont(text, 16);
         }
 
         private void RefreshPage()
@@ -676,7 +698,11 @@ namespace CaseClosed.UI
                     continue;
                 Button button = child.GetComponent<Button>();
                 if (button != null)
+                {
                     DeskUiPalette.StyleFolderTag(button, i == selectedPageIndex);
+                    Text label = button.GetComponentInChildren<Text>();
+                    ApplyReadableFont(label, 16);
+                }
             }
         }
 
@@ -689,36 +715,119 @@ namespace CaseClosed.UI
             CaseFile caseFile = observedSession != null ? observedSession.Case : null;
             if (caseFile == null)
             {
-                AddFitText(caseCoverContent, "No active case is assigned to this clipboard. Begin a shift through the existing case flow.", 20, DeskUiPalette.InkMuted, FontStyle.Italic);
+                AddFitText(caseCoverContent, "No active case is assigned to this clipboard. Begin a shift through the existing case flow.", 22, DeskUiPalette.InkMuted, FontStyle.Italic);
                 return;
             }
 
-            AddFitText(caseCoverContent, caseFile.Title ?? "Untitled case", 28, DeskUiPalette.NavyDark, FontStyle.Bold);
-            AddFitText(caseCoverContent, "CASE ID  ·  " + (caseFile.CaseId ?? string.Empty), 15, DeskUiPalette.InkMuted, FontStyle.Bold);
-            AddFitText(caseCoverContent, "BRIEFING", 16, DeskUiPalette.Navy, FontStyle.Bold);
-            AddFitText(caseCoverContent, string.IsNullOrWhiteSpace(caseFile.Briefing) ? "No briefing has been filed." : caseFile.Briefing.Trim(), 19, DeskUiPalette.Ink, FontStyle.Normal);
+            AddFitText(caseCoverContent, caseFile.Title ?? "Untitled case", 32, DeskUiPalette.NavyDark, FontStyle.Bold);
+            AddFitText(caseCoverContent, "CASE ID  ·  " + (caseFile.CaseId ?? string.Empty), 18, DeskUiPalette.InkMuted, FontStyle.Bold);
+            AddFitText(caseCoverContent, "BRIEFING", 19, DeskUiPalette.Navy, FontStyle.Bold);
+            AddFitText(caseCoverContent, string.IsNullOrWhiteSpace(caseFile.Briefing) ? "No briefing has been filed." : caseFile.Briefing.Trim(), 21, DeskUiPalette.Ink, FontStyle.Normal);
 
-            AddFitText(caseCoverContent, "CURRENT ASSIGNMENT", 16, DeskUiPalette.Navy, FontStyle.Bold);
-            SuspectRecord current = shiftController != null ? shiftController.CurrentSuspect : null;
-            if (current == null)
+            CaseShiftPhase phase = shiftController != null ? shiftController.Phase : CaseShiftPhase.Inactive;
+            if (phase == CaseShiftPhase.Briefing && shiftController.CurrentSuspectIndex == 0)
             {
-                AddFitText(caseCoverContent, "No suspect is currently assigned. Check the active case phase.", 17, DeskUiPalette.InkMuted, FontStyle.Italic);
+                AddFitText(caseCoverContent, "CHOOSE YOUR FIRST SUSPECT", 21, DeskUiPalette.Navy, FontStyle.Bold);
+                IReadOnlyList<SuspectRecord> suspects = caseFile.Suspects;
+                for (int i = 0; i < suspects.Count; i++)
+                {
+                    SuspectRecord suspect = suspects[i];
+                    if (suspect == null || string.IsNullOrWhiteSpace(suspect.DisplayName))
+                        continue;
+                    SuspectRecord capturedSuspect = suspect;
+                    int capturedIndex = i;
+                    CreateCoverChoiceButton("START WITH " + suspect.DisplayName.ToUpperInvariant(), false,
+                        () => StartWithSuspect(capturedSuspect, capturedIndex));
+                }
             }
-            else
+            else if (phase == CaseShiftPhase.Charging)
             {
-                string role = string.IsNullOrWhiteSpace(current.CampusRole) ? string.Empty : "  ·  " + current.CampusRole;
-                AddFitText(caseCoverContent, current.DisplayName + role, 18, DeskUiPalette.Ink, FontStyle.Bold);
-                if (!string.IsNullOrWhiteSpace(current.Statement))
-                    AddFitText(caseCoverContent, "STATEMENT\n" + current.Statement.Trim(), 16, DeskUiPalette.Ink, FontStyle.Normal);
-                if (!string.IsNullOrWhiteSpace(current.Alibi))
-                    AddFitText(caseCoverContent, "ALIBI\n" + current.Alibi.Trim(), 16, DeskUiPalette.Ink, FontStyle.Normal);
+                AddFitText(caseCoverContent, "FINAL CHARGE", 22, DeskUiPalette.Navy, FontStyle.Bold);
+                AddFitText(caseCoverContent, "Choose one held suspect to charge, or close the case without filing a charge.", 19, DeskUiPalette.Ink, FontStyle.Normal);
+                IReadOnlyList<SuspectRecord> heldSuspects = shiftController.GetHeldSuspects();
+                for (int i = 0; i < heldSuspects.Count; i++)
+                {
+                    SuspectRecord suspect = heldSuspects[i];
+                    if (suspect == null || string.IsNullOrWhiteSpace(suspect.DisplayName))
+                        continue;
+                    string suspectId = suspect.Id;
+                    CreateCoverChoiceButton("CHARGE " + suspect.DisplayName.ToUpperInvariant(), true,
+                        () => ResolveFinalCharge(suspectId));
+                }
+                CreateCoverChoiceButton("NO CHARGE", false, ResolveNoCharge);
+            }
+            else if ((phase == CaseShiftPhase.Headline || phase == CaseShiftPhase.Resolved) && shiftController != null && shiftController.LastResolution != null)
+            {
+                CaseResolution resolution = shiftController.LastResolution;
+                AddFitText(caseCoverContent, "MORNING HEADLINE", 22, DeskUiPalette.Navy, FontStyle.Bold);
+                AddFitText(caseCoverContent, string.IsNullOrWhiteSpace(resolution.Headline) ? "Case closed." : resolution.Headline.Trim(), 28, DeskUiPalette.NavyDark, FontStyle.Bold);
+                if (!string.IsNullOrWhiteSpace(resolution.Subheadline))
+                    AddFitText(caseCoverContent, resolution.Subheadline.Trim(), 21, DeskUiPalette.Ink, FontStyle.Normal);
+                AddFitText(caseCoverContent, "VERDICT  ·  " + resolution.Outcome.ToString().ToUpperInvariant(), 20, DeskUiPalette.Navy, FontStyle.Bold);
+                AddFitText(caseCoverContent, "CHARGED  ·  " + (string.IsNullOrWhiteSpace(resolution.ChargedSuspectName) ? "NOBODY" : resolution.ChargedSuspectName), 19, DeskUiPalette.Ink, FontStyle.Normal);
+                AddFitText(caseCoverContent, "SCORE  ·  " + resolution.Score, 19, DeskUiPalette.InkMuted, FontStyle.Bold);
             }
 
             IReadOnlyList<EvidenceRecord> collected = shiftController != null ? shiftController.GetCollectedEvidence() : Array.Empty<EvidenceRecord>();
-            AddFitText(caseCoverContent, "EVIDENCE FILED  ·  " + collected.Count, 15, DeskUiPalette.InkMuted, FontStyle.Bold);
-            Canvas.ForceUpdateCanvases();
-            if (caseCoverScroll != null)
-                caseCoverScroll.verticalNormalizedPosition = 1f;
+            AddFitText(caseCoverContent, "EVIDENCE FILED  ·  " + collected.Count, 18, DeskUiPalette.InkMuted, FontStyle.Bold);
+            RebuildScrollAtTop(caseCoverScroll, caseCoverContent);
+        }
+
+        private void StartWithSuspect(SuspectRecord suspect, int suspectIndex)
+        {
+            if (suspect == null || shiftController == null || shiftController.Phase != CaseShiftPhase.Briefing)
+                return;
+
+            try
+            {
+                shiftController.SelectFirstSuspect(suspect.Id);
+                selectedPageIndex = suspectIndex + 1;
+                statusMessage = "Briefing selected · " + suspect.DisplayName + ". Review the statement, then begin the interview.";
+            }
+            catch (Exception exception)
+            {
+                statusMessage = "Could not select that suspect: " + exception.Message;
+                Debug.LogWarning(statusMessage, this);
+            }
+            RefreshPage();
+        }
+
+        private void ResolveFinalCharge(string suspectId)
+        {
+            if (shiftController == null || shiftController.Phase != CaseShiftPhase.Charging)
+                return;
+
+            selectedPageIndex = 0;
+            try
+            {
+                shiftController.ResolveCharge(suspectId);
+                statusMessage = "Case closed. Review the headline and verdict on the cover.";
+            }
+            catch (Exception exception)
+            {
+                statusMessage = "Could not file the charge: " + exception.Message;
+                Debug.LogWarning(statusMessage, this);
+            }
+            RefreshPage();
+        }
+
+        private void ResolveNoCharge()
+        {
+            if (shiftController == null || shiftController.Phase != CaseShiftPhase.Charging)
+                return;
+
+            selectedPageIndex = 0;
+            try
+            {
+                shiftController.ChargeNobody();
+                statusMessage = "Case closed without a charge. Review the headline and verdict on the cover.";
+            }
+            catch (Exception exception)
+            {
+                statusMessage = "Could not close the case without a charge: " + exception.Message;
+                Debug.LogWarning(statusMessage, this);
+            }
+            RefreshPage();
         }
 
         private void RefreshSuspectPage(SuspectRecord suspect)
@@ -734,7 +843,7 @@ namespace CaseClosed.UI
             if (profileContent != null)
             {
                 ClearChildren(profileContent);
-                AddFitText(profileContent, profile, 16, DeskUiPalette.Ink, FontStyle.Normal);
+                AddFitText(profileContent, profile, 19, DeskUiPalette.Ink, FontStyle.Normal);
                 RebuildScrollAtTop(profileScroll, profileContent);
             }
 
@@ -767,7 +876,7 @@ namespace CaseClosed.UI
             }
 
             if (visible == 0)
-                AddFitText(evidenceContent, "No records collected for this suspect yet. Collect case evidence through the existing investigation flow.", 15, DeskUiPalette.InkMuted, FontStyle.Italic);
+                AddFitText(evidenceContent, "No records collected for this suspect yet. Collect case evidence through the existing investigation flow.", 17, DeskUiPalette.InkMuted, FontStyle.Italic);
 
             RebuildScrollAtTop(evidenceScroll, evidenceContent);
         }
@@ -781,7 +890,7 @@ namespace CaseClosed.UI
             List<ChatTurn> turns;
             if (!turnsBySuspect.TryGetValue(suspect.Id, out turns) || turns.Count == 0)
             {
-                AddFitText(chatContent, "No interview turns yet.", 15, DeskUiPalette.InkMuted, FontStyle.Italic);
+                AddFitText(chatContent, "No interview turns yet.", 17, DeskUiPalette.InkMuted, FontStyle.Italic);
             }
             else
             {
@@ -812,19 +921,19 @@ namespace CaseClosed.UI
 
             if (string.IsNullOrWhiteSpace(evidenceId))
             {
-                AddFitText(questionContent, "Pin one of this suspect's collected records to reveal its question tree.", 15, DeskUiPalette.InkMuted, FontStyle.Italic);
+                AddFitText(questionContent, "Pin one of this suspect's collected records to reveal its question tree.", 17, DeskUiPalette.InkMuted, FontStyle.Italic);
                 return;
             }
 
             if (!canAsk)
             {
-                AddFitText(questionContent, "Question choices are available during this suspect's active interview.", 15, DeskUiPalette.InkMuted, FontStyle.Italic);
+                AddFitText(questionContent, "Question choices are available during this suspect's active interview.", 17, DeskUiPalette.InkMuted, FontStyle.Italic);
                 return;
             }
 
             if (awaitingReply || (dialogueService != null && dialogueService.IsBusy))
             {
-                AddFitText(questionContent, "Waiting for the suspect's reply…", 15, DeskUiPalette.InkMuted, FontStyle.Italic);
+                AddFitText(questionContent, "Waiting for the suspect's reply…", 17, DeskUiPalette.InkMuted, FontStyle.Italic);
                 return;
             }
 
@@ -833,7 +942,7 @@ namespace CaseClosed.UI
                 : null;
             if (choices == null || choices.Count == 0)
             {
-                AddFitText(questionContent, "No authored questions are available for this record.", 15, DeskUiPalette.InkMuted, FontStyle.Italic);
+                AddFitText(questionContent, "No authored questions are available for this record.", 17, DeskUiPalette.InkMuted, FontStyle.Italic);
                 return;
             }
 
@@ -864,14 +973,14 @@ namespace CaseClosed.UI
 
             CaseShiftPhase phase = shiftController.Phase;
             SuspectRecord current = shiftController.CurrentSuspect;
-            bool pageIsCurrent = isCover || (current != null && selectedSuspect != null &&
-                string.Equals(current.Id, selectedSuspect.Id, StringComparison.Ordinal));
-            bool canBegin = pageIsCurrent && current != null && phase == CaseShiftPhase.Briefing;
-            bool canDecide = pageIsCurrent && current != null && phase == CaseShiftPhase.Investigating;
+            bool pageIsCurrent = !isCover && current != null && selectedSuspect != null &&
+                string.Equals(current.Id, selectedSuspect.Id, StringComparison.Ordinal);
+            bool canBegin = pageIsCurrent && phase == CaseShiftPhase.Briefing;
+            bool canDecide = pageIsCurrent && phase == CaseShiftPhase.Investigating;
 
-            SetButtonVisible(beginInterviewButton, true);
-            SetButtonVisible(holdButton, true);
-            SetButtonVisible(releaseButton, true);
+            SetButtonVisible(beginInterviewButton, canBegin);
+            SetButtonVisible(holdButton, canDecide);
+            SetButtonVisible(releaseButton, canDecide);
             if (beginInterviewButton != null)
                 beginInterviewButton.interactable = canBegin;
             if (holdButton != null)
@@ -882,12 +991,18 @@ namespace CaseClosed.UI
             if (footerStatusText == null)
                 return;
 
-            if (!string.IsNullOrWhiteSpace(statusMessage))
+            if (phase == CaseShiftPhase.Charging)
+                footerStatusText.text = "FINAL CHARGE  ·  Choose a held suspect or select NO CHARGE on the case cover.";
+            else if (phase == CaseShiftPhase.Headline || phase == CaseShiftPhase.Resolved)
+                footerStatusText.text = "CASE CLOSED  ·  The headline and verdict are shown on the case cover.";
+            else if (!string.IsNullOrWhiteSpace(statusMessage))
                 footerStatusText.text = statusMessage;
+            else if (isCover && phase == CaseShiftPhase.Briefing)
+                footerStatusText.text = "CASE BRIEFING  ·  Choose who to start with on the cover.";
             else if (!pageIsCurrent && current != null)
                 footerStatusText.text = "Viewing another suspect's page. Select the current suspect to begin or stamp.";
             else if (phase == CaseShiftPhase.Briefing && current != null)
-                footerStatusText.text = "BRIEFING  ·  " + current.DisplayName + "  ·  Begin the interview to enter the Investigating phase.";
+                footerStatusText.text = "BRIEFING  ·  " + current.DisplayName + "  ·  Review the file, then begin the interview.";
             else if (phase == CaseShiftPhase.Investigating && current != null)
                 footerStatusText.text = "INTERVIEW  ·  " + current.DisplayName + "  ·  Questions left: " + shiftController.GetQuestionsLeft(current.Id);
             else
@@ -1022,13 +1137,13 @@ namespace CaseClosed.UI
         {
             GameObject row = new GameObject("EvidenceRecord", typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
             row.transform.SetParent(evidenceContent, false);
-            row.GetComponent<LayoutElement>().preferredHeight = 82f;
-            row.GetComponent<LayoutElement>().minHeight = 68f;
-            Text titleText = CreateLabel(row.transform, "Title", title, 14, selected ? DeskUiPalette.White : DeskUiPalette.NavyDark, FontStyle.Bold, TextAnchor.UpperLeft);
-            SetTopLeftRect(titleText.rectTransform, 12f, -8f, 500f, 20f);
-            Text descriptionText = CreateLabel(row.transform, "Description", description, 13, selected ? DeskUiPalette.White : DeskUiPalette.InkMuted, FontStyle.Normal, TextAnchor.UpperLeft);
-            Stretch(descriptionText.rectTransform, 12f, 10f, 34f, 8f);
-            descriptionText.verticalOverflow = VerticalWrapMode.Truncate;
+            row.GetComponent<LayoutElement>().preferredHeight = 98f;
+            row.GetComponent<LayoutElement>().minHeight = 88f;
+            Text titleText = CreateLabel(row.transform, "Title", title, 17, selected ? DeskUiPalette.White : DeskUiPalette.NavyDark, FontStyle.Bold, TextAnchor.UpperLeft);
+            SetTopLeftRect(titleText.rectTransform, 12f, -8f, 500f, 24f);
+            Text descriptionText = CreateLabel(row.transform, "Description", description, 16, selected ? DeskUiPalette.White : DeskUiPalette.InkMuted, FontStyle.Normal, TextAnchor.UpperLeft);
+            Stretch(descriptionText.rectTransform, 12f, 10f, 38f, 8f);
+            descriptionText.verticalOverflow = VerticalWrapMode.Overflow;
 
             Image image = row.GetComponent<Image>();
             Button button = row.GetComponent<Button>();
@@ -1036,6 +1151,8 @@ namespace CaseClosed.UI
                 selected ? DeskUiPalette.Navy : DeskUiPalette.ManilaLight,
                 selected ? DeskUiPalette.White : DeskUiPalette.Ink,
                 true);
+            ApplyReadableFont(titleText, 17);
+            titleText.fontStyle = FontStyle.Bold;
             titleText.color = selected ? DeskUiPalette.White : DeskUiPalette.NavyDark;
             descriptionText.color = selected ? DeskUiPalette.ManilaLight : DeskUiPalette.InkMuted;
             button.onClick.AddListener(() => onClick());
@@ -1046,17 +1163,39 @@ namespace CaseClosed.UI
             GameObject row = new GameObject("QuestionChoice", typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
             row.transform.SetParent(questionContent, false);
             LayoutElement layout = row.GetComponent<LayoutElement>();
-            float height = label.Length > 90 ? 66f : 52f;
+            float height = label.Length > 64 ? 78f : 60f;
             layout.preferredHeight = height;
             layout.minHeight = height;
-            Text text = CreateLabel(row.transform, "Label", label, 14, DeskUiPalette.White, FontStyle.Normal, TextAnchor.MiddleLeft);
-            Stretch(text.rectTransform, 14f, 5f);
-            text.verticalOverflow = VerticalWrapMode.Truncate;
+            Text text = CreateLabel(row.transform, "Label", label, 18, DeskUiPalette.White, FontStyle.Normal, TextAnchor.MiddleLeft);
+            Stretch(text.rectTransform, 16f, 7f);
+            text.verticalOverflow = VerticalWrapMode.Overflow;
             Button button = row.GetComponent<Button>();
             DeskUiPalette.StyleFormRow(button, row.GetComponent<Image>(), text,
                 aggressive ? DeskUiPalette.NavyDark : DeskUiPalette.Navy,
                 DeskUiPalette.White,
                 true);
+            ApplyReadableFont(text, 18);
+            button.onClick.AddListener(() => onClick());
+        }
+
+        private void CreateCoverChoiceButton(string label, bool emphasized, Action onClick)
+        {
+            GameObject row = new GameObject("CaseCoverChoice", typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
+            row.transform.SetParent(caseCoverContent, false);
+            LayoutElement layout = row.GetComponent<LayoutElement>();
+            float height = label.Length > 58 ? 76f : 62f;
+            layout.preferredHeight = height;
+            layout.minHeight = height;
+            Text text = CreateLabel(row.transform, "Label", label, 19, DeskUiPalette.White, FontStyle.Bold, TextAnchor.MiddleLeft);
+            Stretch(text.rectTransform, 18f, 8f);
+            text.verticalOverflow = VerticalWrapMode.Overflow;
+            Button button = row.GetComponent<Button>();
+            DeskUiPalette.StyleFormRow(button, row.GetComponent<Image>(), text,
+                emphasized ? DeskUiPalette.NavyDark : DeskUiPalette.Navy,
+                DeskUiPalette.White,
+                true);
+            ApplyReadableFont(text, 19);
+            text.fontStyle = FontStyle.Bold;
             button.onClick.AddListener(() => onClick());
         }
 
@@ -1078,7 +1217,7 @@ namespace CaseClosed.UI
 
         private void AddChatLine(Transform parent, string speaker, string line, Color color, FontStyle style)
         {
-            Text text = CreateLabel(parent, "ChatLine", speaker + "\n" + line, 15, color, style, TextAnchor.UpperLeft);
+            Text text = CreateLabel(parent, "ChatLine", speaker + "\n" + line, 18, color, style, TextAnchor.UpperLeft);
             text.horizontalOverflow = HorizontalWrapMode.Wrap;
             text.verticalOverflow = VerticalWrapMode.Overflow;
             AddPreferredHeightFitter(text);
@@ -1086,9 +1225,9 @@ namespace CaseClosed.UI
 
         private void CreateSectionCaption(Transform parent, string caption)
         {
-            Text label = CreateLabel(parent, "SectionCaption", caption, 13, DeskUiPalette.Navy, FontStyle.Bold, TextAnchor.MiddleLeft);
-            SetTopLeftRect(label.rectTransform, 12f, -8f, 600f, 22f);
-            label.verticalOverflow = VerticalWrapMode.Truncate;
+            Text label = CreateLabel(parent, "SectionCaption", caption, 16, DeskUiPalette.Navy, FontStyle.Bold, TextAnchor.MiddleLeft);
+            SetTopLeftRect(label.rectTransform, 12f, -7f, 720f, 26f);
+            label.verticalOverflow = VerticalWrapMode.Overflow;
             DeskUiPalette.AddHairline(parent, "SectionRule", 34f, 1.5f, true);
         }
 
@@ -1160,10 +1299,11 @@ namespace CaseClosed.UI
             element.preferredHeight = height;
             element.minWidth = width;
             element.preferredWidth = width;
-            Text text = CreateLabel(buttonObject.transform, "Label", label, 14, textColor, FontStyle.Bold, TextAnchor.MiddleCenter);
+            Text text = CreateLabel(buttonObject.transform, "Label", label, 17, textColor, FontStyle.Bold, TextAnchor.MiddleCenter);
             Stretch(text.rectTransform, 8f, 4f);
             Button button = buttonObject.GetComponent<Button>();
             DeskUiPalette.StyleStampButton(button, buttonObject.GetComponent<Image>(), text, fill, true);
+            ApplyReadableFont(text, 17);
             if (onClick != null)
                 button.onClick.AddListener(() => onClick());
             return button;
@@ -1184,9 +1324,25 @@ namespace CaseClosed.UI
             Text text = go.GetComponent<Text>();
             text.text = value ?? string.Empty;
             DeskUiPalette.StyleLabel(text, fontSize, color, DeskUiPalette.TypeRole.Body, style, alignment);
+            ApplyReadableFont(text, fontSize);
             text.horizontalOverflow = HorizontalWrapMode.Wrap;
             text.verticalOverflow = VerticalWrapMode.Overflow;
             return text;
+        }
+
+        private static void ApplyReadableFont(Text text, int fontSize)
+        {
+            if (text == null)
+                return;
+
+            if (cachedReadableRuntimeFont == null)
+                cachedReadableRuntimeFont = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+
+            if (cachedReadableRuntimeFont != null)
+                text.font = cachedReadableRuntimeFont;
+            if (fontSize > 0)
+                text.fontSize = fontSize;
+            text.lineSpacing = 1.12f;
         }
 
         private void SetButtonVisible(Button button, bool visible)

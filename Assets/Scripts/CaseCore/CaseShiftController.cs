@@ -89,6 +89,7 @@ namespace CaseClosed.CaseCore
         [SerializeField] private MorningHeadlineUnityEvent onMorningHeadline = new MorningHeadlineUnityEvent();
 
         private CaseSession activeSession;
+        private readonly List<int> suspectOrder = new List<int>();
         private int currentSuspectIndex;
         private float secondsRemaining;
         private bool isResolving;
@@ -127,14 +128,23 @@ namespace CaseClosed.CaseCore
         {
             get
             {
-                if (activeSession == null || currentSuspectIndex < 0 || currentSuspectIndex >= activeSession.Case.Suspects.Count)
+                if (activeSession == null || currentSuspectIndex < 0 || currentSuspectIndex >= suspectOrder.Count)
                     return null;
-                return activeSession.Case.Suspects[currentSuspectIndex];
+                int caseIndex = suspectOrder[currentSuspectIndex];
+                IReadOnlyList<SuspectRecord> suspects = activeSession.Case.Suspects;
+                return caseIndex >= 0 && caseIndex < suspects.Count ? suspects[caseIndex] : null;
             }
         }
 
         /// <summary>Zero-based index of <see cref="CurrentSuspect"/>, or -1 when none.</summary>
-        public int CurrentSuspectIndex { get { return CurrentSuspect == null ? -1 : currentSuspectIndex; } }
+        public int CurrentSuspectIndex
+        {
+            get
+            {
+                SuspectRecord current = CurrentSuspect;
+                return current == null ? -1 : suspectOrder[currentSuspectIndex];
+            }
+        }
 
         /// <summary>Remaining whole seconds on the shift clock.</summary>
         public int SecondsRemaining { get { return Mathf.CeilToInt(Mathf.Max(0f, secondsRemaining)); } }
@@ -170,6 +180,9 @@ namespace CaseClosed.CaseCore
 
             activeSession = new CaseSession(caseDefinition);
             interrogationController.BeginCase(activeSession);
+            suspectOrder.Clear();
+            for (int suspectIndex = 0; suspectIndex < caseDefinition.Suspects.Count; suspectIndex++)
+                suspectOrder.Add(suspectIndex);
             currentSuspectIndex = 0;
             secondsRemaining = Mathf.Max(0, shiftDurationSeconds);
             isResolving = false;
@@ -177,6 +190,42 @@ namespace CaseClosed.CaseCore
             lastHeadline = null;
             SetPhase(CaseShiftPhase.Briefing);
             RaiseNextSuspectReady();
+        }
+
+        /// <summary>Selects the first suspect for a new shift before any suspect has received a decision.</summary>
+        /// <param name="suspectId">The case suspect id to bring into the first interview.</param>
+        public void SelectFirstSuspect(string suspectId)
+        {
+            EnsureActive();
+            if (Phase != CaseShiftPhase.Briefing)
+                throw new InvalidOperationException("Choose the first suspect during case briefing.");
+            if (currentSuspectIndex != 0)
+                throw new InvalidOperationException("The first suspect can only be chosen before the first decision.");
+            if (string.IsNullOrWhiteSpace(suspectId))
+                throw new ArgumentException("A suspect id is required.", "suspectId");
+
+            IReadOnlyList<SuspectRecord> suspects = activeSession.Case.Suspects;
+            for (int i = 0; i < suspects.Count; i++)
+            {
+                if (suspects[i] == null || activeSession.GetDecision(suspects[i].Id) != SuspectDecision.Undecided)
+                    throw new InvalidOperationException("The first suspect can only be changed before any decisions are recorded.");
+                if (string.Equals(suspects[i].Id, suspectId, StringComparison.Ordinal))
+                {
+                    int orderIndex = suspectOrder.IndexOf(i);
+                    if (orderIndex < 0)
+                        throw new InvalidOperationException("The suspect order is not initialized for this shift.");
+                    if (orderIndex > 0)
+                    {
+                        suspectOrder.RemoveAt(orderIndex);
+                        suspectOrder.Insert(0, i);
+                    }
+                    currentSuspectIndex = 0;
+                    RaiseNextSuspectReady();
+                    return;
+                }
+            }
+
+            throw new ArgumentException("The selected suspect is not part of the active case.", "suspectId");
         }
 
         /// <summary>Begins investigating the current suspect after the briefing or previous decision.</summary>
@@ -252,7 +301,7 @@ namespace CaseClosed.CaseCore
                 throw new ArgumentException("Stamp HOLD or RELEASE.", "decision");
 
             SuspectRecord stamped = CurrentSuspect;
-            int stampedIndex = currentSuspectIndex;
+            int stampedIndex = CurrentSuspectIndex;
             int suspectCount = activeSession.Case.Suspects.Count;
 
             activeSession.SetDecision(stamped.Id, decision);
@@ -334,13 +383,13 @@ namespace CaseClosed.CaseCore
                 return;
 
             IReadOnlyList<SuspectRecord> suspects = activeSession.Case.Suspects;
-            for (int i = currentSuspectIndex; i < suspects.Count; i++)
+            for (int i = 0; i < suspects.Count; i++)
             {
                 if (activeSession.GetDecision(suspects[i].Id) == SuspectDecision.Undecided)
                     activeSession.SetDecision(suspects[i].Id, SuspectDecision.Release);
             }
 
-            currentSuspectIndex = suspects.Count;
+            currentSuspectIndex = suspectOrder.Count;
             SetPhase(CaseShiftPhase.Charging);
             RaiseChargeReady();
             CompleteResolution(null);
@@ -429,7 +478,7 @@ namespace CaseClosed.CaseCore
                 SuspectName = suspect.DisplayName,
                 Statement = suspect.Statement,
                 CampusRole = suspect.CampusRole,
-                SuspectIndex = currentSuspectIndex,
+                SuspectIndex = CurrentSuspectIndex,
                 SuspectCount = activeSession.Case.Suspects.Count
             };
             NextSuspectReady?.Invoke(nextEvent);
