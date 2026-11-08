@@ -8,7 +8,7 @@ namespace CaseClosed.Characters
     /// Optional CaseShift integration via reflection so this file compiles even when CaseCore
     /// scripts are not on the branch yet. When a <c>CaseShiftController</c> exists at runtime:
     /// Briefing → enter current suspect; Investigating→Briefing decision → exit then enter next;
-    /// Charging/Resolved → exit clear.
+    /// Charging/Headline/Resolved → exit clear.
     /// </summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(SuspectEnterController))]
@@ -167,7 +167,7 @@ namespace CaseClosed.Characters
                 }
             }
             else if (autoExitOnDecision &&
-                     (phaseName == "Charging" || phaseName == "Resolved") &&
+                     (phaseName == "Charging" || phaseName == "Headline" || phaseName == "Resolved") &&
                      !string.IsNullOrEmpty(enterController.ActiveSuspectId))
             {
                 enterController.PlayExit(null);
