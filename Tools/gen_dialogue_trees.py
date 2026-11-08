@@ -99,7 +99,10 @@ def main() -> None:
     for a in interviewees:
         tree = build_tree(a)
         blob = json.dumps(tree).lower()
-        for banned in ("9:37", "9:15", "storage-room", "event-storage", "mascot head", "took the head", "nordy"):
+        for banned in (
+            "9:37", "9:15", "storage-room", "event-storage", "mascot head", "took the head", "nordy",
+            "incident window", "the trap", "checklist", "upstairs", "the page", "motive on the table",
+        ):
             if banned in blob:
                 raise SystemExit(f"Banned phrase {banned!r} in tree {a['id']}")
         for branch_obj in tree["branches"]:

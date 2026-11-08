@@ -7,7 +7,7 @@
       "questions": [
         {
           "id": "taylor_access_q1",
-          "prompt": "This page puts you inside the incident window after you said you were gone. Explain it.",
+          "prompt": "You told me you were gone. This says you weren't. Talk.",
           "aggressive": true,
           "replies": [
             {
@@ -15,7 +15,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I finished desk coverage and I was at the north hall duty post. I do not abandon a desk to wander into an incident. This page is not my round.",
+              "line": "I was on the north hall desk for my whole block. I didn't get up except to hand out a package.",
               "onlyIfInnocent": true
             },
             {
@@ -23,7 +23,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I am careful because residents repeat what RAs say. So I will be careful now: I had left that scene. I was on duty where I told you.",
+              "line": "My voice shakes on this and I need you to hear the words anyway. I was at the desk.",
               "onlyIfInnocent": true
             },
             {
@@ -31,7 +31,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I am frightened for the resident in your case, and I am not the person who did it. Fear for them is not an admission.",
+              "line": "Please. North desk. I signed people in. I didn't leave the chair for this.",
               "onlyIfInnocent": true
             },
             {
@@ -39,7 +39,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "I will not confess to calm a building. I was at the duty desk. That is the night.",
+              "line": "I was at the north desk. I'm not gonna invent a walk so you'll let me go. I didn't do it.",
               "onlyIfInnocent": true
             },
             {
@@ -47,7 +47,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I tell residents not to lie in conduct meetings, so I am having a bad hour. The version I gave you is the duty desk. I am not ready to model the other version.",
+              "line": "I know an RA near a write-up looks like the write-up. I was on the north desk. I'm staying there.",
               "onlyIfCulprit": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "If I correct myself I will correct myself all the way, and I am not doing that in this breath. I said I was at the desk.",
+              "line": "Don't make me fill the quiet. I was at the desk. I didn't get up.",
               "onlyIfCulprit": true
             },
             {
@@ -63,7 +63,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I left the desk. I went back. I am not walking a resident through the rest of it by describing it here.",
+              "line": "I keep thinking about the conduct file, and I still didn't leave the desk.",
               "onlyIfCulprit": true
             },
             {
@@ -71,14 +71,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I was in the window, not at the desk. I do not get to be the careful RA in that sentence. Write it plain.",
+              "line": "I did it. I left the north desk. The desk version was me protecting the hall and myself.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "taylor_access_q2",
-          "prompt": "Your statement and this record do not match. Which one should I keep?",
+          "prompt": "You told me one thing. This says another. Which one's true?",
           "aggressive": true,
           "replies": [
             {
@@ -86,7 +86,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "My job is knowing who is in the hall. I know where I was. I was not back inside your window.",
+              "line": "The desk is the true one. I had duty. I stayed. I didn't slip out.",
               "onlyIfInnocent": true
             },
             {
@@ -94,7 +94,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A bad record upsets me because I live in records. This one is wrong. I stayed at the north desk.",
+              "line": "I know it sounds like the speech we give residents. It's also just where I was. The north desk.",
               "onlyIfInnocent": true
             },
             {
@@ -102,7 +102,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "You can press. I train for upset residents. I did not go back.",
+              "line": "My hands are under my legs so you won't see them. I was at the desk. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -110,7 +110,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "For the duty log: gone from the scene, present at the desk. Do not swap them.",
+              "line": "You can ask the duty group chat. North desk. I didn't do it.",
               "onlyIfInnocent": true
             },
             {
@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The page is the kind of thing I would file on somebody else. I am still filing the desk story on myself. I know how that sounds.",
+              "line": "I need the desk to be what you write, because it's what I did. I didn't leave.",
               "onlyIfCulprit": true
             },
             {
@@ -126,7 +126,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I keep thinking about the resident who has to live with this, and using that to hide. I was at the desk. That sentence is the hide.",
+              "line": "I almost said I walked a floor. I walked one package to a door and I came straight back.",
               "onlyIfCulprit": true
             },
             {
@@ -134,7 +134,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I came back after duty said I was done. I am not giving you the act while I can still choose to be useful instead of honest.",
+              "line": "I'm staying with the desk. Duty started, duty ran, I was in the chair.",
               "onlyIfCulprit": true
             },
             {
@@ -142,14 +142,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Honest version: I went back and I did it. The duty-desk alibi was me doing what I tell residents not to do.",
+              "line": "The desk was a lie. I did it. I left the north hall stool.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "taylor_access_q3",
-          "prompt": "Walk this page slowly. Where were you actually standing?",
+          "prompt": "Slow down. Where were you actually standing?",
           "aggressive": false,
           "replies": [
             {
@@ -157,7 +157,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I finished desk coverage and I was at the north hall duty post. I do not abandon a desk to wander into an incident. This page is not my round. That is the order of it.",
+              "line": "At the north hall desk, on the stool, facing the door. That's where I was.",
               "onlyIfInnocent": true
             },
             {
@@ -165,7 +165,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I am careful because residents repeat what RAs say. So I will be careful now: I had left that scene. I was on duty where I told you. That is the order of it.",
+              "line": "On the stool. I can tell you who I signed in. I wasn't down a side hall.",
               "onlyIfInnocent": true
             },
             {
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I am frightened for the resident in your case, and I am not the person who did it. Fear for them is not an admission. That is the order of it.",
+              "line": "The desk. Please don't stand so close. I was on the stool the whole block.",
               "onlyIfInnocent": true
             },
             {
@@ -181,7 +181,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "I will not confess to calm a building. I was at the duty desk. That is the night. That is the order of it.",
+              "line": "North desk, the stool. I'm done. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I tell residents not to lie in conduct meetings, so I am having a bad hour. The version I gave you is the duty desk. I am not ready to model the other version. I am not adding a third version.",
+              "line": "North hall desk. The stool. That's the spot I'm giving you.",
               "onlyIfCulprit": true
             },
             {
@@ -197,7 +197,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "If I correct myself I will correct myself all the way, and I am not doing that in this breath. I said I was at the desk. I am not adding a third version.",
+              "line": "I keep saying the stool because I was on it. I didn't tour the building.",
               "onlyIfCulprit": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I left the desk. I went back. I am not walking a resident through the rest of it by describing it here. I am not adding a third version.",
+              "line": "I was at that desk. I'm not relocating myself to make the file easier.",
               "onlyIfCulprit": true
             },
             {
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I was in the window, not at the desk. I do not get to be the careful RA in that sentence. Write it plain. I am not adding a third version.",
+              "line": "I wasn't on that north-desk stool. I did it. I left the desk.",
               "onlyIfCulprit": true
             }
           ]
@@ -225,7 +225,7 @@
       "questions": [
         {
           "id": "taylor_herring_q1",
-          "prompt": "This record looks like preparation. What was it actually for?",
+          "prompt": "What's this for?",
           "aggressive": false,
           "replies": [
             {
@@ -233,34 +233,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That lockout or key note is a resident assist, logged and closed. It is my job. It is not the incident. I write people up. I do not become the write-up."
+              "line": "That's a hall purchase. I bought it for a floor program I already had on the calendar."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I touch temporary keys. I also return them. The log time is the assist, earlier. Do not drag it into the window. I write people up. I do not become the write-up."
+              "line": "RAs buy cups and snacks for programs. This was the program. I have the signup."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks like access because RAs have access, supervised and written down. This line is written down. It ended. I write people up. I do not become the write-up."
+              "line": "It looks like I was setting something up. I was. A floor program. Not this."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Do not hold me for doing the duty I was praised for yesterday. The assist is closed. I write people up. I do not become the write-up."
+              "line": "Program supplies. I'm not gonna apologize for doing the RA job in the afternoon."
             }
           ]
         },
         {
           "id": "taylor_herring_q2",
-          "prompt": "Someone will tell me to hold you on this page alone. Why is that wrong?",
+          "prompt": "You've got this from today. Why'd you have it?",
           "aggressive": true,
           "replies": [
             {
@@ -268,34 +268,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That lockout or key note is a resident assist, logged and closed. It is my job. It is not the incident. Residents were in the hall. I was at the desk I named."
+              "line": "Because the program was tonight, earlier than my desk block. I bought it so residents would show."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I touch temporary keys. I also return them. The log time is the assist, earlier. Do not drag it into the window. Residents were in the hall. I was at the desk I named."
+              "line": "Same day is how programming works. I had it for the floor, not for this."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks like access because RAs have access, supervised and written down. This line is written down. It ended. Residents were in the hall. I was at the desk I named."
+              "line": "I had it because a program without supplies is me standing in an empty lounge. I bought the supplies."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Do not hold me for doing the duty I was praised for yesterday. The assist is closed. Residents were in the hall. I was at the desk I named."
+              "line": "I had it for the residents. The date is the program date. That's all."
             }
           ]
         },
         {
           "id": "taylor_herring_q3",
-          "prompt": "Set this beside the incident clock. Does it still touch the scene?",
+          "prompt": "Does this have anything to do with what happened?",
           "aggressive": false,
           "replies": [
             {
@@ -303,28 +303,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That lockout or key note is a resident assist, logged and closed. It is my job. It is not the incident. Put the duty log ahead of the guess."
+              "line": "No. It's for the floor program. It doesn't have anything to do with this."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I touch temporary keys. I also return them. The log time is the assist, earlier. Do not drag it into the window. Put the duty log ahead of the guess."
+              "line": "The signup sheet ate the supplies. I'm telling you they were for that, and they're gone that way."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks like access because RAs have access, supervised and written down. This line is written down. It ended. Put the duty log ahead of the guess."
+              "line": "Don't put it on what happened. I used it for a program I advertised."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Do not hold me for doing the duty I was praised for yesterday. The assist is closed. Put the duty log ahead of the guess."
+              "line": "No. It was a floor program. I'm done defending snacks."
             }
           ]
         }
@@ -335,7 +335,7 @@
       "questions": [
         {
           "id": "taylor_alibi_q1",
-          "prompt": "This is the page you are using as an alibi. Does it still hold?",
+          "prompt": "This is what you're leaning on. Were you really there?",
           "aggressive": false,
           "replies": [
             {
@@ -343,34 +343,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The desk still is the alibi. I am in the chair during the window I claimed. I did not slip out. I write people up. I do not become the write-up."
+              "line": "Yes. I was on the north desk. The duty log and the night I described are the same chair."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Doubling back means the desk camera loses me. It does not. I stayed for the residents. I write people up. I do not become the write-up."
+              "line": "Once I sat for duty I stayed. Getting up for a package is not leaving the hall."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The RA who relieved me can speak, and the still can speak sooner. I was there. I write people up. I do not become the write-up."
+              "line": "Residents came for keys. They saw me. I was on the stool."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If you discard the still, discard the idea that the desk was covered. It was covered by me. I write people up. I do not become the write-up."
+              "line": "If you ignore the duty log, the residents still saw me. I was there."
             }
           ]
         },
         {
           "id": "taylor_alibi_q2",
-          "prompt": "Could you have doubled back after this stamp?",
+          "prompt": "Could you have gone back after this?",
           "aggressive": true,
           "replies": [
             {
@@ -378,34 +378,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The desk still is the alibi. I am in the chair during the window I claimed. I did not slip out. Residents were in the hall. I was at the desk I named."
+              "line": "No. Duty doesn't let me vanish. I didn't leave the desk and double back from somewhere."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Doubling back means the desk camera loses me. It does not. I stayed for the residents. Residents were in the hall. I was at the desk I named."
+              "line": "After the package I was back on the stool in a minute. I didn't go on a trip."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The RA who relieved me can speak, and the still can speak sooner. I was there. Residents were in the hall. I was at the desk I named."
+              "line": "I couldn't have. The hall phone rings on that desk. I answered it."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If you discard the still, discard the idea that the desk was covered. It was covered by me. Residents were in the hall. I was at the desk I named."
+              "line": "No. I didn't go out. The north desk was the whole block."
             }
           ]
         },
         {
           "id": "taylor_alibi_q3",
-          "prompt": "If this support page is wrong, who actually saw you?",
+          "prompt": "If this is off, who actually saw you?",
           "aggressive": false,
           "replies": [
             {
@@ -413,28 +413,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The desk still is the alibi. I am in the chair during the window I claimed. I did not slip out. Put the duty log ahead of the guess."
+              "line": "Residents who picked up keys. A few of them. They saw me on the stool."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Doubling back means the desk camera loses me. It does not. I stayed for the residents. Put the duty log ahead of the guess."
+              "line": "The RA who relieved me. They saw me still there at the end of the block."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The RA who relieved me can speak, and the still can speak sooner. I was there. Put the duty log ahead of the guess."
+              "line": "Ask the person who took the next shift. They didn't find an empty desk."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If you discard the still, discard the idea that the desk was covered. It was covered by me. Put the duty log ahead of the guess."
+              "line": "The relief RA. That's a named person. I'm not inventing a friend."
             }
           ]
         }
@@ -445,7 +445,7 @@
       "questions": [
         {
           "id": "taylor_roster_q1",
-          "prompt": "This listing puts you on tonight's work. When did you leave it?",
+          "prompt": "You're on this list. When did you leave?",
           "aggressive": false,
           "replies": [
             {
@@ -453,34 +453,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The coverage roster says I was the evening RA. Coverage is the desk, not your scene. I did the coverage. I write people up. I do not become the write-up."
+              "line": "The list is the duty roster. My block ended when the next RA sat down. I was on the desk until then."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Being the RA on duty is not a motive. It is a shift. The shift has a chair and I was in it. I write people up. I do not become the write-up."
+              "line": "When relief showed up. Other RAs are on that list. Mine was the north desk block."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster and still agree. I like it when the paperwork agrees. It agrees. I write people up. I do not become the write-up."
+              "line": "End of my duty block. A name on the RA list isn't me loose in the building after."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay at the scene. My duty was the hall I named. I kept it. I write people up. I do not become the write-up."
+              "line": "I didn't stay past relief. The next name on the roster took the stool."
             }
           ]
         },
         {
           "id": "taylor_roster_q2",
-          "prompt": "Did this listing give you a key, a login, or a reason to stay through the window?",
+          "prompt": "Did being on this let you stay late?",
           "aggressive": true,
           "replies": [
             {
@@ -488,34 +488,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The coverage roster says I was the evening RA. Coverage is the desk, not your scene. I did the coverage. Residents were in the hall. I was at the desk I named."
+              "line": "No. The duty list put me on the north desk. It didn't send me anywhere else."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Being the RA on duty is not a motive. It is a shift. The shift has a chair and I was in it. Residents were in the hall. I was at the desk I named."
+              "line": "It gave me a stool and a phone. I used both. Then relief came."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster and still agree. I like it when the paperwork agrees. It agrees. Residents were in the hall. I was at the desk I named."
+              "line": "No. Being the RA on duty isn't a pass to leave the desk. I stayed."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay at the scene. My duty was the hall I named. I kept it. Residents were in the hall. I was at the desk I named."
+              "line": "No. I'm not gonna read a duty roster like permission. I had one desk."
             }
           ]
         },
         {
           "id": "taylor_roster_q3",
-          "prompt": "Why does this roster matter if your alibi is somewhere else?",
+          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
           "aggressive": false,
           "replies": [
             {
@@ -523,28 +523,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The coverage roster says I was the evening RA. Coverage is the desk, not your scene. I did the coverage. Put the duty log ahead of the guess."
+              "line": "Because I'm the RA on duty. The list is the block. I was on the north desk, which is what I said."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Being the RA on duty is not a motive. It is a shift. The shift has a chair and I was in it. Put the duty log ahead of the guess."
+              "line": "My name's there because housing scheduled me. I did the block."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster and still agree. I like it when the paperwork agrees. It agrees. Put the duty log ahead of the guess."
+              "line": "It's a duty roster. I can be on it and still have been on the stool. That's the point of the list."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay at the scene. My duty was the hall I named. I kept it. Put the duty log ahead of the guess."
+              "line": "The list is the desk I worked. I said I worked the desk. Same thing."
             }
           ]
         }
@@ -555,7 +555,7 @@
       "questions": [
         {
           "id": "taylor_sign_q1",
-          "prompt": "The sign-in puts you on site earlier. When did you actually leave?",
+          "prompt": "You signed this. When did you actually leave?",
           "aggressive": false,
           "replies": [
             {
@@ -563,34 +563,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the duty sheet at the start of coverage. Start of coverage is not your window. I write people up. I do not become the write-up."
+              "line": "I signed the duty sheet when I sat down, and I signed the handoff when relief got there."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "On duty in a hall is a specific desk. Do not smear every building I have ever swiped into one room. I write people up. I do not become the write-up."
+              "line": "The signature is the start of the desk block. The handoff is the end. I was there between them."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A duty sign-in does not give me a toy key. The keys I hold are logged per assist. I write people up. I do not become the write-up."
+              "line": "I stayed until relief. Signing in didn't send me on a round."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Signed on, sat the desk, stayed. I am not adding a field trip I did not take. I write people up. I do not become the write-up."
+              "line": "Handoff. That's when I left the stool. I'm not gonna stretch the block."
             }
           ]
         },
         {
           "id": "taylor_sign_q2",
-          "prompt": "Being on that sheet put you near the scene. How near, and how late?",
+          "prompt": "This puts you in the building. How late were you there?",
           "aggressive": true,
           "replies": [
             {
@@ -598,34 +598,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the duty sheet at the start of coverage. Start of coverage is not your window. Residents were in the hall. I was at the desk I named."
+              "line": "The whole block, until relief. I was at the north desk. I wasn't out in the hall doing this."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "On duty in a hall is a specific desk. Do not smear every building I have ever swiped into one room. Residents were in the hall. I was at the desk I named."
+              "line": "Late enough that residents were still coming for keys. I was on the stool for them."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A duty sign-in does not give me a toy key. The keys I hold are logged per assist. Residents were in the hall. I was at the desk I named."
+              "line": "Through my duty block. That's how late. Then the next RA had it."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Signed on, sat the desk, stayed. I am not adding a field trip I did not take. Residents were in the hall. I was at the desk I named."
+              "line": "As late as the roster says my block runs. Then I handed it off. Don't add time."
             }
           ]
         },
         {
           "id": "taylor_sign_q3",
-          "prompt": "Did signing in hand you a key or any other credential?",
+          "prompt": "Did signing this get you a key?",
           "aggressive": false,
           "replies": [
             {
@@ -633,28 +633,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the duty sheet at the start of coverage. Start of coverage is not your window. Put the duty log ahead of the guess."
+              "line": "No. Signing the duty sheet got me the desk phone and the key box for packages. I didn't take a master."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "On duty in a hall is a specific desk. Do not smear every building I have ever swiped into one room. Put the duty log ahead of the guess."
+              "line": "A sign-in is how housing knows the desk is covered. It isn't a personal key."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A duty sign-in does not give me a toy key. The keys I hold are logged per assist. Put the duty log ahead of the guess."
+              "line": "No key for me. The box opens for packages and it stays at the desk."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Signed on, sat the desk, stayed. I am not adding a field trip I did not take. Put the duty log ahead of the guess."
+              "line": "No. I got the desk. I didn't get a key to carry around. The box doesn't leave."
             }
           ]
         }
@@ -673,7 +673,7 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "You may hold me. I did not do this. I was on duty at the north desk, and I want the denial in the same ink as the stamp.",
+              "line": "I was on the north desk the whole block. Please don't keep me. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -681,7 +681,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "This is the wrong resident staff. I am angry because I spend my nights stopping this, not doing it.",
+              "line": "You can't pin this on the RA who stayed at the desk. I didn't do it.",
               "onlyIfInnocent": true
             },
             {
@@ -689,7 +689,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "The hold does not make me the example in my own conduct speech. I am still on the desk story.",
+              "line": "Wait, you're actually keeping me? I was on the north desk. I didn't get up. Please, I didn't do this.",
               "onlyIfCulprit": true
             },
             {
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Hold me. I left the desk and I did it. I will not teach a lie after telling you the truth.",
+              "line": "I did it. I left the north desk. Put that in the file, not the version I walked in with.",
               "onlyIfCulprit": true
             }
           ]
@@ -717,7 +717,7 @@
               "maxStress": 100,
               "emotion": "calm",
               "slip": false,
-              "line": "Thank you. I need to get back to the hall. If you call, bring a page that beats the desk still.",
+              "line": "Thank you. I'll go back to the desk before the hall thinks I abandoned it. I was there.",
               "onlyIfInnocent": true
             },
             {
@@ -725,7 +725,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "Then I am out on the duty story. I am leaving before I make it worse.",
+              "line": "Okay. I'll go. I was on the north desk. Please write that, not a guess.",
               "onlyIfCulprit": true
             },
             {
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Releasing me does not put me back at the desk. I told you I did it. Keep that, even if I walk out.",
+              "line": "I already said it. I did it. I'm not gonna clean it up on the way out.",
               "onlyIfCulprit": true
             }
           ]

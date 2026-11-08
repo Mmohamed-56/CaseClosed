@@ -346,10 +346,7 @@ namespace CaseClosed.UI
             string name = string.IsNullOrWhiteSpace(turn.SuspectName) ? "Suspect" : turn.SuspectName;
 
             AppendTranscript(name + ": " + (line ?? string.Empty).Trim());
-            string source = string.IsNullOrWhiteSpace(turn.ReplySource)
-                ? (turn.UsedMock ? "scripted" : "suspect")
-                : turn.ReplySource.Trim();
-            statusMessage = "[" + source + "] " + name + " — stress " + result.Stress + "/100 · " + result.QuestionsLeft + " left";
+            statusMessage = name + " answered. " + result.QuestionsLeft + " questions left.";
             if (!string.IsNullOrEmpty(turn.Error))
                 statusMessage += " · " + turn.Error;
             RefreshAll();
@@ -588,6 +585,8 @@ namespace CaseClosed.UI
             {
                 if (caseFile == null || string.IsNullOrWhiteSpace(caseFile.Title))
                     headerCaseText.text = "No active case";
+                else if (!string.IsNullOrWhiteSpace(caseFile.Location))
+                    headerCaseText.text = caseFile.Location.Trim();
                 else
                     headerCaseText.text = caseFile.Title + (string.IsNullOrWhiteSpace(caseFile.CaseId) ? string.Empty : "  ·  " + caseFile.CaseId);
             }
@@ -817,6 +816,8 @@ namespace CaseClosed.UI
             System.Text.StringBuilder sb = new System.Text.StringBuilder(512);
             if (!string.IsNullOrWhiteSpace(caseFile.Title))
                 sb.AppendLine(caseFile.Title);
+            if (!string.IsNullOrWhiteSpace(caseFile.Location))
+                sb.AppendLine(caseFile.Location.Trim());
             if (!string.IsNullOrWhiteSpace(caseFile.CaseId))
                 sb.AppendLine("File " + caseFile.CaseId);
             sb.AppendLine();

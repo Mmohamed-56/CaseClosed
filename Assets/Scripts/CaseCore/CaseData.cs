@@ -92,6 +92,8 @@ namespace CaseClosed.CaseCore
         public string CaseId { get; private set; }
         public string Title { get; private set; }
         public string Briefing { get; private set; }
+        /// <summary>Place from the case template scene line. Shown in the desk header.</summary>
+        public string Location { get; private set; }
         public IReadOnlyList<SuspectRecord> Suspects { get { return suspects; } }
 
         /// <summary>
@@ -117,7 +119,8 @@ namespace CaseClosed.CaseCore
             string briefing,
             string culpritSuspectId,
             IEnumerable<SuspectRecord> caseSuspects,
-            IEnumerable<WebsiteSuspectRecord> directoryAffiliates)
+            IEnumerable<WebsiteSuspectRecord> directoryAffiliates,
+            string location = null)
         {
             if (string.IsNullOrWhiteSpace(caseId)) throw new ArgumentException("Case needs an ID.", "caseId");
             if (string.IsNullOrWhiteSpace(culpritSuspectId)) throw new ArgumentException("Case needs a culprit ID.", "culpritSuspectId");
@@ -126,6 +129,7 @@ namespace CaseClosed.CaseCore
             CaseId = caseId;
             Title = title ?? string.Empty;
             Briefing = briefing ?? string.Empty;
+            Location = location ?? string.Empty;
             CulpritSuspectId = culpritSuspectId;
             suspects = new List<SuspectRecord>(caseSuspects);
             campusDirectory = directoryAffiliates == null
@@ -185,9 +189,11 @@ namespace CaseClosed.CaseCore
             return new CaseFile(
                 "UB-001",
                 "Field House Spirit Banner Cutdown",
-                "The Founders Weekend spirit banner over Field House court was sliced down between 6:05 PM and 6:35 PM. Match ladder checkout, mezzanine camera stills, and statements before HOLD.",
+                "WHERE: Field House, mezzanine over the court.\nWHEN: 6:05 PM to 6:35 PM.\nWHAT: Somebody cut down the Founders Weekend spirit banner.\nMOTIVE: Embarrass the weekend before anyone could hang it back up.",
                 culprit.Id,
-                new[] { innocent, culprit });
+                new[] { innocent, culprit },
+                null,
+                "Field House, mezzanine over the court");
         }
     }
 }

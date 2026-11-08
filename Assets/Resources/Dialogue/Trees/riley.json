@@ -7,7 +7,7 @@
       "questions": [
         {
           "id": "riley_access_q1",
-          "prompt": "This page puts you inside the incident window after you said you were gone. Explain it.",
+          "prompt": "You told me you were gone. This says you weren't. Talk.",
           "aggressive": true,
           "replies": [
             {
@@ -15,7 +15,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "My night balances: paperwork, then the study room. This page does not balance with that. I was not back inside the window.",
+              "line": "My night is paperwork, then study room B. I was in that room. I didn't come back out.",
               "onlyIfInnocent": true
             },
             {
@@ -23,7 +23,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I do not spend money or time I cannot explain. I can explain the study room. I cannot explain a return I did not make.",
+              "line": "I don't spend time I can't explain. I can explain the study room. I can't explain a return I didn't make.",
               "onlyIfInnocent": true
             },
             {
@@ -31,7 +31,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I am unsettled by a bad entry. I do not repair bad entries by confessing. I was in the study room.",
+              "line": "A bad entry unsettles me. I don't fix it by agreeing with it. I was in study room B.",
               "onlyIfInnocent": true
             },
             {
@@ -39,7 +39,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "The statement stands. I left before the window. I will not forge a return to match your page.",
+              "line": "The study room stands. I was in there. I'm not forging a return so your record balances.",
               "onlyIfInnocent": true
             },
             {
@@ -47,7 +47,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I keep books because stories drift. My story is that I was in the study room. I am aware this page is an unbalanced line, and I am not correcting it out loud yet.",
+              "line": "I know a treasurer still on campus looks convenient. I was in study room B. I'm keeping that.",
               "onlyIfCulprit": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Do not ask me to reconcile this in one breath. The version I filed is the study room. I am not amending it.",
+              "line": "Don't wait me into a neater sentence. I went to the study room and I stayed.",
               "onlyIfCulprit": true
             },
             {
@@ -63,7 +63,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I went back. That amendment is real, and I am not ready to initial the rest of the act.",
+              "line": "I was in study room B. I'm not gonna round the night so it fits your sheet.",
               "onlyIfCulprit": true
             },
             {
@@ -71,14 +71,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Amend the statement. I returned during the window and I did it. The study room was the entry I wanted you to audit instead.",
+              "line": "I did it. I wasn't in the study room. I said I was because it was clean.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "riley_access_q2",
-          "prompt": "Your statement and this record do not match. Which one should I keep?",
+          "prompt": "You told me one thing. This says another. Which one's true?",
           "aggressive": true,
           "replies": [
             {
@@ -86,7 +86,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "If I had gone back, there would be a second line in the night, and I would have to account for it. There is no second line.",
+              "line": "If I'd gone back, the night would have a second line, and I'd have to account for it. It doesn't.",
               "onlyIfInnocent": true
             },
             {
@@ -94,7 +94,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A mismatched record is an error until it is proven. You have not proven it against the study-room block.",
+              "line": "A mismatched record is an error until you prove it against the study-room block. You haven't.",
               "onlyIfInnocent": true
             },
             {
@@ -102,7 +102,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I dislike being pushed. I dislike lying more. I did not go back.",
+              "line": "I dislike being pushed. I dislike lying more. I was in study room B.",
               "onlyIfInnocent": true
             },
             {
@@ -110,7 +110,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Final entry: I was gone before the window. Post that, and do not ask me to forge a return.",
+              "line": "Final entry. I was in the study room. Post that. Don't ask me to forge the other way.",
               "onlyIfInnocent": true
             },
             {
@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Treasurers do not like unexplained gaps. I am living in one and still telling you the filed version: I had left.",
+              "line": "I want the study room to win because it's what I did. I'm not amending it for you.",
               "onlyIfCulprit": true
             },
             {
@@ -126,7 +126,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I can feel the numbers going bad. I am not going to announce the correction while I think a silence might hold.",
+              "line": "I keep almost adding a stop. There wasn't one. Study room B.",
               "onlyIfCulprit": true
             },
             {
@@ -134,7 +134,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The alibi does not survive a real audit. I came back. I am withholding the verb.",
+              "line": "I'm staying with the study room. The first version is the one that adds up.",
               "onlyIfCulprit": true
             },
             {
@@ -142,14 +142,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I was there during the window. The clean study-room line was false, and I knew it when I said it.",
+              "line": "The study room was the false line. I did it. I wasn't in there.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "riley_access_q3",
-          "prompt": "Walk this page slowly. Where were you actually standing?",
+          "prompt": "Slow down. Where were you actually standing?",
           "aggressive": false,
           "replies": [
             {
@@ -157,7 +157,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "My night balances: paperwork, then the study room. This page does not balance with that. I was not back inside the window. That is the order of it.",
+              "line": "Study room B, science library, in the chair by the outlet. That's where I was standing, then sitting.",
               "onlyIfInnocent": true
             },
             {
@@ -165,7 +165,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I do not spend money or time I cannot explain. I can explain the study room. I cannot explain a return I did not make. That is the order of it.",
+              "line": "In that room. I can tell you which problem set was open. I wasn't out in a hallway.",
               "onlyIfInnocent": true
             },
             {
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I am unsettled by a bad entry. I do not repair bad entries by confessing. I was in the study room. That is the order of it.",
+              "line": "Please look at the room booking. I was in study room B. I didn't step out.",
               "onlyIfInnocent": true
             },
             {
@@ -181,7 +181,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "The statement stands. I left before the window. I will not forge a return to match your page. That is the order of it.",
+              "line": "Study room B. I'm done itemizing the furniture. I was there. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I keep books because stories drift. My story is that I was in the study room. I am aware this page is an unbalanced line, and I am not correcting it out loud yet. I am not adding a third version.",
+              "line": "Study room B. That's the coordinate I'm giving you.",
               "onlyIfCulprit": true
             },
             {
@@ -197,7 +197,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Do not ask me to reconcile this in one breath. The version I filed is the study room. I am not amending it. I am not adding a third version.",
+              "line": "I keep naming the room because I was in it. Don't relocate me.",
               "onlyIfCulprit": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I went back. That amendment is real, and I am not ready to initial the rest of the act. I am not adding a third version.",
+              "line": "I was in the chair in study room B. I'm not shifting buildings for you.",
               "onlyIfCulprit": true
             },
             {
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Amend the statement. I returned during the window and I did it. The study room was the entry I wanted you to audit instead. I am not adding a third version.",
+              "line": "I wasn't in that study-room chair. I did it. Write that.",
               "onlyIfCulprit": true
             }
           ]
@@ -225,7 +225,7 @@
       "questions": [
         {
           "id": "riley_herring_q1",
-          "prompt": "This record looks like preparation. What was it actually for?",
+          "prompt": "What's this for?",
           "aggressive": false,
           "replies": [
             {
@@ -233,34 +233,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That receipt is a club cost, dated and purposed. It is a different ledger from the incident. Do not consolidate them. Different column. Do not add them together."
+              "line": "That's a club purchase. I paid it out of the account I treasurer. It was for the club, full stop."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I buy supplies the club voted on. The amount and the hour are wrong for what you are investigating. Different column. Do not add them together."
+              "line": "Different column from whatever this is. I can show you the budget line it sits on."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It photographs badly. The minutes would bore you, and they clear it. I am not afraid of boring. Different column. Do not add them together."
+              "line": "The figures are dull because they're true. It was a club expense. I filed it."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Hold the unbalanced page, not the receipt. I have explained the receipt. I will not explain it into a crime. Different column. Do not add them together."
+              "line": "I'm not rounding a receipt into the night. It was the club."
             }
           ]
         },
         {
           "id": "riley_herring_q2",
-          "prompt": "Someone will tell me to hold you on this page alone. Why is that wrong?",
+          "prompt": "You've got this from today. Why'd you have it?",
           "aggressive": true,
           "replies": [
             {
@@ -268,34 +268,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That receipt is a club cost, dated and purposed. It is a different ledger from the incident. Do not consolidate them. The figures are dull because they are true."
+              "line": "Because the club needed it today. I buy what the minutes say to buy. That's the reason."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I buy supplies the club voted on. The amount and the hour are wrong for what you are investigating. The figures are dull because they are true."
+              "line": "Same-day is just when the vendor was open. The club line explains it."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It photographs badly. The minutes would bore you, and they clear it. I am not afraid of boring. The figures are dull because they are true."
+              "line": "I had it because the treasurer job is to have it. I didn't pocket it for this."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Hold the unbalanced page, not the receipt. I have explained the receipt. I will not explain it into a crime. The figures are dull because they are true."
+              "line": "I had it for the club books. Be suspicious of the date. The line item is still the club."
             }
           ]
         },
         {
           "id": "riley_herring_q3",
-          "prompt": "Set this beside the incident clock. Does it still touch the scene?",
+          "prompt": "Does this have anything to do with what happened?",
           "aggressive": false,
           "replies": [
             {
@@ -303,28 +303,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That receipt is a club cost, dated and purposed. It is a different ledger from the incident. Do not consolidate them. I will not round this for drama."
+              "line": "No. It's a club expense. It doesn't touch what happened."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I buy supplies the club voted on. The amount and the hour are wrong for what you are investigating. I will not round this for drama."
+              "line": "It reconciles to the club, not to this. I'm telling you the columns don't merge."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It photographs badly. The minutes would bore you, and they clear it. I am not afraid of boring. I will not round this for drama."
+              "line": "Don't add it into the night. It's a receipt I already filed under the club."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Hold the unbalanced page, not the receipt. I have explained the receipt. I will not explain it into a crime. I will not round this for drama."
+              "line": "No. Club books. I'm done defending a purchase that has a minute attached."
             }
           ]
         }
@@ -335,7 +335,7 @@
       "questions": [
         {
           "id": "riley_alibi_q1",
-          "prompt": "This is the page you are using as an alibi. Does it still hold?",
+          "prompt": "This is what you're leaning on. Were you really there?",
           "aggressive": false,
           "replies": [
             {
@@ -343,34 +343,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The reservation is a block of hours in my name. I used the block. That is the alibi, and it adds up. Different column. Do not add them together."
+              "line": "Yes. I was in study room B. The booking and the night I described are the same block."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Leaving the block to double back would be a gap in the hours. There is no gap. Different column. Do not add them together."
+              "line": "Once I sat down I stayed through the block. Leaving would've been a second line."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The room log is the witness. I do not need a chorus if the booking is intact. Different column. Do not add them together."
+              "line": "The person in the next carrel heard me on a call about dues. I was in there."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If you discard the booking you are discarding the only precise thing in my night. I was in it. Different column. Do not add them together."
+              "line": "If you toss the booking, the dues call still happened in that room. I was there."
             }
           ]
         },
         {
           "id": "riley_alibi_q2",
-          "prompt": "Could you have doubled back after this stamp?",
+          "prompt": "Could you have gone back after this?",
           "aggressive": true,
           "replies": [
             {
@@ -378,34 +378,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The reservation is a block of hours in my name. I used the block. That is the alibi, and it adds up. The figures are dull because they are true."
+              "line": "No. I had the room until the block ended. I didn't pack up and double back."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Leaving the block to double back would be a gap in the hours. There is no gap. The figures are dull because they are true."
+              "line": "After I badged into the library I went to B and I stayed. I didn't tour."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The room log is the witness. I do not need a chorus if the booking is intact. The figures are dull because they are true."
+              "line": "I couldn't have. I was in the middle of a reconciliation. I don't pause those."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If you discard the booking you are discarding the only precise thing in my night. I was in it. The figures are dull because they are true."
+              "line": "No. I didn't go back out. The room was the rest of the night."
             }
           ]
         },
         {
           "id": "riley_alibi_q3",
-          "prompt": "If this support page is wrong, who actually saw you?",
+          "prompt": "If this is off, who actually saw you?",
           "aggressive": false,
           "replies": [
             {
@@ -413,28 +413,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The reservation is a block of hours in my name. I used the block. That is the alibi, and it adds up. I will not round this for drama."
+              "line": "The student in the next carrel. They knocked once about the outlet. They saw me."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Leaving the block to double back would be a gap in the hours. There is no gap. I will not round this for drama."
+              "line": "Library staff who confirmed the booking. They saw the room occupied. That was me."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The room log is the witness. I do not need a chorus if the booking is intact. I will not round this for drama."
+              "line": "Ask the carrel next door before you ask me to invent a witness. They were there."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If you discard the booking you are discarding the only precise thing in my night. I was in it. I will not round this for drama."
+              "line": "Next carrel. That's a real person. I'm not adding a friend I didn't have."
             }
           ]
         }
@@ -445,7 +445,7 @@
       "questions": [
         {
           "id": "riley_roster_q1",
-          "prompt": "This listing puts you on tonight's work. When did you leave it?",
+          "prompt": "You're on this list. When did you leave?",
           "aggressive": false,
           "replies": [
             {
@@ -453,34 +453,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The listing is the meeting I closed. Closed means I left. A treasurer's name is not a key. Different column. Do not add them together."
+              "line": "The list is the club meeting. The meeting ended. I took the paperwork to study room B."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was listed because I handle the money, not because I haunt the scene. The list ended. Different column. Do not add them together."
+              "line": "When we adjourned. Lots of names were on it. Mine had a task, and the task finished."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster plus alibi is a person who finished a report. There is no remainder in the window. Different column. Do not add them together."
+              "line": "End of the meeting. A treasurer on a roster isn't still in the room an hour later."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay late. Staying late would be unpaid time, and I record unpaid time. I did not. Different column. Do not add them together."
+              "line": "I didn't stay through whatever this is. Staying would've been in the minutes. It isn't."
             }
           ]
         },
         {
           "id": "riley_roster_q2",
-          "prompt": "Did this listing give you a key, a login, or a reason to stay through the window?",
+          "prompt": "Did being on this let you stay late?",
           "aggressive": true,
           "replies": [
             {
@@ -488,34 +488,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The listing is the meeting I closed. Closed means I left. A treasurer's name is not a key. The figures are dull because they are true."
+              "line": "No. The club list let me hold the cash box during the meeting. Then I locked it up."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was listed because I handle the money, not because I haunt the scene. The list ended. The figures are dull because they are true."
+              "line": "It gave me the books for that hour. It didn't give me a reason to still be out."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster plus alibi is a person who finished a report. There is no remainder in the window. The figures are dull because they are true."
+              "line": "No. Being treasurer isn't a key to the rest of campus. I closed the box and I left."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay late. Staying late would be unpaid time, and I record unpaid time. I did not. The figures are dull because they are true."
+              "line": "No. I'm not gonna treat a club roster like access. I did the meeting and I went to B."
             }
           ]
         },
         {
           "id": "riley_roster_q3",
-          "prompt": "Why does this roster matter if your alibi is somewhere else?",
+          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
           "aggressive": false,
           "replies": [
             {
@@ -523,28 +523,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The listing is the meeting I closed. Closed means I left. A treasurer's name is not a key. I will not round this for drama."
+              "line": "Because I'm the treasurer. The list is the meeting. After it, I was in study room B."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was listed because I handle the money, not because I haunt the scene. The list ended. I will not round this for drama."
+              "line": "My name's there because I have to be. I did the meeting, then the study room. That matches."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster plus alibi is a person who finished a report. There is no remainder in the window. I will not round this for drama."
+              "line": "It's a club roster. I can be on it and still have been in B when you're asking about."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay late. Staying late would be unpaid time, and I record unpaid time. I did not. I will not round this for drama."
+              "line": "The list is the meeting I finished. I said I finished it. Same entry."
             }
           ]
         }
@@ -555,7 +555,7 @@
       "questions": [
         {
           "id": "riley_sign_q1",
-          "prompt": "The sign-in puts you on site earlier. When did you actually leave?",
+          "prompt": "You signed this. When did you actually leave?",
           "aggressive": false,
           "replies": [
             {
@@ -563,34 +563,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The sign-in is the start of the meeting. The meeting ended. The window is after my total. Different column. Do not add them together."
+              "line": "I signed the meeting sheet, I did the books, and I left for study room B when we adjourned."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Earlier presence is not presence during the incident. Please do not smear the hours together. Different column. Do not add them together."
+              "line": "The signature is the start of the meeting. It isn't the rest of the night."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Signing in did not issue a credential. I leave with a report, not a key. Different column. Do not add them together."
+              "line": "I left at adjournment. Signing in didn't keep me at the club table."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "In at the start, out before the window. The arithmetic is embarrassing only if you wanted drama. Different column. Do not add them together."
+              "line": "Adjournment. Then study room B. I'm not gonna add a column that isn't there."
             }
           ]
         },
         {
           "id": "riley_sign_q2",
-          "prompt": "Being on that sheet put you near the scene. How near, and how late?",
+          "prompt": "This puts you in the building. How late were you there?",
           "aggressive": true,
           "replies": [
             {
@@ -598,34 +598,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The sign-in is the start of the meeting. The meeting ended. The window is after my total. The figures are dull because they are true."
+              "line": "Until adjournment. After that I was in the library, in B, not wherever this happened."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Earlier presence is not presence during the incident. Please do not smear the hours together. The figures are dull because they are true."
+              "line": "Long enough to close the cash box. Then I left the meeting room."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Signing in did not issue a credential. I leave with a report, not a key. The figures are dull because they are true."
+              "line": "Through the meeting. That's how late. Then I was in the study room."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "In at the start, out before the window. The arithmetic is embarrassing only if you wanted drama. The figures are dull because they are true."
+              "line": "As late as the agenda. Then I left. Don't extend the meeting past the minutes."
             }
           ]
         },
         {
           "id": "riley_sign_q3",
-          "prompt": "Did signing in hand you a key or any other credential?",
+          "prompt": "Did signing this get you a key?",
           "aggressive": false,
           "replies": [
             {
@@ -633,28 +633,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The sign-in is the start of the meeting. The meeting ended. The window is after my total. I will not round this for drama."
+              "line": "No. Signing the club sheet got me the cash box for the hour. I locked it after."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Earlier presence is not presence during the incident. Please do not smear the hours together. I will not round this for drama."
+              "line": "A sign-in is attendance. It isn't a key to anything past the meeting room."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Signing in did not issue a credential. I leave with a report, not a key. I will not round this for drama."
+              "line": "No key. I signed a club attendance line. That's a name, then the box goes away."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "In at the start, out before the window. The arithmetic is embarrassing only if you wanted drama. I will not round this for drama."
+              "line": "No. I got the books for an hour. I didn't get a key. The box has its own lock."
             }
           ]
         }
@@ -673,7 +673,7 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "Hold is your entry, not mine. I have balanced the night. I did not do this, and I want the denial posted beside the stamp.",
+              "line": "I finished the club paperwork and I went to study room B. I can walk the times again. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -681,7 +681,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "You are forcing a total that does not add. I am angry, and I am innocent. Those can share a line.",
+              "line": "This is a mistake. I didn't do it, and I'm not signing anything that says I did.",
               "onlyIfInnocent": true
             },
             {
@@ -689,7 +689,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "A hold is not an audit. I filed the study room. I am not amending it because the chair is hard.",
+              "line": "I took the paperwork to study room B and I stayed in that room. Holding me here is a mistake.",
               "onlyIfCulprit": true
             },
             {
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Post the hold. I returned and I did it. I will not re-file the false study-room line.",
+              "line": "Okay. I did it. The study room is where I said I was, and that part wasn't true.",
               "onlyIfCulprit": true
             }
           ]
@@ -717,7 +717,7 @@
               "maxStress": 100,
               "emotion": "calm",
               "slip": false,
-              "line": "Thank you. I will go close the actual books. Call me back with a page that survives a second look.",
+              "line": "Thank you. I'll be in the office if you need the receipts again. I was in study room B.",
               "onlyIfInnocent": true
             },
             {
@@ -725,7 +725,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "Then I am released on the filed version. I am leaving before I edit it.",
+              "line": "I'll go. Please write down what I actually said. I was in the study room.",
               "onlyIfCulprit": true
             },
             {
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The release does not reverse the amendment. I told you I did it. Leave that total alone.",
+              "line": "I already told you. I did it. Don't lose that just because you're letting me leave.",
               "onlyIfCulprit": true
             }
           ]

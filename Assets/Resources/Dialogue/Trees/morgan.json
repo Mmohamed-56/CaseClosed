@@ -7,7 +7,7 @@
       "questions": [
         {
           "id": "morgan_access_q1",
-          "prompt": "This page puts you inside the incident window after you said you were gone. Explain it.",
+          "prompt": "You told me you were gone. This says you weren't. Talk.",
           "aggressive": true,
           "replies": [
             {
@@ -15,7 +15,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The sheet says I closed my work and I left. I do not freelance returns. If this page puts me back inside the window, the page is mis-filed.",
+              "line": "I closed the events desk and I went straight to housing. I don't come back after I clock out.",
               "onlyIfInnocent": true
             },
             {
@@ -23,7 +23,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I do not like a record that disagrees with a sign-out. I like it less than I like guessing. I was gone.",
+              "line": "A record that fights a clock-out annoys me more than it scares me. I was in housing.",
               "onlyIfInnocent": true
             },
             {
@@ -31,7 +31,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I am not going to fill your silence with a better story. The story is the sign-out. I was not there.",
+              "line": "I'm not filling the quiet with a better version. I ended the desk. I left.",
               "onlyIfInnocent": true
             },
             {
@@ -39,7 +39,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Arrest the page or arrest the facts. I left on time. I am not revising a true sign-out to soothe you.",
+              "line": "Write the clock-out. I was gone. I'm not rewriting a shift I actually finished.",
               "onlyIfInnocent": true
             },
             {
@@ -47,7 +47,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know what a bad line in a log does to a desk worker. I am still standing on the sign-out. Do not rush me into a cleaner lie.",
+              "line": "I know a desk worker still in the building looks bad. I clocked out. I'm standing on that.",
               "onlyIfCulprit": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "The procedure says I left. I am using the procedure because the other sentence is worse, and I am not saying the other sentence.",
+              "line": "Don't rush me into a cleaner lie. The shift ended. I went to housing.",
               "onlyIfCulprit": true
             },
             {
@@ -63,7 +63,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I came back after the sign-out. I am not describing what I did with my hands yet. The alibi was the procedure talking.",
+              "line": "I ended the desk. I'm tired of the clock, and I'm still saying I left.",
               "onlyIfCulprit": true
             },
             {
@@ -71,14 +71,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The sign-out was false. I came back during the window and I did it. The log is me. Stop asking me to be procedural about it.",
+              "line": "The clock-out was a lie. I did it. I came back after the desk.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "morgan_access_q2",
-          "prompt": "Your statement and this record do not match. Which one should I keep?",
+          "prompt": "You told me one thing. This says another. Which one's true?",
           "aggressive": true,
           "replies": [
             {
@@ -86,7 +86,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Events work is clocks. I live in them. This clock and my night do not match, which means the page is wrong, not that I grew a second shift.",
+              "line": "Events work is clocks. Mine says I left. This doesn't match the night I had, so this is wrong.",
               "onlyIfInnocent": true
             },
             {
@@ -94,7 +94,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I can be short without being guilty. I ended the desk. I went to housing. I did not come back.",
+              "line": "I can be short without having done it. I ended the desk. I went to housing. I didn't come back.",
               "onlyIfInnocent": true
             },
             {
@@ -102,7 +102,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "You are asking me to doubt a sign-out I watched myself write. I will not. I was out.",
+              "line": "You're asking me to doubt a clock-out I watched myself sign. I won't. I was out.",
               "onlyIfInnocent": true
             },
             {
@@ -110,7 +110,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Final version: I was gone before the window. Write that.",
+              "line": "Final version. I was gone before any of this. Write that and stop circling.",
               "onlyIfInnocent": true
             },
             {
@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "A credential with my name is not a mood. I hear it. I am still telling you the shift ended and I did not reopen it.",
+              "line": "A badge with my name on it isn't a mood. I hear you. The shift still ended.",
               "onlyIfCulprit": true
             },
             {
@@ -126,7 +126,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I keep wanting to correct the timestamp by an inch. An inch would be a lie. The big version is also a lie, and I am stuck between them.",
+              "line": "I keep wanting to nudge the time by a minute. A minute would be a lie. I left when I said.",
               "onlyIfCulprit": true
             },
             {
@@ -134,7 +134,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I reopened the night after I said it was closed. That is as far as I go while I can still choose the verbs.",
+              "line": "I ended it. I'm not gonna pretty the clock-out up. I left.",
               "onlyIfCulprit": true
             },
             {
@@ -142,14 +142,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I came back. The statement was a closing line I wrote for you, and it was false.",
+              "line": "I did it. I came back after the desk. The clock-out was for you.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "morgan_access_q3",
-          "prompt": "Walk this page slowly. Where were you actually standing?",
+          "prompt": "Slow down. Where were you actually standing?",
           "aggressive": false,
           "replies": [
             {
@@ -157,7 +157,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The sheet says I closed my work and I left. I do not freelance returns. If this page puts me back inside the window, the page is mis-filed. That is the order of it.",
+              "line": "At the events desk until clock-out, then the walk to housing. That's where I was.",
               "onlyIfInnocent": true
             },
             {
@@ -165,7 +165,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I do not like a record that disagrees with a sign-out. I like it less than I like guessing. I was gone. That is the order of it.",
+              "line": "Housing. My room. I can tell you which stair I took. I wasn't still at the desk.",
               "onlyIfInnocent": true
             },
             {
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I am not going to fill your silence with a better story. The story is the sign-out. I was not there. That is the order of it.",
+              "line": "Don't loom. I was in housing. I ended the shift and I left the building.",
               "onlyIfInnocent": true
             },
             {
@@ -181,7 +181,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Arrest the page or arrest the facts. I left on time. I am not revising a true sign-out to soothe you. That is the order of it.",
+              "line": "Housing. I'm done pointing at it. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know what a bad line in a log does to a desk worker. I am still standing on the sign-out. Do not rush me into a cleaner lie. I am not adding a third version.",
+              "line": "Events desk, then housing. That's the path I'm giving you.",
               "onlyIfCulprit": true
             },
             {
@@ -197,7 +197,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "The procedure says I left. I am using the procedure because the other sentence is worse, and I am not saying the other sentence. I am not adding a third version.",
+              "line": "I keep saying housing because that's where I went. Don't add a stop I didn't make.",
               "onlyIfCulprit": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I came back after the sign-out. I am not describing what I did with my hands yet. The alibi was the procedure talking. I am not adding a third version.",
+              "line": "I was in my room. I'm not moving that. The desk was already closed.",
               "onlyIfCulprit": true
             },
             {
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The sign-out was false. I came back during the window and I did it. The log is me. Stop asking me to be procedural about it. I am not adding a third version.",
+              "line": "I wasn't in housing. I did it. I came back after the desk.",
               "onlyIfCulprit": true
             }
           ]
@@ -225,7 +225,7 @@
       "questions": [
         {
           "id": "morgan_herring_q1",
-          "prompt": "This record looks like preparation. What was it actually for?",
+          "prompt": "What's this for?",
           "aggressive": false,
           "replies": [
             {
@@ -233,34 +233,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That record is an earlier task with my name on the signature line. Read the time. It is not the incident. That is the procedure, not a speech."
+              "line": "That's a desk supply from the events shift. I signed for it so the table would have what it needed."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Desk staff sign for keys and supplies. This one was returned or used for the job it names. It is not a plan. That is the procedure, not a speech."
+              "line": "Desk staff sign for keys and cups all week. This one was for the shift I actually worked."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I understand the shape of it. The shape is my job. The incident is a different clock. That is the procedure, not a speech."
+              "line": "It looks like prep because my job is prep. The time on it lines up with the shift, not with this."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If you hold me on a supply line, you will be wrong in writing. I would like to avoid that. That is the procedure, not a speech."
+              "line": "If you sit me here over a supply line, you'll be wrong in ink. It was for the desk."
             }
           ]
         },
         {
           "id": "morgan_herring_q2",
-          "prompt": "Someone will tell me to hold you on this page alone. Why is that wrong?",
+          "prompt": "You've got this from today. Why'd you have it?",
           "aggressive": true,
           "replies": [
             {
@@ -268,34 +268,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That record is an earlier task with my name on the signature line. Read the time. It is not the incident. Check the clock on the sheet if you do not like my wording."
+              "line": "Because the events desk was short. I picked it up before the shift. That's why it's today."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Desk staff sign for keys and supplies. This one was returned or used for the job it names. It is not a plan. Check the clock on the sheet if you do not like my wording."
+              "line": "Same-day is how a desk runs. I had it for the job, not for whatever you're building."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I understand the shape of it. The shape is my job. The incident is a different clock. Check the clock on the sheet if you do not like my wording."
+              "line": "I had it because the closer on days left us thin. I replaced it. Ordinary."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If you hold me on a supply line, you will be wrong in writing. I would like to avoid that. Check the clock on the sheet if you do not like my wording."
+              "line": "I had it for the desk. Be annoyed about the date if you want. It's still work."
             }
           ]
         },
         {
           "id": "morgan_herring_q3",
-          "prompt": "Set this beside the incident clock. Does it still touch the scene?",
+          "prompt": "Does this have anything to do with what happened?",
           "aggressive": false,
           "replies": [
             {
@@ -303,28 +303,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That record is an earlier task with my name on the signature line. Read the time. It is not the incident. I will repeat it once, the same way."
+              "line": "No. It's an events-desk supply. It doesn't touch what you're asking me about."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Desk staff sign for keys and supplies. This one was returned or used for the job it names. It is not a plan. I will repeat it once, the same way."
+              "line": "It went back to the desk cabinet when the shift ended. It isn't part of this."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I understand the shape of it. The shape is my job. The incident is a different clock. I will repeat it once, the same way."
+              "line": "Don't staple it to the night. I used it for the job and I was done."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If you hold me on a supply line, you will be wrong in writing. I would like to avoid that. I will repeat it once, the same way."
+              "line": "No. Desk supply. I'm done explaining a form I sign twice a week."
             }
           ]
         }
@@ -335,7 +335,7 @@
       "questions": [
         {
           "id": "morgan_alibi_q1",
-          "prompt": "This is the page you are using as an alibi. Does it still hold?",
+          "prompt": "This is what you're leaning on. Were you really there?",
           "aggressive": false,
           "replies": [
             {
@@ -343,34 +343,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The support page matches the sign-out. I went where I said, and I stayed through the window. That is the procedure, not a speech."
+              "line": "Yes. I was in housing. The clock-out matches the walk. I stayed in."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I do not double back. It makes two logs, and I would have to explain both. There is one. That is the procedure, not a speech."
+              "line": "Once I got to my room I stayed. Going back out would be a second clock, and there isn't one."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The page is the witness. I do not collect a crowd to prove a shift ended. That is the procedure, not a speech."
+              "line": "My roommate had the light on. I was there. I don't collect a crowd to prove a shift ended."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Throw the page out and you still have my sign-out. I am not inventing a third location. That is the procedure, not a speech."
+              "line": "Throw that out and you still have the clock-out. I'm not inventing a third place."
             }
           ]
         },
         {
           "id": "morgan_alibi_q2",
-          "prompt": "Could you have doubled back after this stamp?",
+          "prompt": "Could you have gone back after this?",
           "aggressive": true,
           "replies": [
             {
@@ -378,34 +378,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The support page matches the sign-out. I went where I said, and I stayed through the window. Check the clock on the sheet if you do not like my wording."
+              "line": "No. I don't double back after housing. It makes two logs and I would have to explain both."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I do not double back. It makes two logs, and I would have to explain both. There is one. Check the clock on the sheet if you do not like my wording."
+              "line": "After I badged into the hall I stayed in. I didn't turn around."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The page is the witness. I do not collect a crowd to prove a shift ended. Check the clock on the sheet if you do not like my wording."
+              "line": "I couldn't. I was already in the room, shoes off. That's not a person who doubled back."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Throw the page out and you still have my sign-out. I am not inventing a third location. Check the clock on the sheet if you do not like my wording."
+              "line": "No. I didn't go back out. Housing was the end of the night."
             }
           ]
         },
         {
           "id": "morgan_alibi_q3",
-          "prompt": "If this support page is wrong, who actually saw you?",
+          "prompt": "If this is off, who actually saw you?",
           "aggressive": false,
           "replies": [
             {
@@ -413,28 +413,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The support page matches the sign-out. I went where I said, and I stayed through the window. I will repeat it once, the same way."
+              "line": "My roommate. They were up. They saw me come in and I didn't leave again."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I do not double back. It makes two logs, and I would have to explain both. There is one. I will repeat it once, the same way."
+              "line": "The person on the hall desk saw me badge through. Then I was in my room for the night."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The page is the witness. I do not collect a crowd to prove a shift ended. I will repeat it once, the same way."
+              "line": "Ask housing, not me, if you want a second pair of eyes. I was in the room."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Throw the page out and you still have my sign-out. I am not inventing a third location. I will repeat it once, the same way."
+              "line": "Roommate. Hall desk. That's two people. I'm not adding a fictional third."
             }
           ]
         }
@@ -445,7 +445,7 @@
       "questions": [
         {
           "id": "morgan_roster_q1",
-          "prompt": "This listing puts you on tonight's work. When did you leave it?",
+          "prompt": "You're on this list. When did you leave?",
           "aggressive": false,
           "replies": [
             {
@@ -453,34 +453,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The roster is the assignment. The assignment ended. I am not a key just because I was scheduled. That is the procedure, not a speech."
+              "line": "The list is the events assignment. The assignment ended. I left for housing."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Everyone on that list had a task. Mine finished. The list is not a confession. That is the procedure, not a speech."
+              "line": "When the posted shift ended. Everyone on that list had a task. Mine finished."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Stack it with the alibi and you get a worker who left. That is the dull version, and it is the true one. That is the procedure, not a speech."
+              "line": "End of the desk block. Being scheduled isn't the same as staying through this."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay through the window. Staying would be on the roster as overtime. It is not. That is the procedure, not a speech."
+              "line": "I didn't stay past the shift. Staying would be overtime on that list. It isn't."
             }
           ]
         },
         {
           "id": "morgan_roster_q2",
-          "prompt": "Did this listing give you a key, a login, or a reason to stay through the window?",
+          "prompt": "Did being on this let you stay late?",
           "aggressive": true,
           "replies": [
             {
@@ -488,34 +488,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The roster is the assignment. The assignment ended. I am not a key just because I was scheduled. Check the clock on the sheet if you do not like my wording."
+              "line": "No. The list let me run the events desk. It didn't let me linger after clock-out."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Everyone on that list had a task. Mine finished. The list is not a confession. Check the clock on the sheet if you do not like my wording."
+              "line": "It gave me a desk and a stop time. I hit the stop time. That's the whole privilege."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Stack it with the alibi and you get a worker who left. That is the dull version, and it is the true one. Check the clock on the sheet if you do not like my wording."
+              "line": "No. Scheduling me isn't a key to the rest of the night. I worked the block and I left."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay through the window. Staying would be on the roster as overtime. It is not. Check the clock on the sheet if you do not like my wording."
+              "line": "No. I'm not gonna treat a shift list like permission. I clocked out."
             }
           ]
         },
         {
           "id": "morgan_roster_q3",
-          "prompt": "Why does this roster matter if your alibi is somewhere else?",
+          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
           "aggressive": false,
           "replies": [
             {
@@ -523,28 +523,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The roster is the assignment. The assignment ended. I am not a key just because I was scheduled. I will repeat it once, the same way."
+              "line": "Because I work the events desk. The list is the shift. After it, I was in housing."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Everyone on that list had a task. Mine finished. The list is not a confession. I will repeat it once, the same way."
+              "line": "My name's there because I was scheduled. I worked it and I left. That matches what I said."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Stack it with the alibi and you get a worker who left. That is the dull version, and it is the true one. I will repeat it once, the same way."
+              "line": "It's a desk schedule. I can be on it and still have been in housing when this happened."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay through the window. Staying would be on the roster as overtime. It is not. I will repeat it once, the same way."
+              "line": "The list is the shift I finished. I said I finished it. Same fact."
             }
           ]
         }
@@ -555,7 +555,7 @@
       "questions": [
         {
           "id": "morgan_sign_q1",
-          "prompt": "The sign-in puts you on site earlier. When did you actually leave?",
+          "prompt": "You signed this. When did you actually leave?",
           "aggressive": false,
           "replies": [
             {
@@ -563,34 +563,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Signed in, worked the block, signed the night closed. The sheet is earlier than the window. That is the procedure, not a speech."
+              "line": "I signed the events desk in, I worked the block, and I signed it closed. Then housing."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Proximity before the window is the job. I do not loiter in scenes I have already closed. That is the procedure, not a speech."
+              "line": "The signature is the start of the desk. The clock-out is the end. I left after that."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A signature did not issue me a private credential. If one moved, ask the cabinet, not my handwriting. That is the procedure, not a speech."
+              "line": "I left at clock-out. Signing in didn't keep me in the building."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I will not retell it with adjectives. In, worked, out, before the window. That is the procedure, not a speech."
+              "line": "Clock-out. I'm not decorating it. Signed in, worked, left."
             }
           ]
         },
         {
           "id": "morgan_sign_q2",
-          "prompt": "Being on that sheet put you near the scene. How near, and how late?",
+          "prompt": "This puts you in the building. How late were you there?",
           "aggressive": true,
           "replies": [
             {
@@ -598,34 +598,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Signed in, worked the block, signed the night closed. The sheet is earlier than the window. Check the clock on the sheet if you do not like my wording."
+              "line": "Until clock-out. After that I was in housing, not in the building I work."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Proximity before the window is the job. I do not loiter in scenes I have already closed. Check the clock on the sheet if you do not like my wording."
+              "line": "Late enough to close the desk. Not late enough to still be there. I walked."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A signature did not issue me a private credential. If one moved, ask the cabinet, not my handwriting. Check the clock on the sheet if you do not like my wording."
+              "line": "Through the posted block. That's how late. Then I was gone."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I will not retell it with adjectives. In, worked, out, before the window. Check the clock on the sheet if you do not like my wording."
+              "line": "As late as the desk required. Then I left. Don't drag it past clock-out."
             }
           ]
         },
         {
           "id": "morgan_sign_q3",
-          "prompt": "Did signing in hand you a key or any other credential?",
+          "prompt": "Did signing this get you a key?",
           "aggressive": false,
           "replies": [
             {
@@ -633,28 +633,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Signed in, worked the block, signed the night closed. The sheet is earlier than the window. I will repeat it once, the same way."
+              "line": "No. Signing the desk sheet got me the events terminal. It didn't get me a building key."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Proximity before the window is the job. I do not loiter in scenes I have already closed. I will repeat it once, the same way."
+              "line": "A sign-in is how the desk knows I showed up. It isn't a key ring."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A signature did not issue me a private credential. If one moved, ask the cabinet, not my handwriting. I will repeat it once, the same way."
+              "line": "No key from a signature. Anything I touch for events goes back in the drawer."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I will not retell it with adjectives. In, worked, out, before the window. I will repeat it once, the same way."
+              "line": "No. I got a login for the desk. I didn't get a key. Leave it."
             }
           ]
         }
@@ -673,7 +673,7 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "Hold is a stamp, not a fact. I closed my shift and I left. I want the denial next to the stamp.",
+              "line": "I clocked out of the events desk and I walked back to housing. Check that before you keep me. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -681,7 +681,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "You are wrong, and I am angry because the sheet already answered you. I did not do this.",
+              "line": "Wrong person. I ended the desk and I left for housing. I didn't do it.",
               "onlyIfInnocent": true
             },
             {
@@ -689,7 +689,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "A hold is not a finding. I am telling you the shift ended. I am not handing you the night just because the chair is uncomfortable.",
+              "line": "The shift ended. I went back to housing. You can keep the chair. I didn't do this.",
               "onlyIfCulprit": true
             },
             {
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Hold it, then. I came back and I did it. I am not returning to the sign-out story now that I have said so.",
+              "line": "Fine. I did it. I wasn't back in housing.",
               "onlyIfCulprit": true
             }
           ]
@@ -717,7 +717,7 @@
               "maxStress": 100,
               "emotion": "calm",
               "slip": false,
-              "line": "Noted. I will leave. Call me back only with a page that survives the sign-out.",
+              "line": "Good. I've still got a desk to shut down properly. I ended the shift and I went to housing.",
               "onlyIfInnocent": true
             },
             {
@@ -725,7 +725,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "Fine. I am leaving on the version I gave you. Do not walk me back through it in the hall.",
+              "line": "I'll take the door. The shift ended and I went to housing. That's the version I gave you.",
               "onlyIfCulprit": true
             },
             {
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Releasing me does not unsay it. I told you I did it. The stamp is your problem now, not my memory.",
+              "line": "Let me go if you want. I already said I did it. I'm not unsaying it in the hall.",
               "onlyIfCulprit": true
             }
           ]

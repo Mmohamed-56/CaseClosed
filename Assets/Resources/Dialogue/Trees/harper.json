@@ -7,7 +7,7 @@
       "questions": [
         {
           "id": "harper_access_q1",
-          "prompt": "This page puts you inside the incident window after you said you were gone. Explain it.",
+          "prompt": "You told me you were gone. This says you weren't. Talk.",
           "aggressive": true,
           "replies": [
             {
@@ -15,7 +15,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I finished cleanup and I walked trays to the prep kitchen. I do not reopen a lab I have signed out of. If this page puts me back, it is not my hands.",
+              "line": "I finished cleanup and I walked the trays to the prep kitchen. I stayed there washing up. I didn't come back.",
               "onlyIfInnocent": true
             },
             {
@@ -23,7 +23,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I am careful with time because bad time ruins samples. My time is the kitchen. I was not in the window.",
+              "line": "A log with my glove size makes my stomach hurt. I was in the kitchen. I didn't go back to the bench.",
               "onlyIfInnocent": true
             },
             {
@@ -31,7 +31,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I am shaken, and shaken is not a skipped sanitizer beep. I had left. I did not go back.",
+              "line": "Please hear the order. Cleanup, trays, kitchen. I was at the sink.",
               "onlyIfInnocent": true
             },
             {
@@ -39,7 +39,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "I will not invent a return. Returns contaminate the truth. I was in the kitchen.",
+              "line": "I was in the prep kitchen. I'm not gonna make up a return trip. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -47,7 +47,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know a lab badge in a window reads like I was finishing a protocol. I was supposed to be in prep. I am keeping that protocol as the story.",
+              "line": "I know a lab aide near a mess looks like the mess. I took the trays to the kitchen. I stayed.",
               "onlyIfCulprit": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Do not rush a conclusion past the controls. The control I offered is the kitchen. I am not breaking it yet.",
+              "line": "Don't rush the quiet. I was at the sink. I didn't go back.",
               "onlyIfCulprit": true
             },
             {
@@ -63,7 +63,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I went back in. That fails the alibi. I am not describing the procedure I actually ran.",
+              "line": "I was in the kitchen. My hands were in the water. I didn't leave them to do this.",
               "onlyIfCulprit": true
             },
             {
@@ -71,14 +71,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I returned during the window and I did it. The prep-kitchen story was a clean bench I had not earned. I am not wiping it back to false.",
+              "line": "I did it. I wasn't at the sink. The kitchen was what I wanted you to see.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "harper_access_q2",
-          "prompt": "Your statement and this record do not match. Which one should I keep?",
+          "prompt": "You told me one thing. This says another. Which one's true?",
           "aggressive": true,
           "replies": [
             {
@@ -86,7 +86,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Lab people get accused because we are near the equipment. Near earlier is not present later. I was in prep.",
+              "line": "The kitchen is the true one. I cleaned, I carried trays, I washed. I didn't double back.",
               "onlyIfInnocent": true
             },
             {
@@ -94,7 +94,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "You want a dramatic glove. I have a boring tray walk. I took the walk. I did not return.",
+              "line": "A plain order sounds rehearsed because lab work is an order. I followed it. Kitchen.",
               "onlyIfInnocent": true
             },
             {
@@ -102,7 +102,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Press. I have worn worse lectures. I still did not go back.",
+              "line": "I'm holding my own wrists so I'll stay still. I was in the prep kitchen. I didn't do it.",
               "onlyIfInnocent": true
             },
             {
@@ -110,7 +110,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Final: cleanup done, kitchen after, not in your window. Label it correctly.",
+              "line": "Ask the person on dishes. Prep kitchen. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The page is a result I do not want in the notebook. The notebook I gave you says prep kitchen. I am not correcting the result aloud yet.",
+              "line": "I need you to keep the kitchen, because that's where the trays went, and I went with them.",
               "onlyIfCulprit": true
             },
             {
@@ -126,7 +126,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I can feel the method falling apart. I am not announcing the failed control in this answer.",
+              "line": "I almost said I checked a fridge. I checked the one in the kitchen. I didn't go back out.",
               "onlyIfCulprit": true
             },
             {
@@ -134,7 +134,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I left prep and I was back in the window. Write the location. I am not giving you the steps.",
+              "line": "I'm staying with the kitchen. Cleanup ended at the sink.",
               "onlyIfCulprit": true
             },
             {
@@ -142,14 +142,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "It was me. I did it. The kitchen alibi does not survive, and I will not pretend it cultured.",
+              "line": "The prep kitchen was the lie. I did it. I didn't stay at the sink.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "harper_access_q3",
-          "prompt": "Walk this page slowly. Where were you actually standing?",
+          "prompt": "Slow down. Where were you actually standing?",
           "aggressive": false,
           "replies": [
             {
@@ -157,7 +157,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I finished cleanup and I walked trays to the prep kitchen. I do not reopen a lab I have signed out of. If this page puts me back, it is not my hands. That is the order of it.",
+              "line": "In the prep kitchen, at the big sink, trays to my left. That's where I was standing.",
               "onlyIfInnocent": true
             },
             {
@@ -165,7 +165,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I am careful with time because bad time ruins samples. My time is the kitchen. I was not in the window. That is the order of it.",
+              "line": "At the sink. I can tell you which rack I loaded. I wasn't back at the bench.",
               "onlyIfInnocent": true
             },
             {
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I am shaken, and shaken is not a skipped sanitizer beep. I had left. I did not go back. That is the order of it.",
+              "line": "The kitchen. Please don't talk over me. I was at the sink.",
               "onlyIfInnocent": true
             },
             {
@@ -181,7 +181,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "I will not invent a return. Returns contaminate the truth. I was in the kitchen. That is the order of it.",
+              "line": "Prep kitchen, the sink. I'm done. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know a lab badge in a window reads like I was finishing a protocol. I was supposed to be in prep. I am keeping that protocol as the story. I am not adding a third version.",
+              "line": "Prep kitchen sink. That's the spot. The trays were there with me.",
               "onlyIfCulprit": true
             },
             {
@@ -197,7 +197,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Do not rush a conclusion past the controls. The control I offered is the kitchen. I am not breaking it yet. I am not adding a third version.",
+              "line": "I keep saying the sink because my hands were in it. I didn't wander.",
               "onlyIfCulprit": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I went back in. That fails the alibi. I am not describing the procedure I actually ran. I am not adding a third version.",
+              "line": "I was at that sink. I'm not moving the trays back out for you.",
               "onlyIfCulprit": true
             },
             {
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I returned during the window and I did it. The prep-kitchen story was a clean bench I had not earned. I am not wiping it back to false. I am not adding a third version.",
+              "line": "I wasn't at the prep-kitchen sink. I did it. I left the trays.",
               "onlyIfCulprit": true
             }
           ]
@@ -225,7 +225,7 @@
       "questions": [
         {
           "id": "harper_herring_q1",
-          "prompt": "This record looks like preparation. What was it actually for?",
+          "prompt": "What's this for?",
           "aggressive": false,
           "replies": [
             {
@@ -233,34 +233,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That supply slip is cold packs or prep stock from the checklist. It was signed out for the lab's ordinary work. It is not the incident. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "That's a restock for the teaching lab. I signed it in the morning and I put it where it belongs."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I sign for materials every shift. The hour is earlier. Do not incubate a slip into a crime. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "Lab aides pull supplies every shift. This one was a restock. It went to the teaching fridge."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks like I was staging something. I was restocking. The incident uses a different clock and a different bench. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "It looks like I was setting a bench. I was restocking. That's the aide job."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Hold the page inside the window. This slip is inventory. I am finished defending inventory. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "A supply slip. I'm not gonna treat a morning restock like it followed me all day."
             }
           ]
         },
         {
           "id": "harper_herring_q2",
-          "prompt": "Someone will tell me to hold you on this page alone. Why is that wrong?",
+          "prompt": "You've got this from today. Why'd you have it?",
           "aggressive": true,
           "replies": [
             {
@@ -268,34 +268,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That supply slip is cold packs or prep stock from the checklist. It was signed out for the lab's ordinary work. It is not the incident. Contamination is a method. I did not bring it into this room."
+              "line": "Because the teaching fridge was low at the start of the day. I filled it. That's why it's today."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I sign for materials every shift. The hour is earlier. Do not incubate a slip into a crime. Contamination is a method. I did not bring it into this room."
+              "line": "Same day is how a lab runs out. I had it for the teaching section."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks like I was staging something. I was restocking. The incident uses a different clock and a different bench. Contamination is a method. I did not bring it into this room."
+              "line": "I had it because students burn through packs before noon. I replaced them."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Hold the page inside the window. This slip is inventory. I am finished defending inventory. Contamination is a method. I did not bring it into this room."
+              "line": "I had it for the teaching lab. The time is morning. It stayed there."
             }
           ]
         },
         {
           "id": "harper_herring_q3",
-          "prompt": "Set this beside the incident clock. Does it still touch the scene?",
+          "prompt": "Does this have anything to do with what happened?",
           "aggressive": false,
           "replies": [
             {
@@ -303,28 +303,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That supply slip is cold packs or prep stock from the checklist. It was signed out for the lab's ordinary work. It is not the incident. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "No. It's a teaching-lab restock. It doesn't have anything to do with this."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I sign for materials every shift. The hour is earlier. Do not incubate a slip into a crime. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "Those packs are still in the teaching fridge. I'm telling you they never left that room."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks like I was staging something. I was restocking. The incident uses a different clock and a different bench. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "Don't carry it into the afternoon. I stocked it and I moved on to cleanup."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Hold the page inside the window. This slip is inventory. I am finished defending inventory. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "No. It was a morning restock. I'm done with that slip."
             }
           ]
         }
@@ -335,7 +335,7 @@
       "questions": [
         {
           "id": "harper_alibi_q1",
-          "prompt": "This is the page you are using as an alibi. Does it still hold?",
+          "prompt": "This is what you're leaning on. Were you really there?",
           "aggressive": false,
           "replies": [
             {
@@ -343,34 +343,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The prep-kitchen door is the alibi. My badge opened it when I said I was walking trays. I stayed with the trays. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "Yes. I was in the prep kitchen. The trays and the sink match what I told you."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Doubling back would be a second lab read. I do not have one in the window. I was in prep. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "Once I started the dishes I stayed until the rack was done. I don't leave a half-washed tray."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The kitchen is not empty. People receive stock. The door log is still the clean witness. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "The person on the other sink saw me. I was there the whole wash."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Discard the door and you should ask who received the trays. I delivered them. I was there. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "If you ignore the kitchen log, the other sink still saw me. I was washing."
             }
           ]
         },
         {
           "id": "harper_alibi_q2",
-          "prompt": "Could you have doubled back after this stamp?",
+          "prompt": "Could you have gone back after this?",
           "aggressive": true,
           "replies": [
             {
@@ -378,34 +378,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The prep-kitchen door is the alibi. My badge opened it when I said I was walking trays. I stayed with the trays. Contamination is a method. I did not bring it into this room."
+              "line": "No. A full rack takes time. I didn't drop it and double back to the bench."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Doubling back would be a second lab read. I do not have one in the window. I was in prep. Contamination is a method. I did not bring it into this room."
+              "line": "After I set the trays down I was in the water. I didn't dry off and leave."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The kitchen is not empty. People receive stock. The door log is still the clean witness. Contamination is a method. I did not bring it into this room."
+              "line": "I couldn't have. The other person would've had to finish my rack. They didn't."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Discard the door and you should ask who received the trays. I delivered them. I was there. Contamination is a method. I did not bring it into this room."
+              "line": "No. I didn't go back. The kitchen was the end of cleanup."
             }
           ]
         },
         {
           "id": "harper_alibi_q3",
-          "prompt": "If this support page is wrong, who actually saw you?",
+          "prompt": "If this is off, who actually saw you?",
           "aggressive": false,
           "replies": [
             {
@@ -413,28 +413,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The prep-kitchen door is the alibi. My badge opened it when I said I was walking trays. I stayed with the trays. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "The aide on the other sink. They handed me a rack. They saw me stay."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Doubling back would be a second lab read. I do not have one in the window. I was in prep. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "The grad student who stuck their head in for a beaker. They saw me at the water."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The kitchen is not empty. People receive stock. The door log is still the clean witness. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "Ask the other sink before you ask me for a hallway full of people. One person saw me."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Discard the door and you should ask who received the trays. I delivered them. I was there. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "Other sink. That's a real coworker. I'm not adding the whole lab."
             }
           ]
         }
@@ -445,7 +445,7 @@
       "questions": [
         {
           "id": "harper_roster_q1",
-          "prompt": "This listing puts you on tonight's work. When did you leave it?",
+          "prompt": "You're on this list. When did you leave?",
           "aggressive": false,
           "replies": [
             {
@@ -453,34 +453,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The cohort roster is the lab I cleaned. Cleaning ended. A roster is not permission to stay for the incident. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "The list is the cleanup rotation. My name came up, I cleaned, I took the trays to the kitchen."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was listed for cleanup, which is a finite list. I finished the list. I left. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "When the rotation released me. Other aides are on it. I finished my benches."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster then kitchen. Two rooms, in that order. Do not merge them into your window. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "End of my cleanup block. Being on the rotation isn't me still at the incubator after."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not linger at the bench. Lingering is how you fail a cleanup, and I do not fail those. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "I didn't stay at the bench. The trays leaving is me leaving. That's the rotation."
             }
           ]
         },
         {
           "id": "harper_roster_q2",
-          "prompt": "Did this listing give you a key, a login, or a reason to stay through the window?",
+          "prompt": "Did being on this let you stay late?",
           "aggressive": true,
           "replies": [
             {
@@ -488,34 +488,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The cohort roster is the lab I cleaned. Cleaning ended. A roster is not permission to stay for the incident. Contamination is a method. I did not bring it into this room."
+              "line": "No. The cleanup list put me on benches and then the kitchen. It didn't put me back."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was listed for cleanup, which is a finite list. I finished the list. I left. Contamination is a method. I did not bring it into this room."
+              "line": "It gave me a pair of gloves and a sink at the end. I did both."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster then kitchen. Two rooms, in that order. Do not merge them into your window. Contamination is a method. I did not bring it into this room."
+              "line": "No. Rotation isn't permission to hang around the equipment. I washed up and I was done."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not linger at the bench. Lingering is how you fail a cleanup, and I do not fail those. Contamination is a method. I did not bring it into this room."
+              "line": "No. I'm not gonna read a cleanup list like a reason to stay. I finished."
             }
           ]
         },
         {
           "id": "harper_roster_q3",
-          "prompt": "Why does this roster matter if your alibi is somewhere else?",
+          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
           "aggressive": false,
           "replies": [
             {
@@ -523,28 +523,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The cohort roster is the lab I cleaned. Cleaning ended. A roster is not permission to stay for the incident. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "Because I'm on the aide rotation. The list is cleanup. After it, I was in the kitchen."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was listed for cleanup, which is a finite list. I finished the list. I left. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "My name's there because they scheduled dishes and benches. I did them."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster then kitchen. Two rooms, in that order. Do not merge them into your window. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "It's a rotation. I can be on it and still have been at the sink, which is what I said."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not linger at the bench. Lingering is how you fail a cleanup, and I do not fail those. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "The list is the cleanup I finished. I said I finished it. Same work."
             }
           ]
         }
@@ -555,7 +555,7 @@
       "questions": [
         {
           "id": "harper_sign_q1",
-          "prompt": "The sign-in puts you on site earlier. When did you actually leave?",
+          "prompt": "You signed this. When did you actually leave?",
           "aggressive": false,
           "replies": [
             {
@@ -563,34 +563,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the lab sheet because I was in the lab for cleanup. The sign-in ends before the window that matters. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "I signed cleanup when I started, and I signed out when the trays hit the kitchen."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "In the building for a shift is not in the room for the incident. I want that distinction kept. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "The signature is the start of the benches. The out-time is the kitchen. I was done then."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Signing the cohort sheet did not give me a private alarm code or a quiet key. I have a badge. It went to prep. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "I left the benches for the sink. Signing in didn't keep me at the equipment."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Signed in, cleaned, walked trays. Three steps. None of them is your incident. A timestamp is not a pair of gloves. I am talking about where I was."
+              "line": "Out at the kitchen. That's the time. I'm not gonna add a lap."
             }
           ]
         },
         {
           "id": "harper_sign_q2",
-          "prompt": "Being on that sheet put you near the scene. How near, and how late?",
+          "prompt": "This puts you in the building. How late were you there?",
           "aggressive": true,
           "replies": [
             {
@@ -598,34 +598,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the lab sheet because I was in the lab for cleanup. The sign-in ends before the window that matters. Contamination is a method. I did not bring it into this room."
+              "line": "Until the trays were ready. After that I was in the kitchen, not at the bench."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "In the building for a shift is not in the room for the incident. I want that distinction kept. Contamination is a method. I did not bring it into this room."
+              "line": "Long enough to wipe the benches I was assigned. Then the sink."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Signing the cohort sheet did not give me a private alarm code or a quiet key. I have a badge. It went to prep. Contamination is a method. I did not bring it into this room."
+              "line": "Through the benches on my card. That's how late there. Then the prep kitchen."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Signed in, cleaned, walked trays. Three steps. None of them is your incident. Contamination is a method. I did not bring it into this room."
+              "line": "As late as those benches took. Then I left them. Don't put me back."
             }
           ]
         },
         {
           "id": "harper_sign_q3",
-          "prompt": "Did signing in hand you a key or any other credential?",
+          "prompt": "Did signing this get you a key?",
           "aggressive": false,
           "replies": [
             {
@@ -633,28 +633,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the lab sheet because I was in the lab for cleanup. The sign-in ends before the window that matters. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "No. Signing the cleanup sheet got me gloves from the box. It didn't get me a lab key of my own."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "In the building for a shift is not in the room for the incident. I want that distinction kept. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "A sign-in is how the lead knows the rotation showed. It isn't a key."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Signing the cohort sheet did not give me a private alarm code or a quiet key. I have a badge. It went to prep. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "No personal key. I signed a cleanup card. Gloves, benches, sink."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Signed in, cleaned, walked trays. Three steps. None of them is your incident. The prep kitchen is the alibi. The lab clock is your problem."
+              "line": "No. I got gloves. I didn't get a key. The key stays with the lead."
             }
           ]
         }
@@ -673,7 +673,7 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "Hold the chair if you need it occupied. I did not do this. I was in the prep kitchen, and I want the denial stored with the stamp.",
+              "line": "I took the trays to the prep kitchen after cleanup. Please don't keep me for that. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -681,7 +681,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Wrong bench. I am angry because you are treating a cleanup rotation like a motive.",
+              "line": "This isn't fair. I was in the prep kitchen. I didn't do it, and I'm not gonna guess who did.",
               "onlyIfInnocent": true
             },
             {
@@ -689,7 +689,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "The hold is not a result. I am still reporting the kitchen. I am not reading out the real method.",
+              "line": "I need you to hear me. I took the trays to the prep kitchen and I stayed there. You're holding the wrong pair of hands.",
               "onlyIfCulprit": true
             },
             {
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Then hold me. I went back and I did it. I will not restock the false kitchen story.",
+              "line": "I did. I did it. I'm tired of the kitchen version. I left it.",
               "onlyIfCulprit": true
             }
           ]
@@ -717,7 +717,7 @@
               "maxStress": 100,
               "emotion": "calm",
               "slip": false,
-              "line": "Thank you. I have samples that are still alive, unlike this theory. Call me with a page that respects the kitchen door.",
+              "line": "Thanks. I'm going to wash my hands and go home. I was in the prep kitchen.",
               "onlyIfInnocent": true
             },
             {
@@ -725,7 +725,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "I will take the release and the kitchen note. I am leaving.",
+              "line": "Okay. I'll go. I took the trays to the kitchen. Don't twist that.",
               "onlyIfCulprit": true
             },
             {
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "You can release me. I already said I did it. I am not incubating the lie again.",
+              "line": "I already told you the truth. I did it. The kitchen wasn't where I stayed.",
               "onlyIfCulprit": true
             }
           ]

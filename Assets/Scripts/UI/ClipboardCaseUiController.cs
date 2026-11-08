@@ -297,7 +297,7 @@ namespace CaseClosed.UI
 
             statusMessage = turn.StressResult == null
                 ? "Interview turn recorded."
-                : "Reply received · stress " + turn.StressResult.Stress + "/100 · " + turn.StressResult.QuestionsLeft + " questions left.";
+                : "They answered. " + turn.StressResult.QuestionsLeft + " questions left.";
             RefreshPage();
         }
 
@@ -694,6 +694,8 @@ namespace CaseClosed.UI
             }
 
             AddFitText(caseCoverContent, caseFile.Title ?? "Untitled case", 28, DeskUiPalette.NavyDark, FontStyle.Bold);
+            if (!string.IsNullOrWhiteSpace(caseFile.Location))
+                AddFitText(caseCoverContent, caseFile.Location.Trim(), 18, DeskUiPalette.Ink, FontStyle.Italic);
             AddFitText(caseCoverContent, "CASE ID  ·  " + (caseFile.CaseId ?? string.Empty), 15, DeskUiPalette.InkMuted, FontStyle.Bold);
             AddFitText(caseCoverContent, "BRIEFING", 16, DeskUiPalette.Navy, FontStyle.Bold);
             AddFitText(caseCoverContent, string.IsNullOrWhiteSpace(caseFile.Briefing) ? "No briefing has been filed." : caseFile.Briefing.Trim(), 19, DeskUiPalette.Ink, FontStyle.Normal);

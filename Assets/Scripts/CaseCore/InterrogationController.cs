@@ -210,11 +210,11 @@ namespace CaseClosed.CaseCore
                 case InterrogationStressTier.Nervous:
                     return "I already told you what happened.";
                 case InterrogationStressTier.Cracking:
-                    return "Just give me a moment to think.";
+                    return "Give me a second.";
                 case InterrogationStressTier.Broken:
                     return "I can't keep this up.";
                 default:
-                    return "I have answered your question.";
+                    return "I answered you.";
             }
         }
 
