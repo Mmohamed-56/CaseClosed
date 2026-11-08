@@ -238,7 +238,7 @@ namespace CaseClosed.Characters
             if (doorPoint == null || chairPoint == null)
             {
                 Debug.LogWarning(
-                    "SuspectEnterController: assign Door Point and Chair Point (shared for every suspect). See Bezi scene hooks.",
+                    "SuspectEnterController: assign Door Point and Chair Point (shared for every suspect).",
                     this);
                 return false;
             }

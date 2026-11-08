@@ -17,7 +17,7 @@ namespace CaseClosed.UI
         [Tooltip("Active shift controller. Auto-found when empty.")]
         [SerializeField] private CaseShiftController shiftController;
 
-        [Header("Stamp UI Hooks (Bezi)")]
+        [Header("Stamp UI Hooks")]
         [Tooltip("HOLD stamp button (clipboard / pad).")]
         [SerializeField] private Button holdButton;
 
@@ -39,7 +39,7 @@ namespace CaseClosed.UI
         [Tooltip("Seconds to wait after the stamp animation before writing the CaseCore decision.")]
         [SerializeField, Min(0f)] private float applyDelaySeconds = 0.35f;
 
-        [Header("Audio Hooks (Bezi)")]
+        [Header("Audio Hooks")]
         [SerializeField] private AudioSource stampAudioSource;
         [SerializeField] private AudioClip holdClip;
         [SerializeField] private AudioClip releaseClip;

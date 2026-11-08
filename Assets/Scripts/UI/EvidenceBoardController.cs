@@ -22,7 +22,7 @@ namespace CaseClosed.UI
         [Tooltip("Active shift controller. Auto-found when empty.")]
         [SerializeField] private CaseShiftController shiftController;
 
-        [Header("Board Scene Hooks (Bezi)")]
+        [Header("Board Scene Hooks")]
         [Tooltip("Root object for the physical / world-space board on the desk. Shown when the board should be visible.")]
         [SerializeField] private GameObject boardRoot;
 
@@ -32,7 +32,7 @@ namespace CaseClosed.UI
         [Tooltip("Optional row for All + per-suspect tab buttons. Created at runtime when empty.")]
         [SerializeField] private Transform tabContainer;
 
-        [Tooltip("Optional prefab with EvidenceCardView. When empty, tries Bezi Assets/EvidenceCardView then a runtime fallback.")]
+        [Tooltip("Optional prefab with EvidenceCardView. When empty, tries Assets/EvidenceCardView then a runtime fallback.")]
         [SerializeField] private EvidenceCardView cardPrefab;
 
         [Tooltip("Optional toast label shown when a new record is added from the browser.")]
@@ -506,7 +506,7 @@ namespace CaseClosed.UI
             if (cardContainer == null)
             {
                 Debug.LogWarning(
-                    "EvidenceBoardController: assign Card Container (desk board content root). See docs/bezi-evidence-board-stamp.md.",
+                    "EvidenceBoardController: assign Card Container (desk board content root).",
                     this);
                 return null;
             }

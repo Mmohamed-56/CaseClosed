@@ -38,7 +38,7 @@ namespace CaseClosed.UI
         [SerializeField] private EvidenceBoardController evidenceBoard;
         [SerializeField] private StampPadController stampPad;
 
-        [Header("Optional Scene Hooks (Bezi)")]
+        [Header("Optional Scene Hooks")]
         [Tooltip("When empty, a runtime Screen Space Overlay canvas is created.")]
         [SerializeField] private Canvas hudCanvas;
         [SerializeField] private GameObject panelRoot;
