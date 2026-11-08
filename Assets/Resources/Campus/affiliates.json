@@ -398,33 +398,33 @@
     },
     {
       "id": "ethan",
-      "displayName": "Ethan Brooks",
+      "displayName": "Ethan Kowalski",
       "campusRole": "Bus driver (campus shuttle)",
       "tier": "witness",
       "bio": "Drove the west-loop shuttle through 10 PM.",
-      "statement": "I wasn't part of the storage crew. I'm Ethan Brooks, Bus driver (campus shuttle).",
+      "statement": "I wasn't part of the storage crew. I'm Ethan Kowalski, Bus driver (campus shuttle).",
       "alibi": "Elsewhere on campus during the theft window.",
       "redHerringRecord": "",
       "redHerringExplanation": "",
       "alibiSupportTitle": "Peripheral schedule",
-      "alibiSupportDescription": "Ethan Brooks's ordinary duties keep them away from event storage.",
+      "alibiSupportDescription": "Ethan Kowalski's ordinary duties keep them away from event storage.",
       "contextTitleA": "Directory listing",
       "contextDescriptionA": "Drove the west-loop shuttle through 10 PM.",
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Ethan Brooks",
-          "description": "Ethan Brooks, Bus driver (campus shuttle). Drove the west-loop shuttle through 10 PM."
+          "title": "Campus directory — Ethan Kowalski",
+          "description": "Ethan Kowalski, Bus driver (campus shuttle). Drove the west-loop shuttle through 10 PM."
         },
         {
           "suffix": "sighting",
           "title": "Witness note — Ethan",
-          "description": "A statement places Ethan Brooks near campus activity around the theft window, but not inside event storage."
+          "description": "A statement places Ethan Kowalski near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
           "title": "Access adjacent — Ethan",
-          "description": "Peripheral badge or schedule noise for Ethan Brooks (Bus driver (campus shuttle)); useful color, not a storage open."
+          "description": "Peripheral badge or schedule noise for Ethan Kowalski (Bus driver (campus shuttle)); useful color, not a storage open."
         }
       ]
     },
@@ -654,33 +654,33 @@
     },
     {
       "id": "kyle",
-      "displayName": "Kyle Nguyen",
+      "displayName": "Kyle Pham",
       "campusRole": "AV rental desk",
       "tier": "witness",
       "bio": "Returned wireless mics after the event.",
-      "statement": "I wasn't part of the storage crew. I'm Kyle Nguyen, AV rental desk.",
+      "statement": "I wasn't part of the storage crew. I'm Kyle Pham, AV rental desk.",
       "alibi": "Elsewhere on campus during the theft window.",
       "redHerringRecord": "",
       "redHerringExplanation": "",
       "alibiSupportTitle": "Peripheral schedule",
-      "alibiSupportDescription": "Kyle Nguyen's ordinary duties keep them away from event storage.",
+      "alibiSupportDescription": "Kyle Pham's ordinary duties keep them away from event storage.",
       "contextTitleA": "Directory listing",
       "contextDescriptionA": "Returned wireless mics after the event.",
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Kyle Nguyen",
-          "description": "Kyle Nguyen, AV rental desk. Returned wireless mics after the event."
+          "title": "Campus directory — Kyle Pham",
+          "description": "Kyle Pham, AV rental desk. Returned wireless mics after the event."
         },
         {
           "suffix": "sighting",
           "title": "Witness note — Kyle",
-          "description": "A statement places Kyle Nguyen near campus activity around the theft window, but not inside event storage."
+          "description": "A statement places Kyle Pham near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
           "title": "Access adjacent — Kyle",
-          "description": "Peripheral badge or schedule noise for Kyle Nguyen (AV rental desk); useful color, not a storage open."
+          "description": "Peripheral badge or schedule noise for Kyle Pham (AV rental desk); useful color, not a storage open."
         }
       ]
     },
@@ -974,33 +974,33 @@
     },
     {
       "id": "ryan",
-      "displayName": "Ryan Cho",
+      "displayName": "Ryan Paik",
       "campusRole": "Printing services",
       "tier": "witness",
       "bio": "Ran banner reprints for the pep rally.",
-      "statement": "I wasn't part of the storage crew. I'm Ryan Cho, Printing services.",
+      "statement": "I wasn't part of the storage crew. I'm Ryan Paik, Printing services.",
       "alibi": "Elsewhere on campus during the theft window.",
       "redHerringRecord": "",
       "redHerringExplanation": "",
       "alibiSupportTitle": "Peripheral schedule",
-      "alibiSupportDescription": "Ryan Cho's ordinary duties keep them away from event storage.",
+      "alibiSupportDescription": "Ryan Paik's ordinary duties keep them away from event storage.",
       "contextTitleA": "Directory listing",
       "contextDescriptionA": "Ran banner reprints for the pep rally.",
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Ryan Cho",
-          "description": "Ryan Cho, Printing services. Ran banner reprints for the pep rally."
+          "title": "Campus directory — Ryan Paik",
+          "description": "Ryan Paik, Printing services. Ran banner reprints for the pep rally."
         },
         {
           "suffix": "sighting",
           "title": "Witness note — Ryan",
-          "description": "A statement places Ryan Cho near campus activity around the theft window, but not inside event storage."
+          "description": "A statement places Ryan Paik near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
           "title": "Access adjacent — Ryan",
-          "description": "Peripheral badge or schedule noise for Ryan Cho (Printing services); useful color, not a storage open."
+          "description": "Peripheral badge or schedule noise for Ryan Paik (Printing services); useful color, not a storage open."
         }
       ]
     },
@@ -1070,33 +1070,33 @@
     },
     {
       "id": "grace",
-      "displayName": "Grace Okonkwo",
+      "displayName": "Grace Adebayo",
       "campusRole": "Chaplain intern",
       "tier": "witness",
       "bio": "Locked the meditation room after a group.",
-      "statement": "I wasn't part of the storage crew. I'm Grace Okonkwo, Chaplain intern.",
+      "statement": "I wasn't part of the storage crew. I'm Grace Adebayo, Chaplain intern.",
       "alibi": "Elsewhere on campus during the theft window.",
       "redHerringRecord": "",
       "redHerringExplanation": "",
       "alibiSupportTitle": "Peripheral schedule",
-      "alibiSupportDescription": "Grace Okonkwo's ordinary duties keep them away from event storage.",
+      "alibiSupportDescription": "Grace Adebayo's ordinary duties keep them away from event storage.",
       "contextTitleA": "Directory listing",
       "contextDescriptionA": "Locked the meditation room after a group.",
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Grace Okonkwo",
-          "description": "Grace Okonkwo, Chaplain intern. Locked the meditation room after a group."
+          "title": "Campus directory — Grace Adebayo",
+          "description": "Grace Adebayo, Chaplain intern. Locked the meditation room after a group."
         },
         {
           "suffix": "sighting",
           "title": "Witness note — Grace",
-          "description": "A statement places Grace Okonkwo near campus activity around the theft window, but not inside event storage."
+          "description": "A statement places Grace Adebayo near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
           "title": "Access adjacent — Grace",
-          "description": "Peripheral badge or schedule noise for Grace Okonkwo (Chaplain intern); useful color, not a storage open."
+          "description": "Peripheral badge or schedule noise for Grace Adebayo (Chaplain intern); useful color, not a storage open."
         }
       ]
     },
@@ -1998,33 +1998,33 @@
     },
     {
       "id": "april",
-      "displayName": "April Cho",
+      "displayName": "April Yoon",
       "campusRole": "Floral lab assistant",
       "tier": "witness",
       "bio": "Watered greenhouse benches after class.",
-      "statement": "I wasn't part of the storage crew. I'm April Cho, Floral lab assistant.",
+      "statement": "I wasn't part of the storage crew. I'm April Yoon, Floral lab assistant.",
       "alibi": "Elsewhere on campus during the theft window.",
       "redHerringRecord": "",
       "redHerringExplanation": "",
       "alibiSupportTitle": "Peripheral schedule",
-      "alibiSupportDescription": "April Cho's ordinary duties keep them away from event storage.",
+      "alibiSupportDescription": "April Yoon's ordinary duties keep them away from event storage.",
       "contextTitleA": "Directory listing",
       "contextDescriptionA": "Watered greenhouse benches after class.",
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — April Cho",
-          "description": "April Cho, Floral lab assistant. Watered greenhouse benches after class."
+          "title": "Campus directory — April Yoon",
+          "description": "April Yoon, Floral lab assistant. Watered greenhouse benches after class."
         },
         {
           "suffix": "sighting",
           "title": "Witness note — April",
-          "description": "A statement places April Cho near campus activity around the theft window, but not inside event storage."
+          "description": "A statement places April Yoon near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
           "title": "Access adjacent — April",
-          "description": "Peripheral badge or schedule noise for April Cho (Floral lab assistant); useful color, not a storage open."
+          "description": "Peripheral badge or schedule noise for April Yoon (Floral lab assistant); useful color, not a storage open."
         }
       ]
     },
@@ -2350,65 +2350,65 @@
     },
     {
       "id": "lana",
-      "displayName": "Lana Petrova",
+      "displayName": "Lana Kuznetsova",
       "campusRole": "Ballet pianist",
       "tier": "witness",
       "bio": "Packed sheet music after rehearsal.",
-      "statement": "I wasn't part of the storage crew. I'm Lana Petrova, Ballet pianist.",
+      "statement": "I wasn't part of the storage crew. I'm Lana Kuznetsova, Ballet pianist.",
       "alibi": "Elsewhere on campus during the theft window.",
       "redHerringRecord": "",
       "redHerringExplanation": "",
       "alibiSupportTitle": "Peripheral schedule",
-      "alibiSupportDescription": "Lana Petrova's ordinary duties keep them away from event storage.",
+      "alibiSupportDescription": "Lana Kuznetsova's ordinary duties keep them away from event storage.",
       "contextTitleA": "Directory listing",
       "contextDescriptionA": "Packed sheet music after rehearsal.",
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Lana Petrova",
-          "description": "Lana Petrova, Ballet pianist. Packed sheet music after rehearsal."
+          "title": "Campus directory — Lana Kuznetsova",
+          "description": "Lana Kuznetsova, Ballet pianist. Packed sheet music after rehearsal."
         },
         {
           "suffix": "sighting",
           "title": "Witness note — Lana",
-          "description": "A statement places Lana Petrova near campus activity around the theft window, but not inside event storage."
+          "description": "A statement places Lana Kuznetsova near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
           "title": "Access adjacent — Lana",
-          "description": "Peripheral badge or schedule noise for Lana Petrova (Ballet pianist); useful color, not a storage open."
+          "description": "Peripheral badge or schedule noise for Lana Kuznetsova (Ballet pianist); useful color, not a storage open."
         }
       ]
     },
     {
       "id": "mack",
-      "displayName": "Mack Rivera",
+      "displayName": "Mack Holloway",
       "campusRole": "Grounds irrigation tech",
       "tier": "witness",
       "bio": "Checked sprinkler zones by the fountain.",
-      "statement": "I wasn't part of the storage crew. I'm Mack Rivera, Grounds irrigation tech.",
+      "statement": "I wasn't part of the storage crew. I'm Mack Holloway, Grounds irrigation tech.",
       "alibi": "Elsewhere on campus during the theft window.",
       "redHerringRecord": "",
       "redHerringExplanation": "",
       "alibiSupportTitle": "Peripheral schedule",
-      "alibiSupportDescription": "Mack Rivera's ordinary duties keep them away from event storage.",
+      "alibiSupportDescription": "Mack Holloway's ordinary duties keep them away from event storage.",
       "contextTitleA": "Directory listing",
       "contextDescriptionA": "Checked sprinkler zones by the fountain.",
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Mack Rivera",
-          "description": "Mack Rivera, Grounds irrigation tech. Checked sprinkler zones by the fountain."
+          "title": "Campus directory — Mack Holloway",
+          "description": "Mack Holloway, Grounds irrigation tech. Checked sprinkler zones by the fountain."
         },
         {
           "suffix": "sighting",
           "title": "Witness note — Mack",
-          "description": "A statement places Mack Rivera near campus activity around the theft window, but not inside event storage."
+          "description": "A statement places Mack Holloway near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
           "title": "Access adjacent — Mack",
-          "description": "Peripheral badge or schedule noise for Mack Rivera (Grounds irrigation tech); useful color, not a storage open."
+          "description": "Peripheral badge or schedule noise for Mack Holloway (Grounds irrigation tech); useful color, not a storage open."
         }
       ]
     },
@@ -2478,33 +2478,33 @@
     },
     {
       "id": "pearl",
-      "displayName": "Pearl Nguyen",
+      "displayName": "Pearl Vo",
       "campusRole": "Optometry clinic aide",
       "tier": "witness",
       "bio": "Closed the evening screening room.",
-      "statement": "I wasn't part of the storage crew. I'm Pearl Nguyen, Optometry clinic aide.",
+      "statement": "I wasn't part of the storage crew. I'm Pearl Vo, Optometry clinic aide.",
       "alibi": "Elsewhere on campus during the theft window.",
       "redHerringRecord": "",
       "redHerringExplanation": "",
       "alibiSupportTitle": "Peripheral schedule",
-      "alibiSupportDescription": "Pearl Nguyen's ordinary duties keep them away from event storage.",
+      "alibiSupportDescription": "Pearl Vo's ordinary duties keep them away from event storage.",
       "contextTitleA": "Directory listing",
       "contextDescriptionA": "Closed the evening screening room.",
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Pearl Nguyen",
-          "description": "Pearl Nguyen, Optometry clinic aide. Closed the evening screening room."
+          "title": "Campus directory — Pearl Vo",
+          "description": "Pearl Vo, Optometry clinic aide. Closed the evening screening room."
         },
         {
           "suffix": "sighting",
           "title": "Witness note — Pearl",
-          "description": "A statement places Pearl Nguyen near campus activity around the theft window, but not inside event storage."
+          "description": "A statement places Pearl Vo near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
           "title": "Access adjacent — Pearl",
-          "description": "Peripheral badge or schedule noise for Pearl Nguyen (Optometry clinic aide); useful color, not a storage open."
+          "description": "Peripheral badge or schedule noise for Pearl Vo (Optometry clinic aide); useful color, not a storage open."
         }
       ]
     },

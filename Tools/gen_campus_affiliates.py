@@ -146,7 +146,7 @@ WITNESSES_BATCH1 = [
     ("mia", "Mia Okada", "Library page", "Shelved reserves on the quiet floor until close."),
     ("lucas", "Lucas Grant", "Intramural ref", "Officiated a late pickup game in the rec annex."),
     ("zoe", "Zoe Martel", "Dance ensemble lead", "Ran a rehearsal in the studio above the union."),
-    ("ethan", "Ethan Brooks", "Bus driver (campus shuttle)", "Drove the west-loop shuttle through 10 PM."),
+    ("ethan", "Ethan Kowalski", "Bus driver (campus shuttle)", "Drove the west-loop shuttle through 10 PM."),
     ("ava", "Ava Rahman", "Career center aide", "Closed the resume lab and logged machines."),
     ("ben", "Ben Okoye", "HVAC vendor tech", "On-call vendor checking a union rooftop unit."),
     ("lily", "Lily Tran", "Orientation leader", "Collected leftover orientation swag from a closet."),
@@ -154,7 +154,7 @@ WITNESSES_BATCH1 = [
     ("nina", "Nina Petrov", "Health center clerk", "Filed evening intake forms at student health."),
     ("owen", "Owen Farrell", "Parking enforcement", "Ticketed the loading zone behind the union."),
     ("sara", "Sara Ibrahim", "Language tutor", "Tutored Spanish in the learning commons."),
-    ("kyle", "Kyle Nguyen", "AV rental desk", "Returned wireless mics after the event."),
+    ("kyle", "Kyle Pham", "AV rental desk", "Returned wireless mics after the event."),
     ("elena", "Elena Rossi", "Alumni office intern", "Packed name badges from a donor mixer."),
     ("marcus", "Marcus Hale", "Food truck vendor", "Parked a late taco truck on Alumni Drive."),
     ("priya", "Priya Desai", "Bio lab assistant", "Locked the teaching lab cold room."),
@@ -164,10 +164,10 @@ WITNESSES_BATCH1 = [
     ("jade", "Jade Winters", "Radio station DJ", "Hosted a late show from the basement booth."),
     ("parker", "Parker Ellis", "Mailroom clerk", "Sorted late package drops for resident halls."),
     ("sofia", "Sofia Mendes", "Swim team manager", "Logged pool equipment after practice."),
-    ("ryan", "Ryan Cho", "Printing services", "Ran banner reprints for the pep rally."),
+    ("ryan", "Ryan Paik", "Printing services", "Ran banner reprints for the pep rally."),
     ("amara", "Amara Diallo", "International student mentor", "Held drop-in hours in the global lounge."),
     ("theo", "Theo Lindqvist", "Bike shop mechanic", "Closed the campus bike co-op register."),
-    ("grace", "Grace Okonkwo", "Chaplain intern", "Locked the meditation room after a group."),
+    ("grace", "Grace Adebayo", "Chaplain intern", "Locked the meditation room after a group."),
     ("felix", "Felix Ortega", "Vending contractor", "Restocked snack spirals on level two."),
     ("hana", "Hana Suzuki", "Museum gallery attendant", "Closed the small campus gallery."),
 ]
@@ -200,7 +200,7 @@ WITNESSES_BATCH2 = [
     ("xander", "Xander Price", "Improv troupe booker", "Struck chairs after a basement show."),
     ("yara", "Yara Haddad", "Middle East studies aide", "Closed the map room in Baldy-style annex."),
     ("zeke", "Zeke Morrow", "Ice rink Zamboni trainee", "Helped resurface after club skate."),
-    ("april", "April Cho", "Floral lab assistant", "Watered greenhouse benches after class."),
+    ("april", "April Yoon", "Floral lab assistant", "Watered greenhouse benches after class."),
     ("blake", "Blake Dunn", "Esports shoutcaster", "Ended a cast from the streaming closet."),
     ("cove", "Cove Jensen", "Sailing club rigger", "Dried sails in the boathouse loft."),
     ("dane", "Dane Okorie", "African student union", "Locked the cultural center lounge."),
@@ -211,11 +211,11 @@ WITNESSES_BATCH2 = [
     ("izzy", "Izzy Kahn", "Debate team researcher", "Printed briefs in the late lab."),
     ("joss", "Joss Meier", "German house cook", "Closed the community kitchen."),
     ("kent", "Kent Abrams", "Alumni phonathon", "Ended call shifts in the phone bank."),
-    ("lana", "Lana Petrova", "Ballet pianist", "Packed sheet music after rehearsal."),
-    ("mack", "Mack Rivera", "Grounds irrigation tech", "Checked sprinkler zones by the fountain."),
+    ("lana", "Lana Kuznetsova", "Ballet pianist", "Packed sheet music after rehearsal."),
+    ("mack", "Mack Holloway", "Grounds irrigation tech", "Checked sprinkler zones by the fountain."),
     ("nell", "Nell Borges", "Latin dance instructor", "Locked the studio after salsa night."),
     ("otis", "Otis Greene", "Jazz combo roadie", "Loaded amps into a van on the dock."),
-    ("pearl", "Pearl Nguyen", "Optometry clinic aide", "Closed the evening screening room."),
+    ("pearl", "Pearl Vo", "Optometry clinic aide", "Closed the evening screening room."),
     ("quill", "Quill Asher", "Poetry slam host", "Struck the mic in the cafe stage."),
     ("rome", "Rome Castillo", "Soccer kit manager", "Returned pinnies to the field house."),
     ("sage", "Sage Whitaker", "Herbal club gardener", "Locked the community plot shed."),
@@ -294,7 +294,30 @@ def build_pool(limit: int | None = 40):
     people = deduped
     if limit is not None:
         people = people[:limit]
+    assert_unique_surnames(people)
     return people
+
+
+def surname_of(display_name: str) -> str:
+    parts = str(display_name or "").strip().split()
+    if not parts:
+        return ""
+    # Treat multi-part surnames lightly (Al-Farsi, etc.) as the last token for uniqueness.
+    return parts[-1].lower()
+
+
+def assert_unique_surnames(people: list) -> None:
+    """Fail generation if last names cluster (Magdy: no Nguyen spam)."""
+    by_surname: dict[str, list[str]] = {}
+    for p in people:
+        sur = surname_of(p.get("displayName", ""))
+        if not sur:
+            continue
+        by_surname.setdefault(sur, []).append(p["id"])
+    clashes = {s: ids for s, ids in by_surname.items() if len(ids) > 1}
+    if clashes:
+        detail = ", ".join(f"{s}→{ids}" for s, ids in sorted(clashes.items()))
+        raise SystemExit(f"Duplicate surnames in affiliate pool: {detail}")
 
 
 def build_witness_dialogue(people: list) -> list:
