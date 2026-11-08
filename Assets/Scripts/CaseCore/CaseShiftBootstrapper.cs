@@ -31,7 +31,7 @@ namespace CaseClosed.CaseCore
         [SerializeField] private CaseShiftController shiftController;
 
         [Header("Debug")]
-        [Tooltip("Logs stamp / next / charge / headline events to the Console for Bezi wiring checks.")]
+        [Tooltip("Logs stamp / next / charge / headline events to the Console for wiring checks.")]
         [SerializeField] private bool logFlowEvents = true;
 
         /// <summary>The live shift controller used by this bootstrapper.</summary>

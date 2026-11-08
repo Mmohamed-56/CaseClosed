@@ -19,7 +19,7 @@ namespace CaseClosed.UI
         [Tooltip("Short description body.")]
         [SerializeField] private Text bodyText;
 
-        [Tooltip("Optional owner / suspect label (Bezi). Hidden when empty.")]
+        [Tooltip("Optional owner / suspect label. Hidden when empty.")]
         [SerializeField] private Text suspectLabelText;
 
         [Tooltip("Optional click target. Uses this GameObject's Button when empty.")]

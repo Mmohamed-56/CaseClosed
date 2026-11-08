@@ -25,7 +25,7 @@ namespace CaseClosed.UI
         [SerializeField] private InterrogationActionHud actionHud;
 
         [Header("Prototype Overlay")]
-        [Tooltip("Off by default — Bezi owns the right CASE FILE / EVIDENCE clipboard. Do not respawn a prototype overlay.")]
+        [Tooltip("Off by default — the scene owns the right CASE FILE / EVIDENCE clipboard. Do not respawn a prototype overlay.")]
         [SerializeField] private bool createOverlayWhenUnwired = false;
 
         [Tooltip("Anchor the prototype board on the right side of the screen.")]
