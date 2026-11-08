@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I left the north desk. The desk version was me protecting the hall and myself.",
+              "line": "I did it. I {act}. I left the north desk. I wasn't sitting there.",
               "onlyIfCulprit": true
             }
           ]
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The desk was a lie. I did it. I left the north hall stool.",
+              "line": "The desk wasn't the night. I did it. I {act}. I left the north hall stool.",
               "onlyIfCulprit": true
             }
           ]
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I wasn't on that north-desk stool. I did it. I left the desk.",
+              "line": "I wasn't on that north-desk stool. I did it. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I left the north desk. Put that in the file, not the version I walked in with.",
+              "line": "I did it. I left the north desk. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I already said it. I did it. I'm not gonna clean it up on the way out.",
+              "line": "I already said it. I did it. I {act}. I'm not gonna clean it up on the way out.",
               "onlyIfCulprit": true
             }
           ]

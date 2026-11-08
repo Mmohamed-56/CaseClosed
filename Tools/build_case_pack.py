@@ -28,6 +28,10 @@ BANNED = (
     "not a costume",
     "not a storage",
     "not a confession",
+    "shoe grit",
+    "dorm-named",
+    "alarm acknowledge",
+    "in the crop",
     "is the point",
     "have to match",
     "have to be the same",
@@ -64,6 +68,10 @@ def C(**kwargs):
             raise SystemExit(f"{kwargs['id']} briefing missing {header.strip()}")
     if "\nWHERE:" in briefing or briefing.strip().startswith("DIFFICULTY"):
         raise SystemExit(f"{kwargs['id']} briefing has a bad header")
+    act = (kwargs.get("act") or "").strip()
+    if not act or act.lower().startswith("i "):
+        raise SystemExit(f"{kwargs['id']} act must be a verb phrase after 'I '")
+    kwargs["act"] = act
     return kwargs
 
 
@@ -85,6 +93,7 @@ CASES = [
         title="Capen Victor Mural Paint-Out",
         difficulty="easy",
         motive="Rival week. They wanted Victor embarrassed before the game.",
+        act="went back and painted over Victor",
         solvePath="Somebody painted red over the Victor mural on the Capen south wall between 4:40 and 5:10 PM.",
         briefing=brief(
             "Capen Hall, south brick wall.",
@@ -127,6 +136,7 @@ CASES = [
         title="Norton Hall Cloned Night Badge",
         difficulty="hard",
         motive="A recommendation letter locked in a faculty office.",
+        act="copied the card and I opened that office",
         solvePath="Somebody opened a Norton faculty office at 9:22 PM on chip serial SE-B.",
         briefing=brief(
             "Norton Hall, faculty hallway.",
@@ -175,6 +185,7 @@ CASES = [
         title="Hadley Village Unit 4B Noise Sheet",
         difficulty="medium",
         motive="A recruit visit turned into a party. The host needed the write-up on somebody else.",
+        act="was the one in 4B with the cans",
         solvePath="Somebody was in the Hadley 4B doorway at 11:36 PM with a case of cans.",
         briefing=brief(
             "Hadley Village, unit 4B.",
@@ -216,6 +227,7 @@ CASES = [
         title="Furnas Chem 201 Night Reprint",
         difficulty="hard",
         motive="The Chem 201 midterm is at 8 AM. Fail it and you fail the course.",
+        act="printed the Chem 201 answer key",
         solvePath="Somebody printed {name}-review.pdf in Furnas 214 at 1:17 AM.",
         briefing=brief(
             "Furnas Hall, room 214.",
@@ -259,17 +271,18 @@ CASES = [
         title="Ellicott Tunnel Shoulder Check",
         difficulty="medium",
         motive="A project slide one partner deleted.",
-        solvePath="Somebody with tunnel grit on their shoes texted from the Ellicott tunnel at 11:18 PM.",
+        act="shoved them in the tunnel",
+        solvePath="Somebody with tunnel dirt on their shoes texted from the Ellicott tunnel at 11:18 PM.",
         briefing=brief(
             "Ellicott tunnel, by the bend.",
             "11:12 PM to 11:28 PM.",
             "A student got shouldered into the wall and threatened over a deleted project slide. The cameras catch shoes and coats.",
             "That deleted slide.",
             [
-                "Shoe grit from the tunnel, and a text at 11:18 PM.",
+                "Dirt off a pair of shoes, from the tunnel floor, and a text at 11:18 PM.",
                 "Project review sign-out, 11:05 PM.",
                 "Project thread. The slide comes out at 10:40 PM.",
-                "Phone on a dorm-named Wi-Fi network, 11:20 PM.",
+                "Their phone was on the dorm Wi-Fi at 11:20 PM.",
                 "A bruise photo, posted at 11:40 PM. Caption reads tunnel night.",
             ],
         ),
@@ -278,10 +291,10 @@ CASES = [
         windowStart="11:12 PM",
         windowEnd="11:28 PM",
         accessTime="11:18 PM",
-        accessTitle="Tunnel grit and text",
+        accessTitle="Tunnel dirt and text",
         accessDescription=(
-            "Lab note on the shoes {name} wore tonight: grit from the Ellicott tunnel. "
-            "Their phone sent \"I'm in the tunnel, do not follow me\" at 11:18 PM."
+            "Lab note on the shoes {name} wore tonight: dirt from the tunnel floor. "
+            "Their phone sent \"I'm in the tunnel, don't follow me\" at 11:18 PM."
         ),
         contradictionExplanation="{name} was in the Ellicott tunnel at 11:18 PM and started the shove.",
         signInTitle="Project review sign-out",
@@ -290,7 +303,7 @@ CASES = [
         rosterDescription="{name} is in the project thread. The slide was deleted at 10:40 PM.",
         alibiTitle="Dorm Wi-Fi log",
         alibiDescription=(
-            "Phone log, 11:20 PM. {name}'s phone is on a network named for the dorm. "
+            "Phone log, 11:20 PM. {name}'s phone was on the dorm Wi-Fi. "
             "The IT map for that access point includes the tunnel mouth."
         ),
         redHerringTitle="Bruise photo",
@@ -306,6 +319,7 @@ CASES = [
         title="Goodyear Bike Cage Lock Cut",
         difficulty="easy",
         motive="Sell the bike the same night. They needed the cash.",
+        act="cut the lock and I walked the bike out",
         solvePath="Somebody cut the lock off a blue Trek in the Goodyear cage at 7:22 PM.",
         briefing=brief(
             "Goodyear Hall bike cage.",
@@ -350,6 +364,7 @@ CASES = [
         title="Lockwood Carrel Threat Notes",
         difficulty="hard",
         motive="A lab partner just got sole credit. They wanted that partner scared.",
+        act="printed those threats",
         solvePath="note-final.pdf printed at Lockwood at 7:14 PM from inside the building.",
         briefing=brief(
             "Lockwood Library, carrels 3B and 3C.",
@@ -400,6 +415,7 @@ CASES = [
         title="Abbott Observatory Eyepiece",
         difficulty="medium",
         motive="Somebody needed the glass for a night shoot.",
+        act="took the eyepiece off the mount",
         solvePath="The missing eyepiece's serial is scratched into a camera case returned at 9:40 PM.",
         briefing=brief(
             "Abbott Hall, observatory deck.",
@@ -444,14 +460,15 @@ CASES = [
         title="Hochstetter Incubator Left Open",
         difficulty="medium",
         motive="Judging's tomorrow. They wanted the other group's samples dead before that.",
-        solvePath="Incubator B's glove log at 2:22 PM is one student's glove size, and the alarm was acknowledged there.",
+        act="opened the incubator and I left those samples to die",
+        solvePath="Incubator B's glove log at 2:22 PM is one student's glove size, and they shut the alarm off at the box.",
         briefing=brief(
             "Hochstetter Hall, incubator B.",
             "2:10 PM to 2:40 PM.",
             "Incubator B was left open, the alarm was shut off at the box, and a symposium group's cultures died.",
             "Judging's tomorrow. They wanted the other group's samples dead before that.",
             [
-                "Glove log H-B, 2:22 PM. A glove size, a skipped sanitizer beep, an alarm acknowledge.",
+                "Glove log at incubator B, 2:22 PM. Their glove size. They skipped the hand-wash beep and shut the alarm off at the box.",
                 "Cleanup sign-out sheet, 2:05 PM.",
                 "Cleanup rotation list.",
                 "Prep-kitchen motion sensor, 2:51 PM.",
@@ -465,8 +482,8 @@ CASES = [
         accessTime="2:22 PM",
         accessTitle="Incubator glove log",
         accessDescription=(
-            "Incubator glove log H-B, 2:22 PM. {name}'s glove size. The sanitizer beep was skipped. "
-            "The alarm was acknowledged on the incubator panel."
+            "Incubator glove log, 2:22 PM. {name}'s glove size. They skipped the hand-wash beep "
+            "and shut the alarm off at the box."
         ),
         contradictionExplanation="{name} opened incubator B at 2:22 PM and shut the alarm off.",
         signInTitle="Lab cleanup sign-out",
@@ -486,6 +503,7 @@ CASES = [
         title="Silverman Reserve Textbook Lift",
         difficulty="easy",
         motive="The 5 PM midterm uses problems that are only in that edition.",
+        act="took the reserve book",
         solvePath="The reserve-desk camera shows the green Organic II spine leaving at 3:28 PM.",
         briefing=brief(
             "Silverman Library, reserve desk.",
@@ -528,6 +546,7 @@ CASES = [
         title="Crosby Greenhouse Pane Break",
         difficulty="medium",
         motive="The gardener wouldn't give out cuttings.",
+        act="smashed that greenhouse pane",
         solvePath="Jog camera at 6:12 AM shows shoes that match the soil under the broken cutting-bench pane.",
         briefing=brief(
             "Crosby greenhouse, cutting bench.",
@@ -572,6 +591,7 @@ CASES = [
         title="Slee Practice-Room Amp",
         difficulty="medium",
         motive="A show tonight, and their own amp died.",
+        act="took the house amp out of the practice room",
         solvePath="A 10:05 PM photo shows the Slee house-amp serial while room 3 is still signed out.",
         briefing=brief(
             "Slee Hall, practice room 3.",
@@ -579,7 +599,7 @@ CASES = [
             "The house amp left practice room 3. The key never hit the return box.",
             "A show tonight, and their own amp died.",
             [
-                "Photo at 10:05 PM. A hallway outlet, and the house-amp serial sticker in the crop.",
+                "Photo at 10:05 PM. A hallway outlet, and you can read the house amp's serial sticker in the corner.",
                 "Recital-crew sheet. Crew ended at 9:00 PM.",
                 "Room 3 reservation card. Return line blank.",
                 "Key-return box. No drop tonight.",
@@ -593,7 +613,7 @@ CASES = [
         accessTime="10:05 PM",
         accessTitle="Amp photo",
         accessDescription=(
-            "Photo from {name}'s account, 10:05 PM. A hallway outlet. The Slee house-amp serial sticker is readable in the crop. "
+            "Photo from {name}'s account, 10:05 PM. A hallway outlet. You can read the house amp's serial sticker in the corner. "
             "Room 3 was still signed out to {name}."
         ),
         contradictionExplanation="{name} took the Slee room 3 amp and photographed the serial at 10:05 PM.",
@@ -614,6 +634,7 @@ CASES = [
         title="Baldy Hall False Alarm Pull",
         difficulty="easy",
         motive="They weren't ready to sit that quiz.",
+        act="pulled the fire alarm during the quiz",
         solvePath="The pull-station camera at 8:11 PM shows a directory bracelet and a quiz lanyard on the lever.",
         briefing=brief(
             "Baldy Hall, third floor, by the pull station.",
@@ -655,6 +676,7 @@ CASES = [
         title="O'Brian Registrar Grade Flip",
         difficulty="hard",
         motive="One course grade, changed overnight.",
+        act="changed that grade on the registrar computer",
         solvePath="A grade-change form saved at 12:41 AM on a registrar session that never switched users.",
         briefing=brief(
             "O'Brian Hall, registrar suite.",

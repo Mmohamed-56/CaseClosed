@@ -37,6 +37,8 @@ namespace CaseClosed.CaseCore
             public string briefing;
             public string treeHook;
             public string scene;
+            /// <summary>What they did, as a verb phrase after "I ". Slip lines fill {act} from this at speak time.</summary>
+            public string act;
             public string windowStart;
             public string windowEnd;
             public string accessTime;
@@ -161,6 +163,7 @@ namespace CaseClosed.CaseCore
                         "WHERE: Field House, mezzanine over the court.\nWHEN: 6:05 PM to 6:35 PM.\nWHAT: Somebody cut down the Founders Weekend spirit banner.\nMOTIVE: Embarrass the weekend before anyone could hang it back up.\n\nMezzanine camera still.\nAthletics volunteer sheet.\nA hardware receipt for a folding knife.",
                     treeHook = "banner_cutdown",
                     scene = "Field House mezzanine",
+                    act = "cut down the spirit banner",
                     windowStart = "6:05 PM",
                     windowEnd = "6:35 PM",
                     accessTime = "6:21 PM",

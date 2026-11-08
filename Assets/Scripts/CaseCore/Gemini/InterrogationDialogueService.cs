@@ -227,7 +227,8 @@ namespace CaseClosed.CaseCore.Gemini
                     IsCulprit = isCulprit,
                     IsShutdown = stressResult.IsShutdown,
                     HasSlipped = slippedSuspectIds.Contains(suspect.Id),
-                    StressResult = stressResult
+                    StressResult = stressResult,
+                    SpokenAct = shiftController.ActiveSession.Case.SpokenAct
                 };
 
                 GeminiSuspectReply scenarioReply;
@@ -326,7 +327,14 @@ namespace CaseClosed.CaseCore.Gemini
 
             bool hasSlipped = slippedSuspectIds.Contains(stamped.Id);
             GeminiSuspectReply reply;
-            if (!scenarioClient.TryResolveAftermath(stamped, stamp.Decision, lastStress, isCulprit, out reply, hasSlipped))
+            if (!scenarioClient.TryResolveAftermath(
+                    stamped,
+                    stamp.Decision,
+                    lastStress,
+                    isCulprit,
+                    out reply,
+                    hasSlipped,
+                    shiftController.ActiveSession.Case.SpokenAct))
                 return;
 
             Action started = QuestionStarted;

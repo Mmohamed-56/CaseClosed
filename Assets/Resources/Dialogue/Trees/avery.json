@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I left the route and I did it. The radio call was cover.",
+              "line": "I left the route and I did it. I {act}. Don't trust the radio call.",
               "onlyIfCulprit": true
             }
           ]
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "It was me. I did it. The route I gave you was a lie.",
+              "line": "It was me. I did it. I {act}. The route I gave you wasn't the night.",
               "onlyIfCulprit": true
             }
           ]
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I wasn't on that hall with the cart. I did it anyway.",
+              "line": "I wasn't on that hall with the cart. I did it. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Alright. I did it. I stepped off the linen route.",
+              "line": "Alright. I did it. I {act}. I stepped off the linen route to do it.",
               "onlyIfCulprit": true
             }
           ]
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Letting me walk doesn't undo it. I did it. I left the route to do it.",
+              "line": "Letting me walk doesn't undo it. I did it. I {act}. I left the route.",
               "onlyIfCulprit": true
             }
           ]

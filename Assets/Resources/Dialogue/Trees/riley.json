@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I wasn't in the study room. I said I was because it was clean.",
+              "line": "I did it. I {act}. I wasn't in the study room. I said I was because it was quiet.",
               "onlyIfCulprit": true
             }
           ]
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The study room was the false line. I did it. I wasn't in there.",
+              "line": "The study room wasn't where I was. I did it. I {act}. I wasn't in there.",
               "onlyIfCulprit": true
             }
           ]
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I wasn't in that study-room chair. I did it. Write that.",
+              "line": "I wasn't in that study-room chair. I did it. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -673,7 +673,7 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "I finished the club paperwork and I went to study room B. I can walk the times again. I didn't do this.",
+              "line": "I finished the club paperwork and I went to study room B. I can go through the times again. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Okay. I did it. The study room is where I said I was, and that part wasn't true.",
+              "line": "Okay. I did it. I {act}. I wasn't in the study room.",
               "onlyIfCulprit": true
             }
           ]
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I already told you. I did it. Don't lose that just because you're letting me leave.",
+              "line": "I already told you. I did it. I {act}. Don't lose that just because you're letting me leave.",
               "onlyIfCulprit": true
             }
           ]

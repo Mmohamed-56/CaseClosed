@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I wasn't at the sink. The kitchen was what I wanted you to see.",
+              "line": "I did it. I {act}. I wasn't at the sink like I wanted you to think.",
               "onlyIfCulprit": true
             }
           ]
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The prep kitchen was the lie. I did it. I didn't stay at the sink.",
+              "line": "The prep kitchen wasn't where I stayed. I did it. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I wasn't at the prep-kitchen sink. I did it. I left the trays.",
+              "line": "I wasn't at the prep-kitchen sink. I did it. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did. I did it. I'm tired of the kitchen version. I left it.",
+              "line": "I did it. I {act}. I didn't stay in the kitchen.",
               "onlyIfCulprit": true
             }
           ]
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I already told you the truth. I did it. The kitchen wasn't where I stayed.",
+              "line": "I already told you. I did it. I {act}. I didn't stay in the kitchen.",
               "onlyIfCulprit": true
             }
           ]

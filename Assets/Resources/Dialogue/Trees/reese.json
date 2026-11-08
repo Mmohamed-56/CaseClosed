@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. Rec was the version I wanted, and it wasn't where I stayed.",
+              "line": "I did it. I {act}. I wasn't at rec like I wanted you to think.",
               "onlyIfCulprit": true
             }
           ]
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The rec run was a lie. I did it. I wasn't on that court.",
+              "line": "The rec run wasn't the night. I did it. I {act}. I wasn't on that court.",
               "onlyIfCulprit": true
             }
           ]
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I wasn't on that rec court. I did it. The run was cover.",
+              "line": "I wasn't on that rec court at all. I did it. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -673,7 +673,7 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "I didn't do this. I'm jumpy because you pulled me off the court, not because I'm lying. I was at rec.",
+              "line": "I didn't do this. I'm jumpy because you pulled me off the court. I was at rec.",
               "onlyIfInnocent": true
             },
             {
@@ -689,7 +689,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "This is a bad call. I was on the court at rec. Hold me all night, I'm not sketching you a route.",
+              "line": "This is a bad call. I was on the court at rec. Hold me all night. I didn't leave.",
               "onlyIfCulprit": true
             },
             {
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Yeah, it was me. I did it. I'm done with the rec version.",
+              "line": "Yeah, it was me. I {act}. I wasn't on the court.",
               "onlyIfCulprit": true
             }
           ]
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "You heard me. I did it. Walking out doesn't change that.",
+              "line": "You heard me. I did it. I {act}. Walking out doesn't change that.",
               "onlyIfCulprit": true
             }
           ]

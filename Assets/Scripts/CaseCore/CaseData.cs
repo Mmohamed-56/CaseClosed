@@ -94,6 +94,8 @@ namespace CaseClosed.CaseCore
         public string Briefing { get; private set; }
         /// <summary>Place from the case template scene line. Shown in the desk header.</summary>
         public string Location { get; private set; }
+        /// <summary>Verb phrase after "I ". Slip lines say this case's act, not a crime baked into the shared tree.</summary>
+        public string SpokenAct { get; private set; }
         public IReadOnlyList<SuspectRecord> Suspects { get { return suspects; } }
 
         /// <summary>
@@ -120,7 +122,8 @@ namespace CaseClosed.CaseCore
             string culpritSuspectId,
             IEnumerable<SuspectRecord> caseSuspects,
             IEnumerable<WebsiteSuspectRecord> directoryAffiliates,
-            string location = null)
+            string location = null,
+            string spokenAct = null)
         {
             if (string.IsNullOrWhiteSpace(caseId)) throw new ArgumentException("Case needs an ID.", "caseId");
             if (string.IsNullOrWhiteSpace(culpritSuspectId)) throw new ArgumentException("Case needs a culprit ID.", "culpritSuspectId");
@@ -130,6 +133,7 @@ namespace CaseClosed.CaseCore
             Title = title ?? string.Empty;
             Briefing = briefing ?? string.Empty;
             Location = location ?? string.Empty;
+            SpokenAct = spokenAct ?? string.Empty;
             CulpritSuspectId = culpritSuspectId;
             suspects = new List<SuspectRecord>(caseSuspects);
             campusDirectory = directoryAffiliates == null
@@ -193,7 +197,8 @@ namespace CaseClosed.CaseCore
                 culprit.Id,
                 new[] { innocent, culprit },
                 null,
-                "Field House, mezzanine over the court");
+                "Field House, mezzanine over the court",
+                "cut down the spirit banner");
         }
     }
 }

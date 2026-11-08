@@ -210,7 +210,8 @@ namespace CaseClosed.CaseCore
                 "suspect_" + culprit.Id,
                 suspects,
                 directory,
-                template.scene);
+                template.scene,
+                template.act);
         }
 
         /// <summary>Playable interviewee pool size (catalog when loaded, else embedded 8).</summary>

@@ -63,6 +63,8 @@ namespace CaseClosed.CaseCore.Dialogue
         public bool HasSlipped;
         public InterrogationResult StressResult;
         public string AftermathDecision;
+        /// <summary>This case's act. A verb phrase after "I ". Replaces {act} when the line is spoken.</summary>
+        public string SpokenAct;
     }
 
     /// <summary>Index listing bank TextAsset names under Resources/Dialogue (no extension).</summary>

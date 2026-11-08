@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I left the south quad. The loop I reported was cover.",
+              "line": "I did it. I {act}. I left the south quad. The loop I reported wasn't the night.",
               "onlyIfCulprit": true
             }
           ]
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The loop was a false report. I did it. I left the quad.",
+              "line": "The loop was a false report. I did it. I {act}. I left the quad.",
               "onlyIfCulprit": true
             }
           ]
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I wasn't on the library path at all. I did it. The loop was cover.",
+              "line": "I wasn't on the library path at all. I did it. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -673,7 +673,7 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "I didn't do this. I was on the south quad loop. I walked it, and I know the order.",
+              "line": "I didn't do this. I was on the south quad loop. I walked the whole thing.",
               "onlyIfInnocent": true
             },
             {
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "It was me. I did it. I left the south quad loop.",
+              "line": "It was me. I did it. I {act}. I left the south quad loop.",
               "onlyIfCulprit": true
             }
           ]
@@ -725,7 +725,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "I'll head out. I was on the south quad loop. That stands.",
+              "line": "I'll head out. I was on the south quad loop. I didn't leave it.",
               "onlyIfCulprit": true
             },
             {
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The release doesn't change what I said. I did it. I left the patrol.",
+              "line": "Letting me go doesn't change it. I did it. I {act}. I left the patrol.",
               "onlyIfCulprit": true
             }
           ]

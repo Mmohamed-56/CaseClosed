@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I wasn't in the edit bay. The upload time was the cover.",
+              "line": "I did it. I {act}. I wasn't in the edit bay like I told you.",
               "onlyIfCulprit": true
             }
           ]
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The bay was a lie. I did it. Don't caption the night as an upload.",
+              "line": "The bay wasn't the night. I did it. I {act}. Don't caption it as an upload.",
               "onlyIfCulprit": true
             }
           ]
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I wasn't in the edit-bay chair. I did it. The uploads were cover.",
+              "line": "I wasn't in the edit-bay chair at all. I did it. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -673,7 +673,7 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "That's not me. I didn't do this, and I was in the edit bay dumping cards if you need the boring version.",
+              "line": "That's not me. I didn't do this. I was in the edit bay dumping cards.",
               "onlyIfInnocent": true
             },
             {
@@ -689,7 +689,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "I've got files uploading. I was in the edit bay. I'm not describing a doorway I wasn't standing in.",
+              "line": "I've got files uploading. I was in the edit bay. I didn't go stand in a doorway.",
               "onlyIfCulprit": true
             },
             {
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Yeah. I did it. The edit bay is the version I came in with, and it was a lie.",
+              "line": "Yeah. I did it. I {act}. I wasn't in the edit bay.",
               "onlyIfCulprit": true
             }
           ]
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I already admitted it. I did it. Letting me out doesn't erase the bay being a lie.",
+              "line": "I already admitted it. I did it. I {act}. Letting me out doesn't take that back.",
               "onlyIfCulprit": true
             }
           ]

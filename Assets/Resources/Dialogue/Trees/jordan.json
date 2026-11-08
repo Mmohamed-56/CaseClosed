@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. The remote queue was me buying time. I wasn't in that room.",
+              "line": "I did it. I {act}. The remote queue was me buying time. I wasn't in that room.",
               "onlyIfCulprit": true
             }
           ]
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The remote queue was a lie. I did it. I wasn't in my room.",
+              "line": "The remote queue was me stalling. I did it. I {act}. I wasn't in my room.",
               "onlyIfCulprit": true
             }
           ]
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I wasn't in the chair in my room. I did it. The queue was cover.",
+              "line": "I wasn't in the chair in my room. I did it. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Alright. I did it. I wasn't on that ticket queue. Happy?",
+              "line": "Alright. I did it. I {act}. I wasn't on the ticket queue. Happy?",
               "onlyIfCulprit": true
             }
           ]
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Letting me leave is your call. I did it. That's still true when I walk out.",
+              "line": "Letting me leave is your call. I did it. I {act}. That's still true when I walk out.",
               "onlyIfCulprit": true
             }
           ]

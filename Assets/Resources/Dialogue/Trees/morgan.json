@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The clock-out was a lie. I did it. I came back after the desk.",
+              "line": "The clock-out was wrong. I did it. I {act}. I came back after the desk.",
               "onlyIfCulprit": true
             }
           ]
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I came back after the desk. The clock-out was for you.",
+              "line": "I did it. I {act}. I came back after the desk. The clock-out was for you.",
               "onlyIfCulprit": true
             }
           ]
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I wasn't in housing. I did it. I came back after the desk.",
+              "line": "I wasn't in housing. I did it. I {act}. I came back after the desk.",
               "onlyIfCulprit": true
             }
           ]
@@ -689,7 +689,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "The shift ended. I went back to housing. You can keep the chair. I didn't do this.",
+              "line": "The shift ended. I went back to housing. I didn't do this.",
               "onlyIfCulprit": true
             },
             {
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Fine. I did it. I wasn't back in housing.",
+              "line": "Fine. I did it. I {act}. I wasn't back in housing.",
               "onlyIfCulprit": true
             }
           ]
@@ -725,7 +725,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "I'll take the door. The shift ended and I went to housing. That's the version I gave you.",
+              "line": "I'm going. The shift ended and I went to housing. I didn't do this.",
               "onlyIfCulprit": true
             },
             {
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Let me go if you want. I already said I did it. I'm not unsaying it in the hall.",
+              "line": "Let me go if you want. I did it. I {act}. I'm not unsaying it in the hall.",
               "onlyIfCulprit": true
             }
           ]

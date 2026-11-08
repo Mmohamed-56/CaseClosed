@@ -109,6 +109,15 @@ def main() -> None:
             for q in branch_obj["questions"]:
                 for reply in q["replies"]:
                     line = reply["line"]
+                    if reply.get("slip"):
+                        if "{act}" not in line:
+                            raise SystemExit(f"{a['id']} slip line has no act: {line[:80]}")
+                        low = line.lower()
+                        for banned_slip in (" cover", "version", "the file", "the release"):
+                            if banned_slip in low:
+                                raise SystemExit(f"{a['id']} slip still has {banned_slip!r}: {line[:80]}")
+                    elif "{act}" in line:
+                        raise SystemExit(f"{a['id']} non-slip line names the act: {line[:80]}")
                     if line in seen:
                         raise SystemExit(f"duplicate line in {a['id']}: {line[:80]}")
                     seen.add(line)
