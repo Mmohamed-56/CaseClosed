@@ -1,0 +1,12 @@
+{
+  "name": "case-closed-ub-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "UPSR records site + Gemini/ElevenLabs API proxy for Case Closed at UB",
+  "scripts": {
+    "deploy": "netlify deploy --prod --dir=site --functions=netlify/functions --site=77866f37-2c33-44a0-a846-3d44200be13b"
+  },
+  "devDependencies": {
+    "netlify-cli": "^19.1.5"
+  }
+}

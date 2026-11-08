@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=77866f37-2c33-44a0-a846-3d44200be13b
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>University Public Safety Records — Record Detail</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="shell">
+    <p style="margin:0 0 8px">
+      <a href='/'>&larr; Case desk</a> ·
+      <a href='/search'>Search</a> ·
+      <a href="#" id="back-suspect">Suspect dossier</a>
+    </p>
+
+    <section class="panel">
+      <div class="panel-h">
+        <span>Record detail</span>
+        <span class="tag" id="record-id-tag">—</span>
+      </div>
+      <div class="panel-b">
+        <div class="row" style="justify-content:space-between;align-items:center">
+          <div>
+            <span class="type-pill" id="record-cat">Record</span>
+            <h1 class="case-title" id="record-title" style="margin-top:6px">…</h1>
+          </div>
+          <button type="button" class="btn btn-evidence" id="btn-evidence">Add to evidence</button>
+        </div>
+
+        <dl class="record-detail">
+          <dt>Record ID</dt>
+          <dd id="record-id">—</dd>
+          <dt>Subject</dt>
+          <dd id="record-subject">—</dd>
+          <dt>Subject ID</dt>
+          <dd id="record-subject-id">—</dd>
+        </dl>
+
+        <div class="record-body" id="record-body"></div>
+
+        <p class="hint" style="margin-top:10px">
+          Add to evidence calls <span class="kbd">UBPDBridge.sendEvidenceRecordId(record.id)</span>.
+          When Unity is not connected, the page falls back to <span class="kbd">#clue=&lt;recordId&gt;</span> and still shows a confirmation toast.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/unity-bridge.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>
+    (function () {
+      UBPDChrome.ensureShell();
+      var recordId = UBPDApp.qs("id");
+      var currentRecord = null;
+
+      function render(caseData, source) {
+        UBPDApp.paintChrome(caseData, source);
+        if (!recordId) {
+          document.getElementById("record-title").textContent = "Missing record id";
+          document.getElementById("btn-evidence").disabled = true;
+          return;
+        }
+        var hit = UBPDApp.findRecord(caseData, recordId);
+        if (!hit) {
+          document.getElementById("record-title").textContent = "Record not in case payload";
+          document.getElementById("record-body").textContent =
+            "No public record with id " + recordId + ".";
+          document.getElementById("btn-evidence").disabled = true;
+          return;
+        }
+        currentRecord = hit.record;
+        var r = hit.record;
+        var s = hit.suspect;
+        var cat = UBPDApp.inferCategory(r);
+
+        document.title = "UPSR — " + (r.title || r.id);
+        document.getElementById("record-id-tag").textContent = r.id;
+        document.getElementById("record-id").textContent = r.id;
+        document.getElementById("record-title").textContent = r.title || "(untitled)";
+        document.getElementById("record-cat").textContent = UBPDApp.categoryLabel(cat);
+        document.getElementById("record-subject").textContent = s.name || "—";
+        document.getElementById("record-subject-id").textContent = s.id || "—";
+        document.getElementById("record-body").textContent = r.description || "";
+        document.getElementById("back-suspect").href =
+          "suspect.html?id=" + encodeURIComponent(s.id);
+        document.getElementById("btn-evidence").disabled = false;
+      }
+
+      document.getElementById("btn-evidence").addEventListener("click", function () {
+        if (!currentRecord) return;
+        UBPDApp.sendEvidence(currentRecord.id);
+      });
+
+      UBPDApp.loadCaseData()
+        .then(function (res) { render(res.data, res.source); })
+        .catch(function (err) {
+          document.getElementById("record-title").textContent = "Load failed";
+          document.getElementById("record-body").textContent = String(err);
+          document.getElementById("btn-evidence").disabled = true;
+        });
+    })();
+  </script>
+</body>
+</html>

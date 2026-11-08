@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=77866f37-2c33-44a0-a846-3d44200be13b
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>University Public Safety Records — Case Desk</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="shell" id="main">
+    <div class="notice">
+      Night-shift records terminal for a <strong>fictional</strong> campus public-safety office (not a real university police department).
+      Search public case files, open suspect dossiers, pin records to the evidence board.
+      Truth flags stay in Unity — this screen only shows what the badge system already knows.
+    </div>
+
+    <section class="panel">
+      <div class="panel-h">
+        <span>Active case</span>
+        <span class="tag" id="case-id-tag">—</span>
+      </div>
+      <div class="panel-b hero-case">
+        <div>
+          <h1 class="case-title" id="case-title">Loading…</h1>
+          <p class="briefing" id="case-briefing"></p>
+          <dl class="case-meta">
+            <div>
+              <dt>Case ID</dt>
+              <dd id="case-id">—</dd>
+            </div>
+            <div>
+              <dt>Schema</dt>
+              <dd id="case-schema">—</dd>
+            </div>
+            <div>
+              <dt>Persons of interest</dt>
+              <dd id="case-count">—</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <a class='btn btn-primary' href='/search'>Search records</a>
+          <button type="button" class="btn" id="btn-reload-sample">Load sample case</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-h">
+        <span>Persons of interest</span>
+        <span class="tag">select a dossier</span>
+      </div>
+      <div class="panel-b">
+        <div class="suspect-grid" id="suspect-grid"></div>
+        <div class="empty" id="suspect-empty" hidden>No suspects in payload.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/unity-bridge.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>
+    (function () {
+      UBPDChrome.ensureShell();
+
+      function render(caseData, source) {
+        UBPDApp.paintChrome(caseData, source);
+        document.getElementById("case-title").textContent = caseData.title || "(untitled)";
+        document.getElementById("case-briefing").textContent = caseData.briefing || "";
+        document.getElementById("case-id").textContent = caseData.caseId || "—";
+        document.getElementById("case-id-tag").textContent = caseData.caseId || "—";
+        document.getElementById("case-schema").textContent = "v" + (caseData.schemaVersion || "?");
+        var list = caseData.suspects || [];
+        document.getElementById("case-count").textContent = String(list.length);
+
+        var grid = document.getElementById("suspect-grid");
+        var empty = document.getElementById("suspect-empty");
+        grid.innerHTML = "";
+        if (!list.length) {
+          empty.hidden = false;
+          return;
+        }
+        empty.hidden = true;
+        list.forEach(function (s) {
+          var a = document.createElement("a");
+          a.className = "suspect-card";
+          a.href = "suspect.html?id=" + encodeURIComponent(s.id);
+          var color = UBPDApp.avatarColor(s.id);
+          a.innerHTML =
+            '<div class="avatar" style="background:' + color + '">' +
+            UBPDApp.escapeHtml(UBPDApp.initials(s.name)) +
+            "</div>" +
+            '<div class="name">' + UBPDApp.escapeHtml(s.name) + "</div>" +
+            '<div class="role">' + UBPDApp.escapeHtml(s.role || "") + "</div>" +
+            '<div class="num">' + UBPDApp.escapeHtml(s.id) + "</div>";
+          grid.appendChild(a);
+        });
+      }
+
+      UBPDApp.loadCaseData()
+        .then(function (res) { render(res.data, res.source); })
+        .catch(function (err) {
+          document.getElementById("case-title").textContent = "Failed to load case";
+          document.getElementById("case-briefing").textContent = String(err);
+          UBPDApp.showToast("Case load failed");
+        });
+
+      document.getElementById("btn-reload-sample").addEventListener("click", function () {
+        fetch("data/sample-case.json", { cache: "no-store" })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (window.UBPDBridge) UBPDBridge.receiveCaseData(data);
+            else {
+              window.__UBPD_CASE__ = data;
+              try { sessionStorage.setItem("ubpd.case", JSON.stringify(data)); } catch (e) {}
+            }
+            // Optional: put sample into hash so Unity-style load path is exercised
+            location.hash = UBPDApp.encodeCaseToHash(data).replace(/^#/, "#");
+            render(data, "sample");
+            UBPDApp.showToast("Sample case loaded");
+          });
+      });
+
+      window.addEventListener("hashchange", function () {
+        var decoded = UBPDApp.decodeCaseHashFragment(location.hash);
+        if (decoded && UBPDApp.validatePayload(decoded)) {
+          if (window.UBPDBridge) UBPDBridge.receiveCaseData(decoded);
+          render(decoded, "hash");
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

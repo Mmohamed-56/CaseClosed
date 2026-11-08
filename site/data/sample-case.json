@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "caseId": "UB-0000000042",
+  "title": "The Missing Mascot Head",
+  "briefing": "The Nordy the Owl mascot head was reported missing from Cedar Pavilion equipment cage between 21:00 and 23:00 on the night before Founders Weekend at Northbridge State University (fictional). Cage lock was intact in the morning; interior inventory shows the head gone and the spare jersey rumpled. Four persons of interest were near Cedar Pavilion during the window. Public records only — verify statements against logs before you stamp.",
+  "suspects": [
+    {
+      "id": "suspect_jamie",
+      "name": "Jamie Rivera",
+      "role": "Student volunteer",
+      "statement": "I ran the spirit table at the Mill Student Center until about 22:30, then walked home. I never went into the equipment cage.",
+      "records": [
+        {
+          "id": "UB-0000000042_jamie_context",
+          "title": "Event sign-in sheet",
+          "description": "Founders Weekend spirit table roster lists Jamie Rivera checked in at Mill Student Center atrium 19:05, checked out 22:28. Supervisor initial: K.P."
+        },
+        {
+          "id": "UB-0000000042_jamie_access",
+          "title": "Cedar Pavilion side door — keycard",
+          "description": "Card #NS-3301 presented at Cedar Pavilion east service door at 22:41. Result: GRANTED. Door propped open 47 seconds."
+        },
+        {
+          "id": "UB-0000000042_jamie_phone",
+          "title": "Outbound text — 22:44",
+          "description": "SMS to contact \"Sam\": \"got it, meet by the loading dock\". Cell sector at send time: North Quad / Cedar Pavilion."
+        },
+        {
+          "id": "UB-0000000042_jamie_purchase",
+          "title": "Campus card — Mill convenience",
+          "description": "Purchase 21:50: energy drink $2.75, terminal MILL-CONV-02."
+        },
+        {
+          "id": "UB-0000000042_jamie_social",
+          "title": "@jamie.r_spirit — CampusConnect post",
+          "description": "21:12 post: \"Spirit table lives! Nordy would be proud (if he still had a head lmao)\". Geotag: Mill Student Center."
+        }
+      ]
+    },
+    {
+      "id": "suspect_sam",
+      "name": "Sam Okonkwo",
+      "role": "Athletics equipment intern",
+      "statement": "I closed the cage at 21:00 on schedule, logged the inventory, and was at Hale Library studying until midnight. Ask the desk attendant.",
+      "records": [
+        {
+          "id": "UB-0000000042_sam_context",
+          "title": "Equipment cage close-out log",
+          "description": "Cage E-12 close-out signed S. Okonkwo at 21:03. Mascot head marked PRESENT. Lock serial noted."
+        },
+        {
+          "id": "UB-0000000042_sam_access",
+          "title": "Hale Library turnstile",
+          "description": "Card #NS-5519 entry Hale Library 21:22. Exit Hale Library 23:58."
+        },
+        {
+          "id": "UB-0000000042_sam_phone",
+          "title": "Missed call from Jamie Rivera",
+          "description": "Inbound missed call from Jamie Rivera at 22:43. No voicemail. Handset tower sector: North Quad / Hale."
+        },
+        {
+          "id": "UB-0000000042_sam_purchase",
+          "title": "Harbor Hardware — bolt cutters",
+          "description": "Off-campus debit ****2291 on 5 Nov: mini bolt cutters $18.99. Campus fraud-alert feed mirrored receipt."
+        },
+        {
+          "id": "UB-0000000042_sam_social",
+          "title": "@sam.ok_eq — CampusConnect story",
+          "description": "22:05 story: photo of Hale study carrel, caption \"midterms vs Founders Weekend, midterms winning\"."
+        }
+      ]
+    },
+    {
+      "id": "suspect_priya",
+      "name": "Priya Nair",
+      "role": "Marching band section leader",
+      "statement": "Band rehearsal in Harper Hall until 22:00, then food with the section at West Residences. I don't have cage keys and wouldn't know where the head is stored.",
+      "records": [
+        {
+          "id": "UB-0000000042_priya_context",
+          "title": "Band rehearsal attendance",
+          "description": "Harper Hall sign-out sheet: Priya Nair present 18:30–22:05. Director stamp on file."
+        },
+        {
+          "id": "UB-0000000042_priya_access",
+          "title": "West Residences entry",
+          "description": "Card #NS-8842 entered West Residences lobby at 22:18. No Cedar Pavilion badge events that night."
+        },
+        {
+          "id": "UB-0000000042_priya_phone",
+          "title": "Group chat — Brass Chat",
+          "description": "Messages 22:20–23:10 coordinating late food run. Tower sector: West Residences."
+        },
+        {
+          "id": "UB-0000000042_priya_social",
+          "title": "@priya.brass — post",
+          "description": "22:31: \"If anyone 'borrows' Nordy's head for a prank I will personally conduct your apology.\" No geotag."
+        }
+      ]
+    },
+    {
+      "id": "suspect_devon",
+      "name": "Devon Blake",
+      "role": "Facilities night porter",
+      "statement": "I did the Cedar Pavilion sweep on my usual route. Cage hallway was quiet. Door looked locked when I passed around 22:20.",
+      "records": [
+        {
+          "id": "UB-0000000042_devon_context",
+          "title": "Night porter route sheet",
+          "description": "Route A-North assigned D. Blake. Cedar Pavilion interior sweep initialed 22:18–22:35."
+        },
+        {
+          "id": "UB-0000000042_devon_access",
+          "title": "Staff keycard — Pavilion service corridor",
+          "description": "Staff card #STF-204 at Pavilion service corridor reader 22:19 GRANTED; cage interior reader not triggered."
+        },
+        {
+          "id": "UB-0000000042_devon_phone",
+          "title": "Dispatch check-in",
+          "description": "Outbound to Facilities Dispatch 22:36, duration 0m 48s. Notes: \"Pavilion clear\"."
+        },
+        {
+          "id": "UB-0000000042_devon_purchase",
+          "title": "Pavilion vending — coffee",
+          "description": "Cash vend $1.50 Pavilion L1 machine PV-L1-01 at 22:40."
+        },
+        {
+          "id": "UB-0000000042_devon_social",
+          "title": "@devon.nights — check-in",
+          "description": "23:05: \"Floors done. Someone left glitter everywhere near the cage hall. Not it.\" Geotag: Cedar Pavilion."
+        }
+      ]
+    }
+  ]
+}

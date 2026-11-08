@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=77866f37-2c33-44a0-a846-3d44200be13b
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>University Public Safety Records — Search</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="panel">
+      <div class="panel-h">
+        <span>Record search</span>
+        <span class="tag">case id · suspect name</span>
+      </div>
+      <div class="panel-b">
+        <form id="search-form" autocomplete="off">
+          <div class="field">
+            <label for="q">Query</label>
+            <div class="row">
+              <input type="search" id="q" name="q" placeholder="e.g. UB-0000000042 or Jamie Rivera" />
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+            <p class="hint">Matches caseId / title, or suspect name / id / role. Fake mainframe delay optional — add <span class="kbd">?slow=1</span>.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel" id="results-panel" hidden>
+      <div class="panel-h">
+        <span>Results</span>
+        <span class="tag" id="results-tag"></span>
+      </div>
+      <div class="panel-b">
+        <div id="case-hit" hidden>
+          <p><strong>Case match:</strong> <a href='/' id='case-hit-link'></a></p>
+        </div>
+        <table class="data" id="results-table" hidden>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Suspect ID</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="results-body"></tbody>
+        </table>
+        <div class="empty" id="results-empty" hidden>No matching public records.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/unity-bridge.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>
+    (function () {
+      UBPDChrome.ensureShell();
+      var caseData = null;
+
+      function showResults(result) {
+        var panel = document.getElementById("results-panel");
+        panel.hidden = false;
+        document.getElementById("results-tag").textContent = 'q="' + (result.query || "") + '"';
+
+        var caseHit = document.getElementById("case-hit");
+        if (result.caseMatch) {
+          caseHit.hidden = false;
+          var link = document.getElementById("case-hit-link");
+          link.textContent = caseData.caseId + " — " + caseData.title;
+          link.href = "index.html";
+        } else {
+          caseHit.hidden = true;
+        }
+
+        var table = document.getElementById("results-table");
+        var body = document.getElementById("results-body");
+        var empty = document.getElementById("results-empty");
+        body.innerHTML = "";
+
+        if (!result.suspects.length && !result.caseMatch) {
+          table.hidden = true;
+          empty.hidden = false;
+          return;
+        }
+        empty.hidden = true;
+        if (!result.suspects.length) {
+          table.hidden = true;
+          return;
+        }
+        table.hidden = false;
+        result.suspects.forEach(function (s) {
+          var tr = document.createElement("tr");
+          tr.innerHTML =
+            "<td>" + UBPDApp.escapeHtml(s.name) + "</td>" +
+            "<td>" + UBPDApp.escapeHtml(s.role || "") + "</td>" +
+            '<td class="mono">' + UBPDApp.escapeHtml(s.id) + "</td>" +
+            '<td><a href="suspect.html?id=' + encodeURIComponent(s.id) + '">Open dossier</a></td>';
+          body.appendChild(tr);
+        });
+      }
+
+      function runSearch(q) {
+        var result = UBPDApp.searchCase(caseData, q);
+        var slow = new URLSearchParams(location.search).get("slow") === "1";
+        var go = slow ? UBPDApp.runLoader(1800) : Promise.resolve();
+        return go.then(function () { showResults(result); });
+      }
+
+      UBPDApp.loadCaseData().then(function (res) {
+        caseData = res.data;
+        UBPDApp.paintChrome(caseData, res.source);
+        var preset = UBPDApp.qs("q");
+        if (preset) {
+          document.getElementById("q").value = preset;
+          runSearch(preset);
+        }
+      });
+
+      document.getElementById("search-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        runSearch(document.getElementById("q").value);
+      });
+    })();
+  </script>
+</body>
+</html>
