@@ -13046,6 +13046,9 @@ GameObject:
   - component: {fileID: 1467552878}
   - component: {fileID: 1467552879}
   - component: {fileID: 1467552880}
+  - component: {fileID: 1467552881}
+  - component: {fileID: 1467552882}
+  - component: {fileID: 1467552883}
   m_Layer: 0
   m_Name: 07 - Gameplay Prototype
   m_TagString: Untagged
@@ -13111,6 +13114,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508d412d680783f46bd61a2840da8c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.Gameplay.CaseGameplayPrototype
+--- !u!114 &1467552881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467552877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99318f38078d447b86d6d80d82ff3ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.UI.EvidenceBoardController
+  shiftController: {fileID: 1467552879}
+  boardRoot: {fileID: 0}
+  cardContainer: {fileID: 0}
+  cardPrefab: {fileID: 0}
+  toastLabel: {fileID: 0}
+  toastSeconds: 2.4
+  keepBoardVisibleWhenEmpty: 1
+  stressValueLabel: {fileID: 0}
+  interrogationController: {fileID: 0}
+--- !u!114 &1467552882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467552877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cddb7b3bf16a252aa95117556df6091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.UI.StampPadController
+  shiftController: {fileID: 1467552879}
+  holdButton: {fileID: 0}
+  releaseButton: {fileID: 0}
+  stampPadRoot: {fileID: 0}
+  stampAnimator: {fileID: 0}
+  holdTrigger: StampHold
+  releaseTrigger: StampRelease
+  applyDelaySeconds: 0.35
+  stampAudioSource: {fileID: 0}
+  holdClip: {fileID: 0}
+  releaseClip: {fileID: 0}
+--- !u!114 &1467552883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467552877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ee41a6d88f2451f4bdbbdd2913260a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.UI.StampUiPlayableBootstrap
+  shiftController: {fileID: 1467552879}
+  evidenceBoard: {fileID: 1467552881}
+  stampPad: {fileID: 1467552882}
+  createOverlayWhenUnwired: 1
+  rightSideBoard: 1
 --- !u!1001 &1468447579
 PrefabInstance:
   m_ObjectHideFlags: 0

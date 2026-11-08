@@ -64,6 +64,9 @@ namespace CaseClosed.UI
         /// <summary>Live card views currently on the board.</summary>
         public IReadOnlyList<EvidenceCardView> ActiveCards { get { return activeCards; } }
 
+        /// <summary>True when a card container is assigned (Inspector or <see cref="SetBoardSceneHooks"/>).</summary>
+        public bool HasBoardHooks { get { return cardContainer != null; } }
+
         private void Awake()
         {
             if (shiftController == null)
