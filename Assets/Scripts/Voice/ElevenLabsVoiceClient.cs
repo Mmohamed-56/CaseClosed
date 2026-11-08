@@ -163,8 +163,8 @@ namespace CaseClosed.Voice
                     {
                         keyMissingLogged = true;
                         Debug.LogWarning(
-                            "[ElevenLabs] TTS skipped: proxy app token is not configured and no Editor direct key is available. " +
-                            "Configure the API proxy token or, in the Editor, ELEVENLABS_API_KEY.");
+                            "[ElevenLabs] TTS skipped: proxy app token is not configured. " +
+                            "Set CASE_CLOSED_APP_TOKEN through the app's PlayerPrefs or the Windows environment before launch.");
                     }
                     return;
                 }
@@ -185,9 +185,6 @@ namespace CaseClosed.Voice
                     return;
                 }
             }
-
-            if (logErrors)
-                Debug.Log("[ElevenLabs] TTS request accepted via " + (useProxy ? "proxy" : "direct key") + ".");
 
             EnsureAudioSource();
             // Voice + pitch come from the current suspect's catalog profile (gender/pitch/voiceId).

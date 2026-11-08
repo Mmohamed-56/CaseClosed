@@ -162,6 +162,9 @@ namespace CaseClosed.CaseCore
             return CreateBannerCutdownCase();
         }
 
+        private const string DemoCaseId = "UB-001";
+
+        /// <summary>Creates the fixed Demo with case-prefixed record IDs required by the records website.</summary>
         public static CaseFile CreateBannerCutdownCase()
         {
             var innocent = new SuspectRecord(
@@ -172,10 +175,10 @@ namespace CaseClosed.CaseCore
                 "At the west bus loop after leaving campus buildings.",
                 new[]
                 {
-                    new EvidenceRecord("jamie_purchase", "Utility-knife purchase", "A campus-adjacent hardware debit under Jamie Rivera's card bought a folding utility knife the same afternoon.", EvidenceKind.RedHerring, "Jamie Rivera used the knife to open taped spirit posters for a club table — not the banner ropes."),
-                    new EvidenceRecord("jamie_roster", "Volunteer duty roster", "Jamie is listed on the evening volunteer crew for a campus event.", EvidenceKind.Context, string.Empty),
-                    new EvidenceRecord("jamie_bus", "Transit tap receipt", "A transit-card tap places Jamie at the west bus loop shortly after they said they left.", EvidenceKind.Context, string.Empty),
-                    new EvidenceRecord("jamie_sign_in", "Athletics volunteer day sheet", "Jamie Rivera signed the afternoon Field House athletics volunteer sheet before the cutdown window.", EvidenceKind.Context, string.Empty)
+                    new EvidenceRecord(DemoCaseId + "_jamie_purchase", "Utility-knife purchase", "A campus-adjacent hardware debit under Jamie Rivera's card bought a folding utility knife the same afternoon.", EvidenceKind.RedHerring, "Jamie Rivera used the knife to open taped spirit posters for a club table — not the banner ropes."),
+                    new EvidenceRecord(DemoCaseId + "_jamie_roster", "Volunteer duty roster", "Jamie is listed on the evening volunteer crew for a campus event.", EvidenceKind.Context, string.Empty),
+                    new EvidenceRecord(DemoCaseId + "_jamie_bus", "Transit tap receipt", "A transit-card tap places Jamie at the west bus loop shortly after they said they left.", EvidenceKind.Context, string.Empty),
+                    new EvidenceRecord(DemoCaseId + "_jamie_sign_in", "Athletics volunteer day sheet", "Jamie Rivera signed the afternoon Field House athletics volunteer sheet before the cutdown window.", EvidenceKind.Context, string.Empty)
                 },
                 CaseClosed.Voice.SuspectVoiceCatalog.GetProfile("suspect_jamie").VoiceId);
 
@@ -187,15 +190,15 @@ namespace CaseClosed.CaseCore
                 "At their residence hall after clock-out.",
                 new[]
                 {
-                    new EvidenceRecord("morgan_access", "Photo over the court", "A 6:21 PM photo over the court shows someone in Morgan Lee's clothes on the banner walkway, after Morgan Lee said they were at dinner across campus.", EvidenceKind.Contradiction, "Morgan Lee went up over the court and cut down the spirit banner."),
-                    new EvidenceRecord("morgan_schedule", "Events desk schedule", "Morgan's posted events desk shift ended on time according to the roster.", EvidenceKind.Context, string.Empty),
-                    new EvidenceRecord("morgan_hall", "Hall exterior door log", "Morgan's hall exterior door registered an entry after their stated departure from work.", EvidenceKind.Context, string.Empty),
-                    new EvidenceRecord("morgan_sign_in", "Athletics volunteer day sheet", "Morgan Lee signed the afternoon Field House athletics volunteer sheet before the cutdown window.", EvidenceKind.Context, string.Empty)
+                    new EvidenceRecord(DemoCaseId + "_morgan_access", "Photo over the court", "A 6:21 PM photo over the court shows someone in Morgan Lee's clothes on the banner walkway, after Morgan Lee said they were at dinner across campus.", EvidenceKind.Contradiction, "Morgan Lee went up over the court and cut down the spirit banner."),
+                    new EvidenceRecord(DemoCaseId + "_morgan_schedule", "Events desk schedule", "Morgan's posted events desk shift ended on time according to the roster.", EvidenceKind.Context, string.Empty),
+                    new EvidenceRecord(DemoCaseId + "_morgan_hall", "Hall exterior door log", "Morgan's hall exterior door registered an entry after their stated departure from work.", EvidenceKind.Context, string.Empty),
+                    new EvidenceRecord(DemoCaseId + "_morgan_sign_in", "Athletics volunteer day sheet", "Morgan Lee signed the afternoon Field House athletics volunteer sheet before the cutdown window.", EvidenceKind.Context, string.Empty)
                 },
                 CaseClosed.Voice.SuspectVoiceCatalog.GetProfile("suspect_morgan").VoiceId);
 
             return new CaseFile(
-                "UB-001",
+                DemoCaseId,
                 "Field House Spirit Banner Cutdown",
                 "WHAT: Somebody cut down the Founders Weekend spirit banner.\nWHERE: Over the court in the Field House.\nWHEN: 6:05 PM to 6:35 PM.\nMOTIVE: Embarrass the weekend before anyone could hang it back up.",
                 culprit.Id,

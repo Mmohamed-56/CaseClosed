@@ -49,6 +49,10 @@ namespace CaseClosed.CameraControl
 
         private void LateUpdate()
         {
+            // Restore look even if another UI path ends typing directly.
+            if (isFocused && (notepad == null || !notepad.IsEditing))
+                ExitFocus();
+
             if (isFocused)
             {
                 Cursor.lockState = CursorLockMode.None;

@@ -58,6 +58,10 @@ namespace CaseClosed.CameraControl
 
         private void LateUpdate()
         {
+            // The UI's Close button can hide the panel without calling this controller.
+            if (cursorStateCaptured && !IsClipboardOpen)
+                CloseClipboard();
+
             if (clipboardUi != null && clipboardUi.IsOpen)
             {
                 Cursor.lockState = CursorLockMode.None;

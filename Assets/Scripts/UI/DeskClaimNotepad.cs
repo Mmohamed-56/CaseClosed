@@ -184,6 +184,9 @@ namespace CaseClosed.UI
             SetVisible(isEditing);
         }
 
+        /// <summary>Whether the notebook popup is currently accepting player input.</summary>
+        public bool IsEditing { get { return isEditing; } }
+
         /// <summary>Starts capturing real keyboard text and shows the writable page.</summary>
         public void BeginTyping()
         {

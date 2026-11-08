@@ -111,18 +111,16 @@ namespace CaseClosed.Browser
         {
             EngineConfiguration engineConfiguration = ScriptableObject.CreateInstance<EngineConfiguration>();
             engineConfiguration.engineAppName = CefEngineAppName;
-#if UNITY_EDITOR
-            engineConfiguration.engineFiles = new[]
+            Engine.EnginePlatformFiles windowsEngineFiles = new Engine.EnginePlatformFiles
             {
-                new Engine.EnginePlatformFiles
-                {
-                    platform = Platform.Windows64,
-                    engineBaseAppLocation = string.Empty,
-                    engineEditorLocation = WindowsCefEngineEditorPath,
-                    engineRuntimeLocation = "UWB/"
-                }
+                platform = Platform.Windows64,
+                engineBaseAppLocation = string.Empty,
+                engineRuntimeLocation = "UWB/"
             };
+#if UNITY_EDITOR
+            windowsEngineFiles.engineEditorLocation = WindowsCefEngineEditorPath;
 #endif
+            engineConfiguration.engineFiles = new[] { windowsEngineFiles };
 
             browserClient.engine = engineConfiguration;
             browserClient.engineStartupTimeout = CefStartupTimeoutMilliseconds;

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace CaseClosed.Networking
@@ -54,6 +55,10 @@ namespace CaseClosed.Networking
                     if (!string.IsNullOrWhiteSpace(fromPrefs))
                         return fromPrefs.Trim();
                 }
+
+                string environmentToken = Environment.GetEnvironmentVariable(PlayerPrefsAppTokenKey);
+                if (!string.IsNullOrWhiteSpace(environmentToken))
+                    return environmentToken.Trim();
 
                 return string.IsNullOrWhiteSpace(appToken) ? string.Empty : appToken.Trim();
             }

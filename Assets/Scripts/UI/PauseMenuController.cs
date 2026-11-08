@@ -3,16 +3,27 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace CaseClosed.UI
 {
-    /// <summary>Builds a runtime pause overlay with volume, resume, and quit controls.</summary>
+    /// <summary>Builds a runtime pause overlay with volume, resume, return-to-menu, and quit controls.</summary>
     [DisallowMultipleComponent]
     public sealed class PauseMenuController : MonoBehaviour
     {
+        private const string MainMenuSceneName = "MainMenu";
+        private const string ReturnToMenuButtonName = "ReturnToMenuButton";
+        private const string ReturnToMenuButtonLabel = "Return to Menu";
+        private const float MenuTimeScale = 1f;
         private const float PanelWidth = 460f;
-        private const float PanelHeight = 320f;
+        private const float PanelHeight = 380f;
+        private const float ButtonWidth = 300f;
+        private const float ButtonHeight = 48f;
+        private const float ButtonSpacing = 60f;
+        private const float QuitButtonOffsetY = 42f;
+
+        private static readonly Vector2 ButtonAnchor = new Vector2(0.5f, 0f);
 
         private static readonly Color BackdropColor = new Color(0f, 0f, 0f, 0.68f);
         private static readonly Color PanelColor = new Color(0.08f, 0.12f, 0.16f, 0.98f);
@@ -108,6 +119,20 @@ namespace CaseClosed.UI
             SetPaused(false);
         }
 
+        /// <summary>Restores gameplay input state, then loads the main menu with normal time and an unlocked cursor.</summary>
+        public void OnReturnToMenuClicked()
+        {
+            if (!isPaused)
+                return;
+
+            // Reuse Resume cleanup before unloading gameplay; OnDisable must not restore its cursor over the menu.
+            SetPaused(false);
+            Time.timeScale = MenuTimeScale;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene(MainMenuSceneName, LoadSceneMode.Single);
+        }
+
         /// <summary>Quits the player build, or exits Play Mode when called in the Unity Editor.</summary>
         public void OnQuitClicked()
         {
@@ -166,10 +191,13 @@ namespace CaseClosed.UI
             volumeSlider.value = Mathf.Clamp01(AudioListener.volume);
             volumeSlider.onValueChanged.AddListener(SetVolume);
 
+            Vector2 buttonSize = new Vector2(ButtonWidth, ButtonHeight);
             CreateButton(panel.transform, "ResumeButton", "Resume / Continue", AccentColor,
-                new Vector2(0.5f, 0f), new Vector2(0f, 102f), new Vector2(300f, 48f), OnResumeClicked);
+                ButtonAnchor, new Vector2(0f, QuitButtonOffsetY + ButtonSpacing + ButtonSpacing), buttonSize, OnResumeClicked);
+            CreateButton(panel.transform, ReturnToMenuButtonName, ReturnToMenuButtonLabel, AccentColor,
+                ButtonAnchor, new Vector2(0f, QuitButtonOffsetY + ButtonSpacing), buttonSize, OnReturnToMenuClicked);
             CreateButton(panel.transform, "QuitButton", "Quit", new Color(0.43f, 0.19f, 0.17f, 1f),
-                new Vector2(0.5f, 0f), new Vector2(0f, 42f), new Vector2(300f, 48f), OnQuitClicked);
+                ButtonAnchor, new Vector2(0f, QuitButtonOffsetY), buttonSize, OnQuitClicked);
 
             overlayObject.SetActive(false);
         }

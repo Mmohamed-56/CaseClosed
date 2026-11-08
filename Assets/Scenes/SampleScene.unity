@@ -15384,7 +15384,7 @@ MonoBehaviour:
   preferScenarioBank: 1
   allowGeminiFallback: 0
   allowOfflineMock: 1
-  logOpeningStatementDiagnostics: 1
+  logOpeningStatementDiagnostics: 0
 --- !u!114 &1467552883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15398,7 +15398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.Voice.ElevenLabsVoiceClient
   proxySettings: {fileID: 11400000, guid: d4e5f60718293a4b5c6d7e8f901a2b3c, type: 2}
-  audioSource: {fileID: 1467552895}
+  audioSource: {fileID: 0}
   modelId: eleven_flash_v2_5
   outputFormat: mp3_22050_32
   optimizeStreamingLatency: 4
@@ -15425,7 +15425,7 @@ MonoBehaviour:
   dialogueService: {fileID: 1467552882}
   voiceClient: {fileID: 1467552883}
   proxySettings: {fileID: 11400000, guid: d4e5f60718293a4b5c6d7e8f901a2b3c, type: 2}
-  logLines: 1
+  logLines: 0
 --- !u!114 &1467552888
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -152,6 +152,9 @@ namespace CaseClosed.CameraControl
             targetRotation = returnRotation;
             targetFieldOfView = returnFieldOfView;
             isFocused = false;
+            // Keep look disabled until the camera finishes returning, but hide the pointer now.
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             BeginTransition();
         }
 

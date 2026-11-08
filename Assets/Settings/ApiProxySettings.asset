@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ApiProxySettings
   m_EditorClassIdentifier: 
   proxyBaseUrl: https://ubcaseclosed.netlify.app
-  appToken: 
+  appToken: oOEkGD78NdJYZLUKdsPMO9Ite6GZkrYIRzZI2mSCxgFcz0qvNoltne1CafH9Sxu8jSu5a99WmDHhIrE3EO74pMESDSyTHWLbyiwPC579A5AgShSIrULTDqpsCagc1MTm
   preferProxyInPlayer: 1
   allowDirectKeysInEditor: 1

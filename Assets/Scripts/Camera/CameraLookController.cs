@@ -42,7 +42,7 @@ namespace CaseClosed.CameraControl
             if (!lookEnabled || Time.timeScale <= 0f)
                 return;
 
-            if (Cursor.lockState != CursorLockMode.Locked)
+            if (Cursor.lockState != CursorLockMode.Locked || Cursor.visible)
                 LockCursor();
 
             Mouse mouse = Mouse.current;
