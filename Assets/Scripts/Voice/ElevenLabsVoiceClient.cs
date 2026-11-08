@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using CaseClosed.Networking;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -11,7 +12,8 @@ namespace CaseClosed.Voice
 {
     /// <summary>
     /// Fast ElevenLabs TTS for suspect interrogation lines.
-    /// Uses Flash model + streaming endpoint + low-latency output format, cancels in-flight work
+    /// Player builds call the cloud proxy; Editor may fall back to a direct ELEVENLABS_API_KEY.
+    /// Uses Flash model + low-latency output format, cancels in-flight work
     /// when a new question arrives, and never blocks gameplay (coroutines + AudioSource).
     /// </summary>
     [DisallowMultipleComponent]
@@ -19,6 +21,10 @@ namespace CaseClosed.Voice
     {
         private const string StreamUrlFormat =
             "https://api.elevenlabs.io/v1/text-to-speech/{0}/stream?output_format={1}&optimize_streaming_latency={2}";
+
+        [Header("Proxy")]
+        [Tooltip("Cloud proxy settings (default https://ubcaseclosed.netlify.app). Required for player builds.")]
+        [SerializeField] private ApiProxySettings proxySettings;
 
         [Header("Playback")]
         [Tooltip("AudioSource on the suspect / desk. Created on this object when empty.")]
@@ -62,13 +68,22 @@ namespace CaseClosed.Voice
         private int generation;
         private bool keyMissingLogged;
 
+        public void Configure(ApiProxySettings proxy)
+        {
+            proxySettings = proxy;
+        }
+
         /// <inheritdoc />
         public bool IsAvailable
         {
             get
             {
+                if (proxySettings != null && proxySettings.ShouldUseProxy)
+                    return true;
+
                 string unused;
-                return ElevenLabsApiKey.TryGet(out unused);
+                return proxySettings != null && proxySettings.ShouldAllowDirectKeys &&
+                       ElevenLabsApiKey.TryGetDirect(out unused);
             }
         }
 
@@ -115,15 +130,20 @@ namespace CaseClosed.Voice
             if (request.CancelPrevious)
                 CancelInFlight();
 
-            string apiKey;
-            if (!ElevenLabsApiKey.TryGet(out apiKey))
+            bool useProxy = proxySettings != null && proxySettings.ShouldUseProxy;
+            string apiKey = null;
+            if (!useProxy)
             {
-                if (logSkippedMissingKey && !keyMissingLogged)
+                bool allowDirect = proxySettings == null || proxySettings.ShouldAllowDirectKeys;
+                if (!allowDirect || !ElevenLabsApiKey.TryGetDirect(out apiKey))
                 {
-                    keyMissingLogged = true;
-                    Debug.LogWarning("[ElevenLabs] ELEVENLABS_API_KEY missing — TTS skipped silently.");
+                    if (logSkippedMissingKey && !keyMissingLogged)
+                    {
+                        keyMissingLogged = true;
+                        Debug.LogWarning("[ElevenLabs] Proxy/API key missing — TTS skipped silently.");
+                    }
+                    return;
                 }
-                return;
             }
 
             EnsureAudioSource();
@@ -131,7 +151,7 @@ namespace CaseClosed.Voice
             string cleaned = request.Line.Trim();
             generation++;
             int gen = generation;
-            activeRoutine = StartCoroutine(SpeakRoutine(gen, apiKey, voiceId, cleaned));
+            activeRoutine = StartCoroutine(SpeakRoutine(gen, useProxy, apiKey, voiceId, cleaned));
         }
 
         /// <summary>Speak using resolved catalog / record voice id.</summary>
@@ -180,7 +200,7 @@ namespace CaseClosed.Voice
             Speak(request);
         }
 
-        private IEnumerator SpeakRoutine(int gen, string apiKey, string voiceId, string fullText)
+        private IEnumerator SpeakRoutine(int gen, bool useProxy, string apiKey, string voiceId, string fullText)
         {
             List<string> chunks = BuildChunks(fullText);
             for (int i = 0; i < chunks.Count; i++)
@@ -201,7 +221,10 @@ namespace CaseClosed.Voice
                 }
 
                 byte[] audioBytes = null;
-                yield return DownloadSpeech(gen, apiKey, voiceId, chunk, bytes => audioBytes = bytes);
+                if (useProxy)
+                    yield return DownloadSpeechViaProxy(gen, voiceId, chunk, bytes => audioBytes = bytes);
+                else
+                    yield return DownloadSpeechDirect(gen, apiKey, voiceId, chunk, bytes => audioBytes = bytes);
                 if (gen != generation || audioBytes == null || audioBytes.Length == 0)
                     yield break;
 
@@ -223,7 +246,28 @@ namespace CaseClosed.Voice
                 activeRoutine = null;
         }
 
-        private IEnumerator DownloadSpeech(int gen, string apiKey, string voiceId, string text, Action<byte[]> onComplete)
+        private IEnumerator DownloadSpeechViaProxy(int gen, string voiceId, string text, Action<byte[]> onComplete)
+        {
+            string url = proxySettings.TtsProxyUrl;
+            string body = BuildProxyRequestJson(voiceId, text);
+            byte[] bodyRaw = Encoding.UTF8.GetBytes(body);
+
+            UnityWebRequest request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbPOST);
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+            request.SetRequestHeader("Accept", "audio/mpeg");
+            string token = proxySettings.AppToken;
+            if (!string.IsNullOrWhiteSpace(token))
+                request.SetRequestHeader("X-Case-Closed-Token", token);
+            request.timeout = 12;
+
+            activeRequest = request;
+            yield return request.SendWebRequest();
+            FinishDownload(gen, request, onComplete);
+        }
+
+        private IEnumerator DownloadSpeechDirect(int gen, string apiKey, string voiceId, string text, Action<byte[]> onComplete)
         {
             string url = string.Format(
                 StreamUrlFormat,
@@ -231,7 +275,7 @@ namespace CaseClosed.Voice
                 UnityWebRequest.EscapeURL(outputFormat),
                 optimizeStreamingLatency);
 
-            string body = BuildRequestJson(text);
+            string body = BuildDirectRequestJson(text);
             byte[] bodyRaw = Encoding.UTF8.GetBytes(body);
 
             UnityWebRequest request = new UnityWebRequest(url, UnityWebRequest.kHttpVerbPOST);
@@ -244,11 +288,18 @@ namespace CaseClosed.Voice
 
             activeRequest = request;
             yield return request.SendWebRequest();
+            FinishDownload(gen, request, onComplete);
+        }
 
+        private void FinishDownload(int gen, UnityWebRequest request, Action<byte[]> onComplete)
+        {
             if (gen != generation)
             {
                 onComplete(null);
-                yield break;
+                request.Dispose();
+                if (activeRequest == request)
+                    activeRequest = null;
+                return;
             }
 
             bool failed = request.result != UnityWebRequest.Result.Success;
@@ -323,7 +374,20 @@ namespace CaseClosed.Voice
             }
         }
 
-        private string BuildRequestJson(string text)
+        private string BuildProxyRequestJson(string voiceId, string text)
+        {
+            return
+                "{\"voiceId\":\"" + EscapeJson(voiceId) +
+                "\",\"text\":\"" + EscapeJson(text) +
+                "\",\"modelId\":\"" + EscapeJson(modelId) +
+                "\",\"outputFormat\":\"" + EscapeJson(outputFormat) +
+                "\",\"optimizeStreamingLatency\":" + optimizeStreamingLatency +
+                ",\"stability\":" + stability.ToString("0.###", System.Globalization.CultureInfo.InvariantCulture) +
+                ",\"similarityBoost\":" + similarityBoost.ToString("0.###", System.Globalization.CultureInfo.InvariantCulture) +
+                "}";
+        }
+
+        private string BuildDirectRequestJson(string text)
         {
             // Manual JSON keeps us free of extra packages and avoids escaping surprises for short lines.
             string escapedText = EscapeJson(text);
