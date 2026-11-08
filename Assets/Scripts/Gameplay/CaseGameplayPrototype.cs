@@ -3,6 +3,8 @@ using CaseClosed.CaseCore.Gemini;
 using CaseClosed.Networking;
 using CaseClosed.UI;
 using CaseClosed.Voice;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CaseClosed.Gameplay
@@ -30,6 +32,7 @@ namespace CaseClosed.Gameplay
 
         /// <summary>How many times <see cref="StartCase"/> has run this session (0 = first shift).</summary>
         private int shiftSerial;
+        private bool demoMode;
 
         [Header("Dialogue (offline bank preferred)")]
         [Tooltip("Optional legacy Gemini key settings. Unused while allowGeminiFallback is OFF.")]
@@ -79,6 +82,7 @@ namespace CaseClosed.Gameplay
             // TTS still needs the Netlify proxy even though ask turns are offline.
             voiceClient.Configure(apiProxySettings);
             voiceSink.Configure(dialogueService, apiProxySettings);
+            demoMode = MainMenuController.StartDemoMode;
             CaseGameplayBootstrap.StartCaseHandler = HandleBootstrapStartCase;
         }
 
@@ -94,32 +98,55 @@ namespace CaseClosed.Gameplay
         }
 
         /// <summary>
-        /// Starts or restarts a seeded case. Each call advances the seed so Restart rotates case titles
-        /// through <see cref="CaseGenerator"/> / <c>Resources/Cases/case_templates.json</c>.
+        /// Starts the selected Demo again, or the next uncompleted Standard case.
         /// </summary>
         public void StartCase()
         {
-            int seed = caseSeed + shiftSerial;
-            shiftSerial++;
+            CaseFile caseDefinition;
+            int seed = 0;
+
+            if (demoMode)
+            {
+                caseDefinition = DemoCaseFactory.CreateBannerCutdownCase();
+            }
+            else
+            {
+                HashSet<string> completedCaseIds = CaseHistoryStore.GetCompletedCaseIds();
+                caseDefinition = null;
+                for (int attempt = 0; attempt <= completedCaseIds.Count; attempt++)
+                {
+                    seed = caseSeed + shiftSerial;
+                    shiftSerial++;
+                    CaseFile candidate = CaseGenerator.Generate(seed, suspectCount);
+                    if (completedCaseIds.Contains(candidate.CaseId))
+                        continue;
+
+                    caseDefinition = candidate;
+                    break;
+                }
+
+                if (caseDefinition == null)
+                    throw new InvalidOperationException("Could not find an uncompleted Standard case seed.");
+            }
 
             if (dialogueService != null)
                 dialogueService.BeginShift();
-            shiftController.BeginGeneratedShift(seed, suspectCount);
+            shiftController.BeginShift(caseDefinition, !demoMode);
 
-            string title = CaseGenerator.PeekTitle(seed);
+            string title = caseDefinition.Title;
+            string difficulty = demoMode ? "DEMO" : CaseGenerator.PeekDifficulty(seed).ToUpperInvariant();
             if (actionHud != null)
             {
                 actionHud.ResetForNewCase(
                     "CASE: " + title +
-                    "  ·  " + CaseGenerator.PeekDifficulty(seed).ToUpperInvariant() +
+                    "  ·  " + difficulty +
                     "  ·  Computer collect ≥2 → EVIDENCE → ACTIONS Call in → ASK → DECISION HOLD/RELEASE.");
             }
 
             Debug.Log(
-                "[CaseGameplay] shift seed=" + seed +
+                "[CaseGameplay] mode=" + (demoMode ? "Demo" : "Standard") +
+                " seed=" + (demoMode ? "fixed" : seed.ToString()) +
                 " title=\"" + title + "\"" +
-                " difficulty=" + CaseGenerator.PeekDifficulty(seed) +
-                " treeHook=" + CaseGenerator.PeekTreeHook(seed) +
                 " templates=" + CaseGenerator.TemplateCount,
                 this);
         }

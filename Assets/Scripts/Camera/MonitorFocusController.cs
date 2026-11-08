@@ -8,11 +8,8 @@ namespace CaseClosed.CameraControl
     public sealed class MonitorFocusController : MonoBehaviour
     {
         [Header("Monitor Target")]
-        [Tooltip("The browser display surface the camera focuses on and the player clicks to zoom in.")]
+        [Tooltip("The browser display surface the camera focuses on when entered through the look-target interaction.")]
         [SerializeField] private Transform displaySurface;
-
-        [Tooltip("Collider on the display surface used to detect clicks while not focused.")]
-        [SerializeField] private Collider displaySurfaceCollider;
 
         [Tooltip("Browser manager that receives pointer and keyboard input while the display is focused.")]
         [SerializeField] private RecordsWebsiteBrowserManager browserManager;
@@ -43,6 +40,7 @@ namespace CaseClosed.CameraControl
         private float transitionElapsed;
         private bool isFocused;
         private bool isTransitioning;
+        private bool allowLookInteractionEntry;
 
         /// <summary>Whether the player is focused on the monitor or transitioning into it.</summary>
         public bool IsFocused { get { return isFocused; } }
@@ -50,14 +48,10 @@ namespace CaseClosed.CameraControl
         /// <summary>Whether the player is focused on the monitor or transitioning between desk and monitor views.</summary>
         public bool IsTransitioning { get { return isTransitioning; } }
 
-        /// <summary>True when camera + browser display surface are resolved so focus can run in-game.</summary>
+        /// <summary>Whether the HUD's direct-entry affordance should be available; monitor entry is reserved for look-target F.</summary>
         public bool CanEnterFocus
         {
-            get
-            {
-                EnsureMonitorRefs();
-                return playerCamera != null && displaySurface != null;
-            }
+            get { return false; }
         }
 
         private void Awake()
@@ -82,9 +76,6 @@ namespace CaseClosed.CameraControl
                 if (surface != null) displaySurface = surface.transform;
             }
 
-            if (displaySurfaceCollider == null && displaySurface != null)
-                displaySurfaceCollider = displaySurface.GetComponent<Collider>();
-
             if (browserManager == null)
                 browserManager = FindAnyObjectByType<RecordsWebsiteBrowserManager>();
 
@@ -95,14 +86,8 @@ namespace CaseClosed.CameraControl
         private void Update()
         {
             Keyboard keyboard = Keyboard.current;
-            Mouse mouse = Mouse.current;
 
-            if (!isFocused && !isTransitioning)
-            {
-                bool surfaceClicked = Time.timeScale > 0f && mouse != null && mouse.leftButton.wasPressedThisFrame && IsPointerOverDisplay(mouse.position.ReadValue());
-                if (surfaceClicked) EnterFocus();
-            }
-            else if (isFocused && !isTransitioning)
+            if (isFocused && !isTransitioning)
             {
                 bool exitPressed = (keyboard != null && keyboard.escapeKey.wasPressedThisFrame) ||
                                    (keyboard != null && keyboard[focusToggleKey].wasPressedThisFrame);
@@ -112,15 +97,25 @@ namespace CaseClosed.CameraControl
             if (isTransitioning) UpdateTransition();
         }
 
-        /// <summary>Focuses the camera on the browser surface and enables its web input.</summary>
+        /// <summary>Starts focus from the existing look-target F interaction UnityEvent.</summary>
         public void EnterFocus()
         {
-            TryEnterFocus();
+            allowLookInteractionEntry = true;
+            try
+            {
+                TryEnterFocus();
+            }
+            finally
+            {
+                allowLookInteractionEntry = false;
+            }
         }
 
-        /// <summary>Starts monitor focus when the camera and display surface are available. Never opens an external browser.</summary>
+        /// <summary>Starts monitor focus only while the look-target interaction invokes EnterFocus.</summary>
         public bool TryEnterFocus()
         {
+            if (!allowLookInteractionEntry) return false;
+
             EnsureMonitorRefs();
             if (playerCamera == null || displaySurface == null) return false;
             if (isFocused || isTransitioning)
@@ -200,11 +195,5 @@ namespace CaseClosed.CameraControl
                 cameraLookController.SetLookEnabled(true);
         }
 
-        private bool IsPointerOverDisplay(Vector2 screenPosition)
-        {
-            if (playerCamera == null || displaySurfaceCollider == null) return false;
-            Ray ray = playerCamera.ScreenPointToRay(screenPosition);
-            return displaySurfaceCollider.Raycast(ray, out _, playerCamera.farClipPlane);
-        }
     }
 }

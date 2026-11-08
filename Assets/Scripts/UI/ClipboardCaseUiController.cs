@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CaseClosed.CaseCore;
 using CaseClosed.CaseCore.Dialogue;
 using CaseClosed.CaseCore.Gemini;
+using CaseClosed.Gameplay;
 using CaseClosed.Voice;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -21,12 +22,16 @@ namespace CaseClosed.UI
         private const float CanvasWidth = 1920f;
         private const float CanvasHeight = 1080f;
         private const int MaxSortingOrder = 90;
+        private const float DefaultSubtitleVoiceStartFallbackSeconds = 12f;
+        private const float ActionFeedbackSeconds = 4f;
         private static Font cachedReadableRuntimeFont;
 
         [Header("Case connections")]
         [SerializeField] private CaseShiftController shiftController;
         [SerializeField] private InterrogationDialogueService dialogueService;
         [SerializeField] private ScenarioDialogueClient scenarioClient;
+        [SerializeField, Min(1f)] private float subtitleVoiceStartFallbackSeconds = DefaultSubtitleVoiceStartFallbackSeconds;
+        private CaseGameplayPrototype gameplayPrototype;
 
         private readonly Dictionary<string, string> pinnedEvidenceBySuspect = new Dictionary<string, string>();
         private readonly Dictionary<string, List<ChatTurn>> turnsBySuspect = new Dictionary<string, List<ChatTurn>>();
@@ -69,6 +74,10 @@ namespace CaseClosed.UI
         private string pendingRequestQuestion = string.Empty;
         private string pendingRequestEvidenceId = string.Empty;
         private float connectionRetryTimer;
+        private string subtitleSuspectId = string.Empty;
+        private bool subtitleSpeechPlaying;
+        private float subtitleFallbackTimer;
+        private float actionFeedbackTimer;
 
         private sealed class ChatTurn
         {
@@ -92,12 +101,17 @@ namespace CaseClosed.UI
         {
             ResolveConnections();
             SubscribeToDependencies();
+            SuspectDialogueEvents.SpeechStarted += HandleSpeechStarted;
+            SuspectDialogueEvents.SpeechEnded += HandleSpeechEnded;
             CheckForNewSession();
         }
 
         private void OnDisable()
         {
             UnsubscribeFromDependencies();
+            SuspectDialogueEvents.SpeechStarted -= HandleSpeechStarted;
+            SuspectDialogueEvents.SpeechEnded -= HandleSpeechEnded;
+            ClearSubtitle();
         }
 
         private void Update()
@@ -115,6 +129,23 @@ namespace CaseClosed.UI
 
             if (CheckForNewSession())
                 RefreshPage();
+
+            if (!subtitleSpeechPlaying && subtitleFallbackTimer > 0f)
+            {
+                subtitleFallbackTimer -= Time.unscaledDeltaTime;
+                if (subtitleFallbackTimer <= 0f)
+                    ClearSubtitle();
+            }
+
+            if (actionFeedbackTimer > 0f)
+            {
+                actionFeedbackTimer -= Time.unscaledDeltaTime;
+                if (actionFeedbackTimer <= 0f)
+                {
+                    statusMessage = string.Empty;
+                    RefreshPage();
+                }
+            }
         }
 
         /// <summary>Opens or closes the clipboard without changing the case phase.</summary>
@@ -157,6 +188,11 @@ namespace CaseClosed.UI
                 scenarioClient = dialogueService.GetComponent<ScenarioDialogueClient>();
             if (scenarioClient == null)
                 scenarioClient = FindAnyObjectByType<ScenarioDialogueClient>();
+
+            if (gameplayPrototype == null)
+                gameplayPrototype = GetComponent<CaseGameplayPrototype>();
+            if (gameplayPrototype == null)
+                gameplayPrototype = FindAnyObjectByType<CaseGameplayPrototype>();
         }
 
         private void SubscribeToDependencies()
@@ -185,6 +221,7 @@ namespace CaseClosed.UI
                 {
                     subscribedDialogueService.SuspectLineReady -= HandleSuspectLineReady;
                     subscribedDialogueService.TurnCompleted -= HandleTurnCompleted;
+                    subscribedDialogueService.QuestionStarted -= HandleQuestionStarted;
                 }
 
                 subscribedDialogueService = dialogueService;
@@ -192,6 +229,7 @@ namespace CaseClosed.UI
                 {
                     subscribedDialogueService.SuspectLineReady += HandleSuspectLineReady;
                     subscribedDialogueService.TurnCompleted += HandleTurnCompleted;
+                    subscribedDialogueService.QuestionStarted += HandleQuestionStarted;
                 }
             }
         }
@@ -210,6 +248,7 @@ namespace CaseClosed.UI
             {
                 subscribedDialogueService.SuspectLineReady -= HandleSuspectLineReady;
                 subscribedDialogueService.TurnCompleted -= HandleTurnCompleted;
+                subscribedDialogueService.QuestionStarted -= HandleQuestionStarted;
                 subscribedDialogueService = null;
             }
         }
@@ -227,8 +266,8 @@ namespace CaseClosed.UI
             awaitingReply = false;
             ClearPendingRequest();
             statusMessage = string.Empty;
-            if (subtitleRoot != null)
-                subtitleRoot.SetActive(false);
+            actionFeedbackTimer = 0f;
+            ClearSubtitle();
             RebuildPageTabs();
             return true;
         }
@@ -237,7 +276,10 @@ namespace CaseClosed.UI
         {
             CheckForNewSession();
             if (phase == CaseShiftPhase.Charging || phase == CaseShiftPhase.Headline || phase == CaseShiftPhase.Resolved)
+            {
                 selectedPageIndex = 0;
+                ClearSubtitle();
+            }
             RefreshPage();
         }
 
@@ -248,6 +290,8 @@ namespace CaseClosed.UI
 
         private void HandleNextSuspectReady(NextSuspectEvent nextSuspect)
         {
+            if (nextSuspect == null || !string.Equals(subtitleSuspectId, nextSuspect.SuspectId, StringComparison.Ordinal))
+                ClearSubtitle();
             if (nextSuspect != null && nextSuspect.SuspectIndex >= 0 && HasRecordedSuspectDecision())
                 selectedPageIndex = nextSuspect.SuspectIndex + 1;
             RefreshPage();
@@ -268,17 +312,48 @@ namespace CaseClosed.UI
             return false;
         }
 
+        private void HandleQuestionStarted()
+        {
+            ClearSubtitle();
+        }
+
         private void HandleSuspectLineReady(SuspectVoiceLine line)
         {
-            if (line == null || string.IsNullOrWhiteSpace(line.Text) || !IsSuspectInCurrentCase(line.SuspectId))
+            if (line == null || string.IsNullOrWhiteSpace(line.Text) || !IsSuspectInCurrentCase(line.SuspectId) ||
+                shiftController == null || shiftController.CurrentSuspect == null ||
+                !string.Equals(shiftController.CurrentSuspect.Id, line.SuspectId, StringComparison.Ordinal))
                 return;
 
+            ClearSubtitle();
+            subtitleSuspectId = line.SuspectId;
+            subtitleFallbackTimer = Mathf.Max(1f, subtitleVoiceStartFallbackSeconds);
             string name = string.IsNullOrWhiteSpace(line.SuspectName) ? "SUSPECT" : line.SuspectName.Trim().ToUpperInvariant();
             if (subtitleText != null)
             {
                 subtitleText.text = name + "  —  “" + line.Text.Trim() + "”";
                 subtitleRoot.SetActive(true);
             }
+        }
+
+        private void HandleSpeechStarted(string suspectId)
+        {
+            if (subtitleRoot == null || !subtitleRoot.activeSelf || string.IsNullOrWhiteSpace(subtitleSuspectId))
+                return;
+            if (!string.IsNullOrWhiteSpace(suspectId) && !string.Equals(subtitleSuspectId, suspectId, StringComparison.Ordinal))
+                return;
+
+            subtitleSpeechPlaying = true;
+            subtitleFallbackTimer = 0f;
+        }
+
+        private void HandleSpeechEnded(string suspectId)
+        {
+            if (!subtitleSpeechPlaying)
+                return;
+            if (!string.IsNullOrWhiteSpace(suspectId) && !string.Equals(subtitleSuspectId, suspectId, StringComparison.Ordinal))
+                return;
+
+            ClearSubtitle();
         }
 
         private void HandleTurnCompleted(SuspectDialogueTurn turn)
@@ -356,6 +431,17 @@ namespace CaseClosed.UI
                     return true;
             }
             return false;
+        }
+
+        private void ClearSubtitle()
+        {
+            subtitleFallbackTimer = 0f;
+            subtitleSpeechPlaying = false;
+            subtitleSuspectId = string.Empty;
+            if (subtitleText != null)
+                subtitleText.text = string.Empty;
+            if (subtitleRoot != null)
+                subtitleRoot.SetActive(false);
         }
 
         private void ClearPendingRequest()
@@ -765,11 +851,31 @@ namespace CaseClosed.UI
                     AddFitText(caseCoverContent, resolution.Subheadline.Trim(), 21, DeskUiPalette.Ink, FontStyle.Normal);
                 AddFitText(caseCoverContent, "VERDICT  ·  " + resolution.Outcome.ToString().ToUpperInvariant(), 20, DeskUiPalette.Navy, FontStyle.Bold);
                 AddFitText(caseCoverContent, "CHARGED  ·  " + (string.IsNullOrWhiteSpace(resolution.ChargedSuspectName) ? "NOBODY" : resolution.ChargedSuspectName), 19, DeskUiPalette.Ink, FontStyle.Normal);
-                AddFitText(caseCoverContent, "SCORE  ·  " + resolution.Score, 19, DeskUiPalette.InkMuted, FontStyle.Bold);
+                AddFitText(caseCoverContent, shiftController.IsDemoRun ? "DEMO RUN  ·  UNSCORED" : "CASE SCORE  ·  " + resolution.Score + " PTS", 19, DeskUiPalette.InkMuted, FontStyle.Bold);
+                if (phase == CaseShiftPhase.Resolved)
+                    CreateCoverChoiceButton(shiftController.IsDemoRun ? "REPLAY DEMO" : "NEW CASE", true, StartNextCase);
             }
 
             IReadOnlyList<EvidenceRecord> collected = shiftController != null ? shiftController.GetCollectedEvidence() : Array.Empty<EvidenceRecord>();
             AddFitText(caseCoverContent, "EVIDENCE FILED  ·  " + collected.Count, 18, DeskUiPalette.InkMuted, FontStyle.Bold);
+            List<ClosedCaseSummary> history = CaseHistoryStore.GetClosedCaseSummaries();
+            AddFitText(caseCoverContent,
+                "CAREER RECORD  ·  " + history.Count + " COMPLETED  ·  " + CaseHistoryStore.GetCumulativeScore() + " PTS",
+                18, DeskUiPalette.Navy, FontStyle.Bold);
+            if (history.Count > 0)
+            {
+                AddFitText(caseCoverContent, "RECENT COMPLETED CASES", 18, DeskUiPalette.InkMuted, FontStyle.Bold);
+                int firstRecent = Mathf.Max(0, history.Count - 3);
+                for (int i = history.Count - 1; i >= firstRecent; i--)
+                {
+                    ClosedCaseSummary summary = history[i];
+                    if (summary == null)
+                        continue;
+                    AddFitText(caseCoverContent,
+                        (summary.title ?? "Untitled case") + "  ·  " + (summary.outcome ?? "RESOLVED").ToUpperInvariant() + "  ·  " + summary.score + " PTS",
+                        16, DeskUiPalette.Ink, FontStyle.Normal);
+                }
+            }
             RebuildScrollAtTop(caseCoverScroll, caseCoverContent);
         }
 
@@ -800,8 +906,8 @@ namespace CaseClosed.UI
             selectedPageIndex = 0;
             try
             {
-                shiftController.ResolveCharge(suspectId);
-                statusMessage = "Case closed. Review the headline and verdict on the cover.";
+                CaseResolution resolution = shiftController.ResolveCharge(suspectId);
+                ShowActionFeedback("CHARGE STAMPED  ·  " + resolution.ChargedSuspectName);
             }
             catch (Exception exception)
             {
@@ -820,7 +926,7 @@ namespace CaseClosed.UI
             try
             {
                 shiftController.ChargeNobody();
-                statusMessage = "Case closed without a charge. Review the headline and verdict on the cover.";
+                ShowActionFeedback("NO CHARGE STAMPED  ·  CASE CLOSED");
             }
             catch (Exception exception)
             {
@@ -828,6 +934,37 @@ namespace CaseClosed.UI
                 Debug.LogWarning(statusMessage, this);
             }
             RefreshPage();
+        }
+
+        private void StartNextCase()
+        {
+            if (gameplayPrototype == null)
+                ResolveConnections();
+            if (gameplayPrototype == null)
+            {
+                statusMessage = "Could not start another case because the gameplay controller is unavailable.";
+                RefreshPage();
+                return;
+            }
+
+            bool replayDemo = shiftController != null && shiftController.IsDemoRun;
+            try
+            {
+                gameplayPrototype.StartCase();
+                ShowActionFeedback(replayDemo ? "DEMO REPLAY STARTED" : "NEW CASE STARTED");
+            }
+            catch (Exception exception)
+            {
+                statusMessage = "Could not start another case: " + exception.Message;
+                Debug.LogWarning(statusMessage, this);
+            }
+            RefreshPage();
+        }
+
+        private void ShowActionFeedback(string message)
+        {
+            statusMessage = message ?? string.Empty;
+            actionFeedbackTimer = ActionFeedbackSeconds;
         }
 
         private void RefreshSuspectPage(SuspectRecord suspect)
@@ -991,7 +1128,9 @@ namespace CaseClosed.UI
             if (footerStatusText == null)
                 return;
 
-            if (phase == CaseShiftPhase.Charging)
+            if (actionFeedbackTimer > 0f && !string.IsNullOrWhiteSpace(statusMessage))
+                footerStatusText.text = statusMessage;
+            else if (phase == CaseShiftPhase.Charging)
                 footerStatusText.text = "FINAL CHARGE  ·  Choose a held suspect or select NO CHARGE on the case cover.";
             else if (phase == CaseShiftPhase.Headline || phase == CaseShiftPhase.Resolved)
                 footerStatusText.text = "CASE CLOSED  ·  The headline and verdict are shown on the case cover.";
@@ -1049,6 +1188,7 @@ namespace CaseClosed.UI
                 return;
 
             string question = choice.Prompt.Trim();
+            ClearSubtitle();
             pendingRequestSession = shiftController.ActiveSession;
             pendingRequestSuspectId = suspect.Id;
             pendingRequestQuestion = question;
@@ -1103,13 +1243,14 @@ namespace CaseClosed.UI
                 shiftController.Phase != CaseShiftPhase.Investigating || shiftController.CurrentSuspect == null)
                 return;
 
+            string stampedSuspectName = shiftController.CurrentSuspect.DisplayName;
             try
             {
                 if (decision == SuspectDecision.Hold)
                     shiftController.StampHold();
                 else if (decision == SuspectDecision.Release)
                     shiftController.StampRelease();
-                statusMessage = decision == SuspectDecision.Hold ? "HOLD stamped." : "RELEASE stamped.";
+                ShowActionFeedback((decision == SuspectDecision.Hold ? "HOLD STAMPED" : "RELEASE STAMPED") + "  ·  " + stampedSuspectName);
             }
             catch (Exception exception)
             {

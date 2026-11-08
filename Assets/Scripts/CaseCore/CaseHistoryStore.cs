@@ -91,6 +91,33 @@ namespace CaseClosed.CaseCore
             WriteData(data);
         }
 
+        /// <summary>Returns the identifiers of cases already recorded as completed.</summary>
+        public static HashSet<string> GetCompletedCaseIds()
+        {
+            var caseIds = new HashSet<string>(StringComparer.Ordinal);
+            List<ClosedCaseSummary> summaries = ReadData().summaries;
+            for (int i = 0; i < summaries.Count; i++)
+            {
+                ClosedCaseSummary summary = summaries[i];
+                if (summary != null && !string.IsNullOrWhiteSpace(summary.caseId))
+                    caseIds.Add(summary.caseId);
+            }
+            return caseIds;
+        }
+
+        /// <summary>Returns the sum of scores from all completed case summaries.</summary>
+        public static long GetCumulativeScore()
+        {
+            long total = 0;
+            List<ClosedCaseSummary> summaries = ReadData().summaries;
+            for (int i = 0; i < summaries.Count; i++)
+            {
+                if (summaries[i] != null)
+                    total += summaries[i].score;
+            }
+            return total;
+        }
+
         /// <summary>Returns a snapshot of the stored leaderboard, ordered by descending score.</summary>
         public static List<LeaderboardEntry> GetTopScores()
         {

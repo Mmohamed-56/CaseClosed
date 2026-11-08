@@ -30,6 +30,7 @@ namespace CaseClosed.CaseCore
         public int Score;
         public int InnocentSuspectsHeld;
         public int QuestionsRemaining;
+        public int QuestionsAsked;
         public int SecondsRemaining;
         /// <summary>Morning newspaper banner. Filled by <see cref="MorningHeadlineBuilder"/>.</summary>
         public string Headline;
@@ -95,6 +96,12 @@ namespace CaseClosed.CaseCore
         private bool isResolving;
         private CaseResolution lastResolution;
         private MorningHeadlineEvent lastHeadline;
+        private int questionsAsked;
+
+        private const int CorrectSuspectDecisionPoints = 100;
+        private const int CorrectChargeDecisionPoints = 500;
+        private const int IncorrectChargePenalty = 300;
+        private const int PointsDeductedPerQuestion = 25;
 
         /// <summary>Raised whenever the shift enters a new phase.</summary>
         public event Action<CaseShiftPhase> PhaseChanged;
@@ -119,6 +126,12 @@ namespace CaseClosed.CaseCore
 
         /// <summary>The active case session, or null before a shift starts.</summary>
         public CaseSession ActiveSession { get { return activeSession; } }
+
+        /// <summary>True when the active run is a non-persistent, unscored Demo.</summary>
+        public bool IsDemoRun { get; private set; }
+
+        /// <summary>Number of valid interrogation questions asked during the active shift.</summary>
+        public int QuestionsAsked { get { return questionsAsked; } }
 
         /// <summary>The current high-level phase.</summary>
         public CaseShiftPhase Phase { get; private set; }
@@ -172,7 +185,9 @@ namespace CaseClosed.CaseCore
         }
 
         /// <summary>Starts a shift with a supplied deterministic case definition.</summary>
-        public void BeginShift(CaseFile caseDefinition)
+        /// <param name="caseDefinition">The fixed case data for this shift.</param>
+        /// <param name="recordCompletion">False for a replayable Demo that must not affect score or history.</param>
+        public void BeginShift(CaseFile caseDefinition, bool recordCompletion = true)
         {
             if (caseDefinition == null) throw new ArgumentNullException("caseDefinition");
 
@@ -186,6 +201,8 @@ namespace CaseClosed.CaseCore
             currentSuspectIndex = 0;
             secondsRemaining = Mathf.Max(0, shiftDurationSeconds);
             isResolving = false;
+            IsDemoRun = !recordCompletion;
+            questionsAsked = 0;
             lastResolution = null;
             lastHeadline = null;
             SetPhase(CaseShiftPhase.Briefing);
@@ -276,7 +293,10 @@ namespace CaseClosed.CaseCore
             EnsureActive();
             if (Phase != CaseShiftPhase.Investigating)
                 throw new InvalidOperationException("Begin the current interview before asking questions.");
-            return interrogationController.AskQuestion(CurrentSuspect.Id, question, evidenceId, aggressive);
+            InterrogationResult result = interrogationController.AskQuestion(CurrentSuspect.Id, question, evidenceId, aggressive);
+            if (result != null && result.IsValid)
+                questionsAsked++;
+            return result;
         }
 
         /// <summary>Bezi / stamp UI: stamps HOLD on the current suspect.</summary>
@@ -402,25 +422,39 @@ namespace CaseClosed.CaseCore
             isResolving = true;
             int innocentHeld = 0;
             int questionsLeft = 0;
+            int correctSuspectDecisions = 0;
             string chargedName = string.Empty;
 
             IReadOnlyList<SuspectRecord> suspects = activeSession.Case.Suspects;
             for (int i = 0; i < suspects.Count; i++)
             {
                 SuspectRecord suspect = suspects[i];
-                if (activeSession.GetDecision(suspect.Id) == SuspectDecision.Hold && suspect.Id != activeSession.Case.CulpritSuspectId)
+                SuspectDecision decision = activeSession.GetDecision(suspect.Id);
+                bool isCulprit = suspect.Id == activeSession.Case.CulpritSuspectId;
+                if ((isCulprit && decision == SuspectDecision.Hold) || (!isCulprit && decision == SuspectDecision.Release))
+                    correctSuspectDecisions++;
+                if (decision == SuspectDecision.Hold && !isCulprit)
                     innocentHeld++;
                 questionsLeft += interrogationController.GetQuestionsLeft(suspect.Id);
                 if (suspect.Id == chargedSuspectId) chargedName = suspect.DisplayName;
             }
 
-            // Score stubs — GDD weights; fine to polish later.
             int score = 0;
-            if (outcome == CaseOutcome.CulpritCharged) score += 1000;
-            score += questionsLeft * 100;
-            if (shiftClockEnabled) score += SecondsRemaining * 5;
-            score -= innocentHeld * 300;
-            if (outcome == CaseOutcome.InnocentCharged) score -= 500;
+            if (!IsDemoRun)
+            {
+                score += correctSuspectDecisions * CorrectSuspectDecisionPoints;
+                score -= innocentHeld * IncorrectChargePenalty;
+                if (outcome == CaseOutcome.CulpritCharged)
+                    score += CorrectChargeDecisionPoints;
+                else if (outcome == CaseOutcome.InnocentCharged)
+                    score -= IncorrectChargePenalty;
+                else if (outcome == CaseOutcome.CulpritReleased ||
+                         (outcome == CaseOutcome.NoCharge && activeSession.GetDecision(activeSession.Case.CulpritSuspectId) == SuspectDecision.Hold))
+                    score -= IncorrectChargePenalty;
+
+                score -= questionsAsked * PointsDeductedPerQuestion;
+                if (shiftClockEnabled) score += SecondsRemaining * 2;
+            }
 
             string headline = MorningHeadlineBuilder.BuildHeadline(outcome, activeSession.Case.Title, chargedName);
             string subheadline = MorningHeadlineBuilder.BuildSubheadline(outcome, chargedName, score, innocentHeld);
@@ -436,19 +470,23 @@ namespace CaseClosed.CaseCore
                 Score = score,
                 InnocentSuspectsHeld = innocentHeld,
                 QuestionsRemaining = questionsLeft,
+                QuestionsAsked = questionsAsked,
                 SecondsRemaining = SecondsRemaining,
                 Headline = headline,
                 Subheadline = subheadline
             };
 
-            CaseHistoryStore.AppendClosedCaseSummary(
-                resolution.CaseId,
-                resolution.Title,
-                date,
-                outcome.ToString(),
-                chargedName,
-                score);
-            CaseHistoryStore.RecordScore(playerName, score, date, resolution.CaseId);
+            if (!IsDemoRun)
+            {
+                CaseHistoryStore.AppendClosedCaseSummary(
+                    resolution.CaseId,
+                    resolution.Title,
+                    date,
+                    outcome.ToString(),
+                    chargedName,
+                    score);
+                CaseHistoryStore.RecordScore(playerName, score, date, resolution.CaseId);
+            }
 
             lastResolution = resolution;
             lastHeadline = MorningHeadlineBuilder.FromResolution(resolution);
