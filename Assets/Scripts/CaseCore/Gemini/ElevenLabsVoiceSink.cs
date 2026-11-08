@@ -89,16 +89,22 @@ namespace CaseClosed.CaseCore.Gemini
         /// <summary>
         /// Speak an authored reply from any path: scenario bank, scripted mock, or choice-tree (Asuka).
         /// Always publishes <see cref="SuspectDialogueEvents.ReplyReady"/> so the voice client Speaks.
+        /// When <paramref name="voiceId"/> is empty, Speak resolves male/female/neutral from
+        /// <see cref="SuspectVoiceCatalog"/> for the current suspect id.
         /// </summary>
         public void SpeakAnswer(string suspectId, string text, string emotion = null, string voiceId = null)
         {
+            string resolvedVoice = voiceId;
+            if (string.IsNullOrWhiteSpace(resolvedVoice))
+                resolvedVoice = SuspectVoiceCatalog.Resolve(suspectId);
+
             HandleSuspectLine(new SuspectVoiceLine
             {
                 SuspectId = suspectId ?? string.Empty,
                 SuspectName = string.Empty,
                 Text = text,
                 Emotion = emotion,
-                VoiceId = voiceId,
+                VoiceId = resolvedVoice,
                 UsedMock = false,
                 Slip = false
             });

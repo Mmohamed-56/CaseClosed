@@ -159,7 +159,7 @@ namespace CaseClosed.CaseCore
                     new EvidenceRecord("jamie_bus", "Transit receipt", "A transit-card record places Jamie at the west bus loop at 9:24 PM.", EvidenceKind.Context, string.Empty),
                     new EvidenceRecord("jamie_sign_in", "Event sign-in sheet", "Jamie signed in to help with student-union event setup earlier that evening.", EvidenceKind.Context, string.Empty)
                 },
-                CaseClosed.Voice.SuspectVoiceCatalog.Resolve("suspect_jamie"));
+                CaseClosed.Voice.SuspectVoiceCatalog.GetProfile("suspect_jamie").VoiceId);
 
             var culprit = new SuspectRecord(
                 "suspect_morgan",
@@ -174,7 +174,7 @@ namespace CaseClosed.CaseCore
                     new EvidenceRecord("morgan_hall", "Residence hall door log", "Morgan's hall exterior door registered an entry at 9:18 PM.", EvidenceKind.Context, string.Empty),
                     new EvidenceRecord("morgan_sign_in", "Event sign-in sheet", "Morgan signed in to help with student-union event setup earlier that evening.", EvidenceKind.Context, string.Empty)
                 },
-                CaseClosed.Voice.SuspectVoiceCatalog.Resolve("suspect_morgan"));
+                CaseClosed.Voice.SuspectVoiceCatalog.GetProfile("suspect_morgan").VoiceId);
 
             return new CaseFile(
                 "UB-001",

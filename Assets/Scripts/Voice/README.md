@@ -31,4 +31,17 @@ Sit-talk bridge: `SuspectTalkAnimationBridge` (auto-added on `SuspectEnterContro
 
 Latency: Flash model `eleven_flash_v2_5`, `optimize_streaming_latency=4`, short clips, clip cache, non-blocking `AudioSource`.
 
+## Suspect voice profiles
+
+`SuspectVoiceCatalog` maps each interviewee (`jamie` … `reese`) to **gender / pitch / voiceId**:
+
+| API | Use |
+| --- | --- |
+| `GetProfile(suspectId)` / `TryGetProfile` | Full profile for Speak + character gen |
+| `GetGender(suspectId)` | Male / Female / Neutral for character generation |
+| `VoiceIdForGender(gender)` | Shared male / female / neutral pool voice |
+| `Resolve` / `ResolveProfile` | Speak path (explicit voice id wins; else catalog) |
+
+`ElevenLabsVoiceClient.Speak` applies the profile `VoiceId` + `AudioSource.pitch`. Replace premade ids when Magdy assigns case voices.
+
 See Project store doc: `docs/api-proxy.md`.

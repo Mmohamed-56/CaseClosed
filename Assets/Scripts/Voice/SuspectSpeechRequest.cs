@@ -19,8 +19,9 @@ namespace CaseClosed.Voice
         public string Emotion;
 
         /// <summary>
-        /// Optional ElevenLabs voice id override. When empty, the voice client resolves from
-        /// <see cref="CaseClosed.CaseCore.SuspectRecord.ElevenLabsVoiceId"/> or the placeholder catalog.
+        /// Optional ElevenLabs voice id override. When empty, Speak resolves
+        /// <see cref="SuspectVoiceCatalog.ResolveProfile"/> for this <see cref="SuspectId"/>
+        /// (gender / pitch / voiceId).
         /// </summary>
         public string VoiceId;
 
