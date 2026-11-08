@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The annex wasn't the night. I did it. I {act}. I wasn't with the costumes.",
+              "line": "I wasn't in the annex. I did it. I {act}. I wasn't with the costumes.",
               "onlyIfCulprit": true
             }
           ]
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I was at that table in the annex. The photo doesn't move me.",
+              "line": "I was at that table in the annex. The photo doesn't change that.",
               "onlyIfCulprit": true
             },
             {
@@ -502,7 +502,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "No. Squad roster isn't a key. I practiced and I went to sew."
+              "line": "No. I practiced and I went to sew."
             },
             {
               "minStress": 85,

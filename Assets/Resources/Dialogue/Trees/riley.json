@@ -39,7 +39,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "The study room stands. I was in there. I'm not forging a return so your record balances.",
+              "line": "I was in the study room. I'm not gonna make up a trip so your paperwork works.",
               "onlyIfInnocent": true
             },
             {
@@ -317,14 +317,14 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Don't add it into the night. It's a receipt I already filed under the club."
+              "line": "Leave it out of this. It's a receipt I already filed under the club."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. Club books. I'm done defending a purchase that has a minute attached."
+              "line": "No. Club books. I'm done defending a purchase that's already in the meeting notes."
             }
           ]
         }
@@ -350,7 +350,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Once I sat down I stayed through the block. Leaving would've been a second line."
+              "line": "Once I sat down I stayed through the block. If I'd left, there'd be another time to explain. There isn't."
             },
             {
               "minStress": 60,
@@ -502,7 +502,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "No. Being treasurer isn't a key to the rest of campus. I closed the box and I left."
+              "line": "No. Being treasurer didn't let me wander campus. I closed the box and I left."
             },
             {
               "minStress": 85,

@@ -126,7 +126,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I can hear myself getting smaller. I was at the west bus loop. That's the answer.",
+              "line": "I can hear my voice getting quiet. I was at the west bus loop. That's the answer.",
               "onlyIfCulprit": true
             },
             {
@@ -509,7 +509,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. A crew list isn't a key. I set a table and I left."
+              "line": "No. I set a table and I left."
             }
           ]
         },

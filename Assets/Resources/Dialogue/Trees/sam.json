@@ -502,14 +502,14 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "No. The list is who closes. I closed. I didn't get a pass to wander."
+              "line": "No. The list is who closes. I closed. I didn't wander off after."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. A crew list isn't a key to the rest of campus. I ran the register."
+              "line": "No. Being on the crew didn't let me go anywhere else. I ran the register."
             }
           ]
         },

@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The desk wasn't the night. I did it. I {act}. I left the north hall stool.",
+              "line": "I wasn't at the desk. I did it. I {act}. I left the north hall stool.",
               "onlyIfCulprit": true
             }
           ]
@@ -502,7 +502,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "No. Being the RA on duty isn't a pass to leave the desk. I stayed."
+              "line": "No. Being the RA on duty didn't mean I could leave the desk. I stayed."
             },
             {
               "minStress": 85,

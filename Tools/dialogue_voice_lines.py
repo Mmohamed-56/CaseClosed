@@ -122,7 +122,7 @@ PEOPLE = {
                 "My hands are shaking and I hate it. I was at the west bus loop. I didn't do it.",
                 "You can ask it again. I was already at the bus loop. I didn't do this.",
                 "I went to the bus loop after volunteering. That part is true. I didn't come back.",
-                "I can hear myself getting smaller. I was at the west bus loop. That's the answer.",
+                "I can hear my voice getting quiet. I was at the west bus loop. That's the answer.",
                 "I'm staying with the bus loop. I finished the shift and I left. That's what happened.",
                 "The bus loop was wrong. I did it. I {act}. I wasn't waiting on a bus.",
             ],
@@ -188,7 +188,7 @@ PEOPLE = {
                 "No. Being on the volunteer list let me set a table. It didn't let me stay out after.",
                 "It let me help with setup. That's what I signed up for. Then I was done.",
                 "No. The list is who showed up to help. I showed up, I finished, I walked to the bus.",
-                "No. A crew list isn't a key. I set a table and I left.",
+                "No. I set a table and I left.",
             ],
             [
                 "Because I volunteered. I was at the bus loop after the shift, like I said.",
@@ -246,10 +246,10 @@ PEOPLE = {
                 "I can be short without having done it. I ended the desk. I went to housing. I didn't come back.",
                 "You're asking me to doubt a clock-out I watched myself sign. I won't. I was out.",
                 "I was gone before any of this. The shift ended and I left.",
-                "A badge with my name on it isn't a mood. I hear you. The shift still ended.",
+                "I hear you. The shift still ended.",
                 "I keep wanting to nudge the time by a minute. A minute would be a lie. I left when I said.",
                 "I ended the shift. I left when the clock-out says I left.",
-                "I did it. I {act}. I came back after the desk. The clock-out was for you.",
+                "I did it. I {act}. I came back after the desk. The clock-out was a lie.",
             ],
             [
                 "At the events desk until clock-out, then the walk to housing. That's where I was.",
@@ -292,7 +292,7 @@ PEOPLE = {
             [
                 "No. I don't go back out after I get to housing. I was in my room.",
                 "After I badged into the hall I stayed in. I didn't turn around.",
-                "I couldn't. I was already in the room, shoes off. That's not a person who doubled back.",
+                "I couldn't. I was already in the room, shoes off. I didn't go back out.",
                 "No. I didn't go back out. Housing was the end of the night.",
             ],
             [
@@ -312,7 +312,7 @@ PEOPLE = {
             [
                 "No. The list let me run the events desk. It didn't let me linger after clock-out.",
                 "It gave me a desk and a stop time. I left at the stop time.",
-                "No. Scheduling me isn't a key to the rest of the night. I worked the block and I left.",
+                "No. Being on the schedule didn't give me the rest of the night. I worked the block and I left.",
                 "No. Being on the shift list didn't let me stay. I clocked out.",
             ],
             [
@@ -368,13 +368,13 @@ PEOPLE = {
             ],
             [
                 "Facilities nights are hallways and radios. Mine's written down. I kept walking the route.",
-                "A wrong badge read happens. A wrong night from me doesn't. I was on the loop.",
+                "A badge read can be wrong. I wasn't. I was on the loop.",
                 "You can keep asking. I was on the route. I didn't go back off it.",
                 "Last time. I was on the route. I radioed in. I didn't go back.",
                 "The log puts my badge where the route says I wasn't. I hear it. I had already moved on.",
                 "I almost said I only checked a door. I didn't. I stayed on the route.",
                 "I kept walking the route. The radio log is what I actually did.",
-                "It was me. I did it. I {act}. The route I gave you wasn't the night.",
+                "It was me. I did it. I {act}. I wasn't on the route.",
             ],
             [
                 "On the linen route, in the hallway I radioed from. That's where I was standing.",
@@ -411,7 +411,7 @@ PEOPLE = {
             [
                 "Yes. The radio check is where I was. I called it from the loop and I stayed on the loop.",
                 "I don't go back unless dispatch sends me, and dispatch didn't. I stayed on the route.",
-                "Whoever was in that hall heard the radio or they didn't. The log did. I was there.",
+                "It's in the radio log. I was there.",
                 "If that check-in is wrong, the whole night's radios are wrong. They aren't. I was there.",
             ],
             [
@@ -485,7 +485,7 @@ PEOPLE = {
                 "My night is paperwork, then study room B. I was in that room. I didn't come back out.",
                 "I don't spend time I can't explain. I can explain the study room. I can't explain a return I didn't make.",
                 "A bad entry unsettles me. I don't fix it by agreeing with it. I was in study room B.",
-                "The study room stands. I was in there. I'm not forging a return so your record balances.",
+                "I was in the study room. I'm not gonna make up a trip so your paperwork works.",
                 "I know a treasurer still on campus looks convenient. I was in study room B. I'm keeping that.",
                 "I went to the study room and I stayed. I didn't leave it.",
                 "I was in study room B. I'm not changing the night to fit your sheet.",
@@ -528,14 +528,14 @@ PEOPLE = {
             [
                 "No. It's a club expense. It doesn't touch what happened.",
                 "It reconciles to the club, not to this. I'm telling you the columns don't merge.",
-                "Don't add it into the night. It's a receipt I already filed under the club.",
-                "No. Club books. I'm done defending a purchase that has a minute attached.",
+                "Leave it out of this. It's a receipt I already filed under the club.",
+                "No. Club books. I'm done defending a purchase that's already in the meeting notes.",
             ],
         ],
         "alibi_support": [
             [
                 "Yes. I was in study room B. The booking and the night I described are the same block.",
-                "Once I sat down I stayed through the block. Leaving would've been a second line.",
+                "Once I sat down I stayed through the block. If I'd left, there'd be another time to explain. There isn't.",
                 "The person in the next room heard me on a call about dues. I was in there.",
                 "If you toss the booking, the dues call still happened in that room. I was there.",
             ],
@@ -562,7 +562,7 @@ PEOPLE = {
             [
                 "No. The club list let me hold the cash box during the meeting. Then I locked it up.",
                 "It gave me the books for that hour. It didn't give me a reason to still be out.",
-                "No. Being treasurer isn't a key to the rest of campus. I closed the box and I left.",
+                "No. Being treasurer didn't let me wander campus. I closed the box and I left.",
                 "No. Being on the club list didn't let me stay. I did the meeting and I went to study room B.",
             ],
             [
@@ -624,7 +624,7 @@ PEOPLE = {
                 "I went to the annex after practice. That's the night I had. I stayed there.",
                 "I know I'm getting louder. I was in the annex. I didn't go somewhere else.",
                 "I'm staying with the annex. Practice ended, then I went to costumes.",
-                "The annex wasn't the night. I did it. I {act}. I wasn't with the costumes.",
+                "I wasn't in the annex. I did it. I {act}. I wasn't with the costumes.",
             ],
             [
                 "In the costume annex, at the back table, with a needle. That's where I was standing.",
@@ -633,7 +633,7 @@ PEOPLE = {
                 "Back table in the annex. I'm done pointing. I didn't do this.",
                 "Costume annex, back table. That's the spot. Take it or don't.",
                 "I keep saying the back table because that's where the work was. I was doing the work.",
-                "I was at that table in the annex. The photo doesn't move me.",
+                "I was at that table in the annex. The photo doesn't change that.",
                 "I wasn't at the back table in the annex. I did it. I {act}.",
             ],
         ],
@@ -687,7 +687,7 @@ PEOPLE = {
             [
                 "No. The spirit list let me on the practice field. It didn't let me roam after.",
                 "It gave me a call time and a costume. I did practice. Then the annex.",
-                "No. Squad roster isn't a key. I practiced and I went to sew.",
+                "No. I practiced and I went to sew.",
                 "No. Being on the spirit list didn't let me stay. I left practice.",
             ],
             [
@@ -738,8 +738,8 @@ PEOPLE = {
                 "I was on the south quad, at the checkpoints. I didn't do this.",
                 "I know an aide badge looks like I could go anywhere. I was on the assigned loop.",
                 "I was on the south quad. I'm not adding a stop I didn't walk.",
-                "I walked the loop. I'm flat about it because it was flat. I didn't leave it.",
-                "I did it. I {act}. I left the south quad. The loop I reported wasn't the night.",
+                "I walked the loop. It was boring. I didn't leave it.",
+                "I did it. I {act}. I left the south quad. The loop I reported was a lie.",
             ],
             [
                 "The loop is the true report. Desk, then south quad, in order. I didn't add a stop.",
@@ -857,13 +857,13 @@ PEOPLE = {
         ],
         "access": [
             [
-                "I finished the shoot and I went to the edit bay. I was at the desk with the cards. I didn't wander out.",
-                "A photo with my jacket in it makes my stomach drop. I was still in the bay. I didn't leave the chair.",
-                "Slow down and look at the timestamps on the uploads. I was in the edit bay.",
-                "Edit bay. Cards. I didn't do this. You can scroll the uploads if you don't believe my mouth.",
-                "I know a photographer near a camera looks bad. I was in the bay uploading. I stayed there.",
                 "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
-                "I was in the bay. I'm sick of the photo you're holding. I didn't leave.",
+                "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
+                "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
+                "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
+                "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
+                "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
+                "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
                 "I did it. I {act}. I wasn't in the edit bay like I told you.",
             ],
             [
@@ -874,7 +874,7 @@ PEOPLE = {
                 "I was in the chair in the edit bay. I'm not changing the night.",
                 "I keep almost saying I stepped into the hall. I didn't. Edit bay.",
                 "I'm staying with the bay. The shoot ended and I uploaded. That's what I did.",
-                "The bay wasn't the night. I did it. I {act}. I wasn't uploading.",
+                "I wasn't in the bay. I did it. I {act}. I wasn't uploading.",
             ],
             [
                 "In the edit bay, at the desk under the lamp, cards on the left. That's where I was.",
@@ -937,7 +937,7 @@ PEOPLE = {
             [
                 "No. The assignment list let me into the event with a camera. It didn't let me linger after.",
                 "It gave me a credential for the shoot. I shot it. Then the bay.",
-                "No. Press list isn't a key to the rest of the building. I did the job and I uploaded.",
+                "No. The photo list didn't let me into the rest of the building. I did the job and I uploaded.",
                 "No. Being on the photo list didn't let me stay. I shot and I left.",
             ],
             [
@@ -1062,8 +1062,8 @@ PEOPLE = {
             [
                 "No. Being on the cafe list let me run the register. It didn't let me stay out after.",
                 "It let me close. That's the job. It didn't give me a reason to be somewhere else.",
-                "No. The list is who closes. I closed. I didn't get a pass to wander.",
-                "No. A crew list isn't a key to the rest of campus. I ran the register.",
+                "No. The list is who closes. I closed. I didn't wander off after.",
+                "No. Being on the crew didn't let me go anywhere else. I ran the register.",
             ],
             [
                 "Because I work the cafe. The list is my shift. I was in the cafe, like I said.",
@@ -1124,7 +1124,7 @@ PEOPLE = {
                 "I need the desk to be what you write, because it's what I did. I didn't leave.",
                 "I almost said I walked a floor. I walked one package to a door and I came straight back.",
                 "I'm staying with the desk. Duty started, duty ran, I was in the chair.",
-                "The desk wasn't the night. I did it. I {act}. I left the north hall stool.",
+                "I wasn't at the desk. I did it. I {act}. I left the north hall stool.",
             ],
             [
                 "At the north hall desk, on the stool, facing the door. That's where I was.",
@@ -1187,7 +1187,7 @@ PEOPLE = {
             [
                 "No. The duty list put me on the north desk. It didn't send me anywhere else.",
                 "It gave me a stool and a phone. I used both. Then relief came.",
-                "No. Being the RA on duty isn't a pass to leave the desk. I stayed.",
+                "No. Being the RA on duty didn't mean I could leave the desk. I stayed.",
                 "No. Being on the duty roster didn't let me leave the desk. I had one desk.",
             ],
             [
@@ -1267,7 +1267,7 @@ PEOPLE = {
                 "That's a helpdesk checkout. I took it for a ticket and I closed the ticket. The gear went back.",
                 "We check adapters out all day. This one has a ticket number. Read the number.",
                 "It looks like access because the job is access. It was a ticket. It closed.",
-                "Gear for a ticket. I'm done performing surprise over a form I fill out hourly.",
+                "Gear for a ticket. I'm not gonna act shocked over a form I fill out hourly.",
             ],
             [
                 "Because the ticket came in today. I checked the gear out, I fixed it, I brought it back.",
@@ -1312,8 +1312,8 @@ PEOPLE = {
             [
                 "No. The helpdesk list let me on the counter, then on the queue. It didn't let me into a building.",
                 "It gave me a login and a block. I did the block from my room after the counter.",
-                "No. Being scheduled isn't a pass into every room. I had tickets. I did tickets.",
-                "No. Being on the staffing list didn't give me a key. I had a ticket queue.",
+                "No. Being on the schedule didn't let me into every room. I had tickets. I did tickets.",
+                "No. I worked the ticket queue and I left when it was done.",
             ],
             [
                 "Because I work the desk. The list is the shift. After the counter, I was in my room, like I said.",
@@ -1347,7 +1347,7 @@ PEOPLE = {
         "hold": [
             "I took the trays to the prep kitchen after cleanup. Please don't keep me for that. I didn't do this.",
             "This isn't fair. I was in the prep kitchen. I didn't do it, and I'm not gonna guess who did.",
-            "I need you to hear me. I took the trays to the prep kitchen and I stayed there. You're holding the wrong pair of hands.",
+            "I need you to hear me. I took the trays to the prep kitchen and I stayed there. You've got the wrong person.",
             "I did it. I {act}. I didn't stay in the kitchen.",
         ],
         "release": [
@@ -1368,10 +1368,10 @@ PEOPLE = {
             ],
             [
                 "I was in the kitchen. I cleaned, I carried trays, and I washed. I didn't go back.",
-                "A plain order sounds rehearsed because lab work is an order. I followed it. Kitchen.",
+                "It sounds rehearsed because I do it the same way every time. I was in the kitchen.",
                 "I'm holding my own wrists so I'll stay still. I was in the prep kitchen. I didn't do it.",
                 "Ask the person on dishes. Prep kitchen. I didn't do this.",
-                "I need you to keep the kitchen, because that's where the trays went, and I went with them.",
+                "I was in the kitchen. That's where the trays went, and I went with them.",
                 "I almost said I checked a fridge. I checked the one in the kitchen. I didn't go back out.",
                 "I'm staying with the kitchen. Cleanup ended at the sink.",
                 "The prep kitchen wasn't where I stayed. I did it. I {act}.",
@@ -1496,10 +1496,10 @@ PEOPLE = {
                 "A quick no is just how I talk. It's also where I was. The court at rec.",
                 "My heel's tapping and you can hear it. I was at rec. I didn't do it.",
                 "Run it back if you want. Rec court. I didn't do this.",
-                "I want the court in the report because I was on it. I'm not drawing a different path.",
+                "I want the court in the report because I was on it. I'm not gonna invent another one.",
                 "I almost said I grabbed water and left. I grabbed water and I checked back in. I stayed.",
                 "I'm staying with rec. Practice ended and I played. That's the night.",
-                "The rec run wasn't the night. I did it. I {act}. I wasn't on that court.",
+                "I wasn't on that run. I did it. I {act}. I wasn't on that court.",
             ],
             [
                 "On the rec court, near the far basket, in a run. That's where I was standing between points.",
@@ -1508,7 +1508,7 @@ PEOPLE = {
                 "Far court at rec. I'm done describing the run. I didn't do this.",
                 "Rec, far basket. That's the spot. We were playing.",
                 "I keep saying the basket because that's where the ball was. I was with the ball.",
-                "I was on that court. I'm not jogging you a different map.",
+                "I was on that court. I'm not gonna make up another route.",
                 "I wasn't on that rec court at all. I did it. I {act}.",
             ],
         ],
@@ -1562,7 +1562,7 @@ PEOPLE = {
             [
                 "No. The practice list let me into the team gym. It didn't let me into the rest of campus after.",
                 "It gave me a jersey for the session. I did the session. Then rec, on my own.",
-                "No. Team roster isn't a key. I practiced and I left for a run.",
+                "No. I practiced and I left for a run.",
                 "No. Being on the practice sheet didn't let me go everywhere. I went to rec.",
             ],
             [

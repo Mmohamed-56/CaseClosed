@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I want the court in the report because I was on it. I'm not drawing a different path.",
+              "line": "I want the court in the report because I was on it. I'm not gonna invent another one.",
               "onlyIfCulprit": true
             },
             {
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The rec run wasn't the night. I did it. I {act}. I wasn't on that court.",
+              "line": "I wasn't on that run. I did it. I {act}. I wasn't on that court.",
               "onlyIfCulprit": true
             }
           ]
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I was on that court. I'm not jogging you a different map.",
+              "line": "I was on that court. I'm not gonna make up another route.",
               "onlyIfCulprit": true
             },
             {
@@ -502,7 +502,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "No. Team roster isn't a key. I practiced and I left for a run."
+              "line": "No. I practiced and I left for a run."
             },
             {
               "minStress": 85,

@@ -63,7 +63,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I walked the loop. I'm flat about it because it was flat. I didn't leave it.",
+              "line": "I walked the loop. It was boring. I didn't leave it.",
               "onlyIfCulprit": true
             },
             {
@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I {act}. I left the south quad. The loop I reported wasn't the night.",
+              "line": "I did it. I {act}. I left the south quad. The loop I reported was a lie.",
               "onlyIfCulprit": true
             }
           ]

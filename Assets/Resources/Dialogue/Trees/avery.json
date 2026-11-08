@@ -94,7 +94,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A wrong badge read happens. A wrong night from me doesn't. I was on the loop.",
+              "line": "A badge read can be wrong. I wasn't. I was on the loop.",
               "onlyIfInnocent": true
             },
             {
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "It was me. I did it. I {act}. The route I gave you wasn't the night.",
+              "line": "It was me. I did it. I {act}. I wasn't on the route.",
               "onlyIfCulprit": true
             }
           ]
@@ -357,7 +357,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Whoever was in that hall heard the radio or they didn't. The log did. I was there."
+              "line": "It's in the radio log. I was there."
             },
             {
               "minStress": 85,

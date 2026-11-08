@@ -94,7 +94,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A plain order sounds rehearsed because lab work is an order. I followed it. Kitchen.",
+              "line": "It sounds rehearsed because I do it the same way every time. I was in the kitchen.",
               "onlyIfInnocent": true
             },
             {
@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I need you to keep the kitchen, because that's where the trays went, and I went with them.",
+              "line": "I was in the kitchen. That's where the trays went, and I went with them.",
               "onlyIfCulprit": true
             },
             {
@@ -689,7 +689,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "I need you to hear me. I took the trays to the prep kitchen and I stayed there. You're holding the wrong pair of hands.",
+              "line": "I need you to hear me. I took the trays to the prep kitchen and I stayed there. You've got the wrong person.",
               "onlyIfCulprit": true
             },
             {

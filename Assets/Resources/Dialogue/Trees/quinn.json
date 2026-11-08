@@ -15,7 +15,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I finished the shoot and I went to the edit bay. I was at the desk with the cards. I didn't wander out.",
+              "line": "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
               "onlyIfInnocent": true
             },
             {
@@ -23,7 +23,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A photo with my jacket in it makes my stomach drop. I was still in the bay. I didn't leave the chair.",
+              "line": "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
               "onlyIfInnocent": true
             },
             {
@@ -31,7 +31,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Slow down and look at the timestamps on the uploads. I was in the edit bay.",
+              "line": "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
               "onlyIfInnocent": true
             },
             {
@@ -39,7 +39,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Edit bay. Cards. I didn't do this. You can scroll the uploads if you don't believe my mouth.",
+              "line": "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
               "onlyIfInnocent": true
             },
             {
@@ -47,7 +47,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know a photographer near a camera looks bad. I was in the bay uploading. I stayed there.",
+              "line": "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
               "onlyIfCulprit": true
             },
             {
@@ -63,7 +63,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I was in the bay. I'm sick of the photo you're holding. I didn't leave.",
+              "line": "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
               "onlyIfCulprit": true
             },
             {
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The bay wasn't the night. I did it. I {act}. I wasn't uploading.",
+              "line": "I wasn't in the bay. I did it. I {act}. I wasn't uploading.",
               "onlyIfCulprit": true
             }
           ]
@@ -502,7 +502,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "No. Press list isn't a key to the rest of the building. I did the job and I uploaded."
+              "line": "No. The photo list didn't let me into the rest of the building. I did the job and I uploaded."
             },
             {
               "minStress": 85,

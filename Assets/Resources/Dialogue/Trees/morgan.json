@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "A badge with my name on it isn't a mood. I hear you. The shift still ended.",
+              "line": "I hear you. The shift still ended.",
               "onlyIfCulprit": true
             },
             {
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I {act}. I came back after the desk. The clock-out was for you.",
+              "line": "I did it. I {act}. I came back after the desk. The clock-out was a lie.",
               "onlyIfCulprit": true
             }
           ]
@@ -392,7 +392,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I couldn't. I was already in the room, shoes off. That's not a person who doubled back."
+              "line": "I couldn't. I was already in the room, shoes off. I didn't go back out."
             },
             {
               "minStress": 85,
@@ -502,7 +502,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "No. Scheduling me isn't a key to the rest of the night. I worked the block and I left."
+              "line": "No. Being on the schedule didn't give me the rest of the night. I worked the block and I left."
             },
             {
               "minStress": 85,
