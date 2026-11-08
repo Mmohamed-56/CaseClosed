@@ -4,7 +4,7 @@ namespace CaseClosed.Characters
 {
     /// <summary>
     /// Drives Low Poly People package triggers (idle/walk/run/wave) plus optional Mixamo sit/stand
-    /// triggers when those parameters exist on the Animator.
+    /// and seated talk triggers when those parameters exist on the Animator.
     /// </summary>
     public sealed class CharacterAnimationDriver : MonoBehaviour
     {
@@ -14,6 +14,8 @@ namespace CaseClosed.Characters
         private const string WaveTrigger = "wave";
         private const string SitTrigger = "sit";
         private const string StandTrigger = "stand";
+        private const string TalkTrigger = "talk";
+        private const string StopTalkingTrigger = "stopTalking";
 
         [Header("Character Animator")]
         [Tooltip("Animator on the selected character prefab. Automatically found in children when empty.")]
@@ -72,6 +74,23 @@ namespace CaseClosed.Characters
         {
             if (!PlayTriggerIfPresent(StandTrigger))
                 PlayIdle();
+        }
+
+        /// <summary>
+        /// Plays seated talking when the Animator has a <c>talk</c> trigger (Bezi Mixamo sitting-talking state).
+        /// No-ops when the parameter is missing so a seated character is not kicked back to standing idle.
+        /// </summary>
+        public void PlayTalk()
+        {
+            PlayTriggerIfPresent(TalkTrigger);
+        }
+
+        /// <summary>
+        /// Returns from seated talking to sitting idle via <c>stopTalking</c> when present.
+        /// </summary>
+        public void PlayStopTalking()
+        {
+            PlayTriggerIfPresent(StopTalkingTrigger);
         }
 
         private void ResolveAnimator()

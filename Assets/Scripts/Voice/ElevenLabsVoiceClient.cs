@@ -67,6 +67,8 @@ namespace CaseClosed.Voice
         private UnityWebRequest activeRequest;
         private int generation;
         private bool keyMissingLogged;
+        private bool speechPlaybackActive;
+        private string activeSpeechSuspectId;
 
         public void Configure(ApiProxySettings proxy)
         {
@@ -149,9 +151,10 @@ namespace CaseClosed.Voice
             EnsureAudioSource();
             string voiceId = SuspectVoiceCatalog.Resolve(request.SuspectId, request.VoiceId);
             string cleaned = request.Line.Trim();
+            string suspectId = request.SuspectId ?? string.Empty;
             generation++;
             int gen = generation;
-            activeRoutine = StartCoroutine(SpeakRoutine(gen, useProxy, apiKey, voiceId, cleaned));
+            activeRoutine = StartCoroutine(SpeakRoutine(gen, useProxy, apiKey, voiceId, cleaned, suspectId));
         }
 
         /// <summary>Speak using resolved catalog / record voice id.</summary>
@@ -196,13 +199,16 @@ namespace CaseClosed.Voice
 
             if (activeRoutine != null)
             {
-                // StopCoroutine runs SpeakRoutine's finally; generation bump makes it a no-op.
+                // StopCoroutine runs SpeakRoutine's finally; generation bump makes ClearInFlight a no-op.
                 StopCoroutine(activeRoutine);
                 activeRoutine = null;
             }
 
             if (audioSource != null && audioSource.isPlaying)
                 audioSource.Stop();
+
+            // finally may already have published; idempotent via speechPlaybackActive.
+            NotifySpeechEnded();
         }
 
         private void HandleReplyReady(SuspectSpeechRequest request)
@@ -210,7 +216,13 @@ namespace CaseClosed.Voice
             Speak(request);
         }
 
-        private IEnumerator SpeakRoutine(int gen, bool useProxy, string apiKey, string voiceId, string fullText)
+        private IEnumerator SpeakRoutine(
+            int gen,
+            bool useProxy,
+            string apiKey,
+            string voiceId,
+            string fullText,
+            string suspectId)
         {
             // try/finally so errors (e.g. TTS 401), early yield break, and StopCoroutine
             // always release IsBusy — otherwise a failed request leaves activeRoutine stuck.
@@ -227,10 +239,7 @@ namespace CaseClosed.Voice
                     AudioClip cached;
                     if (enableClipCache && clipCache.TryGetValue(cacheKey, out cached) && cached != null)
                     {
-                        audioSource.clip = cached;
-                        audioSource.Play();
-                        while (gen == generation && audioSource.isPlaying)
-                            yield return null;
+                        yield return PlayClip(gen, cached, suspectId);
                         continue;
                     }
 
@@ -250,16 +259,44 @@ namespace CaseClosed.Voice
                     if (enableClipCache)
                         StoreCache(cacheKey, clip);
 
-                    audioSource.clip = clip;
-                    audioSource.Play();
-                    while (gen == generation && audioSource.isPlaying)
-                        yield return null;
+                    yield return PlayClip(gen, clip, suspectId);
                 }
             }
             finally
             {
                 ClearInFlightIfCurrent(gen);
+                NotifySpeechEnded();
             }
+        }
+
+        private IEnumerator PlayClip(int gen, AudioClip clip, string suspectId)
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+            NotifySpeechStarted(suspectId);
+            while (gen == generation && audioSource.isPlaying)
+                yield return null;
+        }
+
+        private void NotifySpeechStarted(string suspectId)
+        {
+            if (speechPlaybackActive)
+                return;
+
+            speechPlaybackActive = true;
+            activeSpeechSuspectId = suspectId ?? string.Empty;
+            SuspectDialogueEvents.PublishSpeechStarted(activeSpeechSuspectId);
+        }
+
+        private void NotifySpeechEnded()
+        {
+            if (!speechPlaybackActive)
+                return;
+
+            speechPlaybackActive = false;
+            string suspectId = activeSpeechSuspectId ?? string.Empty;
+            activeSpeechSuspectId = null;
+            SuspectDialogueEvents.PublishSpeechEnded(suspectId);
         }
 
         /// <summary>

@@ -24,6 +24,10 @@ No proxy / no key → TTS skips silently; text replies still work.
 | `InterrogationDialogueService.QuestionStarted` | Cancel in-flight TTS |
 | `InterrogationDialogueService.SuspectLineReady` | Speak line (`SuspectVoiceLine`) |
 | `SuspectDialogueEvents.ReplyReady` | Shared bus (`ISuspectSpeech`) |
+| `SuspectDialogueEvents.SpeechStarted` | AudioSource began playing → `CharacterAnimationDriver.PlayTalk()` (`talk`) |
+| `SuspectDialogueEvents.SpeechEnded` | Playback finished / cancelled → `PlayStopTalking()` (`stopTalking`) |
+
+Sit-talk bridge: `SuspectTalkAnimationBridge` (auto-added on `SuspectEnterController`) listens to SpeechStarted/Ended and fires Bezi’s Mixamo seated-talk triggers. No scene rewrite required.
 
 Latency: Flash model `eleven_flash_v2_5`, `optimize_streaming_latency=4`, short clips, clip cache, non-blocking `AudioSource`.
 
