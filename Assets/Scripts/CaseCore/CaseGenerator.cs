@@ -26,98 +26,98 @@ namespace CaseClosed.CaseCore
                 "jamie",
                 "Jamie Rivera",
                 "Student volunteer",
-                "I left the student union before 9:15 PM and went straight to the bus stop.",
-                "At the west bus loop from 9:20 PM onward.",
-                "A hardware-store receipt shows Jamie bought a utility knife that afternoon.",
-                "Jamie used it to cut tape and cardboard for event decorations.",
-                "Transit receipt",
-                "A transit-card tap places Jamie at the west bus loop at 9:24 PM.",
-                "Volunteer roster",
-                "Jamie is listed on the evening setup crew for the student-union event."),
+                "I finished my shift early and headed for the west bus loop.",
+                "At the west bus loop after leaving campus buildings.",
+                "A hardware-store receipt shows Jamie bought packing tape and zip ties that afternoon.",
+                "Jamie used them for club table setup supplies.",
+                "Transit tap receipt",
+                "A transit-card tap places Jamie at the west bus loop shortly after they said they left.",
+                "Volunteer duty roster",
+                "Jamie is listed on the evening volunteer crew for a campus event."),
             new SuspectProfile(
                 "morgan",
                 "Morgan Lee",
                 "Student events assistant",
-                "I left the student union before 9:15 PM and went home.",
-                "At home from 9:10 PM onward.",
-                "An event sign-out sheet shows Morgan borrowed the storage-room key earlier that day.",
-                "Morgan was inventorying decorations and returned the key before the theft window.",
-                "Residence hall door log",
-                "Morgan's hall exterior door registered an entry at 9:18 PM.",
-                "Staff schedule",
-                "Morgan's events shift ended at 9:00 PM according to the posted roster."),
+                "I ended my desk shift and went straight back to housing.",
+                "At their residence hall after clock-out.",
+                "A staff key sign-out shows Morgan borrowed a generic utility key earlier that day.",
+                "Morgan was inventorying supply closets and returned the key before evening.",
+                "Hall exterior door log",
+                "Morgan's hall exterior door registered an entry after their stated departure from work.",
+                "Events desk schedule",
+                "Morgan's posted events desk shift ended on time according to the roster."),
             new SuspectProfile(
                 "avery",
                 "Avery Patel",
                 "Campus facilities worker",
-                "I left the student union before 9:15 PM and continued my shift in the library wing.",
-                "Library wing maintenance corridor from 9:20 PM onward.",
-                "A work order shows Avery checked out a large laundry cart.",
-                "Avery used it to move event linens to the laundry room.",
+                "I left the first building on my route and continued facilities checks elsewhere.",
+                "On a facilities maintenance corridor during the later part of their shift.",
+                "A work order shows Avery checked out a rolling utility cart.",
+                "Avery used it to move linens and cleaning stock between buildings.",
                 "Work radio check-in",
-                "Avery radioed a library-wing check-in at 9:28 PM.",
+                "Avery radioed a wing check-in during the period they claim as their alibi.",
                 "Facilities assignment board",
-                "Avery was assigned to evening linen pickup in the student union before relocating to the library wing."),
+                "Avery was assigned evening porter duties spanning multiple campus buildings."),
             new SuspectProfile(
                 "riley",
                 "Riley Brooks",
                 "Club treasurer",
-                "I left the student union before 9:15 PM and went to a study group.",
-                "Science library study room B from 9:25 PM onward.",
+                "I wrapped club paperwork and went to a reserved study room.",
+                "Science library study room B during the later evening.",
                 "A club receipt shows Riley bought a roll of heavy-duty tape.",
                 "Riley used it to repair a display board for the club fair.",
                 "Room reservation log",
-                "Study room B was reserved under Riley's name from 9:15 PM to 10:30 PM.",
+                "Study room B was reserved under Riley's name for a multi-hour evening block.",
                 "Club chat notice",
-                "Riley posted in the club chat that the treasurer report was finished before leaving the union."),
+                "Riley posted that the treasurer report was finished before leaving the meeting space."),
             new SuspectProfile(
                 "casey",
                 "Casey Nguyen",
-                "Mascot squad member",
-                "I left the student union before 9:15 PM and went to costume storage across campus.",
-                "Costume workshop annex from 9:20 PM onward.",
-                "A locker checkout shows Casey removed a spare mascot torso shell that afternoon.",
-                "Casey was fitting a replacement shell for tomorrow's pep rally.",
+                "Spirit squad member",
+                "I left practice early and went to the costume workshop annex.",
+                "Costume workshop annex after practice.",
+                "A locker checkout shows Casey removed a spare costume shell that afternoon.",
+                "Casey was fitting a replacement shell for a scheduled pep event.",
                 "Annex badge swipe",
-                "Casey's badge opened the costume workshop annex at 9:22 PM.",
+                "Casey's badge opened the costume workshop annex after their stated departure from practice.",
                 "Squad practice note",
-                "Casey was marked present at afternoon mascot drill and listed for evening shell maintenance."),
+                "Casey was marked present at afternoon drill and listed for evening shell maintenance."),
             new SuspectProfile(
                 "drew",
                 "Drew Okonkwo",
                 "Campus security student aide",
-                "I left the student union before 9:15 PM and walked the south quad patrol loop.",
-                "South quad patrol from 9:15 PM onward.",
-                "A key cabinet log shows Drew signed out a master hallway key for the union.",
-                "Drew was locking perimeter classrooms after the event and returned the key at 9:05 PM.",
+                "I left the desk area and walked my assigned patrol loop.",
+                "South quad patrol checkpoints during aide hours.",
+                "A key cabinet log shows Drew signed out a hallway master key earlier.",
+                "Drew was locking perimeter classrooms after an event and returned the key on time.",
                 "Patrol checkpoint ping",
-                "Drew's aide fob pinged the south quad checkpoint at 9:31 PM.",
+                "Drew's aide fob pinged the south quad checkpoint during their claimed patrol window.",
                 "Aide duty roster",
-                "Drew was scheduled for the 8:00 PM to 11:00 PM student-aide patrol."),
+                "Drew was scheduled for the evening student-aide patrol block."),
             new SuspectProfile(
                 "quinn",
                 "Quinn Alvarez",
                 "Student media photographer",
-                "I left the student union before 9:15 PM and uploaded photos from the media lab.",
-                "Media lab edit bay from 9:20 PM onward.",
+                "I finished covering the event and uploaded files from the media lab.",
+                "Media lab edit bay after the shoot.",
                 "An equipment loan shows Quinn checked out a large rolling camera case.",
                 "Quinn used the case to move lights and stands after covering the event.",
                 "Lab login record",
-                "Quinn logged into a media-lab workstation at 9:26 PM.",
+                "Quinn logged into a media-lab workstation during their claimed upload window.",
                 "Press pass list",
-                "Quinn appears on the approved photographer list for the student-union event."),
+                "Quinn appears on the approved photographer list for the evening event."),
             new SuspectProfile(
                 "sam",
                 "Sam Torvald",
                 "Dining services closer",
-                "I left the student union before 9:15 PM and finished closing the cafe downstairs.",
-                "Union cafe closing checklist from 9:15 PM onward.",
+                "I left the upper floors and finished closing the cafe downstairs.",
+                "Union cafe closing checklist through end of shift.",
                 "A supply request shows Sam ordered industrial zip ties that morning.",
                 "Sam used them to reseal bulk snack bags during inventory.",
                 "POS closeout stamp",
-                "The cafe register closeout was stamped complete under Sam's employee number at 9:33 PM.",
+                "The cafe register closeout was stamped complete under Sam's employee number.",
                 "Closing checklist",
-                "Sam is the named closer on the union cafe evening checklist.")
+                "Sam is the named closer on the cafe evening checklist.")
         };
 
         /// <summary>How many authored case templates are available for seeded rotation.</summary>
@@ -326,15 +326,25 @@ namespace CaseClosed.CaseCore
             }
             else
             {
-                // Title must match the authored description (site + board). Template category
-                // labels like "Suspicious purchase" were mismatching sign-out sheets / work orders.
-                string herringTitle = InferRedHerringTitle(profile.RedHerringRecord, template.redHerringTitle);
+                // Prefer case-template herring body so each shift has unique clue text and
+                // title/description stay aligned (no shared mascot/storage affiliate copy).
+                string herringBody = !string.IsNullOrWhiteSpace(template.redHerringDescription)
+                    ? CaseTemplateCatalog.FormatName(template.redHerringDescription, profile.DisplayName)
+                    : profile.RedHerringRecord;
+                string herringExplain = !string.IsNullOrWhiteSpace(template.redHerringExplanation)
+                    ? CaseTemplateCatalog.FormatName(template.redHerringExplanation, profile.DisplayName)
+                    : profile.RedHerringExplanation;
+                string herringTitle = !string.IsNullOrWhiteSpace(template.redHerringDescription)
+                    ? (string.IsNullOrWhiteSpace(template.redHerringTitle)
+                        ? InferRedHerringTitle(herringBody, "Filed campus record")
+                        : template.redHerringTitle.Trim())
+                    : InferRedHerringTitle(herringBody, template.redHerringTitle);
                 records.Insert(0, new EvidenceRecord(
                     caseId + "_" + profile.Id + "_red_herring",
                     herringTitle,
-                    profile.RedHerringRecord,
+                    herringBody,
                     EvidenceKind.RedHerring,
-                    profile.RedHerringExplanation));
+                    herringExplain));
             }
 
             return records;

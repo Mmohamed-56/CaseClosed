@@ -7,7 +7,7 @@
       "questions": [
         {
           "id": "riley_access_q1",
-          "prompt": "Storage access at 9:37 \u2014 you said you left before 9:15. Explain.",
+          "prompt": "This access record puts you inside the incident window after you said you left. Explain.",
           "aggressive": true,
           "replies": [
             {
@@ -15,34 +15,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That card ping is wrong. I was already gone."
+              "line": "That record is wrong. I was already gone."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Nine thirty-seven? That can't be my card. I left earlier."
+              "line": "That timestamp can't be me. I left earlier."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": true,
-              "line": "Okay \u2014 I went back. Just for a second. Not for the head."
+              "line": "Okay \u2014 I went back. Just for a second. Not for what went missing."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Fine. I opened storage after 9:15. I took it."
+              "line": "Fine. I opened that door after I said I left. I did it. I went back."
             }
           ]
         },
         {
           "id": "riley_access_q2",
-          "prompt": "Your campus card opened the event-storage room inside the theft window.",
+          "prompt": "Your campus credential hit a restricted reader inside the incident window.",
           "aggressive": true,
           "replies": [
             {
@@ -71,13 +71,13 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "It was me at 9:37. I did it. I went back."
+              "line": "It was me. I did it. I went back."
             }
           ]
         },
         {
           "id": "riley_access_q3",
-          "prompt": "You claimed: \"I left the student union before 9:15 PM and went to a study group.\" How does 9:37 access fit?",
+          "prompt": "You claimed: \"I wrapped club paperwork and went to a reserved study room.\" How does that access fit?",
           "aggressive": false,
           "replies": [
             {
@@ -106,13 +106,13 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The statement was a lie. I was in storage at 9:37."
+              "line": "The statement was a lie. I went back during the window."
             }
           ]
         },
         {
           "id": "riley_access_q4",
-          "prompt": "If you left before 9:15, why is your card on the storage door at 9:37?",
+          "prompt": "If you left when you said, why is your credential on that door inside the window?",
           "aggressive": true,
           "replies": [
             {
@@ -127,7 +127,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I don't have a clean answer \u2014 but I didn't steal anything."
+              "line": "I don't have a clean answer \u2014 but I didn't do it."
             },
             {
               "minStress": 60,
@@ -141,7 +141,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Because I stole the head. That's why."
+              "line": "Because I did it. That's why."
             }
           ]
         }
@@ -174,20 +174,20 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I bought / borrowed that for the event \u2014 not for theft."
+              "line": "I bought / borrowed that for ordinary work \u2014 not for the incident."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Believe what you want. It still doesn't put me in storage at 9:37."
+              "line": "Believe what you want. It still doesn't put me at the scene during the window."
             }
           ]
         },
         {
           "id": "riley_herring_q2",
-          "prompt": "Looks like prep for cutting or moving something bulky. Was it for what went missing?",
+          "prompt": "Looks like prep for moving or cutting something. Was it for what went missing?",
           "aggressive": true,
           "replies": [
             {
@@ -195,34 +195,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Event work only."
+              "line": "No. Ordinary campus work only."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "People always jump to that. It was event gear."
+              "line": "People always jump to that. It was unrelated gear."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I get why you'd ask. Still not me on the head."
+              "line": "I get why you'd ask. Still not me on what went missing."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I didn't take the head. That record is a red herring and you know it."
+              "line": "I didn't do it. That record is a red herring and you know it."
             }
           ]
         },
         {
           "id": "riley_herring_q3",
-          "prompt": "Walk me through this suspicious purchase against your alibi: Science library study room B from 9:25 PM onward.",
+          "prompt": "Walk me through this suspicious record against your alibi: Science library study room B during the later evening.",
           "aggressive": false,
           "replies": [
             {
@@ -230,14 +230,14 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Easy \u2014 Science library study room B from 9:25 PM onward.. The purchase was earlier, for setup."
+              "line": "Easy \u2014 Science library study room B during the later evening.. The purchase / checkout was earlier, for setup."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Alibi first: Science library study room B from 9:25 PM onward.. The purchase is unrelated."
+              "line": "Alibi first: Science library study room B during the later evening.. The record is unrelated."
             },
             {
               "minStress": 60,
@@ -251,7 +251,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Pin the head on someone with a storage swipe. Not this."
+              "line": "Pin the incident on someone with a hard access hit. Not this."
             }
           ]
         },
@@ -297,7 +297,7 @@
       "questions": [
         {
           "id": "riley_alibi_q1",
-          "prompt": "Room reservation log: Study room B was reserved under Riley's name from 9:15 PM to 10:30 PM. Does that match your story?",
+          "prompt": "Room reservation log: Study room B was reserved under Riley's name for a multi-hour evening block. Does that match your story?",
           "aggressive": false,
           "replies": [
             {
@@ -305,14 +305,14 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Yes. Science library study room B from 9:25 PM onward."
+              "line": "Yes. Science library study room B during the later evening."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That's exactly where I was. Science library study room B from 9:25 PM onward."
+              "line": "That's exactly where I was. Science library study room B during the later evening."
             },
             {
               "minStress": 60,
@@ -326,13 +326,13 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I need you to believe that log. I wasn't in storage."
+              "line": "I need you to believe that log. I wasn't at the scene."
             }
           ]
         },
         {
           "id": "riley_alibi_q2",
-          "prompt": "You said you left before 9:15. Prove Science library study room B from 9:25 PM onward..",
+          "prompt": "You said you left before the incident. Prove Science library study room B during the later evening..",
           "aggressive": false,
           "replies": [
             {
@@ -347,7 +347,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I left early. Then Science library study room B from 9:25 PM onward.."
+              "line": "I left early. Then Science library study room B during the later evening.."
             },
             {
               "minStress": 60,
@@ -367,7 +367,7 @@
         },
         {
           "id": "riley_alibi_q3",
-          "prompt": "Could you have doubled back to storage after this alibi stamp?",
+          "prompt": "Could you have doubled back to the scene after this alibi stamp?",
           "aggressive": true,
           "replies": [
             {
@@ -402,7 +402,7 @@
         },
         {
           "id": "riley_alibi_q4",
-          "prompt": "Who saw you after 9:15 if Room reservation log is wrong?",
+          "prompt": "Who saw you during the window if Room reservation log is wrong?",
           "aggressive": false,
           "replies": [
             {
@@ -450,7 +450,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Before 9:15. Same as my statement."
+              "line": "Before the incident window. Same as my statement."
             },
             {
               "minStress": 30,
@@ -464,7 +464,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I might've lingered a minute \u2014 not until 9:37."
+              "line": "I might've lingered a minute \u2014 not through the whole window."
             },
             {
               "minStress": 85,
@@ -477,7 +477,7 @@
         },
         {
           "id": "riley_roster_q2",
-          "prompt": "This roster listing: Riley posted in the club chat that the treasurer report was finished before leaving the union. Did that give you storage access?",
+          "prompt": "This roster listing: Riley posted that the treasurer report was finished before leaving the meeting space. Did that give you special access?",
           "aggressive": false,
           "replies": [
             {
@@ -485,14 +485,14 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Being listed isn't a key to the head."
+              "line": "Being listed isn't a key to the scene."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Lots of people were listed. Only one thief."
+              "line": "Lots of people were listed. Only one culprit."
             },
             {
               "minStress": 60,
@@ -506,13 +506,13 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Roster presence \u2260 theft. Move on."
+              "line": "Roster presence \u2260 guilt. Move on."
             }
           ]
         },
         {
           "id": "riley_roster_q3",
-          "prompt": "Why does the roster still matter if you claim Science library study room B from 9:25 PM onward.?",
+          "prompt": "Why does the roster still matter if you claim Science library study room B during the later evening.?",
           "aggressive": true,
           "replies": [
             {
@@ -555,14 +555,14 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Out before 9:15."
+              "line": "No. Out before the window."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I didn't stay for the theft window."
+              "line": "I didn't stay for the incident window."
             },
             {
               "minStress": 60,
@@ -587,7 +587,7 @@
       "questions": [
         {
           "id": "riley_sign_q1",
-          "prompt": "Event sign-in shows Riley helping setup. When did you sign out?",
+          "prompt": "Sign-in shows Riley on site earlier. When did you sign out?",
           "aggressive": false,
           "replies": [
             {
@@ -595,7 +595,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I was done and gone before 9:15."
+              "line": "I was done and gone before the incident window."
             },
             {
               "minStress": 30,
@@ -609,7 +609,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I signed in earlier. I did not hang around for the head."
+              "line": "I signed in earlier. I did not hang around for the incident."
             },
             {
               "minStress": 85,
@@ -622,7 +622,7 @@
         },
         {
           "id": "riley_sign_q2",
-          "prompt": "Being on the sign-in sheet put you near storage. Convenient?",
+          "prompt": "Being on the sign-in sheet put you near the scene. Convenient?",
           "aggressive": true,
           "replies": [
             {
@@ -630,14 +630,14 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Convenient for volunteering. Not for stealing."
+              "line": "Convenient for volunteering. Not for the incident."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Near storage earlier \u2260 inside at 9:37."
+              "line": "Near the scene earlier \u2260 inside during the window."
             },
             {
               "minStress": 60,
@@ -651,13 +651,13 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Stop fishing. Sign-in is daytime/evening setup only."
+              "line": "Stop fishing. Sign-in is earlier activity only."
             }
           ]
         },
         {
           "id": "riley_sign_q3",
-          "prompt": "Did signing in get you a storage key or card?",
+          "prompt": "Did signing in get you a key or special credential?",
           "aggressive": false,
           "replies": [
             {
@@ -672,7 +672,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Volunteers don't get free storage raids."
+              "line": "Volunteers don't get free raids on restricted rooms."
             },
             {
               "minStress": 60,
@@ -692,7 +692,7 @@
         },
         {
           "id": "riley_sign_q4",
-          "prompt": "Reconcile the sign-in with: \"I left the student union before 9:15 PM and went to a study group.\"",
+          "prompt": "Reconcile the sign-in with: \"I wrapped club paperwork and went to a reserved study room.\"",
           "aggressive": false,
           "replies": [
             {
@@ -700,7 +700,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Signed in, worked, left before 9:15. Consistent."
+              "line": "Signed in, worked, left before the window. Consistent."
             },
             {
               "minStress": 30,
@@ -737,14 +737,14 @@
           "replies": [
             {
               "minStress": 0,
-              "maxStress": 59,
+              "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "You're holding me? I didn't take the head."
+              "line": "You're holding me? I didn't do this."
             },
             {
               "minStress": 0,
-              "maxStress": 59,
+              "maxStress": 100,
               "emotion": "angry",
               "slip": false,
               "line": "This is a mistake. I want that on the record."
@@ -754,7 +754,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "\u2026I can't keep this up. Check storage for my prints."
+              "line": "\u2026I can't keep this up. Check the access trail for my prints."
             }
           ]
         }

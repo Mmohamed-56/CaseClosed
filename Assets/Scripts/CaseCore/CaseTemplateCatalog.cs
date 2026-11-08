@@ -40,6 +40,8 @@ namespace CaseClosed.CaseCore
             public string signInTitle;
             public string signInDescription;
             public string redHerringTitle;
+            public string redHerringDescription;
+            public string redHerringExplanation;
             public string statementTemplate;
             public string[] preferSuspectIds;
         }
@@ -125,6 +127,10 @@ namespace CaseClosed.CaseCore
             if (string.IsNullOrWhiteSpace(t.signInDescription))
                 t.signInDescription = "{name} signed in near the scene earlier that evening.";
             if (string.IsNullOrWhiteSpace(t.redHerringTitle)) t.redHerringTitle = "Suspicious purchase record";
+            if (string.IsNullOrWhiteSpace(t.redHerringDescription))
+                t.redHerringDescription = "A purchase or checkout under {name}'s name looks related to the incident at first glance.";
+            if (string.IsNullOrWhiteSpace(t.redHerringExplanation))
+                t.redHerringExplanation = "The record has an innocent explanation unrelated to the incident.";
             if (string.IsNullOrWhiteSpace(t.statementTemplate))
                 t.statementTemplate = "I left before the incident window and never went back.";
             if (t.preferSuspectIds == null) t.preferSuspectIds = Array.Empty<string>();
@@ -137,26 +143,30 @@ namespace CaseClosed.CaseCore
             {
                 Normalize(new CaseTemplate
                 {
-                    id = "mascot_head",
-                    title = "The Missing Mascot Head",
+                    id = "banner_cutdown",
+                    title = "Field House Spirit Banner Cutdown",
                     briefing =
-                        "The university mascot head vanished from the student-union storage room between 9:15 PM and 9:45 PM. Check the records against each suspect's statement before deciding who to hold.",
-                    treeHook = "mascot_theft",
-                    scene = "the student-union storage wing",
-                    windowStart = "9:15 PM",
-                    windowEnd = "9:45 PM",
-                    accessTime = "9:37 PM",
-                    accessTitle = "Storage-room access log",
+                        "The Founders Weekend spirit banner over Field House court was sliced down between 6:05 PM and 6:35 PM. Match ladder checkout, mezzanine camera stills, and statements before HOLD.",
+                    treeHook = "banner_cutdown",
+                    scene = "Field House mezzanine",
+                    windowStart = "6:05 PM",
+                    windowEnd = "6:35 PM",
+                    accessTime = "6:21 PM",
+                    accessTitle = "Mezzanine catwalk camera still",
                     accessDescription =
-                        "The campus card assigned to {name} opened the event-storage room at 9:37 PM, inside the theft window and after their stated departure time.",
-                    contradictionExplanation = "{name} returned to the storage room and took the mascot head.",
-                    signInTitle = "Event sign-in sheet",
+                        "A 6:21 PM still from catwalk cam FH-M3 shows a figure matching {name}'s clothing profile on the banner walkway — after {name} claimed to be at dinner across campus.",
+                    contradictionExplanation = "{name} climbed the Field House mezzanine and cut down the spirit banner.",
+                    signInTitle = "Athletics volunteer day sheet",
                     signInDescription =
-                        "{name} signed in to help with student-union event setup earlier that evening.",
-                    redHerringTitle = "Suspicious purchase record",
+                        "{name} signed the afternoon Field House athletics volunteer sheet before the cutdown window.",
+                    redHerringTitle = "Utility-knife purchase",
+                    redHerringDescription =
+                        "A campus-adjacent hardware debit under {name}'s card bought a folding utility knife the same afternoon.",
+                    redHerringExplanation =
+                        "{name} used the knife to open taped spirit posters for a club table — not the banner ropes.",
                     statementTemplate =
-                        "I left the student union before 9:15 PM and was already gone when the head went missing.",
-                    preferSuspectIds = new[] { "jamie", "morgan", "casey", "drew", "quinn", "sam", "avery", "riley" }
+                        "I never went up to the Field House mezzanine. I was at dinner when the banner came down.",
+                    preferSuspectIds = new[] { "jamie", "casey", "quinn", "sam", "drew", "morgan", "reese", "jordan" }
                 })
             };
         }

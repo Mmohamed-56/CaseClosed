@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Generate evidence-driven dialogue trees under Assets/Resources/Dialogue/Trees/."""
+"""Generate evidence-driven dialogue trees under Assets/Resources/Dialogue/Trees/.
+
+Prompts stay case-agnostic (no shared storage / 9:37 / mascot-head boilerplate) so
+rotating case_templates.json titles and clue bodies remain the unique flavor per shift.
+"""
 from __future__ import annotations
 
 import json
@@ -19,30 +23,15 @@ def write_meta(path: Path) -> None:
     meta = path.with_suffix(path.suffix + ".meta")
     if meta.exists():
         return
-    if path.suffix == ".cs":
-        body = (
-            "fileFormatVersion: 2\n"
-            f"guid: {new_guid()}\n"
-            "MonoImporter:\n"
-            "  externalObjects: {}\n"
-            "  serializedVersion: 2\n"
-            "  defaultReferences: []\n"
-            "  executionOrder: 0\n"
-            "  icon: {instanceID: 0}\n"
-            "  userData: \n"
-            "  assetBundleName: \n"
-            "  assetBundleVariant: \n"
-        )
-    else:
-        body = (
-            "fileFormatVersion: 2\n"
-            f"guid: {new_guid()}\n"
-            "TextScriptImporter:\n"
-            "  externalObjects: {}\n"
-            "  userData: \n"
-            "  assetBundleName: \n"
-            "  assetBundleVariant: \n"
-        )
+    body = (
+        "fileFormatVersion: 2\n"
+        f"guid: {new_guid()}\n"
+        "TextScriptImporter:\n"
+        "  externalObjects: {}\n"
+        "  userData: \n"
+        "  assetBundleName: \n"
+        "  assetBundleVariant: \n"
+    )
     meta.write_text(body, encoding="utf-8")
 
 
@@ -82,59 +71,59 @@ def build_tree(a: dict) -> dict:
     sid = a["id"]
     name = a["displayName"]
     first = name.split()[0]
-    statement = (a.get("statement") or "").strip()
-    alibi = (a.get("alibi") or "").strip()
+    statement = (a.get("statement") or "I left before the incident window.").strip()
+    alibi = (a.get("alibi") or "Elsewhere during the window.").strip()
     alibi_title = a.get("alibiSupportTitle") or "Alibi support"
     alibi_desc = a.get("alibiSupportDescription") or alibi
     roster_title = a.get("contextTitleA") or "Roster"
     roster_desc = a.get("contextDescriptionA") or a.get("bio") or ""
     herring = a.get("redHerringRecord") or "A suspicious purchase shows up under your name."
-    herring_explain = a.get("redHerringExplanation") or "That was for event work."
+    herring_explain = a.get("redHerringExplanation") or "That was for ordinary campus work."
 
     access_qs = [
         question(
             f"{sid}_access_q1",
-            f"Storage access at 9:37 — you said you left before 9:15. Explain.",
+            "This access record puts you inside the incident window after you said you left. Explain.",
             stress_pack(
-                f"That card ping is wrong. I was already gone.",
-                f"Nine thirty-seven? That can't be my card. I left earlier.",
-                f"Okay — I went back. Just for a second. Not for what went missing.",
-                f"Fine. I opened that door after I said I left. I did it. I went back.",
+                "That record is wrong. I was already gone.",
+                "That timestamp can't be me. I left earlier.",
+                "Okay — I went back. Just for a second. Not for what went missing.",
+                "Fine. I opened that door after I said I left. I did it. I went back.",
                 slip_at_scared=True,
             ),
             aggressive=True,
         ),
         question(
             f"{sid}_access_q2",
-            f"Your campus card opened a restricted door inside the incident window.",
+            "Your campus credential hit a restricted reader inside the incident window.",
             stress_pack(
-                f"I never went back in. Check the cameras — not me.",
-                f"Someone could have borrowed my card. It happens.",
-                f"I… might have swiped back in. I needed something from the cart.",
-                f"It was me. I did it. I went back.",
+                "I never went back in. Check the cameras — not me.",
+                "Someone could have borrowed my card. It happens.",
+                "I… might have swiped back in. I needed something from the cart.",
+                "It was me. I did it. I went back.",
                 slip_at_scared=True,
             ),
             aggressive=True,
         ),
         question(
             f"{sid}_access_q3",
-            f"You claimed: \"{statement}\" How does that access fit?",
+            f'You claimed: "{statement}" How does that access fit?',
             stress_pack(
-                f"It doesn't — because I wasn't there. The log is dirty.",
-                f"I stick by that statement. The access log has to be a glitch.",
-                f"I left, then panicked and came back. Stupid.",
-                f"The statement was a lie. I went back during the window.",
+                "It doesn't — because I wasn't there. The log is dirty.",
+                "I stick by that statement. The access log has to be a glitch.",
+                "I left, then panicked and came back. Stupid.",
+                "The statement was a lie. I went back during the window.",
                 slip_at_scared=True,
             ),
         ),
         question(
             f"{sid}_access_q4",
-            f"If you left when you said, why is your card on that door inside the window?",
+            "If you left when you said, why is your credential on that door inside the window?",
             stress_pack(
-                f"Ask security about false reads. I was not in that room.",
-                f"I don't have a clean answer — but I didn't do it.",
-                f"Because I went back. I shouldn't have.",
-                f"Because I did it. That's why.",
+                "Ask security about false reads. I was not in that room.",
+                "I don't have a clean answer — but I didn't do it.",
+                "Because I went back. I shouldn't have.",
+                "Because I did it. That's why.",
                 slip_at_scared=True,
             ),
             aggressive=True,
@@ -148,39 +137,39 @@ def build_tree(a: dict) -> dict:
             stress_pack(
                 f"{herring_explain}",
                 f"That looks bad, I know. {herring_explain}",
-                f"I bought / borrowed that for the event — not for theft.",
-                f"Believe what you want. It still doesn't put me in storage at 9:37.",
+                "I bought / borrowed that for ordinary work — not for the incident.",
+                "Believe what you want. It still doesn't put me at the scene during the window.",
             ),
         ),
         question(
             f"{sid}_herring_q2",
-            f"Looks like prep for cutting or moving something bulky. Was it for what went missing?",
+            "Looks like prep for moving or cutting something. Was it for what went missing?",
             stress_pack(
-                f"No. Event work only.",
-                f"People always jump to that. It was event gear.",
-                f"I get why you'd ask. Still not me on what went missing.",
-                f"I didn't do it. That record is a red herring and you know it.",
+                "No. Ordinary campus work only.",
+                "People always jump to that. It was unrelated gear.",
+                "I get why you'd ask. Still not me on what went missing.",
+                "I didn't do it. That record is a red herring and you know it.",
             ),
             aggressive=True,
         ),
         question(
             f"{sid}_herring_q3",
-            f"Walk me through this suspicious purchase against your alibi: {alibi}",
+            f"Walk me through this suspicious record against your alibi: {alibi}",
             stress_pack(
-                f"Easy — {alibi}. The purchase was earlier, for setup.",
-                f"Alibi first: {alibi}. The purchase is unrelated.",
-                f"I'm rattled, but the timeline still clears me.",
-                f"Pin the head on someone with a storage swipe. Not this.",
+                f"Easy — {alibi}. The purchase / checkout was earlier, for setup.",
+                f"Alibi first: {alibi}. The record is unrelated.",
+                "I'm rattled, but the timeline still clears me.",
+                "Pin the incident on someone with a hard access hit. Not this.",
             ),
         ),
         question(
             f"{sid}_herring_q4",
-            f"Why should we trust you after this shows up under your name?",
+            "Why should we trust you after this shows up under your name?",
             stress_pack(
-                f"Because I'm on camera / logs elsewhere during the window.",
-                f"Trust the other records — not one ugly receipt.",
-                f"I'm nervous because it looks bad. That doesn't make me guilty.",
-                f"I've answered. Stamp someone else.",
+                "Because I'm on camera / logs elsewhere during the window.",
+                "Trust the other records — not one ugly receipt.",
+                "I'm nervous because it looks bad. That doesn't make me guilty.",
+                "I've answered. Stamp someone else.",
             ),
             aggressive=True,
         ),
@@ -193,39 +182,39 @@ def build_tree(a: dict) -> dict:
             stress_pack(
                 f"Yes. {alibi}",
                 f"That's exactly where I was. {alibi}",
-                f"It should. Unless the clock is off, I was there.",
-                f"I need you to believe that log. I wasn't in storage.",
+                "It should. Unless the clock is off, I was there.",
+                "I need you to believe that log. I wasn't at the scene.",
             ),
         ),
         question(
             f"{sid}_alibi_q2",
-            f"You said you left before 9:15. Prove {alibi}.",
+            f"You said you left before the incident. Prove {alibi}.",
             stress_pack(
                 f"The support record does. Read {alibi_title}.",
                 f"I left early. Then {alibi}.",
-                f"I'm telling the same story. Check the timestamp again.",
-                f"If that support log is real, I'm clear.",
+                "I'm telling the same story. Check the timestamp again.",
+                "If that support log is real, I'm clear.",
             ),
         ),
         question(
             f"{sid}_alibi_q3",
-            f"Could you have doubled back to storage after this alibi stamp?",
+            "Could you have doubled back to the scene after this alibi stamp?",
             stress_pack(
-                f"No. Once I left, I stayed put.",
-                f"Not without showing up on something else — and I don't.",
-                f"I… don't think so. I was tired. I went straight there.",
-                f"Doubling back would be insane. I didn't.",
+                "No. Once I left, I stayed put.",
+                "Not without showing up on something else — and I don't.",
+                "I… don't think so. I was tired. I went straight there.",
+                "Doubling back would be insane. I didn't.",
             ),
             aggressive=True,
         ),
         question(
             f"{sid}_alibi_q4",
-            f"Who saw you after 9:15 if {alibi_title} is wrong?",
+            f"Who saw you during the window if {alibi_title} is wrong?",
             stress_pack(
-                f"It's not wrong. Ask around the area.",
-                f"People were there. I wasn't hiding.",
-                f"I can't name everyone. The record should be enough.",
-                f"I don't have a crowd of witnesses. I have that log.",
+                "It's not wrong. Ask around the area.",
+                "People were there. I wasn't hiding.",
+                "I can't name everyone. The record should be enough.",
+                "I don't have a crowd of witnesses. I have that log.",
             ),
         ),
     ]
@@ -235,41 +224,41 @@ def build_tree(a: dict) -> dict:
             f"{sid}_roster_q1",
             f"{roster_title} puts you on site that evening. When did you actually leave?",
             stress_pack(
-                f"Before 9:15. Same as my statement.",
-                f"Shift / duty ended; I walked out before the window.",
-                f"I might've lingered a minute — not until 9:37.",
-                f"I left when I said I left. Don't twist the roster.",
+                "Before the incident window. Same as my statement.",
+                "Shift / duty ended; I walked out before the window.",
+                "I might've lingered a minute — not through the whole window.",
+                "I left when I said I left. Don't twist the roster.",
             ),
         ),
         question(
             f"{sid}_roster_q2",
-            f"This roster listing: {roster_desc} Did that give you storage access?",
+            f"This roster listing: {roster_desc} Did that give you special access?",
             stress_pack(
-                f"Being listed isn't a key to the head.",
-                f"Lots of people were listed. Only one thief.",
-                f"I had a job to do. I finished and left.",
-                f"Roster presence ≠ theft. Move on.",
+                "Being listed isn't a key to the scene.",
+                "Lots of people were listed. Only one culprit.",
+                "I had a job to do. I finished and left.",
+                "Roster presence ≠ guilt. Move on.",
             ),
         ),
         question(
             f"{sid}_roster_q3",
             f"Why does the roster still matter if you claim {alibi}?",
             stress_pack(
-                f"It just shows I was helping earlier. Then I left.",
-                f"Context only. The alibi is the point.",
-                f"You're stacking paper. My exit time is what counts.",
-                f"Stamp me or don't — the roster isn't a confession.",
+                "It just shows I was helping earlier. Then I left.",
+                "Context only. The alibi is the point.",
+                "You're stacking paper. My exit time is what counts.",
+                "Stamp me or don't — the roster isn't a confession.",
             ),
             aggressive=True,
         ),
         question(
             f"{sid}_roster_q4",
-            f"Anyone on this roster could've stayed late. Did you?",
+            "Anyone on this roster could've stayed late. Did you?",
             stress_pack(
-                f"No. Out before 9:15.",
-                f"I didn't stay for the theft window.",
-                f"I wanted to go. I went.",
-                f"Late stayers exist. I wasn't one.",
+                "No. Out before the window.",
+                "I didn't stay for the incident window.",
+                "I wanted to go. I went.",
+                "Late stayers exist. I wasn't one.",
             ),
         ),
     ]
@@ -277,43 +266,43 @@ def build_tree(a: dict) -> dict:
     sign_qs = [
         question(
             f"{sid}_sign_q1",
-            f"Event sign-in shows {first} helping setup. When did you sign out?",
+            f"Sign-in shows {first} on site earlier. When did you sign out?",
             stress_pack(
-                f"I was done and gone before 9:15.",
-                f"Sign-in isn't a life sentence. I left.",
-                f"I signed in earlier. I did not hang around for the head.",
-                f"Setup, then exit. That's the whole sheet.",
+                "I was done and gone before the incident window.",
+                "Sign-in isn't a life sentence. I left.",
+                "I signed in earlier. I did not hang around for the incident.",
+                "Setup, then exit. That's the whole sheet.",
             ),
         ),
         question(
             f"{sid}_sign_q2",
-            f"Being on the sign-in sheet put you near storage. Convenient?",
+            "Being on the sign-in sheet put you near the scene. Convenient?",
             stress_pack(
-                f"Convenient for volunteering. Not for stealing.",
-                f"Near storage earlier ≠ inside at 9:37.",
-                f"I don't like how that sounds, but it's still not proof.",
-                f"Stop fishing. Sign-in is daytime/evening setup only.",
+                "Convenient for volunteering. Not for the incident.",
+                "Near the scene earlier ≠ inside during the window.",
+                "I don't like how that sounds, but it's still not proof.",
+                "Stop fishing. Sign-in is earlier activity only.",
             ),
             aggressive=True,
         ),
         question(
             f"{sid}_sign_q3",
-            f"Did signing in get you a storage key or card?",
+            "Did signing in get you a key or special credential?",
             stress_pack(
-                f"No special access from a name on a sheet.",
-                f"Volunteers don't get free storage raids.",
-                f"If keys moved, it wasn't because of my signature.",
-                f"Ask who held keys. My name on paper isn't that.",
+                "No special access from a name on a sheet.",
+                "Volunteers don't get free raids on restricted rooms.",
+                "If keys moved, it wasn't because of my signature.",
+                "Ask who held keys. My name on paper isn't that.",
             ),
         ),
         question(
             f"{sid}_sign_q4",
-            f"Reconcile the sign-in with: \"{statement}\"",
+            f'Reconcile the sign-in with: "{statement}"',
             stress_pack(
-                f"Signed in, worked, left before 9:15. Consistent.",
-                f"Same story every time.",
-                f"I keep repeating it because it's true.",
-                f"Sign-in earlier, departure as stated. Done.",
+                "Signed in, worked, left before the window. Consistent.",
+                "Same story every time.",
+                "I keep repeating it because it's true.",
+                "Sign-in earlier, departure as stated. Done.",
             ),
         ),
     ]
@@ -323,9 +312,9 @@ def build_tree(a: dict) -> dict:
             f"{sid}_hold",
             "HOLD",
             [
-                reply(0, 100, "scared", f"You're holding me? I didn't take the head.", False),
-                reply(0, 100, "angry", f"This is a mistake. I want that on the record.", False),
-                reply(60, 100, "broken", f"…I can't keep this up. Check storage for my prints.", True),
+                reply(0, 100, "scared", "You're holding me? I didn't do this.", False),
+                reply(0, 100, "angry", "This is a mistake. I want that on the record.", False),
+                reply(60, 100, "broken", "…I can't keep this up. Check the access trail for my prints.", True),
             ],
         )
     ]
@@ -334,8 +323,8 @@ def build_tree(a: dict) -> dict:
             f"{sid}_release",
             "RELEASE",
             [
-                reply(0, 100, "calm", f"Thank you. I told you I wasn't the one.", False),
-                reply(0, 100, "nervous", f"Okay. I'm leaving. Don't call me back unless you have proof.", False),
+                reply(0, 100, "calm", "Thank you. I told you I wasn't the one.", False),
+                reply(0, 100, "nervous", "Okay. I'm leaving. Don't call me back unless you have proof.", False),
             ],
         )
     ]
@@ -362,11 +351,14 @@ def main() -> None:
         raise SystemExit(f"Expected ≥8 interviewees, got {len(interviewees)}")
 
     OUT.mkdir(parents=True, exist_ok=True)
-    write_meta(OUT)  # folder meta optional; Unity makes DefaultAsset — skip if dir
 
     index = {"trees": []}
     for a in interviewees:
         tree = build_tree(a)
+        blob = json.dumps(tree).lower()
+        for banned in ("9:37", "9:15", "storage-room", "event-storage", "mascot head", "took the head", "the head"):
+            if banned in blob:
+                raise SystemExit(f"Banned phrase {banned!r} in tree {a['id']}")
         path = OUT / f"{a['id']}.json"
         path.write_text(json.dumps(tree, indent=2) + "\n", encoding="utf-8")
         write_meta(path)

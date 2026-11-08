@@ -9,20 +9,20 @@
       "displayName": "Jamie Rivera",
       "campusRole": "Student volunteer",
       "tier": "interviewee",
-      "bio": "Evening setup volunteer who lives off the west bus loop.",
-      "statement": "I left the student union before 9:15 PM and went straight to the bus stop.",
-      "alibi": "At the west bus loop from 9:20 PM onward.",
-      "redHerringRecord": "A hardware-store receipt shows Jamie bought a utility knife that afternoon.",
-      "redHerringExplanation": "Jamie used it to cut tape and cardboard for event decorations.",
-      "alibiSupportTitle": "Transit receipt",
-      "alibiSupportDescription": "A transit-card tap places Jamie at the west bus loop at 9:24 PM.",
-      "contextTitleA": "Volunteer roster",
-      "contextDescriptionA": "Jamie is listed on the evening setup crew for the student-union event.",
+      "bio": "Evening volunteer who lives off the west bus loop.",
+      "statement": "I finished my shift early and headed for the west bus loop.",
+      "alibi": "At the west bus loop after leaving campus buildings.",
+      "redHerringRecord": "A hardware-store receipt shows Jamie bought packing tape and zip ties that afternoon.",
+      "redHerringExplanation": "Jamie used them for club table setup supplies.",
+      "alibiSupportTitle": "Transit tap receipt",
+      "alibiSupportDescription": "A transit-card tap places Jamie at the west bus loop shortly after they said they left.",
+      "contextTitleA": "Volunteer duty roster",
+      "contextDescriptionA": "Jamie is listed on the evening volunteer crew for a campus event.",
       "recordHooks": [
         {
           "suffix": "directory",
-          "title": "Campus directory — Jamie Rivera",
-          "description": "Evening setup volunteer who lives off the west bus loop."
+          "title": "Campus directory \u2014 Jamie Rivera",
+          "description": "Evening volunteer who lives off the west bus loop."
         }
       ]
     },
@@ -31,20 +31,20 @@
       "displayName": "Morgan Lee",
       "campusRole": "Student events assistant",
       "tier": "interviewee",
-      "bio": "Events desk assistant with after-hours key privileges.",
-      "statement": "I left the student union before 9:15 PM and went home.",
-      "alibi": "At home from 9:10 PM onward.",
-      "redHerringRecord": "An event sign-out sheet shows Morgan borrowed the storage-room key earlier that day.",
-      "redHerringExplanation": "Morgan was inventorying decorations and returned the key before the theft window.",
-      "alibiSupportTitle": "Residence hall door log",
-      "alibiSupportDescription": "Morgan's hall exterior door registered an entry at 9:18 PM.",
-      "contextTitleA": "Staff schedule",
-      "contextDescriptionA": "Morgan's events shift ended at 9:00 PM according to the posted roster.",
+      "bio": "Events desk assistant with limited after-hours key privileges.",
+      "statement": "I ended my desk shift and went straight back to housing.",
+      "alibi": "At their residence hall after clock-out.",
+      "redHerringRecord": "A staff key sign-out shows Morgan borrowed a generic utility key earlier that day.",
+      "redHerringExplanation": "Morgan was inventorying supply closets and returned the key before evening.",
+      "alibiSupportTitle": "Hall exterior door log",
+      "alibiSupportDescription": "Morgan's hall exterior door registered an entry after their stated departure from work.",
+      "contextTitleA": "Events desk schedule",
+      "contextDescriptionA": "Morgan's posted events desk shift ended on time according to the roster.",
       "recordHooks": [
         {
           "suffix": "directory",
-          "title": "Campus directory — Morgan Lee",
-          "description": "Events desk assistant with after-hours key privileges."
+          "title": "Campus directory \u2014 Morgan Lee",
+          "description": "Events desk assistant with limited after-hours key privileges."
         }
       ]
     },
@@ -54,18 +54,18 @@
       "campusRole": "Campus facilities worker",
       "tier": "interviewee",
       "bio": "Night facilities tech covering linen and wing checks.",
-      "statement": "I left the student union before 9:15 PM and continued my shift in the library wing.",
-      "alibi": "Library wing maintenance corridor from 9:20 PM onward.",
-      "redHerringRecord": "A work order shows Avery checked out a large laundry cart.",
-      "redHerringExplanation": "Avery used it to move event linens to the laundry room.",
+      "statement": "I left the first building on my route and continued facilities checks elsewhere.",
+      "alibi": "On a facilities maintenance corridor during the later part of their shift.",
+      "redHerringRecord": "A work order shows Avery checked out a rolling utility cart.",
+      "redHerringExplanation": "Avery used it to move linens and cleaning stock between buildings.",
       "alibiSupportTitle": "Work radio check-in",
-      "alibiSupportDescription": "Avery radioed a library-wing check-in at 9:28 PM.",
+      "alibiSupportDescription": "Avery radioed a wing check-in during the period they claim as their alibi.",
       "contextTitleA": "Facilities assignment board",
-      "contextDescriptionA": "Avery was assigned to evening linen pickup in the student union before relocating to the library wing.",
+      "contextDescriptionA": "Avery was assigned evening porter duties spanning multiple campus buildings.",
       "recordHooks": [
         {
           "suffix": "directory",
-          "title": "Campus directory — Avery Patel",
+          "title": "Campus directory \u2014 Avery Patel",
           "description": "Night facilities tech covering linen and wing checks."
         }
       ]
@@ -75,20 +75,20 @@
       "displayName": "Riley Brooks",
       "campusRole": "Club treasurer",
       "tier": "interviewee",
-      "bio": "Club treasurer finishing paperwork after the fair setup.",
-      "statement": "I left the student union before 9:15 PM and went to a study group.",
-      "alibi": "Science library study room B from 9:25 PM onward.",
+      "bio": "Club treasurer finishing paperwork after meetings.",
+      "statement": "I wrapped club paperwork and went to a reserved study room.",
+      "alibi": "Science library study room B during the later evening.",
       "redHerringRecord": "A club receipt shows Riley bought a roll of heavy-duty tape.",
       "redHerringExplanation": "Riley used it to repair a display board for the club fair.",
       "alibiSupportTitle": "Room reservation log",
-      "alibiSupportDescription": "Study room B was reserved under Riley's name from 9:15 PM to 10:30 PM.",
+      "alibiSupportDescription": "Study room B was reserved under Riley's name for a multi-hour evening block.",
       "contextTitleA": "Club chat notice",
-      "contextDescriptionA": "Riley posted in the club chat that the treasurer report was finished before leaving the union.",
+      "contextDescriptionA": "Riley posted that the treasurer report was finished before leaving the meeting space.",
       "recordHooks": [
         {
           "suffix": "directory",
-          "title": "Campus directory — Riley Brooks",
-          "description": "Club treasurer finishing paperwork after the fair setup."
+          "title": "Campus directory \u2014 Riley Brooks",
+          "description": "Club treasurer finishing paperwork after meetings."
         }
       ]
     },
@@ -97,20 +97,20 @@
       "displayName": "Casey Nguyen",
       "campusRole": "Mascot squad member",
       "tier": "interviewee",
-      "bio": "Mascot squad tech who handles spare shells.",
-      "statement": "I left the student union before 9:15 PM and went to costume storage across campus.",
-      "alibi": "Costume workshop annex from 9:20 PM onward.",
-      "redHerringRecord": "A locker checkout shows Casey removed a spare mascot torso shell that afternoon.",
-      "redHerringExplanation": "Casey was fitting a replacement shell for tomorrow's pep rally.",
+      "bio": "Spirit squad member who also helps with costume upkeep.",
+      "statement": "I left practice early and went to the costume workshop annex.",
+      "alibi": "Costume workshop annex after practice.",
+      "redHerringRecord": "A locker checkout shows Casey removed a spare costume shell that afternoon.",
+      "redHerringExplanation": "Casey was fitting a replacement shell for a scheduled pep event.",
       "alibiSupportTitle": "Annex badge swipe",
-      "alibiSupportDescription": "Casey's badge opened the costume workshop annex at 9:22 PM.",
+      "alibiSupportDescription": "Casey's badge opened the costume workshop annex after their stated departure from practice.",
       "contextTitleA": "Squad practice note",
-      "contextDescriptionA": "Casey was marked present at afternoon mascot drill and listed for evening shell maintenance.",
+      "contextDescriptionA": "Casey was marked present at afternoon drill and listed for evening shell maintenance.",
       "recordHooks": [
         {
           "suffix": "directory",
-          "title": "Campus directory — Casey Nguyen",
-          "description": "Mascot squad tech who handles spare shells."
+          "title": "Campus directory \u2014 Casey Nguyen",
+          "description": "Spirit squad member who also helps with costume upkeep."
         }
       ]
     },
@@ -119,20 +119,20 @@
       "displayName": "Drew Okonkwo",
       "campusRole": "Campus security student aide",
       "tier": "interviewee",
-      "bio": "Student aide on south-quad patrol with hallway key access.",
-      "statement": "I left the student union before 9:15 PM and walked the south quad patrol loop.",
-      "alibi": "South quad patrol from 9:15 PM onward.",
-      "redHerringRecord": "A key cabinet log shows Drew signed out a master hallway key for the union.",
-      "redHerringExplanation": "Drew was locking perimeter classrooms after the event and returned the key at 9:05 PM.",
+      "bio": "Campus security student aide on evening patrol.",
+      "statement": "I left the desk area and walked my assigned patrol loop.",
+      "alibi": "South quad patrol checkpoints during aide hours.",
+      "redHerringRecord": "A key cabinet log shows Drew signed out a hallway master key earlier.",
+      "redHerringExplanation": "Drew was locking perimeter classrooms after an event and returned the key on time.",
       "alibiSupportTitle": "Patrol checkpoint ping",
-      "alibiSupportDescription": "Drew's aide fob pinged the south quad checkpoint at 9:31 PM.",
+      "alibiSupportDescription": "Drew's aide fob pinged the south quad checkpoint during their claimed patrol window.",
       "contextTitleA": "Aide duty roster",
-      "contextDescriptionA": "Drew was scheduled for the 8:00 PM to 11:00 PM student-aide patrol.",
+      "contextDescriptionA": "Drew was scheduled for the evening student-aide patrol block.",
       "recordHooks": [
         {
           "suffix": "directory",
-          "title": "Campus directory — Drew Okonkwo",
-          "description": "Student aide on south-quad patrol with hallway key access."
+          "title": "Campus directory \u2014 Drew Okonkwo",
+          "description": "Campus security student aide on evening patrol."
         }
       ]
     },
@@ -141,20 +141,20 @@
       "displayName": "Quinn Alvarez",
       "campusRole": "Student media photographer",
       "tier": "interviewee",
-      "bio": "Campus photographer covering union events.",
-      "statement": "I left the student union before 9:15 PM and uploaded photos from the media lab.",
-      "alibi": "Media lab edit bay from 9:20 PM onward.",
+      "bio": "Student media photographer covering campus events.",
+      "statement": "I finished covering the event and uploaded files from the media lab.",
+      "alibi": "Media lab edit bay after the shoot.",
       "redHerringRecord": "An equipment loan shows Quinn checked out a large rolling camera case.",
       "redHerringExplanation": "Quinn used the case to move lights and stands after covering the event.",
       "alibiSupportTitle": "Lab login record",
-      "alibiSupportDescription": "Quinn logged into a media-lab workstation at 9:26 PM.",
+      "alibiSupportDescription": "Quinn logged into a media-lab workstation during their claimed upload window.",
       "contextTitleA": "Press pass list",
-      "contextDescriptionA": "Quinn appears on the approved photographer list for the student-union event.",
+      "contextDescriptionA": "Quinn appears on the approved photographer list for the evening event.",
       "recordHooks": [
         {
           "suffix": "directory",
-          "title": "Campus directory — Quinn Alvarez",
-          "description": "Campus photographer covering union events."
+          "title": "Campus directory \u2014 Quinn Alvarez",
+          "description": "Student media photographer covering campus events."
         }
       ]
     },
@@ -163,20 +163,20 @@
       "displayName": "Sam Torvald",
       "campusRole": "Dining services closer",
       "tier": "interviewee",
-      "bio": "Union cafe closer who seals inventory after events.",
-      "statement": "I left the student union before 9:15 PM and finished closing the cafe downstairs.",
-      "alibi": "Union cafe closing checklist from 9:15 PM onward.",
+      "bio": "Dining services closer for the union cafe.",
+      "statement": "I left the upper floors and finished closing the cafe downstairs.",
+      "alibi": "Union cafe closing checklist through end of shift.",
       "redHerringRecord": "A supply request shows Sam ordered industrial zip ties that morning.",
       "redHerringExplanation": "Sam used them to reseal bulk snack bags during inventory.",
       "alibiSupportTitle": "POS closeout stamp",
-      "alibiSupportDescription": "The cafe register closeout was stamped complete under Sam's employee number at 9:33 PM.",
+      "alibiSupportDescription": "The cafe register closeout was stamped complete under Sam's employee number.",
       "contextTitleA": "Closing checklist",
-      "contextDescriptionA": "Sam is the named closer on the union cafe evening checklist.",
+      "contextDescriptionA": "Sam is the named closer on the cafe evening checklist.",
       "recordHooks": [
         {
           "suffix": "directory",
-          "title": "Campus directory — Sam Torvald",
-          "description": "Union cafe closer who seals inventory after events."
+          "title": "Campus directory \u2014 Sam Torvald",
+          "description": "Dining services closer for the union cafe."
         }
       ]
     },
@@ -185,20 +185,20 @@
       "displayName": "Taylor Kim",
       "campusRole": "RA on duty",
       "tier": "interviewee",
-      "bio": "Residence hall RA covering late desk hours.",
-      "statement": "I left the student union before 9:15 PM and went back to the north hall desk.",
-      "alibi": "North hall RA desk from 9:20 PM onward.",
-      "redHerringRecord": "A master-key checkout shows Taylor borrowed a wing key earlier.",
-      "redHerringExplanation": "Taylor used it for a locked-out resident and returned it before 9:00 PM.",
-      "alibiSupportTitle": "RA desk punch log",
-      "alibiSupportDescription": "Taylor punched present at the north hall desk at 9:21 PM.",
-      "contextTitleA": "Duty calendar",
-      "contextDescriptionA": "Taylor is listed as the 8 PM–midnight RA on duty.",
+      "bio": "Residence hall RA covering evening desk hours.",
+      "statement": "I finished desk coverage and returned to the north hall duty area.",
+      "alibi": "North hall RA desk after their coverage block.",
+      "redHerringRecord": "A lockout log shows Taylor assisted a resident with a temporary key earlier.",
+      "redHerringExplanation": "Taylor logged the assist and returned the temporary key at shift change.",
+      "alibiSupportTitle": "RA desk webcam still",
+      "alibiSupportDescription": "A duty-desk camera still shows Taylor at the north hall desk during their claimed alibi window.",
+      "contextTitleA": "RA coverage roster",
+      "contextDescriptionA": "Taylor is listed as the evening RA on duty for the north hall block.",
       "recordHooks": [
         {
           "suffix": "directory",
-          "title": "Campus directory — Taylor Kim",
-          "description": "Residence hall RA covering late desk hours."
+          "title": "Campus directory \u2014 Taylor Kim",
+          "description": "Residence hall RA covering evening desk hours."
         }
       ]
     },
@@ -207,20 +207,20 @@
       "displayName": "Jordan Blake",
       "campusRole": "IT helpdesk student",
       "tier": "interviewee",
-      "bio": "Helpdesk student who resets lab machines after events.",
-      "statement": "I left the student union before 9:15 PM and opened a ticket shift in the IT closet.",
-      "alibi": "IT closet B from 9:18 PM onward.",
-      "redHerringRecord": "A badge trail shows Jordan near storage corridors that afternoon.",
-      "redHerringExplanation": "Jordan was tracing a network drop for the AV team.",
-      "alibiSupportTitle": "Ticket timestamp",
-      "alibiSupportDescription": "Jordan opened ticket HD-4412 at 9:19 PM from closet B.",
-      "contextTitleA": "Helpdesk roster",
-      "contextDescriptionA": "Jordan is scheduled for the evening escalations queue.",
+      "bio": "IT student worker splitting desk and remote ticket hours.",
+      "statement": "I left the helpdesk counter and opened a remote ticket shift from housing.",
+      "alibi": "Remote IT ticket queue from housing Wi-Fi.",
+      "redHerringRecord": "A badge encode request shows Jordan submitted a replacement-card form that day.",
+      "redHerringExplanation": "Jordan's own card cracked; the encode was for a replacement, not a clone job.",
+      "alibiSupportTitle": "Ticket-queue login",
+      "alibiSupportDescription": "Jordan's helpdesk account shows ticket activity from a housing IP during the alibi window.",
+      "contextTitleA": "IT student-worker board",
+      "contextDescriptionA": "Jordan is posted for the evening helpdesk / ticket block.",
       "recordHooks": [
         {
           "suffix": "directory",
-          "title": "Campus directory — Jordan Blake",
-          "description": "Helpdesk student who resets lab machines after events."
+          "title": "Campus directory \u2014 Jordan Blake",
+          "description": "IT student worker splitting desk and remote ticket hours."
         }
       ]
     },
@@ -229,20 +229,20 @@
       "displayName": "Harper Singh",
       "campusRole": "Catering captain",
       "tier": "interviewee",
-      "bio": "Student catering captain for union receptions.",
-      "statement": "I left the student union before 9:15 PM and walked trays back to the loading dock.",
-      "alibi": "Loading dock staging from 9:15 PM onward.",
-      "redHerringRecord": "A van sign-out lists Harper with a cargo van that evening.",
-      "redHerringExplanation": "Harper used the van to return chafing dishes to central kitchen.",
-      "alibiSupportTitle": "Dock camera note",
-      "alibiSupportDescription": "A dock attendant initialed Harper's tray return at 9:27 PM.",
-      "contextTitleA": "Catering run sheet",
-      "contextDescriptionA": "Harper is named captain on the union reception run sheet.",
+      "bio": "Bio lab aide covering cleanup and prep restock.",
+      "statement": "I finished lab cleanup and walked sample trays back to the prep kitchen.",
+      "alibi": "Bio prep kitchen after lab cleanup.",
+      "redHerringRecord": "A cold-pack supply slip shows Harper signed out gel packs that afternoon.",
+      "redHerringExplanation": "Harper restocked teaching-lab cold packs per the prep checklist.",
+      "alibiSupportTitle": "Prep kitchen door log",
+      "alibiSupportDescription": "Harper's research badge opened the bio prep kitchen during their claimed cleanup window.",
+      "contextTitleA": "Lab cohort roster",
+      "contextDescriptionA": "Harper is listed on the afternoon bio lab cohort and cleanup rotation.",
       "recordHooks": [
         {
           "suffix": "directory",
-          "title": "Campus directory — Harper Singh",
-          "description": "Student catering captain for union receptions."
+          "title": "Campus directory \u2014 Harper Singh",
+          "description": "Bio lab aide covering cleanup and prep restock."
         }
       ]
     },
@@ -251,20 +251,20 @@
       "displayName": "Reese Delgado",
       "campusRole": "Campus bookstore closer",
       "tier": "interviewee",
-      "bio": "Bookstore closer who cuts through the union after lockup.",
-      "statement": "I left the student union before 9:15 PM after cutting through from the bookstore.",
-      "alibi": "Bookstore register close from 9:10 PM onward.",
-      "redHerringRecord": "A safe-log entry shows Reese opened the till room late.",
-      "redHerringExplanation": "Reese was dropping the night deposit bag before walking home.",
-      "alibiSupportTitle": "Register Z-tape",
-      "alibiSupportDescription": "Bookstore Z-tape closes under Reese's ID at 9:12 PM.",
-      "contextTitleA": "Closer schedule",
-      "contextDescriptionA": "Reese is the assigned bookstore closer for the night.",
+      "bio": "Intramural athlete who also borrows rec gear for team nights.",
+      "statement": "I cut through campus after practice and went straight to the rec center.",
+      "alibi": "Rec center courts after practice.",
+      "redHerringRecord": "A rec equipment loan shows Reese checked out a duffel large enough for bulky gear.",
+      "redHerringExplanation": "Reese used the duffel for intramural jerseys and shoes \u2014 inventory tagged return next morning.",
+      "alibiSupportTitle": "Rec turnstile entry",
+      "alibiSupportDescription": "Reese's rec membership card entered the turnstile during their claimed workout window.",
+      "contextTitleA": "Intramural roster",
+      "contextDescriptionA": "Reese appears on the evening intramural team sheet.",
       "recordHooks": [
         {
           "suffix": "directory",
-          "title": "Campus directory — Reese Delgado",
-          "description": "Bookstore closer who cuts through the union after lockup."
+          "title": "Campus directory \u2014 Reese Delgado",
+          "description": "Intramural athlete who also borrows rec gear for team nights."
         }
       ]
     },
@@ -285,17 +285,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Noah Chen",
+          "title": "Campus directory \u2014 Noah Chen",
           "description": "Noah Chen, Chemistry TA. Grad TA who graded quizzes in the science atrium."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Noah",
+          "title": "Witness note \u2014 Noah",
           "description": "A statement places Noah Chen near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Noah",
+          "title": "Access adjacent \u2014 Noah",
           "description": "Peripheral badge or schedule noise for Noah Chen (Chemistry TA); useful color, not a storage open."
         }
       ]
@@ -317,17 +317,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Mia Okada",
+          "title": "Campus directory \u2014 Mia Okada",
           "description": "Mia Okada, Library page. Shelved reserves on the quiet floor until close."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Mia",
+          "title": "Witness note \u2014 Mia",
           "description": "A statement places Mia Okada near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Mia",
+          "title": "Access adjacent \u2014 Mia",
           "description": "Peripheral badge or schedule noise for Mia Okada (Library page); useful color, not a storage open."
         }
       ]
@@ -349,17 +349,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Lucas Grant",
+          "title": "Campus directory \u2014 Lucas Grant",
           "description": "Lucas Grant, Intramural ref. Officiated a late pickup game in the rec annex."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Lucas",
+          "title": "Witness note \u2014 Lucas",
           "description": "A statement places Lucas Grant near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Lucas",
+          "title": "Access adjacent \u2014 Lucas",
           "description": "Peripheral badge or schedule noise for Lucas Grant (Intramural ref); useful color, not a storage open."
         }
       ]
@@ -381,17 +381,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Zoe Martel",
+          "title": "Campus directory \u2014 Zoe Martel",
           "description": "Zoe Martel, Dance ensemble lead. Ran a rehearsal in the studio above the union."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Zoe",
+          "title": "Witness note \u2014 Zoe",
           "description": "A statement places Zoe Martel near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Zoe",
+          "title": "Access adjacent \u2014 Zoe",
           "description": "Peripheral badge or schedule noise for Zoe Martel (Dance ensemble lead); useful color, not a storage open."
         }
       ]
@@ -413,17 +413,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Ethan Kowalski",
+          "title": "Campus directory \u2014 Ethan Kowalski",
           "description": "Ethan Kowalski, Bus driver (campus shuttle). Drove the west-loop shuttle through 10 PM."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Ethan",
+          "title": "Witness note \u2014 Ethan",
           "description": "A statement places Ethan Kowalski near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Ethan",
+          "title": "Access adjacent \u2014 Ethan",
           "description": "Peripheral badge or schedule noise for Ethan Kowalski (Bus driver (campus shuttle)); useful color, not a storage open."
         }
       ]
@@ -445,17 +445,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Ava Rahman",
+          "title": "Campus directory \u2014 Ava Rahman",
           "description": "Ava Rahman, Career center aide. Closed the resume lab and logged machines."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Ava",
+          "title": "Witness note \u2014 Ava",
           "description": "A statement places Ava Rahman near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Ava",
+          "title": "Access adjacent \u2014 Ava",
           "description": "Peripheral badge or schedule noise for Ava Rahman (Career center aide); useful color, not a storage open."
         }
       ]
@@ -477,17 +477,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Ben Okoye",
+          "title": "Campus directory \u2014 Ben Okoye",
           "description": "Ben Okoye, HVAC vendor tech. On-call vendor checking a union rooftop unit."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Ben",
+          "title": "Witness note \u2014 Ben",
           "description": "A statement places Ben Okoye near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Ben",
+          "title": "Access adjacent \u2014 Ben",
           "description": "Peripheral badge or schedule noise for Ben Okoye (HVAC vendor tech); useful color, not a storage open."
         }
       ]
@@ -509,17 +509,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Lily Tran",
+          "title": "Campus directory \u2014 Lily Tran",
           "description": "Lily Tran, Orientation leader. Collected leftover orientation swag from a closet."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Lily",
+          "title": "Witness note \u2014 Lily",
           "description": "A statement places Lily Tran near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Lily",
+          "title": "Access adjacent \u2014 Lily",
           "description": "Peripheral badge or schedule noise for Lily Tran (Orientation leader); useful color, not a storage open."
         }
       ]
@@ -541,17 +541,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Caleb Ruiz",
+          "title": "Campus directory \u2014 Caleb Ruiz",
           "description": "Caleb Ruiz, Esports club president. Streamed a practice match from the game lounge."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Caleb",
+          "title": "Witness note \u2014 Caleb",
           "description": "A statement places Caleb Ruiz near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Caleb",
+          "title": "Access adjacent \u2014 Caleb",
           "description": "Peripheral badge or schedule noise for Caleb Ruiz (Esports club president); useful color, not a storage open."
         }
       ]
@@ -573,17 +573,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Nina Petrov",
+          "title": "Campus directory \u2014 Nina Petrov",
           "description": "Nina Petrov, Health center clerk. Filed evening intake forms at student health."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Nina",
+          "title": "Witness note \u2014 Nina",
           "description": "A statement places Nina Petrov near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Nina",
+          "title": "Access adjacent \u2014 Nina",
           "description": "Peripheral badge or schedule noise for Nina Petrov (Health center clerk); useful color, not a storage open."
         }
       ]
@@ -605,17 +605,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Owen Farrell",
+          "title": "Campus directory \u2014 Owen Farrell",
           "description": "Owen Farrell, Parking enforcement. Ticketed the loading zone behind the union."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Owen",
+          "title": "Witness note \u2014 Owen",
           "description": "A statement places Owen Farrell near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Owen",
+          "title": "Access adjacent \u2014 Owen",
           "description": "Peripheral badge or schedule noise for Owen Farrell (Parking enforcement); useful color, not a storage open."
         }
       ]
@@ -637,17 +637,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Sara Ibrahim",
+          "title": "Campus directory \u2014 Sara Ibrahim",
           "description": "Sara Ibrahim, Language tutor. Tutored Spanish in the learning commons."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Sara",
+          "title": "Witness note \u2014 Sara",
           "description": "A statement places Sara Ibrahim near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Sara",
+          "title": "Access adjacent \u2014 Sara",
           "description": "Peripheral badge or schedule noise for Sara Ibrahim (Language tutor); useful color, not a storage open."
         }
       ]
@@ -669,17 +669,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Kyle Pham",
+          "title": "Campus directory \u2014 Kyle Pham",
           "description": "Kyle Pham, AV rental desk. Returned wireless mics after the event."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Kyle",
+          "title": "Witness note \u2014 Kyle",
           "description": "A statement places Kyle Pham near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Kyle",
+          "title": "Access adjacent \u2014 Kyle",
           "description": "Peripheral badge or schedule noise for Kyle Pham (AV rental desk); useful color, not a storage open."
         }
       ]
@@ -701,17 +701,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Elena Rossi",
+          "title": "Campus directory \u2014 Elena Rossi",
           "description": "Elena Rossi, Alumni office intern. Packed name badges from a donor mixer."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Elena",
+          "title": "Witness note \u2014 Elena",
           "description": "A statement places Elena Rossi near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Elena",
+          "title": "Access adjacent \u2014 Elena",
           "description": "Peripheral badge or schedule noise for Elena Rossi (Alumni office intern); useful color, not a storage open."
         }
       ]
@@ -733,17 +733,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Marcus Hale",
+          "title": "Campus directory \u2014 Marcus Hale",
           "description": "Marcus Hale, Food truck vendor. Parked a late taco truck on Alumni Drive."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Marcus",
+          "title": "Witness note \u2014 Marcus",
           "description": "A statement places Marcus Hale near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Marcus",
+          "title": "Access adjacent \u2014 Marcus",
           "description": "Peripheral badge or schedule noise for Marcus Hale (Food truck vendor); useful color, not a storage open."
         }
       ]
@@ -765,17 +765,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Priya Desai",
+          "title": "Campus directory \u2014 Priya Desai",
           "description": "Priya Desai, Bio lab assistant. Locked the teaching lab cold room."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Priya",
+          "title": "Witness note \u2014 Priya",
           "description": "A statement places Priya Desai near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Priya",
+          "title": "Access adjacent \u2014 Priya",
           "description": "Peripheral badge or schedule noise for Priya Desai (Bio lab assistant); useful color, not a storage open."
         }
       ]
@@ -797,17 +797,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Dylan Morse",
+          "title": "Campus directory \u2014 Dylan Morse",
           "description": "Dylan Morse, Theatre carpenter. Broke down a flat for tomorrow's tech."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Dylan",
+          "title": "Witness note \u2014 Dylan",
           "description": "A statement places Dylan Morse near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Dylan",
+          "title": "Access adjacent \u2014 Dylan",
           "description": "Peripheral badge or schedule noise for Dylan Morse (Theatre carpenter); useful color, not a storage open."
         }
       ]
@@ -829,17 +829,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Chloe Park",
+          "title": "Campus directory \u2014 Chloe Park",
           "description": "Chloe Park, Admissions tour guide. Finished a VIP family walk near the fountain."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Chloe",
+          "title": "Witness note \u2014 Chloe",
           "description": "A statement places Chloe Park near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Chloe",
+          "title": "Access adjacent \u2014 Chloe",
           "description": "Peripheral badge or schedule noise for Chloe Park (Admissions tour guide); useful color, not a storage open."
         }
       ]
@@ -861,17 +861,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Ivan Sokolov",
+          "title": "Campus directory \u2014 Ivan Sokolov",
           "description": "Ivan Sokolov, Night custodian. Mopped the union lobby after the crowd left."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Ivan",
+          "title": "Witness note \u2014 Ivan",
           "description": "A statement places Ivan Sokolov near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Ivan",
+          "title": "Access adjacent \u2014 Ivan",
           "description": "Peripheral badge or schedule noise for Ivan Sokolov (Night custodian); useful color, not a storage open."
         }
       ]
@@ -893,17 +893,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Jade Winters",
+          "title": "Campus directory \u2014 Jade Winters",
           "description": "Jade Winters, Radio station DJ. Hosted a late show from the basement booth."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Jade",
+          "title": "Witness note \u2014 Jade",
           "description": "A statement places Jade Winters near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Jade",
+          "title": "Access adjacent \u2014 Jade",
           "description": "Peripheral badge or schedule noise for Jade Winters (Radio station DJ); useful color, not a storage open."
         }
       ]
@@ -925,17 +925,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Parker Ellis",
+          "title": "Campus directory \u2014 Parker Ellis",
           "description": "Parker Ellis, Mailroom clerk. Sorted late package drops for resident halls."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Parker",
+          "title": "Witness note \u2014 Parker",
           "description": "A statement places Parker Ellis near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Parker",
+          "title": "Access adjacent \u2014 Parker",
           "description": "Peripheral badge or schedule noise for Parker Ellis (Mailroom clerk); useful color, not a storage open."
         }
       ]
@@ -957,17 +957,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Sofia Mendes",
+          "title": "Campus directory \u2014 Sofia Mendes",
           "description": "Sofia Mendes, Swim team manager. Logged pool equipment after practice."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Sofia",
+          "title": "Witness note \u2014 Sofia",
           "description": "A statement places Sofia Mendes near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Sofia",
+          "title": "Access adjacent \u2014 Sofia",
           "description": "Peripheral badge or schedule noise for Sofia Mendes (Swim team manager); useful color, not a storage open."
         }
       ]
@@ -989,17 +989,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Ryan Paik",
+          "title": "Campus directory \u2014 Ryan Paik",
           "description": "Ryan Paik, Printing services. Ran banner reprints for the pep rally."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Ryan",
+          "title": "Witness note \u2014 Ryan",
           "description": "A statement places Ryan Paik near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Ryan",
+          "title": "Access adjacent \u2014 Ryan",
           "description": "Peripheral badge or schedule noise for Ryan Paik (Printing services); useful color, not a storage open."
         }
       ]
@@ -1021,17 +1021,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Amara Diallo",
+          "title": "Campus directory \u2014 Amara Diallo",
           "description": "Amara Diallo, International student mentor. Held drop-in hours in the global lounge."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Amara",
+          "title": "Witness note \u2014 Amara",
           "description": "A statement places Amara Diallo near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Amara",
+          "title": "Access adjacent \u2014 Amara",
           "description": "Peripheral badge or schedule noise for Amara Diallo (International student mentor); useful color, not a storage open."
         }
       ]
@@ -1053,17 +1053,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Theo Lindqvist",
+          "title": "Campus directory \u2014 Theo Lindqvist",
           "description": "Theo Lindqvist, Bike shop mechanic. Closed the campus bike co-op register."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Theo",
+          "title": "Witness note \u2014 Theo",
           "description": "A statement places Theo Lindqvist near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Theo",
+          "title": "Access adjacent \u2014 Theo",
           "description": "Peripheral badge or schedule noise for Theo Lindqvist (Bike shop mechanic); useful color, not a storage open."
         }
       ]
@@ -1085,17 +1085,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Grace Adebayo",
+          "title": "Campus directory \u2014 Grace Adebayo",
           "description": "Grace Adebayo, Chaplain intern. Locked the meditation room after a group."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Grace",
+          "title": "Witness note \u2014 Grace",
           "description": "A statement places Grace Adebayo near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Grace",
+          "title": "Access adjacent \u2014 Grace",
           "description": "Peripheral badge or schedule noise for Grace Adebayo (Chaplain intern); useful color, not a storage open."
         }
       ]
@@ -1117,17 +1117,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Felix Ortega",
+          "title": "Campus directory \u2014 Felix Ortega",
           "description": "Felix Ortega, Vending contractor. Restocked snack spirals on level two."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Felix",
+          "title": "Witness note \u2014 Felix",
           "description": "A statement places Felix Ortega near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Felix",
+          "title": "Access adjacent \u2014 Felix",
           "description": "Peripheral badge or schedule noise for Felix Ortega (Vending contractor); useful color, not a storage open."
         }
       ]
@@ -1149,17 +1149,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Hana Suzuki",
+          "title": "Campus directory \u2014 Hana Suzuki",
           "description": "Hana Suzuki, Museum gallery attendant. Closed the small campus gallery."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Hana",
+          "title": "Witness note \u2014 Hana",
           "description": "A statement places Hana Suzuki near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Hana",
+          "title": "Access adjacent \u2014 Hana",
           "description": "Peripheral badge or schedule noise for Hana Suzuki (Museum gallery attendant); useful color, not a storage open."
         }
       ]
@@ -1181,17 +1181,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Amir Hassan",
+          "title": "Campus directory \u2014 Amir Hassan",
           "description": "Amir Hassan, Mosque student chaplain aide. Locked the prayer room after evening salah."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Amir",
+          "title": "Witness note \u2014 Amir",
           "description": "A statement places Amir Hassan near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Amir",
+          "title": "Access adjacent \u2014 Amir",
           "description": "Peripheral badge or schedule noise for Amir Hassan (Mosque student chaplain aide); useful color, not a storage open."
         }
       ]
@@ -1213,17 +1213,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Britt Olsen",
+          "title": "Campus directory \u2014 Britt Olsen",
           "description": "Britt Olsen, Rowing team coxswain. Logged shells after night practice on the creek."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Britt",
+          "title": "Witness note \u2014 Britt",
           "description": "A statement places Britt Olsen near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Britt",
+          "title": "Access adjacent \u2014 Britt",
           "description": "Peripheral badge or schedule noise for Britt Olsen (Rowing team coxswain); useful color, not a storage open."
         }
       ]
@@ -1245,17 +1245,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Cara Whitfield",
+          "title": "Campus directory \u2014 Cara Whitfield",
           "description": "Cara Whitfield, Career fair vendor. Packed booth crates in the union ballroom."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Cara",
+          "title": "Witness note \u2014 Cara",
           "description": "A statement places Cara Whitfield near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Cara",
+          "title": "Access adjacent \u2014 Cara",
           "description": "Peripheral badge or schedule noise for Cara Whitfield (Career fair vendor); useful color, not a storage open."
         }
       ]
@@ -1277,17 +1277,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Dev Kapoor",
+          "title": "Campus directory \u2014 Dev Kapoor",
           "description": "Dev Kapoor, Data science club lead. Closed a hack night in the innovation lab."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Dev",
+          "title": "Witness note \u2014 Dev",
           "description": "A statement places Dev Kapoor near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Dev",
+          "title": "Access adjacent \u2014 Dev",
           "description": "Peripheral badge or schedule noise for Dev Kapoor (Data science club lead); useful color, not a storage open."
         }
       ]
@@ -1309,17 +1309,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Emme Laurent",
+          "title": "Campus directory \u2014 Emme Laurent",
           "description": "Emme Laurent, French house RA. Did quiet hours rounds on the language floor."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Emme",
+          "title": "Witness note \u2014 Emme",
           "description": "A statement places Emme Laurent near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Emme",
+          "title": "Access adjacent \u2014 Emme",
           "description": "Peripheral badge or schedule noise for Emme Laurent (French house RA); useful color, not a storage open."
         }
       ]
@@ -1341,17 +1341,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Finn Gallagher",
+          "title": "Campus directory \u2014 Finn Gallagher",
           "description": "Finn Gallagher, Climbing wall staff. Reset routes in the rec climbing gym."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Finn",
+          "title": "Witness note \u2014 Finn",
           "description": "A statement places Finn Gallagher near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Finn",
+          "title": "Access adjacent \u2014 Finn",
           "description": "Peripheral badge or schedule noise for Finn Gallagher (Climbing wall staff); useful color, not a storage open."
         }
       ]
@@ -1373,17 +1373,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Gina Morales",
+          "title": "Campus directory \u2014 Gina Morales",
           "description": "Gina Morales, Financial aid clerk. Batched late work-study timesheets."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Gina",
+          "title": "Witness note \u2014 Gina",
           "description": "A statement places Gina Morales near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Gina",
+          "title": "Access adjacent \u2014 Gina",
           "description": "Peripheral badge or schedule noise for Gina Morales (Financial aid clerk); useful color, not a storage open."
         }
       ]
@@ -1405,17 +1405,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Hugo Berg",
+          "title": "Campus directory \u2014 Hugo Berg",
           "description": "Hugo Berg, Orchestra librarian. Returned scores to the music building vault."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Hugo",
+          "title": "Witness note \u2014 Hugo",
           "description": "A statement places Hugo Berg near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Hugo",
+          "title": "Access adjacent \u2014 Hugo",
           "description": "Peripheral badge or schedule noise for Hugo Berg (Orchestra librarian); useful color, not a storage open."
         }
       ]
@@ -1437,17 +1437,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Iris Qu",
+          "title": "Campus directory \u2014 Iris Qu",
           "description": "Iris Qu, Robotics shop monitor. Powered down the CNC after club hours."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Iris",
+          "title": "Witness note \u2014 Iris",
           "description": "A statement places Iris Qu near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Iris",
+          "title": "Access adjacent \u2014 Iris",
           "description": "Peripheral badge or schedule noise for Iris Qu (Robotics shop monitor); useful color, not a storage open."
         }
       ]
@@ -1469,17 +1469,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Jules Abebe",
+          "title": "Campus directory \u2014 Jules Abebe",
           "description": "Jules Abebe, Track timer volunteer. Packed photo-finish gear after practice."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Jules",
+          "title": "Witness note \u2014 Jules",
           "description": "A statement places Jules Abebe near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Jules",
+          "title": "Access adjacent \u2014 Jules",
           "description": "Peripheral badge or schedule noise for Jules Abebe (Track timer volunteer); useful color, not a storage open."
         }
       ]
@@ -1501,17 +1501,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Kira Novak",
+          "title": "Campus directory \u2014 Kira Novak",
           "description": "Kira Novak, Counseling peer listener. Finished a wellness shift in the quiet suite."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Kira",
+          "title": "Witness note \u2014 Kira",
           "description": "A statement places Kira Novak near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Kira",
+          "title": "Access adjacent \u2014 Kira",
           "description": "Peripheral badge or schedule noise for Kira Novak (Counseling peer listener); useful color, not a storage open."
         }
       ]
@@ -1533,17 +1533,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Leo Santos",
+          "title": "Campus directory \u2014 Leo Santos",
           "description": "Leo Santos, Bike share rebalancer. Moved share bikes from the union rack."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Leo",
+          "title": "Witness note \u2014 Leo",
           "description": "A statement places Leo Santos near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Leo",
+          "title": "Access adjacent \u2014 Leo",
           "description": "Peripheral badge or schedule noise for Leo Santos (Bike share rebalancer); useful color, not a storage open."
         }
       ]
@@ -1565,17 +1565,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Mona Al-Farsi",
+          "title": "Campus directory \u2014 Mona Al-Farsi",
           "description": "Mona Al-Farsi, Arabic club secretary. Posted flyers then left via the south doors."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Mona",
+          "title": "Witness note \u2014 Mona",
           "description": "A statement places Mona Al-Farsi near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Mona",
+          "title": "Access adjacent \u2014 Mona",
           "description": "Peripheral badge or schedule noise for Mona Al-Farsi (Arabic club secretary); useful color, not a storage open."
         }
       ]
@@ -1597,17 +1597,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Nate Feldman",
+          "title": "Campus directory \u2014 Nate Feldman",
           "description": "Nate Feldman, Hillel student cook. Closed the kitchen after a late dinner."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Nate",
+          "title": "Witness note \u2014 Nate",
           "description": "A statement places Nate Feldman near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Nate",
+          "title": "Access adjacent \u2014 Nate",
           "description": "Peripheral badge or schedule noise for Nate Feldman (Hillel student cook); useful color, not a storage open."
         }
       ]
@@ -1629,17 +1629,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Ola Nowak",
+          "title": "Campus directory \u2014 Ola Nowak",
           "description": "Ola Nowak, Polish club baker. Delivered pastries then cleaned the annex oven."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Ola",
+          "title": "Witness note \u2014 Ola",
           "description": "A statement places Ola Nowak near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Ola",
+          "title": "Access adjacent \u2014 Ola",
           "description": "Peripheral badge or schedule noise for Ola Nowak (Polish club baker); useful color, not a storage open."
         }
       ]
@@ -1661,17 +1661,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Pam Ortiz",
+          "title": "Campus directory \u2014 Pam Ortiz",
           "description": "Pam Ortiz, Copy center supervisor. Ran course-pack reprints until 9:40 PM."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Pam",
+          "title": "Witness note \u2014 Pam",
           "description": "A statement places Pam Ortiz near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Pam",
+          "title": "Access adjacent \u2014 Pam",
           "description": "Peripheral badge or schedule noise for Pam Ortiz (Copy center supervisor); useful color, not a storage open."
         }
       ]
@@ -1693,17 +1693,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Quin Sato",
+          "title": "Campus directory \u2014 Quin Sato",
           "description": "Quin Sato, Anime club projectionist. Rewound a screening in lecture hall C."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Quin",
+          "title": "Witness note \u2014 Quin",
           "description": "A statement places Quin Sato near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Quin",
+          "title": "Access adjacent \u2014 Quin",
           "description": "Peripheral badge or schedule noise for Quin Sato (Anime club projectionist); useful color, not a storage open."
         }
       ]
@@ -1725,17 +1725,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Rita Gomes",
+          "title": "Campus directory \u2014 Rita Gomes",
           "description": "Rita Gomes, Portuguese tutor. Held office hours in the language commons."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Rita",
+          "title": "Witness note \u2014 Rita",
           "description": "A statement places Rita Gomes near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Rita",
+          "title": "Access adjacent \u2014 Rita",
           "description": "Peripheral badge or schedule noise for Rita Gomes (Portuguese tutor); useful color, not a storage open."
         }
       ]
@@ -1757,17 +1757,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Sid Banerjee",
+          "title": "Campus directory \u2014 Sid Banerjee",
           "description": "Sid Banerjee, Quant finance society. Locked the trading lab simulators."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Sid",
+          "title": "Witness note \u2014 Sid",
           "description": "A statement places Sid Banerjee near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Sid",
+          "title": "Access adjacent \u2014 Sid",
           "description": "Peripheral badge or schedule noise for Sid Banerjee (Quant finance society); useful color, not a storage open."
         }
       ]
@@ -1789,17 +1789,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Tess McLeod",
+          "title": "Campus directory \u2014 Tess McLeod",
           "description": "Tess McLeod, Bagpipe band manager. Stored drums after a quad rehearsal."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Tess",
+          "title": "Witness note \u2014 Tess",
           "description": "A statement places Tess McLeod near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Tess",
+          "title": "Access adjacent \u2014 Tess",
           "description": "Peripheral badge or schedule noise for Tess McLeod (Bagpipe band manager); useful color, not a storage open."
         }
       ]
@@ -1821,17 +1821,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Uma Reddy",
+          "title": "Campus directory \u2014 Uma Reddy",
           "description": "Uma Reddy, Med school scribe intern. Filed notes from a late skills lab."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Uma",
+          "title": "Witness note \u2014 Uma",
           "description": "A statement places Uma Reddy near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Uma",
+          "title": "Access adjacent \u2014 Uma",
           "description": "Peripheral badge or schedule noise for Uma Reddy (Med school scribe intern); useful color, not a storage open."
         }
       ]
@@ -1853,17 +1853,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Vic Romano",
+          "title": "Campus directory \u2014 Vic Romano",
           "description": "Vic Romano, Pizza delivery contractor. Dropped late orders at north towers."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Vic",
+          "title": "Witness note \u2014 Vic",
           "description": "A statement places Vic Romano near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Vic",
+          "title": "Access adjacent \u2014 Vic",
           "description": "Peripheral badge or schedule noise for Vic Romano (Pizza delivery contractor); useful color, not a storage open."
         }
       ]
@@ -1885,17 +1885,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Wes Carter",
+          "title": "Campus directory \u2014 Wes Carter",
           "description": "Wes Carter, Fire watch student. Walked a construction fire-watch loop."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Wes",
+          "title": "Witness note \u2014 Wes",
           "description": "A statement places Wes Carter near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Wes",
+          "title": "Access adjacent \u2014 Wes",
           "description": "Peripheral badge or schedule noise for Wes Carter (Fire watch student); useful color, not a storage open."
         }
       ]
@@ -1917,17 +1917,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Xander Price",
+          "title": "Campus directory \u2014 Xander Price",
           "description": "Xander Price, Improv troupe booker. Struck chairs after a basement show."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Xander",
+          "title": "Witness note \u2014 Xander",
           "description": "A statement places Xander Price near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Xander",
+          "title": "Access adjacent \u2014 Xander",
           "description": "Peripheral badge or schedule noise for Xander Price (Improv troupe booker); useful color, not a storage open."
         }
       ]
@@ -1949,17 +1949,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Yara Haddad",
+          "title": "Campus directory \u2014 Yara Haddad",
           "description": "Yara Haddad, Middle East studies aide. Closed the map room in Baldy-style annex."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Yara",
+          "title": "Witness note \u2014 Yara",
           "description": "A statement places Yara Haddad near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Yara",
+          "title": "Access adjacent \u2014 Yara",
           "description": "Peripheral badge or schedule noise for Yara Haddad (Middle East studies aide); useful color, not a storage open."
         }
       ]
@@ -1981,17 +1981,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Zeke Morrow",
+          "title": "Campus directory \u2014 Zeke Morrow",
           "description": "Zeke Morrow, Ice rink Zamboni trainee. Helped resurface after club skate."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Zeke",
+          "title": "Witness note \u2014 Zeke",
           "description": "A statement places Zeke Morrow near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Zeke",
+          "title": "Access adjacent \u2014 Zeke",
           "description": "Peripheral badge or schedule noise for Zeke Morrow (Ice rink Zamboni trainee); useful color, not a storage open."
         }
       ]
@@ -2013,17 +2013,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — April Yoon",
+          "title": "Campus directory \u2014 April Yoon",
           "description": "April Yoon, Floral lab assistant. Watered greenhouse benches after class."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — April",
+          "title": "Witness note \u2014 April",
           "description": "A statement places April Yoon near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — April",
+          "title": "Access adjacent \u2014 April",
           "description": "Peripheral badge or schedule noise for April Yoon (Floral lab assistant); useful color, not a storage open."
         }
       ]
@@ -2045,17 +2045,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Blake Dunn",
+          "title": "Campus directory \u2014 Blake Dunn",
           "description": "Blake Dunn, Esports shoutcaster. Ended a cast from the streaming closet."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Blake",
+          "title": "Witness note \u2014 Blake",
           "description": "A statement places Blake Dunn near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Blake",
+          "title": "Access adjacent \u2014 Blake",
           "description": "Peripheral badge or schedule noise for Blake Dunn (Esports shoutcaster); useful color, not a storage open."
         }
       ]
@@ -2077,17 +2077,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Cove Jensen",
+          "title": "Campus directory \u2014 Cove Jensen",
           "description": "Cove Jensen, Sailing club rigger. Dried sails in the boathouse loft."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Cove",
+          "title": "Witness note \u2014 Cove",
           "description": "A statement places Cove Jensen near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Cove",
+          "title": "Access adjacent \u2014 Cove",
           "description": "Peripheral badge or schedule noise for Cove Jensen (Sailing club rigger); useful color, not a storage open."
         }
       ]
@@ -2109,17 +2109,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Dane Okorie",
+          "title": "Campus directory \u2014 Dane Okorie",
           "description": "Dane Okorie, African student union. Locked the cultural center lounge."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Dane",
+          "title": "Witness note \u2014 Dane",
           "description": "A statement places Dane Okorie near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Dane",
+          "title": "Access adjacent \u2014 Dane",
           "description": "Peripheral badge or schedule noise for Dane Okorie (African student union); useful color, not a storage open."
         }
       ]
@@ -2141,17 +2141,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Edie Falk",
+          "title": "Campus directory \u2014 Edie Falk",
           "description": "Edie Falk, Printmaking monitor. Washed screens in the art annex."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Edie",
+          "title": "Witness note \u2014 Edie",
           "description": "A statement places Edie Falk near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Edie",
+          "title": "Access adjacent \u2014 Edie",
           "description": "Peripheral badge or schedule noise for Edie Falk (Printmaking monitor); useful color, not a storage open."
         }
       ]
@@ -2173,17 +2173,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Fran Liu",
+          "title": "Campus directory \u2014 Fran Liu",
           "description": "Fran Liu, Statistics help room. Closed tutoring after walk-in hours."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Fran",
+          "title": "Witness note \u2014 Fran",
           "description": "A statement places Fran Liu near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Fran",
+          "title": "Access adjacent \u2014 Fran",
           "description": "Peripheral badge or schedule noise for Fran Liu (Statistics help room); useful color, not a storage open."
         }
       ]
@@ -2205,17 +2205,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Glen Torres",
+          "title": "Campus directory \u2014 Glen Torres",
           "description": "Glen Torres, Moving crew temp. Hauled chairs from the ballroom strike."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Glen",
+          "title": "Witness note \u2014 Glen",
           "description": "A statement places Glen Torres near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Glen",
+          "title": "Access adjacent \u2014 Glen",
           "description": "Peripheral badge or schedule noise for Glen Torres (Moving crew temp); useful color, not a storage open."
         }
       ]
@@ -2237,17 +2237,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Hope Adler",
+          "title": "Campus directory \u2014 Hope Adler",
           "description": "Hope Adler, Title IX peer educator. Finished a workshop cleanup in the suite."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Hope",
+          "title": "Witness note \u2014 Hope",
           "description": "A statement places Hope Adler near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Hope",
+          "title": "Access adjacent \u2014 Hope",
           "description": "Peripheral badge or schedule noise for Hope Adler (Title IX peer educator); useful color, not a storage open."
         }
       ]
@@ -2269,17 +2269,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Izzy Kahn",
+          "title": "Campus directory \u2014 Izzy Kahn",
           "description": "Izzy Kahn, Debate team researcher. Printed briefs in the late lab."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Izzy",
+          "title": "Witness note \u2014 Izzy",
           "description": "A statement places Izzy Kahn near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Izzy",
+          "title": "Access adjacent \u2014 Izzy",
           "description": "Peripheral badge or schedule noise for Izzy Kahn (Debate team researcher); useful color, not a storage open."
         }
       ]
@@ -2301,17 +2301,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Joss Meier",
+          "title": "Campus directory \u2014 Joss Meier",
           "description": "Joss Meier, German house cook. Closed the community kitchen."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Joss",
+          "title": "Witness note \u2014 Joss",
           "description": "A statement places Joss Meier near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Joss",
+          "title": "Access adjacent \u2014 Joss",
           "description": "Peripheral badge or schedule noise for Joss Meier (German house cook); useful color, not a storage open."
         }
       ]
@@ -2333,17 +2333,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Kent Abrams",
+          "title": "Campus directory \u2014 Kent Abrams",
           "description": "Kent Abrams, Alumni phonathon. Ended call shifts in the phone bank."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Kent",
+          "title": "Witness note \u2014 Kent",
           "description": "A statement places Kent Abrams near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Kent",
+          "title": "Access adjacent \u2014 Kent",
           "description": "Peripheral badge or schedule noise for Kent Abrams (Alumni phonathon); useful color, not a storage open."
         }
       ]
@@ -2365,17 +2365,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Lana Kuznetsova",
+          "title": "Campus directory \u2014 Lana Kuznetsova",
           "description": "Lana Kuznetsova, Ballet pianist. Packed sheet music after rehearsal."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Lana",
+          "title": "Witness note \u2014 Lana",
           "description": "A statement places Lana Kuznetsova near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Lana",
+          "title": "Access adjacent \u2014 Lana",
           "description": "Peripheral badge or schedule noise for Lana Kuznetsova (Ballet pianist); useful color, not a storage open."
         }
       ]
@@ -2397,17 +2397,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Mack Holloway",
+          "title": "Campus directory \u2014 Mack Holloway",
           "description": "Mack Holloway, Grounds irrigation tech. Checked sprinkler zones by the fountain."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Mack",
+          "title": "Witness note \u2014 Mack",
           "description": "A statement places Mack Holloway near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Mack",
+          "title": "Access adjacent \u2014 Mack",
           "description": "Peripheral badge or schedule noise for Mack Holloway (Grounds irrigation tech); useful color, not a storage open."
         }
       ]
@@ -2429,17 +2429,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Nell Borges",
+          "title": "Campus directory \u2014 Nell Borges",
           "description": "Nell Borges, Latin dance instructor. Locked the studio after salsa night."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Nell",
+          "title": "Witness note \u2014 Nell",
           "description": "A statement places Nell Borges near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Nell",
+          "title": "Access adjacent \u2014 Nell",
           "description": "Peripheral badge or schedule noise for Nell Borges (Latin dance instructor); useful color, not a storage open."
         }
       ]
@@ -2461,17 +2461,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Otis Greene",
+          "title": "Campus directory \u2014 Otis Greene",
           "description": "Otis Greene, Jazz combo roadie. Loaded amps into a van on the dock."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Otis",
+          "title": "Witness note \u2014 Otis",
           "description": "A statement places Otis Greene near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Otis",
+          "title": "Access adjacent \u2014 Otis",
           "description": "Peripheral badge or schedule noise for Otis Greene (Jazz combo roadie); useful color, not a storage open."
         }
       ]
@@ -2493,17 +2493,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Pearl Vo",
+          "title": "Campus directory \u2014 Pearl Vo",
           "description": "Pearl Vo, Optometry clinic aide. Closed the evening screening room."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Pearl",
+          "title": "Witness note \u2014 Pearl",
           "description": "A statement places Pearl Vo near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Pearl",
+          "title": "Access adjacent \u2014 Pearl",
           "description": "Peripheral badge or schedule noise for Pearl Vo (Optometry clinic aide); useful color, not a storage open."
         }
       ]
@@ -2525,17 +2525,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Quill Asher",
+          "title": "Campus directory \u2014 Quill Asher",
           "description": "Quill Asher, Poetry slam host. Struck the mic in the cafe stage."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Quill",
+          "title": "Witness note \u2014 Quill",
           "description": "A statement places Quill Asher near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Quill",
+          "title": "Access adjacent \u2014 Quill",
           "description": "Peripheral badge or schedule noise for Quill Asher (Poetry slam host); useful color, not a storage open."
         }
       ]
@@ -2557,17 +2557,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Rome Castillo",
+          "title": "Campus directory \u2014 Rome Castillo",
           "description": "Rome Castillo, Soccer kit manager. Returned pinnies to the field house."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Rome",
+          "title": "Witness note \u2014 Rome",
           "description": "A statement places Rome Castillo near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Rome",
+          "title": "Access adjacent \u2014 Rome",
           "description": "Peripheral badge or schedule noise for Rome Castillo (Soccer kit manager); useful color, not a storage open."
         }
       ]
@@ -2589,17 +2589,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Sage Whitaker",
+          "title": "Campus directory \u2014 Sage Whitaker",
           "description": "Sage Whitaker, Herbal club gardener. Locked the community plot shed."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Sage",
+          "title": "Witness note \u2014 Sage",
           "description": "A statement places Sage Whitaker near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Sage",
+          "title": "Access adjacent \u2014 Sage",
           "description": "Peripheral badge or schedule noise for Sage Whitaker (Herbal club gardener); useful color, not a storage open."
         }
       ]
@@ -2621,17 +2621,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Tova Stein",
+          "title": "Campus directory \u2014 Tova Stein",
           "description": "Tova Stein, Hillel night desk. Signed out guests at the center lobby."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Tova",
+          "title": "Witness note \u2014 Tova",
           "description": "A statement places Tova Stein near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Tova",
+          "title": "Access adjacent \u2014 Tova",
           "description": "Peripheral badge or schedule noise for Tova Stein (Hillel night desk); useful color, not a storage open."
         }
       ]
@@ -2653,17 +2653,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Uri Mandel",
+          "title": "Campus directory \u2014 Uri Mandel",
           "description": "Uri Mandel, Physics demo prep. Secured the lecture demo cart."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Uri",
+          "title": "Witness note \u2014 Uri",
           "description": "A statement places Uri Mandel near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Uri",
+          "title": "Access adjacent \u2014 Uri",
           "description": "Peripheral badge or schedule noise for Uri Mandel (Physics demo prep); useful color, not a storage open."
         }
       ]
@@ -2685,17 +2685,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Vera Costa",
+          "title": "Campus directory \u2014 Vera Costa",
           "description": "Vera Costa, Portuguese cafe volunteer. Closed the language coffee hour."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Vera",
+          "title": "Witness note \u2014 Vera",
           "description": "A statement places Vera Costa near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Vera",
+          "title": "Access adjacent \u2014 Vera",
           "description": "Peripheral badge or schedule noise for Vera Costa (Portuguese cafe volunteer); useful color, not a storage open."
         }
       ]
@@ -2717,17 +2717,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Wade Simmons",
+          "title": "Campus directory \u2014 Wade Simmons",
           "description": "Wade Simmons, ROTC supply cadet. Inventoried gear in the cage."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Wade",
+          "title": "Witness note \u2014 Wade",
           "description": "A statement places Wade Simmons near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Wade",
+          "title": "Access adjacent \u2014 Wade",
           "description": "Peripheral badge or schedule noise for Wade Simmons (ROTC supply cadet); useful color, not a storage open."
         }
       ]
@@ -2749,17 +2749,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Xiomara Paz",
+          "title": "Campus directory \u2014 Xiomara Paz",
           "description": "Xiomara Paz, Salsa DJ. Packed decks after the cultural night."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Xiomara",
+          "title": "Witness note \u2014 Xiomara",
           "description": "A statement places Xiomara Paz near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Xiomara",
+          "title": "Access adjacent \u2014 Xiomara",
           "description": "Peripheral badge or schedule noise for Xiomara Paz (Salsa DJ); useful color, not a storage open."
         }
       ]
@@ -2781,17 +2781,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Yetu Mensah",
+          "title": "Campus directory \u2014 Yetu Mensah",
           "description": "Yetu Mensah, African dance lead. Locked the rehearsal mirrors room."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Yetu",
+          "title": "Witness note \u2014 Yetu",
           "description": "A statement places Yetu Mensah near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Yetu",
+          "title": "Access adjacent \u2014 Yetu",
           "description": "Peripheral badge or schedule noise for Yetu Mensah (African dance lead); useful color, not a storage open."
         }
       ]
@@ -2813,17 +2813,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Zara Bloom",
+          "title": "Campus directory \u2014 Zara Bloom",
           "description": "Zara Bloom, Beekeeping club. Checked hives behind the ag annex."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Zara",
+          "title": "Witness note \u2014 Zara",
           "description": "A statement places Zara Bloom near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Zara",
+          "title": "Access adjacent \u2014 Zara",
           "description": "Peripheral badge or schedule noise for Zara Bloom (Beekeeping club); useful color, not a storage open."
         }
       ]
@@ -2845,17 +2845,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Anson Craig",
+          "title": "Campus directory \u2014 Anson Craig",
           "description": "Anson Craig, Pipe organ scholar. Secured the chapel loft after practice."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Anson",
+          "title": "Witness note \u2014 Anson",
           "description": "A statement places Anson Craig near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Anson",
+          "title": "Access adjacent \u2014 Anson",
           "description": "Peripheral badge or schedule noise for Anson Craig (Pipe organ scholar); useful color, not a storage open."
         }
       ]
@@ -2877,17 +2877,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Briar Holt",
+          "title": "Campus directory \u2014 Briar Holt",
           "description": "Briar Holt, Costume stitcher. Finished hems in the drama loft."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Briar",
+          "title": "Witness note \u2014 Briar",
           "description": "A statement places Briar Holt near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Briar",
+          "title": "Access adjacent \u2014 Briar",
           "description": "Peripheral badge or schedule noise for Briar Holt (Costume stitcher); useful color, not a storage open."
         }
       ]
@@ -2909,17 +2909,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Cedric Ong",
+          "title": "Campus directory \u2014 Cedric Ong",
           "description": "Cedric Ong, Singapore students assoc. Closed a study circle in the lounge."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Cedric",
+          "title": "Witness note \u2014 Cedric",
           "description": "A statement places Cedric Ong near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Cedric",
+          "title": "Access adjacent \u2014 Cedric",
           "description": "Peripheral badge or schedule noise for Cedric Ong (Singapore students assoc); useful color, not a storage open."
         }
       ]
@@ -2941,17 +2941,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Daria Volkov",
+          "title": "Campus directory \u2014 Daria Volkov",
           "description": "Daria Volkov, Russian choir alto. Returned folders to the music office."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Daria",
+          "title": "Witness note \u2014 Daria",
           "description": "A statement places Daria Volkov near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Daria",
+          "title": "Access adjacent \u2014 Daria",
           "description": "Peripheral badge or schedule noise for Daria Volkov (Russian choir alto); useful color, not a storage open."
         }
       ]
@@ -2973,17 +2973,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Ellis Prado",
+          "title": "Campus directory \u2014 Ellis Prado",
           "description": "Ellis Prado, Skate park monitor. Locked the outdoor pad lights."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Ellis",
+          "title": "Witness note \u2014 Ellis",
           "description": "A statement places Ellis Prado near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Ellis",
+          "title": "Access adjacent \u2014 Ellis",
           "description": "Peripheral badge or schedule noise for Ellis Prado (Skate park monitor); useful color, not a storage open."
         }
       ]
@@ -3005,17 +3005,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Flora Beck",
+          "title": "Campus directory \u2014 Flora Beck",
           "description": "Flora Beck, Community garden lead. Logged tool returns at the shed."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Flora",
+          "title": "Witness note \u2014 Flora",
           "description": "A statement places Flora Beck near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Flora",
+          "title": "Access adjacent \u2014 Flora",
           "description": "Peripheral badge or schedule noise for Flora Beck (Community garden lead); useful color, not a storage open."
         }
       ]
@@ -3037,17 +3037,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Gareth Quinn",
+          "title": "Campus directory \u2014 Gareth Quinn",
           "description": "Gareth Quinn, Fencing armorer. Oiled foils after club practice."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Gareth",
+          "title": "Witness note \u2014 Gareth",
           "description": "A statement places Gareth Quinn near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Gareth",
+          "title": "Access adjacent \u2014 Gareth",
           "description": "Peripheral badge or schedule noise for Gareth Quinn (Fencing armorer); useful color, not a storage open."
         }
       ]
@@ -3069,17 +3069,17 @@
       "recordHooks": [
         {
           "suffix": "bio",
-          "title": "Campus directory — Heidi Moss",
+          "title": "Campus directory \u2014 Heidi Moss",
           "description": "Heidi Moss, Veterinary clinic aide. Closed kennel rounds for the night."
         },
         {
           "suffix": "sighting",
-          "title": "Witness note — Heidi",
+          "title": "Witness note \u2014 Heidi",
           "description": "A statement places Heidi Moss near campus activity around the theft window, but not inside event storage."
         },
         {
           "suffix": "badge",
-          "title": "Access adjacent — Heidi",
+          "title": "Access adjacent \u2014 Heidi",
           "description": "Peripheral badge or schedule noise for Heidi Moss (Veterinary clinic aide); useful color, not a storage open."
         }
       ]

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "note": "Case templates expose treeHook ids for future per-case dialogue banks. Playable trees still key off CollectEvidence suffixes (access, red_herring, alibi_support, roster, sign_in, hold, release) shared across every template.",
+  "note": "Case templates expose treeHook ids for future per-case dialogue banks. Playable trees still key off CollectEvidence suffixes (access, red_herring, alibi_support, roster, sign_in, hold, release) shared across every template \u2014 prompts are case-agnostic.",
   "evidenceKeys": [
     "access",
     "red_herring",
@@ -11,7 +11,7 @@
     "release"
   ],
   "hooks": [
-    "mascot_theft",
+    "banner_cutdown",
     "dorm_theft",
     "quad_assault",
     "library_vandalism",

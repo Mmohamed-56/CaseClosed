@@ -144,20 +144,26 @@ namespace CaseClosed.CaseCore
     /// </summary>
     public static class DemoCaseFactory
     {
+        /// <summary>Legacy name — now returns Field House banner cutdown (no storage/9:37 mascot copy).</summary>
         public static CaseFile CreateMissingMascotHeadCase()
+        {
+            return CreateBannerCutdownCase();
+        }
+
+        public static CaseFile CreateBannerCutdownCase()
         {
             var innocent = new SuspectRecord(
                 "suspect_jamie",
                 "Jamie Rivera",
                 "Student volunteer",
-                "I locked up the student-union event room and went straight to the bus stop.",
-                "At the west bus loop from 9:20 PM onward.",
+                "I never went up to the Field House mezzanine. I was at dinner when the banner came down.",
+                "At the west bus loop after leaving campus buildings.",
                 new[]
                 {
-                    new EvidenceRecord("jamie_purchase", "Hardware-store receipt", "Jamie bought a small utility knife that afternoon.", EvidenceKind.RedHerring, "Jamie used it to cut tape and cardboard for event decorations."),
-                    new EvidenceRecord("jamie_roster", "Volunteer roster", "Jamie is listed on the evening setup crew for the student-union event.", EvidenceKind.Context, string.Empty),
-                    new EvidenceRecord("jamie_bus", "Transit receipt", "A transit-card record places Jamie at the west bus loop at 9:24 PM.", EvidenceKind.Context, string.Empty),
-                    new EvidenceRecord("jamie_sign_in", "Event sign-in sheet", "Jamie signed in to help with student-union event setup earlier that evening.", EvidenceKind.Context, string.Empty)
+                    new EvidenceRecord("jamie_purchase", "Utility-knife purchase", "A campus-adjacent hardware debit under Jamie Rivera's card bought a folding utility knife the same afternoon.", EvidenceKind.RedHerring, "Jamie Rivera used the knife to open taped spirit posters for a club table — not the banner ropes."),
+                    new EvidenceRecord("jamie_roster", "Volunteer duty roster", "Jamie is listed on the evening volunteer crew for a campus event.", EvidenceKind.Context, string.Empty),
+                    new EvidenceRecord("jamie_bus", "Transit tap receipt", "A transit-card tap places Jamie at the west bus loop shortly after they said they left.", EvidenceKind.Context, string.Empty),
+                    new EvidenceRecord("jamie_sign_in", "Athletics volunteer day sheet", "Jamie Rivera signed the afternoon Field House athletics volunteer sheet before the cutdown window.", EvidenceKind.Context, string.Empty)
                 },
                 CaseClosed.Voice.SuspectVoiceCatalog.GetProfile("suspect_jamie").VoiceId);
 
@@ -165,21 +171,21 @@ namespace CaseClosed.CaseCore
                 "suspect_morgan",
                 "Morgan Lee",
                 "Student events assistant",
-                "I left the student union before nine and spent the rest of the night at home.",
-                "At home from 9:00 PM onward.",
+                "I never went up to the Field House mezzanine. I was at dinner when the banner came down.",
+                "At their residence hall after clock-out.",
                 new[]
                 {
-                    new EvidenceRecord("morgan_access", "Storage-room access log", "Morgan's campus card opened the event-storage room at 9:37 PM, inside the theft window and after their stated departure time.", EvidenceKind.Contradiction, "Morgan took the mascot head from storage and hid it in a laundry bag."),
-                    new EvidenceRecord("morgan_schedule", "Staff schedule", "Morgan's events shift ended at 9:00 PM according to the posted roster.", EvidenceKind.Context, string.Empty),
-                    new EvidenceRecord("morgan_hall", "Residence hall door log", "Morgan's hall exterior door registered an entry at 9:18 PM.", EvidenceKind.Context, string.Empty),
-                    new EvidenceRecord("morgan_sign_in", "Event sign-in sheet", "Morgan signed in to help with student-union event setup earlier that evening.", EvidenceKind.Context, string.Empty)
+                    new EvidenceRecord("morgan_access", "Mezzanine catwalk camera still", "A 6:21 PM still from catwalk cam FH-M3 shows a figure matching Morgan Lee's clothing profile on the banner walkway — after Morgan Lee claimed to be at dinner across campus.", EvidenceKind.Contradiction, "Morgan Lee climbed the Field House mezzanine and cut down the spirit banner."),
+                    new EvidenceRecord("morgan_schedule", "Events desk schedule", "Morgan's posted events desk shift ended on time according to the roster.", EvidenceKind.Context, string.Empty),
+                    new EvidenceRecord("morgan_hall", "Hall exterior door log", "Morgan's hall exterior door registered an entry after their stated departure from work.", EvidenceKind.Context, string.Empty),
+                    new EvidenceRecord("morgan_sign_in", "Athletics volunteer day sheet", "Morgan Lee signed the afternoon Field House athletics volunteer sheet before the cutdown window.", EvidenceKind.Context, string.Empty)
                 },
                 CaseClosed.Voice.SuspectVoiceCatalog.GetProfile("suspect_morgan").VoiceId);
 
             return new CaseFile(
                 "UB-001",
-                "The Missing Mascot Head",
-                "The university mascot head vanished from the student-union storage room between 9:15 PM and 9:45 PM. Two people had a reason to be near the event rooms. Find the contradiction before deciding who to hold.",
+                "Field House Spirit Banner Cutdown",
+                "The Founders Weekend spirit banner over Field House court was sliced down between 6:05 PM and 6:35 PM. Match ladder checkout, mezzanine camera stills, and statements before HOLD.",
                 culprit.Id,
                 new[] { innocent, culprit });
         }
