@@ -44,7 +44,11 @@ const lastNames = [
   "Collins", "Stewart", "Sanchez", "Morris", "Rogers", "Reed", "Cook", "Morgan", "Bell", "Murphy",
   "Bailey", "Rivera", "Cooper", "Richardson", "Cox", "Howard", "Ward", "Torres", "Peterson", "Gray",
   "Ramirez", "James", "Watson", "Brooks", "Kelly", "Sanders", "Price", "Bennett", "Wood", "Barnes",
-  "Ross", "Henderson", "Coleman", "Jenkins", "Perry", "Powell", "Long", "Patterson", "Hughes", "Flores"
+  "Ross", "Henderson", "Coleman", "Jenkins", "Perry", "Powell", "Long", "Patterson", "Hughes", "Flores",
+  "Singh", "Chopra", "Okafor", "Mensah", "Diallo", "Hassan", "Kowalski", "Novak", "Petrov", "Ivanov",
+  "Silva", "Costa", "Moreau", "Dupont", "Berg", "Lindqvist", "Olsen", "Sato", "Tanaka", "Park",
+  "Cho", "Yilmaz", "Demir", "Costa", "Almeida", "Fernandez", "Castillo", "Jimenez", "Vargas", "Ortiz",
+  "Buckley", "Fitzgerald", "OBrien", "McKenzie", "Singhania", "Banerjee", "Ibrahim", "Ali", "Zhou", "Huang"
 ];
 
 const roles = [
@@ -338,17 +342,37 @@ suspects.push(
   relatedBank("quinn", "Related person — student media. Press pass list for Founders Weekend.")
 );
 
+// Build unique first+last pairs with round-robin surnames (no single-name spam).
+const pairs = [];
+const surnameUse = Object.create(null);
+let cursor = 0;
+for (let n = 0; n < 400 && pairs.length < 200; n++) {
+  const first = firstNames[n % firstNames.length];
+  // Prefer least-used surnames; offset by n so pairs stay varied.
+  let bestLast = null;
+  let bestCount = Infinity;
+  for (let k = 0; k < lastNames.length; k++) {
+    const last = lastNames[(cursor + k) % lastNames.length];
+    const key = (first + "|" + last).toLowerCase();
+    if (usedNames.has(key)) continue;
+    const c = surnameUse[last] || 0;
+    if (c < bestCount) {
+      bestCount = c;
+      bestLast = last;
+      if (c === 0) break;
+    }
+  }
+  cursor = (cursor + 7) % lastNames.length;
+  if (!bestLast) continue;
+  if (!takeName(first, bestLast)) continue;
+  surnameUse[bestLast] = (surnameUse[bestLast] || 0) + 1;
+  pairs.push([first, bestLast]);
+}
+
 let i = 1;
-let fi = 0;
-let li = 0;
-while (suspects.length < 100) {
-  const first = firstNames[fi % firstNames.length];
-  const last = lastNames[li % lastNames.length];
-  fi++;
-  if (fi % firstNames.length === 0) li++;
-  if (!takeName(first, last)) continue;
-  // skip accidental Chizuru-style collisions already reserved
-  suspects.push(directoryPerson(i, first, last, roles[(i + fi) % roles.length]));
+for (const [first, last] of pairs) {
+  if (suspects.length >= 100) break;
+  suspects.push(directoryPerson(i, first, last, roles[(i * 3) % roles.length]));
   i++;
 }
 

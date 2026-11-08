@@ -259,13 +259,13 @@
       "id": "person_ns_0001",
       "poi": false,
       "name": "Alex Nguyen",
-      "role": "Undergraduate — Computer Science",
+      "role": "Undergraduate — English",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0001_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0001\nName: Nguyen, Alex\nRole: Undergraduate — Computer Science\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0001\nName: Nguyen, Alex\nRole: Undergraduate — English\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0001_card",
@@ -277,14 +277,14 @@
     {
       "id": "person_ns_0002",
       "poi": false,
-      "name": "Blair Nguyen",
-      "role": "Undergraduate — History",
+      "name": "Blair Brown",
+      "role": "Graduate student — Education",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0002_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0002\nName: Nguyen, Blair\nRole: Undergraduate — History\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0002\nName: Brown, Blair\nRole: Graduate student — Education\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0002_card",
@@ -296,14 +296,14 @@
     {
       "id": "person_ns_0003",
       "poi": false,
-      "name": "Cameron Nguyen",
-      "role": "Graduate student — Education",
+      "name": "Cameron Thomas",
+      "role": "Residence hall RA",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0003_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0003\nName: Nguyen, Cameron\nRole: Graduate student — Education\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0003\nName: Thomas, Cameron\nRole: Residence hall RA\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0003_card",
@@ -315,14 +315,14 @@
     {
       "id": "person_ns_0004",
       "poi": false,
-      "name": "Dana Nguyen",
-      "role": "Library student aide",
+      "name": "Dana Robinson",
+      "role": "Facilities night porter",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0004_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0004\nName: Nguyen, Dana\nRole: Library student aide\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0004\nName: Robinson, Dana\nRole: Facilities night porter\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0004_card",
@@ -334,14 +334,14 @@
     {
       "id": "person_ns_0005",
       "poi": false,
-      "name": "Eden Nguyen",
-      "role": "Dining services associate",
+      "name": "Eden Allen",
+      "role": "Campus shuttle driver",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0005_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0005\nName: Nguyen, Eden\nRole: Dining services associate\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0005\nName: Allen, Eden\nRole: Campus shuttle driver\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0005_card",
@@ -353,14 +353,14 @@
     {
       "id": "person_ns_0006",
       "poi": false,
-      "name": "Finley Nguyen",
-      "role": "Facilities night porter",
+      "name": "Finley Scott",
+      "role": "Admissions tour guide",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0006_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0006\nName: Nguyen, Finley\nRole: Facilities night porter\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0006\nName: Scott, Finley\nRole: Admissions tour guide\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0006_card",
@@ -372,14 +372,14 @@
     {
       "id": "person_ns_0007",
       "poi": false,
-      "name": "Gray Nguyen",
-      "role": "Box office volunteer",
+      "name": "Gray Perez",
+      "role": "Health center front desk",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0007_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0007\nName: Nguyen, Gray\nRole: Box office volunteer\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0007\nName: Perez, Gray\nRole: Health center front desk\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0007_card",
@@ -391,14 +391,14 @@
     {
       "id": "person_ns_0008",
       "poi": false,
-      "name": "Harper Nguyen",
-      "role": "IT helpdesk student worker",
+      "name": "Harper Edwards",
+      "role": "Marching band member",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0008_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0008\nName: Nguyen, Harper\nRole: IT helpdesk student worker\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0008\nName: Edwards, Harper\nRole: Marching band member\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0008_card",
@@ -410,14 +410,14 @@
     {
       "id": "person_ns_0009",
       "poi": false,
-      "name": "Indigo Nguyen",
-      "role": "Admissions tour guide",
+      "name": "Indigo Cook",
+      "role": "Orientation leader",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0009_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0009\nName: Nguyen, Indigo\nRole: Admissions tour guide\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0009\nName: Cook, Indigo\nRole: Orientation leader\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0009_card",
@@ -429,14 +429,14 @@
     {
       "id": "person_ns_0010",
       "poi": false,
-      "name": "Jordan Nguyen",
-      "role": "Parking services attendant",
+      "name": "Jordan Richardson",
+      "role": "Undergraduate — undeclared",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0010_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0010\nName: Nguyen, Jordan\nRole: Parking services attendant\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0010\nName: Richardson, Jordan\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0010_card",
@@ -448,14 +448,14 @@
     {
       "id": "person_ns_0011",
       "poi": false,
-      "name": "Kai Nguyen",
-      "role": "Registrar clerk",
+      "name": "Kai Ramirez",
+      "role": "Undergraduate — English",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0011_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0011\nName: Nguyen, Kai\nRole: Registrar clerk\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0011\nName: Ramirez, Kai\nRole: Undergraduate — English\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0011_card",
@@ -467,14 +467,14 @@
     {
       "id": "person_ns_0012",
       "poi": false,
-      "name": "Logan Nguyen",
-      "role": "Marching band member",
+      "name": "Logan Bennett",
+      "role": "Graduate student — Education",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0012_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0012\nName: Nguyen, Logan\nRole: Marching band member\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0012\nName: Bennett, Logan\nRole: Graduate student — Education\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0012_card",
@@ -486,14 +486,14 @@
     {
       "id": "person_ns_0013",
       "poi": false,
-      "name": "Marley Nguyen",
-      "role": "Intramural referee",
+      "name": "Marley Perry",
+      "role": "Residence hall RA",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0013_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0013\nName: Nguyen, Marley\nRole: Intramural referee\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0013\nName: Perry, Marley\nRole: Residence hall RA\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0013_card",
@@ -505,14 +505,14 @@
     {
       "id": "person_ns_0014",
       "poi": false,
-      "name": "Noel Nguyen",
-      "role": "Alumni relations intern",
+      "name": "Noel Chopra",
+      "role": "Facilities night porter",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0014_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0014\nName: Nguyen, Noel\nRole: Alumni relations intern\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0014\nName: Chopra, Noel\nRole: Facilities night porter\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0014_card",
@@ -524,14 +524,14 @@
     {
       "id": "person_ns_0015",
       "poi": false,
-      "name": "Oakley Nguyen",
-      "role": "Undergraduate — undeclared",
+      "name": "Oakley Petrov",
+      "role": "Campus shuttle driver",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0015_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0015\nName: Nguyen, Oakley\nRole: Undergraduate — undeclared\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0015\nName: Petrov, Oakley\nRole: Campus shuttle driver\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0015_card",
@@ -543,14 +543,14 @@
     {
       "id": "person_ns_0016",
       "poi": false,
-      "name": "Parker Nguyen",
-      "role": "Undergraduate — Computer Science",
+      "name": "Parker Lindqvist",
+      "role": "Admissions tour guide",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0016_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0016\nName: Nguyen, Parker\nRole: Undergraduate — Computer Science\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0016\nName: Lindqvist, Parker\nRole: Admissions tour guide\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0016_card",
@@ -562,14 +562,14 @@
     {
       "id": "person_ns_0017",
       "poi": false,
-      "name": "Reese Nguyen",
-      "role": "Undergraduate — History",
+      "name": "Reese Demir",
+      "role": "Health center front desk",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0017_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0017\nName: Nguyen, Reese\nRole: Undergraduate — History\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0017\nName: Demir, Reese\nRole: Health center front desk\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0017_card",
@@ -581,14 +581,14 @@
     {
       "id": "person_ns_0018",
       "poi": false,
-      "name": "Sage Nguyen",
-      "role": "Graduate student — Education",
+      "name": "Sage Ortiz",
+      "role": "Marching band member",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0018_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0018\nName: Nguyen, Sage\nRole: Graduate student — Education\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0018\nName: Ortiz, Sage\nRole: Marching band member\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0018_card",
@@ -600,14 +600,14 @@
     {
       "id": "person_ns_0019",
       "poi": false,
-      "name": "Taylor Nguyen",
-      "role": "Library student aide",
+      "name": "Taylor Ibrahim",
+      "role": "Orientation leader",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0019_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0019\nName: Nguyen, Taylor\nRole: Library student aide\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0019\nName: Ibrahim, Taylor\nRole: Orientation leader\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0019_card",
@@ -619,14 +619,14 @@
     {
       "id": "person_ns_0020",
       "poi": false,
-      "name": "Val Nguyen",
-      "role": "Dining services associate",
+      "name": "Val Kim",
+      "role": "Undergraduate — undeclared",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0020_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0020\nName: Nguyen, Val\nRole: Dining services associate\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0020\nName: Kim, Val\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0020_card",
@@ -638,14 +638,14 @@
     {
       "id": "person_ns_0021",
       "poi": false,
-      "name": "Wren Nguyen",
-      "role": "Facilities night porter",
+      "name": "Wren Wilson",
+      "role": "Undergraduate — English",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0021_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0021\nName: Nguyen, Wren\nRole: Facilities night porter\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0021\nName: Wilson, Wren\nRole: Undergraduate — English\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0021_card",
@@ -657,14 +657,14 @@
     {
       "id": "person_ns_0022",
       "poi": false,
-      "name": "Yael Nguyen",
-      "role": "Box office volunteer",
+      "name": "Yael Harris",
+      "role": "Graduate student — Education",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0022_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0022\nName: Nguyen, Yael\nRole: Box office volunteer\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0022\nName: Harris, Yael\nRole: Graduate student — Education\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0022_card",
@@ -676,14 +676,14 @@
     {
       "id": "person_ns_0023",
       "poi": false,
-      "name": "Zion Nguyen",
-      "role": "IT helpdesk student worker",
+      "name": "Zion Lewis",
+      "role": "Residence hall RA",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0023_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0023\nName: Nguyen, Zion\nRole: IT helpdesk student worker\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0023\nName: Lewis, Zion\nRole: Residence hall RA\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0023_card",
@@ -695,14 +695,14 @@
     {
       "id": "person_ns_0024",
       "poi": false,
-      "name": "Adrian Nguyen",
-      "role": "Admissions tour guide",
+      "name": "Adrian King",
+      "role": "Facilities night porter",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0024_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0024\nName: Nguyen, Adrian\nRole: Admissions tour guide\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0024\nName: King, Adrian\nRole: Facilities night porter\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0024_card",
@@ -714,14 +714,14 @@
     {
       "id": "person_ns_0025",
       "poi": false,
-      "name": "Blake Nguyen",
-      "role": "Parking services attendant",
+      "name": "Blake Baker",
+      "role": "Campus shuttle driver",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0025_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0025\nName: Nguyen, Blake\nRole: Parking services attendant\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0025\nName: Baker, Blake\nRole: Campus shuttle driver\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0025_card",
@@ -733,14 +733,14 @@
     {
       "id": "person_ns_0026",
       "poi": false,
-      "name": "Chris Nguyen",
-      "role": "Registrar clerk",
+      "name": "Chris Phillips",
+      "role": "Admissions tour guide",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0026_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0026\nName: Nguyen, Chris\nRole: Registrar clerk\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0026\nName: Phillips, Chris\nRole: Admissions tour guide\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0026_card",
@@ -752,14 +752,14 @@
     {
       "id": "person_ns_0027",
       "poi": false,
-      "name": "Devon Nguyen",
-      "role": "Marching band member",
+      "name": "Devon Sanchez",
+      "role": "Health center front desk",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0027_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0027\nName: Nguyen, Devon\nRole: Marching band member\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0027\nName: Sanchez, Devon\nRole: Health center front desk\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0027_card",
@@ -771,14 +771,14 @@
     {
       "id": "person_ns_0028",
       "poi": false,
-      "name": "Elliott Nguyen",
-      "role": "Intramural referee",
+      "name": "Elliott Murphy",
+      "role": "Marching band member",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0028_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0028\nName: Nguyen, Elliott\nRole: Intramural referee\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0028\nName: Murphy, Elliott\nRole: Marching band member\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0028_card",
@@ -790,14 +790,14 @@
     {
       "id": "person_ns_0029",
       "poi": false,
-      "name": "Francis Nguyen",
-      "role": "Alumni relations intern",
+      "name": "Francis Ward",
+      "role": "Orientation leader",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0029_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0029\nName: Nguyen, Francis\nRole: Alumni relations intern\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0029\nName: Ward, Francis\nRole: Orientation leader\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0029_card",
@@ -809,14 +809,14 @@
     {
       "id": "person_ns_0030",
       "poi": false,
-      "name": "Gabe Nguyen",
+      "name": "Gabe Brooks",
       "role": "Undergraduate — undeclared",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0030_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0030\nName: Nguyen, Gabe\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0030\nName: Brooks, Gabe\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0030_card",
@@ -828,14 +828,14 @@
     {
       "id": "person_ns_0031",
       "poi": false,
-      "name": "Hayden Nguyen",
-      "role": "Undergraduate — Computer Science",
+      "name": "Hayden Ross",
+      "role": "Undergraduate — English",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0031_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0031\nName: Nguyen, Hayden\nRole: Undergraduate — Computer Science\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0031\nName: Ross, Hayden\nRole: Undergraduate — English\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0031_card",
@@ -847,14 +847,14 @@
     {
       "id": "person_ns_0032",
       "poi": false,
-      "name": "Ivan Nguyen",
-      "role": "Undergraduate — History",
+      "name": "Ivan Patterson",
+      "role": "Graduate student — Education",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0032_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0032\nName: Nguyen, Ivan\nRole: Undergraduate — History\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0032\nName: Patterson, Ivan\nRole: Graduate student — Education\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0032_card",
@@ -866,14 +866,14 @@
     {
       "id": "person_ns_0033",
       "poi": false,
-      "name": "Jules Nguyen",
-      "role": "Graduate student — Education",
+      "name": "Jules Diallo",
+      "role": "Residence hall RA",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0033_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0033\nName: Nguyen, Jules\nRole: Graduate student — Education\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0033\nName: Diallo, Jules\nRole: Residence hall RA\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0033_card",
@@ -885,14 +885,14 @@
     {
       "id": "person_ns_0034",
       "poi": false,
-      "name": "Kelly Nguyen",
-      "role": "Library student aide",
+      "name": "Kelly Costa",
+      "role": "Facilities night porter",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0034_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0034\nName: Nguyen, Kelly\nRole: Library student aide\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0034\nName: Costa, Kelly\nRole: Facilities night porter\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0034_card",
@@ -904,14 +904,14 @@
     {
       "id": "person_ns_0035",
       "poi": false,
-      "name": "Lee Nguyen",
-      "role": "Dining services associate",
+      "name": "Lee Tanaka",
+      "role": "Campus shuttle driver",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0035_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0035\nName: Nguyen, Lee\nRole: Dining services associate\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0035\nName: Tanaka, Lee\nRole: Campus shuttle driver\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0035_card",
@@ -923,14 +923,14 @@
     {
       "id": "person_ns_0036",
       "poi": false,
-      "name": "Micah Nguyen",
-      "role": "Facilities night porter",
+      "name": "Micah Fernandez",
+      "role": "Admissions tour guide",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0036_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0036\nName: Nguyen, Micah\nRole: Facilities night porter\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0036\nName: Fernandez, Micah\nRole: Admissions tour guide\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0036_card",
@@ -942,14 +942,14 @@
     {
       "id": "person_ns_0037",
       "poi": false,
-      "name": "Nina Nguyen",
-      "role": "Box office volunteer",
+      "name": "Nina OBrien",
+      "role": "Health center front desk",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0037_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0037\nName: Nguyen, Nina\nRole: Box office volunteer\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0037\nName: OBrien, Nina\nRole: Health center front desk\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0037_card",
@@ -961,14 +961,14 @@
     {
       "id": "person_ns_0038",
       "poi": false,
-      "name": "Omar Nguyen",
-      "role": "IT helpdesk student worker",
+      "name": "Omar Huang",
+      "role": "Marching band member",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0038_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0038\nName: Nguyen, Omar\nRole: IT helpdesk student worker\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0038\nName: Huang, Omar\nRole: Marching band member\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0038_card",
@@ -980,14 +980,14 @@
     {
       "id": "person_ns_0039",
       "poi": false,
-      "name": "Pat Nguyen",
-      "role": "Admissions tour guide",
+      "name": "Pat Johnson",
+      "role": "Orientation leader",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0039_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0039\nName: Nguyen, Pat\nRole: Admissions tour guide\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0039\nName: Johnson, Pat\nRole: Orientation leader\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0039_card",
@@ -999,14 +999,14 @@
     {
       "id": "person_ns_0040",
       "poi": false,
-      "name": "Robin Nguyen",
-      "role": "Parking services attendant",
+      "name": "Robin Anderson",
+      "role": "Undergraduate — undeclared",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0040_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0040\nName: Nguyen, Robin\nRole: Parking services attendant\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0040\nName: Anderson, Robin\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0040_card",
@@ -1018,14 +1018,14 @@
     {
       "id": "person_ns_0041",
       "poi": false,
-      "name": "Shawn Nguyen",
-      "role": "Registrar clerk",
+      "name": "Shawn Martinez",
+      "role": "Undergraduate — English",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0041_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0041\nName: Nguyen, Shawn\nRole: Registrar clerk\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0041\nName: Martinez, Shawn\nRole: Undergraduate — English\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0041_card",
@@ -1037,14 +1037,14 @@
     {
       "id": "person_ns_0042",
       "poi": false,
-      "name": "Tess Nguyen",
-      "role": "Marching band member",
+      "name": "Tess Hall",
+      "role": "Graduate student — Education",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0042_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0042\nName: Nguyen, Tess\nRole: Marching band member\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0042\nName: Hall, Tess\nRole: Graduate student — Education\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0042_card",
@@ -1056,14 +1056,14 @@
     {
       "id": "person_ns_0043",
       "poi": false,
-      "name": "Uma Nguyen",
-      "role": "Intramural referee",
+      "name": "Uma Hill",
+      "role": "Residence hall RA",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0043_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0043\nName: Nguyen, Uma\nRole: Intramural referee\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0043\nName: Hill, Uma\nRole: Residence hall RA\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0043_card",
@@ -1075,14 +1075,14 @@
     {
       "id": "person_ns_0044",
       "poi": false,
-      "name": "Victor Nguyen",
-      "role": "Alumni relations intern",
+      "name": "Victor Mitchell",
+      "role": "Facilities night porter",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0044_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0044\nName: Nguyen, Victor\nRole: Alumni relations intern\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0044\nName: Mitchell, Victor\nRole: Facilities night porter\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0044_card",
@@ -1094,14 +1094,14 @@
     {
       "id": "person_ns_0045",
       "poi": false,
-      "name": "Whitney Nguyen",
-      "role": "Undergraduate — undeclared",
+      "name": "Whitney Evans",
+      "role": "Campus shuttle driver",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0045_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0045\nName: Nguyen, Whitney\nRole: Undergraduate — undeclared\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0045\nName: Evans, Whitney\nRole: Campus shuttle driver\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0045_card",
@@ -1113,14 +1113,14 @@
     {
       "id": "person_ns_0046",
       "poi": false,
-      "name": "Xavier Nguyen",
-      "role": "Undergraduate — Computer Science",
+      "name": "Xavier Reed",
+      "role": "Admissions tour guide",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0046_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0046\nName: Nguyen, Xavier\nRole: Undergraduate — Computer Science\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0046\nName: Reed, Xavier\nRole: Admissions tour guide\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0046_card",
@@ -1132,14 +1132,14 @@
     {
       "id": "person_ns_0047",
       "poi": false,
-      "name": "Yuri Nguyen",
-      "role": "Undergraduate — History",
+      "name": "Yuri Cooper",
+      "role": "Health center front desk",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0047_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0047\nName: Nguyen, Yuri\nRole: Undergraduate — History\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0047\nName: Cooper, Yuri\nRole: Health center front desk\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0047_card",
@@ -1151,14 +1151,14 @@
     {
       "id": "person_ns_0048",
       "poi": false,
-      "name": "Zoe Nguyen",
-      "role": "Graduate student — Education",
+      "name": "Zoe Gray",
+      "role": "Marching band member",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0048_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0048\nName: Nguyen, Zoe\nRole: Graduate student — Education\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0048\nName: Gray, Zoe\nRole: Marching band member\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0048_card",
@@ -1170,14 +1170,14 @@
     {
       "id": "person_ns_0049",
       "poi": false,
-      "name": "Amari Nguyen",
-      "role": "Library student aide",
+      "name": "Amari Price",
+      "role": "Orientation leader",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0049_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0049\nName: Nguyen, Amari\nRole: Library student aide\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0049\nName: Price, Amari\nRole: Orientation leader\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0049_card",
@@ -1189,14 +1189,14 @@
     {
       "id": "person_ns_0050",
       "poi": false,
-      "name": "Brooke Nguyen",
-      "role": "Dining services associate",
+      "name": "Brooke Jenkins",
+      "role": "Undergraduate — undeclared",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0050_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0050\nName: Nguyen, Brooke\nRole: Dining services associate\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0050\nName: Jenkins, Brooke\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0050_card",
@@ -1208,14 +1208,14 @@
     {
       "id": "person_ns_0051",
       "poi": false,
-      "name": "Carmen Nguyen",
-      "role": "Facilities night porter",
+      "name": "Carmen Singh",
+      "role": "Undergraduate — English",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0051_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0051\nName: Nguyen, Carmen\nRole: Facilities night porter\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0051\nName: Singh, Carmen\nRole: Undergraduate — English\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0051_card",
@@ -1227,14 +1227,14 @@
     {
       "id": "person_ns_0052",
       "poi": false,
-      "name": "Diego Nguyen",
-      "role": "Box office volunteer",
+      "name": "Diego Novak",
+      "role": "Graduate student — Education",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0052_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0052\nName: Nguyen, Diego\nRole: Box office volunteer\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0052\nName: Novak, Diego\nRole: Graduate student — Education\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0052_card",
@@ -1246,14 +1246,14 @@
     {
       "id": "person_ns_0053",
       "poi": false,
-      "name": "Elena Nguyen",
-      "role": "IT helpdesk student worker",
+      "name": "Elena Berg",
+      "role": "Residence hall RA",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0053_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0053\nName: Nguyen, Elena\nRole: IT helpdesk student worker\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0053\nName: Berg, Elena\nRole: Residence hall RA\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0053_card",
@@ -1265,14 +1265,14 @@
     {
       "id": "person_ns_0054",
       "poi": false,
-      "name": "Farah Nguyen",
-      "role": "Admissions tour guide",
+      "name": "Farah Yilmaz",
+      "role": "Facilities night porter",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0054_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0054\nName: Nguyen, Farah\nRole: Admissions tour guide\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0054\nName: Yilmaz, Farah\nRole: Facilities night porter\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0054_card",
@@ -1284,14 +1284,14 @@
     {
       "id": "person_ns_0055",
       "poi": false,
-      "name": "Gina Nguyen",
-      "role": "Parking services attendant",
+      "name": "Gina Vargas",
+      "role": "Campus shuttle driver",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0055_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0055\nName: Nguyen, Gina\nRole: Parking services attendant\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0055\nName: Vargas, Gina\nRole: Campus shuttle driver\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0055_card",
@@ -1303,14 +1303,14 @@
     {
       "id": "person_ns_0056",
       "poi": false,
-      "name": "Hector Nguyen",
-      "role": "Registrar clerk",
+      "name": "Hector Banerjee",
+      "role": "Admissions tour guide",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0056_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0056\nName: Nguyen, Hector\nRole: Registrar clerk\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0056\nName: Banerjee, Hector\nRole: Admissions tour guide\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0056_card",
@@ -1322,14 +1322,14 @@
     {
       "id": "person_ns_0057",
       "poi": false,
-      "name": "Iris Nguyen",
-      "role": "Marching band member",
+      "name": "Iris Garcia",
+      "role": "Health center front desk",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0057_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0057\nName: Nguyen, Iris\nRole: Marching band member\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0057\nName: Garcia, Iris\nRole: Health center front desk\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0057_card",
@@ -1341,14 +1341,14 @@
     {
       "id": "person_ns_0058",
       "poi": false,
-      "name": "Jose Nguyen",
-      "role": "Intramural referee",
+      "name": "Jose Miller",
+      "role": "Marching band member",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0058_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0058\nName: Nguyen, Jose\nRole: Intramural referee\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0058\nName: Miller, Jose\nRole: Marching band member\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0058_card",
@@ -1360,14 +1360,14 @@
     {
       "id": "person_ns_0059",
       "poi": false,
-      "name": "Kira Nguyen",
-      "role": "Alumni relations intern",
+      "name": "Kira White",
+      "role": "Orientation leader",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0059_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0059\nName: Nguyen, Kira\nRole: Alumni relations intern\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0059\nName: White, Kira\nRole: Orientation leader\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0059_card",
@@ -1379,14 +1379,14 @@
     {
       "id": "person_ns_0060",
       "poi": false,
-      "name": "Luis Nguyen",
+      "name": "Luis Rodriguez",
       "role": "Undergraduate — undeclared",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0060_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0060\nName: Nguyen, Luis\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0060\nName: Rodriguez, Luis\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0060_card",
@@ -1398,14 +1398,14 @@
     {
       "id": "person_ns_0061",
       "poi": false,
-      "name": "Maya Nguyen",
-      "role": "Undergraduate — Computer Science",
+      "name": "Maya Hernandez",
+      "role": "Undergraduate — English",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0061_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0061\nName: Nguyen, Maya\nRole: Undergraduate — Computer Science\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0061\nName: Hernandez, Maya\nRole: Undergraduate — English\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0061_card",
@@ -1417,14 +1417,14 @@
     {
       "id": "person_ns_0062",
       "poi": false,
-      "name": "Nadia Nguyen",
-      "role": "Undergraduate — History",
+      "name": "Nadia Adams",
+      "role": "Graduate student — Education",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0062_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0062\nName: Nguyen, Nadia\nRole: Undergraduate — History\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0062\nName: Adams, Nadia\nRole: Graduate student — Education\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0062_card",
@@ -1436,14 +1436,14 @@
     {
       "id": "person_ns_0063",
       "poi": false,
-      "name": "Oscar Nguyen",
-      "role": "Graduate student — Education",
+      "name": "Oscar Turner",
+      "role": "Residence hall RA",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0063_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0063\nName: Nguyen, Oscar\nRole: Graduate student — Education\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0063\nName: Turner, Oscar\nRole: Residence hall RA\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0063_card",
@@ -1455,14 +1455,14 @@
     {
       "id": "person_ns_0064",
       "poi": false,
-      "name": "Pilar Nguyen",
-      "role": "Library student aide",
+      "name": "Pilar Stewart",
+      "role": "Facilities night porter",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0064_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0064\nName: Nguyen, Pilar\nRole: Library student aide\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0064\nName: Stewart, Pilar\nRole: Facilities night porter\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0064_card",
@@ -1474,14 +1474,14 @@
     {
       "id": "person_ns_0065",
       "poi": false,
-      "name": "Ravi Nguyen",
-      "role": "Dining services associate",
+      "name": "Ravi Bell",
+      "role": "Campus shuttle driver",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0065_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0065\nName: Nguyen, Ravi\nRole: Dining services associate\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0065\nName: Bell, Ravi\nRole: Campus shuttle driver\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0065_card",
@@ -1493,14 +1493,14 @@
     {
       "id": "person_ns_0066",
       "poi": false,
-      "name": "Sofia Nguyen",
-      "role": "Facilities night porter",
+      "name": "Sofia Howard",
+      "role": "Admissions tour guide",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0066_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0066\nName: Nguyen, Sofia\nRole: Facilities night porter\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0066\nName: Howard, Sofia\nRole: Admissions tour guide\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0066_card",
@@ -1512,14 +1512,14 @@
     {
       "id": "person_ns_0067",
       "poi": false,
-      "name": "Talia Nguyen",
-      "role": "Box office volunteer",
+      "name": "Talia Watson",
+      "role": "Health center front desk",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0067_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0067\nName: Nguyen, Talia\nRole: Box office volunteer\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0067\nName: Watson, Talia\nRole: Health center front desk\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0067_card",
@@ -1531,14 +1531,14 @@
     {
       "id": "person_ns_0068",
       "poi": false,
-      "name": "Ursula Nguyen",
-      "role": "IT helpdesk student worker",
+      "name": "Ursula Barnes",
+      "role": "Marching band member",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0068_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0068\nName: Nguyen, Ursula\nRole: IT helpdesk student worker\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0068\nName: Barnes, Ursula\nRole: Marching band member\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0068_card",
@@ -1550,14 +1550,14 @@
     {
       "id": "person_ns_0069",
       "poi": false,
-      "name": "Vera Nguyen",
-      "role": "Admissions tour guide",
+      "name": "Vera Long",
+      "role": "Orientation leader",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0069_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0069\nName: Nguyen, Vera\nRole: Admissions tour guide\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0069\nName: Long, Vera\nRole: Orientation leader\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0069_card",
@@ -1569,14 +1569,14 @@
     {
       "id": "person_ns_0070",
       "poi": false,
-      "name": "Will Nguyen",
-      "role": "Parking services attendant",
+      "name": "Will Mensah",
+      "role": "Undergraduate — undeclared",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0070_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0070\nName: Nguyen, Will\nRole: Parking services attendant\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0070\nName: Mensah, Will\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0070_card",
@@ -1588,14 +1588,14 @@
     {
       "id": "person_ns_0071",
       "poi": false,
-      "name": "Anita Nguyen",
-      "role": "Registrar clerk",
+      "name": "Anita Silva",
+      "role": "Undergraduate — English",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0071_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0071\nName: Nguyen, Anita\nRole: Registrar clerk\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0071\nName: Silva, Anita\nRole: Undergraduate — English\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0071_card",
@@ -1607,14 +1607,14 @@
     {
       "id": "person_ns_0072",
       "poi": false,
-      "name": "Ben Nguyen",
-      "role": "Marching band member",
+      "name": "Ben Sato",
+      "role": "Graduate student — Education",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0072_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0072\nName: Nguyen, Ben\nRole: Marching band member\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0072\nName: Sato, Ben\nRole: Graduate student — Education\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0072_card",
@@ -1626,14 +1626,14 @@
     {
       "id": "person_ns_0073",
       "poi": false,
-      "name": "Celia Nguyen",
-      "role": "Intramural referee",
+      "name": "Celia Almeida",
+      "role": "Residence hall RA",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0073_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0073\nName: Nguyen, Celia\nRole: Intramural referee\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0073\nName: Almeida, Celia\nRole: Residence hall RA\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0073_card",
@@ -1645,14 +1645,14 @@
     {
       "id": "person_ns_0074",
       "poi": false,
-      "name": "Dan Nguyen",
-      "role": "Alumni relations intern",
+      "name": "Dan Fitzgerald",
+      "role": "Facilities night porter",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0074_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0074\nName: Nguyen, Dan\nRole: Alumni relations intern\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0074\nName: Fitzgerald, Dan\nRole: Facilities night porter\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0074_card",
@@ -1664,14 +1664,14 @@
     {
       "id": "person_ns_0075",
       "poi": false,
-      "name": "Eva Nguyen",
-      "role": "Undergraduate — undeclared",
+      "name": "Eva Zhou",
+      "role": "Campus shuttle driver",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0075_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0075\nName: Nguyen, Eva\nRole: Undergraduate — undeclared\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0075\nName: Zhou, Eva\nRole: Campus shuttle driver\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0075_card",
@@ -1683,14 +1683,14 @@
     {
       "id": "person_ns_0076",
       "poi": false,
-      "name": "Felix Nguyen",
-      "role": "Undergraduate — Computer Science",
+      "name": "Felix Williams",
+      "role": "Admissions tour guide",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0076_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0076\nName: Nguyen, Felix\nRole: Undergraduate — Computer Science\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0076\nName: Williams, Felix\nRole: Admissions tour guide\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0076_card",
@@ -1702,14 +1702,14 @@
     {
       "id": "person_ns_0077",
       "poi": false,
-      "name": "Grace Nguyen",
-      "role": "Undergraduate — History",
+      "name": "Grace Taylor",
+      "role": "Health center front desk",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0077_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0077\nName: Nguyen, Grace\nRole: Undergraduate — History\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0077\nName: Taylor, Grace\nRole: Health center front desk\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0077_card",
@@ -1721,14 +1721,14 @@
     {
       "id": "person_ns_0078",
       "poi": false,
-      "name": "Hugo Nguyen",
-      "role": "Graduate student — Education",
+      "name": "Hugo Thompson",
+      "role": "Marching band member",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0078_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0078\nName: Nguyen, Hugo\nRole: Graduate student — Education\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0078\nName: Thompson, Hugo\nRole: Marching band member\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0078_card",
@@ -1740,14 +1740,14 @@
     {
       "id": "person_ns_0079",
       "poi": false,
-      "name": "Ivy Nguyen",
-      "role": "Library student aide",
+      "name": "Ivy Walker",
+      "role": "Orientation leader",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0079_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0079\nName: Nguyen, Ivy\nRole: Library student aide\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0079\nName: Walker, Ivy\nRole: Orientation leader\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0079_card",
@@ -1759,14 +1759,14 @@
     {
       "id": "person_ns_0080",
       "poi": false,
-      "name": "Jack Nguyen",
-      "role": "Dining services associate",
+      "name": "Jack Lopez",
+      "role": "Undergraduate — undeclared",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0080_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0080\nName: Nguyen, Jack\nRole: Dining services associate\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0080\nName: Lopez, Jack\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0080_card",
@@ -1778,14 +1778,14 @@
     {
       "id": "person_ns_0081",
       "poi": false,
-      "name": "Nora Nguyen",
-      "role": "Facilities night porter",
+      "name": "Nora Carter",
+      "role": "Undergraduate — English",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0081_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0081\nName: Nguyen, Nora\nRole: Facilities night porter\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0081\nName: Carter, Nora\nRole: Undergraduate — English\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0081_card",
@@ -1797,14 +1797,14 @@
     {
       "id": "person_ns_0082",
       "poi": false,
-      "name": "Owen Nguyen",
-      "role": "Box office volunteer",
+      "name": "Owen Parker",
+      "role": "Graduate student — Education",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0082_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0082\nName: Nguyen, Owen\nRole: Box office volunteer\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0082\nName: Parker, Owen\nRole: Graduate student — Education\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0082_card",
@@ -1816,14 +1816,14 @@
     {
       "id": "person_ns_0083",
       "poi": false,
-      "name": "Paul Nguyen",
-      "role": "IT helpdesk student worker",
+      "name": "Paul Rogers",
+      "role": "Residence hall RA",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0083_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0083\nName: Nguyen, Paul\nRole: IT helpdesk student worker\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0083\nName: Rogers, Paul\nRole: Residence hall RA\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0083_card",
@@ -1835,14 +1835,14 @@
     {
       "id": "person_ns_0084",
       "poi": false,
-      "name": "Quinn Nguyen",
-      "role": "Admissions tour guide",
+      "name": "Quinn Rivera",
+      "role": "Facilities night porter",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0084_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0084\nName: Nguyen, Quinn\nRole: Admissions tour guide\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0084\nName: Rivera, Quinn\nRole: Facilities night porter\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0084_card",
@@ -1854,14 +1854,14 @@
     {
       "id": "person_ns_0085",
       "poi": false,
-      "name": "Ruth Nguyen",
-      "role": "Parking services attendant",
+      "name": "Ruth Peterson",
+      "role": "Campus shuttle driver",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0085_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0085\nName: Nguyen, Ruth\nRole: Parking services attendant\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0085\nName: Peterson, Ruth\nRole: Campus shuttle driver\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0085_card",
@@ -1873,14 +1873,14 @@
     {
       "id": "person_ns_0086",
       "poi": false,
-      "name": "Sean Nguyen",
-      "role": "Registrar clerk",
+      "name": "Sean Sanders",
+      "role": "Admissions tour guide",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0086_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0086\nName: Nguyen, Sean\nRole: Registrar clerk\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0086\nName: Sanders, Sean\nRole: Admissions tour guide\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0086_card",
@@ -1892,14 +1892,14 @@
     {
       "id": "person_ns_0087",
       "poi": false,
-      "name": "Tina Nguyen",
-      "role": "Marching band member",
+      "name": "Tina Coleman",
+      "role": "Health center front desk",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0087_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0087\nName: Nguyen, Tina\nRole: Marching band member\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0087\nName: Coleman, Tina\nRole: Health center front desk\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0087_card",
@@ -1911,14 +1911,14 @@
     {
       "id": "person_ns_0088",
       "poi": false,
-      "name": "Ulysses Nguyen",
-      "role": "Intramural referee",
+      "name": "Ulysses Flores",
+      "role": "Marching band member",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0088_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0088\nName: Nguyen, Ulysses\nRole: Intramural referee\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0088\nName: Flores, Ulysses\nRole: Marching band member\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0088_card",
@@ -1930,14 +1930,14 @@
     {
       "id": "person_ns_0089",
       "poi": false,
-      "name": "Vince Nguyen",
-      "role": "Alumni relations intern",
+      "name": "Vince Kowalski",
+      "role": "Orientation leader",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0089_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0089\nName: Nguyen, Vince\nRole: Alumni relations intern\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0089\nName: Kowalski, Vince\nRole: Orientation leader\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0089_card",
@@ -1949,14 +1949,14 @@
     {
       "id": "person_ns_0090",
       "poi": false,
-      "name": "Wendy Nguyen",
+      "name": "Wendy Dupont",
       "role": "Undergraduate — undeclared",
       "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
       "records": [
         {
           "id": "person_ns_0090_directory",
           "title": "Campus directory card",
-          "description": "UPSR DIRECTORY\nID: person_ns_0090\nName: Nguyen, Wendy\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+          "description": "UPSR DIRECTORY\nID: person_ns_0090\nName: Dupont, Wendy\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
         },
         {
           "id": "person_ns_0090_card",
