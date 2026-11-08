@@ -34,6 +34,9 @@ namespace CaseClosed.CaseCore.Gemini
         [Tooltip("When scenario + Gemini unavailable, answer from CaseCore fallback lines.")]
         [SerializeField] private bool allowOfflineMock = true;
 
+        [Header("Debug")]
+        [SerializeField] private bool logOpeningStatementDiagnostics;
+
         private readonly Dictionary<string, List<string>> historyBySuspect = new Dictionary<string, List<string>>();
         private readonly Dictionary<string, InterrogationResult> lastStressBySuspect = new Dictionary<string, InterrogationResult>();
         private readonly HashSet<string> slippedSuspectIds = new HashSet<string>();
@@ -158,8 +161,19 @@ namespace CaseClosed.CaseCore.Gemini
         /// </summary>
         public void SpeakOpeningStatement(SuspectRecord suspect)
         {
-            if (suspect == null || string.IsNullOrWhiteSpace(suspect.Statement))
+            if (suspect == null)
+            {
+                if (logOpeningStatementDiagnostics)
+                    Debug.LogWarning("[InterrogationDialogue] Opening statement skipped: suspect is null.");
                 return;
+            }
+
+            if (string.IsNullOrWhiteSpace(suspect.Statement))
+            {
+                if (logOpeningStatementDiagnostics)
+                    Debug.Log("[InterrogationDialogue] Opening statement skipped: authored statement is blank.");
+                return;
+            }
 
             var voice = new SuspectVoiceLine
             {
@@ -173,8 +187,16 @@ namespace CaseClosed.CaseCore.Gemini
             };
 
             Action<SuspectVoiceLine> ready = SuspectLineReady;
-            if (ready != null)
-                ready.Invoke(voice);
+            if (ready == null)
+            {
+                if (logOpeningStatementDiagnostics)
+                    Debug.LogWarning("[InterrogationDialogue] Opening statement prepared but SuspectLineReady has no subscribers.");
+                return;
+            }
+
+            if (logOpeningStatementDiagnostics)
+                Debug.Log("[InterrogationDialogue] Opening statement dispatched to " + ready.GetInvocationList().Length + " subscriber(s).");
+            ready.Invoke(voice);
         }
 
         /// <summary>

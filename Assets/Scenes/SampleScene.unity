@@ -2143,10 +2143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c4a4a3df6c0ec43a286690b293879c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.UI.DeskClaimNotepad
-  localPosition: {x: -0.001, y: 0.0115, z: 0.0472}
-  localRotation: {x: -90, y: 0, z: 180}
-  localScale: {x: 0.00011, y: 0.00011, z: 0.00011}
-  canvasSize: {x: 900, y: 1300}
   headerFontSize: 48
   claimFontSize: 48
   rowHeight: 165
@@ -4936,9 +4932,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.CameraControl.NotepadFocusController
   notepadSurface: {fileID: 1281385320}
-  focusDistance: 0.2
-  focusedFieldOfView: 42
-  transitionDuration: 0.38
   notepad: {fileID: 158528917}
   monitorFocusController: {fileID: 330585548}
   clipboardFocusController: {fileID: 330585549}
@@ -15348,7 +15341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.Gameplay.CaseGameplayPrototype
   caseSeed: 42
-  suspectCount: 2
+  suspectCount: 4
   shiftController: {fileID: 1467552879}
   geminiApiKeySettings: {fileID: 0}
   apiProxySettings: {fileID: 11400000, guid: d4e5f60718293a4b5c6d7e8f901a2b3c, type: 2}
@@ -15391,6 +15384,7 @@ MonoBehaviour:
   preferScenarioBank: 1
   allowGeminiFallback: 0
   allowOfflineMock: 1
+  logOpeningStatementDiagnostics: 1
 --- !u!114 &1467552883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15690,7 +15684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.Characters.SuspectEnterController
   doorPoint: {fileID: 458344607}
   chairPoint: {fileID: 973643455}
-  exitPoint: {fileID: 1533320489}
+  exitPoint: {fileID: 458344607}
   characterPool: {fileID: 1467552898}
   walkSpeed: 1.35
   sitSettleSeconds: 1.5

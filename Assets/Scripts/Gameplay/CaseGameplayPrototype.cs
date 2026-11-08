@@ -23,8 +23,8 @@ namespace CaseClosed.Gameplay
         [Header("Case Setup")]
         [Tooltip("Base seed. Each Start / Restart advances by one so case titles rotate through the template pack.")]
         [SerializeField] private int caseSeed = 42;
-        [Tooltip("Number of suspects in this prototype case; the initial case uses two suspects.")]
-        [SerializeField, Range(2, 4)] private int suspectCount = 2;
+        [Tooltip("Number of suspects in each Standard case; Demo uses its fixed two-suspect case.")]
+        [SerializeField, Range(2, 4)] private int suspectCount = 4;
 
         [Header("Case Controller")]
         [Tooltip("Case state and scoring controller. Added automatically when empty.")]

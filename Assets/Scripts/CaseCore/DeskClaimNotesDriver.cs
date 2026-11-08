@@ -5,6 +5,7 @@ using CaseClosed.CaseCore.Gemini;
 using CaseClosed.UI;
 using CaseClosed.Voice;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CaseClosed.CaseCore
 {
@@ -24,8 +25,11 @@ namespace CaseClosed.CaseCore
         private bool subscribed;
         private bool speechSubscribed;
         private bool warnedMissingNotepad;
-        private string warnedMissingCase = string.Empty;
+        private readonly HashSet<string> warnedMissingCases = new HashSet<string>(StringComparer.Ordinal);
         private readonly List<ClaimNoteRecord> seenRecords = new List<ClaimNoteRecord>(8);
+        private bool interviewStarted;
+        private string interviewCaseId = string.Empty;
+        private string interviewSuspectId = string.Empty;
 
         // Same wait the clipboard uses before it clears a subtitle whose voice never starts.
         private const float SubtitleVoiceStartFallbackSeconds = 12f;
@@ -40,15 +44,29 @@ namespace CaseClosed.CaseCore
         private float openingSentUnscaledTime;
         private GameObject openingSubtitle;
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Install()
         {
             if (!Application.isPlaying) return;
-            if (FindAnyObjectByType<DeskClaimNotesDriver>() != null) return;
+            SceneManager.sceneLoaded -= InstallForLoadedScene;
+            SceneManager.sceneLoaded += InstallForLoadedScene;
+        }
 
-            CaseShiftController shift = FindAnyObjectByType<CaseShiftController>();
-            if (shift == null) return;
-            shift.gameObject.AddComponent<DeskClaimNotesDriver>();
+        private static void InstallForLoadedScene(Scene scene, LoadSceneMode mode)
+        {
+            if (!Application.isPlaying || !scene.IsValid() || !scene.isLoaded) return;
+
+            GameObject[] roots = scene.GetRootGameObjects();
+            for (int rootIndex = 0; rootIndex < roots.Length; rootIndex++)
+            {
+                CaseShiftController[] controllers = roots[rootIndex].GetComponentsInChildren<CaseShiftController>(true);
+                for (int controllerIndex = 0; controllerIndex < controllers.Length; controllerIndex++)
+                {
+                    CaseShiftController controller = controllers[controllerIndex];
+                    if (controller == null || controller.GetComponent<DeskClaimNotesDriver>() != null) continue;
+                    controller.gameObject.AddComponent<DeskClaimNotesDriver>();
+                }
+            }
         }
 
         private void Awake()
@@ -174,60 +192,94 @@ namespace CaseClosed.CaseCore
 
         private void BeginInterviewNotes()
         {
-            if (shiftController == null || shiftController.ActiveSession == null) return;
-
-            SuspectRecord suspect = shiftController.CurrentSuspect;
-            if (suspect == null) return;
-
-            if (!string.IsNullOrEmpty(notesSuspectId) &&
-                string.Equals(notesSuspectId, suspect.Id, StringComparison.Ordinal))
+            if (shiftController == null) return;
+            if (shiftController.ActiveSession == null)
             {
-                ApplyRecordMarks(suspect);
-                return;
-            }
-
-            if (awaitingOpening && string.Equals(awaitingSuspectId, suspect.Id, StringComparison.Ordinal))
-                return;
-
-            CaseFile caseFile = shiftController.ActiveSession.Case;
-            CaseTemplateCatalog.CaseTemplate template = caseFile == null
-                ? null
-                : CaseTemplateCatalog.FindByTitle(caseFile.Title);
-            ClaimNoteCase notes = template == null ? null : ClaimNoteBook.Find(template.id);
-            if (notes == null || notes.claims == null || notes.claims.Length == 0)
-            {
-                string title = caseFile != null ? caseFile.Title : string.Empty;
-                if (!string.IsNullOrEmpty(title) && !string.Equals(warnedMissingCase, title, StringComparison.Ordinal))
-                {
-                    warnedMissingCase = title;
-                    Debug.LogWarning("[DeskClaimNotes] No authored claims for \"" + title + "\".");
-                }
-
                 HideNotes();
                 return;
             }
 
+            SuspectRecord suspect = shiftController.CurrentSuspect;
+            if (suspect == null)
+            {
+                HideNotes();
+                return;
+            }
+
+            string suspectId = suspect.Id ?? string.Empty;
+            CaseFile caseFile = shiftController.ActiveSession.Case;
+            string caseId = caseFile == null ? string.Empty : caseFile.CaseId ?? string.Empty;
+            if (interviewStarted &&
+                string.Equals(interviewCaseId, caseId, StringComparison.Ordinal) &&
+                string.Equals(interviewSuspectId, suspectId, StringComparison.Ordinal))
+                return;
+
+            CancelOpeningWait();
+            interviewStarted = true;
+            interviewCaseId = caseId;
+            interviewSuspectId = suspectId;
+            activeNotes = null;
+            notesSuspectId = string.Empty;
+            activeDecoyKey = string.Empty;
+            pendingClaimIds = Array.Empty<string>();
+            pendingClaimTexts = Array.Empty<string>();
+
+            DeskClaimNotepad currentNotepad = notepad != null
+                ? notepad
+                : FindAnyObjectByType<DeskClaimNotepad>(FindObjectsInactive.Include);
+            if (currentNotepad != null)
+            {
+                notepad = currentNotepad;
+                currentNotepad.Clear();
+            }
+
+            CaseTemplateCatalog.CaseTemplate template = caseFile == null
+                ? null
+                : CaseTemplateCatalog.FindByTitle(caseFile.Title);
+            ClaimNoteCase notes = template == null ? null : ClaimNoteBook.Find(template.id);
             int count = 0;
-            for (int i = 0; i < notes.claims.Length; i++)
+            if (notes != null && notes.claims != null)
             {
-                if (notes.claims[i] != null && !string.IsNullOrWhiteSpace(notes.claims[i].id))
-                    count++;
+                for (int i = 0; i < notes.claims.Length; i++)
+                {
+                    if (notes.claims[i] != null && !string.IsNullOrWhiteSpace(notes.claims[i].id))
+                        count++;
+                }
             }
 
-            pendingClaimIds = new string[count];
-            pendingClaimTexts = new string[count];
-            int written = 0;
-            for (int i = 0; i < notes.claims.Length; i++)
+            if (count > 0)
             {
-                ClaimNoteLine line = notes.claims[i];
-                if (line == null || string.IsNullOrWhiteSpace(line.id)) continue;
-                pendingClaimIds[written] = line.id.Trim();
-                pendingClaimTexts[written] = line.text ?? string.Empty;
-                written++;
-            }
+                pendingClaimIds = new string[count];
+                pendingClaimTexts = new string[count];
+                int written = 0;
+                for (int i = 0; i < notes.claims.Length; i++)
+                {
+                    ClaimNoteLine line = notes.claims[i];
+                    if (line == null || string.IsNullOrWhiteSpace(line.id)) continue;
+                    pendingClaimIds[written] = line.id.Trim();
+                    pendingClaimTexts[written] = line.text ?? string.Empty;
+                    written++;
+                }
 
-            activeNotes = notes;
-            activeDecoyKey = PersonKey(template.decoySuspectId);
+                activeNotes = notes;
+                activeDecoyKey = PersonKey(template.decoySuspectId);
+            }
+            else
+            {
+                string caseKey = caseFile == null ? string.Empty : caseFile.CaseId;
+                if (string.IsNullOrWhiteSpace(caseKey) && caseFile != null)
+                    caseKey = caseFile.Title ?? string.Empty;
+                if (string.IsNullOrWhiteSpace(caseKey))
+                    caseKey = "<missing case>";
+
+                if (warnedMissingCases.Add(caseKey))
+                {
+                    string title = caseFile == null || string.IsNullOrWhiteSpace(caseFile.Title)
+                        ? caseKey
+                        : caseFile.Title;
+                    Debug.LogWarning("[DeskClaimNotes] No authored claims for case \"" + title + "\"; the opening statement will still be sent.");
+                }
+            }
 
             if (string.IsNullOrWhiteSpace(suspect.Statement))
             {
@@ -290,8 +342,17 @@ namespace CaseClosed.CaseCore
 
         private bool ShowPreparedClaims(SuspectRecord suspect)
         {
+            if (suspect == null)
+                return false;
+
+            if (activeNotes == null || pendingClaimIds == null || pendingClaimIds.Length == 0)
+            {
+                notesSuspectId = string.Empty;
+                return true;
+            }
+
             DeskClaimNotepad pad = Notepad();
-            if (pad == null || suspect == null)
+            if (pad == null)
                 return false;
 
             pad.SetClaims(pendingClaimIds, pendingClaimTexts);
@@ -306,6 +367,7 @@ namespace CaseClosed.CaseCore
             awaitingSuspectId = string.Empty;
             openingSpeechStarted = false;
             openingSubtitleSeen = false;
+            openingSentUnscaledTime = 0f;
             openingSubtitle = null;
         }
 
@@ -363,6 +425,9 @@ namespace CaseClosed.CaseCore
         private void HideNotes()
         {
             CancelOpeningWait();
+            interviewStarted = false;
+            interviewCaseId = string.Empty;
+            interviewSuspectId = string.Empty;
             notesSuspectId = string.Empty;
             activeNotes = null;
             activeDecoyKey = string.Empty;
