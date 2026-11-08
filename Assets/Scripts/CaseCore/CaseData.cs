@@ -175,9 +175,9 @@ namespace CaseClosed.CaseCore
                 "At the west bus loop after leaving campus buildings.",
                 new[]
                 {
-                    new EvidenceRecord(DemoCaseId + "_jamie_purchase", "Utility-knife purchase", "A campus-adjacent hardware debit under Jamie Rivera's card bought a folding utility knife the same afternoon.", EvidenceKind.RedHerring, "Jamie Rivera used the knife to open taped spirit posters for a club table — not the banner ropes."),
+                    new EvidenceRecord(DemoCaseId + "_jamie_red_herring", "Utility-knife purchase", "A campus-adjacent hardware debit under Jamie Rivera's card bought a folding utility knife the same afternoon.", EvidenceKind.RedHerring, "Jamie Rivera used the knife to open taped spirit posters for a club table — not the banner ropes."),
                     new EvidenceRecord(DemoCaseId + "_jamie_roster", "Volunteer duty roster", "Jamie is listed on the evening volunteer crew for a campus event.", EvidenceKind.Context, string.Empty),
-                    new EvidenceRecord(DemoCaseId + "_jamie_bus", "Transit tap receipt", "A transit-card tap places Jamie at the west bus loop shortly after they said they left.", EvidenceKind.Context, string.Empty),
+                    new EvidenceRecord(DemoCaseId + "_jamie_alibi_support", "Transit tap receipt", "A transit-card tap places Jamie at the west bus loop shortly after they said they left.", EvidenceKind.Context, string.Empty),
                     new EvidenceRecord(DemoCaseId + "_jamie_sign_in", "Athletics volunteer day sheet", "Jamie Rivera signed the afternoon Field House athletics volunteer sheet before the cutdown window.", EvidenceKind.Context, string.Empty)
                 },
                 CaseClosed.Voice.SuspectVoiceCatalog.GetProfile("suspect_jamie").VoiceId);
@@ -191,8 +191,8 @@ namespace CaseClosed.CaseCore
                 new[]
                 {
                     new EvidenceRecord(DemoCaseId + "_morgan_access", "Photo over the court", "A 6:21 PM photo over the court shows someone in Morgan Lee's clothes on the banner walkway, after Morgan Lee said they were at dinner across campus.", EvidenceKind.Contradiction, "Morgan Lee went up over the court and cut down the spirit banner."),
-                    new EvidenceRecord(DemoCaseId + "_morgan_schedule", "Events desk schedule", "Morgan's posted events desk shift ended on time according to the roster.", EvidenceKind.Context, string.Empty),
-                    new EvidenceRecord(DemoCaseId + "_morgan_hall", "Hall exterior door log", "Morgan's hall exterior door registered an entry after their stated departure from work.", EvidenceKind.Context, string.Empty),
+                    new EvidenceRecord(DemoCaseId + "_morgan_roster", "Events desk schedule", "Morgan's posted events desk shift ended on time according to the roster.", EvidenceKind.Context, string.Empty),
+                    new EvidenceRecord(DemoCaseId + "_morgan_alibi_support", "Hall exterior door log", "Morgan's hall exterior door registered an entry after their stated departure from work.", EvidenceKind.Context, string.Empty),
                     new EvidenceRecord(DemoCaseId + "_morgan_sign_in", "Athletics volunteer day sheet", "Morgan Lee signed the afternoon Field House athletics volunteer sheet before the cutdown window.", EvidenceKind.Context, string.Empty)
                 },
                 CaseClosed.Voice.SuspectVoiceCatalog.GetProfile("suspect_morgan").VoiceId);
