@@ -25,8 +25,8 @@ namespace CaseClosed.UI
         [SerializeField] private InterrogationActionHud actionHud;
 
         [Header("Prototype Overlay")]
-        [Tooltip("When true, spawn a temporary Overlay board if board hooks are empty.")]
-        [SerializeField] private bool createOverlayWhenUnwired = true;
+        [Tooltip("Off by default — Bezi owns the right CASE FILE / EVIDENCE clipboard. Do not respawn a prototype overlay.")]
+        [SerializeField] private bool createOverlayWhenUnwired = false;
 
         [Tooltip("Anchor the prototype board on the right side of the screen.")]
         [SerializeField] private bool rightSideBoard = true;
@@ -35,6 +35,10 @@ namespace CaseClosed.UI
 
         private void Awake()
         {
+            // Bezi removes the right duplicate clipboard — never fight that by respawning, even if an
+            // older scene still has createOverlayWhenUnwired serialized true.
+            createOverlayWhenUnwired = false;
+
             if (shiftController == null)
                 shiftController = GetComponent<CaseShiftController>();
             if (shiftController == null)
@@ -61,16 +65,21 @@ namespace CaseClosed.UI
                 stampPad.SetShiftController(shiftController);
             }
 
+            DestroyLeftoverPrototypeOverlay();
             EnsureEventSystem();
+
+            // Stay on the object for wiring, but do not run Start overlay spawn.
+            enabled = false;
         }
 
         private void Start()
         {
-            if (actionHud == null)
-                actionHud = GetComponent<InterrogationActionHud>() ?? FindAnyObjectByType<InterrogationActionHud>();
-
+            // Hidden by default — Awake disables this component so Bezi scene cleanup sticks.
             if (!createOverlayWhenUnwired || overlayRoot != null)
                 return;
+
+            if (actionHud == null)
+                actionHud = GetComponent<InterrogationActionHud>() ?? FindAnyObjectByType<InterrogationActionHud>();
 
             bool boardReady = evidenceBoard != null && evidenceBoard.HasBoardHooks;
             // InterrogationActionHud DECISION footer owns HOLD/RELEASE — never spawn a second stamp pad.
@@ -78,11 +87,24 @@ namespace CaseClosed.UI
             bool stampReady = stampPad != null && stampPad.HasStampHooks;
             bool skipStampPad = hudOwnsStamps || stampReady;
 
-            // Right EVIDENCE clipboard only when Bezi hooks are empty. One stamp UI only.
+            // Only reachable if createOverlayWhenUnwired is forced true at runtime for a one-off debug.
             if (!boardReady)
                 BuildPrototypeOverlay(boardAlreadyReady: false, stampAlreadyReady: skipStampPad);
             else if (!skipStampPad)
                 BuildPrototypeOverlay(boardAlreadyReady: true, stampAlreadyReady: false);
+        }
+
+        private void DestroyLeftoverPrototypeOverlay()
+        {
+            if (overlayRoot != null)
+            {
+                Destroy(overlayRoot);
+                overlayRoot = null;
+            }
+
+            Transform existing = transform.Find("StampUiPrototypeOverlay");
+            if (existing != null)
+                Destroy(existing.gameObject);
         }
 
         private void OnDestroy()

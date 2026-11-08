@@ -134,6 +134,10 @@ namespace CaseClosed.UI
             if ((hudCanvas == null || panelRoot == null) && buildRuntimeUiIfMissing)
                 BuildRuntimeUi();
 
+            // Bed1dd1 hotfix still left VLH Body stacks; normalize as soon as the pad exists.
+            if (transcriptRoot != null)
+                EnsureSingleTranscriptBody();
+
             WireChrome();
             SetPanelOpen(startOpen);
             RefreshChrome();
@@ -681,10 +685,32 @@ namespace CaseClosed.UI
         /// </summary>
         private void EnsureSingleTranscriptBody()
         {
+            if (transcriptRoot == null) return;
+
             // Drop VLH so AccentStripe stretch + one body Text are not layout-fought.
             VerticalLayoutGroup vlg = transcriptRoot.GetComponent<VerticalLayoutGroup>();
             if (vlg != null)
                 DestroyImmediate(vlg);
+            ContentSizeFitter rootFit = transcriptRoot.GetComponent<ContentSizeFitter>();
+            if (rootFit != null)
+                DestroyImmediate(rootFit);
+
+            if (transcriptBodyText == null)
+            {
+                Transform existing = transcriptRoot.Find("TranscriptBody");
+                if (existing != null)
+                    transcriptBodyText = existing.GetComponent<Text>();
+            }
+
+            // Nuclear purge: every Text under the pad except one TranscriptBody (bed1dd1 left Body stacks).
+            Text[] texts = transcriptRoot.GetComponentsInChildren<Text>(true);
+            for (int i = 0; i < texts.Length; i++)
+            {
+                Text t = texts[i];
+                if (t == null) continue;
+                if (transcriptBodyText != null && t == transcriptBodyText) continue;
+                DestroyImmediate(t.gameObject);
+            }
 
             for (int i = transcriptRoot.childCount - 1; i >= 0; i--)
             {
@@ -703,15 +729,7 @@ namespace CaseClosed.UI
                 if (transcriptBodyText != null && child == transcriptBodyText.transform)
                     continue;
 
-                // Purge stacked Body_* leftovers from the multi-Text rebuild path.
                 DestroyImmediate(child.gameObject);
-            }
-
-            if (transcriptBodyText == null)
-            {
-                Transform existing = transcriptRoot.Find("TranscriptBody");
-                if (existing != null)
-                    transcriptBodyText = existing.GetComponent<Text>();
             }
 
             if (transcriptBodyText == null)
