@@ -96,7 +96,7 @@ namespace CaseClosed.CaseCore.Gemini
             string url = proxySettings.GeminiProxyUrl;
             int maxTokens = settings != null ? settings.MaxOutputTokens : 90;
             float temperature = settings != null ? settings.Temperature : 0.6f;
-            string model = settings != null ? settings.ModelId : "gemini-2.0-flash";
+            string model = settings != null ? settings.ModelId : "gemini-3.5-flash-lite";
 
             string body = BuildProxyRequestJson(systemPrompt, userPrompt, model, maxTokens, temperature);
             yield return PostJsonForModelText(
@@ -125,7 +125,8 @@ namespace CaseClosed.CaseCore.Gemini
                 request.SetRequestHeader("Content-Type", "application/json");
                 if (!string.IsNullOrWhiteSpace(appToken))
                     request.SetRequestHeader("X-Case-Closed-Token", appToken);
-                request.timeout = 20;
+                // Proxy aims for <10s; keep headroom above Unity default so transient 503 spikes don't look like HTTP 0.
+                request.timeout = 35;
 
                 yield return request.SendWebRequest();
 

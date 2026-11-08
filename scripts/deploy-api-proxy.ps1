@@ -3,6 +3,8 @@
 # Usage:  pwsh ./scripts/deploy-api-proxy.ps1
 
 $ErrorActionPreference = "Stop"
+$env:GIT_TERMINAL_PROMPT = "0"
+$env:GCM_INTERACTIVE = "never"
 $root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $root
 
@@ -25,8 +27,8 @@ $siteId = "77866f37-2c33-44a0-a846-3d44200be13b"
 $npx = if (Test-Path "$nodeDir\npx.cmd") { "$nodeDir\npx.cmd" } else { "npx" }
 
 Write-Host "Using node: $(node -v)"
-Write-Host "Deploying site/ + netlify/functions to site $siteId ..."
-& $npx --yes netlify-cli deploy --prod --dir=site --functions=netlify/functions --site=$siteId
+Write-Host "Deploying site/ + netlify/functions to site $siteId (non-interactive) ..."
+& $npx --yes netlify-cli deploy --prod --dir=site --functions=netlify/functions --site=$siteId --auth $env:NETLIFY_AUTH_TOKEN
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Host ""

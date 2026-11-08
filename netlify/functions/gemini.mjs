@@ -7,8 +7,8 @@
  * {
  *   "systemPrompt": string,
  *   "userPrompt": string,
- *   "model"?: string,            // default gemini-2.0-flash
- *   "maxOutputTokens"?: number,  // default 90, clamp 40–160
+ *   "model"?: string,            // default gemini-3.5-flash-lite
+ *   "maxOutputTokens"?: number,  // default 60, clamp 40–120
  *   "temperature"?: number       // default 0.6, clamp 0–1.5
  * }
  *
@@ -25,11 +25,37 @@ import {
 
 const MAX_BODY = 24 * 1024; // 24 KB — short interrogation prompts only
 const MAX_RPM = 40;
+/** Fastest live flash-lite for short suspect barks (2.5-* currently 503/unavailable). */
+const DEFAULT_MODEL = "gemini-3.5-flash-lite";
+
+/** Retired / overloaded model ids → snappy flash-lite default. */
+const RETIRED_MODEL_MAP = {
+  "gemini-2.0-flash": DEFAULT_MODEL,
+  "gemini-2.0-flash-001": DEFAULT_MODEL,
+  "gemini-2.0-flash-lite": DEFAULT_MODEL,
+  "gemini-2.0-flash-lite-001": DEFAULT_MODEL,
+  "gemini-1.5-flash": DEFAULT_MODEL,
+  "gemini-1.5-flash-latest": DEFAULT_MODEL,
+  "gemini-1.5-pro": DEFAULT_MODEL,
+  // 3.8 is too slow / overloaded for interrogation (30s Netlify timeouts).
+  "gemini-3.8-flash": DEFAULT_MODEL,
+  "gemini-flash-latest": DEFAULT_MODEL,
+};
 
 function clamp(n, lo, hi, fallback) {
   const x = Number(n);
   if (!Number.isFinite(x)) return fallback;
   return Math.min(hi, Math.max(lo, x));
+}
+
+function resolveModel(requested) {
+  const raw = String(requested || env("GEMINI_MODEL", DEFAULT_MODEL)).trim();
+  const mapped = RETIRED_MODEL_MAP[raw.toLowerCase()] || raw;
+  return mapped;
+}
+
+function isGemini25Family(modelId) {
+  return /^gemini-2\.5-/i.test(modelId);
 }
 
 function extractModelText(responseJson) {
@@ -38,7 +64,10 @@ function extractModelText(responseJson) {
     const parts = data?.candidates?.[0]?.content?.parts;
     if (!Array.isArray(parts)) return "";
     return parts
-      .map((p) => (typeof p?.text === "string" ? p.text : ""))
+      .map((p) => {
+        if (p?.thought === true) return "";
+        return typeof p?.text === "string" ? p.text : "";
+      })
       .join("")
       .trim();
   } catch {
@@ -77,13 +106,13 @@ export async function handler(event) {
     );
   }
 
-  const modelRaw = String(body.model || env("GEMINI_MODEL", "gemini-2.0-flash")).trim();
-  // Allow only gemini-* model ids (block URL injection)
+  const modelRaw = resolveModel(body.model);
   if (!/^gemini-[a-z0-9._-]+$/i.test(modelRaw)) {
     return json(400, { error: "Invalid model id" }, headers);
   }
 
-  const maxOutputTokens = clamp(body.maxOutputTokens, 40, 160, 90);
+  // Keep replies tiny — interrogation barks only.
+  const maxOutputTokens = clamp(body.maxOutputTokens, 40, 120, 60);
   const temperature = clamp(body.temperature, 0, 1.5, 0.6);
 
   const url =
@@ -92,14 +121,24 @@ export async function handler(event) {
     ":generateContent?key=" +
     encodeURIComponent(apiKey);
 
+  const generationConfig = {
+    temperature,
+    maxOutputTokens,
+    responseMimeType: "application/json",
+  };
+
+  // 2.5 family: thinkingBudget 0 disables thinking (fast).
+  // 3.x family: thinking cannot be off — use lowest level ("low"; "minimal" errors on 3.8).
+  if (isGemini25Family(modelRaw)) {
+    generationConfig.thinkingConfig = { thinkingBudget: 0 };
+  } else {
+    generationConfig.thinkingConfig = { thinkingLevel: "low" };
+  }
+
   const payload = {
     system_instruction: { parts: [{ text: systemPrompt }] },
     contents: [{ role: "user", parts: [{ text: userPrompt }] }],
-    generationConfig: {
-      temperature,
-      maxOutputTokens,
-      responseMimeType: "application/json",
-    },
+    generationConfig,
   };
 
   let upstream;
@@ -132,8 +171,22 @@ export async function handler(event) {
 
   const text = extractModelText(raw);
   if (!text) {
-    return json(502, { error: "Gemini returned empty payload" }, headers);
+    let finishReason = "";
+    try {
+      finishReason = JSON.parse(raw)?.candidates?.[0]?.finishReason || "";
+    } catch {
+      /* ignore */
+    }
+    return json(
+      502,
+      {
+        error: "Gemini returned empty payload",
+        finishReason: finishReason || undefined,
+        detail: raw.slice(0, 300),
+      },
+      headers
+    );
   }
 
-  return json(200, { text }, headers);
+  return json(200, { text, model: modelRaw }, headers);
 }
