@@ -1,13 +1,14 @@
 using System;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CaseClosed.Characters
 {
     /// <summary>
     /// Optional CaseShift integration via reflection so this file compiles even when CaseCore
     /// scripts are not on the branch yet. When a <c>CaseShiftController</c> exists at runtime:
-    /// Briefing → enter current suspect; Investigating→Briefing decision → exit then enter next;
+    /// Briefing → Investigating: enter current suspect; Investigating → Briefing decision: exit;
     /// Charging/Headline/Resolved → exit clear.
     /// </summary>
     [DisallowMultipleComponent]
@@ -23,10 +24,11 @@ namespace CaseClosed.Characters
         [Tooltip("Suspect enter controller on this object.")]
         [SerializeField] private SuspectEnterController enterController;
 
-        [Tooltip("When enabled, Briefing auto-plays the enter sequence for CurrentSuspect.")]
-        [SerializeField] private bool autoPlayOnBriefing = true;
+        [Tooltip("When enabled, entering Investigating plays the enter sequence for CurrentSuspect.")]
+        [FormerlySerializedAs("autoPlayOnBriefing")]
+        [SerializeField] private bool autoPlayOnInvestigating = true;
 
-        [Tooltip("When enabled, leaving Investigating (Hold/Release → next Briefing) plays exit before the next enter.")]
+        [Tooltip("When enabled, leaving Investigating for Briefing or a terminal phase plays the exit sequence.")]
         [SerializeField] private bool autoExitOnDecision = true;
 
         private EventInfo phaseChangedEvent;
@@ -35,7 +37,6 @@ namespace CaseClosed.Characters
         private PropertyInfo suspectIdProperty;
         private Delegate phaseHandler;
         private object previousPhaseBoxed;
-        private bool pendingEnterAfterExit;
         private bool bindingReady;
 
         private void Awake()
@@ -145,44 +146,19 @@ namespace CaseClosed.Characters
             string phaseName = phase.ToString();
             string previousName = previousPhaseBoxed != null ? previousPhaseBoxed.ToString() : "Inactive";
 
-            if (autoPlayOnBriefing && phaseName == "Briefing")
+            if (autoPlayOnInvestigating && phaseName == "Investigating")
             {
-                string nextId = ReadCurrentSuspectId();
-                if (!string.IsNullOrEmpty(nextId))
-                {
-                    bool shouldExitFirst = autoExitOnDecision &&
-                                           previousName == "Investigating" &&
-                                           !string.IsNullOrEmpty(enterController.ActiveSuspectId) &&
-                                           enterController.ActiveSuspectId != nextId;
-
-                    if (shouldExitFirst)
-                    {
-                        pendingEnterAfterExit = true;
-                        enterController.PlayExit(OnExitFinishedThenEnter);
-                    }
-                    else
-                    {
-                        enterController.PlayEnter(nextId);
-                    }
-                }
+                PlayEnterCurrentSuspect();
             }
             else if (autoExitOnDecision &&
-                     (phaseName == "Charging" || phaseName == "Headline" || phaseName == "Resolved") &&
+                     ((previousName == "Investigating" && phaseName == "Briefing") ||
+                      phaseName == "Charging" || phaseName == "Headline" || phaseName == "Resolved") &&
                      !string.IsNullOrEmpty(enterController.ActiveSuspectId))
             {
                 enterController.PlayExit(null);
             }
 
             previousPhaseBoxed = phase;
-        }
-
-        private void OnExitFinishedThenEnter()
-        {
-            if (!pendingEnterAfterExit) return;
-            pendingEnterAfterExit = false;
-            string nextId = ReadCurrentSuspectId();
-            if (!string.IsNullOrEmpty(nextId) && enterController != null)
-                enterController.PlayEnter(nextId);
         }
 
         private object ReadPhase()

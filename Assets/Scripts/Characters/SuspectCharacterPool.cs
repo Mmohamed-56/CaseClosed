@@ -1,21 +1,21 @@
 using System;
 using System.Collections.Generic;
+using CaseClosed.Voice;
 using UnityEngine;
 
 namespace CaseClosed.Characters
 {
     /// <summary>
-    /// Spawns one Low Poly People suspect at a time from a prefab pool, swapping the active instance
-    /// while reusing the same door / chair transforms owned by <see cref="SuspectEnterController"/>.
+    /// Spawns one character prefab matching a suspect's broad gender presentation, choosing a stable variant per suspect id.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class SuspectCharacterPool : MonoBehaviour
     {
         [Header("Prefab Pool")]
-        [Tooltip("Low Poly People character prefabs (normal/stout/strong, man/woman). Assign all variants you want in rotation.")]
+        [Tooltip("Floreswa character prefabs. The pool chooses female or male variants from their prefab names; androgynous or unspecified looks may use either.")]
         [SerializeField] private GameObject[] characterPrefabs;
 
-        [Tooltip("Optional palette1–palette9 materials from the Low Poly People package.")]
+        [Tooltip("Optional palette materials. Leave empty to preserve each prefab's authored skin, hair, and outfit materials.")]
         [SerializeField] private Material[] paletteMaterials;
 
         [Header("Spawn Parent")]
@@ -42,7 +42,7 @@ namespace CaseClosed.Characters
             if (spawnPoint == null)
                 throw new ArgumentNullException("spawnPoint");
             if (characterPrefabs == null || characterPrefabs.Length == 0)
-                throw new InvalidOperationException("Assign at least one Low Poly People prefab to SuspectCharacterPool.");
+                throw new InvalidOperationException("Assign at least one character prefab to SuspectCharacterPool.");
 
             ClearActive();
 
@@ -77,27 +77,98 @@ namespace CaseClosed.Characters
             activeDriver = null;
         }
 
+        private enum CharacterPresentation
+        {
+            Any,
+            Female,
+            Male
+        }
+
         private int ResolvePrefabIndex(string suspectId)
         {
             int index;
             if (suspectPrefabIndexById.TryGetValue(suspectId, out index))
                 return index;
 
-            // Stable hash so the same suspect keeps the same body across enter/exit cycles.
-            int hash = StableHash(suspectId);
-            index = hash % characterPrefabs.Length;
-            // Skip null slots.
-            for (int attempt = 0; attempt < characterPrefabs.Length; attempt++)
+            CharacterPresentation requestedPresentation = ResolvePresentation(suspectId);
+            var candidateIndices = new List<int>();
+            for (int i = 0; i < characterPrefabs.Length; i++)
             {
-                int candidate = (index + attempt) % characterPrefabs.Length;
-                if (characterPrefabs[candidate] != null)
+                GameObject prefab = characterPrefabs[i];
+                if (!IsCharacterPrefab(prefab))
+                    continue;
+
+                CharacterPresentation prefabPresentation = GetPrefabPresentation(prefab);
+                if (requestedPresentation == CharacterPresentation.Any || prefabPresentation == requestedPresentation)
+                    candidateIndices.Add(i);
+            }
+
+            // If a requested gender family is not assigned, use the available character models
+            // instead of failing the case. Selection remains stable for this suspect id.
+            if (candidateIndices.Count == 0)
+            {
+                for (int i = 0; i < characterPrefabs.Length; i++)
                 {
-                    suspectPrefabIndexById[suspectId] = candidate;
-                    return candidate;
+                    if (IsCharacterPrefab(characterPrefabs[i]))
+                        candidateIndices.Add(i);
                 }
             }
 
-            throw new InvalidOperationException("No non-null character prefabs are assigned.");
+            if (candidateIndices.Count == 0)
+                throw new InvalidOperationException("No character prefabs with a SkinnedMeshRenderer are assigned.");
+
+            index = candidateIndices[StableHash(suspectId) % candidateIndices.Count];
+            suspectPrefabIndexById[suspectId] = index;
+            return index;
+        }
+
+        private static CharacterPresentation ResolvePresentation(string suspectId)
+        {
+            SuspectVoiceProfile profile = SuspectVoiceCatalog.GetProfile(suspectId);
+            SuspectLook look = profile.Look;
+            if (look != null && !string.IsNullOrWhiteSpace(look.genderPresentation))
+            {
+                string presentation = look.genderPresentation.Trim();
+                if (presentation.IndexOf("woman", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    presentation.IndexOf("female", StringComparison.OrdinalIgnoreCase) >= 0)
+                    return CharacterPresentation.Female;
+                if (presentation.IndexOf("man", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    presentation.IndexOf("male", StringComparison.OrdinalIgnoreCase) >= 0)
+                    return CharacterPresentation.Male;
+                if (presentation.IndexOf("androgynous", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    presentation.IndexOf("neutral", StringComparison.OrdinalIgnoreCase) >= 0)
+                    return CharacterPresentation.Any;
+            }
+
+            switch (profile.Gender)
+            {
+                case SuspectVoiceGender.Female:
+                    return CharacterPresentation.Female;
+                case SuspectVoiceGender.Neutral:
+                    return CharacterPresentation.Any;
+                default:
+                    return CharacterPresentation.Male;
+            }
+        }
+
+        private static CharacterPresentation GetPrefabPresentation(GameObject prefab)
+        {
+            if (prefab == null)
+                return CharacterPresentation.Any;
+
+            string prefabName = prefab.name;
+            if (prefabName.StartsWith("female", StringComparison.OrdinalIgnoreCase) ||
+                prefabName.IndexOf("woman", StringComparison.OrdinalIgnoreCase) >= 0)
+                return CharacterPresentation.Female;
+            if (prefabName.StartsWith("male", StringComparison.OrdinalIgnoreCase) ||
+                prefabName.IndexOf(" man", StringComparison.OrdinalIgnoreCase) >= 0)
+                return CharacterPresentation.Male;
+            return CharacterPresentation.Any;
+        }
+
+        private static bool IsCharacterPrefab(GameObject prefab)
+        {
+            return prefab != null && prefab.GetComponentInChildren<SkinnedMeshRenderer>(true) != null;
         }
 
         private void ApplyStablePalette(GameObject character, string suspectId)

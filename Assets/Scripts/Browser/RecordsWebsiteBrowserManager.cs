@@ -30,6 +30,9 @@ namespace CaseClosed.Browser
         private const string WindowsCefEngineEditorPath = "Packages/dev.voltstro.unitywebbrowser.engine.cef.win.x64/Engine~/";
         private const int BrowserScrollScale = 120;
         private const float BrowserScrollSensitivity = 0.2f;
+        private const int BrowserTcpInPort = 5565;
+        private const int BrowserTcpOutPort = 5566;
+        private const int CefStartupTimeoutMilliseconds = 15000;
 
         [Header("Case Website")]
         [SerializeField] private CaseWebsiteBridge caseWebsiteBridge;
@@ -122,7 +125,11 @@ namespace CaseClosed.Browser
 #endif
 
             browserClient.engine = engineConfiguration;
-            browserClient.communicationLayer = ScriptableObject.CreateInstance<TCPCommunicationLayer>();
+            browserClient.engineStartupTimeout = CefStartupTimeoutMilliseconds;
+            TCPCommunicationLayer communicationLayer = ScriptableObject.CreateInstance<TCPCommunicationLayer>();
+            communicationLayer.inPort = BrowserTcpInPort;
+            communicationLayer.outPort = BrowserTcpOutPort;
+            browserClient.communicationLayer = communicationLayer;
             browserClient.initialUrl = RecordsWebsiteUrl;
             browserClient.jsMethodManager.jsMethodsEnable = true;
         }
@@ -368,8 +375,16 @@ namespace CaseClosed.Browser
 
         private void BindBrowserTextureToDisplaySurface()
         {
-            if (displaySurfaceRenderer == null || browserClient == null || browserClient.BrowserTexture == null)
+            if (displaySurfaceRenderer == null)
                 return;
+
+            if (browserClient == null || !browserClient.IsConnected ||
+                !browserClient.ReadySignalReceived || browserClient.HasDisposed ||
+                browserClient.BrowserTexture == null)
+            {
+                RestoreOriginalDisplayMaterial();
+                return;
+            }
 
             if (runtimeDisplayMaterial == null)
             {
@@ -387,6 +402,26 @@ namespace CaseClosed.Browser
             runtimeDisplayMaterial.mainTexture = browserClient.BrowserTexture;
             runtimeDisplayMaterial.mainTextureScale = new Vector2(1f, flipBrowserTextureVertically ? -1f : 1f);
             runtimeDisplayMaterial.mainTextureOffset = new Vector2(0f, flipBrowserTextureVertically ? 1f : 0f);
+        }
+
+        private void RestoreOriginalDisplayMaterial()
+        {
+            if (runtimeDisplayMaterial == null)
+                return;
+
+            if (displaySurfaceRenderer != null)
+            {
+                Material[] currentMaterials = displaySurfaceRenderer.sharedMaterials;
+                if (currentMaterials.Length > 0 && currentMaterials[0] == runtimeDisplayMaterial)
+                {
+                    currentMaterials[0] = originalDisplayMaterial;
+                    displaySurfaceRenderer.sharedMaterials = currentMaterials;
+                }
+            }
+
+            Destroy(runtimeDisplayMaterial);
+            runtimeDisplayMaterial = null;
+            originalDisplayMaterial = null;
         }
 
         private bool TryGetBrowserMousePosition(Camera inputCamera, Vector2 screenPosition, out Vector2 browserPosition)

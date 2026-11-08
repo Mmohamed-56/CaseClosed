@@ -194,6 +194,22 @@ namespace CaseClosed.CaseCore
             };
         }
 
+        /// <summary>Template whose title matches the active case file, or null.</summary>
+        public static CaseTemplate FindByTitle(string title)
+        {
+            EnsureLoaded();
+            if (string.IsNullOrWhiteSpace(title)) return null;
+            string want = title.Trim();
+            for (int i = 0; i < templates.Count; i++)
+            {
+                CaseTemplate template = templates[i];
+                if (template != null && string.Equals(template.title, want, StringComparison.Ordinal))
+                    return template;
+            }
+
+            return null;
+        }
+
         public static string FormatName(string template, string displayName)
         {
             if (string.IsNullOrEmpty(template)) return string.Empty;

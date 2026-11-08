@@ -9,18 +9,29 @@ namespace CaseClosed.CaseCore
         [Tooltip("The active shift controller that owns case state and collected evidence.")]
         [SerializeField] private CaseShiftController shiftController;
 
-        /// <summary>Returns JSON for the active case, with culprit identity and hidden clue metadata omitted.</summary>
+        /// <summary>Returns only the current interviewee's records, and no student records before investigation begins.</summary>
         public string GetCurrentCaseJson()
         {
             if (shiftController == null || shiftController.ActiveSession == null) return string.Empty;
-            return CaseWebsitePayloadBuilder.BuildJson(shiftController.ActiveSession.Case);
+            return CaseWebsitePayloadBuilder.BuildJsonForCurrentSuspect(
+                shiftController.ActiveSession.Case,
+                GetVisibleCurrentSuspect());
         }
 
-        /// <summary>Returns the URL hash fragment for loading the active case in the records website.</summary>
+        /// <summary>Returns a records-site hash containing only the current interviewee, or an empty record list.</summary>
         public string GetCurrentCaseHashFragment()
         {
             if (shiftController == null || shiftController.ActiveSession == null) return string.Empty;
-            return CaseWebsitePayloadBuilder.BuildHashFragment(shiftController.ActiveSession.Case);
+            return CaseWebsitePayloadBuilder.BuildHashFragmentForCurrentSuspect(
+                shiftController.ActiveSession.Case,
+                GetVisibleCurrentSuspect());
+        }
+
+        private SuspectRecord GetVisibleCurrentSuspect()
+        {
+            return shiftController != null && shiftController.Phase == CaseShiftPhase.Investigating
+                ? shiftController.CurrentSuspect
+                : null;
         }
 
         /// <summary>Browser callback target for the records site's UBPDBridge evidence message.</summary>

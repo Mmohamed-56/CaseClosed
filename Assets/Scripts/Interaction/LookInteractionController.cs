@@ -23,6 +23,8 @@ namespace CaseClosed.Interaction
         [Header("Optional interaction blockers")]
         [Tooltip("Interaction is suppressed while the monitor is focused or transitioning.")]
         [SerializeField] private MonitorFocusController monitorFocusController;
+        [Tooltip("Interaction is suppressed while the notepad is focused or transitioning.")]
+        [SerializeField] private NotepadFocusController notepadFocusController;
         [Tooltip("Interaction is suppressed while the clipboard is open.")]
         [SerializeField] private ClipboardCaseUiController clipboardCaseUiController;
         [Tooltip("Assign the pause controller; interaction is suppressed while the game is paused.")]
@@ -87,6 +89,8 @@ namespace CaseClosed.Interaction
                 playerCamera = Camera.main;
             if (monitorFocusController == null)
                 monitorFocusController = FindAnyObjectByType<MonitorFocusController>();
+            if (notepadFocusController == null)
+                notepadFocusController = FindAnyObjectByType<NotepadFocusController>();
             if (clipboardCaseUiController == null)
                 clipboardCaseUiController = FindAnyObjectByType<ClipboardCaseUiController>();
             if (pauseMenuController == null)
@@ -98,6 +102,8 @@ namespace CaseClosed.Interaction
             return !isActiveAndEnabled || playerCamera == null || Time.timeScale <= 0f ||
                    (monitorFocusController != null &&
                     (monitorFocusController.IsFocused || monitorFocusController.IsTransitioning)) ||
+                   (notepadFocusController != null &&
+                    (notepadFocusController.IsFocused || notepadFocusController.IsTransitioning)) ||
                    (clipboardCaseUiController != null && clipboardCaseUiController.IsOpen) ||
                    (pauseMenuController != null && IsPauseOverlayOpen());
         }

@@ -205,22 +205,22 @@ namespace CaseClosed.Characters
 
             float duration = distance / Mathf.Max(0.1f, walkSpeed);
             float elapsed = 0f;
-            Quaternion startRot = mover.rotation;
-            Quaternion endRot = destination.rotation;
-
+            Quaternion travelRotation = mover.rotation;
             Vector3 flat = end - start;
             flat.y = 0f;
             if (flat.sqrMagnitude > 0.0001f)
-                startRot = Quaternion.LookRotation(flat.normalized, Vector3.up);
+                travelRotation = Quaternion.LookRotation(flat.normalized, Vector3.up);
 
-            mover.rotation = startRot;
+            mover.rotation = travelRotation;
 
             while (elapsed < duration)
             {
                 elapsed += Time.deltaTime;
                 float t = Mathf.Clamp01(elapsed / duration);
                 mover.position = Vector3.Lerp(start, end, t);
-                mover.rotation = Quaternion.Slerp(startRot, endRot, t);
+                // Keep the character aligned with the direction of travel. The destination's
+                // seated-facing rotation is applied only once the character reaches the chair.
+                mover.rotation = travelRotation;
                 yield return null;
             }
 

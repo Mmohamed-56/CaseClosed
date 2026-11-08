@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "caseId": "capen_mural",
+      "claims": [
+        { "id": "at_table", "text": "I was at my club table." },
+        { "id": "in_union", "text": "I was in the Union." },
+        { "id": "whole_time", "text": "I was there the whole time." },
+        { "id": "stayed_in", "text": "I didn't step outside until teardown." }
+      ],
+      "links": [
+        { "claimId": "at_table", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "in_union", "suffix": "sign_in", "effect": "match" },
+        { "claimId": "stayed_in", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "stayed_in", "suffix": "access", "effect": "match", "onlyIf": "decoy" },
+        { "claimId": "whole_time", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "whole_time", "suffix": "alibi_support", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "norton_badge",
+      "claims": [
+        { "id": "at_gym", "text": "I was at the gym at Alumni." },
+        { "id": "own_card", "text": "My own card was in my pocket." },
+        { "id": "never_office", "text": "I never touched that office." }
+      ],
+      "links": [
+        { "claimId": "at_gym", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "never_office", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "never_office", "suffix": "access", "effect": "match", "onlyIf": "decoy" },
+        { "claimId": "at_gym", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "at_gym", "suffix": "alibi_support", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "hadley_party",
+      "claims": [
+        { "id": "laundry", "text": "I was in the laundry room." },
+        { "id": "heard_music", "text": "I heard the music like everybody else." },
+        { "id": "not_4b", "text": "I wasn't in 4B." }
+      ],
+      "links": [
+        { "claimId": "laundry", "suffix": "sign_in", "effect": "match" },
+        { "claimId": "not_4b", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "not_4b", "suffix": "access", "effect": "match", "onlyIf": "decoy" },
+        { "claimId": "laundry", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "laundry", "suffix": "sign_in", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "chem_key",
+      "claims": [
+        { "id": "left_214", "text": "I left 214 a little after one." },
+        { "id": "walked_capen", "text": "I walked straight to Capen." },
+        { "id": "printer_off", "text": "The printer wasn't running when I left." }
+      ],
+      "links": [
+        { "claimId": "walked_capen", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "walked_capen", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "printer_off", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "printer_off", "suffix": "access", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "ellicott_shove",
+      "claims": [
+        { "id": "left_review", "text": "I left the review." },
+        { "id": "back_dorm", "text": "I went back to my dorm." },
+        { "id": "never_saw", "text": "I never saw them after the meeting." }
+      ],
+      "links": [
+        { "claimId": "left_review", "suffix": "sign_in", "effect": "match" },
+        { "claimId": "back_dorm", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "never_saw", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "never_saw", "suffix": "access", "effect": "match", "onlyIf": "decoy" },
+        { "claimId": "back_dorm", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "back_dorm", "suffix": "alibi_support", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "goodyear_bike",
+      "claims": [
+        { "id": "played_game", "text": "I played in the intramural game." },
+        { "id": "hung_around", "text": "I hung around the courts." },
+        { "id": "no_trek", "text": "I don't even know what a Trek looks like." }
+      ],
+      "links": [
+        { "claimId": "played_game", "suffix": "sign_in", "effect": "match" },
+        { "claimId": "played_game", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "no_trek", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "no_trek", "suffix": "access", "effect": "match", "onlyIf": "decoy" },
+        { "claimId": "hung_around", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "hung_around", "suffix": "alibi_support", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "lockwood_threats",
+      "claims": [
+        { "id": "badged_out", "text": "I badged out of Lockwood at 6:40." },
+        { "id": "didnt_go_back", "text": "I didn't go back in." },
+        { "id": "no_notes", "text": "I don't leave notes." }
+      ],
+      "links": [
+        { "claimId": "badged_out", "suffix": "sign_in", "effect": "match" },
+        { "claimId": "badged_out", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "didnt_go_back", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "didnt_go_back", "suffix": "access", "effect": "match", "onlyIf": "decoy" },
+        { "claimId": "no_notes", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "no_notes", "suffix": "alibi_support", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "fronczak_lens",
+      "claims": [
+        { "id": "signed_out", "text": "I signed out of the roof at 8:05." },
+        { "id": "shot_quad", "text": "I went down to shoot the quad." },
+        { "id": "scope_fine", "text": "The telescope was fine when I left." }
+      ],
+      "links": [
+        { "claimId": "signed_out", "suffix": "sign_in", "effect": "match" },
+        { "claimId": "shot_quad", "suffix": "roster", "effect": "match" },
+        { "claimId": "shot_quad", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "scope_fine", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "scope_fine", "suffix": "access", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "hochstetter_incubator",
+      "claims": [
+        { "id": "finished_cleanup", "text": "I finished cleanup." },
+        { "id": "prep_kitchen", "text": "I went to the prep kitchen." },
+        { "id": "incubator_humming", "text": "Incubator B was humming when I walked past it." }
+      ],
+      "links": [
+        { "claimId": "finished_cleanup", "suffix": "sign_in", "effect": "match" },
+        { "claimId": "prep_kitchen", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "prep_kitchen", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "incubator_humming", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "incubator_humming", "suffix": "access", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "silverman_book",
+      "claims": [
+        { "id": "waited", "text": "I waited for the book." },
+        { "id": "gave_up", "text": "I gave up and booked a study room." },
+        { "id": "never_desk", "text": "I never went behind the desk." }
+      ],
+      "links": [
+        { "claimId": "waited", "suffix": "sign_in", "effect": "match" },
+        { "claimId": "gave_up", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "waited", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "never_desk", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "never_desk", "suffix": "access", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "crosby_greenhouse",
+      "claims": [
+        { "id": "service_road", "text": "I was out on the service road at dawn." },
+        { "id": "outside_routes", "text": "I was on outside routes." },
+        { "id": "not_inside", "text": "I haven't been inside that greenhouse since my watering rotation ended." }
+      ],
+      "links": [
+        { "claimId": "service_road", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "outside_routes", "suffix": "sign_in", "effect": "match" },
+        { "claimId": "service_road", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "not_inside", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "not_inside", "suffix": "access", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "slee_amp",
+      "claims": [
+        { "id": "dropped_key", "text": "I dropped my key in the box before 9:30." },
+        { "id": "left", "text": "I left." },
+        { "id": "amp_in_room", "text": "The amp was in the room when I closed the door." }
+      ],
+      "links": [
+        { "claimId": "dropped_key", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "left", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "left", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "amp_in_room", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "amp_in_room", "suffix": "access", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "baldy_alarm",
+      "claims": [
+        { "id": "in_seat", "text": "I was in my seat." },
+        { "id": "when_it_went", "text": "I was there when it went off." },
+        { "id": "filed_out", "text": "I filed out with everybody else." }
+      ],
+      "links": [
+        { "claimId": "in_seat", "suffix": "sign_in", "effect": "match" },
+        { "claimId": "in_seat", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "in_seat", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "when_it_went", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "when_it_went", "suffix": "access", "effect": "match", "onlyIf": "decoy" }
+      ]
+    },
+    {
+      "caseId": "obrian_grade",
+      "claims": [
+        { "id": "close_out", "text": "I signed the close-out sheet." },
+        { "id": "signed_out", "text": "I signed out at 12:10." },
+        { "id": "went_home", "text": "I went home." },
+        { "id": "didnt_go_back", "text": "I didn't go back into the suite." }
+      ],
+      "links": [
+        { "claimId": "close_out", "suffix": "sign_in", "effect": "match" },
+        { "claimId": "signed_out", "suffix": "sign_in", "effect": "match" },
+        { "claimId": "signed_out", "suffix": "alibi_support", "effect": "match" },
+        { "claimId": "didnt_go_back", "suffix": "access", "effect": "mismatch", "onlyIf": "contradiction" },
+        { "claimId": "didnt_go_back", "suffix": "access", "effect": "match", "onlyIf": "decoy" },
+        { "claimId": "went_home", "suffix": "red_herring", "effect": "mismatch", "onlyIf": "decoy" },
+        { "claimId": "went_home", "suffix": "alibi_support", "effect": "match", "onlyIf": "decoy" }
+      ]
+    }
+  ]
+}

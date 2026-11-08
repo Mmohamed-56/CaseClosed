@@ -153,6 +153,31 @@ namespace CaseClosed.CaseCore.Gemini
         }
 
         /// <summary>
+        /// Sends <see cref="SuspectRecord.Statement"/> down the existing subtitle and voice path.
+        /// Raises <see cref="SuspectLineReady"/> only. No question, no stress, no Gemini, no new wording.
+        /// </summary>
+        public void SpeakOpeningStatement(SuspectRecord suspect)
+        {
+            if (suspect == null || string.IsNullOrWhiteSpace(suspect.Statement))
+                return;
+
+            var voice = new SuspectVoiceLine
+            {
+                SuspectId = suspect.Id,
+                SuspectName = suspect.DisplayName ?? string.Empty,
+                Text = suspect.Statement.Trim(),
+                Emotion = "calm",
+                Slip = false,
+                UsedMock = false,
+                VoiceId = suspect.ElevenLabsVoiceId ?? string.Empty
+            };
+
+            Action<SuspectVoiceLine> ready = SuspectLineReady;
+            if (ready != null)
+                ready.Invoke(voice);
+        }
+
+        /// <summary>
         /// Asks the current suspect: CaseCore applies stress/truth first, then the dialogue tree performs the line.
         /// Always emits <see cref="SuspectLineReady"/> so ElevenLabsVoiceSink can Speak.
         /// </summary>

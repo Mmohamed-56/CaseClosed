@@ -24,10 +24,6 @@ namespace CaseClosed.CameraControl
         [Tooltip("Seconds used to smoothly move into or out of monitor focus.")]
         [SerializeField, Min(0.1f)] private float transitionDuration = 0.42f;
 
-        [Header("Controls")]
-        [Tooltip("Key that toggles monitor focus. Escape exits focus mode.")]
-        [SerializeField] private Key focusToggleKey = Key.F;
-
         private Camera playerCamera;
         private CameraLookController cameraLookController;
         private Vector3 returnPosition;
@@ -89,8 +85,7 @@ namespace CaseClosed.CameraControl
 
             if (isFocused && !isTransitioning)
             {
-                bool exitPressed = (keyboard != null && keyboard.escapeKey.wasPressedThisFrame) ||
-                                   (keyboard != null && keyboard[focusToggleKey].wasPressedThisFrame);
+                bool exitPressed = keyboard != null && keyboard.escapeKey.wasPressedThisFrame;
                 if (exitPressed) ExitFocus();
             }
 

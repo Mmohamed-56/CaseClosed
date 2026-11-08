@@ -30,6 +30,7 @@ namespace CaseClosed.UI
         [SerializeField] private bool enableEscapeToggle = true;
         [SerializeField] private CameraLookController cameraLookController;
         [SerializeField] private MonitorFocusController monitorFocusController;
+        [SerializeField] private NotepadFocusController notepadFocusController;
         [SerializeField] private ClipboardFocusController clipboardFocusController;
 
         private bool isPaused;
@@ -50,6 +51,8 @@ namespace CaseClosed.UI
                 cameraLookController = FindAnyObjectByType<CameraLookController>();
             if (monitorFocusController == null)
                 monitorFocusController = FindAnyObjectByType<MonitorFocusController>();
+            if (notepadFocusController == null)
+                notepadFocusController = FindAnyObjectByType<NotepadFocusController>();
             if (clipboardFocusController == null)
                 clipboardFocusController = FindAnyObjectByType<ClipboardFocusController>();
         }
@@ -70,6 +73,8 @@ namespace CaseClosed.UI
         {
             return (monitorFocusController != null &&
                     (monitorFocusController.IsFocused || monitorFocusController.IsTransitioning)) ||
+                   (notepadFocusController != null &&
+                    (notepadFocusController.IsFocused || notepadFocusController.IsTransitioning)) ||
                    (clipboardFocusController != null &&
                     (clipboardFocusController.IsClipboardOpen || clipboardFocusController.HandledEscapeThisFrame));
         }

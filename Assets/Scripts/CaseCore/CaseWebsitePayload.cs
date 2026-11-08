@@ -54,14 +54,24 @@ namespace CaseClosed.CaseCore
             return JsonUtility.ToJson(CreatePayload(caseFile));
         }
 
+        /// <summary>Creates a sanitized payload containing only the current student's records, or no records when no student is active.</summary>
+        public static string BuildJsonForCurrentSuspect(CaseFile caseFile, SuspectRecord currentSuspect)
+        {
+            if (caseFile == null) throw new ArgumentNullException("caseFile");
+            return JsonUtility.ToJson(CreatePayload(caseFile, currentSuspect, false));
+        }
+
+        /// <summary>Creates the website hash fragment with only the current student's public records.</summary>
+        public static string BuildHashFragmentForCurrentSuspect(CaseFile caseFile, SuspectRecord currentSuspect)
+        {
+            string json = BuildJsonForCurrentSuspect(caseFile, currentSuspect);
+            return "#case=" + EncodeBase64Url(json);
+        }
+
         /// <summary>Creates a URL-safe Base64 value suitable for the records website's case hash.</summary>
         public static string BuildBase64Url(CaseFile caseFile)
         {
-            byte[] jsonBytes = Encoding.UTF8.GetBytes(BuildJson(caseFile));
-            return Convert.ToBase64String(jsonBytes)
-                .TrimEnd('=')
-                .Replace('+', '-')
-                .Replace('/', '_');
+            return EncodeBase64Url(BuildJson(caseFile));
         }
 
         /// <summary>Creates the complete case hash fragment expected by the static records site.</summary>
@@ -70,7 +80,21 @@ namespace CaseClosed.CaseCore
             return "#case=" + BuildBase64Url(caseFile);
         }
 
+        private static string EncodeBase64Url(string json)
+        {
+            byte[] jsonBytes = Encoding.UTF8.GetBytes(json);
+            return Convert.ToBase64String(jsonBytes)
+                .TrimEnd('=')
+                .Replace('+', '-')
+                .Replace('/', '_');
+        }
+
         private static WebsiteCasePayload CreatePayload(CaseFile caseFile)
+        {
+            return CreatePayload(caseFile, null, true);
+        }
+
+        private static WebsiteCasePayload CreatePayload(CaseFile caseFile, SuspectRecord currentSuspect, bool includeAllSuspects)
         {
             var payload = new WebsiteCasePayload
             {
@@ -82,6 +106,10 @@ namespace CaseClosed.CaseCore
             foreach (SuspectRecord suspect in caseFile.Suspects)
             {
                 if (suspect == null) continue;
+                if (!includeAllSuspects &&
+                    (currentSuspect == null || !string.Equals(suspect.Id, currentSuspect.Id, StringComparison.Ordinal)))
+                    continue;
+
                 var publicSuspect = new WebsiteSuspectRecord
                 {
                     id = suspect.Id,
@@ -103,6 +131,9 @@ namespace CaseClosed.CaseCore
 
                 payload.suspects.Add(publicSuspect);
             }
+
+            if (!includeAllSuspects)
+                return payload;
 
             IReadOnlyList<WebsiteSuspectRecord> directory = caseFile.CampusDirectory;
             if (directory != null)

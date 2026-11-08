@@ -193,6 +193,9 @@ namespace CaseClosed.CaseCore
                 string statement = string.IsNullOrWhiteSpace(template.statementTemplate)
                     ? profile.Statement
                     : template.statementTemplate.Trim();
+                string opening = OpeningStatementBook.LineFor(template.id, profile.Id, isCulprit);
+                if (!string.IsNullOrWhiteSpace(opening))
+                    statement = opening;
                 suspects.Add(new SuspectRecord(
                     suspectId,
                     profile.DisplayName,

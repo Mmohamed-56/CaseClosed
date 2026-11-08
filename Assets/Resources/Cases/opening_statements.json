@@ -1,0 +1,342 @@
+{
+  "schemaVersion": 1,
+  "count": 56,
+  "statements": [
+    {
+      "caseId": "capen_mural",
+      "suspectId": "casey",
+      "innocent": "Okay so I was at my club table in the Union, like, the whole afternoon. I didn't step outside until teardown. Well, I ran across the street to the hardware store super quick, but that was before four, so it doesn't count. Then I was back at the table handing out flyers till we packed up.",
+      "culprit": "I was at my club table in the Union the whole time! Handing out flyers, yelling at people to sign up, the usual. I didn't step outside until teardown, I swear. You can ask anyone, I'm impossible to miss."
+    },
+    {
+      "caseId": "capen_mural",
+      "suspectId": "jamie",
+      "innocent": "Um, okay. I got to the Union around three for the club fair, and I was at my club table the whole time. I didn't step outside until teardown. Actually, wait, I did run out earlier to grab paint stuff for the float, sorry, I forgot. But I came right back and stayed at the table.",
+      "culprit": "Okay, so, I was at my club table in the Union. The whole time. I didn't step outside until teardown, I'd remember, I'm bad at sneaking. That's, um, that's really all there is."
+    },
+    {
+      "caseId": "capen_mural",
+      "suspectId": "quinn",
+      "innocent": "I was at my club table in the Union, pretending to be good at small talk. Stayed there the whole time. I didn't step outside until teardown. Okay, one exception, I ran to the hardware store for float primer around three-thirty, but I'm guessing that's before your crime.",
+      "culprit": "I was at my club table in the Union, the whole time. Very glamorous, flyers and free candy. I didn't step outside until teardown. That's the story, and it's a boring one."
+    },
+    {
+      "caseId": "capen_mural",
+      "suspectId": "reese",
+      "innocent": "I was at my club table in the Union. The whole time, basically. I didn't step outside until teardown. Well, I hit the hardware store for some float stuff early on, but that was before four.",
+      "culprit": "I was at my club table in the Union. Whole time. Didn't step outside until teardown. That's it, man."
+    },
+    {
+      "caseId": "norton_badge",
+      "suspectId": "jordan",
+      "innocent": "I was at the gym at Alumni most of the night. My card was in my pocket the whole time, and I never touched that office. Okay, technically, earlier I had a Norton key signed out to lock up some classrooms. Classrooms, not offices. Keys and card readers are different things, I promise.",
+      "culprit": "I was at the gym at Alumni. My card was in my pocket the whole night. I never touched that office. I work helpdesk, I know how card logs work, and mine's clean."
+    },
+    {
+      "caseId": "norton_badge",
+      "suspectId": "morgan",
+      "innocent": "I was at the gym at Alumni. My own card was in my pocket the whole night, and I never touched that office. I did have a Norton hallway key signed out for a while, for classrooms after a review session. It went back on time, like everything I sign for.",
+      "culprit": "I was at the gym at Alumni. My card was in my pocket the whole night. I never touched that office. That's the timeline, and I keep accurate timelines."
+    },
+    {
+      "caseId": "norton_badge",
+      "suspectId": "drew",
+      "innocent": "For the record, I was at the gym at Alumni. My card stayed in my pocket the whole night, and I never touched that office. Correction, I did carry a Norton key earlier, signed out and returned. Classroom wing only.",
+      "culprit": "For the record, I was at the gym at Alumni. My card was in my pocket the whole night. I never touched that office. That's my statement."
+    },
+    {
+      "caseId": "norton_badge",
+      "suspectId": "riley",
+      "innocent": "I was at the gym at Alumni. My card was in my pocket the whole night, and I never touched that office. In the interest of accuracy, I did have a Norton key signed out earlier for locking classrooms. It's logged, and it was returned.",
+      "culprit": "I was at the gym at Alumni. My card was in my pocket all night. I never touched that office. I'm happy to repeat that as many times as you need."
+    },
+    {
+      "caseId": "hadley_party",
+      "suspectId": "taylor",
+      "innocent": "I was in the laundry room, I promise. I heard the music like everybody else, and I almost went up to ask them to turn it down, but I wasn't in 4B. Oh, I did sign my cousin in earlier, but she just dropped off a book and left. I'm sorry, I should have said that first.",
+      "culprit": "I was in the laundry room. I heard the music like everybody else, and honestly I was going to write it up in the morning. But I wasn't in 4B. I'm really sorry I can't be more helpful."
+    },
+    {
+      "caseId": "hadley_party",
+      "suspectId": "reese",
+      "innocent": "I was in the laundry room. Heard the music like everybody else, couldn't miss it. Wasn't in 4B. My cousin came by earlier with a textbook, but she bounced way before any of that.",
+      "culprit": "I was in the laundry room. Heard the music like everybody else. Wasn't in 4B, man. Ask anybody."
+    },
+    {
+      "caseId": "hadley_party",
+      "suspectId": "casey",
+      "innocent": "I was in the laundry room! I heard the music like everybody else, it was so loud. But I wasn't in 4B. Oh, my cousin came by earlier and I signed her in, but she just dropped off a book and left, that's totally different.",
+      "culprit": "I was in the laundry room doing laundry. I heard the music like everybody else, it was super loud. But I wasn't in 4B. I don't even know who lives there, honestly."
+    },
+    {
+      "caseId": "hadley_party",
+      "suspectId": "sam",
+      "innocent": "I was in the laundry room. Heard the music like everybody else. Wasn't in 4B. My cousin dropped off a book earlier, I signed her in, she left.",
+      "culprit": "I was in the laundry room. Heard the music like everybody else. Wasn't in 4B. Didn't go up there."
+    },
+    {
+      "caseId": "chem_key",
+      "suspectId": "harper",
+      "innocent": "I left 214 a little after one. I walked straight to Capen. The printer wasn't running when I left. I lost a USB earlier, and the sticker on it is embarrassing, but it's just practice problems.",
+      "culprit": "I left 214 a little after one. I walked straight to Capen. The printer wasn't running when I left. That's all."
+    },
+    {
+      "caseId": "chem_key",
+      "suspectId": "riley",
+      "innocent": "I left 214 a little after one and walked straight to Capen. The printer wasn't running when I left. For completeness, a USB of mine with an unfortunate label went to lost-and-found earlier. It's practice material from office hours.",
+      "culprit": "I left 214 a little after one. I walked straight to Capen. The printer wasn't running when I left, I'd have noticed. I notice things."
+    },
+    {
+      "caseId": "chem_key",
+      "suspectId": "jamie",
+      "innocent": "Okay, um, I left 214 a little after one, and I walked straight to Capen. The printer wasn't running when I left. Oh no, also, I lost a USB today that says 201 key on it, which sounds so bad, but it's just practice stuff, I swear.",
+      "culprit": "I left 214 a little after one. Then I walked straight to Capen, I didn't stop anywhere. The printer wasn't running when I left. Sorry, that's really all I have."
+    },
+    {
+      "caseId": "chem_key",
+      "suspectId": "jordan",
+      "innocent": "I left 214 a little after one and walked straight to Capen. The printer wasn't running when I left. Heads up, my USB is in lost-and-found with a very unfortunate label on it. It's a practice set, not the real key, I promise.",
+      "culprit": "I left 214 a little after one. Walked straight to Capen. The printer wasn't running when I left. Pretty simple night."
+    },
+    {
+      "caseId": "ellicott_shove",
+      "suspectId": "reese",
+      "innocent": "I left the review and went back to my dorm. Never saw them after the meeting. I did post a bruise pic that says tunnel night, but that's from practice, it's what we call tackle drills.",
+      "culprit": "I left the review and went back to my dorm. Never saw them after the meeting. I was mad about the slides, sure, everybody was. But I went home."
+    },
+    {
+      "caseId": "ellicott_shove",
+      "suspectId": "drew",
+      "innocent": "I left the review and went back to my dorm. I never saw them after the meeting. One item for the record, I posted a bruise photo tonight captioned tunnel night. That bruise is from practice this afternoon, not the tunnel.",
+      "culprit": "I left the review and went back to my dorm. I never saw them after the meeting. That's my full statement."
+    },
+    {
+      "caseId": "ellicott_shove",
+      "suspectId": "quinn",
+      "innocent": "I left the review and went back to my dorm, where I sulked professionally. Never saw them after the meeting. And yes, I posted a bruise photo that says tunnel night, which in hindsight is terrible timing. It's from practice this afternoon.",
+      "culprit": "I left the review and went back to my dorm. Never saw them after the meeting. I wasn't thrilled about the slides, but I'm not a tunnel ambush kind of person."
+    },
+    {
+      "caseId": "ellicott_shove",
+      "suspectId": "casey",
+      "innocent": "I left the review and went back to my dorm! I never saw them after the meeting. Oh, and that bruise pic I posted, the tunnel night one, that's from practice earlier, I swear, it's just what we call it.",
+      "culprit": "I left the review and went straight back to my dorm. I never saw them after the meeting. I was so mad about the slides, but like, text-my-friends mad, not anything else."
+    },
+    {
+      "caseId": "goodyear_bike",
+      "suspectId": "avery",
+      "innocent": "Played in the intramural game, then hung around the courts after, chief. I don't even know what a Trek looks like. I did use bolt cutters today, on a set piece at the theater shop. Signed them out and brought them back hours before any of this.",
+      "culprit": "Played in the intramural game, then hung around the courts after. Don't even know what a Trek looks like. I drive a truck, chief. What do I want with a bike?"
+    },
+    {
+      "caseId": "goodyear_bike",
+      "suspectId": "reese",
+      "innocent": "I played in the intramural game, then hung around the courts after. I don't even know what a Trek looks like. I used bolt cutters at the theater shop earlier, but that was for a stuck lock, and I gave them back.",
+      "culprit": "I played in the intramural game and hung around the courts after. I don't even know what a Trek looks like. I'm a sneakers guy, not a bike guy."
+    },
+    {
+      "caseId": "goodyear_bike",
+      "suspectId": "sam",
+      "innocent": "Played in the intramural game. Hung around the courts after. Don't know what a Trek looks like. Borrowed bolt cutters at the theater shop earlier for a stuck lock, gave them back.",
+      "culprit": "Played in the intramural game. Hung around the courts after. Don't know what a Trek looks like. Don't care either."
+    },
+    {
+      "caseId": "goodyear_bike",
+      "suspectId": "drew",
+      "innocent": "I played in the intramural game, then remained at the courts. I don't know what a Trek looks like. For the record, I signed out bolt cutters at the theater shop earlier for a rusted padlock. They were returned and countersigned.",
+      "culprit": "I played in the intramural game, then remained at the courts. I don't know what a Trek looks like. That's my statement."
+    },
+    {
+      "caseId": "lockwood_threats",
+      "suspectId": "riley",
+      "innocent": "I badged out of Lockwood at 6:40, and I didn't go back in. Whatever I think of them, I don't leave notes. I'll disclose that I sent them a rather pointed email afterward, from my dorm. I stand by most of it.",
+      "culprit": "I badged out of Lockwood at 6:40. I didn't go back in. Whatever I think of them, and I think quite a lot, I don't leave notes."
+    },
+    {
+      "caseId": "lockwood_threats",
+      "suspectId": "harper",
+      "innocent": "I badged out of Lockwood at 6:40. I didn't go back in. I don't leave notes. I sent them an email, though. It wasn't very nice. I was upset.",
+      "culprit": "I badged out of Lockwood at 6:40. I didn't go back in. I don't leave notes. I just went home."
+    },
+    {
+      "caseId": "lockwood_threats",
+      "suspectId": "quinn",
+      "innocent": "I badged out of Lockwood at 6:40 and didn't go back in. Whatever I think of them, I don't leave notes. I write emails, apparently, because I sent them a pretty spicy one from my dorm. Not my finest work.",
+      "culprit": "I badged out of Lockwood at 6:40 and didn't go back in. Whatever I think of them, I don't leave notes. If I had something to say, I'd say it to their face. Or put it in the paper."
+    },
+    {
+      "caseId": "lockwood_threats",
+      "suspectId": "jamie",
+      "innocent": "I badged out of Lockwood at 6:40, and I didn't go back in. I don't leave notes, I'm not a note person. Okay, I did send them an angry email after, which I regret. I wrote it in my room and immediately wanted to unsend it.",
+      "culprit": "I badged out of Lockwood at 6:40, and I didn't go back in. I don't leave notes. I don't even like conflict, I'd rather just, um, be upset quietly."
+    },
+    {
+      "caseId": "fronczak_lens",
+      "suspectId": "quinn",
+      "innocent": "I signed out of the roof at 8:05 and went down to shoot the quad. The telescope was fine when I left. Full disclosure, I handled a telescope lens this afternoon for cleaning, so yes, my name's on a lens form. Different lens, much smaller, back on the shelf.",
+      "culprit": "I signed out of the roof at 8:05 and went down to shoot the quad. The telescope was fine when I left. Gorgeous night for photos, actually. Shame about the lens."
+    },
+    {
+      "caseId": "fronczak_lens",
+      "suspectId": "harper",
+      "innocent": "I signed out of the roof at 8:05. I went down to shoot the quad. The telescope was fine when I left. I cleaned a lens this afternoon, a small one. I put it back.",
+      "culprit": "I signed out of the roof at 8:05. I went down to shoot the quad. The telescope was fine when I left. The light was nice."
+    },
+    {
+      "caseId": "fronczak_lens",
+      "suspectId": "riley",
+      "innocent": "I signed out of the roof at 8:05 and went down to shoot the quad. The telescope was fine when I left. I'll note that I signed a teaching lens out for cleaning this afternoon. It was returned within the hour.",
+      "culprit": "I signed out of the roof at 8:05 and went down to shoot the quad. The telescope was fine when I left. I'm on the permission list, so this was all approved."
+    },
+    {
+      "caseId": "fronczak_lens",
+      "suspectId": "drew",
+      "innocent": "I signed out of the roof at 8:05 and went down to shoot the quad. The telescope was fine when I left. For the record, I cleaned a teaching lens this afternoon. It was signed back in.",
+      "culprit": "I signed out of the roof at 8:05 and went down to shoot the quad. The telescope was fine when I left. Nothing further to report."
+    },
+    {
+      "caseId": "hochstetter_incubator",
+      "suspectId": "harper",
+      "innocent": "I finished cleanup and went to the prep kitchen. Incubator B was humming when I walked past it. I signed out cold packs this morning, but they're for the teaching fridge. They're still there.",
+      "culprit": "I finished cleanup and went to the prep kitchen. Incubator B was humming when I walked past it. I didn't touch it."
+    },
+    {
+      "caseId": "hochstetter_incubator",
+      "suspectId": "riley",
+      "innocent": "I finished cleanup and went to the prep kitchen. Incubator B was humming when I walked past it. I should mention I checked out six cold packs this morning for the teaching fridge. All six are accounted for.",
+      "culprit": "I finished cleanup and went to the prep kitchen. Incubator B was humming when I walked past it. Yes, we're competing for that funding. I don't win by sabotage."
+    },
+    {
+      "caseId": "hochstetter_incubator",
+      "suspectId": "jamie",
+      "innocent": "Okay, I finished cleanup and I went to the prep kitchen. Incubator B was humming when I walked past it, I remember because it's loud. Oh, and I took cold packs this morning, which sounds bad, but they're just in the teaching fridge.",
+      "culprit": "I finished cleanup, and then I went to the prep kitchen. Incubator B was humming when I walked past it. I didn't even slow down, I just, I went to the kitchen."
+    },
+    {
+      "caseId": "hochstetter_incubator",
+      "suspectId": "sam",
+      "innocent": "Finished cleanup. Went to the prep kitchen. Incubator B was humming when I walked by. Grabbed some cold packs this morning for the teaching fridge, they're still in there.",
+      "culprit": "Finished cleanup. Went to the prep kitchen. Incubator B was humming when I walked by. Didn't touch it."
+    },
+    {
+      "caseId": "silverman_book",
+      "suspectId": "riley",
+      "innocent": "I waited for the book, gave up, and booked a study room. I never went behind the desk. Admittedly, I already own a copy, I bought it this morning. I only wanted the reserve to confirm I'd bought the right edition.",
+      "culprit": "I waited for the book, gave up, and booked a study room. I never went behind the desk. Reserve rules exist for a reason, and I follow rules."
+    },
+    {
+      "caseId": "silverman_book",
+      "suspectId": "jamie",
+      "innocent": "Um, I waited for the book, then I gave up and booked a study room. I never went behind the desk. Which is extra dumb, because I bought my own copy this morning, it's in my bag. I just panicked that it was the wrong edition.",
+      "culprit": "I waited for the book for a while, then I gave up and booked a study room. I never went behind the desk. I really needed that book, and I just, I gave up. That's all."
+    },
+    {
+      "caseId": "silverman_book",
+      "suspectId": "jordan",
+      "innocent": "I waited for the book, gave up, and booked a study room. Never went behind the desk. Funny thing, I actually bought my own copy this morning. I was waiting to make sure it was the right edition.",
+      "culprit": "I waited for the book, gave up, and booked a study room. Never went behind the desk. That's the whole night."
+    },
+    {
+      "caseId": "silverman_book",
+      "suspectId": "harper",
+      "innocent": "I waited for the book. I gave up, and I booked a study room. I never went behind the desk. I bought my own copy this morning. I wasn't sure it was the right one.",
+      "culprit": "I waited for the book. I gave up. I booked a study room. I never went behind the desk."
+    },
+    {
+      "caseId": "crosby_greenhouse",
+      "suspectId": "avery",
+      "innocent": "I was out on the service road at dawn, chief. Haven't been inside that greenhouse since my watering rotation ended. My name's on a work order for a cracked pane in there, but I just reported it last week. Bay two, not the one that got smashed.",
+      "culprit": "I was out on the service road at dawn. Haven't been inside that greenhouse since my watering rotation ended. I radioed in my check. It's on the log."
+    },
+    {
+      "caseId": "crosby_greenhouse",
+      "suspectId": "harper",
+      "innocent": "I was out on the service road at dawn. I haven't been inside the greenhouse since my watering rotation ended. I reported a cracked window there last week, so my name's on a form. It's a different window.",
+      "culprit": "I was out on the service road at dawn. I haven't been inside the greenhouse since my watering rotation ended. I miss it, a little."
+    },
+    {
+      "caseId": "crosby_greenhouse",
+      "suspectId": "drew",
+      "innocent": "I was out on the service road at dawn. I haven't been inside that greenhouse since my watering rotation ended. You'll find my name on a work order for a cracked pane. Bay two, reported last week, repair scheduled tomorrow.",
+      "culprit": "I was out on the service road at dawn. I haven't been inside that greenhouse since my watering rotation ended. My radio check is logged."
+    },
+    {
+      "caseId": "crosby_greenhouse",
+      "suspectId": "sam",
+      "innocent": "Out on the service road at dawn. Haven't been in that greenhouse since my watering rotation ended. My name's on a work order for a cracked window in there. Different window.",
+      "culprit": "Out on the service road at dawn. Haven't been in that greenhouse since my watering rotation ended. That's it."
+    },
+    {
+      "caseId": "slee_amp",
+      "suspectId": "casey",
+      "innocent": "I dropped my key in the box before 9:30 and left! The amp was totally in the room when I closed the door. Oh, I did write borrowing the loud one on my card, but that's for tomorrow morning, I got permission!",
+      "culprit": "I dropped my key in the box before 9:30 and left. The amp was in the room when I closed the door. I had somewhere to be, I was already late."
+    },
+    {
+      "caseId": "slee_amp",
+      "suspectId": "quinn",
+      "innocent": "I dropped my key in the box before 9:30 and left. The amp was in the room when I closed the door. And yes, my reservation card says borrowing the loud one. That's for 8 AM tomorrow, and it's approved.",
+      "culprit": "I dropped my key in the box before 9:30 and left. The amp was in the room when I closed the door. Long night. I just wanted to go home."
+    },
+    {
+      "caseId": "slee_amp",
+      "suspectId": "reese",
+      "innocent": "I dropped my key in the box before 9:30 and left. The amp was in the room when I closed the door. I wrote borrowing the loud one on my card, but that's for tomorrow morning. Got the okay and everything.",
+      "culprit": "I dropped my key in the box before 9:30 and left. The amp was in the room when I closed the door. I was out of there, man."
+    },
+    {
+      "caseId": "slee_amp",
+      "suspectId": "sam",
+      "innocent": "Dropped my key in the box before 9:30. Left. Amp was in the room when I closed the door. I asked to borrow it tomorrow morning, that's what the note's about.",
+      "culprit": "Dropped my key in the box before 9:30. Left. Amp was in the room when I closed the door. Went home."
+    },
+    {
+      "caseId": "baldy_alarm",
+      "suspectId": "casey",
+      "innocent": "I was in my seat when it went off! I filed out with everybody else, it was chaos. Okay, so, I might have joked in the group chat about pulling the alarm, but it was a joke, like a joke joke!",
+      "culprit": "I was in my seat when it went off, I swear. I filed out with everybody else. I was kind of relieved, honestly, but I didn't do it."
+    },
+    {
+      "caseId": "baldy_alarm",
+      "suspectId": "jamie",
+      "innocent": "I was in my seat when it went off. I filed out with everybody else. Oh no, I also sent a really dumb joke in the group chat about pulling the alarm right before, which I know looks terrible, but it was a joke.",
+      "culprit": "I was in my seat when it went off. Then I filed out with everybody else. I didn't, um, I didn't go anywhere. I was in my seat."
+    },
+    {
+      "caseId": "baldy_alarm",
+      "suspectId": "reese",
+      "innocent": "I was in my seat when it went off. Filed out with everybody. I did make a joke in the group chat about pulling it, but come on, that was a joke.",
+      "culprit": "I was in my seat when it went off. Filed out with everybody else. That's it."
+    },
+    {
+      "caseId": "baldy_alarm",
+      "suspectId": "jordan",
+      "innocent": "I was in my seat when it went off. Filed out with everybody else. In the interest of transparency, I posted a joke about pulling the alarm in the group chat beforehand. Forty people saw it, which is the opposite of a plan.",
+      "culprit": "I was in my seat when it went off. Filed out with everybody else. Surprise quizzes are a crime, but not one I committed."
+    },
+    {
+      "caseId": "obrian_grade",
+      "suspectId": "morgan",
+      "innocent": "I signed the close-out sheet, signed out at 12:10, and went home. Correction, I went to my night lecture first, then home. I didn't go back into the suite.",
+      "culprit": "I signed the close-out sheet, signed out at 12:10, and went home. I didn't go back into the suite. My times are always accurate."
+    },
+    {
+      "caseId": "obrian_grade",
+      "suspectId": "jordan",
+      "innocent": "I signed the close-out sheet, signed out at 12:10, and went home. Well, I stopped at my night lecture first, it's in the same building. I didn't go back into the suite.",
+      "culprit": "I signed the close-out sheet, signed out at 12:10, and went home. Didn't go back into the suite. Whoever left that computer logged in, that's not on me."
+    },
+    {
+      "caseId": "obrian_grade",
+      "suspectId": "riley",
+      "innocent": "I signed the close-out sheet, signed out at 12:10, and went home. To be precise, I attended my night lecture first, then went home. I did not go back into the suite.",
+      "culprit": "I signed the close-out sheet, signed out at 12:10, and went home. I didn't go back into the suite. The sheet will match everything I've said."
+    },
+    {
+      "caseId": "obrian_grade",
+      "suspectId": "taylor",
+      "innocent": "I signed the close-out sheet, signed out at 12:10, and went home. Oh, sorry, I went to my night class first, then home. I definitely didn't go back into the suite.",
+      "culprit": "I signed the close-out sheet, signed out at 12:10, and went home. I didn't go back into the suite. I'm so sorry this happened on our shift, it's awful."
+    }
+  ]
+}

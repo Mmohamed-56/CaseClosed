@@ -20,7 +20,6 @@ namespace CaseClosed.CameraControl
         private CursorLockMode previousCursorLockState;
         private bool previousCursorVisibility;
 
-        private int openedFrame = -1;
         private int escapeHandledFrame = -1;
 
         /// <summary>True on the frame this controller handled Escape to close the clipboard.</summary>
@@ -50,14 +49,10 @@ namespace CaseClosed.CameraControl
             if (keyboard == null || clipboardUi == null || !clipboardUi.IsOpen)
                 return;
 
-            bool escapePressed = keyboard.escapeKey.wasPressedThisFrame;
-            bool closePressed = escapePressed ||
-                                (keyboard.fKey.wasPressedThisFrame && Time.frameCount != openedFrame);
-            if (!closePressed)
+            if (!keyboard.escapeKey.wasPressedThisFrame)
                 return;
 
-            if (escapePressed)
-                escapeHandledFrame = Time.frameCount;
+            escapeHandledFrame = Time.frameCount;
             CloseClipboard();
         }
 
@@ -67,6 +62,11 @@ namespace CaseClosed.CameraControl
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+            }
+            else if (Time.timeScale > 0f && cameraLookController != null && cameraLookController.LookEnabled)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
         }
 
@@ -94,7 +94,6 @@ namespace CaseClosed.CameraControl
             }
 
             clipboardUi.SetOpen(true);
-            openedFrame = Time.frameCount;
         }
 
         private void CloseClipboard()
