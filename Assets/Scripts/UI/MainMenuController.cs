@@ -8,9 +8,10 @@ using UnityEngine.UI;
 namespace CaseClosed.UI
 {
     /// <summary>
-    /// Lightweight title screen for Case Closed at UB — early-2000s campus police desk vibe.
-    /// Builds runtime UI (no Bezi scene art required). Fades into SampleScene on Start.
-    /// Soft-hooks Emilia Resources/SFX when present (ui_click + office_ambience as menu bed).
+    /// Title overlay for Case Closed at UB — brand-first UI over the night exterior menu level.
+    /// Builds translucent runtime UI so the 3D station facade reads behind. Fades into SampleScene.
+    /// Audio: assign funky theme to menuMusicClip (drop Assets/Audio/Music/menu_funky.*);
+    /// falls back to Resources/SFX/office_ambience when empty.
     /// </summary>
     [DisallowMultipleComponent]
     [DefaultExecutionOrder(-100)]
@@ -18,16 +19,18 @@ namespace CaseClosed.UI
     {
         public const string DefaultGameplayScene = "SampleScene";
         public const string SfxResourcesFolder = "SFX";
+        public const string MenuFunkyResourcesPath = "Music/menu_funky";
 
         [Header("Flow")]
         [SerializeField] private string gameplaySceneName = DefaultGameplayScene;
         [SerializeField, Min(0.05f)] private float fadeOutSeconds = 0.85f;
         [SerializeField, Min(0f)] private float fadeInSeconds = 0.35f;
 
-        [Header("Audio (Resources/SFX when empty)")]
+        [Header("Audio")]
+        [Tooltip("Funky menu theme. Drop Magdy track at Assets/Audio/Music/menu_funky.* and assign here (or Resources/Music/menu_funky). Falls back to office_ambience.")]
         [SerializeField] private AudioClip menuMusicClip;
         [SerializeField] private AudioClip uiClickClip;
-        [SerializeField, Range(0f, 1f)] private float menuMusicVolume = 0.32f;
+        [SerializeField, Range(0f, 1f)] private float menuMusicVolume = 0.38f;
         [SerializeField, Range(0f, 1f)] private float uiClickVolume = 0.85f;
 
         private Image fadeImage;
@@ -133,60 +136,63 @@ namespace CaseClosed.UI
             scaler.referenceResolution = new Vector2(1920f, 1080f);
             scaler.matchWidthOrHeight = 0.5f;
 
-            // Full-bleed blotter / night-desk plane (not purple).
-            CreateFill(root.transform, "Backdrop", DeskUiPalette.NavyDark, Vector2.zero, Vector2.one);
+            // Translucent veil — 3D night station must read behind (not a solid desk card).
+            CreateFill(root.transform, "Backdrop",
+                new Color(DeskUiPalette.NavyDark.r, DeskUiPalette.NavyDark.g, DeskUiPalette.NavyDark.b, 0.28f),
+                Vector2.zero, Vector2.one);
 
-            // Soft top wash — fluorescent office ceiling feel.
             CreateFill(root.transform, "TopWash",
-                new Color(0.18f, 0.28f, 0.22f, 0.35f),
-                new Vector2(0f, 0.55f), Vector2.one);
+                new Color(0.08f, 0.14f, 0.18f, 0.22f),
+                new Vector2(0f, 0.62f), Vector2.one);
 
-            // Bottom manila desk strip.
-            CreateFill(root.transform, "DeskStrip", DeskUiPalette.Manila,
-                new Vector2(0f, 0f), new Vector2(1f, 0.22f));
+            CreateFill(root.transform, "BottomShade",
+                new Color(0.04f, 0.05f, 0.07f, 0.45f),
+                new Vector2(0f, 0f), new Vector2(1f, 0.28f));
 
-            // Left blotter edge accent.
-            CreateFill(root.transform, "BlotterEdge", DeskUiPalette.Blotter,
-                new Vector2(0f, 0.22f), new Vector2(0.015f, 1f));
-
-            // Brand block — CASE CLOSED must dominate first viewport.
+            // Brand block — CASE CLOSED dominates; translucent so facade stays visible.
             GameObject brand = CreatePanel(root.transform, "BrandBlock",
-                new Vector2(0.5f, 0.62f), new Vector2(0.5f, 0.62f),
-                Vector2.zero, new Vector2(920f, 280f));
-            brand.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
+                new Vector2(0.5f, 0.72f), new Vector2(0.5f, 0.72f),
+                Vector2.zero, new Vector2(980f, 260f));
+            brand.GetComponent<Image>().color = new Color(0.05f, 0.08f, 0.12f, 0.32f);
 
-            Text title = CreateText(brand.transform, "Title", "CASE CLOSED", 92, FontStyle.Bold,
-                new Vector2(0.5f, 0.72f), new Vector2(0.5f, 0.72f), Vector2.zero, new Vector2(900f, 110f));
-            DeskUiPalette.StyleLabel(title, 92, DeskUiPalette.ManilaLight, FontStyle.Bold, TextAnchor.MiddleCenter);
+            Text titleShadow = CreateText(brand.transform, "TitleShadow", "CASE CLOSED", 96, FontStyle.Bold,
+                new Vector2(0.5f, 0.70f), new Vector2(0.5f, 0.70f), new Vector2(3f, -3f), new Vector2(940f, 120f));
+            DeskUiPalette.StyleLabel(titleShadow, 96, new Color(0f, 0f, 0f, 0.55f), FontStyle.Bold, TextAnchor.MiddleCenter);
 
-            Text atUb = CreateText(brand.transform, "AtUb", "AT  UB", 34, FontStyle.Bold,
-                new Vector2(0.5f, 0.38f), new Vector2(0.5f, 0.38f), Vector2.zero, new Vector2(900f, 44f));
-            DeskUiPalette.StyleLabel(atUb, 34, DeskUiPalette.Blotter, FontStyle.Bold, TextAnchor.MiddleCenter);
+            Text title = CreateText(brand.transform, "Title", "CASE CLOSED", 96, FontStyle.Bold,
+                new Vector2(0.5f, 0.72f), new Vector2(0.5f, 0.72f), Vector2.zero, new Vector2(940f, 120f));
+            DeskUiPalette.StyleLabel(title, 96, DeskUiPalette.ManilaLight, FontStyle.Bold, TextAnchor.MiddleCenter);
 
-            Text tag = CreateText(brand.transform, "Tag", "University Police · Night Desk", 20, FontStyle.Normal,
-                new Vector2(0.5f, 0.14f), new Vector2(0.5f, 0.14f), Vector2.zero, new Vector2(900f, 36f));
-            DeskUiPalette.StyleLabel(tag, 20, DeskUiPalette.Manila, FontStyle.Normal, TextAnchor.MiddleCenter);
+            Text atUb = CreateText(brand.transform, "AtUb", "AT  UB", 36, FontStyle.Bold,
+                new Vector2(0.5f, 0.36f), new Vector2(0.5f, 0.36f), Vector2.zero, new Vector2(900f, 44f));
+            DeskUiPalette.StyleLabel(atUb, 36, new Color(0.72f, 0.86f, 0.82f, 1f), FontStyle.Bold, TextAnchor.MiddleCenter);
 
-            // Thin rule under brand.
+            Text tag = CreateText(brand.transform, "Tag", "University Police · Night Shift", 18, FontStyle.Normal,
+                new Vector2(0.5f, 0.12f), new Vector2(0.5f, 0.12f), Vector2.zero, new Vector2(900f, 32f));
+            DeskUiPalette.StyleLabel(tag, 18, new Color(DeskUiPalette.Manila.r, DeskUiPalette.Manila.g, DeskUiPalette.Manila.b, 0.9f),
+                FontStyle.Normal, TextAnchor.MiddleCenter);
+
             CreateSized(brand.transform, "Rule",
-                new Color(DeskUiPalette.Manila.r, DeskUiPalette.Manila.g, DeskUiPalette.Manila.b, 0.55f),
-                new Vector2(0.5f, 0.28f), new Vector2(420f, 2f));
+                new Color(DeskUiPalette.Manila.r, DeskUiPalette.Manila.g, DeskUiPalette.Manila.b, 0.45f),
+                new Vector2(0.5f, 0.26f), new Vector2(420f, 2f));
 
-            // Buttons.
+            Color startFill = new Color(DeskUiPalette.ManilaLight.r, DeskUiPalette.ManilaLight.g, DeskUiPalette.ManilaLight.b, 0.88f);
+            Color quitFill = new Color(DeskUiPalette.Navy.r, DeskUiPalette.Navy.g, DeskUiPalette.Navy.b, 0.72f);
+
             GameObject startGo = CreateButton(root.transform, "StartButton", "START SHIFT",
-                DeskUiPalette.ManilaLight, DeskUiPalette.Ink,
-                new Vector2(0.5f, 0.34f), new Vector2(280f, 56f));
+                startFill, DeskUiPalette.Ink,
+                new Vector2(0.5f, 0.30f), new Vector2(280f, 56f));
             startGo.GetComponent<Button>().onClick.AddListener(OnStartClicked);
 
             GameObject quitGo = CreateButton(root.transform, "QuitButton", "QUIT",
-                DeskUiPalette.Navy, DeskUiPalette.ManilaLight,
-                new Vector2(0.5f, 0.26f), new Vector2(280f, 48f));
+                quitFill, DeskUiPalette.ManilaLight,
+                new Vector2(0.5f, 0.22f), new Vector2(280f, 48f));
             quitGo.GetComponent<Button>().onClick.AddListener(OnQuitClicked);
 
             Text foot = CreateText(root.transform, "Footer",
-                "Buffalo campus · one desk · one shift", 16, FontStyle.Italic,
-                new Vector2(0.5f, 0.08f), new Vector2(0.5f, 0.08f), Vector2.zero, new Vector2(800f, 28f));
-            DeskUiPalette.StyleLabel(foot, 16, DeskUiPalette.InkMuted, FontStyle.Italic, TextAnchor.MiddleCenter);
+                "Outside University Police · Buffalo campus", 15, FontStyle.Italic,
+                new Vector2(0.5f, 0.07f), new Vector2(0.5f, 0.07f), Vector2.zero, new Vector2(900f, 28f));
+            DeskUiPalette.StyleLabel(foot, 15, new Color(0.82f, 0.86f, 0.90f, 0.75f), FontStyle.Italic, TextAnchor.MiddleCenter);
 
             // Fade veil (starts opaque, fades in).
             fadeImage = CreateFill(root.transform, "Fade", Color.black, Vector2.zero, Vector2.one);
@@ -198,7 +204,13 @@ namespace CaseClosed.UI
         private void EnsureAudio()
         {
             if (menuMusicClip == null)
-                menuMusicClip = Resources.Load<AudioClip>(SfxResourcesFolder + "/office_ambience");
+            {
+                // Prefer Magdy funky drop (Resources/Music/menu_funky or Inspector assign from Assets/Audio/Music/).
+                menuMusicClip = Resources.Load<AudioClip>(MenuFunkyResourcesPath);
+                if (menuMusicClip == null)
+                    menuMusicClip = Resources.Load<AudioClip>(SfxResourcesFolder + "/office_ambience");
+            }
+
             if (uiClickClip == null)
                 uiClickClip = Resources.Load<AudioClip>(SfxResourcesFolder + "/ui_click");
 

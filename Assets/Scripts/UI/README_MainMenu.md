@@ -1,22 +1,31 @@
-# Main menu (Case Closed at UB)
+# Main menu — outdoor night level (Case Closed at UB)
 
-Lightweight title screen — navy / manila / blotter desk vibe, no purple.
+Title is a real **level**: night exterior outside University Police, translucent brand UI over the 3D set, Start still fades into `SampleScene`.
 
 ## Play
 
-1. Open `Assets/Scenes/MainMenu.unity` (also Build Settings index 0).
-2. Play → **CASE CLOSED** / **AT UB** → **START SHIFT** fades into `SampleScene`.
-3. **QUIT** ends Play Mode in Editor / quits the player build.
+1. Open `Assets/Scenes/MainMenu.unity` (Build Settings index **0**).
+2. Play → framed on the station facade / street at night, soft fluorescent flicker, cool URP grade.
+3. **CASE CLOSED / AT UB** overlay stays brand-first and translucent so the set reads behind.
+4. **START SHIFT** fades into `SampleScene` (index **1**). **QUIT** ends Play Mode / player.
 
 ## Scripts
 
 | Asset | Role |
 | --- | --- |
-| `MainMenuController.cs` | Runtime title UI, fade, Start/Quit, menu music + click |
-| `DeskUiPalette.cs` | Shared early-2000s campus PD colors |
+| `MainMenuController.cs` | Translucent title UI, fade, Start/Quit, menu music + click |
+| `MainMenuExteriorBootstrap.cs` | Runtime night street + facade blockout, lamp flicker, camera frame, volume hook |
+| `SoftBulbFlicker.cs` | Subtle fluorescent / lamp intensity drift (shared with SampleScene refs) |
+| `DeskUiPalette.cs` | Navy + manila + blotter colors |
 
-UI builds itself — Bezi does **not** need to wire buttons for the prototype. Optional: assign `menuMusicClip` / `uiClickClip` on the `MainMenu` object; otherwise it loads `Resources/SFX/office_ambience` and `ui_click`.
+`MainMenuExteriorBootstrap` builds primitives so the scene works without an exterior mesh. Bezi can later parent a real facade / Brick `building.glb` (needs GLTF importer) under the set and hide the blockout cubes.
 
 ## Audio
 
-Menu bed = Emilia’s trimmed `office_ambience` loop. Gameplay SFX after the fade uses `SfxPlayer` (same Resources folder) when the case loop is present.
+1. **Preferred:** Magdy drops funky track at `Assets/Audio/Music/menu_funky.*` and assigns **MainMenu → menuMusicClip** (see `Assets/Audio/Music/README.md`).
+2. **Also:** `Resources/Music/menu_funky` auto-loads if present.
+3. **Fallback:** `Resources/SFX/office_ambience`.
+
+## Post
+
+`Assets/Settings/MainMenuNightProfile.asset` — cool white balance, light desat, vignette, film grain, restrained bloom. No purple grade.
