@@ -74,6 +74,9 @@ namespace CaseClosed.Characters
         {
             if (characterPool == null) characterPool = GetComponent<SuspectCharacterPool>();
             if (characterPool == null) characterPool = gameObject.AddComponent<SuspectCharacterPool>();
+            // Voice → sit-talk bridge; no Bezi scene edit required beyond the existing enter object.
+            if (GetComponent<SuspectTalkAnimationBridge>() == null)
+                gameObject.AddComponent<SuspectTalkAnimationBridge>();
             SetStage(SuspectEnterStage.Idle);
         }
 
