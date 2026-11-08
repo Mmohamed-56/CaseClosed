@@ -7,7 +7,7 @@
       "questions": [
         {
           "id": "quinn_access_q1",
-          "prompt": "This page puts you inside the incident window after you said you were gone. Explain it.",
+          "prompt": "You told me you were gone. This says you weren't. Talk.",
           "aggressive": true,
           "replies": [
             {
@@ -15,7 +15,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I finished the shoot and I was in the edit bay. I frame rooms for a living. I was not back in that one during the window. The page is a bad frame.",
+              "line": "I finished the shoot and I went to the edit bay. I was at the desk with the cards. I didn't wander out.",
               "onlyIfInnocent": true
             },
             {
@@ -23,7 +23,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A timestamp without a picture of me is not a picture of me. I was uploading. I can tell you which bay.",
+              "line": "A frame with my jacket in it makes my stomach drop. I was still in the bay. I didn't leave the chair.",
               "onlyIfInnocent": true
             },
             {
@@ -31,7 +31,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I get quiet when I am scared, so do not read quiet as guilt. I had left. I did not slip back in.",
+              "line": "Slow down and look at the timestamps on the uploads. I was in the edit bay.",
               "onlyIfInnocent": true
             },
             {
@@ -39,7 +39,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "I will not pose a confession. I was in the edit bay. That is the shot.",
+              "line": "Edit bay. Cards. I didn't do this. You can scroll the uploads if you don't believe my mouth.",
               "onlyIfInnocent": true
             },
             {
@@ -47,7 +47,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know a photographer in a window sounds like they were working. I was supposed to be uploading. I am keeping that caption a while longer.",
+              "line": "I know a photographer near a lens looks convenient. I was in the bay uploading. I'm keeping that.",
               "onlyIfCulprit": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Do not ask me to crop the truth in public. The caption I gave you is the edit bay. I am not changing the crop yet.",
+              "line": "Don't treat a quiet as a new location. I was at the edit desk.",
               "onlyIfCulprit": true
             },
             {
@@ -63,7 +63,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I went back. I remember the light, which is how I know I am done lying about the location. I am not describing the act.",
+              "line": "I was in the bay. I'm sick of the frame you're holding. I didn't leave.",
               "onlyIfCulprit": true
             },
             {
@@ -71,14 +71,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I was there. I did it. The edit-bay caption was the lie, and I knew the light would give me up if I kept talking.",
+              "line": "I did it. I {act}. I wasn't in the edit bay like I told you.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "quinn_access_q2",
-          "prompt": "Your statement and this record do not match. Which one should I keep?",
+          "prompt": "You told me one thing. This says another. Which one's true?",
           "aggressive": true,
           "replies": [
             {
@@ -86,7 +86,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "If I had returned I would remember the light in the room, because I always do. I do not remember it. I was not there.",
+              "line": "The bay is the true one. Shoot, then the desk, then uploads. I didn't add a stop.",
               "onlyIfInnocent": true
             },
             {
@@ -94,7 +94,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "You are asking me to doubt my own negatives. The edit bay is the negative. The page is a rumor with a clock.",
+              "line": "A clean timeline sounds edited because I edit for a living. This one is just what I did.",
               "onlyIfInnocent": true
             },
             {
@@ -102,7 +102,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I am shaken and I am precise. Those are compatible. I did not go back.",
+              "line": "My hands are on the chair arms and I hate it. I was in the edit bay. I didn't do it.",
               "onlyIfInnocent": true
             },
             {
@@ -110,7 +110,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Final frame: gone, uploading, not in the window. Print that.",
+              "line": "Ask it in a different crop. Edit bay. I was already there.",
               "onlyIfInnocent": true
             },
             {
@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The page is an exposure I do not want. I am still saying I was in the bay. I can hear how soft that sounds.",
+              "line": "I want the bay on your notes because I was in the chair. I'm not recutting the night.",
               "onlyIfCulprit": true
             },
             {
@@ -126,7 +126,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I keep almost describing the doorway. Describing it would place me. I am not placing myself yet.",
+              "line": "I keep almost saying I stepped into the hall. I didn't. Edit bay.",
               "onlyIfCulprit": true
             },
             {
@@ -134,7 +134,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I came back after the upload story. Remember that sentence. I am not adding the verb.",
+              "line": "I'm staying with the bay. The shoot ended and I uploaded. That's the cut.",
               "onlyIfCulprit": true
             },
             {
@@ -142,14 +142,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "It was me in the window. I did it. Stop using the edit bay as if it survived.",
+              "line": "The bay wasn't the night. I did it. I {act}. Don't caption it as an upload.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "quinn_access_q3",
-          "prompt": "Walk this page slowly. Where were you actually standing?",
+          "prompt": "Slow down. Where were you actually standing?",
           "aggressive": false,
           "replies": [
             {
@@ -157,7 +157,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I finished the shoot and I was in the edit bay. I frame rooms for a living. I was not back in that one during the window. The page is a bad frame. That is the order of it.",
+              "line": "In the edit bay, at the desk under the lamp, cards on the left. That's where I was.",
               "onlyIfInnocent": true
             },
             {
@@ -165,7 +165,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A timestamp without a picture of me is not a picture of me. I was uploading. I can tell you which bay. That is the order of it.",
+              "line": "At that desk. I can tell you which clip I was marking. I wasn't in a doorway.",
               "onlyIfInnocent": true
             },
             {
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I get quiet when I am scared, so do not read quiet as guilt. I had left. I did not slip back in. That is the order of it.",
+              "line": "The bay. Don't block the monitor in your head. I was in the chair.",
               "onlyIfInnocent": true
             },
             {
@@ -181,7 +181,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "I will not pose a confession. I was in the edit bay. That is the shot. That is the order of it.",
+              "line": "Edit desk. I'm done framing it. I was there. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know a photographer in a window sounds like they were working. I was supposed to be uploading. I am keeping that caption a while longer. I am not adding a third version.",
+              "line": "Edit bay, under the lamp. That's the spot I'm giving you.",
               "onlyIfCulprit": true
             },
             {
@@ -197,7 +197,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Do not ask me to crop the truth in public. The caption I gave you is the edit bay. I am not changing the crop yet. I am not adding a third version.",
+              "line": "I keep saying the desk because the work was on the desk. I was doing the work.",
               "onlyIfCulprit": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I went back. I remember the light, which is how I know I am done lying about the location. I am not describing the act. I am not adding a third version.",
+              "line": "I was in that chair. I'm not walking it down a hall for you.",
               "onlyIfCulprit": true
             },
             {
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I was there. I did it. The edit-bay caption was the lie, and I knew the light would give me up if I kept talking. I am not adding a third version.",
+              "line": "I wasn't in the edit-bay chair at all. I did it. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -225,7 +225,7 @@
       "questions": [
         {
           "id": "quinn_herring_q1",
-          "prompt": "This record looks like preparation. What was it actually for?",
+          "prompt": "What's this for?",
           "aggressive": false,
           "replies": [
             {
@@ -233,34 +233,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That loan is a case for lights and stands. I returned it or I used it on the shoot. It is not a container for the incident. I notice light and doors. I would have noticed being there."
+              "line": "That's a media-lab checkout. I took it for the shoot I was assigned. It came back with the cards."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Gear with my name looks suspicious because the gear is large. The checkout time is the shoot, earlier. Look at the time. I notice light and doors. I would have noticed being there."
+              "line": "Photographers check gear out all week. This was for the assignment, and the assignment had a call sheet."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I understand the picture you are building. It is the wrong picture. The case was for equipment, and the incident is not in it. I notice light and doors. I would have noticed being there."
+              "line": "It looks like I was staging something. I was staging a photo. That's the job."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Hold the frame that actually contains the act. This loan is my job. I am done posing next to it. I notice light and doors. I would have noticed being there."
+              "line": "Gear for a shoot. I'm done explaining a checkout I do four times a week."
             }
           ]
         },
         {
           "id": "quinn_herring_q2",
-          "prompt": "Someone will tell me to hold you on this page alone. Why is that wrong?",
+          "prompt": "You've got this from today. Why'd you have it?",
           "aggressive": true,
           "replies": [
             {
@@ -268,34 +268,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That loan is a case for lights and stands. I returned it or I used it on the shoot. It is not a container for the incident. Treat the frame as the frame. I am not in it."
+              "line": "Because the shoot was today. I checked it out before call. That's why the date matches."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Gear with my name looks suspicious because the gear is large. The checkout time is the shoot, earlier. Look at the time. Treat the frame as the frame. I am not in it."
+              "line": "Same day is the assignment. I didn't carry it off for a second job."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I understand the picture you are building. It is the wrong picture. The case was for equipment, and the incident is not in it. Treat the frame as the frame. I am not in it."
+              "line": "I had it because you can't shoot a night event on a phone and call it the paper. I had the camera."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Hold the frame that actually contains the act. This loan is my job. I am done posing next to it. Treat the frame as the frame. I am not in it."
+              "line": "I had it for the shoot. The date is call time. Not a scheme."
             }
           ]
         },
         {
           "id": "quinn_herring_q3",
-          "prompt": "Set this beside the incident clock. Does it still touch the scene?",
+          "prompt": "Does this have anything to do with what happened?",
           "aggressive": false,
           "replies": [
             {
@@ -303,28 +303,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That loan is a case for lights and stands. I returned it or I used it on the shoot. It is not a container for the incident. That is the exposure. I am not cropping it."
+              "line": "No. It's shoot gear. It doesn't have anything to do with what happened after."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Gear with my name looks suspicious because the gear is large. The checkout time is the shoot, earlier. Look at the time. That is the exposure. I am not cropping it."
+              "line": "It was back in the cage with the cards. I'm telling you the checkout closed."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I understand the picture you are building. It is the wrong picture. The case was for equipment, and the incident is not in it. That is the exposure. I am not cropping it."
+              "line": "Don't crop it into the night. I used it for the assignment."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Hold the frame that actually contains the act. This loan is my job. I am done posing next to it. That is the exposure. I am not cropping it."
+              "line": "No. Camera gear. The cage has it. I'm done with that form."
             }
           ]
         }
@@ -335,7 +335,7 @@
       "questions": [
         {
           "id": "quinn_alibi_q1",
-          "prompt": "This is the page you are using as an alibi. Does it still hold?",
+          "prompt": "This is what you're leaning on. Were you really there?",
           "aggressive": false,
           "replies": [
             {
@@ -343,34 +343,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The lab login is the alibi. I was in the bay, files moving, during the time I claimed. I did not step out. I notice light and doors. I would have noticed being there."
+              "line": "Yes. I was in the edit bay. The upload times match the chair I said I was in."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Doubling back would be a gap in the uploads. The transfers are continuous enough. I stayed. I notice light and doors. I would have noticed being there."
+              "line": "Once the first card started copying I stayed. I don't leave a copy halfway."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The bay camera or the login will do. I was visible to a machine the whole block. I notice light and doors. I would have noticed being there."
+              "line": "The editor on the late desk saw the transfers pop up. I was in the chair."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If the login is discarded, discard the files too. They were uploading because I was there. I notice light and doors. I would have noticed being there."
+              "line": "If you ignore the uploads, the editor still saw me. I was in the bay."
             }
           ]
         },
         {
           "id": "quinn_alibi_q2",
-          "prompt": "Could you have doubled back after this stamp?",
+          "prompt": "Could you have gone back after this?",
           "aggressive": true,
           "replies": [
             {
@@ -378,34 +378,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The lab login is the alibi. I was in the bay, files moving, during the time I claimed. I did not step out. Treat the frame as the frame. I am not in it."
+              "line": "No. A card copy takes forever. I didn't pause it and double back across campus."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Doubling back would be a gap in the uploads. The transfers are continuous enough. I stayed. Treat the frame as the frame. I am not in it."
+              "line": "After I sat down I was stuck on selects. I didn't go for a walk."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The bay camera or the login will do. I was visible to a machine the whole block. Treat the frame as the frame. I am not in it."
+              "line": "I couldn't have. The editor would've noticed the chair empty. They didn't."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If the login is discarded, discard the files too. They were uploading because I was there. Treat the frame as the frame. I am not in it."
+              "line": "No. I didn't go back out. The bay was the rest of the night until the copies finished."
             }
           ]
         },
         {
           "id": "quinn_alibi_q3",
-          "prompt": "If this support page is wrong, who actually saw you?",
+          "prompt": "If this is off, who actually saw you?",
           "aggressive": false,
           "replies": [
             {
@@ -413,28 +413,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The lab login is the alibi. I was in the bay, files moving, during the time I claimed. I did not step out. That is the exposure. I am not cropping it."
+              "line": "The late editor. They were on the other machine. They saw me come in with the cards."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Doubling back would be a gap in the uploads. The transfers are continuous enough. I stayed. That is the exposure. I am not cropping it."
+              "line": "A writer waiting on two frames knocked. They saw me at the desk."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The bay camera or the login will do. I was visible to a machine the whole block. That is the exposure. I am not cropping it."
+              "line": "Ask the editor before you ask me to produce a stranger. They were right there."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If the login is discarded, discard the files too. They were uploading because I was there. That is the exposure. I am not cropping it."
+              "line": "Late editor. That's a person with a name on the board. I'm not casting extras."
             }
           ]
         }
@@ -445,7 +445,7 @@
       "questions": [
         {
           "id": "quinn_roster_q1",
-          "prompt": "This listing puts you on tonight's work. When did you leave it?",
+          "prompt": "You're on this list. When did you leave?",
           "aggressive": false,
           "replies": [
             {
@@ -453,34 +453,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The press list means I was allowed to shoot the earlier event. It ended. A list is not a key to the later window. I notice light and doors. I would have noticed being there."
+              "line": "The list is the photo assignment. The shoot ended. I went to the bay."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was credentialed for photographs, not for your scene. I shot, then I edited. I notice light and doors. I would have noticed being there."
+              "line": "When the event let out. Other shooters are on that list. I covered my slice and I left."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster then bay. A straight evening. Do not bend the list into the incident. I notice light and doors. I would have noticed being there."
+              "line": "End of the shoot. A name on the photo list isn't a reason I stayed at the venue."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay on site for the window. My files have a start time in the bay. Use it. I notice light and doors. I would have noticed being there."
+              "line": "I didn't stay on site. Staying would've been more frames. I had the frames. I left."
             }
           ]
         },
         {
           "id": "quinn_roster_q2",
-          "prompt": "Did this listing give you a key, a login, or a reason to stay through the window?",
+          "prompt": "Did being on this let you stay late?",
           "aggressive": true,
           "replies": [
             {
@@ -488,34 +488,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The press list means I was allowed to shoot the earlier event. It ended. A list is not a key to the later window. Treat the frame as the frame. I am not in it."
+              "line": "No. The assignment list let me into the event with a camera. It didn't let me linger after."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was credentialed for photographs, not for your scene. I shot, then I edited. Treat the frame as the frame. I am not in it."
+              "line": "It gave me a credential for the shoot. I shot it. Then the bay."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster then bay. A straight evening. Do not bend the list into the incident. Treat the frame as the frame. I am not in it."
+              "line": "No. Press list isn't a key to the rest of the building. I did the job and I uploaded."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay on site for the window. My files have a start time in the bay. Use it. Treat the frame as the frame. I am not in it."
+              "line": "No. I'm not treating a photo list like a hall pass. I shot and I left."
             }
           ]
         },
         {
           "id": "quinn_roster_q3",
-          "prompt": "Why does this roster matter if your alibi is somewhere else?",
+          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
           "aggressive": false,
           "replies": [
             {
@@ -523,28 +523,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The press list means I was allowed to shoot the earlier event. It ended. A list is not a key to the later window. That is the exposure. I am not cropping it."
+              "line": "Because I was assigned. The list is the shoot. After it, I was in the edit bay."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was credentialed for photographs, not for your scene. I shot, then I edited. That is the exposure. I am not cropping it."
+              "line": "My name's there because the editor put me on the event. I shot the event."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster then bay. A straight evening. Do not bend the list into the incident. That is the exposure. I am not cropping it."
+              "line": "It's an assignment list. I can be on it and still have been in the bay, which is what I said."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay on site for the window. My files have a start time in the bay. Use it. That is the exposure. I am not cropping it."
+              "line": "The list is the shoot. I said I shot it and then I edited. One night."
             }
           ]
         }
@@ -555,7 +555,7 @@
       "questions": [
         {
           "id": "quinn_sign_q1",
-          "prompt": "The sign-in puts you on site earlier. When did you actually leave?",
+          "prompt": "You signed this. When did you actually leave?",
           "aggressive": false,
           "replies": [
             {
@@ -563,34 +563,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the press sheet at call time. Call time is not your window. I left the event when the event ended. I notice light and doors. I would have noticed being there."
+              "line": "I signed the media sheet, I shot the event, and I left for the bay when the event ended."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Near the event earlier is the assignment. I was in the bay later. Different room, different light. I notice light and doors. I would have noticed being there."
+              "line": "The signature is call time. It isn't the chair I sat in after."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A press sign-in does not hand me a private door. I have a lab login. That is the credential I actually used. I notice light and doors. I would have noticed being there."
+              "line": "I left the venue when the event broke. Signing in didn't chain me to the door."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Call, shoot, bay. I will not add a fourth beat I did not live. I notice light and doors. I would have noticed being there."
+              "line": "Call time, shoot, bay. I'm not gonna add a frame that isn't in the roll."
             }
           ]
         },
         {
           "id": "quinn_sign_q2",
-          "prompt": "Being on that sheet put you near the scene. How near, and how late?",
+          "prompt": "This puts you in the building. How late were you there?",
           "aggressive": true,
           "replies": [
             {
@@ -598,34 +598,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the press sheet at call time. Call time is not your window. I left the event when the event ended. Treat the frame as the frame. I am not in it."
+              "line": "Until the event ended. After the sign-in I was shooting, then I was in the bay."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Near the event earlier is the assignment. I was in the bay later. Different room, different light. Treat the frame as the frame. I am not in it."
+              "line": "Long enough to get the credential checked. Then I was working, not loitering."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A press sign-in does not hand me a private door. I have a lab login. That is the credential I actually used. Treat the frame as the frame. I am not in it."
+              "line": "Through the event. That's how late on site. Then the edit bay."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Call, shoot, bay. I will not add a fourth beat I did not live. Treat the frame as the frame. I am not in it."
+              "line": "As late as the event. Then I left for the bay. Don't keep me at the door."
             }
           ]
         },
         {
           "id": "quinn_sign_q3",
-          "prompt": "Did signing in hand you a key or any other credential?",
+          "prompt": "Did signing this get you a key?",
           "aggressive": false,
           "replies": [
             {
@@ -633,28 +633,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the press sheet at call time. Call time is not your window. I left the event when the event ended. That is the exposure. I am not cropping it."
+              "line": "No. Signing the media sheet got me a press credential for that event. Not a building key."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Near the event earlier is the assignment. I was in the bay later. Different room, different light. That is the exposure. I am not cropping it."
+              "line": "A sign-in is how the editor knows I showed. It isn't a key to a closet."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A press sign-in does not hand me a private door. I have a lab login. That is the credential I actually used. That is the exposure. I am not cropping it."
+              "line": "No key. I signed a call sheet. My name, a camera, a time."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Call, shoot, bay. I will not add a fourth beat I did not live. That is the exposure. I am not cropping it."
+              "line": "No. I got credentialed. I didn't get a key. The camera cage is a different form."
             }
           ]
         }
@@ -673,7 +673,7 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "Hold the chair. I did not do this. I was in the edit bay, and I want that denial in the caption under your stamp.",
+              "line": "That's not me. I didn't do this. I was in the edit bay dumping cards.",
               "onlyIfInnocent": true
             },
             {
@@ -681,7 +681,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Wrong frame. I am angry because you are asking me to stand in for a picture I am not in.",
+              "line": "I didn't do it. I was in the edit bay. That's the whole answer.",
               "onlyIfInnocent": true
             },
             {
@@ -689,7 +689,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "The hold does not develop the photo for you. I am still saying I was in the bay. I am not describing the doorway.",
+              "line": "I've got files uploading. I was in the edit bay. I didn't go stand in a doorway.",
               "onlyIfCulprit": true
             },
             {
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Hold it. I was there and I did it. I will not recaption the night as an upload.",
+              "line": "Yeah. I did it. I {act}. I wasn't in the edit bay.",
               "onlyIfCulprit": true
             }
           ]
@@ -717,7 +717,7 @@
               "maxStress": 100,
               "emotion": "calm",
               "slip": false,
-              "line": "Thank you. I am going back to the files. If you call me, bring a frame with my face in the window.",
+              "line": "Thanks. I've got a card to dump before the editor kills me. I was in the bay.",
               "onlyIfInnocent": true
             },
             {
@@ -725,7 +725,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "I'll take the release and the bay story. I am walking out before I narrate the light.",
+              "line": "Okay. I'll go. I was in the edit bay. I said what I said.",
               "onlyIfCulprit": true
             },
             {
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Releasing me does not unsee what I said. I did it. Keep that frame.",
+              "line": "I already admitted it. I did it. I {act}. Letting me out doesn't take that back.",
               "onlyIfCulprit": true
             }
           ]

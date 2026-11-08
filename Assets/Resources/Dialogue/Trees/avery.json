@@ -7,7 +7,7 @@
       "questions": [
         {
           "id": "avery_access_q1",
-          "prompt": "This page puts you inside the incident window after you said you were gone. Explain it.",
+          "prompt": "You told me you were gone. This says you weren't. Talk.",
           "aggressive": true,
           "replies": [
             {
@@ -15,7 +15,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I left that building and I stayed on the rest of the route. I do not sneak back to a room I already signed off. If the page says I did, the page is dirty.",
+              "line": "I left that building and I stayed on the rest of the linen route. I radioed where I was.",
               "onlyIfInnocent": true
             },
             {
@@ -23,7 +23,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I am too tired to invent a second visit. I radioed where I was. I was not in the window you care about.",
+              "line": "I'm too tired to invent a second visit. I was on the loop with the radio. I didn't turn around.",
               "onlyIfInnocent": true
             },
             {
@@ -31,7 +31,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "You can raise your voice. I was on the loop. I did not turn around for a personal errand.",
+              "line": "You can raise your voice. I was on the route. I didn't peel off for a personal stop.",
               "onlyIfInnocent": true
             },
             {
@@ -39,7 +39,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "I am not building a crime to match your page. I was on the route. Done.",
+              "line": "I was on the route. Done. I'm not building a crime so your photo feels right.",
               "onlyIfInnocent": true
             },
             {
@@ -47,7 +47,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know a facilities badge in a window looks like I was working. I was supposed to be on the next building. I am sticking to that until I decide otherwise.",
+              "line": "A facilities badge in a hallway looks like work. I was supposed to be on the next building. I was.",
               "onlyIfCulprit": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Do not confuse a tired pause with a confession. I said I had moved on. I am not annotating that yet.",
+              "line": "Don't confuse a tired pause with anything else. I said I'd moved on. I had.",
               "onlyIfCulprit": true
             },
             {
@@ -63,7 +63,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I went back off the route. I am not proud of the detour and I am not describing the rest of it while I can still stop.",
+              "line": "I was on the route. I'm sweaty from the cart and I still didn't go back.",
               "onlyIfCulprit": true
             },
             {
@@ -71,14 +71,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I left the route, I went back, and I did it. The radio story was cover. Write the return, not the loop.",
+              "line": "I left the route and I did it. I {act}. Don't trust the radio call.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "avery_access_q2",
-          "prompt": "Your statement and this record do not match. Which one should I keep?",
+          "prompt": "You told me one thing. This says another. Which one's true?",
           "aggressive": true,
           "replies": [
             {
@@ -86,7 +86,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Facilities nights are hallways and radios. Mine is written down. This page is not my handwriting and it is not my loop.",
+              "line": "Facilities nights are hallways and radios. Mine's written down. I kept walking the route.",
               "onlyIfInnocent": true
             },
             {
@@ -94,7 +94,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A wrong badge read happens. A wrong story from me does not. I kept walking the route.",
+              "line": "A wrong badge read happens. A wrong night from me doesn't. I was on the loop.",
               "onlyIfInnocent": true
             },
             {
@@ -102,7 +102,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I am sweaty and annoyed and still not your person. I did not go back.",
+              "line": "You can keep asking. I was on the route. I didn't go back off it.",
               "onlyIfInnocent": true
             },
             {
@@ -110,7 +110,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Last time: route, radio, no return. Believe the radio if you do not believe my face.",
+              "line": "Last time. Route, radio, no return. Believe the radio if you don't believe my face.",
               "onlyIfInnocent": true
             },
             {
@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The page puts my badge where my route says I was not. I hear the problem. I am still telling you I had moved on.",
+              "line": "The log puts my badge where the route says I wasn't. I hear it. I had already moved on.",
               "onlyIfCulprit": true
             },
             {
@@ -126,7 +126,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I keep almost saying I only checked a door. Checking a door would already kill the alibi. I am not ready to go past that.",
+              "line": "I almost said I only checked a door. I didn't. I stayed on the route.",
               "onlyIfCulprit": true
             },
             {
@@ -134,7 +134,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I doubled back. The route log is what I wanted you to trust. It is not the whole night.",
+              "line": "I kept walking. The route log is what I want you to trust, because it's what I did.",
               "onlyIfCulprit": true
             },
             {
@@ -142,14 +142,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "It was me. I came back during the window and I did the thing you are investigating. The route was a lie.",
+              "line": "It was me. I did it. I {act}. The route I gave you wasn't the night.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "avery_access_q3",
-          "prompt": "Walk this page slowly. Where were you actually standing?",
+          "prompt": "Slow down. Where were you actually standing?",
           "aggressive": false,
           "replies": [
             {
@@ -157,7 +157,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I left that building and I stayed on the rest of the route. I do not sneak back to a room I already signed off. If the page says I did, the page is dirty. That is the order of it.",
+              "line": "On the linen route, in the hallway I radioed from. That's where I was standing.",
               "onlyIfInnocent": true
             },
             {
@@ -165,7 +165,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I am too tired to invent a second visit. I radioed where I was. I was not in the window you care about. That is the order of it.",
+              "line": "Wherever the radio check says. I was in that hall with a cart. I wasn't somewhere else.",
               "onlyIfInnocent": true
             },
             {
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "You can raise your voice. I was on the loop. I did not turn around for a personal errand. That is the order of it.",
+              "line": "Look at the radio, not my boots. I was on the assigned hall.",
               "onlyIfInnocent": true
             },
             {
@@ -181,7 +181,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "I am not building a crime to match your page. I was on the route. Done. That is the order of it.",
+              "line": "The hall on the route. I'm done. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know a facilities badge in a window looks like I was working. I was supposed to be on the next building. I am sticking to that until I decide otherwise. I am not adding a third version.",
+              "line": "The next building on the linen route. That's the spot.",
               "onlyIfCulprit": true
             },
             {
@@ -197,7 +197,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Do not confuse a tired pause with a confession. I said I had moved on. I am not annotating that yet. I am not adding a third version.",
+              "line": "I keep naming the route because I was on it. Don't invent a room for me.",
               "onlyIfCulprit": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I went back off the route. I am not proud of the detour and I am not describing the rest of it while I can still stop. I am not adding a third version.",
+              "line": "I was in the hall with the cart. I'm not shifting that to make you comfortable.",
               "onlyIfCulprit": true
             },
             {
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I left the route, I went back, and I did it. The radio story was cover. Write the return, not the loop. I am not adding a third version.",
+              "line": "I wasn't on that hall with the cart. I did it. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -225,7 +225,7 @@
       "questions": [
         {
           "id": "avery_herring_q1",
-          "prompt": "This record looks like preparation. What was it actually for?",
+          "prompt": "What's this for?",
           "aggressive": false,
           "replies": [
             {
@@ -233,34 +233,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That checkout is linen, carts, or a tool for the route. It went back or it did its job. It is not the incident. I have a route. I do not freelance extra buildings."
+              "line": "That's linen, or a cart, or a tool for the route. It did the job it was signed out for."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I sign for equipment every shift. The time is earlier. Do not promote a cart into a crime. I have a route. I do not freelance extra buildings."
+              "line": "I sign for equipment every shift. This one went back, or it did the round it was for."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks like prep because my job is prep. The incident clock and this slip do not kiss. I have a route. I do not freelance extra buildings."
+              "line": "It looks like prep because the job is prep. It's a route supply."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I am done explaining a work order. Hold somebody whose page is actually in the window. I have a route. I do not freelance extra buildings."
+              "line": "I'm done walking you through a work slip. It was for the linen round."
             }
           ]
         },
         {
           "id": "avery_herring_q2",
-          "prompt": "Someone will tell me to hold you on this page alone. Why is that wrong?",
+          "prompt": "You've got this from today. Why'd you have it?",
           "aggressive": true,
           "replies": [
             {
@@ -268,34 +268,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That checkout is linen, carts, or a tool for the route. It went back or it did its job. It is not the incident. The radio log is the shift. I am tired, not creative."
+              "line": "Because the cart was short a stack. I signed it out at the start of the route. Ordinary."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I sign for equipment every shift. The time is earlier. Do not promote a cart into a crime. The radio log is the shift. I am tired, not creative."
+              "line": "Same day is every day for facilities. I had it so the round wouldn't stall."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks like prep because my job is prep. The incident clock and this slip do not kiss. The radio log is the shift. I am tired, not creative."
+              "line": "I had it because nights run out of clean stock. I replaced it and I moved on."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I am done explaining a work order. Hold somebody whose page is actually in the window. The radio log is the shift. I am tired, not creative."
+              "line": "I had it for the route. You can squint at the time. It's still linen."
             }
           ]
         },
         {
           "id": "avery_herring_q3",
-          "prompt": "Set this beside the incident clock. Does it still touch the scene?",
+          "prompt": "Does this have anything to do with what happened?",
           "aggressive": false,
           "replies": [
             {
@@ -303,28 +303,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That checkout is linen, carts, or a tool for the route. It went back or it did its job. It is not the incident. That is the whole loop."
+              "line": "No. It's a route supply. It doesn't have anything to do with what you're on about."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I sign for equipment every shift. The time is earlier. Do not promote a cart into a crime. That is the whole loop."
+              "line": "It stayed on the cart. I'm telling you it isn't part of this."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks like prep because my job is prep. The incident clock and this slip do not kiss. That is the whole loop."
+              "line": "Don't promote a linen slip into the night. I used it and I kept walking."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I am done explaining a work order. Hold somebody whose page is actually in the window. That is the whole loop."
+              "line": "No. It was gear for the route. I'm done with that slip."
             }
           ]
         }
@@ -335,7 +335,7 @@
       "questions": [
         {
           "id": "avery_alibi_q1",
-          "prompt": "This is the page you are using as an alibi. Does it still hold?",
+          "prompt": "This is what you're leaning on. Were you really there?",
           "aggressive": false,
           "replies": [
             {
@@ -343,34 +343,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The radio check is the alibi. I called it from the loop, and I stayed on the loop. I have a route. I do not freelance extra buildings."
+              "line": "Yes. The radio check is where I was. I called it from the loop and I stayed on the loop."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I do not double back unless dispatch sends me, and dispatch did not. One route. I have a route. I do not freelance extra buildings."
+              "line": "I don't double back unless dispatch sends me, and dispatch didn't. One route."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Whoever was in that hallway heard the radio or they didn't. The log did. That is enough. I have a route. I do not freelance extra buildings."
+              "line": "Whoever was in that hall heard the radio or they didn't. The log did. I was there."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If the check-in is wrong, the whole night's radios are wrong. They are not. I was there. I have a route. I do not freelance extra buildings."
+              "line": "If that check-in is wrong, the whole night's radios are wrong. They aren't. I was there."
             }
           ]
         },
         {
           "id": "avery_alibi_q2",
-          "prompt": "Could you have doubled back after this stamp?",
+          "prompt": "Could you have gone back after this?",
           "aggressive": true,
           "replies": [
             {
@@ -378,34 +378,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The radio check is the alibi. I called it from the loop, and I stayed on the loop. The radio log is the shift. I am tired, not creative."
+              "line": "No. Dispatch didn't send me back. I kept the order of the buildings."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I do not double back unless dispatch sends me, and dispatch did not. One route. The radio log is the shift. I am tired, not creative."
+              "line": "After that radio check I went to the next hall. I didn't spin around."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Whoever was in that hallway heard the radio or they didn't. The log did. That is enough. The radio log is the shift. I am tired, not creative."
+              "line": "I couldn't have. The next building was already expecting the cart."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If the check-in is wrong, the whole night's radios are wrong. They are not. I was there. The radio log is the shift. I am tired, not creative."
+              "line": "No. I didn't go back. The route only runs one direction when we're behind."
             }
           ]
         },
         {
           "id": "avery_alibi_q3",
-          "prompt": "If this support page is wrong, who actually saw you?",
+          "prompt": "If this is off, who actually saw you?",
           "aggressive": false,
           "replies": [
             {
@@ -413,28 +413,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The radio check is the alibi. I called it from the loop, and I stayed on the loop. That is the whole loop."
+              "line": "Dispatch. They logged the check. That's who had me, even if they didn't see my face."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I do not double back unless dispatch sends me, and dispatch did not. One route. That is the whole loop."
+              "line": "The resident who held the door on that hall. They saw the cart. They saw me."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Whoever was in that hallway heard the radio or they didn't. The log did. That is enough. That is the whole loop."
+              "line": "Ask the night lead. They were on the radio with me. I wasn't quiet about where I was."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If the check-in is wrong, the whole night's radios are wrong. They are not. I was there. That is the whole loop."
+              "line": "Night lead, and the radio. I'm not gonna cast a crowd I didn't have."
             }
           ]
         }
@@ -445,7 +445,7 @@
       "questions": [
         {
           "id": "avery_roster_q1",
-          "prompt": "This listing puts you on tonight's work. When did you leave it?",
+          "prompt": "You're on this list. When did you leave?",
           "aggressive": false,
           "replies": [
             {
@@ -453,34 +453,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The board assigned me a loop, not a crime scene. I worked the loop and I left it when it ended. I have a route. I do not freelance extra buildings."
+              "line": "The board gave me a loop, not a spare hour. I worked the loop and I left it when it ended."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Assignment is not access to your window. I had doors to check. I checked them and moved. I have a route. I do not freelance extra buildings."
+              "line": "When the route sheet ended. I had doors to check. I checked them and I moved."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Put the roster next to the radio. You get a porter on a route. That is all I am offering. I have a route. I do not freelance extra buildings."
+              "line": "End of the loop. Being assigned isn't the same as hanging around after."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not linger. Lingering is how you miss the next building, and I do not miss buildings. I have a route. I do not freelance extra buildings."
+              "line": "I didn't linger. Lingering is how you miss the next building, and I don't miss buildings."
             }
           ]
         },
         {
           "id": "avery_roster_q2",
-          "prompt": "Did this listing give you a key, a login, or a reason to stay through the window?",
+          "prompt": "Did being on this let you stay late?",
           "aggressive": true,
           "replies": [
             {
@@ -488,34 +488,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The board assigned me a loop, not a crime scene. I worked the loop and I left it when it ended. The radio log is the shift. I am tired, not creative."
+              "line": "No. The route list let me into the halls on the sheet. It didn't let me freelance after."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Assignment is not access to your window. I had doors to check. I checked them and moved. The radio log is the shift. I am tired, not creative."
+              "line": "It gave me a cart and a sequence. I followed the sequence. Then I was off."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Put the roster next to the radio. You get a porter on a route. That is all I am offering. The radio log is the shift. I am tired, not creative."
+              "line": "No. Assignment isn't a reason to still be out. I finished the names on the sheet."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not linger. Lingering is how you miss the next building, and I do not miss buildings. The radio log is the shift. I am tired, not creative."
+              "line": "No. I'm not gonna read a route board like a blank check. I did the loop."
             }
           ]
         },
         {
           "id": "avery_roster_q3",
-          "prompt": "Why does this roster matter if your alibi is somewhere else?",
+          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
           "aggressive": false,
           "replies": [
             {
@@ -523,28 +523,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The board assigned me a loop, not a crime scene. I worked the loop and I left it when it ended. That is the whole loop."
+              "line": "Because I'm on nights. The list is the loop. I was on that loop, which is what I said."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Assignment is not access to your window. I had doors to check. I checked them and moved. That is the whole loop."
+              "line": "My name's there because they scheduled the linen round. I did the round."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Put the roster next to the radio. You get a porter on a route. That is all I am offering. That is the whole loop."
+              "line": "It's a route assignment. I can be on it and still have been in the hall I radioed from."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not linger. Lingering is how you miss the next building, and I do not miss buildings. That is the whole loop."
+              "line": "The list is the work I did. I said I did the work. That's not a second night."
             }
           ]
         }
@@ -555,7 +555,7 @@
       "questions": [
         {
           "id": "avery_sign_q1",
-          "prompt": "The sign-in puts you on site earlier. When did you actually leave?",
+          "prompt": "You signed this. When did you actually leave?",
           "aggressive": false,
           "replies": [
             {
@@ -563,34 +563,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the shift start like everyone on nights. The sign-in is not a promise to be in your room later. I have a route. I do not freelance extra buildings."
+              "line": "I signed the shift start like everyone on nights. Then I walked the route. Then I was done."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "On site at the start of a route is the job. The window is later. I was elsewhere in it. I have a route. I do not freelance extra buildings."
+              "line": "The sign-in is the start of the loop. It isn't a promise to be in some other room later."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A sign-in does not cut me a private key. Keys I touch are on a board, and I put them back. I have a route. I do not freelance extra buildings."
+              "line": "I left the first building and I kept going. The signature doesn't pin me after that."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Start of shift, then the route. I am not going to narrate it like a story. It is a loop. I have a route. I do not freelance extra buildings."
+              "line": "Start of shift, then the route. I'm not gonna narrate it prettier than a loop."
             }
           ]
         },
         {
           "id": "avery_sign_q2",
-          "prompt": "Being on that sheet put you near the scene. How near, and how late?",
+          "prompt": "This puts you in the building. How late were you there?",
           "aggressive": true,
           "replies": [
             {
@@ -598,34 +598,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the shift start like everyone on nights. The sign-in is not a promise to be in your room later. The radio log is the shift. I am tired, not creative."
+              "line": "Until the route moved me on. I was in the building on the sheet, then I wasn't."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "On site at the start of a route is the job. The window is later. I was elsewhere in it. The radio log is the shift. I am tired, not creative."
+              "line": "Long enough to do that hall. Then the radio says the next one. I went."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A sign-in does not cut me a private key. Keys I touch are on a board, and I put them back. The radio log is the shift. I am tired, not creative."
+              "line": "Through the hall I was assigned. That's how late. Then I was elsewhere on the loop."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Start of shift, then the route. I am not going to narrate it like a story. It is a loop. The radio log is the shift. I am tired, not creative."
+              "line": "As late as that stop on the route. Then I left it. Don't park me there."
             }
           ]
         },
         {
           "id": "avery_sign_q3",
-          "prompt": "Did signing in hand you a key or any other credential?",
+          "prompt": "Did signing this get you a key?",
           "aggressive": false,
           "replies": [
             {
@@ -633,28 +633,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the shift start like everyone on nights. The sign-in is not a promise to be in your room later. That is the whole loop."
+              "line": "No. Signing the night sheet doesn't cut me a private key. Keys go back on the board."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "On site at the start of a route is the job. The window is later. I was elsewhere in it. That is the whole loop."
+              "line": "A sign-in starts the shift. The keys I touch are logged, and I put them back."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A sign-in does not cut me a private key. Keys I touch are on a board, and I put them back. That is the whole loop."
+              "line": "No spare key from a signature. If I had one, it'd be on the board."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Start of shift, then the route. I am not going to narrate it like a story. It is a loop. That is the whole loop."
+              "line": "No. I got a route. I didn't get a key of my own. That's the job."
             }
           ]
         }
@@ -673,7 +673,7 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "Hold me if you want the chair full. I was on my route. I did not do this, and the radio already said so.",
+              "line": "Look, I was on the linen route. I'm tired, and I know which building I was in. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -681,7 +681,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "This is the wrong porter. I am angry because I still have a building to finish and you are writing fiction.",
+              "line": "Come on. I didn't do it. I've been on my feet since five and I was on the route.",
               "onlyIfInnocent": true
             },
             {
@@ -689,7 +689,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "A hold does not finish my sentence for me. I was supposed to be on the route. I am not giving you the detour.",
+              "line": "I was halfway through the linen route. You're sitting me down and the radios are still going. I didn't do this.",
               "onlyIfCulprit": true
             },
             {
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Then hold me. I left the route and I did it. I am not climbing back onto the radio story.",
+              "line": "Alright. I did it. I {act}. I stepped off the linen route to do it.",
               "onlyIfCulprit": true
             }
           ]
@@ -717,7 +717,7 @@
               "maxStress": 100,
               "emotion": "calm",
               "slip": false,
-              "line": "Good. I am going back to work. Next time start with the radio log.",
+              "line": "Appreciate it. I'm going back to the route before the next building thinks I vanished.",
               "onlyIfInnocent": true
             },
             {
@@ -725,7 +725,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "I'll take the release and the route story with it. I am leaving.",
+              "line": "Fine by me. I was on the route, and I'm gonna go finish it.",
               "onlyIfCulprit": true
             },
             {
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "You can release me. I already said I did it. I am not swapping back to the innocent route.",
+              "line": "Letting me walk doesn't undo it. I did it. I {act}. I left the route.",
               "onlyIfCulprit": true
             }
           ]

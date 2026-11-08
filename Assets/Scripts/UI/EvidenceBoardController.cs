@@ -632,7 +632,7 @@ namespace CaseClosed.UI
 
             int stress = interrogationController.GetStress(suspect.Id);
             stressValueLabel.gameObject.SetActive(true);
-            stressValueLabel.text = suspect.DisplayName + " · stress " + stress + "/100";
+            stressValueLabel.text = suspect.DisplayName + " · " + stress + "/100";
         }
 
         private static bool ContainsEvidenceId(IReadOnlyList<EvidenceRecord> records, string evidenceId)

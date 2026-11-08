@@ -7,7 +7,7 @@
       "questions": [
         {
           "id": "casey_access_q1",
-          "prompt": "This page puts you inside the incident window after you said you were gone. Explain it.",
+          "prompt": "You told me you were gone. This says you weren't. Talk.",
           "aggressive": true,
           "replies": [
             {
@@ -15,7 +15,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I left practice and I went to the annex to deal with gear. I am loud when I am somewhere. I was not back in that window, and nobody heard me because I was not there.",
+              "line": "I left practice early and I went to the costume annex. I was in there with the gear. I didn't bounce back out.",
               "onlyIfInnocent": true
             },
             {
@@ -23,7 +23,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I joke when I am nervous, so I am not going to joke. I had left. The page is not my night.",
+              "line": "Yeah I'm jumpy. I was still in the annex. I didn't sneak back to wherever that says.",
               "onlyIfInnocent": true
             },
             {
@@ -31,7 +31,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I can feel my voice going high. That is adrenaline, not a yes. I did not go back.",
+              "line": "Slow down. Annex. I was sewing a tear. I would've noticed if I'd left.",
               "onlyIfInnocent": true
             },
             {
@@ -39,7 +39,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "I would remember. I remember sets, songs, who was late. I was not in that window. Stop offering me a confession I did not earn.",
+              "line": "You can ask it louder. I was in the costume annex. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -47,7 +47,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know I look like the person who would bounce back into a room. I am telling you I did not. Let me keep that sentence a little longer.",
+              "line": "I know spirit kids get blamed first. I was in the annex after practice. I'm keeping that.",
               "onlyIfCulprit": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "If I start narrating I will narrate myself into a corner. I left. That is the corner I am choosing.",
+              "line": "Don't stare me into a different building. I was with the costumes.",
               "onlyIfCulprit": true
             },
             {
@@ -63,7 +63,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I did bounce back. I am not giving you the bright version of what I did, and I am done pretending I was only in the annex.",
+              "line": "I was in the annex. I'm done being cute about it. I didn't leave.",
               "onlyIfCulprit": true
             },
             {
@@ -71,14 +71,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I went back and I did it. The annex story was the cheerful lie. I am not smiling it back into place.",
+              "line": "I did it. I {act}. I wasn't in the costume annex like I said.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "casey_access_q2",
-          "prompt": "Your statement and this record do not match. Which one should I keep?",
+          "prompt": "You told me one thing. This says another. Which one's true?",
           "aggressive": true,
           "replies": [
             {
@@ -86,7 +86,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Spirit work is being seen. If I had doubled back I would have been seen, and I was done for the night. This page is somebody's other story.",
+              "line": "The annex is the true one. Practice ended, I went there, I stayed. I didn't drift.",
               "onlyIfInnocent": true
             },
             {
@@ -94,7 +94,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I hate how a calm answer sounds guilty on me. I am calm because I was in the annex, not in your window.",
+              "line": "A fast denial isn't a script. It's fast because I've said it since the door. Annex.",
               "onlyIfInnocent": true
             },
             {
@@ -102,7 +102,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Push all you want. I get loud, and the truth stays put. I had left.",
+              "line": "My knee's bouncing and I hate that you can see it. I was in the annex. I didn't do it.",
               "onlyIfInnocent": true
             },
             {
@@ -110,7 +110,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Write it without the exclamation point: I was gone. I did not come back.",
+              "line": "Fourth time, same answer. Costume annex. I was already there.",
               "onlyIfInnocent": true
             },
             {
@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "A page with my name in the window is a bad song I keep wanting to talk over. I had left. That is still the lyric I am using.",
+              "line": "I want you to keep the annex. I went there after practice. That's the night I'm selling, and it's the one I had.",
               "onlyIfCulprit": true
             },
             {
@@ -126,7 +126,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I can hear the lie getting thin. I am not dropping it this second. I said I was gone.",
+              "line": "I can hear myself getting louder. Louder isn't a new place. I was in the annex.",
               "onlyIfCulprit": true
             },
             {
@@ -134,7 +134,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I came back after I told you I was done. The rest of the act is sitting in my mouth and I am not opening it yet.",
+              "line": "I'm staying with the annex. Practice, then costumes. That's the order.",
               "onlyIfCulprit": true
             },
             {
@@ -142,14 +142,14 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "It was me. I was there during the window and I did it. You can stop treating the annex like a fact.",
+              "line": "The annex wasn't the night. I did it. I {act}. Don't write the costumes down.",
               "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "casey_access_q3",
-          "prompt": "Walk this page slowly. Where were you actually standing?",
+          "prompt": "Slow down. Where were you actually standing?",
           "aggressive": false,
           "replies": [
             {
@@ -157,7 +157,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I left practice and I went to the annex to deal with gear. I am loud when I am somewhere. I was not back in that window, and nobody heard me because I was not there. That is the order of it.",
+              "line": "In the costume annex, at the back table, with a needle. That's where I was standing.",
               "onlyIfInnocent": true
             },
             {
@@ -165,7 +165,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I joke when I am nervous, so I am not going to joke. I had left. The page is not my night. That is the order of it.",
+              "line": "Back table. I can tell you which seam I was on. I wasn't out on a sidewalk.",
               "onlyIfInnocent": true
             },
             {
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I can feel my voice going high. That is adrenaline, not a yes. I did not go back. That is the order of it.",
+              "line": "The annex. Don't crowd the table. I was there the whole time.",
               "onlyIfInnocent": true
             },
             {
@@ -181,7 +181,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "I would remember. I remember sets, songs, who was late. I was not in that window. Stop offering me a confession I did not earn. That is the order of it.",
+              "line": "Back table in the annex. I'm done pointing. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know I look like the person who would bounce back into a room. I am telling you I did not. Let me keep that sentence a little longer. I am not adding a third version.",
+              "line": "Costume annex, back table. That's the spot. Take it or don't.",
               "onlyIfCulprit": true
             },
             {
@@ -197,7 +197,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "If I start narrating I will narrate myself into a corner. I left. That is the corner I am choosing. I am not adding a third version.",
+              "line": "I keep saying the back table because that's where the work was. I was doing the work.",
               "onlyIfCulprit": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I did bounce back. I am not giving you the bright version of what I did, and I am done pretending I was only in the annex. I am not adding a third version.",
+              "line": "I was at that table. I'm not relocating for a photo.",
               "onlyIfCulprit": true
             },
             {
@@ -213,7 +213,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I went back and I did it. The annex story was the cheerful lie. I am not smiling it back into place. I am not adding a third version.",
+              "line": "I wasn't at the back table in the annex. I did it. I {act}.",
               "onlyIfCulprit": true
             }
           ]
@@ -225,7 +225,7 @@
       "questions": [
         {
           "id": "casey_herring_q1",
-          "prompt": "This record looks like preparation. What was it actually for?",
+          "prompt": "What's this for?",
           "aggressive": false,
           "replies": [
             {
@@ -233,34 +233,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That checkout is costume or squad gear from earlier. I use it for fittings, not for whatever this case is. The time is wrong. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "That's spirit-squad gear. I checked it out so practice wouldn't look like a mess. That's the use."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "People see a squad kid and assume a prank. This record is maintenance. I logged it because I am not stupid. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "We burn through tape and paint every week. This was for the squad, not for tonight's problem."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks playful. It was work. I am allowed to be both a loud person and someone who returns gear. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "It looks like I was planning something. I was planning a sideline. Different plan."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Do not hold me because the object is embarrassing. The clock clears it, and I am finished performing patience. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "Squad supply. I'm done being sorry that spirit kids buy loud stuff."
             }
           ]
         },
         {
           "id": "casey_herring_q2",
-          "prompt": "Someone will tell me to hold you on this page alone. Why is that wrong?",
+          "prompt": "You've got this from today. Why'd you have it?",
           "aggressive": true,
           "replies": [
             {
@@ -268,34 +268,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That checkout is costume or squad gear from earlier. I use it for fittings, not for whatever this case is. The time is wrong. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "Because practice ate the last of it. I replaced it the same day. That's the whole scandal."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "People see a squad kid and assume a prank. This record is maintenance. I logged it because I am not stupid. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "Same day is how a game week works. I had it for the squad."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks playful. It was work. I am allowed to be both a loud person and someone who returns gear. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "I had it because call time doesn't wait on a supply closet. I grabbed it."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Do not hold me because the object is embarrassing. The clock clears it, and I am finished performing patience. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "I had it for the game. Glare at the receipt. It's still squad gear."
             }
           ]
         },
         {
           "id": "casey_herring_q3",
-          "prompt": "Set this beside the incident clock. Does it still touch the scene?",
+          "prompt": "Does this have anything to do with what happened?",
           "aggressive": false,
           "replies": [
             {
@@ -303,28 +303,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That checkout is costume or squad gear from earlier. I use it for fittings, not for whatever this case is. The time is wrong. I am not performing this. I am telling it."
+              "line": "No. It's for the sideline. It doesn't have anything to do with this."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "People see a squad kid and assume a prank. This record is maintenance. I logged it because I am not stupid. I am not performing this. I am telling it."
+              "line": "It went back in the squad bin. I'm telling you it stayed with us."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks playful. It was work. I am allowed to be both a loud person and someone who returns gear. I am not performing this. I am telling it."
+              "line": "Don't pin the night on a spirit receipt. I used it for the show."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Do not hold me because the object is embarrassing. The clock clears it, and I am finished performing patience. I am not performing this. I am telling it."
+              "line": "No. Squad. Not this. I've got a call time and I'm done with that scrap."
             }
           ]
         }
@@ -335,7 +335,7 @@
       "questions": [
         {
           "id": "casey_alibi_q1",
-          "prompt": "This is the page you are using as an alibi. Does it still hold?",
+          "prompt": "This is what you're leaning on. Were you really there?",
           "aggressive": false,
           "replies": [
             {
@@ -343,34 +343,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The annex swipe is me, after practice, staying where I said. I did not sneak out for a second location. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "Yes. I was in the costume annex. After practice I went in and I stayed with the repairs."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "If I had doubled back I would have badged it or been seen. Neither happened. I stayed with the gear. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "Once I sat at the back table I stayed. Walking out would've shown on the squad chat. It doesn't."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The people in the annex can tell you I was talking. I talk. Silence would have been the suspicious version. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "Two other squad kids were in there painting. They saw me. I wasn't alone inventing a room."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "The swipe is the witness. I do not need to invent a second room. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "Practice, then the annex. That's the night. I'm not building a second one."
             }
           ]
         },
         {
           "id": "casey_alibi_q2",
-          "prompt": "Could you have doubled back after this stamp?",
+          "prompt": "Could you have gone back after this?",
           "aggressive": true,
           "replies": [
             {
@@ -378,34 +378,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The annex swipe is me, after practice, staying where I said. I did not sneak out for a second location. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "No. I had a seam to finish. I didn't pack the needle up and double back."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "If I had doubled back I would have badged it or been seen. Neither happened. I stayed with the gear. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "After I got to the annex I was stuck on a tear. I didn't leave it half-done."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The people in the annex can tell you I was talking. I talk. Silence would have been the suspicious version. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "I couldn't have. Call time was already tight. I was sewing."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "The swipe is the witness. I do not need to invent a second room. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "No. I didn't go back out. The annex was the rest of it until I had to leave for the game."
             }
           ]
         },
         {
           "id": "casey_alibi_q3",
-          "prompt": "If this support page is wrong, who actually saw you?",
+          "prompt": "If this is off, who actually saw you?",
           "aggressive": false,
           "replies": [
             {
@@ -413,28 +413,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The annex swipe is me, after practice, staying where I said. I did not sneak out for a second location. I am not performing this. I am telling it."
+              "line": "The two squad kids painting letters. They were three feet away. They saw me sewing."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "If I had doubled back I would have badged it or been seen. Neither happened. I stayed with the gear. I am not performing this. I am telling it."
+              "line": "Our captain stuck their head in about call time. They saw me at the table."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The people in the annex can tell you I was talking. I talk. Silence would have been the suspicious version. I am not performing this. I am telling it."
+              "line": "Ask the squad before you ask me to name a stranger. They were in the room."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "The swipe is the witness. I do not need to invent a second room. I am not performing this. I am telling it."
+              "line": "Captain, and the painters. Real people. I'm not adding a fan I didn't have."
             }
           ]
         }
@@ -445,7 +445,7 @@
       "questions": [
         {
           "id": "casey_roster_q1",
-          "prompt": "This listing puts you on tonight's work. When did you leave it?",
+          "prompt": "You're on this list. When did you leave?",
           "aggressive": false,
           "replies": [
             {
@@ -453,34 +453,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Practice notes mean I was at practice. Practice ended. A roster is not a night pass. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "The list is spirit practice. Practice ended. I went to the annex."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was listed for gear, not for your scene. I did the gear and I stayed there. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "When practice released us. A lot of names are on that list. Mine left for costumes."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster, then annex. That is a straight line. Do not bend it into the window. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "End of practice. Being on the spirit list isn't a curfew extension."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay late at the scene. I stay late at the annex. Different building, different noise. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "I didn't stay on the field. Staying would've been extra reps. I didn't take them."
             }
           ]
         },
         {
           "id": "casey_roster_q2",
-          "prompt": "Did this listing give you a key, a login, or a reason to stay through the window?",
+          "prompt": "Did being on this let you stay late?",
           "aggressive": true,
           "replies": [
             {
@@ -488,34 +488,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Practice notes mean I was at practice. Practice ended. A roster is not a night pass. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "No. The spirit list let me on the practice field. It didn't let me roam after."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was listed for gear, not for your scene. I did the gear and I stayed there. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "It gave me a call time and a costume. I did practice. Then the annex."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster, then annex. That is a straight line. Do not bend it into the window. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "No. Squad roster isn't a key. I practiced and I went to sew."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay late at the scene. I stay late at the annex. Different building, different noise. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "No. I'm not gonna treat a spirit list like an all-access pass. I left practice."
             }
           ]
         },
         {
           "id": "casey_roster_q3",
-          "prompt": "Why does this roster matter if your alibi is somewhere else?",
+          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
           "aggressive": false,
           "replies": [
             {
@@ -523,28 +523,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Practice notes mean I was at practice. Practice ended. A roster is not a night pass. I am not performing this. I am telling it."
+              "line": "Because I'm on the squad. The list is practice. After it, I was in the annex, like I said."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was listed for gear, not for your scene. I did the gear and I stayed there. I am not performing this. I am telling it."
+              "line": "My name's there because I have to make practice. I made it, then I sewed."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Roster, then annex. That is a straight line. Do not bend it into the window. I am not performing this. I am telling it."
+              "line": "It's a practice roster. I can be on it and still have been in the annex later."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I did not stay late at the scene. I stay late at the annex. Different building, different noise. I am not performing this. I am telling it."
+              "line": "The list is practice. I said I went to practice. Then the annex. One night."
             }
           ]
         }
@@ -555,7 +555,7 @@
       "questions": [
         {
           "id": "casey_sign_q1",
-          "prompt": "The sign-in puts you on site earlier. When did you actually leave?",
+          "prompt": "You signed this. When did you actually leave?",
           "aggressive": false,
           "replies": [
             {
@@ -563,34 +563,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the practice sheet because I was at practice. Then I left for the annex. The window is not practice. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "I signed the practice sheet, I did the reps, and I left for the annex when they released us."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Being nearby earlier is the point of a campus. I was not nearby when it counted. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "The signature is the start of practice. It isn't the whole night."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A sign-in did not give me a secret key. If I have a badge, it is the annex badge, and it stayed there. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "I left when practice ended. Signing in didn't chain me to the field."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Practice, then annex. I am saying it like a person, not a chant. It is still true. I remember noise and people. I would remember being somewhere I have denied."
+              "line": "End of practice. Then the annex. That's the order I remember."
             }
           ]
         },
         {
           "id": "casey_sign_q2",
-          "prompt": "Being on that sheet put you near the scene. How near, and how late?",
+          "prompt": "This puts you in the building. How late were you there?",
           "aggressive": true,
           "replies": [
             {
@@ -598,34 +598,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the practice sheet because I was at practice. Then I left for the annex. The window is not practice. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "Until they blew the end of practice. After that I was in the annex, not on the field."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Being nearby earlier is the point of a campus. I was not nearby when it counted. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "Long enough to get yelled at and released. Then I sewed."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A sign-in did not give me a secret key. If I have a badge, it is the annex badge, and it stayed there. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "Through practice. That's how late on the field. Then costumes."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Practice, then annex. I am saying it like a person, not a chant. It is still true. Ask the squad if you want volume. I am giving you the order of the night."
+              "line": "As late as practice ran. Then I left. Don't keep me on the turf."
             }
           ]
         },
         {
           "id": "casey_sign_q3",
-          "prompt": "Did signing in hand you a key or any other credential?",
+          "prompt": "Did signing this get you a key?",
           "aggressive": false,
           "replies": [
             {
@@ -633,28 +633,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I signed the practice sheet because I was at practice. Then I left for the annex. The window is not practice. I am not performing this. I am telling it."
+              "line": "No. Signing practice got me onto the field. It didn't hand me a building key."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Being nearby earlier is the point of a campus. I was not nearby when it counted. I am not performing this. I am telling it."
+              "line": "A sign-in is how the captain counts heads. It isn't a key."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "A sign-in did not give me a secret key. If I have a badge, it is the annex badge, and it stayed there. I am not performing this. I am telling it."
+              "line": "No key. I signed a practice sheet. My name, then I was a body on the field."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Practice, then annex. I am saying it like a person, not a chant. It is still true. I am not performing this. I am telling it."
+              "line": "No. I got counted. I didn't get a key. We've covered it."
             }
           ]
         }
@@ -673,7 +673,7 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "Hold the chair if you need a body in it. I did not do this. I have been loud and consistent, and I want the denial written in full.",
+              "line": "No. I didn't do this. I left practice and I went to the costume annex. I'm freaking out.",
               "onlyIfInnocent": true
             },
             {
@@ -681,7 +681,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "You are holding the wrong squad kid. I am angry, and I was in the annex, and those are both true.",
+              "line": "Are you serious? I didn't do it. I was in the annex and I've got a game to get to.",
               "onlyIfInnocent": true
             },
             {
@@ -689,7 +689,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "You can hold me and I will still say I had left. I am not giving you the bounce-back just because the stamp is red.",
+              "line": "Come on. I left practice and I was in the costume annex. I didn't do it.",
               "onlyIfCulprit": true
             },
             {
@@ -697,7 +697,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Hold me. I went back and I did it. I am not going to jazz-hands the annex story after that.",
+              "line": "God. Okay. I did it. I {act}. I wasn't in the costume annex.",
               "onlyIfCulprit": true
             }
           ]
@@ -717,7 +717,7 @@
               "maxStress": 100,
               "emotion": "calm",
               "slip": false,
-              "line": "Thank you. I am leaving before I cry or laugh, and I do not want either on your tape. Call me with a real page.",
+              "line": "Thank you, seriously. I'm out of here. I was in the annex, and I've still got a call time.",
               "onlyIfInnocent": true
             },
             {
@@ -725,7 +725,7 @@
               "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "Cool. I am out. The version I gave you can walk out with me.",
+              "line": "Cool. I'm gone. I was in the costume annex. Don't call me back for the same thing.",
               "onlyIfCulprit": true
             },
             {
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Releasing me is your choice. I already said I did it, and I am not taking the chorus back.",
+              "line": "You're letting me leave? I did it. I {act}. I'm not gonna pretend I didn't.",
               "onlyIfCulprit": true
             }
           ]

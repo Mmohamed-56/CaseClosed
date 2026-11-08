@@ -209,7 +209,9 @@ namespace CaseClosed.CaseCore
                 template.briefing,
                 "suspect_" + culprit.Id,
                 suspects,
-                directory);
+                directory,
+                template.scene,
+                template.act);
         }
 
         /// <summary>Playable interviewee pool size (catalog when loaded, else embedded 8).</summary>
@@ -288,7 +290,7 @@ namespace CaseClosed.CaseCore
                 : template.signInTitle;
             string signInDescription = CaseTemplateCatalog.FormatName(
                 string.IsNullOrWhiteSpace(template.signInDescription)
-                    ? "{name} signed in near the scene earlier that evening."
+                    ? "{name} signed a sheet near the building before it happened."
                     : template.signInDescription,
                 profile.DisplayName);
 
@@ -336,12 +338,12 @@ namespace CaseClosed.CaseCore
                     : template.accessTitle;
                 string accessDescription = CaseTemplateCatalog.FormatName(
                     string.IsNullOrWhiteSpace(template.accessDescription)
-                        ? "A campus credential assigned to {name} opened a restricted door inside the incident window."
+                        ? "A campus credential for {name} opened a door during the hours in the briefing."
                         : template.accessDescription,
                     profile.DisplayName);
                 string explanation = CaseTemplateCatalog.FormatName(
                     string.IsNullOrWhiteSpace(template.contradictionExplanation)
-                        ? "{name} returned during the incident window."
+                        ? "{name} went back during those hours."
                         : template.contradictionExplanation,
                     profile.DisplayName);
 

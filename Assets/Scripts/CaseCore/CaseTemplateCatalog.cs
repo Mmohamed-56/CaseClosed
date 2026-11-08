@@ -37,6 +37,8 @@ namespace CaseClosed.CaseCore
             public string briefing;
             public string treeHook;
             public string scene;
+            /// <summary>What they did, as a verb phrase after "I ". Slip lines fill {act} from this at speak time.</summary>
+            public string act;
             public string windowStart;
             public string windowEnd;
             public string accessTime;
@@ -132,19 +134,19 @@ namespace CaseClosed.CaseCore
             else t.difficulty = t.difficulty.Trim().ToLowerInvariant();
             if (string.IsNullOrWhiteSpace(t.accessTitle)) t.accessTitle = "Restricted access log";
             if (string.IsNullOrWhiteSpace(t.accessDescription))
-                t.accessDescription = "A campus credential assigned to {name} opened a restricted door inside the incident window.";
+                t.accessDescription = "A campus credential for {name} opened a door during the hours in the briefing.";
             if (string.IsNullOrWhiteSpace(t.contradictionExplanation))
-                t.contradictionExplanation = "{name} returned during the incident window.";
+                t.contradictionExplanation = "{name} went back during those hours.";
             if (string.IsNullOrWhiteSpace(t.signInTitle)) t.signInTitle = "Activity sign-in sheet";
             if (string.IsNullOrWhiteSpace(t.signInDescription))
-                t.signInDescription = "{name} signed in near the scene earlier that evening.";
+                t.signInDescription = "{name} signed a sheet near the building before it happened.";
             if (string.IsNullOrWhiteSpace(t.redHerringTitle)) t.redHerringTitle = "Suspicious purchase record";
             if (string.IsNullOrWhiteSpace(t.redHerringDescription))
                 t.redHerringDescription = "A purchase or checkout under {name}'s name looks related to the incident at first glance.";
             if (string.IsNullOrWhiteSpace(t.redHerringExplanation))
                 t.redHerringExplanation = "The record has an innocent explanation unrelated to the incident.";
             if (string.IsNullOrWhiteSpace(t.statementTemplate))
-                t.statementTemplate = "I left before the incident window and never went back.";
+                t.statementTemplate = "I left before it happened, and I didn't go back.";
             if (t.preferSuspectIds == null) t.preferSuspectIds = Array.Empty<string>();
             return t;
         }
@@ -158,9 +160,10 @@ namespace CaseClosed.CaseCore
                     id = "banner_cutdown",
                     title = "Field House Spirit Banner Cutdown",
                     briefing =
-                        "The Founders Weekend spirit banner over Field House court was sliced down between 6:05 PM and 6:35 PM. Match ladder checkout, mezzanine camera stills, and statements before HOLD.",
+                        "WHERE: Field House, mezzanine over the court.\nWHEN: 6:05 PM to 6:35 PM.\nWHAT: Somebody cut down the Founders Weekend spirit banner.\nMOTIVE: Embarrass the weekend before anyone could hang it back up.\n\nMezzanine camera still.\nAthletics volunteer sheet.\nA hardware receipt for a folding knife.",
                     treeHook = "banner_cutdown",
                     scene = "Field House mezzanine",
+                    act = "cut down the spirit banner",
                     windowStart = "6:05 PM",
                     windowEnd = "6:35 PM",
                     accessTime = "6:21 PM",

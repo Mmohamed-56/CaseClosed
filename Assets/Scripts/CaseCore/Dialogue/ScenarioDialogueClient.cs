@@ -161,6 +161,7 @@ namespace CaseClosed.CaseCore.Dialogue
                 ? EmotionForStress(context)
                 : GeminiSuspectReply.NormalizeEmotion(pick.emotion);
 
+            string spoken = FillSpokenAct(pick.line, context != null ? context.SpokenAct : null);
             if (logMatches)
             {
                 Debug.Log(
@@ -168,12 +169,12 @@ namespace CaseClosed.CaseCore.Dialogue
                     " evidence=" + evidenceKey +
                     " q=" + question.id +
                     " stress=" + stress +
-                    " → " + pick.line,
+                    " → " + spoken,
                     this);
             }
 
             reply = GeminiSuspectReply.CreateFallback(
-                GeminiApiClient.TrimToShortLine(pick.line),
+                GeminiApiClient.TrimToShortLine(spoken),
                 emotion,
                 slip);
             return true;
@@ -186,7 +187,8 @@ namespace CaseClosed.CaseCore.Dialogue
             InterrogationResult lastStress,
             bool isCulprit,
             out GeminiSuspectReply reply,
-            bool hasSlipped = false)
+            bool hasSlipped = false,
+            string spokenAct = null)
         {
             var ctx = new ScenarioAskContext
             {
@@ -198,7 +200,8 @@ namespace CaseClosed.CaseCore.Dialogue
                 HasSlipped = hasSlipped,
                 StressResult = lastStress,
                 HasEvidence = false,
-                Aggressive = false
+                Aggressive = false,
+                SpokenAct = spokenAct
             };
             return TryResolve(ctx, out reply);
         }
@@ -498,6 +501,17 @@ namespace CaseClosed.CaseCore.Dialogue
                 if (pred(matches[i]))
                     matches.RemoveAt(i);
             }
+        }
+
+        /// <summary>
+        /// Shared trees store {act}. The chair's case supplies the verb phrase, so Sam names paint on the mural and a different act on any other case.
+        /// </summary>
+        private static string FillSpokenAct(string line, string act)
+        {
+            if (string.IsNullOrEmpty(line) || line.IndexOf("{act}", StringComparison.Ordinal) < 0)
+                return line ?? string.Empty;
+            string phrase = string.IsNullOrWhiteSpace(act) ? "did this" : act.Trim();
+            return line.Replace("{act}", phrase);
         }
 
         private static GeminiSuspectReply FallbackReply(ScenarioAskContext context)

@@ -99,13 +99,25 @@ def main() -> None:
     for a in interviewees:
         tree = build_tree(a)
         blob = json.dumps(tree).lower()
-        for banned in ("9:37", "9:15", "storage-room", "event-storage", "mascot head", "took the head", "nordy"):
+        for banned in (
+            "9:37", "9:15", "storage-room", "event-storage", "mascot head", "took the head", "nordy",
+            "incident window", "the trap", "checklist", "upstairs", "the page", "motive on the table",
+        ):
             if banned in blob:
                 raise SystemExit(f"Banned phrase {banned!r} in tree {a['id']}")
         for branch_obj in tree["branches"]:
             for q in branch_obj["questions"]:
                 for reply in q["replies"]:
                     line = reply["line"]
+                    if reply.get("slip"):
+                        if "{act}" not in line:
+                            raise SystemExit(f"{a['id']} slip line has no act: {line[:80]}")
+                        low = line.lower()
+                        for banned_slip in (" cover", "version", "the file", "the release"):
+                            if banned_slip in low:
+                                raise SystemExit(f"{a['id']} slip still has {banned_slip!r}: {line[:80]}")
+                    elif "{act}" in line:
+                        raise SystemExit(f"{a['id']} non-slip line names the act: {line[:80]}")
                     if line in seen:
                         raise SystemExit(f"duplicate line in {a['id']}: {line[:80]}")
                     seen.add(line)
