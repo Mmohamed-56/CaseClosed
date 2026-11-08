@@ -70,7 +70,8 @@ namespace CaseClosed.UI
 
         private Text runtimeContentLabel;
         private readonly List<Button> runtimeActionButtons = new List<Button>();
-        private readonly List<Text> runtimeTranscriptLabels = new List<Text>();
+        /// <summary>One Text for the whole pad — never stack per-line Body children (VLH+CSF overlapped for Magdy).</summary>
+        private Text transcriptBodyText;
 
         private Button tagActions;
         private Button tagCaseFile;
@@ -658,43 +659,91 @@ namespace CaseClosed.UI
         {
             if (transcriptRoot == null) return;
 
-            // DestroyImmediate so old TMP/UGUI lines cannot overlap for a frame while Destroy is deferred.
-            ClearTranscriptChildren();
+            EnsureSingleTranscriptBody();
 
             bool show = panelOpen && activeTag == HudTag.Actions;
             if (!show || transcript.Count == 0)
             {
+                if (transcriptBodyText != null)
+                    transcriptBodyText.text = string.Empty;
                 transcriptRoot.gameObject.SetActive(show && transcript.Count > 0);
                 return;
             }
 
             transcriptRoot.gameObject.SetActive(true);
-            for (int i = 0; i < transcript.Count; i++)
-            {
-                Text line = CreateBodyText(transcriptRoot, transcript[i], 15, DeskUiPalette.InkMuted);
-                line.horizontalOverflow = HorizontalWrapMode.Wrap;
-                line.verticalOverflow = VerticalWrapMode.Overflow;
-                runtimeTranscriptLabels.Add(line);
-            }
-
-            Canvas.ForceUpdateCanvases();
-            LayoutRebuilder.ForceRebuildLayoutImmediate(transcriptRoot as RectTransform);
+            // Rewrite one Text — no per-line child spawn (hotfix DestroyImmediate still left VLH overlap).
+            transcriptBodyText.text = string.Join("\n", transcript);
         }
 
-        private void ClearTranscriptChildren()
+        /// <summary>
+        /// Transcript pad must be a single wrapped Text. Older builds spawned one Body Text per line under a
+        /// VerticalLayoutGroup + ContentSizeFitter, which stacked/overlapped even after DestroyImmediate clears.
+        /// </summary>
+        private void EnsureSingleTranscriptBody()
         {
-            runtimeTranscriptLabels.Clear();
-            if (transcriptRoot == null) return;
+            // Drop VLH so AccentStripe stretch + one body Text are not layout-fought.
+            VerticalLayoutGroup vlg = transcriptRoot.GetComponent<VerticalLayoutGroup>();
+            if (vlg != null)
+                DestroyImmediate(vlg);
 
             for (int i = transcriptRoot.childCount - 1; i >= 0; i--)
             {
                 Transform child = transcriptRoot.GetChild(i);
                 if (child == null) continue;
-                // Keep chrome (accent stripe), wipe line labels only.
+
                 if (child.name == "AccentStripe" || child.name == "FolderFrame")
+                {
+                    LayoutElement chromeLayout = child.GetComponent<LayoutElement>();
+                    if (chromeLayout == null)
+                        chromeLayout = child.gameObject.AddComponent<LayoutElement>();
+                    chromeLayout.ignoreLayout = true;
                     continue;
+                }
+
+                if (transcriptBodyText != null && child == transcriptBodyText.transform)
+                    continue;
+
+                // Purge stacked Body_* leftovers from the multi-Text rebuild path.
                 DestroyImmediate(child.gameObject);
             }
+
+            if (transcriptBodyText == null)
+            {
+                Transform existing = transcriptRoot.Find("TranscriptBody");
+                if (existing != null)
+                    transcriptBodyText = existing.GetComponent<Text>();
+            }
+
+            if (transcriptBodyText == null)
+            {
+                transcriptBodyText = CreateLabel(
+                    transcriptRoot,
+                    "TranscriptBody",
+                    string.Empty,
+                    15,
+                    DeskUiPalette.InkMuted,
+                    FontStyle.Normal);
+                DeskUiPalette.StyleLabel(
+                    transcriptBodyText,
+                    15,
+                    DeskUiPalette.InkMuted,
+                    DeskUiPalette.TypeRole.Body,
+                    FontStyle.Normal);
+            }
+
+            // Fill the pad; no CSF/LayoutElement — those fought VLH and collapsed line heights.
+            ContentSizeFitter fit = transcriptBodyText.GetComponent<ContentSizeFitter>();
+            if (fit != null)
+                DestroyImmediate(fit);
+            LayoutElement bodyLayout = transcriptBodyText.GetComponent<LayoutElement>();
+            if (bodyLayout != null)
+                DestroyImmediate(bodyLayout);
+
+            Stretch(transcriptBodyText.rectTransform, 14f, 6f);
+            transcriptBodyText.alignment = TextAnchor.UpperLeft;
+            transcriptBodyText.horizontalOverflow = HorizontalWrapMode.Wrap;
+            transcriptBodyText.verticalOverflow = VerticalWrapMode.Overflow;
+            transcriptBodyText.raycastTarget = false;
         }
 
         private void RefreshContent()
@@ -1226,8 +1275,8 @@ namespace CaseClosed.UI
             holdFooterButton = CreateChromeButton(stampFooter.transform, "Hold", "HOLD", new Vector2(18f, -4f), new Vector2(180f, 38f), DeskUiPalette.StampHold, DeskUiPalette.White, TextAnchor.MiddleLeft, stampOutline: true);
             releaseFooterButton = CreateChromeButton(stampFooter.transform, "Release", "RELEASE", new Vector2(-18f, -4f), new Vector2(180f, 38f), DeskUiPalette.StampRelease, DeskUiPalette.White, TextAnchor.MiddleRight, stampOutline: true);
 
-            // Transcript (ACTIONS) — clean off-white / manila pad leaf.
-            GameObject transcriptGo = new GameObject("Transcript", typeof(RectTransform), typeof(Image), typeof(VerticalLayoutGroup));
+            // Transcript (ACTIONS) — single Text pad (no VLH / per-line Body children).
+            GameObject transcriptGo = new GameObject("Transcript", typeof(RectTransform), typeof(Image));
             transcriptGo.transform.SetParent(panel.transform, false);
             DeskUiPalette.ApplyFill(transcriptGo.GetComponent<Image>(), DeskUiPalette.TranscriptBg);
             DeskUiPalette.AddAccentStripe(transcriptGo.transform, DeskUiPalette.StampHold, 3f);
@@ -1237,15 +1286,16 @@ namespace CaseClosed.UI
             tr.pivot = new Vector2(0.5f, 0f);
             tr.offsetMin = new Vector2(10f, 42f);
             tr.offsetMax = new Vector2(-10f, 142f);
-            VerticalLayoutGroup tlg = transcriptGo.GetComponent<VerticalLayoutGroup>();
-            tlg.padding = new RectOffset(12, 8, 6, 6);
-            tlg.spacing = 4f;
-            tlg.childAlignment = TextAnchor.UpperLeft;
-            tlg.childControlWidth = true;
-            tlg.childControlHeight = true;
-            tlg.childForceExpandWidth = true;
-            tlg.childForceExpandHeight = false;
+            Transform stripe = transcriptGo.transform.Find("AccentStripe");
+            if (stripe != null)
+            {
+                LayoutElement stripeLayout = stripe.GetComponent<LayoutElement>();
+                if (stripeLayout == null)
+                    stripeLayout = stripe.gameObject.AddComponent<LayoutElement>();
+                stripeLayout.ignoreLayout = true;
+            }
             transcriptRoot = transcriptGo.transform;
+            EnsureSingleTranscriptBody();
 
             // Status — carbon strip
             GameObject statusGo = new GameObject("Status", typeof(RectTransform), typeof(Image));
