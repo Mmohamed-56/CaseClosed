@@ -181,12 +181,22 @@ namespace CaseClosed.Voice
                 {
                     // Abort can throw if already disposed; ignore.
                 }
-                activeRequest.Dispose();
+
+                try
+                {
+                    activeRequest.Dispose();
+                }
+                catch (Exception)
+                {
+                    // Already disposed during FinishDownload / SpeakRoutine finally.
+                }
+
                 activeRequest = null;
             }
 
             if (activeRoutine != null)
             {
+                // StopCoroutine runs SpeakRoutine's finally; generation bump makes it a no-op.
                 StopCoroutine(activeRoutine);
                 activeRoutine = null;
             }
@@ -202,48 +212,89 @@ namespace CaseClosed.Voice
 
         private IEnumerator SpeakRoutine(int gen, bool useProxy, string apiKey, string voiceId, string fullText)
         {
-            List<string> chunks = BuildChunks(fullText);
-            for (int i = 0; i < chunks.Count; i++)
+            // try/finally so errors (e.g. TTS 401), early yield break, and StopCoroutine
+            // always release IsBusy — otherwise a failed request leaves activeRoutine stuck.
+            try
             {
-                if (gen != generation)
-                    yield break;
-
-                string chunk = chunks[i];
-                string cacheKey = voiceId + "|" + chunk;
-                AudioClip cached;
-                if (enableClipCache && clipCache.TryGetValue(cacheKey, out cached) && cached != null)
+                List<string> chunks = BuildChunks(fullText);
+                for (int i = 0; i < chunks.Count; i++)
                 {
-                    audioSource.clip = cached;
+                    if (gen != generation)
+                        yield break;
+
+                    string chunk = chunks[i];
+                    string cacheKey = voiceId + "|" + chunk;
+                    AudioClip cached;
+                    if (enableClipCache && clipCache.TryGetValue(cacheKey, out cached) && cached != null)
+                    {
+                        audioSource.clip = cached;
+                        audioSource.Play();
+                        while (gen == generation && audioSource.isPlaying)
+                            yield return null;
+                        continue;
+                    }
+
+                    byte[] audioBytes = null;
+                    if (useProxy)
+                        yield return DownloadSpeechViaProxy(gen, voiceId, chunk, bytes => audioBytes = bytes);
+                    else
+                        yield return DownloadSpeechDirect(gen, apiKey, voiceId, chunk, bytes => audioBytes = bytes);
+                    if (gen != generation || audioBytes == null || audioBytes.Length == 0)
+                        yield break;
+
+                    AudioClip clip = null;
+                    yield return LoadMp3Clip(gen, audioBytes, cacheKey, loaded => clip = loaded);
+                    if (gen != generation || clip == null)
+                        yield break;
+
+                    if (enableClipCache)
+                        StoreCache(cacheKey, clip);
+
+                    audioSource.clip = clip;
                     audioSource.Play();
                     while (gen == generation && audioSource.isPlaying)
                         yield return null;
-                    continue;
+                }
+            }
+            finally
+            {
+                ClearInFlightIfCurrent(gen);
+            }
+        }
+
+        /// <summary>
+        /// Drops busy/in-flight flags for this speak generation only.
+        /// Skips when a newer Speak/Cancel already owns the slot.
+        /// </summary>
+        private void ClearInFlightIfCurrent(int gen)
+        {
+            if (gen != generation)
+                return;
+
+            if (activeRequest != null)
+            {
+                try
+                {
+                    activeRequest.Abort();
+                }
+                catch (Exception)
+                {
+                    // Abort can throw if already disposed; ignore.
                 }
 
-                byte[] audioBytes = null;
-                if (useProxy)
-                    yield return DownloadSpeechViaProxy(gen, voiceId, chunk, bytes => audioBytes = bytes);
-                else
-                    yield return DownloadSpeechDirect(gen, apiKey, voiceId, chunk, bytes => audioBytes = bytes);
-                if (gen != generation || audioBytes == null || audioBytes.Length == 0)
-                    yield break;
+                try
+                {
+                    activeRequest.Dispose();
+                }
+                catch (Exception)
+                {
+                    // Already disposed during FinishDownload / CancelInFlight.
+                }
 
-                AudioClip clip = null;
-                yield return LoadMp3Clip(gen, audioBytes, cacheKey, loaded => clip = loaded);
-                if (gen != generation || clip == null)
-                    yield break;
-
-                if (enableClipCache)
-                    StoreCache(cacheKey, clip);
-
-                audioSource.clip = clip;
-                audioSource.Play();
-                while (gen == generation && audioSource.isPlaying)
-                    yield return null;
+                activeRequest = null;
             }
 
-            if (gen == generation)
-                activeRoutine = null;
+            activeRoutine = null;
         }
 
         private IEnumerator DownloadSpeechViaProxy(int gen, string voiceId, string text, Action<byte[]> onComplete)
