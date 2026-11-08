@@ -7,7 +7,7 @@
       "questions": [
         {
           "id": "reese_access_q1",
-          "prompt": "This access record puts you inside the incident window after you said you left. Explain.",
+          "prompt": "This page puts you inside the incident window after you said you were gone. Explain it.",
           "aggressive": true,
           "replies": [
             {
@@ -15,34 +15,70 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That record is wrong. I was already gone."
+              "line": "I cut across campus after practice and I went to the rec center. I was on the court. I did not bounce back into your window. The page is a bad call.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That timestamp can't be me. I left earlier."
+              "line": "I get sharp when I am nervous, so I will aim it at the facts: I had left. The turnstile has me. Your page does not.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "Okay \u2014 I went back. Just for a second. Not for what went missing."
+              "slip": false,
+              "line": "I am sweaty in this chair and that is not guilt. I came from the gym. I did not come from the scene.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "angry",
+              "slip": false,
+              "line": "I am not taking a fall to end the interview. I was at rec. Challenge the turnstile, not my patience.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "I know I look like the person who would jog back. I am telling you I was on the court. I would like to keep that play alive a little longer.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Do not stare me into a new route. The route I gave you ends at rec. I am not drawing the detour.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I did jog back. That kills the turnstile story as a complete alibi. I am not calling the play beyond that.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Fine. I opened that door after I said I left. I did it. I went back."
+              "line": "I went back and I did it. The rec-center story was the fake clock. I am not running it again.",
+              "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "reese_access_q2",
-          "prompt": "Your campus credential hit a restricted reader inside the incident window.",
+          "prompt": "Your statement and this record do not match. Which one should I keep?",
           "aggressive": true,
           "replies": [
             {
@@ -50,34 +86,70 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I never went back in. Check the cameras \u2014 not me."
+              "line": "Athletes look like we are everywhere because we cut through quads. I cut through, then I was inside rec. I did not return.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Someone could have borrowed my card. It happens."
+              "line": "A clock with my name is not a play I ran. I was on the court. You can dislike my tone and still be wrong.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "I\u2026 might have swiped back in. I needed something from the cart."
+              "slip": false,
+              "line": "Push. I have lost closer games than this conversation. I still did not go back.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "angry",
+              "slip": false,
+              "line": "Final whistle: rec center, not your scene. I was there.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "The page is a score I do not want on the board. I am still claiming the court. I can hear the claim getting thin.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "I keep almost saying I only swung by. Swinging by is already the window. I am not adding the contact.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I left the rec story. I was in the window. The rest of the play stays in my head one more answer.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "It was me. I did it. I went back."
+              "line": "It was me. I was there and I did it. Bench the turnstile alibi. It lost.",
+              "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "reese_access_q3",
-          "prompt": "You claimed: \"I cut through campus after practice and went straight to the rec center.\" How does that access fit?",
+          "prompt": "Walk this page slowly. Where were you actually standing?",
           "aggressive": false,
           "replies": [
             {
@@ -85,63 +157,64 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "It doesn't \u2014 because I wasn't there. The log is dirty."
+              "line": "I cut across campus after practice and I went to the rec center. I was on the court. I did not bounce back into your window. The page is a bad call. That is the order of it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I stick by that statement. The access log has to be a glitch."
+              "line": "I get sharp when I am nervous, so I will aim it at the facts: I had left. The turnstile has me. Your page does not. That is the order of it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "I left, then panicked and came back. Stupid."
+              "slip": false,
+              "line": "I am sweaty in this chair and that is not guilt. I came from the gym. I did not come from the scene. That is the order of it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "The statement was a lie. I went back during the window."
-            }
-          ]
-        },
-        {
-          "id": "reese_access_q4",
-          "prompt": "If you left when you said, why is your credential on that door inside the window?",
-          "aggressive": true,
-          "replies": [
+              "emotion": "angry",
+              "slip": false,
+              "line": "I am not taking a fall to end the interview. I was at rec. Challenge the turnstile, not my patience. That is the order of it.",
+              "onlyIfInnocent": true
+            },
             {
               "minStress": 0,
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Ask security about false reads. I was not in that room."
+              "line": "I know I look like the person who would jog back. I am telling you I was on the court. I would like to keep that play alive a little longer. I am not adding a third version.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I don't have a clean answer \u2014 but I didn't do it."
+              "line": "Do not stare me into a new route. The route I gave you ends at rec. I am not drawing the detour. I am not adding a third version.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "Because I went back. I shouldn't have."
+              "slip": false,
+              "line": "I did jog back. That kills the turnstile story as a complete alibi. I am not calling the play beyond that. I am not adding a third version.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Because I did it. That's why."
+              "line": "I went back and I did it. The rec-center story was the fake clock. I am not running it again. I am not adding a third version.",
+              "onlyIfCulprit": true
             }
           ]
         }
@@ -152,7 +225,7 @@
       "questions": [
         {
           "id": "reese_herring_q1",
-          "prompt": "This record: A rec equipment loan shows Reese checked out a duffel large enough for bulky gear. Explain it.",
+          "prompt": "This record looks like preparation. What was it actually for?",
           "aggressive": false,
           "replies": [
             {
@@ -160,34 +233,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Reese used the duffel for intramural jerseys and shoes \u2014 inventory tagged return next morning."
+              "line": "That duffel or gear loan is jerseys and shoes for intramurals. I returned it or it is tagged for morning. It is not the incident. Check the court sheet if you want a crowd. I was in the gym."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That looks bad, I know. Reese used the duffel for intramural jerseys and shoes \u2014 inventory tagged return next morning."
+              "line": "I check out bags because I play. The time is practice. Your window is later. Do not recruit the bag into a crime. Check the court sheet if you want a crowd. I was in the gym."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I bought / borrowed that for ordinary work \u2014 not for the incident."
+              "line": "It looks like I was moving something bulky. I was. It was equipment. I am competitive, not subtle, and the log is boring on purpose. Check the court sheet if you want a crowd. I was in the gym."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Believe what you want. It still doesn't put me at the scene during the window."
+              "slip": false,
+              "line": "Hold the page in the window. This loan is sports. I am done being the cartoon of a thief. Check the court sheet if you want a crowd. I was in the gym."
             }
           ]
         },
         {
           "id": "reese_herring_q2",
-          "prompt": "Looks like prep for moving or cutting something. Was it for what went missing?",
+          "prompt": "Someone will tell me to hold you on this page alone. Why is that wrong?",
           "aggressive": true,
           "replies": [
             {
@@ -195,34 +268,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Ordinary campus work only."
+              "line": "That duffel or gear loan is jerseys and shoes for intramurals. I returned it or it is tagged for morning. It is not the incident. I compete. I do not freelance extra buildings."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "People always jump to that. It was unrelated gear."
+              "line": "I check out bags because I play. The time is practice. Your window is later. Do not recruit the bag into a crime. I compete. I do not freelance extra buildings."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I get why you'd ask. Still not me on what went missing."
+              "line": "It looks like I was moving something bulky. I was. It was equipment. I am competitive, not subtle, and the log is boring on purpose. I compete. I do not freelance extra buildings."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I didn't do it. That record is a red herring and you know it."
+              "slip": false,
+              "line": "Hold the page in the window. This loan is sports. I am done being the cartoon of a thief. I compete. I do not freelance extra buildings."
             }
           ]
         },
         {
           "id": "reese_herring_q3",
-          "prompt": "Walk me through this suspicious record against your alibi: Rec center courts after practice.",
+          "prompt": "Set this beside the incident clock. Does it still touch the scene?",
           "aggressive": false,
           "replies": [
             {
@@ -230,63 +303,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Easy \u2014 Rec center courts after practice.. The purchase / checkout was earlier, for setup."
+              "line": "That duffel or gear loan is jerseys and shoes for intramurals. I returned it or it is tagged for morning. It is not the incident. That is the whole practice. I am not adding innings."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Alibi first: Rec center courts after practice.. The record is unrelated."
+              "line": "I check out bags because I play. The time is practice. Your window is later. Do not recruit the bag into a crime. That is the whole practice. I am not adding innings."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I'm rattled, but the timeline still clears me."
+              "line": "It looks like I was moving something bulky. I was. It was equipment. I am competitive, not subtle, and the log is boring on purpose. That is the whole practice. I am not adding innings."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Pin the incident on someone with a hard access hit. Not this."
-            }
-          ]
-        },
-        {
-          "id": "reese_herring_q4",
-          "prompt": "Why should we trust you after this shows up under your name?",
-          "aggressive": true,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
               "slip": false,
-              "line": "Because I'm on camera / logs elsewhere during the window."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Trust the other records \u2014 not one ugly receipt."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm nervous because it looks bad. That doesn't make me guilty."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I've answered. Stamp someone else."
+              "line": "Hold the page in the window. This loan is sports. I am done being the cartoon of a thief. That is the whole practice. I am not adding innings."
             }
           ]
         }
@@ -297,7 +335,7 @@
       "questions": [
         {
           "id": "reese_alibi_q1",
-          "prompt": "Rec turnstile entry: Reese's rec membership card entered the turnstile during their claimed workout window. Does that match your story?",
+          "prompt": "This is the page you are using as an alibi. Does it still hold?",
           "aggressive": false,
           "replies": [
             {
@@ -305,69 +343,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Yes. Rec center courts after practice."
+              "line": "The rec turnstile is the alibi. I badged in and I played. I did not slip out to visit your scene. Check the court sheet if you want a crowd. I was in the gym."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That's exactly where I was. Rec center courts after practice."
+              "line": "Doubling back means I miss the run I was in. People on the court would have noticed the empty spot. I stayed. Check the court sheet if you want a crowd. I was in the gym."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It should. Unless the clock is off, I was there."
+              "line": "The membership scan is the witness. Use it before you use a vibe. Check the court sheet if you want a crowd. I was in the gym."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I need you to believe that log. I wasn't at the scene."
+              "slip": false,
+              "line": "Throw out the turnstile and you should explain who was in my spot. I was. Check the court sheet if you want a crowd. I was in the gym."
             }
           ]
         },
         {
           "id": "reese_alibi_q2",
-          "prompt": "You said you left before the incident. Prove Rec center courts after practice..",
-          "aggressive": false,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The support record does. Read Rec turnstile entry."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I left early. Then Rec center courts after practice.."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm telling the same story. Check the timestamp again."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "If that support log is real, I'm clear."
-            }
-          ]
-        },
-        {
-          "id": "reese_alibi_q3",
-          "prompt": "Could you have doubled back to the scene after this alibi stamp?",
+          "prompt": "Could you have doubled back after this stamp?",
           "aggressive": true,
           "replies": [
             {
@@ -375,34 +378,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Once I left, I stayed put."
+              "line": "The rec turnstile is the alibi. I badged in and I played. I did not slip out to visit your scene. I compete. I do not freelance extra buildings."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Not without showing up on something else \u2014 and I don't."
+              "line": "Doubling back means I miss the run I was in. People on the court would have noticed the empty spot. I stayed. I compete. I do not freelance extra buildings."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I\u2026 don't think so. I was tired. I went straight there."
+              "line": "The membership scan is the witness. Use it before you use a vibe. I compete. I do not freelance extra buildings."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Doubling back would be insane. I didn't."
+              "slip": false,
+              "line": "Throw out the turnstile and you should explain who was in my spot. I was. I compete. I do not freelance extra buildings."
             }
           ]
         },
         {
-          "id": "reese_alibi_q4",
-          "prompt": "Who saw you during the window if Rec turnstile entry is wrong?",
+          "id": "reese_alibi_q3",
+          "prompt": "If this support page is wrong, who actually saw you?",
           "aggressive": false,
           "replies": [
             {
@@ -410,28 +413,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "It's not wrong. Ask around the area."
+              "line": "The rec turnstile is the alibi. I badged in and I played. I did not slip out to visit your scene. That is the whole practice. I am not adding innings."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "People were there. I wasn't hiding."
+              "line": "Doubling back means I miss the run I was in. People on the court would have noticed the empty spot. I stayed. That is the whole practice. I am not adding innings."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I can't name everyone. The record should be enough."
+              "line": "The membership scan is the witness. Use it before you use a vibe. That is the whole practice. I am not adding innings."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I don't have a crowd of witnesses. I have that log."
+              "slip": false,
+              "line": "Throw out the turnstile and you should explain who was in my spot. I was. That is the whole practice. I am not adding innings."
             }
           ]
         }
@@ -442,7 +445,7 @@
       "questions": [
         {
           "id": "reese_roster_q1",
-          "prompt": "Intramural roster puts you on site that evening. When did you actually leave?",
+          "prompt": "This listing puts you on tonight's work. When did you leave it?",
           "aggressive": false,
           "replies": [
             {
@@ -450,69 +453,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Before the incident window. Same as my statement."
+              "line": "The intramural sheet means I had a game or a practice. It ended or it moved to rec. A roster is not a key. Check the court sheet if you want a crowd. I was in the gym."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Shift / duty ended; I walked out before the window."
+              "line": "I was listed because I play. I played. Listing me is not placing me in your room. Check the court sheet if you want a crowd. I was in the gym."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I might've lingered a minute \u2014 not through the whole window."
+              "line": "Sheet then turnstile. A normal athlete night. Do not scout it into a crime. Check the court sheet if you want a crowd. I was in the gym."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I left when I said I left. Don't twist the roster."
+              "slip": false,
+              "line": "I did not stay at the scene. My night has a court on it. I went to the court. Check the court sheet if you want a crowd. I was in the gym."
             }
           ]
         },
         {
           "id": "reese_roster_q2",
-          "prompt": "This roster listing: Reese appears on the evening intramural team sheet. Did that give you special access?",
-          "aggressive": false,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Being listed isn't a key to the scene."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Lots of people were listed. Only one culprit."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I had a job to do. I finished and left."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Roster presence \u2260 guilt. Move on."
-            }
-          ]
-        },
-        {
-          "id": "reese_roster_q3",
-          "prompt": "Why does the roster still matter if you claim Rec center courts after practice.?",
+          "prompt": "Did this listing give you a key, a login, or a reason to stay through the window?",
           "aggressive": true,
           "replies": [
             {
@@ -520,34 +488,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "It just shows I was helping earlier. Then I left."
+              "line": "The intramural sheet means I had a game or a practice. It ended or it moved to rec. A roster is not a key. I compete. I do not freelance extra buildings."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Context only. The alibi is the point."
+              "line": "I was listed because I play. I played. Listing me is not placing me in your room. I compete. I do not freelance extra buildings."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "You're stacking paper. My exit time is what counts."
+              "line": "Sheet then turnstile. A normal athlete night. Do not scout it into a crime. I compete. I do not freelance extra buildings."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Stamp me or don't \u2014 the roster isn't a confession."
+              "slip": false,
+              "line": "I did not stay at the scene. My night has a court on it. I went to the court. I compete. I do not freelance extra buildings."
             }
           ]
         },
         {
-          "id": "reese_roster_q4",
-          "prompt": "Anyone on this roster could've stayed late. Did you?",
+          "id": "reese_roster_q3",
+          "prompt": "Why does this roster matter if your alibi is somewhere else?",
           "aggressive": false,
           "replies": [
             {
@@ -555,28 +523,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Out before the window."
+              "line": "The intramural sheet means I had a game or a practice. It ended or it moved to rec. A roster is not a key. That is the whole practice. I am not adding innings."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I didn't stay for the incident window."
+              "line": "I was listed because I play. I played. Listing me is not placing me in your room. That is the whole practice. I am not adding innings."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I wanted to go. I went."
+              "line": "Sheet then turnstile. A normal athlete night. Do not scout it into a crime. That is the whole practice. I am not adding innings."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Late stayers exist. I wasn't one."
+              "slip": false,
+              "line": "I did not stay at the scene. My night has a court on it. I went to the court. That is the whole practice. I am not adding innings."
             }
           ]
         }
@@ -587,7 +555,7 @@
       "questions": [
         {
           "id": "reese_sign_q1",
-          "prompt": "Sign-in shows Reese on site earlier. When did you sign out?",
+          "prompt": "The sign-in puts you on site earlier. When did you actually leave?",
           "aggressive": false,
           "replies": [
             {
@@ -595,34 +563,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I was done and gone before the incident window."
+              "line": "I signed whatever practice sheet was on the clipboard. That was earlier. The window is not the warmup. Check the court sheet if you want a crowd. I was in the gym."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Sign-in isn't a life sentence. I left."
+              "line": "On campus for practice is the assignment. I left it for rec. Different door. Check the court sheet if you want a crowd. I was in the gym."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I signed in earlier. I did not hang around for the incident."
+              "line": "A practice sign-in does not hand me a building key. I have a rec card. That is the one I used. Check the court sheet if you want a crowd. I was in the gym."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Setup, then exit. That's the whole sheet."
+              "slip": false,
+              "line": "Signed, practiced, rec. Three beats. I am not adding a fourth. Check the court sheet if you want a crowd. I was in the gym."
             }
           ]
         },
         {
           "id": "reese_sign_q2",
-          "prompt": "Being on the sign-in sheet put you near the scene. Convenient?",
+          "prompt": "Being on that sheet put you near the scene. How near, and how late?",
           "aggressive": true,
           "replies": [
             {
@@ -630,34 +598,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Convenient for volunteering. Not for the incident."
+              "line": "I signed whatever practice sheet was on the clipboard. That was earlier. The window is not the warmup. I compete. I do not freelance extra buildings."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Near the scene earlier \u2260 inside during the window."
+              "line": "On campus for practice is the assignment. I left it for rec. Different door. I compete. I do not freelance extra buildings."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I don't like how that sounds, but it's still not proof."
+              "line": "A practice sign-in does not hand me a building key. I have a rec card. That is the one I used. I compete. I do not freelance extra buildings."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Stop fishing. Sign-in is earlier activity only."
+              "slip": false,
+              "line": "Signed, practiced, rec. Three beats. I am not adding a fourth. I compete. I do not freelance extra buildings."
             }
           ]
         },
         {
           "id": "reese_sign_q3",
-          "prompt": "Did signing in get you a key or special credential?",
+          "prompt": "Did signing in hand you a key or any other credential?",
           "aggressive": false,
           "replies": [
             {
@@ -665,63 +633,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No special access from a name on a sheet."
+              "line": "I signed whatever practice sheet was on the clipboard. That was earlier. The window is not the warmup. That is the whole practice. I am not adding innings."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Volunteers don't get free raids on restricted rooms."
+              "line": "On campus for practice is the assignment. I left it for rec. Different door. That is the whole practice. I am not adding innings."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "If keys moved, it wasn't because of my signature."
+              "line": "A practice sign-in does not hand me a building key. I have a rec card. That is the one I used. That is the whole practice. I am not adding innings."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Ask who held keys. My name on paper isn't that."
-            }
-          ]
-        },
-        {
-          "id": "reese_sign_q4",
-          "prompt": "Reconcile the sign-in with: \"I cut through campus after practice and went straight to the rec center.\"",
-          "aggressive": false,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
               "slip": false,
-              "line": "Signed in, worked, left before the window. Consistent."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Same story every time."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I keep repeating it because it's true."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Sign-in earlier, departure as stated. Done."
+              "line": "Signed, practiced, rec. Three beats. I am not adding a fourth. That is the whole practice. I am not adding innings."
             }
           ]
         }
@@ -740,21 +673,32 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "You're holding me? I didn't do this."
+              "line": "Hold the seat. I did not do this. I was at the rec center, and I want the denial on the sheet in a complete sentence.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 0,
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "This is a mistake. I want that on the record."
+              "line": "Wrong jersey. I am angry, I was on the court, and you are calling a foul I did not commit.",
+              "onlyIfInnocent": true
             },
             {
-              "minStress": 60,
+              "minStress": 0,
+              "maxStress": 84,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "The hold does not finish the play. I am still saying I was at rec. I am not drawing the detour.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "\u2026I can't keep this up. Check the access trail for my prints."
+              "line": "Then hold me. I went back and I did it. I am not replaying the rec alibi like it won.",
+              "onlyIfCulprit": true
             }
           ]
         }
@@ -773,14 +717,24 @@
               "maxStress": 100,
               "emotion": "calm",
               "slip": false,
-              "line": "Thank you. I told you I wasn't the one."
+              "line": "Good. I am going to stretch and leave. Call me back with a page that beats the turnstile.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 0,
-              "maxStress": 100,
+              "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "Okay. I'm leaving. Don't call me back unless you have proof."
+              "line": "I'll take the release and the rec story with it. I am out before I draw the detour.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "Releasing me does not rewind the admission. I did it. Leave the true score up.",
+              "onlyIfCulprit": true
             }
           ]
         }

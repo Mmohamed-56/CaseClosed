@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CaseClosed.Voice;
 using UnityEngine;
 
 namespace CaseClosed.CaseCore
@@ -41,6 +42,8 @@ namespace CaseClosed.CaseCore
             public string alibiSupportDescription;
             public string contextTitleA;
             public string contextDescriptionA;
+            /// <summary>Mix slots for the low-poly pack. Beside voice gender via SuspectVoiceCatalog.</summary>
+            public SuspectLook look;
             public RecordHook[] recordHooks;
         }
 
@@ -92,6 +95,34 @@ namespace CaseClosed.CaseCore
         {
             loaded = false;
             EnsureLoaded();
+        }
+
+        /// <summary>
+        /// Look slots authored on the affiliate (body, hair, top, bottoms, and the rest).
+        /// Accepts <c>jamie</c> or <c>suspect_jamie</c>. Null when this person has no look yet.
+        /// </summary>
+        public static SuspectLook TryGetLook(string id)
+        {
+            EnsureLoaded();
+            if (string.IsNullOrWhiteSpace(id) || all == null)
+                return null;
+
+            string key = id.Trim().ToLowerInvariant();
+            const string prefix = "suspect_";
+            if (key.StartsWith(prefix))
+                key = key.Substring(prefix.Length);
+
+            for (int i = 0; i < all.Count; i++)
+            {
+                CampusAffiliate affiliate = all[i];
+                if (affiliate == null || affiliate.id != key || affiliate.look == null)
+                    continue;
+                if (string.IsNullOrWhiteSpace(affiliate.look.body))
+                    continue;
+                return affiliate.look;
+            }
+
+            return null;
         }
 
         private static void EnsureLoaded()

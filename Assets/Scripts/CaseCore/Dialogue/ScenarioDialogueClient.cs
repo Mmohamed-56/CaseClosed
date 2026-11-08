@@ -304,13 +304,13 @@ namespace CaseClosed.CaseCore.Dialogue
             for (int i = 0; i < question.replies.Length; i++)
             {
                 DialogueTreeReply r = question.replies[i];
-                if (r == null) continue;
+                if (!PassesRole(r, context)) continue;
                 if (stress < r.minStress || stress > r.maxStress) continue;
                 matches.Add(r);
             }
 
             if (matches.Count == 0)
-                matches = NearestBandMatches(question, stress);
+                matches = NearestBandMatches(question, stress, context);
 
             var gated = new List<DialogueTreeReply>(matches);
             ApplySlipGates(gated, stress, context);
@@ -325,7 +325,7 @@ namespace CaseClosed.CaseCore.Dialogue
                 for (int i = 0; i < question.replies.Length; i++)
                 {
                     DialogueTreeReply r = question.replies[i];
-                    if (r != null && !r.slip)
+                    if (PassesRole(r, context) && !r.slip)
                         nonSlip.Add(r);
                 }
 
@@ -333,6 +333,10 @@ namespace CaseClosed.CaseCore.Dialogue
                     matches = NearestFromList(nonSlip, stress);
             }
 
+            if (matches.Count == 0)
+                return null;
+
+            EnsureOwnedConfession(question, matches, stress, context);
             if (matches.Count == 0)
                 return null;
 
@@ -357,12 +361,59 @@ namespace CaseClosed.CaseCore.Dialogue
             return tight[rng.Next(tight.Count)];
         }
 
-        private static List<DialogueTreeReply> NearestBandMatches(DialogueTreeQuestion question, int stress)
+        private static bool PassesRole(DialogueTreeReply reply, ScenarioAskContext context)
+        {
+            if (reply == null) return false;
+            bool culprit = context != null && context.IsCulprit;
+            if (reply.onlyIfCulprit && !culprit) return false;
+            if (reply.onlyIfInnocent && culprit) return false;
+            return true;
+        }
+
+        /// <summary>
+        /// After a confession, HOLD/RELEASE must keep an owning line even if stress has dropped
+        /// out of the slip band. Otherwise a culprit denies a crime they already admitted.
+        /// </summary>
+        private static void EnsureOwnedConfession(
+            DialogueTreeQuestion question,
+            List<DialogueTreeReply> matches,
+            int stress,
+            ScenarioAskContext context)
+        {
+            if (question == null || matches == null || context == null)
+                return;
+            if (string.IsNullOrWhiteSpace(context.AftermathDecision))
+                return;
+
+            bool mustOwn = context.HasSlipped || (context.IsCulprit && stress >= 85);
+            if (!mustOwn)
+                return;
+
+            for (int i = 0; i < matches.Count; i++)
+            {
+                if (matches[i] != null && matches[i].slip)
+                    return;
+            }
+
+            matches.Clear();
+            if (question.replies == null) return;
+            for (int i = 0; i < question.replies.Length; i++)
+            {
+                DialogueTreeReply reply = question.replies[i];
+                if (reply != null && reply.slip && PassesRole(reply, context))
+                    matches.Add(reply);
+            }
+        }
+
+        private static List<DialogueTreeReply> NearestBandMatches(
+            DialogueTreeQuestion question,
+            int stress,
+            ScenarioAskContext context)
         {
             var all = new List<DialogueTreeReply>(question.replies.Length);
             for (int i = 0; i < question.replies.Length; i++)
             {
-                if (question.replies[i] != null)
+                if (PassesRole(question.replies[i], context))
                     all.Add(question.replies[i]);
             }
 

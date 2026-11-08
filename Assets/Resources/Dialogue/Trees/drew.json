@@ -7,7 +7,7 @@
       "questions": [
         {
           "id": "drew_access_q1",
-          "prompt": "This access record puts you inside the incident window after you said you left. Explain.",
+          "prompt": "This page puts you inside the incident window after you said you were gone. Explain it.",
           "aggressive": true,
           "replies": [
             {
@@ -15,34 +15,70 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That record is wrong. I was already gone."
+              "line": "I cleared the desk and I walked the patrol I was assigned. I do not re-enter a scene off the loop. This page is not my patrol.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That timestamp can't be me. I left earlier."
+              "line": "A record can be wrong without me helping it. I was on the south checkpoints. I was not in the window you mean.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "Okay \u2014 I went back. Just for a second. Not for what went missing."
+              "slip": false,
+              "line": "I am not going to guess a motive for a bad read. For the report: I had left, and I stayed on the loop.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "angry",
+              "slip": false,
+              "line": "I will not invent a return to match your page. I was on patrol. That is the statement.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "I know what it does to an aide's report when their own credential is the problem. I am still logging the patrol. I am not amending it in this chair yet.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "I will not speculate, including against myself, while the patrol line is the one I signed. I left.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "Off the record I would say I broke the loop. On the record I am now saying I broke the loop. I am not itemizing the act.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Fine. I opened that door after I said I left. I did it. I went back."
+              "line": "Amend the report. I left the patrol, I went back during the window, and I did it. The checkpoint story was false.",
+              "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "drew_access_q2",
-          "prompt": "Your campus credential hit a restricted reader inside the incident window.",
+          "prompt": "Your statement and this record do not match. Which one should I keep?",
           "aggressive": true,
           "replies": [
             {
@@ -50,34 +86,70 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I never went back in. Check the cameras \u2014 not me."
+              "line": "Aide shifts are checkpoints. Mine pinged. If this page disagrees, write the disagreement. Do not write a confession I am not making.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Someone could have borrowed my card. It happens."
+              "line": "I understand why a badge in a window frightens a report. It is still not my walk.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "I\u2026 might have swiped back in. I needed something from the cart."
+              "slip": false,
+              "line": "Pressure is not evidence. I was on the loop. I did not come back.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "angry",
+              "slip": false,
+              "line": "Final, for the sheet: gone, on patrol, not in that room.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "The page is a bad fact sitting on a good uniform. I am telling you the patrol happened as assigned. I hear that this is thin.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "I keep editing the sentence down. The short version is still the lie: I stayed on the loop.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I came off the loop. That is the amendment. The rest stays in my mouth until I choose it.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "It was me. I did it. I went back."
+              "line": "I did it. I was there in the window. Do not let the uniform finish the false report for me.",
+              "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "drew_access_q3",
-          "prompt": "You claimed: \"I left the desk area and walked my assigned patrol loop.\" How does that access fit?",
+          "prompt": "Walk this page slowly. Where were you actually standing?",
           "aggressive": false,
           "replies": [
             {
@@ -85,63 +157,64 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "It doesn't \u2014 because I wasn't there. The log is dirty."
+              "line": "I cleared the desk and I walked the patrol I was assigned. I do not re-enter a scene off the loop. This page is not my patrol. That is the order of it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I stick by that statement. The access log has to be a glitch."
+              "line": "A record can be wrong without me helping it. I was on the south checkpoints. I was not in the window you mean. That is the order of it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "I left, then panicked and came back. Stupid."
+              "slip": false,
+              "line": "I am not going to guess a motive for a bad read. For the report: I had left, and I stayed on the loop. That is the order of it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "The statement was a lie. I went back during the window."
-            }
-          ]
-        },
-        {
-          "id": "drew_access_q4",
-          "prompt": "If you left when you said, why is your credential on that door inside the window?",
-          "aggressive": true,
-          "replies": [
+              "emotion": "angry",
+              "slip": false,
+              "line": "I will not invent a return to match your page. I was on patrol. That is the statement. That is the order of it.",
+              "onlyIfInnocent": true
+            },
             {
               "minStress": 0,
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Ask security about false reads. I was not in that room."
+              "line": "I know what it does to an aide's report when their own credential is the problem. I am still logging the patrol. I am not amending it in this chair yet. I am not adding a third version.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I don't have a clean answer \u2014 but I didn't do it."
+              "line": "I will not speculate, including against myself, while the patrol line is the one I signed. I left. I am not adding a third version.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "Because I went back. I shouldn't have."
+              "slip": false,
+              "line": "Off the record I would say I broke the loop. On the record I am now saying I broke the loop. I am not itemizing the act. I am not adding a third version.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Because I did it. That's why."
+              "line": "Amend the report. I left the patrol, I went back during the window, and I did it. The checkpoint story was false. I am not adding a third version.",
+              "onlyIfCulprit": true
             }
           ]
         }
@@ -152,7 +225,7 @@
       "questions": [
         {
           "id": "drew_herring_q1",
-          "prompt": "This record: A key cabinet log shows Drew signed out a hallway master key earlier. Explain it.",
+          "prompt": "This record looks like preparation. What was it actually for?",
           "aggressive": false,
           "replies": [
             {
@@ -160,34 +233,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Drew was locking perimeter classrooms after an event and returned the key on time."
+              "line": "That key or checkout was signed, used for the posted task, and returned. The cabinet log closes it. It is not the incident. For the report: that is the whole statement."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That looks bad, I know. Drew was locking perimeter classrooms after an event and returned the key on time."
+              "line": "Aides sign master keys. The return time is before your window or for a different door. Read the line, not the fear. For the report: that is the whole statement."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I bought / borrowed that for ordinary work \u2014 not for the incident."
+              "line": "It looks like access because my job is access, controlled and logged. This line is controlled. The incident is not this line. For the report: that is the whole statement."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Believe what you want. It still doesn't put me at the scene during the window."
+              "slip": false,
+              "line": "I will not be held on a key I returned. For the report, the return stands. For the report: that is the whole statement."
             }
           ]
         },
         {
           "id": "drew_herring_q2",
-          "prompt": "Looks like prep for moving or cutting something. Was it for what went missing?",
+          "prompt": "Someone will tell me to hold you on this page alone. Why is that wrong?",
           "aggressive": true,
           "replies": [
             {
@@ -195,34 +268,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Ordinary campus work only."
+              "line": "That key or checkout was signed, used for the posted task, and returned. The cabinet log closes it. It is not the incident. I will not speculate past the log."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "People always jump to that. It was unrelated gear."
+              "line": "Aides sign master keys. The return time is before your window or for a different door. Read the line, not the fear. I will not speculate past the log."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I get why you'd ask. Still not me on what went missing."
+              "line": "It looks like access because my job is access, controlled and logged. This line is controlled. The incident is not this line. I will not speculate past the log."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I didn't do it. That record is a red herring and you know it."
+              "slip": false,
+              "line": "I will not be held on a key I returned. For the report, the return stands. I will not speculate past the log."
             }
           ]
         },
         {
           "id": "drew_herring_q3",
-          "prompt": "Walk me through this suspicious record against your alibi: South quad patrol checkpoints during aide hours.",
+          "prompt": "Set this beside the incident clock. Does it still touch the scene?",
           "aggressive": false,
           "replies": [
             {
@@ -230,63 +303,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Easy \u2014 South quad patrol checkpoints during aide hours.. The purchase / checkout was earlier, for setup."
+              "line": "That key or checkout was signed, used for the posted task, and returned. The cabinet log closes it. It is not the incident. Note the time I am saying it."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Alibi first: South quad patrol checkpoints during aide hours.. The record is unrelated."
+              "line": "Aides sign master keys. The return time is before your window or for a different door. Read the line, not the fear. Note the time I am saying it."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I'm rattled, but the timeline still clears me."
+              "line": "It looks like access because my job is access, controlled and logged. This line is controlled. The incident is not this line. Note the time I am saying it."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Pin the incident on someone with a hard access hit. Not this."
-            }
-          ]
-        },
-        {
-          "id": "drew_herring_q4",
-          "prompt": "Why should we trust you after this shows up under your name?",
-          "aggressive": true,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
               "slip": false,
-              "line": "Because I'm on camera / logs elsewhere during the window."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Trust the other records \u2014 not one ugly receipt."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm nervous because it looks bad. That doesn't make me guilty."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I've answered. Stamp someone else."
+              "line": "I will not be held on a key I returned. For the report, the return stands. Note the time I am saying it."
             }
           ]
         }
@@ -297,7 +335,7 @@
       "questions": [
         {
           "id": "drew_alibi_q1",
-          "prompt": "Patrol checkpoint ping: Drew's aide fob pinged the south quad checkpoint during their claimed patrol window. Does that match your story?",
+          "prompt": "This is the page you are using as an alibi. Does it still hold?",
           "aggressive": false,
           "replies": [
             {
@@ -305,69 +343,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Yes. South quad patrol checkpoints during aide hours."
+              "line": "The checkpoint ping is the alibi. I made it during the window I am claiming. I did not leave the loop. For the report: that is the whole statement."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That's exactly where I was. South quad patrol checkpoints during aide hours."
+              "line": "Doubling back would skip a ping or add a door. Neither is in my set. I stayed out. For the report: that is the whole statement."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It should. Unless the clock is off, I was there."
+              "line": "Other aides were on adjacent posts. The ping is still the cleanest witness. Use it. For the report: that is the whole statement."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I need you to believe that log. I wasn't at the scene."
+              "slip": false,
+              "line": "If you throw out the ping you should throw out the whole aide system. I was where it says. For the report: that is the whole statement."
             }
           ]
         },
         {
           "id": "drew_alibi_q2",
-          "prompt": "You said you left before the incident. Prove South quad patrol checkpoints during aide hours..",
-          "aggressive": false,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The support record does. Read Patrol checkpoint ping."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I left early. Then South quad patrol checkpoints during aide hours.."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm telling the same story. Check the timestamp again."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "If that support log is real, I'm clear."
-            }
-          ]
-        },
-        {
-          "id": "drew_alibi_q3",
-          "prompt": "Could you have doubled back to the scene after this alibi stamp?",
+          "prompt": "Could you have doubled back after this stamp?",
           "aggressive": true,
           "replies": [
             {
@@ -375,34 +378,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Once I left, I stayed put."
+              "line": "The checkpoint ping is the alibi. I made it during the window I am claiming. I did not leave the loop. I will not speculate past the log."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Not without showing up on something else \u2014 and I don't."
+              "line": "Doubling back would skip a ping or add a door. Neither is in my set. I stayed out. I will not speculate past the log."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I\u2026 don't think so. I was tired. I went straight there."
+              "line": "Other aides were on adjacent posts. The ping is still the cleanest witness. Use it. I will not speculate past the log."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Doubling back would be insane. I didn't."
+              "slip": false,
+              "line": "If you throw out the ping you should throw out the whole aide system. I was where it says. I will not speculate past the log."
             }
           ]
         },
         {
-          "id": "drew_alibi_q4",
-          "prompt": "Who saw you during the window if Patrol checkpoint ping is wrong?",
+          "id": "drew_alibi_q3",
+          "prompt": "If this support page is wrong, who actually saw you?",
           "aggressive": false,
           "replies": [
             {
@@ -410,28 +413,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "It's not wrong. Ask around the area."
+              "line": "The checkpoint ping is the alibi. I made it during the window I am claiming. I did not leave the loop. Note the time I am saying it."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "People were there. I wasn't hiding."
+              "line": "Doubling back would skip a ping or add a door. Neither is in my set. I stayed out. Note the time I am saying it."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I can't name everyone. The record should be enough."
+              "line": "Other aides were on adjacent posts. The ping is still the cleanest witness. Use it. Note the time I am saying it."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I don't have a crowd of witnesses. I have that log."
+              "slip": false,
+              "line": "If you throw out the ping you should throw out the whole aide system. I was where it says. Note the time I am saying it."
             }
           ]
         }
@@ -442,7 +445,7 @@
       "questions": [
         {
           "id": "drew_roster_q1",
-          "prompt": "Aide duty roster puts you on site that evening. When did you actually leave?",
+          "prompt": "This listing puts you on tonight's work. When did you leave it?",
           "aggressive": false,
           "replies": [
             {
@@ -450,69 +453,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Before the incident window. Same as my statement."
+              "line": "The duty roster put me on patrol, not on your scene. I walked the patrol and I ended it. For the report: that is the whole statement."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Shift / duty ended; I walked out before the window."
+              "line": "Being scheduled is not probable cause. I had checkpoints. I hit them. For the report: that is the whole statement."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I might've lingered a minute \u2014 not through the whole window."
+              "line": "Roster and ping agree. I am not going to narrate past agreement. For the report: that is the whole statement."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I left when I said I left. Don't twist the roster."
+              "slip": false,
+              "line": "I did not stay late at the scene. My shift has an end ping. It is there. For the report: that is the whole statement."
             }
           ]
         },
         {
           "id": "drew_roster_q2",
-          "prompt": "This roster listing: Drew was scheduled for the evening student-aide patrol block. Did that give you special access?",
-          "aggressive": false,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Being listed isn't a key to the scene."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Lots of people were listed. Only one culprit."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I had a job to do. I finished and left."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Roster presence \u2260 guilt. Move on."
-            }
-          ]
-        },
-        {
-          "id": "drew_roster_q3",
-          "prompt": "Why does the roster still matter if you claim South quad patrol checkpoints during aide hours.?",
+          "prompt": "Did this listing give you a key, a login, or a reason to stay through the window?",
           "aggressive": true,
           "replies": [
             {
@@ -520,34 +488,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "It just shows I was helping earlier. Then I left."
+              "line": "The duty roster put me on patrol, not on your scene. I walked the patrol and I ended it. I will not speculate past the log."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Context only. The alibi is the point."
+              "line": "Being scheduled is not probable cause. I had checkpoints. I hit them. I will not speculate past the log."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "You're stacking paper. My exit time is what counts."
+              "line": "Roster and ping agree. I am not going to narrate past agreement. I will not speculate past the log."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Stamp me or don't \u2014 the roster isn't a confession."
+              "slip": false,
+              "line": "I did not stay late at the scene. My shift has an end ping. It is there. I will not speculate past the log."
             }
           ]
         },
         {
-          "id": "drew_roster_q4",
-          "prompt": "Anyone on this roster could've stayed late. Did you?",
+          "id": "drew_roster_q3",
+          "prompt": "Why does this roster matter if your alibi is somewhere else?",
           "aggressive": false,
           "replies": [
             {
@@ -555,28 +523,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Out before the window."
+              "line": "The duty roster put me on patrol, not on your scene. I walked the patrol and I ended it. Note the time I am saying it."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I didn't stay for the incident window."
+              "line": "Being scheduled is not probable cause. I had checkpoints. I hit them. Note the time I am saying it."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I wanted to go. I went."
+              "line": "Roster and ping agree. I am not going to narrate past agreement. Note the time I am saying it."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Late stayers exist. I wasn't one."
+              "slip": false,
+              "line": "I did not stay late at the scene. My shift has an end ping. It is there. Note the time I am saying it."
             }
           ]
         }
@@ -587,7 +555,7 @@
       "questions": [
         {
           "id": "drew_sign_q1",
-          "prompt": "Sign-in shows Drew on site earlier. When did you sign out?",
+          "prompt": "The sign-in puts you on site earlier. When did you actually leave?",
           "aggressive": false,
           "replies": [
             {
@@ -595,34 +563,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I was done and gone before the incident window."
+              "line": "I signed on for the aide block. The block is the patrol. The sign-in is not the incident. For the report: that is the whole statement."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Sign-in isn't a life sentence. I left."
+              "line": "On duty earlier means on the loop, not in your room. Keep those buildings apart. For the report: that is the whole statement."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I signed in earlier. I did not hang around for the incident."
+              "line": "Sign-in does not mint a personal key. Keys I hold are logged out and logged in. For the report: that is the whole statement."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Setup, then exit. That's the whole sheet."
+              "slip": false,
+              "line": "For the report: signed on, patrolled, done before I am accused of being elsewhere. For the report: that is the whole statement."
             }
           ]
         },
         {
           "id": "drew_sign_q2",
-          "prompt": "Being on the sign-in sheet put you near the scene. Convenient?",
+          "prompt": "Being on that sheet put you near the scene. How near, and how late?",
           "aggressive": true,
           "replies": [
             {
@@ -630,34 +598,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Convenient for volunteering. Not for the incident."
+              "line": "I signed on for the aide block. The block is the patrol. The sign-in is not the incident. I will not speculate past the log."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Near the scene earlier \u2260 inside during the window."
+              "line": "On duty earlier means on the loop, not in your room. Keep those buildings apart. I will not speculate past the log."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I don't like how that sounds, but it's still not proof."
+              "line": "Sign-in does not mint a personal key. Keys I hold are logged out and logged in. I will not speculate past the log."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Stop fishing. Sign-in is earlier activity only."
+              "slip": false,
+              "line": "For the report: signed on, patrolled, done before I am accused of being elsewhere. I will not speculate past the log."
             }
           ]
         },
         {
           "id": "drew_sign_q3",
-          "prompt": "Did signing in get you a key or special credential?",
+          "prompt": "Did signing in hand you a key or any other credential?",
           "aggressive": false,
           "replies": [
             {
@@ -665,63 +633,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No special access from a name on a sheet."
+              "line": "I signed on for the aide block. The block is the patrol. The sign-in is not the incident. Note the time I am saying it."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Volunteers don't get free raids on restricted rooms."
+              "line": "On duty earlier means on the loop, not in your room. Keep those buildings apart. Note the time I am saying it."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "If keys moved, it wasn't because of my signature."
+              "line": "Sign-in does not mint a personal key. Keys I hold are logged out and logged in. Note the time I am saying it."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Ask who held keys. My name on paper isn't that."
-            }
-          ]
-        },
-        {
-          "id": "drew_sign_q4",
-          "prompt": "Reconcile the sign-in with: \"I left the desk area and walked my assigned patrol loop.\"",
-          "aggressive": false,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
               "slip": false,
-              "line": "Signed in, worked, left before the window. Consistent."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Same story every time."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I keep repeating it because it's true."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Sign-in earlier, departure as stated. Done."
+              "line": "For the report: signed on, patrolled, done before I am accused of being elsewhere. Note the time I am saying it."
             }
           ]
         }
@@ -740,21 +673,32 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "You're holding me? I didn't do this."
+              "line": "Record the hold if you must. Also record that I deny this. I was on patrol. I did not do it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 0,
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "This is a mistake. I want that on the record."
+              "line": "You are holding an aide for a page that disagrees with the checkpoint log. I am angry, and the log is right.",
+              "onlyIfInnocent": true
             },
             {
-              "minStress": 60,
+              "minStress": 0,
+              "maxStress": 84,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "A hold is not an amended report. I am still on the patrol statement. I am not itemizing a detour.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "\u2026I can't keep this up. Check the access trail for my prints."
+              "line": "Hold stands. I left the patrol and I did it. I will not walk the false checkpoint line back.",
+              "onlyIfCulprit": true
             }
           ]
         }
@@ -773,14 +717,24 @@
               "maxStress": 100,
               "emotion": "calm",
               "slip": false,
-              "line": "Thank you. I told you I wasn't the one."
+              "line": "Release noted. I am returning to post. Reopen this only with a page that beats the ping.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 0,
-              "maxStress": 100,
+              "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "Okay. I'm leaving. Don't call me back unless you have proof."
+              "line": "Then I am released on the patrol statement. I am leaving it filed.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "The release does not amend what I already corrected. I did it. The report should keep that sentence.",
+              "onlyIfCulprit": true
             }
           ]
         }

@@ -111,12 +111,14 @@ namespace CaseClosed.Gameplay
             {
                 actionHud.ResetForNewCase(
                     "CASE: " + title +
+                    "  ·  " + CaseGenerator.PeekDifficulty(seed).ToUpperInvariant() +
                     "  ·  Computer collect ≥2 → EVIDENCE → ACTIONS Call in → ASK → DECISION HOLD/RELEASE.");
             }
 
             Debug.Log(
                 "[CaseGameplay] shift seed=" + seed +
                 " title=\"" + title + "\"" +
+                " difficulty=" + CaseGenerator.PeekDifficulty(seed) +
                 " treeHook=" + CaseGenerator.PeekTreeHook(seed) +
                 " templates=" + CaseGenerator.TemplateCount,
                 this);

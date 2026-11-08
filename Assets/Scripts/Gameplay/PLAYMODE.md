@@ -17,7 +17,7 @@ Open `Assets/Scenes/SampleScene.unity` → **Play**.
 ## Loop (one full shift)
 
 1. **Start** — Play auto-starts base seed `42` / 2 suspects via `CaseGameplayPrototype` (rotates case templates each Restart).
-2. **Briefing** — CASE FILE header shows tonight's case title (18 templates in `Resources/Cases/case_templates.json`). Top tags: **ACTIONS** | **CASE FILE** | **DECISION**.
+2. **Briefing** — CASE FILE header shows tonight's case title (14 templates in `Resources/Cases/case_templates.json`, tagged easy / medium / hard). Top tags: **ACTIONS** | **CASE FILE** | **DECISION**.
 3. **Open records** — Press **Open public records** (in-game zoom to desk monitor / CEF — **no OS browser tab**) *or* click the monitor / press **F**, *or* stay in CASE FILE.
 4. **Collect ≥2 evidence** — Press **Collect · …** on at least two case records (real `CaseGenerator` titles, not placeholders).
 5. **Call suspect in** — Open **ACTIONS** → **Call in — Name** (enter/sit hooks fire when Bezi anchors exist; otherwise interview opens immediately).

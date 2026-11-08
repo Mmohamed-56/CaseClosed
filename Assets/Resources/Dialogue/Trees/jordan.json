@@ -7,7 +7,7 @@
       "questions": [
         {
           "id": "jordan_access_q1",
-          "prompt": "This access record puts you inside the incident window after you said you left. Explain.",
+          "prompt": "This page puts you inside the incident window after you said you were gone. Explain it.",
           "aggressive": true,
           "replies": [
             {
@@ -15,34 +15,70 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That record is wrong. I was already gone."
+              "line": "I left the helpdesk counter and I worked the queue from housing. A door read and a login are not the same event. I did not go back. My session is the housing IP.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That timestamp can't be me. I left earlier."
+              "line": "I get pedantic when I am nervous because pedantic is how I stop a wrong conclusion. The conclusion is wrong. I was remote.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "Okay \u2014 I went back. Just for a second. Not for what went missing."
+              "slip": false,
+              "line": "I am not going to confess to a merged ID. The badge, if it moved, is not my housing session. I was on the session.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "angry",
+              "slip": false,
+              "line": "Final: remote queue, housing IP, no return. Do not collapse those into one icon.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "I know a helpdesk login in the wrong building looks like I was working a ticket there. I was supposed to be remote. I am keeping the remote session as the story for now.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Do not ask me to alias two events. The story I gave you is the housing queue. I am not aliasing it to the window yet.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I was not remote the whole time. I came back. I am not dumping the rest of the log in this answer.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Fine. I opened that door after I said I left. I did it. I went back."
+              "line": "The remote story was a false session. I went back during the window and I did it. Separate the lie from the badge. Both were me.",
+              "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "jordan_access_q2",
-          "prompt": "Your campus credential hit a restricted reader inside the incident window.",
+          "prompt": "Your statement and this record do not match. Which one should I keep?",
           "aggressive": true,
           "replies": [
             {
@@ -50,34 +86,70 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I never went back in. Check the cameras \u2014 not me."
+              "line": "If I had badged back I would have a second authentication in a building, and the queue would gap. The queue does not gap. I stayed remote.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Someone could have borrowed my card. It happens."
+              "line": "You are treating a credential like a person. I am the person, and I was on the ticket side of the night.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "I\u2026 might have swiped back in. I needed something from the cart."
+              "slip": false,
+              "line": "Press the point. The architecture still says I was remote. I did not walk back.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "angry",
+              "slip": false,
+              "line": "I will not debug a confession. I was on the queue. Ship that.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "A shared-looking credential is my nightmare ticket. I am still resolving it as 'user was remote.' That resolution is the one I want, not the true one.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "I can feel the alibi failing checksum. I am not announcing the mismatch out loud yet.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I left the housing session and I was back in the window. That is the bug. I am not pasting the payload.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "It was me. I did it. I went back."
+              "line": "It was me. I did it. The remote queue was a cover session, and I am done maintaining it.",
+              "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "jordan_access_q3",
-          "prompt": "You claimed: \"I left the helpdesk counter and opened a remote ticket shift from housing.\" How does that access fit?",
+          "prompt": "Walk this page slowly. Where were you actually standing?",
           "aggressive": false,
           "replies": [
             {
@@ -85,63 +157,64 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "It doesn't \u2014 because I wasn't there. The log is dirty."
+              "line": "I left the helpdesk counter and I worked the queue from housing. A door read and a login are not the same event. I did not go back. My session is the housing IP. That is the order of it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I stick by that statement. The access log has to be a glitch."
+              "line": "I get pedantic when I am nervous because pedantic is how I stop a wrong conclusion. The conclusion is wrong. I was remote. That is the order of it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "I left, then panicked and came back. Stupid."
+              "slip": false,
+              "line": "I am not going to confess to a merged ID. The badge, if it moved, is not my housing session. I was on the session. That is the order of it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "The statement was a lie. I went back during the window."
-            }
-          ]
-        },
-        {
-          "id": "jordan_access_q4",
-          "prompt": "If you left when you said, why is your credential on that door inside the window?",
-          "aggressive": true,
-          "replies": [
+              "emotion": "angry",
+              "slip": false,
+              "line": "Final: remote queue, housing IP, no return. Do not collapse those into one icon. That is the order of it.",
+              "onlyIfInnocent": true
+            },
             {
               "minStress": 0,
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Ask security about false reads. I was not in that room."
+              "line": "I know a helpdesk login in the wrong building looks like I was working a ticket there. I was supposed to be remote. I am keeping the remote session as the story for now. I am not adding a third version.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I don't have a clean answer \u2014 but I didn't do it."
+              "line": "Do not ask me to alias two events. The story I gave you is the housing queue. I am not aliasing it to the window yet. I am not adding a third version.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "Because I went back. I shouldn't have."
+              "slip": false,
+              "line": "I was not remote the whole time. I came back. I am not dumping the rest of the log in this answer. I am not adding a third version.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Because I did it. That's why."
+              "line": "The remote story was a false session. I went back during the window and I did it. Separate the lie from the badge. Both were me. I am not adding a third version.",
+              "onlyIfCulprit": true
             }
           ]
         }
@@ -152,7 +225,7 @@
       "questions": [
         {
           "id": "jordan_herring_q1",
-          "prompt": "This record: A badge encode request shows Jordan submitted a replacement-card form that day. Explain it.",
+          "prompt": "This record looks like preparation. What was it actually for?",
           "aggressive": false,
           "replies": [
             {
@@ -160,34 +233,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Jordan's own card cracked; the encode was for a replacement, not a clone job."
+              "line": "That encode or form is my own card replacement, or a ticket I closed. The time is office hours. It is not a clone job for the incident. Login, badge, and session are three different objects. Do not merge them."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That looks bad, I know. Jordan's own card cracked; the encode was for a replacement, not a clone job."
+              "line": "I touch badges because it is the job. This record has a ticket number and a reason. The reason is not your case. Login, badge, and session are three different objects. Do not merge them."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I bought / borrowed that for ordinary work \u2014 not for the incident."
+              "line": "It looks technical and therefore guilty. It is technical and closed. Read the resolution field. Login, badge, and session are three different objects. Do not merge them."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Believe what you want. It still doesn't put me at the scene during the window."
+              "slip": false,
+              "line": "Hold the event in the window, not a daytime ticket with my employee number. I am done translating it. Login, badge, and session are three different objects. Do not merge them."
             }
           ]
         },
         {
           "id": "jordan_herring_q2",
-          "prompt": "Looks like prep for moving or cutting something. Was it for what went missing?",
+          "prompt": "Someone will tell me to hold you on this page alone. Why is that wrong?",
           "aggressive": true,
           "replies": [
             {
@@ -195,34 +268,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Ordinary campus work only."
+              "line": "That encode or form is my own card replacement, or a ticket I closed. The time is office hours. It is not a clone job for the incident. I will define the term before I answer past it."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "People always jump to that. It was unrelated gear."
+              "line": "I touch badges because it is the job. This record has a ticket number and a reason. The reason is not your case. I will define the term before I answer past it."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I get why you'd ask. Still not me on what went missing."
+              "line": "It looks technical and therefore guilty. It is technical and closed. Read the resolution field. I will define the term before I answer past it."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I didn't do it. That record is a red herring and you know it."
+              "slip": false,
+              "line": "Hold the event in the window, not a daytime ticket with my employee number. I am done translating it. I will define the term before I answer past it."
             }
           ]
         },
         {
           "id": "jordan_herring_q3",
-          "prompt": "Walk me through this suspicious record against your alibi: Remote IT ticket queue from housing Wi-Fi.",
+          "prompt": "Set this beside the incident clock. Does it still touch the scene?",
           "aggressive": false,
           "replies": [
             {
@@ -230,63 +303,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Easy \u2014 Remote IT ticket queue from housing Wi-Fi.. The purchase / checkout was earlier, for setup."
+              "line": "That encode or form is my own card replacement, or a ticket I closed. The time is office hours. It is not a clone job for the incident. The ticket queue is the clock. Use the clock."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Alibi first: Remote IT ticket queue from housing Wi-Fi.. The record is unrelated."
+              "line": "I touch badges because it is the job. This record has a ticket number and a reason. The reason is not your case. The ticket queue is the clock. Use the clock."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I'm rattled, but the timeline still clears me."
+              "line": "It looks technical and therefore guilty. It is technical and closed. Read the resolution field. The ticket queue is the clock. Use the clock."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Pin the incident on someone with a hard access hit. Not this."
-            }
-          ]
-        },
-        {
-          "id": "jordan_herring_q4",
-          "prompt": "Why should we trust you after this shows up under your name?",
-          "aggressive": true,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
               "slip": false,
-              "line": "Because I'm on camera / logs elsewhere during the window."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Trust the other records \u2014 not one ugly receipt."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm nervous because it looks bad. That doesn't make me guilty."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I've answered. Stamp someone else."
+              "line": "Hold the event in the window, not a daytime ticket with my employee number. I am done translating it. The ticket queue is the clock. Use the clock."
             }
           ]
         }
@@ -297,7 +335,7 @@
       "questions": [
         {
           "id": "jordan_alibi_q1",
-          "prompt": "Ticket-queue login: Jordan's helpdesk account shows ticket activity from a housing IP during the alibi window. Does that match your story?",
+          "prompt": "This is the page you are using as an alibi. Does it still hold?",
           "aggressive": false,
           "replies": [
             {
@@ -305,69 +343,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Yes. Remote IT ticket queue from housing Wi-Fi."
+              "line": "The queue login from the housing IP is the alibi. Tickets move during the window. I was the one moving them. Login, badge, and session are three different objects. Do not merge them."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That's exactly where I was. Remote IT ticket queue from housing Wi-Fi."
+              "line": "Doubling back would drop the IP or pause the queue. Neither happens. I stayed on the session. Login, badge, and session are three different objects. Do not merge them."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It should. Unless the clock is off, I was there."
+              "line": "The tickets have comments I typed. That is the witness. I do not need a roommate. Login, badge, and session are three different objects. Do not merge them."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I need you to believe that log. I wasn't at the scene."
+              "slip": false,
+              "line": "Discard the login and you discard the work that got done. I did it from housing. Login, badge, and session are three different objects. Do not merge them."
             }
           ]
         },
         {
           "id": "jordan_alibi_q2",
-          "prompt": "You said you left before the incident. Prove Remote IT ticket queue from housing Wi-Fi..",
-          "aggressive": false,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The support record does. Read Ticket-queue login."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I left early. Then Remote IT ticket queue from housing Wi-Fi.."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm telling the same story. Check the timestamp again."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "If that support log is real, I'm clear."
-            }
-          ]
-        },
-        {
-          "id": "jordan_alibi_q3",
-          "prompt": "Could you have doubled back to the scene after this alibi stamp?",
+          "prompt": "Could you have doubled back after this stamp?",
           "aggressive": true,
           "replies": [
             {
@@ -375,34 +378,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Once I left, I stayed put."
+              "line": "The queue login from the housing IP is the alibi. Tickets move during the window. I was the one moving them. I will define the term before I answer past it."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Not without showing up on something else \u2014 and I don't."
+              "line": "Doubling back would drop the IP or pause the queue. Neither happens. I stayed on the session. I will define the term before I answer past it."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I\u2026 don't think so. I was tired. I went straight there."
+              "line": "The tickets have comments I typed. That is the witness. I do not need a roommate. I will define the term before I answer past it."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Doubling back would be insane. I didn't."
+              "slip": false,
+              "line": "Discard the login and you discard the work that got done. I did it from housing. I will define the term before I answer past it."
             }
           ]
         },
         {
-          "id": "jordan_alibi_q4",
-          "prompt": "Who saw you during the window if Ticket-queue login is wrong?",
+          "id": "jordan_alibi_q3",
+          "prompt": "If this support page is wrong, who actually saw you?",
           "aggressive": false,
           "replies": [
             {
@@ -410,28 +413,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "It's not wrong. Ask around the area."
+              "line": "The queue login from the housing IP is the alibi. Tickets move during the window. I was the one moving them. The ticket queue is the clock. Use the clock."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "People were there. I wasn't hiding."
+              "line": "Doubling back would drop the IP or pause the queue. Neither happens. I stayed on the session. The ticket queue is the clock. Use the clock."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I can't name everyone. The record should be enough."
+              "line": "The tickets have comments I typed. That is the witness. I do not need a roommate. The ticket queue is the clock. Use the clock."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I don't have a crowd of witnesses. I have that log."
+              "slip": false,
+              "line": "Discard the login and you discard the work that got done. I did it from housing. The ticket queue is the clock. Use the clock."
             }
           ]
         }
@@ -442,7 +445,7 @@
       "questions": [
         {
           "id": "jordan_roster_q1",
-          "prompt": "IT student-worker board puts you on site that evening. When did you actually leave?",
+          "prompt": "This listing puts you on tonight's work. When did you leave it?",
           "aggressive": false,
           "replies": [
             {
@@ -450,69 +453,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Before the incident window. Same as my statement."
+              "line": "The worker board scheduled me for desk then remote. Remote is the second half. The board is not a key to your room. Login, badge, and session are three different objects. Do not merge them."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Shift / duty ended; I walked out before the window."
+              "line": "I was listed because I answer tickets. I answered them. Listing is not presence. Login, badge, and session are three different objects. Do not merge them."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I might've lingered a minute \u2014 not through the whole window."
+              "line": "Board plus IP is a complete shift. There is no remainder inside your window. Login, badge, and session are three different objects. Do not merge them."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I left when I said I left. Don't twist the roster."
+              "slip": false,
+              "line": "I did not stay on site. The board even says when the counter half ends. I honored it. Login, badge, and session are three different objects. Do not merge them."
             }
           ]
         },
         {
           "id": "jordan_roster_q2",
-          "prompt": "This roster listing: Jordan is posted for the evening helpdesk / ticket block. Did that give you special access?",
-          "aggressive": false,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Being listed isn't a key to the scene."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Lots of people were listed. Only one culprit."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I had a job to do. I finished and left."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Roster presence \u2260 guilt. Move on."
-            }
-          ]
-        },
-        {
-          "id": "jordan_roster_q3",
-          "prompt": "Why does the roster still matter if you claim Remote IT ticket queue from housing Wi-Fi.?",
+          "prompt": "Did this listing give you a key, a login, or a reason to stay through the window?",
           "aggressive": true,
           "replies": [
             {
@@ -520,34 +488,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "It just shows I was helping earlier. Then I left."
+              "line": "The worker board scheduled me for desk then remote. Remote is the second half. The board is not a key to your room. I will define the term before I answer past it."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Context only. The alibi is the point."
+              "line": "I was listed because I answer tickets. I answered them. Listing is not presence. I will define the term before I answer past it."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "You're stacking paper. My exit time is what counts."
+              "line": "Board plus IP is a complete shift. There is no remainder inside your window. I will define the term before I answer past it."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Stamp me or don't \u2014 the roster isn't a confession."
+              "slip": false,
+              "line": "I did not stay on site. The board even says when the counter half ends. I honored it. I will define the term before I answer past it."
             }
           ]
         },
         {
-          "id": "jordan_roster_q4",
-          "prompt": "Anyone on this roster could've stayed late. Did you?",
+          "id": "jordan_roster_q3",
+          "prompt": "Why does this roster matter if your alibi is somewhere else?",
           "aggressive": false,
           "replies": [
             {
@@ -555,28 +523,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Out before the window."
+              "line": "The worker board scheduled me for desk then remote. Remote is the second half. The board is not a key to your room. The ticket queue is the clock. Use the clock."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I didn't stay for the incident window."
+              "line": "I was listed because I answer tickets. I answered them. Listing is not presence. The ticket queue is the clock. Use the clock."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I wanted to go. I went."
+              "line": "Board plus IP is a complete shift. There is no remainder inside your window. The ticket queue is the clock. Use the clock."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Late stayers exist. I wasn't one."
+              "slip": false,
+              "line": "I did not stay on site. The board even says when the counter half ends. I honored it. The ticket queue is the clock. Use the clock."
             }
           ]
         }
@@ -587,7 +555,7 @@
       "questions": [
         {
           "id": "jordan_sign_q1",
-          "prompt": "Sign-in shows Jordan on site earlier. When did you sign out?",
+          "prompt": "The sign-in puts you on site earlier. When did you actually leave?",
           "aggressive": false,
           "replies": [
             {
@@ -595,34 +563,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I was done and gone before the incident window."
+              "line": "I signed the helpdesk sheet for the counter block. The counter block ended. The sign-in is not the incident. Login, badge, and session are three different objects. Do not merge them."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Sign-in isn't a life sentence. I left."
+              "line": "On site at the start is the counter. Later I was an IP address. Do not treat those as one location. Login, badge, and session are three different objects. Do not merge them."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I signed in earlier. I did not hang around for the incident."
+              "line": "A sign-in does not grant me a quiet master credential. Anything I encode is ticketed. Login, badge, and session are three different objects. Do not merge them."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Setup, then exit. That's the whole sheet."
+              "slip": false,
+              "line": "Counter, then remote. Two states. I was in the second during the window. Login, badge, and session are three different objects. Do not merge them."
             }
           ]
         },
         {
           "id": "jordan_sign_q2",
-          "prompt": "Being on the sign-in sheet put you near the scene. Convenient?",
+          "prompt": "Being on that sheet put you near the scene. How near, and how late?",
           "aggressive": true,
           "replies": [
             {
@@ -630,34 +598,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Convenient for volunteering. Not for the incident."
+              "line": "I signed the helpdesk sheet for the counter block. The counter block ended. The sign-in is not the incident. I will define the term before I answer past it."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Near the scene earlier \u2260 inside during the window."
+              "line": "On site at the start is the counter. Later I was an IP address. Do not treat those as one location. I will define the term before I answer past it."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I don't like how that sounds, but it's still not proof."
+              "line": "A sign-in does not grant me a quiet master credential. Anything I encode is ticketed. I will define the term before I answer past it."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Stop fishing. Sign-in is earlier activity only."
+              "slip": false,
+              "line": "Counter, then remote. Two states. I was in the second during the window. I will define the term before I answer past it."
             }
           ]
         },
         {
           "id": "jordan_sign_q3",
-          "prompt": "Did signing in get you a key or special credential?",
+          "prompt": "Did signing in hand you a key or any other credential?",
           "aggressive": false,
           "replies": [
             {
@@ -665,63 +633,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No special access from a name on a sheet."
+              "line": "I signed the helpdesk sheet for the counter block. The counter block ended. The sign-in is not the incident. The ticket queue is the clock. Use the clock."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Volunteers don't get free raids on restricted rooms."
+              "line": "On site at the start is the counter. Later I was an IP address. Do not treat those as one location. The ticket queue is the clock. Use the clock."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "If keys moved, it wasn't because of my signature."
+              "line": "A sign-in does not grant me a quiet master credential. Anything I encode is ticketed. The ticket queue is the clock. Use the clock."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Ask who held keys. My name on paper isn't that."
-            }
-          ]
-        },
-        {
-          "id": "jordan_sign_q4",
-          "prompt": "Reconcile the sign-in with: \"I left the helpdesk counter and opened a remote ticket shift from housing.\"",
-          "aggressive": false,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
               "slip": false,
-              "line": "Signed in, worked, left before the window. Consistent."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Same story every time."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I keep repeating it because it's true."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Sign-in earlier, departure as stated. Done."
+              "line": "Counter, then remote. Two states. I was in the second during the window. The ticket queue is the clock. Use the clock."
             }
           ]
         }
@@ -740,21 +673,32 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "You're holding me? I didn't do this."
+              "line": "Record the hold. Also record that I deny it. I was on the housing queue. A badge event you have not separated from me is not me.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 0,
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "This is a mistake. I want that on the record."
+              "line": "Wrong account. I am angry because the session log already closed this, and you are holding the icon.",
+              "onlyIfInnocent": true
             },
             {
-              "minStress": 60,
+              "minStress": 0,
+              "maxStress": 84,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "The hold does not authenticate a confession. I am still on the remote session. I am not dumping the real log.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "\u2026I can't keep this up. Check the access trail for my prints."
+              "line": "Hold the account. I came back and I did it. I will not restore the false remote session.",
+              "onlyIfCulprit": true
             }
           ]
         }
@@ -773,14 +717,24 @@
               "maxStress": 100,
               "emotion": "calm",
               "slip": false,
-              "line": "Thank you. I told you I wasn't the one."
+              "line": "Released. I will go clear the queue. Reopen only if you can show my session and the door are the same minutes.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 0,
-              "maxStress": 100,
+              "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "Okay. I'm leaving. Don't call me back unless you have proof."
+              "line": "Then the remote story stands and I am leaving. Do not walk me through the alias in the hall.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "The release does not roll back the admission. I did it. Keep the true session, not the cover.",
+              "onlyIfCulprit": true
             }
           ]
         }

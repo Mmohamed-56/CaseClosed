@@ -28,6 +28,12 @@ namespace CaseClosed.CaseCore
         {
             public string id;
             public string title;
+            /// <summary>easy, medium, or hard. Hard briefings need the access card read with sign-in and alibi or roster.</summary>
+            public string difficulty;
+            /// <summary>Public motive. No culprit name.</summary>
+            public string motive;
+            /// <summary>Unity-side solve note. Not copied into the public briefing.</summary>
+            public string solvePath;
             public string briefing;
             public string treeHook;
             public string scene;
@@ -39,6 +45,10 @@ namespace CaseClosed.CaseCore
             public string contradictionExplanation;
             public string signInTitle;
             public string signInDescription;
+            public string rosterTitle;
+            public string rosterDescription;
+            public string alibiTitle;
+            public string alibiDescription;
             public string redHerringTitle;
             public string redHerringDescription;
             public string redHerringExplanation;
@@ -118,6 +128,8 @@ namespace CaseClosed.CaseCore
         private static CaseTemplate Normalize(CaseTemplate t)
         {
             if (string.IsNullOrWhiteSpace(t.treeHook)) t.treeHook = t.id;
+            if (string.IsNullOrWhiteSpace(t.difficulty)) t.difficulty = "medium";
+            else t.difficulty = t.difficulty.Trim().ToLowerInvariant();
             if (string.IsNullOrWhiteSpace(t.accessTitle)) t.accessTitle = "Restricted access log";
             if (string.IsNullOrWhiteSpace(t.accessDescription))
                 t.accessDescription = "A campus credential assigned to {name} opened a restricted door inside the incident window.";

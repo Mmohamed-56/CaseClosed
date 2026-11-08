@@ -11,6 +11,10 @@ namespace CaseClosed.CaseCore.Dialogue
         public int maxStress = 100;
         public string emotion = "calm";
         public bool slip;
+        /// <summary>Spoken only when this interviewee is the culprit tonight.</summary>
+        public bool onlyIfCulprit;
+        /// <summary>Spoken only when this interviewee is innocent tonight.</summary>
+        public bool onlyIfInnocent;
         public string line = "...";
     }
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "note": "Case templates expose treeHook ids for future per-case dialogue banks. Playable trees still key off CollectEvidence suffixes (access, red_herring, alibi_support, roster, sign_in, hold, release) shared across every template \u2014 prompts are case-agnostic.",
+  "note": "Playable trees key off CollectEvidence suffixes (access, red_herring, alibi_support, roster, sign_in, hold, release). Prompts stay case-agnostic. Culprit and innocent lines are separate on access, hold, and release. treeHook ids match case_templates.json.",
   "evidenceKeys": [
     "access",
     "red_herring",
@@ -11,23 +11,19 @@
     "release"
   ],
   "hooks": [
-    "banner_cutdown",
-    "dorm_theft",
-    "quad_assault",
-    "library_vandalism",
-    "fire_alarm",
-    "exam_leak",
-    "keycard_fraud",
-    "lab_sabotage",
-    "graffiti_admin",
-    "bike_theft",
-    "parking_fraud",
-    "sample_theft",
-    "pass_forgery",
-    "ra_keys",
-    "server_room",
-    "blood_drive",
-    "wifi_theft",
-    "after_hours_escort"
+    "victor_mural",
+    "norton_clone",
+    "hadley_party",
+    "furnas_reprint",
+    "ellicott_shove",
+    "goodyear_bike",
+    "lockwood_notes",
+    "abbott_eyepiece",
+    "hochstetter_incubator",
+    "silverman_reserve",
+    "crosby_pane",
+    "slee_amp",
+    "baldy_alarm",
+    "obrian_grade"
   ]
 }
