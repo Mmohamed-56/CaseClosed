@@ -31,7 +31,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Please hear the order. Cleanup, trays, kitchen. I was at the sink.",
+              "line": "Cleanup, then the trays, then the kitchen. I was at the sink.",
               "onlyIfInnocent": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Don't rush the quiet. I was at the sink. I didn't go back.",
+              "line": "I was at the sink in the prep kitchen. I didn't go back.",
               "onlyIfCulprit": true
             },
             {
@@ -86,7 +86,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "The kitchen is the true one. I cleaned, I carried trays, I washed. I didn't double back.",
+              "line": "I was in the kitchen. I cleaned, I carried trays, and I washed. I didn't go back.",
               "onlyIfInnocent": true
             },
             {
@@ -254,7 +254,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "A supply slip. I'm not gonna treat a morning restock like it followed me all day."
+              "line": "It's a supply slip from the morning restock. It didn't follow me all day."
             }
           ]
         },
@@ -317,7 +317,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Don't carry it into the afternoon. I stocked it and I moved on to cleanup."
+              "line": "No. I stocked it in the morning and I moved on to cleanup. It isn't part of this."
             },
             {
               "minStress": 85,
@@ -378,7 +378,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. A full rack takes time. I didn't drop it and double back to the bench."
+              "line": "No. A full rack takes time. I didn't drop it and go back to the bench."
             },
             {
               "minStress": 30,
@@ -502,14 +502,14 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "No. Rotation isn't permission to hang around the equipment. I washed up and I was done."
+              "line": "No. Being on the rotation didn't mean I hung around. I washed up and I was done."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. I'm not gonna read a cleanup list like a reason to stay. I finished."
+              "line": "No. Being on the cleanup list didn't mean I stayed. I finished."
             }
           ]
         },
@@ -619,7 +619,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "As late as those benches took. Then I left them. Don't put me back."
+              "line": "As late as those benches took. Then I left them. I didn't go back."
             }
           ]
         },

@@ -31,7 +31,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I'm not filling the quiet with a better version. I ended the desk. I left.",
+              "line": "I ended the desk and I left. I was in housing after that.",
               "onlyIfInnocent": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Don't rush me into a cleaner lie. The shift ended. I went to housing.",
+              "line": "The shift ended. I went to housing. I'm not changing that.",
               "onlyIfCulprit": true
             },
             {
@@ -110,7 +110,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Final version. I was gone before any of this. Write that and stop circling.",
+              "line": "I was gone before any of this. The shift ended and I left.",
               "onlyIfInnocent": true
             },
             {
@@ -134,7 +134,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I ended it. I'm not gonna pretty the clock-out up. I left.",
+              "line": "I ended the shift. I left when the clock-out says I left.",
               "onlyIfCulprit": true
             },
             {
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Don't loom. I was in housing. I ended the shift and I left the building.",
+              "line": "I was in housing. I ended the shift and I left the building.",
               "onlyIfInnocent": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Events desk, then housing. That's the path I'm giving you.",
+              "line": "I was at the events desk, and then I went to housing. That's where I went.",
               "onlyIfCulprit": true
             },
             {
@@ -197,7 +197,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I keep saying housing because that's where I went. Don't add a stop I didn't make.",
+              "line": "I went to housing. I didn't make another stop after that.",
               "onlyIfCulprit": true
             },
             {
@@ -254,7 +254,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If you sit me here over a supply line, you'll be wrong in ink. It was for the desk."
+              "line": "If you hold me over a supply form, you'll have the wrong person. It was for the desk."
             }
           ]
         },
@@ -275,7 +275,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Same-day is how a desk runs. I had it for the job, not for whatever you're building."
+              "line": "Same day is how a desk runs. I had it for the job, not for this."
             },
             {
               "minStress": 60,
@@ -317,7 +317,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Don't staple it to the night. I used it for the job and I was done."
+              "line": "No. I used it for the job and I was done. It isn't part of this."
             },
             {
               "minStress": 85,
@@ -350,7 +350,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Once I got to my room I stayed. Going back out would be a second clock, and there isn't one."
+              "line": "Once I got to my room I stayed. I didn't go back out. There's no second clock-out."
             },
             {
               "minStress": 60,
@@ -364,7 +364,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Throw that out and you still have the clock-out. I'm not inventing a third place."
+              "line": "Even if you set that aside, you still have the clock-out. I was in housing."
             }
           ]
         },
@@ -378,7 +378,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. I don't double back after housing. It makes two logs and I would have to explain both."
+              "line": "No. I don't go back out after I get to housing. I was in my room."
             },
             {
               "minStress": 30,
@@ -434,7 +434,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Roommate. Hall desk. That's two people. I'm not adding a fictional third."
+              "line": "My roommate and the hall desk. Those two saw me. There isn't a third person."
             }
           ]
         }
@@ -495,7 +495,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "It gave me a desk and a stop time. I hit the stop time. That's the whole privilege."
+              "line": "It gave me a desk and a stop time. I left at the stop time."
             },
             {
               "minStress": 60,
@@ -509,7 +509,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. I'm not gonna treat a shift list like permission. I clocked out."
+              "line": "No. Being on the shift list didn't let me stay. I clocked out."
             }
           ]
         },
@@ -584,7 +584,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Clock-out. I'm not decorating it. Signed in, worked, left."
+              "line": "I signed in, I worked the desk, and I left at clock-out. Then I went to housing."
             }
           ]
         },
@@ -619,7 +619,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "As late as the desk required. Then I left. Don't drag it past clock-out."
+              "line": "As late as the desk required. Then I left. I wasn't there past clock-out."
             }
           ]
         },

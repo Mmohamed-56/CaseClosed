@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Don't wait me into a neater sentence. I went to the study room and I stayed.",
+              "line": "I went to the study room and I stayed. I didn't leave it.",
               "onlyIfCulprit": true
             },
             {
@@ -63,7 +63,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I was in study room B. I'm not gonna round the night so it fits your sheet.",
+              "line": "I was in study room B. I'm not changing the night to fit your sheet.",
               "onlyIfCulprit": true
             },
             {
@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I did it. I {act}. I wasn't in the study room. I said I was because it was quiet.",
+              "line": "I did it. I {act}. I wasn't in the study room. I only said I was.",
               "onlyIfCulprit": true
             }
           ]
@@ -86,7 +86,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "If I'd gone back, the night would have a second line, and I'd have to account for it. It doesn't.",
+              "line": "If I'd gone back, there would be a second time to explain. There isn't. I stayed in the study room.",
               "onlyIfInnocent": true
             },
             {
@@ -94,7 +94,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A mismatched record is an error until you prove it against the study-room block. You haven't.",
+              "line": "That record doesn't match the study room. I was in study room B.",
               "onlyIfInnocent": true
             },
             {
@@ -110,7 +110,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Final entry. I was in the study room. Post that. Don't ask me to forge the other way.",
+              "line": "I was in the study room. I'm not going to say I went somewhere else.",
               "onlyIfInnocent": true
             },
             {
@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I want the study room to win because it's what I did. I'm not amending it for you.",
+              "line": "I was in the study room. That's what I did. I'm not changing it.",
               "onlyIfCulprit": true
             },
             {
@@ -134,7 +134,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I'm staying with the study room. The first version is the one that adds up.",
+              "line": "I'm staying with the study room. That's where I was.",
               "onlyIfCulprit": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Study room B. That's the coordinate I'm giving you.",
+              "line": "I was in study room B. That's the room I was sitting in.",
               "onlyIfCulprit": true
             },
             {
@@ -197,7 +197,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I keep naming the room because I was in it. Don't relocate me.",
+              "line": "I was in the study room. I didn't go somewhere else.",
               "onlyIfCulprit": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I was in the chair in study room B. I'm not shifting buildings for you.",
+              "line": "I was in the chair in study room B. I didn't go to another building.",
               "onlyIfCulprit": true
             },
             {
@@ -254,7 +254,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I'm not rounding a receipt into the night. It was the club."
+              "line": "It's a club receipt. It doesn't belong with what happened tonight."
             }
           ]
         },
@@ -378,7 +378,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. I had the room until the block ended. I didn't pack up and double back."
+              "line": "No. I had the room until the block ended. I didn't pack up and go back."
             },
             {
               "minStress": 30,
@@ -427,7 +427,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Ask the room next door before you ask me to invent a witness. They were there."
+              "line": "Ask the person in the room next door. They were there. They saw me."
             },
             {
               "minStress": 85,
@@ -509,7 +509,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. I'm not gonna treat a club roster like access. I did the meeting and I went to B."
+              "line": "No. Being on the club list didn't let me stay. I did the meeting and I went to study room B."
             }
           ]
         },
@@ -619,7 +619,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "As late as the agenda. Then I left. Don't extend the meeting past the minutes."
+              "line": "As late as the agenda. Then I left. I wasn't there after the meeting ended."
             }
           ]
         },
@@ -733,7 +733,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I already told you. I did it. I {act}. Don't lose that just because you're letting me leave.",
+              "line": "I already told you. I did it. I {act}. I'm not taking it back on the way out.",
               "onlyIfCulprit": true
             }
           ]

@@ -23,7 +23,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A frame with my jacket in it makes my stomach drop. I was still in the bay. I didn't leave the chair.",
+              "line": "A photo with my jacket in it makes my stomach drop. I was still in the bay. I didn't leave the chair.",
               "onlyIfInnocent": true
             },
             {
@@ -47,7 +47,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know a photographer near a lens looks convenient. I was in the bay uploading. I'm keeping that.",
+              "line": "I know a photographer near a camera looks bad. I was in the bay uploading. I stayed there.",
               "onlyIfCulprit": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Don't treat a quiet as a new location. I was at the edit desk.",
+              "line": "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
               "onlyIfCulprit": true
             },
             {
@@ -63,7 +63,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I was in the bay. I'm sick of the frame you're holding. I didn't leave.",
+              "line": "I was in the bay. I'm sick of the photo you're holding. I didn't leave.",
               "onlyIfCulprit": true
             },
             {
@@ -110,7 +110,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Ask it in a different crop. Edit bay. I was already there.",
+              "line": "Ask it again if you want. I was already in the edit bay.",
               "onlyIfInnocent": true
             },
             {
@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I want the bay on your notes because I was in the chair. I'm not recutting the night.",
+              "line": "I was in the chair in the edit bay. I'm not changing the night.",
               "onlyIfCulprit": true
             },
             {
@@ -134,7 +134,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I'm staying with the bay. The shoot ended and I uploaded. That's the cut.",
+              "line": "I'm staying with the bay. The shoot ended and I uploaded. That's what I did.",
               "onlyIfCulprit": true
             },
             {
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The bay wasn't the night. I did it. I {act}. Don't caption it as an upload.",
+              "line": "The bay wasn't the night. I did it. I {act}. I wasn't uploading.",
               "onlyIfCulprit": true
             }
           ]
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The bay. Don't block the monitor in your head. I was in the chair.",
+              "line": "I was in the chair in the edit bay. I was sitting at the desk.",
               "onlyIfInnocent": true
             },
             {
@@ -181,7 +181,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Edit desk. I'm done framing it. I was there. I didn't do this.",
+              "line": "I was at the edit desk. I was there. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Edit bay, under the lamp. That's the spot I'm giving you.",
+              "line": "I was in the edit bay, under the lamp. That's where I was sitting.",
               "onlyIfCulprit": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I was in that chair. I'm not walking it down a hall for you.",
+              "line": "I was in that chair in the edit bay. I didn't walk down a hall.",
               "onlyIfCulprit": true
             },
             {
@@ -317,7 +317,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Don't crop it into the night. I used it for the assignment."
+              "line": "No. I used it for the assignment. It doesn't belong with what happened."
             },
             {
               "minStress": 85,
@@ -378,7 +378,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. A card copy takes forever. I didn't pause it and double back across campus."
+              "line": "No. Copying a card takes forever. I didn't pause it and go back across campus."
             },
             {
               "minStress": 30,
@@ -420,7 +420,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A writer waiting on two frames knocked. They saw me at the desk."
+              "line": "A writer waiting on two photos knocked. They saw me at the desk."
             },
             {
               "minStress": 60,
@@ -434,7 +434,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Late editor. That's a person with a name on the board. I'm not casting extras."
+              "line": "The late editor. Their name is on the board. They saw me at the desk."
             }
           ]
         }
@@ -460,7 +460,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "When the event let out. Other shooters are on that list. I covered my slice and I left."
+              "line": "When the event let out. Other shooters are on that list. I shot my part and I left."
             },
             {
               "minStress": 60,
@@ -474,7 +474,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I didn't stay on site. Staying would've been more frames. I had the frames. I left."
+              "line": "I didn't stay on site. I already had the photos I needed. I left."
             }
           ]
         },
@@ -509,7 +509,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. I'm not treating a photo list like a hall pass. I shot and I left."
+              "line": "No. Being on the photo list didn't let me stay. I shot and I left."
             }
           ]
         },
@@ -577,14 +577,14 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I left the venue when the event broke. Signing in didn't chain me to the door."
+              "line": "I left the venue when the event ended. Signing in didn't keep me at the door."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Call time, shoot, bay. I'm not gonna add a frame that isn't in the roll."
+              "line": "Call time, then the shoot, then the edit bay. I didn't add another stop."
             }
           ]
         },
@@ -619,7 +619,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "As late as the event. Then I left for the bay. Don't keep me at the door."
+              "line": "As late as the event. Then I left for the bay. I wasn't still at the door."
             }
           ]
         },
@@ -640,7 +640,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A sign-in is how the editor knows I showed. It isn't a key to a closet."
+              "line": "A sign-in is how the editor knows I showed up. It isn't a key."
             },
             {
               "minStress": 60,

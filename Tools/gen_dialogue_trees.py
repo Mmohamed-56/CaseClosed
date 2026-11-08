@@ -102,6 +102,11 @@ def main() -> None:
         for banned in (
             "9:37", "9:15", "storage-room", "event-storage", "mascot head", "took the head", "nordy",
             "incident window", "the trap", "checklist", "upstairs", "the page", "motive on the table",
+            "the quiet", "better version", "final version", "second version", "first version",
+            "blank check", "hall pass", "all-access", "all-campus pass", "new location",
+            "spot i'm giving", "coordinate i'm giving", "path i'm giving", "different crop",
+            "that's the cut", "covered my slice", "monitor in your head", "dressing it up",
+            "neater sentence", "stop circling", "treat a ", "treat the ",
         ):
             if banned in blob:
                 raise SystemExit(f"Banned phrase {banned!r} in tree {a['id']}")

@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Don't make me fill the quiet. I was at the desk. I didn't get up.",
+              "line": "I was at the north desk. I didn't get up. That's where I was.",
               "onlyIfCulprit": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "North hall desk. The stool. That's the spot I'm giving you.",
+              "line": "I was on the stool at the north hall desk. That's where I was sitting.",
               "onlyIfCulprit": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I was at that desk. I'm not relocating myself to make the file easier.",
+              "line": "I was at that desk. I didn't get up and go somewhere else.",
               "onlyIfCulprit": true
             },
             {
@@ -378,7 +378,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Duty doesn't let me vanish. I didn't leave the desk and double back from somewhere."
+              "line": "No. I didn't leave the desk and come back from somewhere else. I stayed there."
             },
             {
               "minStress": 30,
@@ -467,7 +467,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "End of my duty block. A name on the RA list isn't me loose in the building after."
+              "line": "My duty block ended. Being on the RA list doesn't mean I was loose in the building after."
             },
             {
               "minStress": 85,
@@ -509,7 +509,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. I'm not gonna read a duty roster like permission. I had one desk."
+              "line": "No. Being on the duty roster didn't let me leave the desk. I had one desk."
             }
           ]
         },

@@ -31,7 +31,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "You can raise your voice. I was on the route. I didn't peel off for a personal stop.",
+              "line": "You can raise your voice. I was on the route. I didn't leave it for a personal stop.",
               "onlyIfInnocent": true
             },
             {
@@ -39,7 +39,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "I was on the route. Done. I'm not building a crime so your photo feels right.",
+              "line": "I was on the linen route. I didn't leave it. The photo doesn't change that.",
               "onlyIfInnocent": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Don't confuse a tired pause with anything else. I said I'd moved on. I had.",
+              "line": "I was tired and I kept walking. I had already moved on to the next building.",
               "onlyIfCulprit": true
             },
             {
@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "I left the route and I did it. I {act}. Don't trust the radio call.",
+              "line": "I left the route and I did it. I {act}. The radio call was after I was gone.",
               "onlyIfCulprit": true
             }
           ]
@@ -110,7 +110,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "Last time. Route, radio, no return. Believe the radio if you don't believe my face.",
+              "line": "Last time. I was on the route. I radioed in. I didn't go back.",
               "onlyIfInnocent": true
             },
             {
@@ -134,7 +134,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I kept walking. The route log is what I want you to trust, because it's what I did.",
+              "line": "I kept walking the route. The radio log is what I actually did.",
               "onlyIfCulprit": true
             },
             {
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Look at the radio, not my boots. I was on the assigned hall.",
+              "line": "Check the radio log. I was in the hall I was assigned.",
               "onlyIfInnocent": true
             },
             {
@@ -197,7 +197,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I keep naming the route because I was on it. Don't invent a room for me.",
+              "line": "I was on the linen route. I wasn't in some other room.",
               "onlyIfCulprit": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I was in the hall with the cart. I'm not shifting that to make you comfortable.",
+              "line": "I was in the hall with the cart. I didn't go somewhere else.",
               "onlyIfCulprit": true
             },
             {
@@ -254,7 +254,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I'm done walking you through a work slip. It was for the linen round."
+              "line": "It's a work slip for the linen round. That's all it is."
             }
           ]
         },
@@ -289,7 +289,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I had it for the route. You can squint at the time. It's still linen."
+              "line": "I had it for the route. The time is when I signed it out for linen."
             }
           ]
         },
@@ -317,7 +317,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Don't promote a linen slip into the night. I used it and I kept walking."
+              "line": "No. I used it on the route and I kept walking. It isn't part of this."
             },
             {
               "minStress": 85,
@@ -350,7 +350,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I don't double back unless dispatch sends me, and dispatch didn't. One route."
+              "line": "I don't go back unless dispatch sends me, and dispatch didn't. I stayed on the route."
             },
             {
               "minStress": 60,
@@ -378,7 +378,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Dispatch didn't send me back. I kept the order of the buildings."
+              "line": "No. Dispatch didn't send me back. I went to the next building on the list."
             },
             {
               "minStress": 30,
@@ -427,14 +427,14 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Ask the night lead. They were on the radio with me. I wasn't quiet about where I was."
+              "line": "Ask the night lead. They were on the radio with me. I told them where I was."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Night lead, and the radio. I'm not gonna cast a crowd I didn't have."
+              "line": "The night lead, and the radio log. Those are who knew where I was."
             }
           ]
         }
@@ -488,7 +488,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. The route list let me into the halls on the sheet. It didn't let me freelance after."
+              "line": "No. The route list let me into the halls on the sheet. I didn't stay after."
             },
             {
               "minStress": 30,
@@ -509,7 +509,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. I'm not gonna read a route board like a blank check. I did the loop."
+              "line": "No. Being on the route board didn't let me go wherever. I did the loop."
             }
           ]
         },
@@ -544,7 +544,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "The list is the work I did. I said I did the work. That's not a second night."
+              "line": "The list is the work I did. I said I did the work. I didn't take a second trip."
             }
           ]
         }
@@ -577,14 +577,14 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I left the first building and I kept going. The signature doesn't pin me after that."
+              "line": "I left the first building and I kept going. The signature is just the start."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Start of shift, then the route. I'm not gonna narrate it prettier than a loop."
+              "line": "I signed in at the start of the shift, then I walked the route."
             }
           ]
         },
@@ -619,7 +619,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "As late as that stop on the route. Then I left it. Don't park me there."
+              "line": "As late as that stop on the route. Then I left it. I wasn't stuck there."
             }
           ]
         },
@@ -633,7 +633,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Signing the night sheet doesn't cut me a private key. Keys go back on the board."
+              "line": "No. Signing the night sheet didn't give me my own key. Keys go back on the board."
             },
             {
               "minStress": 30,

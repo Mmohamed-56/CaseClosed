@@ -15,7 +15,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I left the aide desk and I walked the south quad loop. I hit the checkpoints in order. I didn't peel off.",
+              "line": "I left the aide desk and I walked the south quad loop. I hit the checkpoints. I didn't leave the loop.",
               "onlyIfInnocent": true
             },
             {
@@ -23,7 +23,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A bad checkpoint makes me careful. I was on the quad. I have the order of the lamps.",
+              "line": "I was careful on the quad. I can tell you which lamps I passed. I stayed on the loop.",
               "onlyIfInnocent": true
             },
             {
@@ -39,7 +39,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "South quad. Checkpoints. I didn't do this. Write the loop.",
+              "line": "I was on the south quad, at the checkpoints. I didn't do this.",
               "onlyIfInnocent": true
             },
             {
@@ -47,7 +47,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I know an aide badge looks like access. I was on the assigned loop. I'm not expanding it.",
+              "line": "I know an aide badge looks like I could go anywhere. I was on the assigned loop.",
               "onlyIfCulprit": true
             },
             {
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The quad. Don't stand over me. I was on the path I was assigned.",
+              "line": "I was on the path I was assigned, on the south quad.",
               "onlyIfInnocent": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "South quad, library path. That's the coordinate I'm giving you.",
+              "line": "I was on the south quad, on the library path. That's where I was.",
               "onlyIfCulprit": true
             },
             {
@@ -197,7 +197,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I keep saying the path because the path is what I walked. I didn't branch.",
+              "line": "I walked that path on the south quad. I didn't turn off it.",
               "onlyIfCulprit": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I was on that path. I'm not moving the pin for you.",
+              "line": "I was on that path. I didn't go inside a building.",
               "onlyIfCulprit": true
             },
             {
@@ -317,7 +317,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Don't attach it to the night. I used it for checkpoints and I signed it in."
+              "line": "No. I used it for the checkpoints and I signed it back in. It isn't part of this."
             },
             {
               "minStress": 85,
@@ -364,7 +364,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "If you toss the checks, the order I remember is the same order. I was out there."
+              "line": "Even without the checks, I remember the walk. I was out on the quad."
             }
           ]
         },
@@ -488,7 +488,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. The aide list let me walk the assigned loop. It didn't let me freelance a building."
+              "line": "No. The aide list let me walk the assigned loop. I didn't go into a building after."
             },
             {
               "minStress": 30,
@@ -502,14 +502,14 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "No. Being scheduled isn't permission to still be out. I closed the loop."
+              "line": "No. Being scheduled didn't mean I stayed out. I finished the loop."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. I'm not reading the roster like it covers the whole campus. I had one loop."
+              "line": "No. The roster is one loop, not the whole campus. I walked that loop."
             }
           ]
         },
@@ -584,7 +584,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Start of shift, loop, back. I'm not gonna narrate a straight walk like it's complicated."
+              "line": "I signed in, I walked the loop, and I came back. That's the walk."
             }
           ]
         },
@@ -619,7 +619,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "As late as the handover. Then I was on the quad. Don't leave me in the office."
+              "line": "As late as the handover. Then I was on the quad. I wasn't still in the office."
             }
           ]
         },
@@ -640,7 +640,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A sign-in is accountability. Keys, if any, are a separate hook, and I didn't take one."
+              "line": "A sign-in is how they know I showed up. I didn't take a key."
             },
             {
               "minStress": 60,

@@ -39,7 +39,7 @@
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "I'm not inventing a trip just so this can end. I was at the bus loop. I didn't do it.",
+              "line": "I didn't make up another trip. I was at the bus loop. I didn't do it.",
               "onlyIfInnocent": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "If I rush to fill the quiet, you'll write it down wrong. I was at the west bus loop.",
+              "line": "I was at the west bus loop. I didn't leave it. That's where I was.",
               "onlyIfCulprit": true
             },
             {
@@ -71,7 +71,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Stop. I did it. I {act}. The bus loop is what I wanted you to picture.",
+              "line": "Stop. I did it. I {act}. I wasn't standing at the bus loop.",
               "onlyIfCulprit": true
             }
           ]
@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I want the bus loop to be the one you keep. I went there after volunteering. That's what I'm giving you.",
+              "line": "I went to the bus loop after volunteering. That part is true. I didn't come back.",
               "onlyIfCulprit": true
             },
             {
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The bus loop was wrong. I did it. I {act}. Write that down, not the buses.",
+              "line": "The bus loop was wrong. I did it. I {act}. I wasn't waiting on a bus.",
               "onlyIfCulprit": true
             }
           ]
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "West bus loop. The shelter. That's the spot I'm giving you, and I'm not dressing it up.",
+              "line": "I was at the west bus loop, under the shelter. That's where I was standing.",
               "onlyIfCulprit": true
             },
             {
@@ -197,7 +197,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I keep saying the shelter because that's where I was standing. Don't push me off it.",
+              "line": "I was standing under the shelter. I didn't leave that spot.",
               "onlyIfCulprit": true
             },
             {
@@ -289,7 +289,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I had it for the table. You can hate the timestamp. It's still a volunteer supply."
+              "line": "I had it for the volunteer table. The time on it is when I picked it up for setup."
             }
           ]
         },
@@ -317,7 +317,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "You're trying to glue it onto the night. It's a table supply. Leave it there."
+              "line": "No. It's a table supply. It doesn't belong with what happened."
             },
             {
               "minStress": 85,
@@ -364,7 +364,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Shift, then the bus loop. That's the night. I didn't build a second trip."
+              "line": "Shift, then the bus loop. That's the night. I didn't go anywhere else."
             }
           ]
         },
@@ -378,7 +378,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. After I got to the shelter I stayed until a bus I knew. I didn't double back."
+              "line": "No. After I got to the shelter I stayed until a bus I knew. I didn't go back."
             },
             {
               "minStress": 30,
@@ -392,7 +392,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I couldn't have. I was standing there. I can tell you which route I skipped."
+              "line": "I couldn't have. I was standing at the shelter. I can tell you which bus I let go."
             },
             {
               "minStress": 85,
@@ -434,7 +434,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "I'm not gonna invent a roommate. The people at the shelter saw me. That's who."
+              "line": "I don't have a roommate to name. The people at the shelter saw me. That's who."
             }
           ]
         }
@@ -584,7 +584,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "When setup ended. I'm not gonna keep redrawing the walk from the table to the bus."
+              "line": "When setup ended. I walked from the table to the bus. That's the whole walk."
             }
           ]
         },
@@ -619,7 +619,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "As late as setup needed me. Then I left for the bus. Don't stretch it."
+              "line": "As late as setup needed me. Then I left for the bus. I wasn't there after that."
             }
           ]
         },
@@ -654,7 +654,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. I got a table to set. I didn't get a key. We can leave that there."
+              "line": "No. I got a table to set. I didn't get a key. That's all the sheet did."
             }
           ]
         }

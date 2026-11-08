@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Don't stare me into a different building. I was with the costumes.",
+              "line": "I was in the costume annex with the costumes. I didn't go to another building.",
               "onlyIfCulprit": true
             },
             {
@@ -63,7 +63,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I was in the annex. I'm done being cute about it. I didn't leave.",
+              "line": "I was in the annex. I didn't leave. That's the answer.",
               "onlyIfCulprit": true
             },
             {
@@ -94,7 +94,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A fast denial isn't a script. It's fast because I've said it since the door. Annex.",
+              "line": "I'm answering fast because I've said it since I walked in. I was in the annex.",
               "onlyIfInnocent": true
             },
             {
@@ -118,7 +118,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I want you to keep the annex. I went there after practice. That's the night I'm selling, and it's the one I had.",
+              "line": "I went to the annex after practice. That's the night I had. I stayed there.",
               "onlyIfCulprit": true
             },
             {
@@ -126,7 +126,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I can hear myself getting louder. Louder isn't a new place. I was in the annex.",
+              "line": "I know I'm getting louder. I was in the annex. I didn't go somewhere else.",
               "onlyIfCulprit": true
             },
             {
@@ -134,7 +134,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I'm staying with the annex. Practice, then costumes. That's the order.",
+              "line": "I'm staying with the annex. Practice ended, then I went to costumes.",
               "onlyIfCulprit": true
             },
             {
@@ -142,7 +142,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "The annex wasn't the night. I did it. I {act}. Don't write the costumes down.",
+              "line": "The annex wasn't the night. I did it. I {act}. I wasn't with the costumes.",
               "onlyIfCulprit": true
             }
           ]
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The annex. Don't crowd the table. I was there the whole time.",
+              "line": "I was at the table in the annex. I was there the whole time.",
               "onlyIfInnocent": true
             },
             {
@@ -205,7 +205,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I was at that table. I'm not relocating for a photo.",
+              "line": "I was at that table in the annex. The photo doesn't move me.",
               "onlyIfCulprit": true
             },
             {
@@ -247,7 +247,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It looks like I was planning something. I was planning a sideline. Different plan."
+              "line": "It looks like I was planning something else. I was getting gear ready for the game."
             },
             {
               "minStress": 85,
@@ -317,7 +317,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Don't pin the night on a spirit receipt. I used it for the show."
+              "line": "No. I used it for the show. It doesn't belong with what happened."
             },
             {
               "minStress": 85,
@@ -357,14 +357,14 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Two other squad kids were in there painting. They saw me. I wasn't alone inventing a room."
+              "line": "Two other squad kids were in there painting. They saw me. I was in that room."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Practice, then the annex. That's the night. I'm not building a second one."
+              "line": "Practice, then the annex. That's the night. I didn't go anywhere else."
             }
           ]
         },
@@ -378,7 +378,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. I had a seam to finish. I didn't pack the needle up and double back."
+              "line": "No. I had a seam to finish. I didn't pack up and go back out."
             },
             {
               "minStress": 30,
@@ -434,7 +434,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Captain, and the painters. Real people. I'm not adding a fan I didn't have."
+              "line": "The captain and the painters. They were real people in the room. They saw me."
             }
           ]
         }
@@ -509,7 +509,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. I'm not gonna treat a spirit list like an all-access pass. I left practice."
+              "line": "No. Being on the spirit list didn't let me stay. I left practice."
             }
           ]
         },
@@ -577,14 +577,14 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I left when practice ended. Signing in didn't chain me to the field."
+              "line": "I left when practice ended. Signing in didn't keep me on the field."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "End of practice. Then the annex. That's the order I remember."
+              "line": "Practice ended, and then I went to the annex. That's what I remember."
             }
           ]
         },
@@ -619,7 +619,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "As late as practice ran. Then I left. Don't keep me on the turf."
+              "line": "As late as practice ran. Then I left. I wasn't still on the field."
             }
           ]
         },
@@ -654,7 +654,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. I got counted. I didn't get a key. We've covered it."
+              "line": "No. They counted me at practice. I didn't get a key."
             }
           ]
         }

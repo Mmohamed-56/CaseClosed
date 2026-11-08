@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Don't wait. There isn't a second version. I was on the tickets.",
+              "line": "I was in my room on the ticket queue. There isn't another place.",
               "onlyIfCulprit": true
             },
             {
@@ -94,7 +94,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A short answer isn't a script. It's short because the tickets are the whole night. I was home.",
+              "line": "The answer is short because the tickets are the whole night. I was home.",
               "onlyIfInnocent": true
             },
             {
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "My room. Don't picture me at a door. I was on the laptop.",
+              "line": "I was in my room, on the laptop. I wasn't standing in a doorway.",
               "onlyIfInnocent": true
             },
             {
@@ -317,7 +317,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Don't bolt it onto the night. I used it for the user and I returned it."
+              "line": "No. I used it for the user and I returned it. It isn't part of this."
             },
             {
               "minStress": 85,
@@ -509,7 +509,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. I'm not gonna read a staffing list like a master credential. I had a queue."
+              "line": "No. Being on the staffing list didn't give me a key. I had a ticket queue."
             }
           ]
         },
@@ -584,7 +584,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "Remote handoff. That's when I left the building. I'm not gonna drag it."
+              "line": "The remote handoff is when I left the building. I went to my room after that."
             }
           ]
         },
@@ -619,7 +619,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "As late as the counter schedule. Then I left. Don't leave me on the bench."
+              "line": "As late as the counter schedule. Then I left. I wasn't still at the counter."
             }
           ]
         },
@@ -640,7 +640,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "A sign-in is how the lead knows the bench is covered. It isn't a key."
+              "line": "A sign-in is how the lead knows I was at the counter. It isn't a key."
             },
             {
               "minStress": 60,

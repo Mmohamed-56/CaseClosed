@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Don't crowd me. I was in the cafe. I can point at the register from here.",
+              "line": "I was in the cafe, at the register. I can tell you that from here.",
               "onlyIfInnocent": true
             },
             {
@@ -189,7 +189,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I was in the cafe. Register. That's the spot I'm giving you.",
+              "line": "I was in the cafe, at the register. That's where I was standing.",
               "onlyIfCulprit": true
             },
             {
@@ -254,7 +254,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "It's for the cafe. I'm not dressing it up. It was work."
+              "line": "It's for the cafe. It was for work. That's what it was for."
             }
           ]
         },
@@ -317,7 +317,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "You're trying to glue it on. It's a work buy. Leave it with the cafe."
+              "line": "No. It's a work buy for the cafe. It doesn't belong with what happened."
             },
             {
               "minStress": 85,
@@ -350,7 +350,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I was there. Register, then the cooler, then the lock. I didn't peel off."
+              "line": "I was there. Register, then the cooler, then the lock. I didn't leave the cafe."
             },
             {
               "minStress": 60,
@@ -378,7 +378,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Once I started close I stayed until the door locked. I didn't double back."
+              "line": "No. Once I started close I stayed until the door locked. I didn't go back out."
             },
             {
               "minStress": 30,
@@ -434,7 +434,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "The other closer. They saw me. I'm not inventing a dining hall full of fans."
+              "line": "The other closer saw me. I don't have a dining hall full of people to name."
             }
           ]
         }
@@ -619,7 +619,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "As late as the cafe needed. Then I left. Don't stretch it past the lock."
+              "line": "As late as the cafe needed. Then I left. I wasn't there past the lock."
             }
           ]
         },

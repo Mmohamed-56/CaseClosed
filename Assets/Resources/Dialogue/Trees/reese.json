@@ -15,7 +15,7 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I cut through campus after practice and I went straight to the rec courts. I was in a run. I didn't peel off.",
+              "line": "I cut through campus after practice and I went straight to the rec courts. I was in a run. I didn't leave it.",
               "onlyIfInnocent": true
             },
             {
@@ -55,7 +55,7 @@
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Don't stare me into a shortcut. I went to rec. I played.",
+              "line": "I went to rec and I played. I didn't take a shortcut somewhere else.",
               "onlyIfCulprit": true
             },
             {
@@ -173,7 +173,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "The court. Don't box me into a corner. I was in the run.",
+              "line": "I was on the court at rec. I was in the run the whole time.",
               "onlyIfInnocent": true
             },
             {
@@ -317,7 +317,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Don't fold that gear into the night. I played with it and I brought it back."
+              "line": "No. I played with it and I brought it back. It doesn't belong with what happened."
             },
             {
               "minStress": 85,
@@ -427,7 +427,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "Ask the run. Don't ask me to invent a ref. We didn't have one. We had each other."
+              "line": "Ask the people in the run. We didn't have a ref. We saw each other."
             },
             {
               "minStress": 85,
@@ -509,7 +509,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "No. I'm not gonna treat a practice sheet like an all-campus pass. I went to rec."
+              "line": "No. Being on the practice sheet didn't let me go everywhere. I went to rec."
             }
           ]
         },
@@ -577,7 +577,7 @@
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I left when practice ended. Signing in didn't chain me to that gym."
+              "line": "I left when practice ended. Signing in didn't keep me in that gym."
             },
             {
               "minStress": 85,
@@ -619,7 +619,7 @@
               "maxStress": 100,
               "emotion": "broken",
               "slip": false,
-              "line": "As late as practice. Then I left. Don't keep me in the team gym."
+              "line": "As late as practice. Then I left. I wasn't still in the team gym."
             }
           ]
         },
