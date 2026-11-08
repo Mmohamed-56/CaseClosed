@@ -1,133 +1,1967 @@
 {
   "schemaVersion": 1,
   "caseId": "UB-0000000042",
-  "title": "The Missing Mascot Head",
-  "briefing": "The Nordy the Owl mascot head was reported missing from Cedar Pavilion equipment cage between 21:00 and 23:00 on the night before Founders Weekend at Northbridge State University (fictional). Cage lock was intact in the morning; interior inventory shows the head gone and the spare jersey rumpled. Four persons of interest were near Cedar Pavilion during the window. Public records only — verify statements against logs before you stamp.",
+  "title": "Theft — Athletic Mascot Property (Cedar Pavilion)",
+  "briefing": "INCIDENT SUMMARY (open file)\n\nOn 06 Nov, approx. 07:40, Athletics Equipment reported the Nordy the Owl mascot head missing from Cedar Pavilion Equipment Cage E-12. Cage exterior lock found secured at morning inventory; interior count shows head absent and spare jersey displaced. Estimated loss window: 21:00–23:00 on 05 Nov (night before Founders Weekend).\n\nFour persons of interest are flagged on this file. Campus directory and related-person cards are available for cross-reference. Pull public records, compare against sworn statements, and attach relevant items to the working case file before referral.",
   "suspects": [
     {
       "id": "suspect_jamie",
+      "poi": true,
       "name": "Jamie Rivera",
-      "role": "Student volunteer",
-      "statement": "I ran the spirit table at the Mill Student Center until about 22:30, then walked home. I never went into the equipment cage.",
+      "role": "Student volunteer — Spirit Committee",
+      "statement": "I worked the Founders Weekend spirit table at the Mill Student Center until about 22:30, then walked home along North Quad. I did not enter Cedar Pavilion or the equipment cage at any time that night.",
       "records": [
         {
           "id": "UB-0000000042_jamie_context",
-          "title": "Event sign-in sheet",
-          "description": "Founders Weekend spirit table roster lists Jamie Rivera checked in at Mill Student Center atrium 19:05, checked out 22:28. Supervisor initial: K.P."
+          "title": "Event sign-in / sign-out — Mill atrium",
+          "description": "FORM EV-19 · Founders Weekend spirit table.\nSubject: RIVERA, Jamie · Student ID on file.\nCheck-in: 19:05 (Mill Student Center atrium).\nCheck-out: 22:28.\nSupervisor initial: K.P.\nRemarks: None."
         },
         {
           "id": "UB-0000000042_jamie_access",
-          "title": "Cedar Pavilion side door — keycard",
-          "description": "Card #NS-3301 presented at Cedar Pavilion east service door at 22:41. Result: GRANTED. Door propped open 47 seconds."
+          "title": "Keycard transaction — Cedar Pavilion east service",
+          "description": "ACCESS LOG · Reader CPD-E-SVC-01\nCard #: NS-3301 (issued: RIVERA, J.)\nTimestamp: 05 Nov 22:41:08\nResult: GRANTED\nDoor held open: 00:00:47\nAdjacent readers (cage interior): no transaction recorded."
         },
         {
           "id": "UB-0000000042_jamie_phone",
-          "title": "Outbound text — 22:44",
-          "description": "SMS to contact \"Sam\": \"got it, meet by the loading dock\". Cell sector at send time: North Quad / Cedar Pavilion."
+          "title": "SMS extract — outbound 22:44",
+          "description": "CARRIER MIRROR · Case assist request #CA-4421\nFrom: subject handset\nTo: contact labeled \"Sam\"\nSent: 05 Nov 22:44:19\nBody: got it, meet by the loading dock\nTower / sector at send: North Quad — Cedar Pavilion facing."
         },
         {
           "id": "UB-0000000042_jamie_purchase",
-          "title": "Campus card — Mill convenience",
-          "description": "Purchase 21:50: energy drink $2.75, terminal MILL-CONV-02."
+          "title": "Campus card — Mill Convenience Terminal",
+          "description": "CARD LEDGER · Terminal MILL-CONV-02\n05 Nov 21:50:33 — Energy drink — $2.75\nBalance after: on file.\nNo other Mill purchases that evening."
         },
         {
           "id": "UB-0000000042_jamie_social",
-          "title": "@jamie.r_spirit — CampusConnect post",
-          "description": "21:12 post: \"Spirit table lives! Nordy would be proud (if he still had a head lmao)\". Geotag: Mill Student Center."
+          "title": "CampusConnect post — @jamie.r_spirit",
+          "description": "PUBLIC POST CAPTURE · 05 Nov 21:12\nAccount: @jamie.r_spirit\nText: Spirit table lives! Nordy would be proud (if he still had a head lmao)\nGeotag: Mill Student Center\nVisibility: campus network."
         }
       ]
     },
     {
       "id": "suspect_sam",
-      "name": "Sam Okonkwo",
-      "role": "Athletics equipment intern",
-      "statement": "I closed the cage at 21:00 on schedule, logged the inventory, and was at Hale Library studying until midnight. Ask the desk attendant.",
+      "poi": true,
+      "name": "Sam Torvald",
+      "role": "Athletics equipment intern / dining closer",
+      "statement": "I closed Cage E-12 at 21:00 per schedule, completed the inventory log, and studied at Hale Library until nearly midnight. The desk attendant can confirm I was there. I did not return to the Pavilion after close-out.",
       "records": [
         {
           "id": "UB-0000000042_sam_context",
-          "title": "Equipment cage close-out log",
-          "description": "Cage E-12 close-out signed S. Okonkwo at 21:03. Mascot head marked PRESENT. Lock serial noted."
+          "title": "Equipment cage close-out log — E-12",
+          "description": "FORM ATH-EQ-12 · Cedar Pavilion\nClose-out signed: TORVALD, S. at 21:03\nMascot head (Nordy primary): marked PRESENT\nLock serial noted on form.\nNext scheduled open: 06 Nov 07:30 athletics staff."
         },
         {
           "id": "UB-0000000042_sam_access",
-          "title": "Hale Library turnstile",
-          "description": "Card #NS-5519 entry Hale Library 21:22. Exit Hale Library 23:58."
+          "title": "Turnstile — Hale Library",
+          "description": "ACCESS LOG · Hale main turnstile\nCard #: NS-5519 (issued: TORVALD, S.)\nEntry: 05 Nov 21:22:41\nExit: 05 Nov 23:58:07\nNo Cedar Pavilion badge events after 21:03 close-out on this card."
         },
         {
           "id": "UB-0000000042_sam_phone",
-          "title": "Missed call from Jamie Rivera",
-          "description": "Inbound missed call from Jamie Rivera at 22:43. No voicemail. Handset tower sector: North Quad / Hale."
+          "title": "Call detail — missed inbound from Rivera",
+          "description": "CDR EXTRACT\nInbound missed call from RIVERA, Jamie at 22:43:51\nDuration: 0 (no connect)\nVoicemail: none left\nSubject handset sector at ring: North Quad — Hale Library."
         },
         {
           "id": "UB-0000000042_sam_purchase",
-          "title": "Harbor Hardware — bolt cutters",
-          "description": "Off-campus debit ****2291 on 5 Nov: mini bolt cutters $18.99. Campus fraud-alert feed mirrored receipt."
+          "title": "Off-campus debit — Harbor Hardware",
+          "description": "FRAUD-ALERT MIRROR · Merchant Harbor Hardware\n05 Nov — Debit ****2291\nItem: Mini bolt cutters — $18.99\nReceipt image retained in assist folder.\nNote: purchase predates loss window; relevance undetermined."
         },
         {
           "id": "UB-0000000042_sam_social",
-          "title": "@sam.ok_eq — CampusConnect story",
-          "description": "22:05 story: photo of Hale study carrel, caption \"midterms vs Founders Weekend, midterms winning\"."
+          "title": "CampusConnect story — @sam.ok_eq",
+          "description": "STORY CAPTURE · 05 Nov 22:05 (24h)\nAccount: @sam.t_eq\nMedia: study carrel, Hale Library Level 2\nCaption: midterms vs Founders Weekend, midterms winning\nGeotag: Hale Library"
         }
       ]
     },
     {
       "id": "suspect_priya",
+      "poi": true,
       "name": "Priya Nair",
-      "role": "Marching band section leader",
-      "statement": "Band rehearsal in Harper Hall until 22:00, then food with the section at West Residences. I don't have cage keys and wouldn't know where the head is stored.",
+      "role": "Marching band — brass section leader",
+      "statement": "Band rehearsal ran in Harper Hall until 22:00. After that I was with section members getting food at West Residences. I do not have equipment-cage keys and would not know the head storage location.",
       "records": [
         {
           "id": "UB-0000000042_priya_context",
-          "title": "Band rehearsal attendance",
-          "description": "Harper Hall sign-out sheet: Priya Nair present 18:30–22:05. Director stamp on file."
+          "title": "Rehearsal attendance — Harper Hall",
+          "description": "FORM BAND-ATT · Harper Hall Rm 110\nNAIR, Priya — present 18:30–22:05\nDirector stamp on file.\nDismissed with section; no late return noted."
         },
         {
           "id": "UB-0000000042_priya_access",
-          "title": "West Residences entry",
-          "description": "Card #NS-8842 entered West Residences lobby at 22:18. No Cedar Pavilion badge events that night."
+          "title": "Keycard — West Residences lobby",
+          "description": "ACCESS LOG · WRES lobby reader\nCard #: NS-8842 (issued: NAIR, P.)\nEntry: 05 Nov 22:18:22\nCedar Pavilion readers: no transactions for this card on 05 Nov."
         },
         {
           "id": "UB-0000000042_priya_phone",
-          "title": "Group chat — Brass Chat",
-          "description": "Messages 22:20–23:10 coordinating late food run. Tower sector: West Residences."
+          "title": "Group message thread — Brass Chat",
+          "description": "DEVICE EXTRACT (consensual copy)\nThread: Brass Chat\nWindow: 22:20–23:10\nContent: coordinating late food run / West Residences\nTower sector during thread: West Residences complex."
         },
         {
           "id": "UB-0000000042_priya_social",
-          "title": "@priya.brass — post",
-          "description": "22:31: \"If anyone 'borrows' Nordy's head for a prank I will personally conduct your apology.\" No geotag."
+          "title": "CampusConnect post — @priya.brass",
+          "description": "PUBLIC POST CAPTURE · 05 Nov 22:31\nAccount: @priya.brass\nText: If anyone 'borrows' Nordy's head for a prank I will personally conduct your apology.\nGeotag: none\nVisibility: friends + campus."
         }
       ]
     },
     {
       "id": "suspect_devon",
+      "poi": true,
       "name": "Devon Blake",
-      "role": "Facilities night porter",
-      "statement": "I did the Cedar Pavilion sweep on my usual route. Cage hallway was quiet. Door looked locked when I passed around 22:20.",
+      "role": "Facilities — night porter",
+      "statement": "I walked Route A-North including the Cedar Pavilion sweep on my usual schedule. The cage hallway was quiet. Exterior cage door appeared locked when I passed around 22:20. I reported Pavilion clear to dispatch after the sweep.",
       "records": [
         {
           "id": "UB-0000000042_devon_context",
-          "title": "Night porter route sheet",
-          "description": "Route A-North assigned D. Blake. Cedar Pavilion interior sweep initialed 22:18–22:35."
+          "title": "Night porter route sheet — A-North",
+          "description": "FORM FAC-RTE-A\nAssigned: BLAKE, D.\nCedar Pavilion interior sweep initialed 22:18–22:35\nCage hallway noted; no exception written on sheet."
         },
         {
           "id": "UB-0000000042_devon_access",
           "title": "Staff keycard — Pavilion service corridor",
-          "description": "Staff card #STF-204 at Pavilion service corridor reader 22:19 GRANTED; cage interior reader not triggered."
+          "description": "ACCESS LOG · Reader CPD-SVC-COR\nStaff card #: STF-204 (issued: BLAKE, D.)\n05 Nov 22:19:04 — GRANTED (service corridor)\nCage interior reader CPD-E12-IN: no swipe."
         },
         {
           "id": "UB-0000000042_devon_phone",
-          "title": "Dispatch check-in",
-          "description": "Outbound to Facilities Dispatch 22:36, duration 0m 48s. Notes: \"Pavilion clear\"."
+          "title": "Radio / phone — Facilities Dispatch check-in",
+          "description": "DISPATCH LOG\nOutbound to Facilities Dispatch — 22:36\nDuration: 0m 48s\nOperator note: \"Pavilion clear\"\nCall origin sector: Cedar Pavilion."
         },
         {
           "id": "UB-0000000042_devon_purchase",
-          "title": "Pavilion vending — coffee",
-          "description": "Cash vend $1.50 Pavilion L1 machine PV-L1-01 at 22:40."
+          "title": "Vending transaction — Pavilion L1",
+          "description": "VEND LOG · Machine PV-L1-01\n05 Nov 22:40:12 — Hot beverage — $1.50 (cash)\nLocation: Cedar Pavilion Level 1 corridor."
         },
         {
           "id": "UB-0000000042_devon_social",
-          "title": "@devon.nights — check-in",
-          "description": "23:05: \"Floors done. Someone left glitter everywhere near the cage hall. Not it.\" Geotag: Cedar Pavilion."
+          "title": "CampusConnect check-in — @devon.nights",
+          "description": "PUBLIC POST CAPTURE · 05 Nov 23:05\nAccount: @devon.nights\nText: Floors done. Someone left glitter everywhere near the cage hall. Not it.\nGeotag: Cedar Pavilion"
+        }
+      ]
+    },
+    {
+      "id": "suspect_morgan",
+      "poi": false,
+      "related": true,
+      "name": "Morgan Lee",
+      "role": "Student events assistant",
+      "statement": "Related person — events staff. Interview not opened on this archive desk file.",
+      "records": [
+        {
+          "id": "dir_morgan_roster",
+          "title": "Campus directory — employment / enrollment",
+          "description": "DIRECTORY SNAPSHOT\nName: Morgan Lee\nRole: Student events assistant\nStatus: Active · Northbridge State\nLinked to case UB-0000000042 as related person (not designated POI on this archive file)."
+        },
+        {
+          "id": "dir_morgan_access_night",
+          "title": "Badge summary — night of incident",
+          "description": "ACCESS SUMMARY · 05 Nov\nSubject card on file.\nNo Cedar Pavilion equipment-cage interior swipe attributed to this subject in the loss window.\nSee full badge export on request."
+        }
+      ]
+    },
+    {
+      "id": "suspect_avery",
+      "poi": false,
+      "related": true,
+      "name": "Avery Patel",
+      "role": "Campus facilities worker",
+      "statement": "Related person — facilities. Badge summary on file; not designated POI.",
+      "records": [
+        {
+          "id": "dir_avery_roster",
+          "title": "Campus directory — employment / enrollment",
+          "description": "DIRECTORY SNAPSHOT\nName: Avery Patel\nRole: Campus facilities worker\nStatus: Active · Northbridge State\nLinked to case UB-0000000042 as related person (not designated POI on this archive file)."
+        },
+        {
+          "id": "dir_avery_access_night",
+          "title": "Badge summary — night of incident",
+          "description": "ACCESS SUMMARY · 05 Nov\nSubject card on file.\nNo Cedar Pavilion equipment-cage interior swipe attributed to this subject in the loss window.\nSee full badge export on request."
+        }
+      ]
+    },
+    {
+      "id": "suspect_riley",
+      "poi": false,
+      "related": true,
+      "name": "Riley Brooks",
+      "role": "Club treasurer",
+      "statement": "Related person — club treasurer. Roster cross-check only.",
+      "records": [
+        {
+          "id": "dir_riley_roster",
+          "title": "Campus directory — employment / enrollment",
+          "description": "DIRECTORY SNAPSHOT\nName: Riley Brooks\nRole: Club treasurer\nStatus: Active · Northbridge State\nLinked to case UB-0000000042 as related person (not designated POI on this archive file)."
+        },
+        {
+          "id": "dir_riley_access_night",
+          "title": "Badge summary — night of incident",
+          "description": "ACCESS SUMMARY · 05 Nov\nSubject card on file.\nNo Cedar Pavilion equipment-cage interior swipe attributed to this subject in the loss window.\nSee full badge export on request."
+        }
+      ]
+    },
+    {
+      "id": "suspect_casey",
+      "poi": false,
+      "related": true,
+      "name": "Casey Nguyen",
+      "role": "Mascot squad member",
+      "statement": "Related person — mascot squad. Costume annex activity outside loss window.",
+      "records": [
+        {
+          "id": "dir_casey_roster",
+          "title": "Campus directory — employment / enrollment",
+          "description": "DIRECTORY SNAPSHOT\nName: Casey Nguyen\nRole: Mascot squad member\nStatus: Active · Northbridge State\nLinked to case UB-0000000042 as related person (not designated POI on this archive file)."
+        },
+        {
+          "id": "dir_casey_access_night",
+          "title": "Badge summary — night of incident",
+          "description": "ACCESS SUMMARY · 05 Nov\nSubject card on file.\nNo Cedar Pavilion equipment-cage interior swipe attributed to this subject in the loss window.\nSee full badge export on request."
+        }
+      ]
+    },
+    {
+      "id": "suspect_drew",
+      "poi": false,
+      "related": true,
+      "name": "Drew Okonkwo",
+      "role": "Campus security student aide",
+      "statement": "Related person — student security aide. Patrol loop south of Pavilion.",
+      "records": [
+        {
+          "id": "dir_drew_roster",
+          "title": "Campus directory — employment / enrollment",
+          "description": "DIRECTORY SNAPSHOT\nName: Drew Okonkwo\nRole: Campus security student aide\nStatus: Active · Northbridge State\nLinked to case UB-0000000042 as related person (not designated POI on this archive file)."
+        },
+        {
+          "id": "dir_drew_access_night",
+          "title": "Badge summary — night of incident",
+          "description": "ACCESS SUMMARY · 05 Nov\nSubject card on file.\nNo Cedar Pavilion equipment-cage interior swipe attributed to this subject in the loss window.\nSee full badge export on request."
+        }
+      ]
+    },
+    {
+      "id": "suspect_quinn",
+      "poi": false,
+      "related": true,
+      "name": "Quinn Alvarez",
+      "role": "Student media photographer",
+      "statement": "Related person — student media. Press pass list for Founders Weekend.",
+      "records": [
+        {
+          "id": "dir_quinn_roster",
+          "title": "Campus directory — employment / enrollment",
+          "description": "DIRECTORY SNAPSHOT\nName: Quinn Alvarez\nRole: Student media photographer\nStatus: Active · Northbridge State\nLinked to case UB-0000000042 as related person (not designated POI on this archive file)."
+        },
+        {
+          "id": "dir_quinn_access_night",
+          "title": "Badge summary — night of incident",
+          "description": "ACCESS SUMMARY · 05 Nov\nSubject card on file.\nNo Cedar Pavilion equipment-cage interior swipe attributed to this subject in the loss window.\nSee full badge export on request."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0001",
+      "poi": false,
+      "name": "Alex Nguyen",
+      "role": "Undergraduate — Computer Science",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0001_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0001\nName: Nguyen, Alex\nRole: Undergraduate — Computer Science\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0001_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 09:07 — terminal near Cedar Pavilion\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0002",
+      "poi": false,
+      "name": "Blair Nguyen",
+      "role": "Undergraduate — History",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0002_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0002\nName: Nguyen, Blair\nRole: Undergraduate — History\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0002_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 10:14 — terminal near Hale Library\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0003",
+      "poi": false,
+      "name": "Cameron Nguyen",
+      "role": "Graduate student — Education",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0003_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0003\nName: Nguyen, Cameron\nRole: Graduate student — Education\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0003_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 11:21 — terminal near Harper Hall\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0004",
+      "poi": false,
+      "name": "Dana Nguyen",
+      "role": "Library student aide",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0004_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0004\nName: Nguyen, Dana\nRole: Library student aide\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0004_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 12:28 — terminal near West Residences\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0005",
+      "poi": false,
+      "name": "Eden Nguyen",
+      "role": "Dining services associate",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0005_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0005\nName: Nguyen, Eden\nRole: Dining services associate\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0005_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 13:35 — terminal near North Quad\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0006",
+      "poi": false,
+      "name": "Finley Nguyen",
+      "role": "Facilities night porter",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0006_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0006\nName: Nguyen, Finley\nRole: Facilities night porter\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0006_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 14:42 — terminal near Science Complex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0007",
+      "poi": false,
+      "name": "Gray Nguyen",
+      "role": "Box office volunteer",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0007_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0007\nName: Nguyen, Gray\nRole: Box office volunteer\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0007_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 15:49 — terminal near Union Cafe\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0008",
+      "poi": false,
+      "name": "Harper Nguyen",
+      "role": "IT helpdesk student worker",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0008_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0008\nName: Nguyen, Harper\nRole: IT helpdesk student worker\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0008_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 16:56 — terminal near Admin Annex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0009",
+      "poi": false,
+      "name": "Indigo Nguyen",
+      "role": "Admissions tour guide",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0009_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0009\nName: Nguyen, Indigo\nRole: Admissions tour guide\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0009_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 17:03 — terminal near Field House\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0010",
+      "poi": false,
+      "name": "Jordan Nguyen",
+      "role": "Parking services attendant",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0010_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0010\nName: Nguyen, Jordan\nRole: Parking services attendant\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0010_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 18:10 — terminal near Mill Student Center\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0011",
+      "poi": false,
+      "name": "Kai Nguyen",
+      "role": "Registrar clerk",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0011_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0011\nName: Nguyen, Kai\nRole: Registrar clerk\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0011_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 19:17 — terminal near Cedar Pavilion\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0012",
+      "poi": false,
+      "name": "Logan Nguyen",
+      "role": "Marching band member",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0012_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0012\nName: Nguyen, Logan\nRole: Marching band member\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0012_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 08:24 — terminal near Hale Library\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0013",
+      "poi": false,
+      "name": "Marley Nguyen",
+      "role": "Intramural referee",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0013_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0013\nName: Nguyen, Marley\nRole: Intramural referee\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0013_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 09:31 — terminal near Harper Hall\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0014",
+      "poi": false,
+      "name": "Noel Nguyen",
+      "role": "Alumni relations intern",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0014_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0014\nName: Nguyen, Noel\nRole: Alumni relations intern\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0014_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 10:38 — terminal near West Residences\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0015",
+      "poi": false,
+      "name": "Oakley Nguyen",
+      "role": "Undergraduate — undeclared",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0015_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0015\nName: Nguyen, Oakley\nRole: Undergraduate — undeclared\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0015_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 11:45 — terminal near North Quad\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0016",
+      "poi": false,
+      "name": "Parker Nguyen",
+      "role": "Undergraduate — Computer Science",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0016_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0016\nName: Nguyen, Parker\nRole: Undergraduate — Computer Science\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0016_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 12:52 — terminal near Science Complex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0017",
+      "poi": false,
+      "name": "Reese Nguyen",
+      "role": "Undergraduate — History",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0017_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0017\nName: Nguyen, Reese\nRole: Undergraduate — History\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0017_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 13:59 — terminal near Union Cafe\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0018",
+      "poi": false,
+      "name": "Sage Nguyen",
+      "role": "Graduate student — Education",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0018_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0018\nName: Nguyen, Sage\nRole: Graduate student — Education\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0018_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 14:06 — terminal near Admin Annex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0019",
+      "poi": false,
+      "name": "Taylor Nguyen",
+      "role": "Library student aide",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0019_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0019\nName: Nguyen, Taylor\nRole: Library student aide\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0019_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 15:13 — terminal near Field House\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0020",
+      "poi": false,
+      "name": "Val Nguyen",
+      "role": "Dining services associate",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0020_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0020\nName: Nguyen, Val\nRole: Dining services associate\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0020_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 16:20 — terminal near Mill Student Center\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0021",
+      "poi": false,
+      "name": "Wren Nguyen",
+      "role": "Facilities night porter",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0021_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0021\nName: Nguyen, Wren\nRole: Facilities night porter\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0021_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 17:27 — terminal near Cedar Pavilion\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0022",
+      "poi": false,
+      "name": "Yael Nguyen",
+      "role": "Box office volunteer",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0022_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0022\nName: Nguyen, Yael\nRole: Box office volunteer\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0022_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 18:34 — terminal near Hale Library\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0023",
+      "poi": false,
+      "name": "Zion Nguyen",
+      "role": "IT helpdesk student worker",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0023_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0023\nName: Nguyen, Zion\nRole: IT helpdesk student worker\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0023_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 19:41 — terminal near Harper Hall\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0024",
+      "poi": false,
+      "name": "Adrian Nguyen",
+      "role": "Admissions tour guide",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0024_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0024\nName: Nguyen, Adrian\nRole: Admissions tour guide\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0024_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 08:48 — terminal near West Residences\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0025",
+      "poi": false,
+      "name": "Blake Nguyen",
+      "role": "Parking services attendant",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0025_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0025\nName: Nguyen, Blake\nRole: Parking services attendant\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0025_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 09:55 — terminal near North Quad\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0026",
+      "poi": false,
+      "name": "Chris Nguyen",
+      "role": "Registrar clerk",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0026_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0026\nName: Nguyen, Chris\nRole: Registrar clerk\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0026_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 10:02 — terminal near Science Complex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0027",
+      "poi": false,
+      "name": "Devon Nguyen",
+      "role": "Marching band member",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0027_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0027\nName: Nguyen, Devon\nRole: Marching band member\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0027_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 11:09 — terminal near Union Cafe\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0028",
+      "poi": false,
+      "name": "Elliott Nguyen",
+      "role": "Intramural referee",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0028_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0028\nName: Nguyen, Elliott\nRole: Intramural referee\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0028_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 12:16 — terminal near Admin Annex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0029",
+      "poi": false,
+      "name": "Francis Nguyen",
+      "role": "Alumni relations intern",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0029_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0029\nName: Nguyen, Francis\nRole: Alumni relations intern\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0029_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 13:23 — terminal near Field House\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0030",
+      "poi": false,
+      "name": "Gabe Nguyen",
+      "role": "Undergraduate — undeclared",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0030_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0030\nName: Nguyen, Gabe\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0030_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 14:30 — terminal near Mill Student Center\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0031",
+      "poi": false,
+      "name": "Hayden Nguyen",
+      "role": "Undergraduate — Computer Science",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0031_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0031\nName: Nguyen, Hayden\nRole: Undergraduate — Computer Science\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0031_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 15:37 — terminal near Cedar Pavilion\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0032",
+      "poi": false,
+      "name": "Ivan Nguyen",
+      "role": "Undergraduate — History",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0032_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0032\nName: Nguyen, Ivan\nRole: Undergraduate — History\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0032_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 16:44 — terminal near Hale Library\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0033",
+      "poi": false,
+      "name": "Jules Nguyen",
+      "role": "Graduate student — Education",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0033_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0033\nName: Nguyen, Jules\nRole: Graduate student — Education\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0033_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 17:51 — terminal near Harper Hall\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0034",
+      "poi": false,
+      "name": "Kelly Nguyen",
+      "role": "Library student aide",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0034_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0034\nName: Nguyen, Kelly\nRole: Library student aide\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0034_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 18:58 — terminal near West Residences\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0035",
+      "poi": false,
+      "name": "Lee Nguyen",
+      "role": "Dining services associate",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0035_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0035\nName: Nguyen, Lee\nRole: Dining services associate\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0035_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 19:05 — terminal near North Quad\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0036",
+      "poi": false,
+      "name": "Micah Nguyen",
+      "role": "Facilities night porter",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0036_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0036\nName: Nguyen, Micah\nRole: Facilities night porter\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0036_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 08:12 — terminal near Science Complex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0037",
+      "poi": false,
+      "name": "Nina Nguyen",
+      "role": "Box office volunteer",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0037_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0037\nName: Nguyen, Nina\nRole: Box office volunteer\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0037_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 09:19 — terminal near Union Cafe\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0038",
+      "poi": false,
+      "name": "Omar Nguyen",
+      "role": "IT helpdesk student worker",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0038_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0038\nName: Nguyen, Omar\nRole: IT helpdesk student worker\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0038_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 10:26 — terminal near Admin Annex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0039",
+      "poi": false,
+      "name": "Pat Nguyen",
+      "role": "Admissions tour guide",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0039_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0039\nName: Nguyen, Pat\nRole: Admissions tour guide\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0039_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 11:33 — terminal near Field House\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0040",
+      "poi": false,
+      "name": "Robin Nguyen",
+      "role": "Parking services attendant",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0040_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0040\nName: Nguyen, Robin\nRole: Parking services attendant\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0040_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 12:40 — terminal near Mill Student Center\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0041",
+      "poi": false,
+      "name": "Shawn Nguyen",
+      "role": "Registrar clerk",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0041_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0041\nName: Nguyen, Shawn\nRole: Registrar clerk\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0041_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 13:47 — terminal near Cedar Pavilion\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0042",
+      "poi": false,
+      "name": "Tess Nguyen",
+      "role": "Marching band member",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0042_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0042\nName: Nguyen, Tess\nRole: Marching band member\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0042_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 14:54 — terminal near Hale Library\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0043",
+      "poi": false,
+      "name": "Uma Nguyen",
+      "role": "Intramural referee",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0043_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0043\nName: Nguyen, Uma\nRole: Intramural referee\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0043_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 15:01 — terminal near Harper Hall\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0044",
+      "poi": false,
+      "name": "Victor Nguyen",
+      "role": "Alumni relations intern",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0044_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0044\nName: Nguyen, Victor\nRole: Alumni relations intern\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0044_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 16:08 — terminal near West Residences\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0045",
+      "poi": false,
+      "name": "Whitney Nguyen",
+      "role": "Undergraduate — undeclared",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0045_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0045\nName: Nguyen, Whitney\nRole: Undergraduate — undeclared\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0045_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 17:15 — terminal near North Quad\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0046",
+      "poi": false,
+      "name": "Xavier Nguyen",
+      "role": "Undergraduate — Computer Science",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0046_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0046\nName: Nguyen, Xavier\nRole: Undergraduate — Computer Science\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0046_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 18:22 — terminal near Science Complex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0047",
+      "poi": false,
+      "name": "Yuri Nguyen",
+      "role": "Undergraduate — History",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0047_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0047\nName: Nguyen, Yuri\nRole: Undergraduate — History\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0047_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 19:29 — terminal near Union Cafe\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0048",
+      "poi": false,
+      "name": "Zoe Nguyen",
+      "role": "Graduate student — Education",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0048_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0048\nName: Nguyen, Zoe\nRole: Graduate student — Education\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0048_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 08:36 — terminal near Admin Annex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0049",
+      "poi": false,
+      "name": "Amari Nguyen",
+      "role": "Library student aide",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0049_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0049\nName: Nguyen, Amari\nRole: Library student aide\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0049_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 09:43 — terminal near Field House\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0050",
+      "poi": false,
+      "name": "Brooke Nguyen",
+      "role": "Dining services associate",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0050_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0050\nName: Nguyen, Brooke\nRole: Dining services associate\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0050_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 10:50 — terminal near Mill Student Center\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0051",
+      "poi": false,
+      "name": "Carmen Nguyen",
+      "role": "Facilities night porter",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0051_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0051\nName: Nguyen, Carmen\nRole: Facilities night porter\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0051_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 11:57 — terminal near Cedar Pavilion\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0052",
+      "poi": false,
+      "name": "Diego Nguyen",
+      "role": "Box office volunteer",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0052_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0052\nName: Nguyen, Diego\nRole: Box office volunteer\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0052_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 12:04 — terminal near Hale Library\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0053",
+      "poi": false,
+      "name": "Elena Nguyen",
+      "role": "IT helpdesk student worker",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0053_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0053\nName: Nguyen, Elena\nRole: IT helpdesk student worker\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0053_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 13:11 — terminal near Harper Hall\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0054",
+      "poi": false,
+      "name": "Farah Nguyen",
+      "role": "Admissions tour guide",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0054_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0054\nName: Nguyen, Farah\nRole: Admissions tour guide\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0054_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 14:18 — terminal near West Residences\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0055",
+      "poi": false,
+      "name": "Gina Nguyen",
+      "role": "Parking services attendant",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0055_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0055\nName: Nguyen, Gina\nRole: Parking services attendant\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0055_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 15:25 — terminal near North Quad\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0056",
+      "poi": false,
+      "name": "Hector Nguyen",
+      "role": "Registrar clerk",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0056_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0056\nName: Nguyen, Hector\nRole: Registrar clerk\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0056_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 16:32 — terminal near Science Complex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0057",
+      "poi": false,
+      "name": "Iris Nguyen",
+      "role": "Marching band member",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0057_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0057\nName: Nguyen, Iris\nRole: Marching band member\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0057_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 17:39 — terminal near Union Cafe\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0058",
+      "poi": false,
+      "name": "Jose Nguyen",
+      "role": "Intramural referee",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0058_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0058\nName: Nguyen, Jose\nRole: Intramural referee\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0058_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 18:46 — terminal near Admin Annex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0059",
+      "poi": false,
+      "name": "Kira Nguyen",
+      "role": "Alumni relations intern",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0059_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0059\nName: Nguyen, Kira\nRole: Alumni relations intern\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0059_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 19:53 — terminal near Field House\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0060",
+      "poi": false,
+      "name": "Luis Nguyen",
+      "role": "Undergraduate — undeclared",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0060_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0060\nName: Nguyen, Luis\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0060_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 08:00 — terminal near Mill Student Center\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0061",
+      "poi": false,
+      "name": "Maya Nguyen",
+      "role": "Undergraduate — Computer Science",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0061_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0061\nName: Nguyen, Maya\nRole: Undergraduate — Computer Science\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0061_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 09:07 — terminal near Cedar Pavilion\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0062",
+      "poi": false,
+      "name": "Nadia Nguyen",
+      "role": "Undergraduate — History",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0062_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0062\nName: Nguyen, Nadia\nRole: Undergraduate — History\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0062_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 10:14 — terminal near Hale Library\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0063",
+      "poi": false,
+      "name": "Oscar Nguyen",
+      "role": "Graduate student — Education",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0063_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0063\nName: Nguyen, Oscar\nRole: Graduate student — Education\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0063_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 11:21 — terminal near Harper Hall\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0064",
+      "poi": false,
+      "name": "Pilar Nguyen",
+      "role": "Library student aide",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0064_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0064\nName: Nguyen, Pilar\nRole: Library student aide\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0064_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 12:28 — terminal near West Residences\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0065",
+      "poi": false,
+      "name": "Ravi Nguyen",
+      "role": "Dining services associate",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0065_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0065\nName: Nguyen, Ravi\nRole: Dining services associate\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0065_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 13:35 — terminal near North Quad\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0066",
+      "poi": false,
+      "name": "Sofia Nguyen",
+      "role": "Facilities night porter",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0066_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0066\nName: Nguyen, Sofia\nRole: Facilities night porter\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0066_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 14:42 — terminal near Science Complex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0067",
+      "poi": false,
+      "name": "Talia Nguyen",
+      "role": "Box office volunteer",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0067_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0067\nName: Nguyen, Talia\nRole: Box office volunteer\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0067_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 15:49 — terminal near Union Cafe\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0068",
+      "poi": false,
+      "name": "Ursula Nguyen",
+      "role": "IT helpdesk student worker",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0068_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0068\nName: Nguyen, Ursula\nRole: IT helpdesk student worker\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0068_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 16:56 — terminal near Admin Annex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0069",
+      "poi": false,
+      "name": "Vera Nguyen",
+      "role": "Admissions tour guide",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0069_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0069\nName: Nguyen, Vera\nRole: Admissions tour guide\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0069_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 17:03 — terminal near Field House\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0070",
+      "poi": false,
+      "name": "Will Nguyen",
+      "role": "Parking services attendant",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0070_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0070\nName: Nguyen, Will\nRole: Parking services attendant\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0070_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 18:10 — terminal near Mill Student Center\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0071",
+      "poi": false,
+      "name": "Anita Nguyen",
+      "role": "Registrar clerk",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0071_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0071\nName: Nguyen, Anita\nRole: Registrar clerk\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0071_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 19:17 — terminal near Cedar Pavilion\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0072",
+      "poi": false,
+      "name": "Ben Nguyen",
+      "role": "Marching band member",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0072_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0072\nName: Nguyen, Ben\nRole: Marching band member\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0072_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 08:24 — terminal near Hale Library\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0073",
+      "poi": false,
+      "name": "Celia Nguyen",
+      "role": "Intramural referee",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0073_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0073\nName: Nguyen, Celia\nRole: Intramural referee\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0073_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 09:31 — terminal near Harper Hall\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0074",
+      "poi": false,
+      "name": "Dan Nguyen",
+      "role": "Alumni relations intern",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0074_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0074\nName: Nguyen, Dan\nRole: Alumni relations intern\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0074_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 10:38 — terminal near West Residences\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0075",
+      "poi": false,
+      "name": "Eva Nguyen",
+      "role": "Undergraduate — undeclared",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0075_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0075\nName: Nguyen, Eva\nRole: Undergraduate — undeclared\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0075_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 11:45 — terminal near North Quad\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0076",
+      "poi": false,
+      "name": "Felix Nguyen",
+      "role": "Undergraduate — Computer Science",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0076_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0076\nName: Nguyen, Felix\nRole: Undergraduate — Computer Science\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0076_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 12:52 — terminal near Science Complex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0077",
+      "poi": false,
+      "name": "Grace Nguyen",
+      "role": "Undergraduate — History",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0077_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0077\nName: Nguyen, Grace\nRole: Undergraduate — History\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0077_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 13:59 — terminal near Union Cafe\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0078",
+      "poi": false,
+      "name": "Hugo Nguyen",
+      "role": "Graduate student — Education",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0078_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0078\nName: Nguyen, Hugo\nRole: Graduate student — Education\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0078_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 14:06 — terminal near Admin Annex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0079",
+      "poi": false,
+      "name": "Ivy Nguyen",
+      "role": "Library student aide",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0079_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0079\nName: Nguyen, Ivy\nRole: Library student aide\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0079_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 15:13 — terminal near Field House\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0080",
+      "poi": false,
+      "name": "Jack Nguyen",
+      "role": "Dining services associate",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0080_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0080\nName: Nguyen, Jack\nRole: Dining services associate\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0080_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 16:20 — terminal near Mill Student Center\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0081",
+      "poi": false,
+      "name": "Nora Nguyen",
+      "role": "Facilities night porter",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0081_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0081\nName: Nguyen, Nora\nRole: Facilities night porter\nPrimary location: Cedar Pavilion\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0081_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 17:27 — terminal near Cedar Pavilion\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0082",
+      "poi": false,
+      "name": "Owen Nguyen",
+      "role": "Box office volunteer",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0082_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0082\nName: Nguyen, Owen\nRole: Box office volunteer\nPrimary location: Hale Library\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0082_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 18:34 — terminal near Hale Library\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0083",
+      "poi": false,
+      "name": "Paul Nguyen",
+      "role": "IT helpdesk student worker",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0083_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0083\nName: Nguyen, Paul\nRole: IT helpdesk student worker\nPrimary location: Harper Hall\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0083_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 19:41 — terminal near Harper Hall\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0084",
+      "poi": false,
+      "name": "Quinn Nguyen",
+      "role": "Admissions tour guide",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0084_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0084\nName: Nguyen, Quinn\nRole: Admissions tour guide\nPrimary location: West Residences\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0084_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 08:48 — terminal near West Residences\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0085",
+      "poi": false,
+      "name": "Ruth Nguyen",
+      "role": "Parking services attendant",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0085_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0085\nName: Nguyen, Ruth\nRole: Parking services attendant\nPrimary location: North Quad\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0085_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 09:55 — terminal near North Quad\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0086",
+      "poi": false,
+      "name": "Sean Nguyen",
+      "role": "Registrar clerk",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0086_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0086\nName: Nguyen, Sean\nRole: Registrar clerk\nPrimary location: Science Complex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0086_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 10:02 — terminal near Science Complex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0087",
+      "poi": false,
+      "name": "Tina Nguyen",
+      "role": "Marching band member",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0087_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0087\nName: Nguyen, Tina\nRole: Marching band member\nPrimary location: Union Cafe\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0087_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 11:09 — terminal near Union Cafe\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0088",
+      "poi": false,
+      "name": "Ulysses Nguyen",
+      "role": "Intramural referee",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0088_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0088\nName: Nguyen, Ulysses\nRole: Intramural referee\nPrimary location: Admin Annex\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0088_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 12:16 — terminal near Admin Annex\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0089",
+      "poi": false,
+      "name": "Vince Nguyen",
+      "role": "Alumni relations intern",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0089_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0089\nName: Nguyen, Vince\nRole: Alumni relations intern\nPrimary location: Field House\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0089_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 13:23 — terminal near Field House\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
+        }
+      ]
+    },
+    {
+      "id": "person_ns_0090",
+      "poi": false,
+      "name": "Wendy Nguyen",
+      "role": "Undergraduate — undeclared",
+      "statement": "Directory file only. No sworn statement taken for case UB-0000000042.",
+      "records": [
+        {
+          "id": "person_ns_0090_directory",
+          "title": "Campus directory card",
+          "description": "UPSR DIRECTORY\nID: person_ns_0090\nName: Nguyen, Wendy\nRole: Undergraduate — undeclared\nPrimary location: Mill Student Center\nStatus: Active\nLast directory sync: 05 Nov 06:00"
+        },
+        {
+          "id": "person_ns_0090_card",
+          "title": "Campus card — recent terminal",
+          "description": "CARD LEDGER (sample)\n05 Nov 14:30 — terminal near Mill Student Center\nAmount/item: routine campus purchase or door tap on file.\nNot flagged for case assist."
         }
       ]
     }

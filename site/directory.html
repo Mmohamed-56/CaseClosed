@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UPSR Records — Campus Directory</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="shell">
+    <p class="crumb"><a href="index.html">&larr; Case desk</a> · <a href="search.html">Search</a></p>
+
+    <section class="panel">
+      <div class="panel-h">
+        <span>Campus directory / related persons</span>
+        <span class="tag" id="dir-count">—</span>
+      </div>
+      <div class="panel-b">
+        <form id="dir-filter" autocomplete="off" class="field">
+          <label for="dir-q">Filter directory</label>
+          <div class="row">
+            <input type="search" id="dir-q" name="q" placeholder="Name, role, or subject id" />
+            <button type="submit" class="btn btn-primary">Filter</button>
+          </div>
+          <p class="hint">Shows enrollment / employment cards linked to the active case index. Persons of interest remain on the case desk.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-h">
+        <span>Subject index</span>
+        <span class="tag" id="dir-shown"></span>
+      </div>
+      <div class="panel-b">
+        <table class="data" id="dir-table">
+          <thead>
+            <tr>
+              <th>Flag</th>
+              <th>Name</th>
+              <th>Campus role</th>
+              <th>Subject ID</th>
+              <th>Records</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="dir-body"></tbody>
+        </table>
+        <div class="empty" id="dir-empty" hidden>No directory rows match this filter.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/unity-bridge.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>
+    (function () {
+      UBPDChrome.ensureShell();
+      var caseData = null;
+      var all = [];
+
+      function flagLabel(s) {
+        if (s.poi === true) return "POI";
+        if (s.related === true) return "RELATED";
+        return "DIR";
+      }
+
+      function renderRows(list) {
+        document.getElementById("dir-shown").textContent = "showing " + list.length;
+        var body = document.getElementById("dir-body");
+        var empty = document.getElementById("dir-empty");
+        var table = document.getElementById("dir-table");
+        body.innerHTML = "";
+        if (!list.length) {
+          table.hidden = true;
+          empty.hidden = false;
+          return;
+        }
+        table.hidden = false;
+        empty.hidden = true;
+        list.forEach(function (s) {
+          var tr = document.createElement("tr");
+          var flag = flagLabel(s);
+          tr.innerHTML =
+            '<td><span class="type-pill">' + flag + "</span></td>" +
+            "<td>" + UBPDApp.escapeHtml(s.name || "") + "</td>" +
+            "<td>" + UBPDApp.escapeHtml(s.role || "") + "</td>" +
+            '<td class="mono">' + UBPDApp.escapeHtml(s.id || "") + "</td>" +
+            "<td>" + String((s.records || []).length) + "</td>" +
+            '<td><a href="suspect.html?id=' + encodeURIComponent(s.id) + '">Open</a></td>';
+          body.appendChild(tr);
+        });
+      }
+
+      function applyFilter(q) {
+        q = String(q || "").trim().toLowerCase();
+        if (!q) {
+          renderRows(all);
+          return;
+        }
+        renderRows(all.filter(function (s) {
+          return (
+            String(s.name || "").toLowerCase().indexOf(q) >= 0 ||
+            String(s.role || "").toLowerCase().indexOf(q) >= 0 ||
+            String(s.id || "").toLowerCase().indexOf(q) >= 0
+          );
+        }));
+      }
+
+      UBPDApp.loadCaseData().then(function (res) {
+        caseData = res.data;
+        UBPDApp.paintChrome(caseData, res.source);
+        all = UBPDApp.listDirectory(caseData).slice().sort(function (a, b) {
+          return String(a.name || "").localeCompare(String(b.name || ""));
+        });
+        document.getElementById("dir-count").textContent = all.length + " subjects";
+        var preset = UBPDApp.qs("q");
+        if (preset) {
+          document.getElementById("dir-q").value = preset;
+          applyFilter(preset);
+        } else {
+          renderRows(all);
+        }
+      });
+
+      document.getElementById("dir-filter").addEventListener("submit", function (e) {
+        e.preventDefault();
+        applyFilter(document.getElementById("dir-q").value);
+      });
+    })();
+  </script>
+</body>
+</html>
