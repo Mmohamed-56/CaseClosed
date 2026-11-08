@@ -7,7 +7,12 @@ using UnityEngine.Networking;
 
 namespace CaseClosed.CaseCore.Gemini
 {
-    /// <summary>Minimal Unity Gemini client. Player builds use the cloud proxy; Editor may use a direct key.</summary>
+    /// <summary>
+    /// Legacy Unity Gemini client (ask turns). Default gameplay keeps
+    /// <see cref="InterrogationDialogueService"/> <c>useGeminiApi</c> OFF and uses
+    /// <see cref="CaseClosed.CaseCore.Dialogue.ScenarioDialogueClient"/> instead.
+    /// Player builds historically used the cloud proxy; Editor may use a direct key.
+    /// </summary>
     public sealed class GeminiApiClient : MonoBehaviour
     {
         [SerializeField] private GeminiApiKeySettings settings;

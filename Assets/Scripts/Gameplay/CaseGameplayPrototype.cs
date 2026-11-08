@@ -19,10 +19,10 @@ namespace CaseClosed.Gameplay
         [Tooltip("Case state and scoring controller. Added automatically when empty.")]
         [SerializeField] private CaseShiftController shiftController;
 
-        [Header("Gemini Interrogation")]
-        [Tooltip("Optional key settings asset. Env/PlayerPrefs still win when set.")]
+        [Header("Interrogation Dialogue")]
+        [Tooltip("Optional legacy Gemini key settings. Unused while useGeminiApi is OFF (default).")]
         [SerializeField] private GeminiApiKeySettings geminiApiKeySettings;
-        [Tooltip("Dialogue bridge: stress from CaseCore, lines from Gemini (or mock).")]
+        [Tooltip("Dialogue bridge: stress from CaseCore, lines from ScenarioDialogueClient (offline by default).")]
         [SerializeField] private InterrogationDialogueService dialogueService;
 
         [Header("Voice")]
@@ -265,7 +265,7 @@ namespace CaseClosed.Gameplay
                 string evidence = selectedEvidenceId;
                 questionText = "";
                 awaitingReply = true;
-                feedbackText = "Sending question to Gemini (or mock if no key)...";
+                feedbackText = "Asking suspect (scenario / scripted, offline)...";
                 bool started = dialogueService != null && dialogueService.AskCurrentSuspect(ask, evidence);
                 if (!started)
                 {
@@ -287,12 +287,28 @@ namespace CaseClosed.Gameplay
             InterrogationResult result = turn.StressResult;
             string line = turn.Reply != null ? turn.Reply.line : result.FallbackLine;
             string emotion = turn.Reply != null ? turn.Reply.emotion : "calm";
-            string source = turn.UsedMock ? "mock" : "gemini";
+            string source = ResolveReplySourceTag(turn);
             feedbackText = "[" + source + "] " + turn.SuspectName + " (" + emotion + ") | stress " +
                            result.Stress + "/100 (" + result.Tier + ") | questions left " + result.QuestionsLeft +
                            "\n" + line;
             if (!string.IsNullOrEmpty(turn.Error))
                 feedbackText += "\n(note: " + turn.Error + ")";
+        }
+
+        private static string ResolveReplySourceTag(SuspectDialogueTurn turn)
+        {
+            if (turn == null) return "scripted";
+            if (!string.IsNullOrWhiteSpace(turn.ReplySource))
+            {
+                string tag = turn.ReplySource.Trim().ToLowerInvariant();
+                if (tag == "gemini")
+                    return "suspect";
+                if (tag == "mock")
+                    return "scripted";
+                return tag;
+            }
+
+            return turn.UsedMock ? "scripted" : "suspect";
         }
 
         private void DrawDecision()

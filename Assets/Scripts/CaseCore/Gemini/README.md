@@ -1,23 +1,21 @@
-# Gemini interrogation (Case Closed)
+# Interrogation dialogue (Case Closed)
 
-Snappy Gemini dialogue on top of CaseCore. Code owns stress/truth; Gemini only performs short spoken lines.
+CaseCore owns stress/truth. Spoken lines come from **`ScenarioDialogueClient`** by default (offline, no ask-proxy). Gemini is opt-in only.
 
-## Quick start (shipped builds → cloud proxy)
+## Default (Play Mode offline asks)
 
-1. Assign `ApiProxySettings` (default base URL `https://ubcaseclosed.netlify.app`) on `InterrogationDialogueService` / `GeminiApiClient`.
-2. Set the same **App Token** as Netlify env `CASE_CLOSED_APP_TOKEN` (menu: **Case Closed → API Proxy**).
-3. Typed questions go through `InterrogationDialogueService.AskCurrentSuspect`.
-4. Subscribe to `SuspectLineReady` for ElevenLabs (see `ElevenLabsVoiceSink`).
+1. `InterrogationDialogueService` has `useScenarioDialogue = true`, `useGeminiApi = false`.
+2. Ask turns never call `POST /api/gemini` or direct Gemini HTTP.
+3. UI tags: `[suspect]` or `[scripted]` — never `[gemini]`.
+4. TTS still uses the cloud proxy (`POST /api/tts`) via ElevenLabs.
 
-Player builds call `POST {ProxyBaseUrl}/api/gemini`. Provider keys stay on Netlify only.
+## Legacy Gemini (opt-in)
 
-## Editor fallback (local only)
+Set `useGeminiApi = true` on `InterrogationDialogueService` only for debugging:
 
-Without proxy, or when testing offline keys:
+1. Assign `ApiProxySettings` and/or `GeminiApiKeySettings`.
+2. Player builds would call `POST {ProxyBaseUrl}/api/gemini` (function may remain unused in deploy).
 
-1. Set `GEMINI_API_KEY` via env, PlayerPrefs (**Case Closed → Gemini**), or a `GeminiApiKeySettings` asset.
-2. Direct calls hit `generativelanguage.googleapis.com` with `?key=…` (Editor only when allowed).
+Magdy can drop `GEMINI_API_KEY` from Netlify once this path stays off.
 
-Without proxy and without a key, mock/offline fallback lines are used automatically.
-
-See Project store doc: `docs/api-proxy.md`.
+See Project store doc: `docs/api-proxy.md` (TTS still required).

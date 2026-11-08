@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CaseClosed.CaseCore.Dialogue;
 using CaseClosed.Networking;
 using CaseClosed.Voice;
 using UnityEngine;
@@ -7,24 +8,30 @@ using UnityEngine;
 namespace CaseClosed.CaseCore.Gemini
 {
     /// <summary>
-    /// Wires CaseCore stress/truth to Gemini performance and emits text events for an ElevenLabs agent.
-    /// Does not implement TTS. Ensures a <see cref="BarkPlayer"/> is present so submit feels instant.
+    /// Wires CaseCore stress/truth to spoken suspect lines and emits text events for an ElevenLabs agent.
+    /// Default path is offline <see cref="ScenarioDialogueClient"/> (no Gemini HTTP / ask proxy).
+    /// Gemini remains behind an opt-in feature flag for legacy debugging only.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class InterrogationDialogueService : MonoBehaviour
     {
         [Header("Case Wiring")]
         [SerializeField] private CaseShiftController shiftController;
+        [SerializeField] private ScenarioDialogueClient scenarioDialogue;
         [SerializeField] private GeminiApiClient geminiClient;
         [SerializeField] private GeminiApiKeySettings apiKeySettings;
         [SerializeField] private ApiProxySettings proxySettings;
 
         [Header("Instant Reaction")]
-        [Tooltip("Plays a short bark on ValidQuestionAsked while Gemini/ElevenLabs load. Added when missing.")]
+        [Tooltip("Plays a short bark on ValidQuestionAsked while voice loads. Added when missing.")]
         [SerializeField] private BarkPlayer barkPlayer;
 
-        [Header("Behaviour")]
-        [Tooltip("When no GEMINI_API_KEY is available, answer from code-owned fallback lines.")]
+        [Header("Feature Flags")]
+        [Tooltip("Preferred path: local scenario / scripted bank. Default ON. No network for ask turns.")]
+        [SerializeField] private bool useScenarioDialogue = true;
+        [Tooltip("Legacy Gemini HTTP path (proxy or direct). Default OFF — Play Mode asks work offline.")]
+        [SerializeField] private bool useGeminiApi = false;
+        [Tooltip("When Gemini is enabled but unavailable, fall back to scripted lines.")]
         [SerializeField] private bool allowOfflineMock = true;
 
         private readonly Dictionary<string, List<string>> historyBySuspect = new Dictionary<string, List<string>>();
@@ -33,27 +40,33 @@ namespace CaseClosed.CaseCore.Gemini
         /// <summary>Raised when a spoken line is ready for ElevenLabs (or any voice consumer).</summary>
         public event Action<SuspectVoiceLine> SuspectLineReady;
 
-        /// <summary>Raised after stress resolution and reply generation (live or mock).</summary>
+        /// <summary>Raised after stress resolution and reply generation (live or scripted).</summary>
         public event Action<SuspectDialogueTurn> TurnCompleted;
 
         /// <summary>
-        /// Raised as soon as a new question is accepted (before Gemini returns).
+        /// Raised as soon as a new question is accepted (before a reply is ready).
         /// Voice clients should cancel in-flight TTS here.
         /// </summary>
         public event Action QuestionStarted;
 
-        /// <summary>True while a Gemini request is in flight.</summary>
+        /// <summary>True while a Gemini request is in flight (scripted path never blocks).</summary>
         public bool IsBusy { get { return isBusy; } }
+
+        /// <summary>True when ask turns may call Gemini HTTP (opt-in; default false).</summary>
+        public bool UseGeminiApi { get { return useGeminiApi; } }
+
+        /// <summary>True when ScenarioDialogueClient / scripted bank is preferred (default true).</summary>
+        public bool UseScenarioDialogue { get { return useScenarioDialogue; } }
 
         private void Awake()
         {
             if (shiftController == null)
                 shiftController = GetComponent<CaseShiftController>();
+            EnsureScenarioClient();
+            // Do not auto-add GeminiApiClient — ask turns must not depend on the proxy by default.
             if (geminiClient == null)
                 geminiClient = GetComponent<GeminiApiClient>();
-            if (geminiClient == null)
-                geminiClient = gameObject.AddComponent<GeminiApiClient>();
-            if (apiKeySettings != null)
+            if (useGeminiApi && geminiClient != null && apiKeySettings != null)
                 geminiClient.Configure(apiKeySettings, proxySettings);
             EnsureBarkPlayer();
         }
@@ -69,13 +82,25 @@ namespace CaseClosed.CaseCore.Gemini
             shiftController = controller;
             apiKeySettings = settings;
             proxySettings = proxy;
+            EnsureScenarioClient();
             if (geminiClient == null)
-                geminiClient = GetComponent<GeminiApiClient>() ?? gameObject.AddComponent<GeminiApiClient>();
-            if (apiKeySettings != null)
-                geminiClient.Configure(apiKeySettings, proxySettings);
-            else if (proxySettings != null)
-                geminiClient.Configure(null, proxySettings);
+                geminiClient = GetComponent<GeminiApiClient>();
+            if (useGeminiApi && geminiClient != null)
+            {
+                if (apiKeySettings != null)
+                    geminiClient.Configure(apiKeySettings, proxySettings);
+                else if (proxySettings != null)
+                    geminiClient.Configure(null, proxySettings);
+            }
             EnsureBarkPlayer();
+        }
+
+        private void EnsureScenarioClient()
+        {
+            if (scenarioDialogue == null)
+                scenarioDialogue = GetComponent<ScenarioDialogueClient>();
+            if (scenarioDialogue == null && useScenarioDialogue)
+                scenarioDialogue = gameObject.AddComponent<ScenarioDialogueClient>();
         }
 
         private void EnsureBarkPlayer()
@@ -102,11 +127,12 @@ namespace CaseClosed.CaseCore.Gemini
         }
 
         /// <summary>
-        /// Asks the current suspect: CaseCore applies stress/truth first, then Gemini performs the line.
+        /// Asks the current suspect: CaseCore applies stress/truth first, then scenario/scripted (or optional Gemini) performs the line.
         /// </summary>
         public bool AskCurrentSuspect(string question, string evidenceId = null, bool aggressive = false)
         {
             EnsureBarkPlayer();
+            EnsureScenarioClient();
 
             if (isBusy)
             {
@@ -145,22 +171,25 @@ namespace CaseClosed.CaseCore.Gemini
             EvidenceRecord presented = FindCollectedEvidence(evidenceId);
             bool isCulprit = suspect.Id == shiftController.ActiveSession.Case.CulpritSuspectId;
 
-            if (!stressResult.IsValid)
+            // Default: scenario / scripted — offline, no ask proxy.
+            if (useScenarioDialogue || !useGeminiApi)
             {
-                EmitImmediate(suspect, question, evidenceId, stressResult, BuildMockReply(stressResult), true, null);
+                EmitScenarioOrScripted(suspect, question, evidenceId, stressResult, presented, isCulprit);
                 return true;
             }
 
+            // Legacy Gemini path (opt-in only).
             bool canCallGemini = geminiClient != null && geminiClient.HasApiKey;
             if (!canCallGemini)
             {
-                if (!allowOfflineMock)
-                {
-                    EmitImmediate(suspect, question, evidenceId, stressResult, BuildMockReply(stressResult), true, "GEMINI_API_KEY missing.");
-                    return true;
-                }
-
-                EmitImmediate(suspect, question, evidenceId, stressResult, BuildMockReply(stressResult), true, null);
+                EmitScenarioOrScripted(
+                    suspect,
+                    question,
+                    evidenceId,
+                    stressResult,
+                    presented,
+                    isCulprit,
+                    allowOfflineMock ? null : "GEMINI_API_KEY missing.");
                 return true;
             }
 
@@ -183,7 +212,7 @@ namespace CaseClosed.CaseCore.Gemini
                     isBusy = false;
                     GeminiSuspectReply reply;
                     if (!GeminiApiClient.TryParseSuspectReply(modelText, out reply))
-                        reply = BuildMockReply(stressResult);
+                        reply = BuildLegacyMockReply(stressResult);
 
                     if (!string.IsNullOrWhiteSpace(stressResult.Slip) &&
                         (stressResult.Tier == InterrogationStressTier.Cracking ||
@@ -192,34 +221,44 @@ namespace CaseClosed.CaseCore.Gemini
                         reply.slip = true;
                     }
 
-                    EmitTurn(suspect, capturedQuestion, capturedEvidenceId, stressResult, reply, false, null);
+                    EmitTurn(suspect, capturedQuestion, capturedEvidenceId, stressResult, reply, false, null, "gemini");
                 },
                 error =>
                 {
                     isBusy = false;
-                    if (allowOfflineMock)
-                    {
-                        EmitTurn(suspect, capturedQuestion, capturedEvidenceId, stressResult, BuildMockReply(stressResult), true, error);
-                    }
-                    else
-                    {
-                        EmitTurn(suspect, capturedQuestion, capturedEvidenceId, stressResult, BuildMockReply(stressResult), true, error);
-                    }
+                    EmitScenarioOrScripted(
+                        suspect,
+                        capturedQuestion,
+                        capturedEvidenceId,
+                        stressResult,
+                        presented,
+                        isCulprit,
+                        error);
                 });
 
             return true;
         }
 
-        private void EmitImmediate(
+        private void EmitScenarioOrScripted(
             SuspectRecord suspect,
             string question,
             string evidenceId,
             InterrogationResult stressResult,
-            GeminiSuspectReply reply,
-            bool usedMock,
-            string error)
+            EvidenceRecord presented,
+            bool isCulprit,
+            string error = null)
         {
-            EmitTurn(suspect, question, evidenceId, stressResult, reply, usedMock, error);
+            GeminiSuspectReply reply;
+            string sourceTag = "scripted";
+
+            if (scenarioDialogue != null &&
+                scenarioDialogue.TryBuildReply(suspect, question, stressResult, presented, isCulprit, out reply, out sourceTag))
+            {
+                EmitTurn(suspect, question, evidenceId, stressResult, reply, sourceTag != "suspect", error, sourceTag);
+                return;
+            }
+
+            EmitTurn(suspect, question, evidenceId, stressResult, BuildLegacyMockReply(stressResult), true, error, "scripted");
         }
 
         private void EmitTurn(
@@ -229,10 +268,14 @@ namespace CaseClosed.CaseCore.Gemini
             InterrogationResult stressResult,
             GeminiSuspectReply reply,
             bool usedMock,
-            string error)
+            string error,
+            string replySource)
         {
             if (reply == null)
-                reply = BuildMockReply(stressResult);
+                reply = BuildLegacyMockReply(stressResult);
+
+            if (string.IsNullOrWhiteSpace(replySource))
+                replySource = usedMock ? "scripted" : "suspect";
 
             AppendHistory(suspect.Id, "Detective: " + question);
             AppendHistory(suspect.Id, suspect.DisplayName + ": " + reply.line);
@@ -247,6 +290,7 @@ namespace CaseClosed.CaseCore.Gemini
                 StressResult = stressResult,
                 Reply = reply,
                 UsedMock = usedMock,
+                ReplySource = replySource,
                 Error = error
             };
 
@@ -265,7 +309,7 @@ namespace CaseClosed.CaseCore.Gemini
             TurnCompleted?.Invoke(turn);
         }
 
-        private static GeminiSuspectReply BuildMockReply(InterrogationResult stressResult)
+        private static GeminiSuspectReply BuildLegacyMockReply(InterrogationResult stressResult)
         {
             string emotion = "calm";
             if (stressResult != null)

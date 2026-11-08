@@ -38,7 +38,7 @@ namespace CaseClosed.CaseCore.Gemini
         }
     }
 
-    /// <summary>UI-facing result after stress rules and (optional) Gemini performance.</summary>
+    /// <summary>UI-facing result after stress rules and scenario / scripted (optional Gemini) performance.</summary>
     [Serializable]
     public sealed class SuspectDialogueTurn
     {
@@ -50,6 +50,8 @@ namespace CaseClosed.CaseCore.Gemini
         public InterrogationResult StressResult;
         public GeminiSuspectReply Reply;
         public bool UsedMock;
+        /// <summary>UI tag: "suspect", "scripted", or legacy "gemini" when the opt-in flag is on.</summary>
+        public string ReplySource;
         public string Error;
     }
 
