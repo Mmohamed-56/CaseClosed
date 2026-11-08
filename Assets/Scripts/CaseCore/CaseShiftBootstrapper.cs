@@ -12,7 +12,7 @@ namespace CaseClosed.CaseCore
     public sealed class CaseShiftBootstrapper : MonoBehaviour
     {
         [Header("Prototype Case")]
-        [Tooltip("A stable seed reproduces the same generated case, suspects, and culprit.")]
+        [Tooltip("Base seed. Each StartGeneratedShift advances by one so titles rotate across templates.")]
         [SerializeField] private int caseSeed = 42;
 
         [Tooltip("Number of suspects for the shift. The case generator supports two to four.")]
@@ -23,6 +23,8 @@ namespace CaseClosed.CaseCore
 
         [Tooltip("When enabled, disables the shift clock (demo / judging mode).")]
         [SerializeField] private bool demoMode = true;
+
+        private int shiftSerial;
 
         [Header("Shift Controller")]
         [Tooltip("Controller to start. Automatically found or added on this object when empty.")]
@@ -73,7 +75,7 @@ namespace CaseClosed.CaseCore
             if (startAutomatically) StartGeneratedShift();
         }
 
-        /// <summary>Starts the configured seeded case using the configured suspect count.</summary>
+        /// <summary>Starts the next seeded case (rotating templates) using the configured suspect count.</summary>
         public void StartGeneratedShift()
         {
             if (shiftController == null)
@@ -82,7 +84,16 @@ namespace CaseClosed.CaseCore
             if (demoMode)
                 shiftController.ShiftClockEnabled = false;
 
-            shiftController.BeginGeneratedShift(caseSeed, suspectCount);
+            int seed = caseSeed + shiftSerial;
+            shiftSerial++;
+            shiftController.BeginGeneratedShift(seed, suspectCount);
+            if (logFlowEvents)
+            {
+                Debug.Log(
+                    "[CaseShift] StartGeneratedShift seed=" + seed +
+                    " title=\"" + CaseGenerator.PeekTitle(seed) + "\"",
+                    this);
+            }
         }
 
         /// <summary>Bezi / stamp pad: HOLD the current suspect, then advance.</summary>

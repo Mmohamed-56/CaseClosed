@@ -19,7 +19,7 @@ namespace CaseClosed.Gameplay
     public sealed class CaseGameplayPrototype : MonoBehaviour
     {
         [Header("Case Setup")]
-        [Tooltip("Stable seed for reproducing the initial two-suspect generated case.")]
+        [Tooltip("Base seed. Each Start / Restart advances by one so case titles rotate through the template pack.")]
         [SerializeField] private int caseSeed = 42;
         [Tooltip("Number of suspects in this prototype case; the initial case uses two suspects.")]
         [SerializeField, Range(2, 4)] private int suspectCount = 2;
@@ -27,6 +27,9 @@ namespace CaseClosed.Gameplay
         [Header("Case Controller")]
         [Tooltip("Case state and scoring controller. Added automatically when empty.")]
         [SerializeField] private CaseShiftController shiftController;
+
+        /// <summary>How many times <see cref="StartCase"/> has run this session (0 = first shift).</summary>
+        private int shiftSerial;
 
         [Header("Dialogue (offline bank preferred)")]
         [Tooltip("Optional legacy Gemini key settings. Unused while allowGeminiFallback is OFF.")]
@@ -90,17 +93,33 @@ namespace CaseClosed.Gameplay
             StartCase();
         }
 
-        /// <summary>Starts or restarts the deterministic prototype case (seed 42 / two suspects by default).</summary>
+        /// <summary>
+        /// Starts or restarts a seeded case. Each call advances the seed so Restart rotates case titles
+        /// through <see cref="CaseGenerator"/> / <c>Resources/Cases/case_templates.json</c>.
+        /// </summary>
         public void StartCase()
         {
+            int seed = caseSeed + shiftSerial;
+            shiftSerial++;
+
             if (dialogueService != null)
                 dialogueService.BeginShift();
-            shiftController.BeginGeneratedShift(caseSeed, suspectCount);
+            shiftController.BeginGeneratedShift(seed, suspectCount);
+
+            string title = CaseGenerator.PeekTitle(seed);
             if (actionHud != null)
             {
                 actionHud.ResetForNewCase(
-                    "Case ready. Computer collect ≥2 → EVIDENCE board → ACTIONS Call in → ASK → DECISION HOLD/RELEASE.");
+                    "CASE: " + title +
+                    "  ·  Computer collect ≥2 → EVIDENCE → ACTIONS Call in → ASK → DECISION HOLD/RELEASE.");
             }
+
+            Debug.Log(
+                "[CaseGameplay] shift seed=" + seed +
+                " title=\"" + title + "\"" +
+                " treeHook=" + CaseGenerator.PeekTreeHook(seed) +
+                " templates=" + CaseGenerator.TemplateCount,
+                this);
         }
 
         private void HandleBootstrapStartCase(CaseShiftController controller)

@@ -35,6 +35,8 @@ Resources/Dialogue/Trees/
 | `replies[]` | 2–4 variants gated by `minStress`/`maxStress`, with `emotion` + `slip` + `line` |
 
 Evidence ids from CaseGenerator (`{caseId}_{id}_access`, …) map to `evidenceKey` by suffix.
+Case titles rotate via `Resources/Cases/case_templates.json` (treeHook ids listed in `tree_hooks.json`);
+playable branches stay on the shared evidence keys above.
 
 ## Regenerate
 

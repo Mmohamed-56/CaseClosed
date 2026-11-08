@@ -8,14 +8,12 @@ namespace CaseClosed.CaseCore
     /// Creates reproducible, locally authored cases without using AI to decide the truth.
     /// Culprit identity and evidence Kind/Explanation stay Unity-only; the website payload
     /// builder must never receive those fields (see <see cref="CaseWebsitePayloadBuilder"/>).
+    /// Case title/briefing/evidence copy come from <see cref="CaseTemplateCatalog"/> (seeded pick).
     /// </summary>
     public static class CaseGenerator
     {
         private const int MinimumSuspectCount = 2;
         private const int MaximumSuspectCount = 4;
-        private const string CaseTitle = "The Missing Mascot Head";
-        private const string CaseBriefing =
-            "The university mascot head vanished from the student-union storage room between 9:15 PM and 9:45 PM. Check the records against each suspect's statement before deciding who to hold.";
 
         /// <summary>
         /// Embedded fallback interviewee pool (original 8). Prefer
@@ -122,14 +120,32 @@ namespace CaseClosed.CaseCore
                 "Sam is the named closer on the union cafe evening checklist.")
         };
 
+        /// <summary>How many authored case templates are available for seeded rotation.</summary>
+        public static int TemplateCount { get { return CaseTemplateCatalog.Count; } }
+
+        /// <summary>Preview the title that <see cref="Generate"/> will use for this seed.</summary>
+        public static string PeekTitle(int seed)
+        {
+            CaseTemplateCatalog.CaseTemplate template = CaseTemplateCatalog.PickForSeed(seed);
+            return template != null ? template.title : string.Empty;
+        }
+
+        /// <summary>Preview the dialogue tree hook id for this seed (stub / bank routing).</summary>
+        public static string PeekTreeHook(int seed)
+        {
+            CaseTemplateCatalog.CaseTemplate template = CaseTemplateCatalog.PickForSeed(seed);
+            return template != null ? template.treeHook : string.Empty;
+        }
+
         /// <summary>Generates a seeded case with two to four suspects and exactly one planted contradiction.</summary>
-        /// <param name="seed">A stable seed used to reproduce suspect selection and culprit assignment.</param>
+        /// <param name="seed">A stable seed used to reproduce template pick, suspect selection, and culprit assignment.</param>
         /// <param name="suspectCount">The number of suspects, clamped to the supported range of two to four.</param>
         public static CaseFile Generate(int seed, int suspectCount = MaximumSuspectCount)
         {
+            CaseTemplateCatalog.CaseTemplate template = CaseTemplateCatalog.PickForSeed(seed);
             int clampedSuspectCount = Math.Max(MinimumSuspectCount, Math.Min(MaximumSuspectCount, suspectCount));
             var random = new Random(seed);
-            var availableProfiles = new List<SuspectProfile>(GetIntervieweePool());
+            var availableProfiles = new List<SuspectProfile>(GetIntervieweePool(template));
             if (availableProfiles.Count < clampedSuspectCount)
                 clampedSuspectCount = Math.Max(MinimumSuspectCount, availableProfiles.Count);
 
@@ -154,13 +170,16 @@ namespace CaseClosed.CaseCore
                 SuspectProfile profile = selectedProfiles[i];
                 bool isCulprit = i == culpritIndex;
                 string suspectId = "suspect_" + profile.Id;
+                string statement = string.IsNullOrWhiteSpace(template.statementTemplate)
+                    ? profile.Statement
+                    : template.statementTemplate.Trim();
                 suspects.Add(new SuspectRecord(
                     suspectId,
                     profile.DisplayName,
                     profile.CampusRole,
-                    profile.Statement,
+                    statement,
                     profile.Alibi,
-                    BuildEvidenceForSuspect(caseId, profile, isCulprit),
+                    BuildEvidenceForSuspect(caseId, profile, isCulprit, template),
                     CaseClosed.Voice.SuspectVoiceCatalog.Resolve(suspectId)));
             }
 
@@ -173,20 +192,45 @@ namespace CaseClosed.CaseCore
 
             return new CaseFile(
                 caseId,
-                CaseTitle,
-                CaseBriefing,
+                template.title,
+                template.briefing,
                 "suspect_" + culprit.Id,
                 suspects,
                 directory);
         }
 
         /// <summary>Playable interviewee pool size (catalog when loaded, else embedded 8).</summary>
-        public static int SuspectPoolCount { get { return GetIntervieweePool().Count; } }
+        public static int SuspectPoolCount { get { return GetIntervieweePool(null).Count; } }
 
         /// <summary>Total campus affiliates in the records/dialogue pool (interviewees + witnesses).</summary>
         public static int CampusPoolCount { get { return CampusAffiliateCatalog.TotalCount; } }
 
-        private static List<SuspectProfile> GetIntervieweePool()
+        private static List<SuspectProfile> GetIntervieweePool(CaseTemplateCatalog.CaseTemplate template)
+        {
+            List<SuspectProfile> full = LoadFullIntervieweePool();
+            if (template == null || template.preferSuspectIds == null || template.preferSuspectIds.Length == 0)
+                return full;
+
+            var preferred = new List<SuspectProfile>(template.preferSuspectIds.Length);
+            for (int i = 0; i < template.preferSuspectIds.Length; i++)
+            {
+                string want = template.preferSuspectIds[i];
+                if (string.IsNullOrWhiteSpace(want)) continue;
+                want = want.Trim().ToLowerInvariant();
+                for (int j = 0; j < full.Count; j++)
+                {
+                    if (full[j].Id == want)
+                    {
+                        preferred.Add(full[j]);
+                        break;
+                    }
+                }
+            }
+
+            return preferred.Count >= MinimumSuspectCount ? preferred : full;
+        }
+
+        private static List<SuspectProfile> LoadFullIntervieweePool()
         {
             IReadOnlyList<CampusAffiliateCatalog.CampusAffiliate> catalog = CampusAffiliateCatalog.Interviewees;
             if (catalog != null && catalog.Count >= MinimumSuspectCount)
@@ -218,9 +262,23 @@ namespace CaseClosed.CaseCore
             return new List<SuspectProfile>(SuspectPool);
         }
 
-        private static List<EvidenceRecord> BuildEvidenceForSuspect(string caseId, SuspectProfile profile, bool isCulprit)
+        private static List<EvidenceRecord> BuildEvidenceForSuspect(
+            string caseId,
+            SuspectProfile profile,
+            bool isCulprit,
+            CaseTemplateCatalog.CaseTemplate template)
         {
-            // Public website sees id/title/description only. Kind + Explanation stay Unity-side for Gemini / confrontation.
+            // Public website sees id/title/description only. Kind + Explanation stay Unity-side.
+            // Suffixes must stay stable for ScenarioDialogueClient EvidenceKeyFromId + CollectEvidence.
+            string signInTitle = string.IsNullOrWhiteSpace(template.signInTitle)
+                ? "Event sign-in sheet"
+                : template.signInTitle;
+            string signInDescription = CaseTemplateCatalog.FormatName(
+                string.IsNullOrWhiteSpace(template.signInDescription)
+                    ? "{name} signed in near the scene earlier that evening."
+                    : template.signInDescription,
+                profile.DisplayName);
+
             var records = new List<EvidenceRecord>(4)
             {
                 new EvidenceRecord(
@@ -237,26 +295,43 @@ namespace CaseClosed.CaseCore
                     string.Empty),
                 new EvidenceRecord(
                     caseId + "_" + profile.Id + "_sign_in",
-                    "Event sign-in sheet",
-                    profile.DisplayName + " signed in to help with student-union event setup earlier that evening.",
+                    signInTitle,
+                    signInDescription,
                     EvidenceKind.Context,
                     string.Empty)
             };
 
             if (isCulprit)
             {
+                string accessTitle = string.IsNullOrWhiteSpace(template.accessTitle)
+                    ? "Restricted access log"
+                    : template.accessTitle;
+                string accessDescription = CaseTemplateCatalog.FormatName(
+                    string.IsNullOrWhiteSpace(template.accessDescription)
+                        ? "A campus credential assigned to {name} opened a restricted door inside the incident window."
+                        : template.accessDescription,
+                    profile.DisplayName);
+                string explanation = CaseTemplateCatalog.FormatName(
+                    string.IsNullOrWhiteSpace(template.contradictionExplanation)
+                        ? "{name} returned during the incident window."
+                        : template.contradictionExplanation,
+                    profile.DisplayName);
+
                 records.Insert(0, new EvidenceRecord(
                     caseId + "_" + profile.Id + "_access",
-                    "Storage-room access log",
-                    "The campus card assigned to " + profile.DisplayName + " opened the event-storage room at 9:37 PM, inside the theft window and after their stated departure time.",
+                    accessTitle,
+                    accessDescription,
                     EvidenceKind.Contradiction,
-                    profile.DisplayName + " returned to the storage room and took the mascot head."));
+                    explanation));
             }
             else
             {
+                string herringTitle = string.IsNullOrWhiteSpace(template.redHerringTitle)
+                    ? "Suspicious purchase record"
+                    : template.redHerringTitle;
                 records.Insert(0, new EvidenceRecord(
                     caseId + "_" + profile.Id + "_red_herring",
-                    "Suspicious purchase record",
+                    herringTitle,
                     profile.RedHerringRecord,
                     EvidenceKind.RedHerring,
                     profile.RedHerringExplanation));
