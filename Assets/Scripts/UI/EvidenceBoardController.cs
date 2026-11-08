@@ -196,6 +196,10 @@ namespace CaseClosed.UI
                 return;
             }
 
+            // Clear present selection when leaving a suspect pile — A must not stay current for B.
+            if (!string.IsNullOrEmpty(selectedEvidenceId))
+                ClearSelection();
+
             activeTabSuspectId = next;
             ActiveTabChanged?.Invoke(activeTabSuspectId);
             RefreshBoard();
@@ -252,8 +256,22 @@ namespace CaseClosed.UI
                 }
             }
 
-            if (!string.IsNullOrEmpty(selectedEvidenceId) && !ContainsEvidenceId(collected, selectedEvidenceId))
-                ClearSelection();
+            if (!string.IsNullOrEmpty(selectedEvidenceId))
+            {
+                bool stillVisible = false;
+                for (int i = 0; i < activeCards.Count; i++)
+                {
+                    if (activeCards[i] != null && activeCards[i].EvidenceId == selectedEvidenceId)
+                    {
+                        stillVisible = true;
+                        break;
+                    }
+                }
+
+                // Drop selection when filtered off the active tab, or removed from the case.
+                if (!stillVisible || !ContainsEvidenceId(collected, selectedEvidenceId))
+                    ClearSelection();
+            }
 
             RefreshTabVisuals();
             BoardRefreshed?.Invoke();
@@ -322,8 +340,13 @@ namespace CaseClosed.UI
             if (record != null && shiftController != null && followCurrentSuspectTab)
             {
                 string ownerId = shiftController.FindEvidenceOwnerId(record.Id);
-                if (!string.IsNullOrEmpty(ownerId))
+                if (!string.IsNullOrEmpty(ownerId) && ownerId != activeTabSuspectId)
+                {
+                    if (!string.IsNullOrEmpty(selectedEvidenceId))
+                        ClearSelection();
                     activeTabSuspectId = ownerId;
+                    ActiveTabChanged?.Invoke(activeTabSuspectId);
+                }
             }
 
             RefreshBoard();
@@ -340,7 +363,16 @@ namespace CaseClosed.UI
                 ClearSelection();
 
             if (followCurrentSuspectTab && shiftController != null && shiftController.CurrentSuspect != null)
-                activeTabSuspectId = shiftController.CurrentSuspect.Id;
+            {
+                string next = shiftController.CurrentSuspect.Id;
+                if (next != activeTabSuspectId)
+                {
+                    if (!string.IsNullOrEmpty(selectedEvidenceId))
+                        ClearSelection();
+                    activeTabSuspectId = next;
+                    ActiveTabChanged?.Invoke(activeTabSuspectId);
+                }
+            }
 
             RefreshBoard();
             RefreshStressMeter();
@@ -348,8 +380,12 @@ namespace CaseClosed.UI
 
         private void HandleNextSuspectReady(NextSuspectEvent next)
         {
+            ClearSelection();
             if (!followCurrentSuspectTab || next == null || string.IsNullOrWhiteSpace(next.SuspectId))
+            {
+                RefreshBoard();
                 return;
+            }
             SetActiveSuspectTab(next.SuspectId);
         }
 

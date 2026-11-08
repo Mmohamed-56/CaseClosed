@@ -737,14 +737,14 @@
           "replies": [
             {
               "minStress": 0,
-              "maxStress": 100,
+              "maxStress": 59,
               "emotion": "scared",
               "slip": false,
               "line": "You're holding me? I didn't take the head."
             },
             {
               "minStress": 0,
-              "maxStress": 100,
+              "maxStress": 59,
               "emotion": "angry",
               "slip": false,
               "line": "This is a mistake. I want that on the record."

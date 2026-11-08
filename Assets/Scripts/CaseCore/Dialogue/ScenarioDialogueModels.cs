@@ -59,6 +59,8 @@ namespace CaseClosed.CaseCore.Dialogue
         public bool Aggressive;
         public bool IsCulprit;
         public bool IsShutdown;
+        /// <summary>True when this suspect already spoke a slip/confession line this interview.</summary>
+        public bool HasSlipped;
         public InterrogationResult StressResult;
         public string AftermathDecision;
     }

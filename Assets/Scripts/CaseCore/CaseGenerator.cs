@@ -326,9 +326,9 @@ namespace CaseClosed.CaseCore
             }
             else
             {
-                string herringTitle = string.IsNullOrWhiteSpace(template.redHerringTitle)
-                    ? "Suspicious purchase record"
-                    : template.redHerringTitle;
+                // Title must match the authored description (site + board). Template category
+                // labels like "Suspicious purchase" were mismatching sign-out sheets / work orders.
+                string herringTitle = InferRedHerringTitle(profile.RedHerringRecord, template.redHerringTitle);
                 records.Insert(0, new EvidenceRecord(
                     caseId + "_" + profile.Id + "_red_herring",
                     herringTitle,
@@ -349,6 +349,48 @@ namespace CaseClosed.CaseCore
                 items[i] = items[swapIndex];
                 items[swapIndex] = current;
             }
+        }
+
+        /// <summary>
+        /// Derive a board/site title from the red-herring body so labels stay aligned
+        /// ("An event sign-out sheet shows…" → "Event sign-out sheet").
+        /// </summary>
+        internal static string InferRedHerringTitle(string record, string templateFallback)
+        {
+            string fallback = string.IsNullOrWhiteSpace(templateFallback)
+                ? "Filed campus record"
+                : templateFallback.Trim();
+
+            if (string.IsNullOrWhiteSpace(record))
+                return fallback;
+
+            string text = record.Trim();
+            int cut = IndexOfFirst(text, " shows ", " lists ", " indicates ", " notes ", " records ");
+            string head = cut > 0 ? text.Substring(0, cut).Trim() : text;
+            if (head.StartsWith("A ", StringComparison.OrdinalIgnoreCase))
+                head = head.Substring(2).Trim();
+            else if (head.StartsWith("An ", StringComparison.OrdinalIgnoreCase))
+                head = head.Substring(3).Trim();
+            else if (head.StartsWith("The ", StringComparison.OrdinalIgnoreCase))
+                head = head.Substring(4).Trim();
+
+            if (string.IsNullOrWhiteSpace(head) || head.Length > 64)
+                return fallback;
+
+            return char.ToUpper(head[0], CultureInfo.InvariantCulture) + head.Substring(1);
+        }
+
+        private static int IndexOfFirst(string text, params string[] needles)
+        {
+            int best = -1;
+            for (int i = 0; i < needles.Length; i++)
+            {
+                int idx = text.IndexOf(needles[i], StringComparison.OrdinalIgnoreCase);
+                if (idx >= 0 && (best < 0 || idx < best))
+                    best = idx;
+            }
+
+            return best;
         }
 
         private sealed class SuspectProfile

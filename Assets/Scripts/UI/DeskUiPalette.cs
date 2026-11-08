@@ -289,6 +289,19 @@ namespace CaseClosed.UI
             }
             if (cachedBodyFont == null) cachedBodyFont = cachedUiFont;
             if (cachedStampFont == null) cachedStampFont = cachedUiFont;
+
+            // Point-filter font atlases so ScaleWithScreenSize does not soft-blur desk type.
+            SharpenFont(cachedBodyFont);
+            SharpenFont(cachedUiFont);
+            SharpenFont(cachedStampFont);
+        }
+
+        private static void SharpenFont(Font font)
+        {
+            if (font == null || font.material == null || font.material.mainTexture == null)
+                return;
+            font.material.mainTexture.filterMode = FilterMode.Point;
+            font.material.mainTexture.anisoLevel = 0;
         }
 
         private static Font CreateOsFont(string[] names)

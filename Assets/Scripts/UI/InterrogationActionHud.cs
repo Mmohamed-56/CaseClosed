@@ -122,6 +122,13 @@ namespace CaseClosed.UI
             enterBinder = FindAnyObjectByType<SuspectEnterShiftBinder>();
             monitorFocus = FindAnyObjectByType<MonitorFocusController>();
 
+            // Crisp Overlay HUD even when Bezi assigned a scene canvas without pixelPerfect.
+            if (hudCanvas != null)
+            {
+                hudCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+                hudCanvas.pixelPerfect = true;
+            }
+
             EnsureEventSystem();
             if ((hudCanvas == null || panelRoot == null) && buildRuntimeUiIfMissing)
                 BuildRuntimeUi();
@@ -141,7 +148,12 @@ namespace CaseClosed.UI
                 shiftController.EvidenceCollected += OnEvidenceCollected;
             }
             if (evidenceBoard != null)
+            {
                 evidenceBoard.EvidenceSelectionChanged += OnBoardSelectionChanged;
+                evidenceBoard.ActiveTabChanged += OnEvidenceTabChanged;
+            }
+            if (shiftController != null)
+                shiftController.NextSuspectReady += OnNextSuspectReady;
             if (enterController != null)
                 enterController.Seated += OnSuspectSeated;
         }
@@ -154,9 +166,13 @@ namespace CaseClosed.UI
             {
                 shiftController.PhaseChanged -= OnPhaseChanged;
                 shiftController.EvidenceCollected -= OnEvidenceCollected;
+                shiftController.NextSuspectReady -= OnNextSuspectReady;
             }
             if (evidenceBoard != null)
+            {
                 evidenceBoard.EvidenceSelectionChanged -= OnBoardSelectionChanged;
+                evidenceBoard.ActiveTabChanged -= OnEvidenceTabChanged;
+            }
             if (enterController != null)
                 enterController.Seated -= OnSuspectSeated;
             waitingForSeat = false;
@@ -293,6 +309,20 @@ namespace CaseClosed.UI
         private void OnBoardSelectionChanged(string evidenceId)
         {
             selectedEvidenceId = evidenceId ?? string.Empty;
+            RefreshAll();
+        }
+
+        private void OnEvidenceTabChanged(string suspectId)
+        {
+            // Board already cleared present selection; keep HUD present id in sync.
+            selectedEvidenceId = string.Empty;
+            RefreshAskRow();
+            RefreshStatus();
+        }
+
+        private void OnNextSuspectReady(NextSuspectEvent next)
+        {
+            selectedEvidenceId = string.Empty;
             RefreshAll();
         }
 
@@ -628,12 +658,8 @@ namespace CaseClosed.UI
         {
             if (transcriptRoot == null) return;
 
-            for (int i = 0; i < runtimeTranscriptLabels.Count; i++)
-            {
-                if (runtimeTranscriptLabels[i] != null)
-                    Destroy(runtimeTranscriptLabels[i].gameObject);
-            }
-            runtimeTranscriptLabels.Clear();
+            // DestroyImmediate so old TMP/UGUI lines cannot overlap for a frame while Destroy is deferred.
+            ClearTranscriptChildren();
 
             bool show = panelOpen && activeTag == HudTag.Actions;
             if (!show || transcript.Count == 0)
@@ -645,8 +671,29 @@ namespace CaseClosed.UI
             transcriptRoot.gameObject.SetActive(true);
             for (int i = 0; i < transcript.Count; i++)
             {
-                Text line = CreateBodyText(transcriptRoot, transcript[i], 13, DeskUiPalette.InkMuted);
+                Text line = CreateBodyText(transcriptRoot, transcript[i], 15, DeskUiPalette.InkMuted);
+                line.horizontalOverflow = HorizontalWrapMode.Wrap;
+                line.verticalOverflow = VerticalWrapMode.Overflow;
                 runtimeTranscriptLabels.Add(line);
+            }
+
+            Canvas.ForceUpdateCanvases();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(transcriptRoot as RectTransform);
+        }
+
+        private void ClearTranscriptChildren()
+        {
+            runtimeTranscriptLabels.Clear();
+            if (transcriptRoot == null) return;
+
+            for (int i = transcriptRoot.childCount - 1; i >= 0; i--)
+            {
+                Transform child = transcriptRoot.GetChild(i);
+                if (child == null) continue;
+                // Keep chrome (accent stripe), wipe line labels only.
+                if (child.name == "AccentStripe" || child.name == "FolderFrame")
+                    continue;
+                DestroyImmediate(child.gameObject);
             }
         }
 
@@ -1024,12 +1071,16 @@ namespace CaseClosed.UI
             GameObject canvasGo = new GameObject("InterrogationActionHudCanvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             canvasGo.transform.SetParent(transform, false);
             hudCanvas = canvasGo.GetComponent<Canvas>();
+            // Stay Overlay — Camera / World Space downscales and softens the manila HUD.
             hudCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            hudCanvas.pixelPerfect = true;
             hudCanvas.sortingOrder = 55;
             CanvasScaler scaler = canvasGo.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920f, 1080f);
-            scaler.matchWidthOrHeight = 0.5f;
+            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+            // Prefer height so the left desk file is not soft-scaled on widescreen.
+            scaler.matchWidthOrHeight = 1f;
 
             // Manila folder tabs — kraft stock + stamped type (not navy SaaS pills).
             GameObject tags = new GameObject("TopTags", typeof(RectTransform), typeof(HorizontalLayoutGroup));
@@ -1079,11 +1130,11 @@ namespace CaseClosed.UI
             DeskUiPalette.StyleLabel(agency, 10, DeskUiPalette.AccentOlive, DeskUiPalette.TypeRole.Stamp, FontStyle.Bold, TextAnchor.UpperLeft);
             AnchorTopLeft(agency.rectTransform, 12f, -5f, 320f, 14f);
 
-            headerTitleText = CreateLabel(header.transform, "Title", "CASE FILE", 18, DeskUiPalette.White, FontStyle.Bold);
-            DeskUiPalette.StyleLabel(headerTitleText, 18, DeskUiPalette.White, DeskUiPalette.TypeRole.Stamp, FontStyle.Bold, TextAnchor.UpperLeft);
-            AnchorTopLeft(headerTitleText.rectTransform, 12f, -18f, 280f, 22f);
-            headerCaseText = CreateLabel(header.transform, "Case", string.Empty, 11, DeskUiPalette.ManilaLight, FontStyle.Normal);
-            DeskUiPalette.StyleLabel(headerCaseText, 11, DeskUiPalette.ManilaLight, DeskUiPalette.TypeRole.Body, FontStyle.Italic, TextAnchor.UpperLeft);
+            headerTitleText = CreateLabel(header.transform, "Title", "CASE FILE", 20, DeskUiPalette.White, FontStyle.Bold);
+            DeskUiPalette.StyleLabel(headerTitleText, 20, DeskUiPalette.White, DeskUiPalette.TypeRole.Stamp, FontStyle.Bold, TextAnchor.UpperLeft);
+            AnchorTopLeft(headerTitleText.rectTransform, 12f, -18f, 280f, 24f);
+            headerCaseText = CreateLabel(header.transform, "Case", string.Empty, 13, DeskUiPalette.ManilaLight, FontStyle.Normal);
+            DeskUiPalette.StyleLabel(headerCaseText, 13, DeskUiPalette.ManilaLight, DeskUiPalette.TypeRole.Body, FontStyle.Italic, TextAnchor.UpperLeft);
             AnchorTopLeft(headerCaseText.rectTransform, 12f, -38f, 340f, 16f);
             DeskUiPalette.AddHairline(header.transform, "HeaderRule", 56f, 2f, false);
 
@@ -1188,7 +1239,10 @@ namespace CaseClosed.UI
             tr.offsetMax = new Vector2(-10f, 142f);
             VerticalLayoutGroup tlg = transcriptGo.GetComponent<VerticalLayoutGroup>();
             tlg.padding = new RectOffset(12, 8, 6, 6);
-            tlg.spacing = 2f;
+            tlg.spacing = 4f;
+            tlg.childAlignment = TextAnchor.UpperLeft;
+            tlg.childControlWidth = true;
+            tlg.childControlHeight = true;
             tlg.childForceExpandWidth = true;
             tlg.childForceExpandHeight = false;
             transcriptRoot = transcriptGo.transform;

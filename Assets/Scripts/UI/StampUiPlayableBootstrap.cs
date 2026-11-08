@@ -73,13 +73,16 @@ namespace CaseClosed.UI
                 return;
 
             bool boardReady = evidenceBoard != null && evidenceBoard.HasBoardHooks;
+            // InterrogationActionHud DECISION footer owns HOLD/RELEASE — never spawn a second stamp pad.
             bool hudOwnsStamps = actionHud != null && actionHud.OwnsCaseFileChrome;
             bool stampReady = stampPad != null && stampPad.HasStampHooks;
+            bool skipStampPad = hudOwnsStamps || stampReady;
 
-            // Always restore the right EVIDENCE clipboard when Bezi has not wired board hooks.
-            // Skip only the duplicate stamp pad when the HUD owns HOLD/RELEASE on DECISION.
-            if (!boardReady || (!hudOwnsStamps && !stampReady))
-                BuildPrototypeOverlay(boardReady, hudOwnsStamps || stampReady);
+            // Right EVIDENCE clipboard only when Bezi hooks are empty. One stamp UI only.
+            if (!boardReady)
+                BuildPrototypeOverlay(boardAlreadyReady: false, stampAlreadyReady: skipStampPad);
+            else if (!skipStampPad)
+                BuildPrototypeOverlay(boardAlreadyReady: true, stampAlreadyReady: false);
         }
 
         private void OnDestroy()
@@ -95,12 +98,14 @@ namespace CaseClosed.UI
 
             Canvas canvas = overlayRoot.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.pixelPerfect = true;
             canvas.sortingOrder = 50;
 
             CanvasScaler scaler = overlayRoot.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920f, 1080f);
-            scaler.matchWidthOrHeight = 0.5f;
+            scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+            scaler.matchWidthOrHeight = 1f;
 
             if (!boardAlreadyReady)
                 BuildEvidenceBoardPanel();

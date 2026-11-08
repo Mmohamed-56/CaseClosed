@@ -140,18 +140,19 @@ namespace CaseClosed.CaseCore.Dialogue
             }
 
             int stress = context != null && context.StressResult != null ? context.StressResult.Stress : 0;
-            DialogueTreeReply pick = PickReply(question, stress);
+            DialogueTreeReply pick = PickReply(question, stress, context);
             if (pick == null)
             {
                 reply = FallbackReply(context);
                 return true;
             }
 
+            // Slip flag follows the authored line — never auto-mark casual mid-stress answers as confessions.
             bool slip = pick.slip;
             if (context != null && context.IsCulprit && context.StressResult != null &&
+                context.StressResult.Tier == InterrogationStressTier.Broken &&
                 !string.IsNullOrWhiteSpace(context.StressResult.Slip) &&
-                (context.StressResult.Tier == InterrogationStressTier.Cracking ||
-                 context.StressResult.Tier == InterrogationStressTier.Broken))
+                stress >= 85)
             {
                 slip = true;
             }
@@ -184,7 +185,8 @@ namespace CaseClosed.CaseCore.Dialogue
             SuspectDecision decision,
             InterrogationResult lastStress,
             bool isCulprit,
-            out GeminiSuspectReply reply)
+            out GeminiSuspectReply reply,
+            bool hasSlipped = false)
         {
             var ctx = new ScenarioAskContext
             {
@@ -193,6 +195,7 @@ namespace CaseClosed.CaseCore.Dialogue
                 Question = decision == SuspectDecision.Hold ? "HOLD" : "RELEASE",
                 AftermathDecision = decision == SuspectDecision.Hold ? "hold" : "release",
                 IsCulprit = isCulprit,
+                HasSlipped = hasSlipped,
                 StressResult = lastStress,
                 HasEvidence = false,
                 Aggressive = false
@@ -292,7 +295,7 @@ namespace CaseClosed.CaseCore.Dialogue
             return null;
         }
 
-        private DialogueTreeReply PickReply(DialogueTreeQuestion question, int stress)
+        private DialogueTreeReply PickReply(DialogueTreeQuestion question, int stress, ScenarioAskContext context)
         {
             if (question == null || question.replies == null || question.replies.Length == 0)
                 return null;
@@ -307,27 +310,143 @@ namespace CaseClosed.CaseCore.Dialogue
             }
 
             if (matches.Count == 0)
+                matches = NearestBandMatches(question, stress);
+
+            var gated = new List<DialogueTreeReply>(matches);
+            ApplySlipGates(gated, stress, context);
+            if (gated.Count > 0)
             {
-                // Soft: nearest by mid-band
-                DialogueTreeReply best = null;
-                int bestDist = int.MaxValue;
+                matches = gated;
+            }
+            else
+            {
+                // Gating wiped the band (casual slip-only mid tiers) — fall back to nearest non-slip line.
+                var nonSlip = new List<DialogueTreeReply>(4);
                 for (int i = 0; i < question.replies.Length; i++)
                 {
                     DialogueTreeReply r = question.replies[i];
-                    if (r == null) continue;
-                    int mid = (r.minStress + r.maxStress) / 2;
-                    int dist = Math.Abs(mid - stress);
-                    if (dist < bestDist)
-                    {
-                        bestDist = dist;
-                        best = r;
-                    }
+                    if (r != null && !r.slip)
+                        nonSlip.Add(r);
                 }
 
-                return best;
+                if (nonSlip.Count > 0)
+                    matches = NearestFromList(nonSlip, stress);
             }
 
-            return matches[rng.Next(matches.Count)];
+            if (matches.Count == 0)
+                return null;
+
+            // Prefer the tightest authored band so wide 0–100 denial lines lose to 60–100 hold confessions.
+            matches.Sort((a, b) =>
+            {
+                int spanA = a.maxStress - a.minStress;
+                int spanB = b.maxStress - b.minStress;
+                int cmp = spanA.CompareTo(spanB);
+                if (cmp != 0) return cmp;
+                return b.minStress.CompareTo(a.minStress);
+            });
+
+            int tightest = matches[0].maxStress - matches[0].minStress;
+            var tight = new List<DialogueTreeReply>(matches.Count);
+            for (int i = 0; i < matches.Count; i++)
+            {
+                if (matches[i].maxStress - matches[i].minStress == tightest)
+                    tight.Add(matches[i]);
+            }
+
+            return tight[rng.Next(tight.Count)];
+        }
+
+        private static List<DialogueTreeReply> NearestBandMatches(DialogueTreeQuestion question, int stress)
+        {
+            var all = new List<DialogueTreeReply>(question.replies.Length);
+            for (int i = 0; i < question.replies.Length; i++)
+            {
+                if (question.replies[i] != null)
+                    all.Add(question.replies[i]);
+            }
+
+            return NearestFromList(all, stress);
+        }
+
+        private static List<DialogueTreeReply> NearestFromList(List<DialogueTreeReply> replies, int stress)
+        {
+            var list = new List<DialogueTreeReply>(2);
+            int bestDist = int.MaxValue;
+            for (int i = 0; i < replies.Count; i++)
+            {
+                DialogueTreeReply r = replies[i];
+                if (r == null) continue;
+                int mid = (r.minStress + r.maxStress) / 2;
+                int dist = Math.Abs(mid - stress);
+                if (dist < bestDist)
+                {
+                    bestDist = dist;
+                    list.Clear();
+                    list.Add(r);
+                }
+                else if (dist == bestDist)
+                {
+                    list.Add(r);
+                }
+            }
+
+            return list;
+        }
+
+        /// <summary>
+        /// Gate casual confessions during Q&amp;A; keep HOLD/RELEASE consistent with prior slips.
+        /// </summary>
+        private static void ApplySlipGates(List<DialogueTreeReply> matches, int stress, ScenarioAskContext context)
+        {
+            if (matches == null || matches.Count == 0) return;
+
+            bool isAftermath = context != null && !string.IsNullOrWhiteSpace(context.AftermathDecision);
+            bool hasSlipped = context != null && context.HasSlipped;
+            bool isCulprit = context != null && context.IsCulprit;
+
+            if (!isAftermath)
+            {
+                // Never auto-confess casually — slip-flagged lines only at Broken (85+).
+                if (stress < 85)
+                    RemoveWhere(matches, r => r.slip);
+                return;
+            }
+
+            // HOLD/RELEASE: if they already confessed (or broken culprit), prefer slip lines — never deny after.
+            bool mustOwnIt = hasSlipped || (isCulprit && stress >= 85);
+            if (mustOwnIt && HasAny(matches, r => r.slip))
+            {
+                RemoveWhere(matches, r => !r.slip);
+                return;
+            }
+
+            if (isCulprit && stress >= 60 && HasAny(matches, r => r.slip))
+            {
+                RemoveWhere(matches, r => !r.slip);
+                return;
+            }
+
+            // Innocent / low-stress HOLD: keep denials, drop leftover slip tags.
+            RemoveWhere(matches, r => r.slip);
+        }
+
+        private static bool HasAny(List<DialogueTreeReply> matches, Predicate<DialogueTreeReply> pred)
+        {
+            for (int i = 0; i < matches.Count; i++)
+            {
+                if (pred(matches[i])) return true;
+            }
+            return false;
+        }
+
+        private static void RemoveWhere(List<DialogueTreeReply> matches, Predicate<DialogueTreeReply> pred)
+        {
+            for (int i = matches.Count - 1; i >= 0; i--)
+            {
+                if (pred(matches[i]))
+                    matches.RemoveAt(i);
+            }
         }
 
         private static GeminiSuspectReply FallbackReply(ScenarioAskContext context)

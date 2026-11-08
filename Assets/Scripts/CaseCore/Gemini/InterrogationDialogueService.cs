@@ -36,6 +36,7 @@ namespace CaseClosed.CaseCore.Gemini
 
         private readonly Dictionary<string, List<string>> historyBySuspect = new Dictionary<string, List<string>>();
         private readonly Dictionary<string, InterrogationResult> lastStressBySuspect = new Dictionary<string, InterrogationResult>();
+        private readonly HashSet<string> slippedSuspectIds = new HashSet<string>();
         private bool isBusy;
         private bool subscribedToStamps;
 
@@ -147,6 +148,7 @@ namespace CaseClosed.CaseCore.Gemini
         {
             historyBySuspect.Clear();
             lastStressBySuspect.Clear();
+            slippedSuspectIds.Clear();
             isBusy = false;
         }
 
@@ -224,15 +226,16 @@ namespace CaseClosed.CaseCore.Gemini
                     Aggressive = aggressive,
                     IsCulprit = isCulprit,
                     IsShutdown = stressResult.IsShutdown,
+                    HasSlipped = slippedSuspectIds.Contains(suspect.Id),
                     StressResult = stressResult
                 };
 
                 GeminiSuspectReply scenarioReply;
                 if (scenarioClient.TryResolve(ctx, out scenarioReply))
                 {
+                    // Only Broken forces a slip flag — Cracking must not casually auto-confess.
                     if (!string.IsNullOrWhiteSpace(stressResult.Slip) &&
-                        (stressResult.Tier == InterrogationStressTier.Cracking ||
-                         stressResult.Tier == InterrogationStressTier.Broken))
+                        stressResult.Tier == InterrogationStressTier.Broken)
                     {
                         scenarioReply.slip = true;
                     }
@@ -268,8 +271,7 @@ namespace CaseClosed.CaseCore.Gemini
                             reply = BuildMockReply(stressResult);
 
                         if (!string.IsNullOrWhiteSpace(stressResult.Slip) &&
-                            (stressResult.Tier == InterrogationStressTier.Cracking ||
-                             stressResult.Tier == InterrogationStressTier.Broken))
+                            stressResult.Tier == InterrogationStressTier.Broken)
                         {
                             reply.slip = true;
                         }
@@ -322,8 +324,9 @@ namespace CaseClosed.CaseCore.Gemini
             lastStressBySuspect.TryGetValue(stamped.Id, out lastStress);
             bool isCulprit = stamped.Id == shiftController.ActiveSession.Case.CulpritSuspectId;
 
+            bool hasSlipped = slippedSuspectIds.Contains(stamped.Id);
             GeminiSuspectReply reply;
-            if (!scenarioClient.TryResolveAftermath(stamped, stamp.Decision, lastStress, isCulprit, out reply))
+            if (!scenarioClient.TryResolveAftermath(stamped, stamp.Decision, lastStress, isCulprit, out reply, hasSlipped))
                 return;
 
             Action started = QuestionStarted;
@@ -360,6 +363,10 @@ namespace CaseClosed.CaseCore.Gemini
 
             AppendHistory(suspect.Id, "Detective: " + question);
             AppendHistory(suspect.Id, suspect.DisplayName + ": " + reply.line);
+            if (reply.slip && suspect != null && !string.IsNullOrWhiteSpace(suspect.Id))
+                slippedSuspectIds.Add(suspect.Id);
+            if (stressResult != null && !string.IsNullOrWhiteSpace(suspect.Id))
+                lastStressBySuspect[suspect.Id] = stressResult;
 
             var turn = new SuspectDialogueTurn
             {
