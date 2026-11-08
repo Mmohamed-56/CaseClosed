@@ -172,6 +172,70 @@ WITNESSES_BATCH1 = [
     ("hana", "Hana Suzuki", "Museum gallery attendant", "Closed the small campus gallery."),
 ]
 
+# Overnight expansion toward ~100 (batch 2+)
+WITNESSES_BATCH2 = [
+    ("amir", "Amir Hassan", "Mosque student chaplain aide", "Locked the prayer room after evening salah."),
+    ("britt", "Britt Olsen", "Rowing team coxswain", "Logged shells after night practice on the creek."),
+    ("cara", "Cara Whitfield", "Career fair vendor", "Packed booth crates in the union ballroom."),
+    ("dev", "Dev Kapoor", "Data science club lead", "Closed a hack night in the innovation lab."),
+    ("emme", "Emme Laurent", "French house RA", "Did quiet hours rounds on the language floor."),
+    ("finn", "Finn Gallagher", "Climbing wall staff", "Reset routes in the rec climbing gym."),
+    ("gina", "Gina Morales", "Financial aid clerk", "Batched late work-study timesheets."),
+    ("hugo", "Hugo Berg", "Orchestra librarian", "Returned scores to the music building vault."),
+    ("iris", "Iris Qu", "Robotics shop monitor", "Powered down the CNC after club hours."),
+    ("jules", "Jules Abebe", "Track timer volunteer", "Packed photo-finish gear after practice."),
+    ("kira", "Kira Novak", "Counseling peer listener", "Finished a wellness shift in the quiet suite."),
+    ("leo", "Leo Santos", "Bike share rebalancer", "Moved share bikes from the union rack."),
+    ("mona", "Mona Al-Farsi", "Arabic club secretary", "Posted flyers then left via the south doors."),
+    ("nate", "Nate Feldman", "Hillel student cook", "Closed the kitchen after a late dinner."),
+    ("ola", "Ola Nowak", "Polish club baker", "Delivered pastries then cleaned the annex oven."),
+    ("pam", "Pam Ortiz", "Copy center supervisor", "Ran course-pack reprints until 9:40 PM."),
+    ("quin", "Quin Sato", "Anime club projectionist", "Rewound a screening in lecture hall C."),
+    ("rita", "Rita Gomes", "Portuguese tutor", "Held office hours in the language commons."),
+    ("sid", "Sid Banerjee", "Quant finance society", "Locked the trading lab simulators."),
+    ("tess", "Tess McLeod", "Bagpipe band manager", "Stored drums after a quad rehearsal."),
+    ("uma", "Uma Reddy", "Med school scribe intern", "Filed notes from a late skills lab."),
+    ("vic", "Vic Romano", "Pizza delivery contractor", "Dropped late orders at north towers."),
+    ("wes", "Wes Carter", "Fire watch student", "Walked a construction fire-watch loop."),
+    ("xander", "Xander Price", "Improv troupe booker", "Struck chairs after a basement show."),
+    ("yara", "Yara Haddad", "Middle East studies aide", "Closed the map room in Baldy-style annex."),
+    ("zeke", "Zeke Morrow", "Ice rink Zamboni trainee", "Helped resurface after club skate."),
+    ("april", "April Cho", "Floral lab assistant", "Watered greenhouse benches after class."),
+    ("blake", "Blake Dunn", "Esports shoutcaster", "Ended a cast from the streaming closet."),
+    ("cove", "Cove Jensen", "Sailing club rigger", "Dried sails in the boathouse loft."),
+    ("dane", "Dane Okorie", "African student union", "Locked the cultural center lounge."),
+    ("edie", "Edie Falk", "Printmaking monitor", "Washed screens in the art annex."),
+    ("fran", "Fran Liu", "Statistics help room", "Closed tutoring after walk-in hours."),
+    ("glen", "Glen Torres", "Moving crew temp", "Hauled chairs from the ballroom strike."),
+    ("hope", "Hope Adler", "Title IX peer educator", "Finished a workshop cleanup in the suite."),
+    ("izzy", "Izzy Kahn", "Debate team researcher", "Printed briefs in the late lab."),
+    ("joss", "Joss Meier", "German house cook", "Closed the community kitchen."),
+    ("kent", "Kent Abrams", "Alumni phonathon", "Ended call shifts in the phone bank."),
+    ("lana", "Lana Petrova", "Ballet pianist", "Packed sheet music after rehearsal."),
+    ("mack", "Mack Rivera", "Grounds irrigation tech", "Checked sprinkler zones by the fountain."),
+    ("nell", "Nell Borges", "Latin dance instructor", "Locked the studio after salsa night."),
+    ("otis", "Otis Greene", "Jazz combo roadie", "Loaded amps into a van on the dock."),
+    ("pearl", "Pearl Nguyen", "Optometry clinic aide", "Closed the evening screening room."),
+    ("quill", "Quill Asher", "Poetry slam host", "Struck the mic in the cafe stage."),
+    ("rome", "Rome Castillo", "Soccer kit manager", "Returned pinnies to the field house."),
+    ("sage", "Sage Whitaker", "Herbal club gardener", "Locked the community plot shed."),
+    ("tova", "Tova Stein", "Hillel night desk", "Signed out guests at the center lobby."),
+    ("uri", "Uri Mandel", "Physics demo prep", "Secured the lecture demo cart."),
+    ("vera", "Vera Costa", "Portuguese cafe volunteer", "Closed the language coffee hour."),
+    ("wade", "Wade Simmons", "ROTC supply cadet", "Inventoried gear in the cage."),
+    ("xiomara", "Xiomara Paz", "Salsa DJ", "Packed decks after the cultural night."),
+    ("yetu", "Yetu Mensah", "African dance lead", "Locked the rehearsal mirrors room."),
+    ("zara", "Zara Bloom", "Beekeeping club", "Checked hives behind the ag annex."),
+    ("anson", "Anson Craig", "Pipe organ scholar", "Secured the chapel loft after practice."),
+    ("briar", "Briar Holt", "Costume stitcher", "Finished hems in the drama loft."),
+    ("cedric", "Cedric Ong", "Singapore students assoc", "Closed a study circle in the lounge."),
+    ("daria", "Daria Volkov", "Russian choir alto", "Returned folders to the music office."),
+    ("ellis", "Ellis Prado", "Skate park monitor", "Locked the outdoor pad lights."),
+    ("flora", "Flora Beck", "Community garden lead", "Logged tool returns at the shed."),
+    ("gareth", "Gareth Quinn", "Fencing armorer", "Oiled foils after club practice."),
+    ("heidi", "Heidi Moss", "Veterinary clinic aide", "Closed kennel rounds for the night."),
+]
+
 
 def witness_hooks(aid: str, name: str, role: str, bio: str):
     first = name.split()[0]
@@ -194,25 +258,40 @@ def interviewee_to_affiliate(raw: dict) -> dict:
     return out
 
 
+def append_witness(people: list, aid: str, name: str, role: str, bio: str) -> None:
+    people.append(dict(
+        id=aid,
+        displayName=name,
+        campusRole=role,
+        tier="witness",
+        bio=bio,
+        statement=f"I wasn't part of the storage crew. I'm {name}, {role}.",
+        alibi="Elsewhere on campus during the theft window.",
+        redHerringRecord="",
+        redHerringExplanation="",
+        alibiSupportTitle="Peripheral schedule",
+        alibiSupportDescription=f"{name}'s ordinary duties keep them away from event storage.",
+        contextTitleA="Directory listing",
+        contextDescriptionA=bio,
+        recordHooks=witness_hooks(aid, name, role, bio),
+    ))
+
+
 def build_pool(limit: int | None = 40):
     people = [interviewee_to_affiliate(a) for a in AFFILIATES]
     for aid, name, role, bio in WITNESSES_BATCH1:
-        people.append(dict(
-            id=aid,
-            displayName=name,
-            campusRole=role,
-            tier="witness",
-            bio=bio,
-            statement=f"I wasn't part of the storage crew. I'm {name}, {role}.",
-            alibi="Elsewhere on campus during the theft window.",
-            redHerringRecord="",
-            redHerringExplanation="",
-            alibiSupportTitle="Peripheral schedule",
-            alibiSupportDescription=f"{name}'s ordinary duties keep them away from event storage.",
-            contextTitleA="Directory listing",
-            contextDescriptionA=bio,
-            recordHooks=witness_hooks(aid, name, role, bio),
-        ))
+        append_witness(people, aid, name, role, bio)
+    for aid, name, role, bio in WITNESSES_BATCH2:
+        append_witness(people, aid, name, role, bio)
+    # de-dupe by id, keep first
+    seen = set()
+    deduped = []
+    for p in people:
+        if p["id"] in seen:
+            continue
+        seen.add(p["id"])
+        deduped.append(p)
+    people = deduped
     if limit is not None:
         people = people[:limit]
     return people
@@ -295,11 +374,11 @@ def ensure_meta(path: Path, guid: str) -> None:
     )
 
 
-def main(batch: int = 40) -> None:
+def main(batch: int = 100) -> None:
     people = build_pool(limit=batch)
     write_json(CAMPUS / "affiliates.json", {
         "schemaVersion": 1,
-        "batch": 1,
+        "batch": 2 if len(people) > 40 else 1,
         "targetPoolSize": 100,
         "count": len(people),
         "affiliates": people,
@@ -402,4 +481,8 @@ def main(batch: int = 40) -> None:
 
 
 if __name__ == "__main__":
-    main(40)
+    import sys
+    n = 100
+    if len(sys.argv) > 1:
+        n = int(sys.argv[1])
+    main(n)
