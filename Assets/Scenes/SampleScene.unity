@@ -2781,11 +2781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559dedd76435eb141bce24b2890c67d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.Lighting.SoftBulbFlicker
-  bulbLight: {fileID: 0}
-  minimumIntensityMultiplier: 0.94
-  maximumIntensityMultiplier: 1.0638
-  driftSpeed: 3.51
-  colorDriftDegrees: 2
 --- !u!1001 &239028675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4293,7 +4288,7 @@ MonoBehaviour:
   displaySurface: {fileID: 833294142}
   displaySurfaceCollider: {fileID: 833294144}
   browserManager: {fileID: 1068488767}
-  focusDistance: 0.72
+  focusDistance: 1
   focusedFieldOfView: 32
   transitionDuration: 0.42
   focusToggleKey: 20
@@ -8053,23 +8048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c3e8d0c5244d739f883d77e6f9fa2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.Lighting.NightShiftMoodController
-  moodEnabled: 1
-  enableF8Toggle: 1
-  globalVolume: {fileID: 832575518}
-  moodLightingRoot: {fileID: 1801838342}
-  softFlickers:
-  - {fileID: 238642192}
-  - {fileID: 1182848002}
-  - {fileID: 1879276072}
-  - {fileID: 1911000005}
-  directionalLight: {fileID: 410087040}
-  moodDirectionalIntensity: 0.42
-  moodDirectionalColor: {r: 0.78, g: 0.84, b: 0.95, a: 1}
-  adjustAmbient: 1
-  moodAmbientSky: {r: 0.16, g: 0.17, b: 0.2, a: 1}
-  moodAmbientEquator: {r: 0.08, g: 0.09, b: 0.11, a: 1}
-  moodAmbientGround: {r: 0.03, g: 0.03, b: 0.035, a: 1}
-  moodAmbientIntensity: 0.85
 --- !u!1 &833294141
 GameObject:
   m_ObjectHideFlags: 0
@@ -10972,11 +10950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559dedd76435eb141bce24b2890c67d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.Lighting.SoftBulbFlicker
-  bulbLight: {fileID: 1182848000}
-  minimumIntensityMultiplier: 0.94
-  maximumIntensityMultiplier: 1.02
-  driftSpeed: 0.55
-  colorDriftDegrees: 1.5
 --- !u!1 &1195106857
 GameObject:
   m_ObjectHideFlags: 0
@@ -13111,6 +13084,21 @@ MonoBehaviour:
   shiftDurationSeconds: 600
   playerName: Prototype Detective
   interrogationController: {fileID: 0}
+  onPhaseChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onSuspectStamped:
+    m_PersistentCalls:
+      m_Calls: []
+  onNextSuspectReady:
+    m_PersistentCalls:
+      m_Calls: []
+  onChargeReady:
+    m_PersistentCalls:
+      m_Calls: []
+  onMorningHeadline:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1467552880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13123,9 +13111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508d412d680783f46bd61a2840da8c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.Gameplay.CaseGameplayPrototype
-  caseSeed: 42
-  suspectCount: 2
-  shiftController: {fileID: 0}
 --- !u!1001 &1468447579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16000,151 +15985,6 @@ Transform:
   - {fileID: 1911000002}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1911000001
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1911000002}
-  - component: {fileID: 1911000003}
-  - component: {fileID: 1911000004}
-  - component: {fileID: 1911000005}
-  m_Layer: 0
-  m_Name: Fluorescent Overhead Wash
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1911000002
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911000001}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.35, y: 2.55, z: 2.4}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1801838343}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &1911000003
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911000001}
-  m_Enabled: 1
-  serializedVersion: 13
-  m_Type: 2
-  m_Color: {r: 0.78, g: 0.9, b: 0.86, a: 1}
-  m_Intensity: 1.05
-  m_Range: 6.5
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize2D: {x: 0.5, y: 0.5}
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 4200
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ForceVisible: 0
-  m_ShapeRadius: 0.05
-  m_ShadowAngle: 0
-  m_LightUnit: 1
-  m_LuxAtDistance: 1
-  m_EnableSpotReflector: 1
---- !u!114 &1911000004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911000001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_CustomShadowLayers: 0
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
-  m_RenderingLayersMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_ShadowRenderingLayersMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_Version: 4
-  m_LightLayerMask: 1
-  m_ShadowLayerMask: 1
-  m_RenderingLayers: 1
-  m_ShadowRenderingLayers: 1
---- !u!114 &1911000005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911000001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559dedd76435eb141bce24b2890c67d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.Lighting.SoftBulbFlicker
-  bulbLight: {fileID: 1911000003}
-  minimumIntensityMultiplier: 0.91
-  maximumIntensityMultiplier: 1.03
-  driftSpeed: 0.85
-  colorDriftDegrees: 3
 --- !u!1 &1803068891
 GameObject:
   m_ObjectHideFlags: 0
@@ -16881,11 +16721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559dedd76435eb141bce24b2890c67d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.Lighting.SoftBulbFlicker
-  bulbLight: {fileID: 1879276070}
-  minimumIntensityMultiplier: 0.9
-  maximumIntensityMultiplier: 1.02
-  driftSpeed: 0.9
-  colorDriftDegrees: 2
 --- !u!1001 &1885952813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17358,6 +17193,146 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1911000001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1911000002}
+  - component: {fileID: 1911000003}
+  - component: {fileID: 1911000004}
+  - component: {fileID: 1911000005}
+  m_Layer: 0
+  m_Name: Fluorescent Overhead Wash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1911000002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911000001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.35, y: 2.55, z: 2.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1801838343}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &1911000003
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911000001}
+  m_Enabled: 1
+  serializedVersion: 13
+  m_Type: 2
+  m_Color: {r: 0.78, g: 0.9, b: 0.86, a: 1}
+  m_Intensity: 1.05
+  m_Range: 6.5
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize2D: {x: 0.5, y: 0.5}
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 4200
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShapeRadius: 0.05
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
+--- !u!114 &1911000004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911000001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
+--- !u!114 &1911000005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911000001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559dedd76435eb141bce24b2890c67d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.Lighting.SoftBulbFlicker
 --- !u!1001 &1912530107
 PrefabInstance:
   m_ObjectHideFlags: 0

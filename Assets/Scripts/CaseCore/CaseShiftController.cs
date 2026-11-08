@@ -98,6 +98,9 @@ namespace CaseClosed.CaseCore
         /// <summary>Raised whenever the shift enters a new phase.</summary>
         public event Action<CaseShiftPhase> PhaseChanged;
 
+        /// <summary>Raised once when a new case record is collected.</summary>
+        public event Action<EvidenceRecord> EvidenceCollected;
+
         /// <summary>Raised after a HOLD or RELEASE stamp is recorded.</summary>
         public event Action<SuspectStampEvent> SuspectStamped;
 
@@ -191,7 +194,25 @@ namespace CaseClosed.CaseCore
             EnsureActive();
             if (Phase != CaseShiftPhase.Briefing && Phase != CaseShiftPhase.Investigating)
                 throw new InvalidOperationException("Evidence can only be collected before the charge phase.");
-            return activeSession.CollectEvidence(evidenceId);
+            if (!activeSession.CollectEvidence(evidenceId))
+                return false;
+
+            IReadOnlyList<EvidenceRecord> collected = activeSession.GetCollectedEvidence();
+            for (int i = 0; i < collected.Count; i++)
+            {
+                if (collected[i] != null && collected[i].Id == evidenceId)
+                {
+                    EvidenceCollected?.Invoke(collected[i]);
+                    break;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>Returns the collected records for the active case, or an empty list before a shift starts.</summary>
+        public IReadOnlyList<EvidenceRecord> GetCollectedEvidence()
+        {
+            return activeSession == null ? Array.Empty<EvidenceRecord>() : activeSession.GetCollectedEvidence();
         }
 
         /// <summary>Asks the active suspect a question and applies code-owned stress rules.</summary>

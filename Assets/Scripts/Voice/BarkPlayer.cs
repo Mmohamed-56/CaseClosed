@@ -177,7 +177,7 @@ namespace CaseClosed.Voice
                 if (interrogationController == null)
                     interrogationController = GetComponentInParent<InterrogationController>();
                 if (interrogationController == null)
-                    interrogationController = FindFirstObjectByType<InterrogationController>();
+                    interrogationController = FindAnyObjectByType<InterrogationController>();
             }
 
             if (interrogationController == null)
