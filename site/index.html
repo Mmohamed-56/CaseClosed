@@ -2,24 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-<!-- This site is hosted on Netlify. Anyone can build and deploy a site
-     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=77866f37-2c33-44a0-a846-3d44200be13b
-     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>University Public Safety Records — Case Desk</title>
+  <title>UPSR Records — Case Desk</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <main class="shell" id="main">
     <div class="notice">
-      Night-shift records terminal for a <strong>fictional</strong> campus public-safety office (not a real university police department).
-      Search public case files, open suspect dossiers, pin records to the evidence board.
-      Truth flags stay in Unity — this screen only shows what the badge system already knows.
+      <strong>RESTRICTED TERMINAL</strong> — University Public Safety Records.
+      Displays open investigative files for the active case only.
+      Attach records to the working case file as needed. Do not print or forward without supervisor approval.
     </div>
 
     <section class="panel">
       <div class="panel-h">
-        <span>Active case</span>
+        <span>Active case file</span>
         <span class="tag" id="case-id-tag">—</span>
       </div>
       <div class="panel-b hero-case">
@@ -28,11 +25,11 @@
           <p class="briefing" id="case-briefing"></p>
           <dl class="case-meta">
             <div>
-              <dt>Case ID</dt>
+              <dt>Case number</dt>
               <dd id="case-id">—</dd>
             </div>
             <div>
-              <dt>Schema</dt>
+              <dt>Form revision</dt>
               <dd id="case-schema">—</dd>
             </div>
             <div>
@@ -42,8 +39,9 @@
           </dl>
         </div>
         <div class="row" style="margin-top:10px">
-          <a class='btn btn-primary' href='/search'>Search records</a>
-          <button type="button" class="btn" id="btn-reload-sample">Load sample case</button>
+          <a class="btn btn-primary" href="search.html">Search records</a>
+          <a class="btn" href="directory.html">Campus directory</a>
+          <button type="button" class="btn" id="btn-reload-sample">Reload from archive</button>
         </div>
       </div>
     </section>
@@ -51,11 +49,11 @@
     <section class="panel">
       <div class="panel-h">
         <span>Persons of interest</span>
-        <span class="tag">select a dossier</span>
+        <span class="tag">select a subject file</span>
       </div>
       <div class="panel-b">
         <div class="suspect-grid" id="suspect-grid"></div>
-        <div class="empty" id="suspect-empty" hidden>No suspects in payload.</div>
+        <div class="empty" id="suspect-empty" hidden>No persons of interest listed on this case.</div>
       </div>
     </section>
   </main>
@@ -69,13 +67,15 @@
 
       function render(caseData, source) {
         UBPDApp.paintChrome(caseData, source);
-        document.getElementById("case-title").textContent = caseData.title || "(untitled)";
+        document.getElementById("case-title").textContent = caseData.title || "(untitled case)";
         document.getElementById("case-briefing").textContent = caseData.briefing || "";
         document.getElementById("case-id").textContent = caseData.caseId || "—";
         document.getElementById("case-id-tag").textContent = caseData.caseId || "—";
-        document.getElementById("case-schema").textContent = "v" + (caseData.schemaVersion || "?");
-        var list = caseData.suspects || [];
-        document.getElementById("case-count").textContent = String(list.length);
+        document.getElementById("case-schema").textContent = "RCS-" + (caseData.schemaVersion || "?");
+        var all = caseData.suspects || [];
+        var list = UBPDApp.listPersonsOfInterest(caseData);
+        document.getElementById("case-count").textContent =
+          String(list.length) + " flagged · " + String(all.length) + " in index";
 
         var grid = document.getElementById("suspect-grid");
         var empty = document.getElementById("suspect-empty");
@@ -104,7 +104,7 @@
       UBPDApp.loadCaseData()
         .then(function (res) { render(res.data, res.source); })
         .catch(function (err) {
-          document.getElementById("case-title").textContent = "Failed to load case";
+          document.getElementById("case-title").textContent = "Unable to load case file";
           document.getElementById("case-briefing").textContent = String(err);
           UBPDApp.showToast("Case load failed");
         });
@@ -118,10 +118,9 @@
               window.__UBPD_CASE__ = data;
               try { sessionStorage.setItem("ubpd.case", JSON.stringify(data)); } catch (e) {}
             }
-            // Optional: put sample into hash so Unity-style load path is exercised
             location.hash = UBPDApp.encodeCaseToHash(data).replace(/^#/, "#");
             render(data, "sample");
-            UBPDApp.showToast("Sample case loaded");
+            UBPDApp.showToast("Archive case file loaded");
           });
       });
 

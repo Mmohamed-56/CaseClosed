@@ -2,20 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-<!-- This site is hosted on Netlify. Anyone can build and deploy a site
-     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=77866f37-2c33-44a0-a846-3d44200be13b
-     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>University Public Safety Records — Suspect</title>
+  <title>UPSR Records — Subject File</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <main class="shell">
-    <p style="margin:0 0 8px"><a href='/'>&larr; Case desk</a> · <a href='/search'>Search</a></p>
+    <p class="crumb"><a href="index.html">&larr; Case desk</a> · <a href="search.html">Search</a></p>
 
     <section class="panel">
       <div class="panel-h">
-        <span>Suspect dossier</span>
+        <span>Subject file</span>
         <span class="tag" id="suspect-id-tag">—</span>
       </div>
       <div class="panel-b">
@@ -24,9 +21,9 @@
           <div>
             <h1 id="person-name">…</h1>
             <div class="person-stats">
-              <span class="k">Role</span><span class="v" id="person-role">—</span>
-              <span class="k">Suspect ID</span><span class="v" id="person-id">—</span>
-              <span class="k">Records</span><span class="v" id="person-rec-count">—</span>
+              <span class="k">Campus role</span><span class="v" id="person-role">—</span>
+              <span class="k">Subject ID</span><span class="v" id="person-id">—</span>
+              <span class="k">Linked records</span><span class="v" id="person-rec-count">—</span>
             </div>
           </div>
         </div>
@@ -39,15 +36,15 @@
 
     <section class="panel">
       <div class="panel-h">
-        <span>Public records</span>
-        <span class="tag">categories are display-only</span>
+        <span>Linked public records</span>
+        <span class="tag">filter by record class</span>
       </div>
       <div class="panel-b">
         <div class="tabs" id="tabs" role="tablist"></div>
         <table class="data" id="records-table">
           <thead>
             <tr>
-              <th>Category</th>
+              <th>Class</th>
               <th>Title</th>
               <th>Record ID</th>
               <th></th>
@@ -55,7 +52,7 @@
           </thead>
           <tbody id="records-body"></tbody>
         </table>
-        <div class="empty" id="records-empty" hidden>No public records for this suspect.</div>
+        <div class="empty" id="records-empty" hidden>No linked records for this subject.</div>
       </div>
     </section>
   </main>
@@ -124,14 +121,14 @@
       function render(caseData, source) {
         UBPDApp.paintChrome(caseData, source);
         if (!suspectId) {
-          document.getElementById("person-name").textContent = "Missing suspect id";
+          document.getElementById("person-name").textContent = "Missing subject id";
           return;
         }
         var s = UBPDApp.findSuspect(caseData, suspectId);
         if (!s) {
-          document.getElementById("person-name").textContent = "Suspect not in case payload";
+          document.getElementById("person-name").textContent = "Subject not found on active case";
           document.getElementById("person-statement").textContent =
-            "No dossier for id " + suspectId + " in the loaded public case.";
+            "No subject file for id " + suspectId + " in the loaded case.";
           return;
         }
         document.title = "UPSR — " + s.name;

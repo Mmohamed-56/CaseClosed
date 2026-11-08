@@ -1,24 +1,7 @@
 /**
- * UPSR (University Public Safety Records) ↔ Unity bridge — isolated integration surface.
- *
- * "UBPD" in API names is a stable fictional protocol code for Unity wiring —
- * not University at Buffalo Police / any real agency. Do not rename without Magdy.
- *
- * Unity is expected to eventually route evidence IDs into:
- *   CaseWebsiteBridge.ReceiveEvidenceRecordId(recordId)
- *
- * This file does NOT assume a specific browser package. Wire ONE of:
- *   - window.UBPD_onAddEvidence(recordId)          preferred custom hook
- *   - window.vuplex.postMessage(json)               Vuplex-style
- *   - window.Unity.call(json)                       generic stub
- *   - URL hash fallback #clue=<recordId>            Unity listens for navigation
- *
- * Public API used by the site (unchanged for Unity):
- *   UBPDBridge.sendEvidenceRecordId(recordId)
- *   UBPDBridge.receiveCaseData(caseObject)   // optional live push from Unity
- *   UBPDBridge.isConnected()
- *
- * Graceful when disconnected: hash fallback + on-page toast; site stays usable.
+ * Desk host bridge (protocol code "ubpd" — do not rename; CollectEvidence depends on it).
+ * Public API: UBPDBridge.sendEvidenceRecordId / receiveCaseData / isConnected
+ * Channels: UBPD_onAddEvidence → vuplex → Unity.call → #clue=<recordId>
  */
 (function (global) {
   "use strict";

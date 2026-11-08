@@ -11,10 +11,17 @@
   var TYPE_LABELS = {
     access: "Access logs",
     purchase: "Purchases",
-    phone: "Phone activity",
-    social: "Social posts",
-    context: "Case context",
+    phone: "Phone / radio",
+    social: "Network posts",
+    context: "Case forms",
     other: "Other records"
+  };
+
+  var SOURCE_LABELS = {
+    hash: "HOST PUSH",
+    memory: "WORKSTATION",
+    session: "SESSION CACHE",
+    sample: "ARCHIVE FILE"
   };
 
   function showToast(text) {
@@ -41,14 +48,34 @@
   function updateConnectionStatus() {
     var bridge = global.UBPDBridge;
     if (!bridge) {
-      setStatus('<span class="warn">BRIDGE N/A</span>');
+      setStatus('<span class="warn">DESK LINK: N/A</span>');
       return;
     }
     if (bridge.isConnected()) {
-      setStatus('<span class="ok">UNITY LINK: ACTIVE</span>');
+      setStatus('<span class="ok">DESK LINK: ONLINE</span>');
     } else {
-      setStatus('<span class="warn">UNITY LINK: OFFLINE</span> <span>(hash fallback)</span>');
+      setStatus('<span class="warn">DESK LINK: LOCAL</span> <span>(hash pin)</span>');
     }
+  }
+
+  /** POIs for case desk — flagged poi:true, else subjects with case-prefixed record ids. */
+  function listPersonsOfInterest(caseData) {
+    var list = (caseData && caseData.suspects) || [];
+    var flagged = list.filter(function (s) { return s && s.poi === true; });
+    if (flagged.length) return flagged;
+    var caseId = String((caseData && caseData.caseId) || "");
+    if (!caseId) return list.slice(0, 8);
+    return list.filter(function (s) {
+      var recs = (s && s.records) || [];
+      for (var i = 0; i < recs.length; i++) {
+        if (String(recs[i].id || "").indexOf(caseId) === 0) return true;
+      }
+      return false;
+    });
+  }
+
+  function listDirectory(caseData) {
+    return (caseData && caseData.suspects) || [];
   }
 
   /* --- base64url --- */
@@ -281,7 +308,7 @@
     }
     var srcEl = document.getElementById("data-source");
     if (srcEl) {
-      srcEl.textContent = "DATA: " + (source || "?").toUpperCase();
+      srcEl.textContent = "SOURCE: " + (SOURCE_LABELS[source] || String(source || "?").toUpperCase());
     }
     var clock = document.getElementById("clock");
     if (clock) {
@@ -320,7 +347,7 @@
             "Querying campus records mainframe...",
             "Resolving badge index...",
             "Fetching public records slice...",
-            "Almost there (probably)..."
+            "Merging directory cards..."
           ];
           msg.textContent = lines[Math.min(lines.length - 1, Math.floor(t * lines.length))];
         }
@@ -344,12 +371,12 @@
     var result = bridge.sendEvidenceRecordId(recordId);
     if (result.ok) {
       if (result.offline) {
-        showToast("Added to evidence board (offline signal: #" + recordId + ")");
+        showToast("Attached to case file (local pin: " + recordId + ")");
       } else {
-        showToast("Added to evidence board.");
+        showToast("Attached to working case file.");
       }
     } else {
-      showToast("Could not signal evidence id.");
+      showToast("Could not attach record.");
     }
     updateConnectionStatus();
   }
@@ -378,6 +405,8 @@
     validatePayload: validatePayload,
     findSuspect: findSuspect,
     findRecord: findRecord,
+    listPersonsOfInterest: listPersonsOfInterest,
+    listDirectory: listDirectory,
     inferCategory: inferCategory,
     categoryLabel: categoryLabel,
     initials: initials,
