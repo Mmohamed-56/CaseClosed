@@ -114,12 +114,17 @@ namespace CaseClosed.CaseCore.Gemini
         public void HandleSuspectLine(SuspectVoiceLine line)
         {
             if (line == null || string.IsNullOrWhiteSpace(line.Text))
+            {
+                if (logLines)
+                    Debug.LogWarning("[ElevenLabsVoiceSink] Ignored a null or blank spoken line.");
                 return;
+            }
 
             EnsureWired();
 
             if (logLines)
-                Debug.Log("[ElevenLabsVoiceSink] TTS: " + line.SuspectName + " / " + line.Emotion + " → " + line.Text);
+                Debug.Log("[ElevenLabsVoiceSink] Forwarding spoken line for suspect " +
+                          (line.SuspectId ?? string.Empty) + " (" + line.Text.Length + " characters) to the voice event bus.");
 
             // ElevenLabsVoiceClient subscribes to ReplyReady in OnEnable and Speaks.
             // Choice-tree (Asuka) answers should call SpeakAnswer / HandleSuspectLine so they hit this same bus.

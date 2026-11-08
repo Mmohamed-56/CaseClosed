@@ -30,8 +30,8 @@ namespace CaseClosed.Browser
         private const string WindowsCefEngineEditorPath = "Packages/dev.voltstro.unitywebbrowser.engine.cef.win.x64/Engine~/";
         private const int BrowserScrollScale = 120;
         private const float BrowserScrollSensitivity = 0.2f;
-        private const int BrowserTcpInPort = 5565;
-        private const int BrowserTcpOutPort = 5566;
+        private const int BrowserTcpInPort = 5575;
+        private const int BrowserTcpOutPort = 5576;
         private const int CefStartupTimeoutMilliseconds = 15000;
 
         [Header("Case Website")]

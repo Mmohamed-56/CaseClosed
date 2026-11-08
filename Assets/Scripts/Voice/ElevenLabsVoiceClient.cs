@@ -129,8 +129,19 @@ namespace CaseClosed.Voice
         /// <inheritdoc />
         public void Speak(SuspectSpeechRequest request)
         {
-            if (request == null || string.IsNullOrWhiteSpace(request.Line))
+            if (request == null)
+            {
+                if (logErrors)
+                    Debug.LogWarning("[ElevenLabs] TTS request skipped: request is null.");
                 return;
+            }
+
+            if (string.IsNullOrWhiteSpace(request.Line))
+            {
+                if (logErrors)
+                    Debug.LogWarning("[ElevenLabs] TTS request skipped: line is blank.");
+                return;
+            }
 
             if (request.CancelPrevious)
                 CancelInFlight();
@@ -138,7 +149,28 @@ namespace CaseClosed.Voice
             ApiProxySettings proxy = ResolveProxySettings();
             bool useProxy = proxy != null && proxy.ShouldUseProxy;
             string apiKey = null;
-            if (!useProxy)
+            if (useProxy && string.IsNullOrWhiteSpace(proxy.AppToken))
+            {
+                bool canUseEditorDirectKey = proxy.ShouldAllowDirectKeys &&
+                                             ElevenLabsApiKey.TryGetDirect(out apiKey);
+                if (canUseEditorDirectKey)
+                {
+                    useProxy = false;
+                }
+                else
+                {
+                    if (logSkippedMissingKey && !keyMissingLogged)
+                    {
+                        keyMissingLogged = true;
+                        Debug.LogWarning(
+                            "[ElevenLabs] TTS skipped: proxy app token is not configured and no Editor direct key is available. " +
+                            "Configure the API proxy token or, in the Editor, ELEVENLABS_API_KEY.");
+                    }
+                    return;
+                }
+            }
+
+            if (!useProxy && string.IsNullOrWhiteSpace(apiKey))
             {
                 bool allowDirect = proxy == null || proxy.ShouldAllowDirectKeys;
                 if (!allowDirect || !ElevenLabsApiKey.TryGetDirect(out apiKey))
@@ -147,12 +179,15 @@ namespace CaseClosed.Voice
                     {
                         keyMissingLogged = true;
                         Debug.LogWarning(
-                            "[ElevenLabs] Proxy/API key missing — TTS skipped. " +
-                            "Set PlayerPrefs CASE_CLOSED_APP_TOKEN or ELEVENLABS_API_KEY.");
+                            "[ElevenLabs] TTS skipped: no usable proxy or direct API key is available. " +
+                            "Configure the API proxy token or, in the Editor, ELEVENLABS_API_KEY.");
                     }
                     return;
                 }
             }
+
+            if (logErrors)
+                Debug.Log("[ElevenLabs] TTS request accepted via " + (useProxy ? "proxy" : "direct key") + ".");
 
             EnsureAudioSource();
             // Voice + pitch come from the current suspect's catalog profile (gender/pitch/voiceId).
