@@ -39,6 +39,8 @@ namespace CaseClosed.CaseCore
             public string scene;
             /// <summary>What they did, as a verb phrase after "I ". Slip lines fill {act} from this at speak time.</summary>
             public string act;
+            /// <summary>Where they said they were, as a phrase after "I was". Lines fill {alibi} from this at speak time.</summary>
+            public string alibiPlace;
             public string windowStart;
             public string windowEnd;
             public string accessTime;
@@ -164,6 +166,7 @@ namespace CaseClosed.CaseCore
                     treeHook = "banner_cutdown",
                     scene = "Over the court in the Field House",
                     act = "cut down the spirit banner",
+                    alibiPlace = "at dinner",
                     windowStart = "6:05 PM",
                     windowEnd = "6:35 PM",
                     accessTime = "6:21 PM",

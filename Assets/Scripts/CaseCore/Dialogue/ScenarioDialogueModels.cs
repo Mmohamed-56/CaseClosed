@@ -65,6 +65,8 @@ namespace CaseClosed.CaseCore.Dialogue
         public string AftermathDecision;
         /// <summary>This case's act. A verb phrase after "I ". Replaces {act} when the line is spoken.</summary>
         public string SpokenAct;
+        /// <summary>This case's alibi place. A phrase after "I was". Replaces {alibi} when the line is spoken.</summary>
+        public string SpokenAlibi;
     }
 
     /// <summary>Index listing bank TextAsset names under Resources/Dialogue (no extension).</summary>

@@ -99,6 +99,10 @@ def build_tree(a: dict) -> dict:
 
 
 def main() -> None:
+    raise SystemExit(
+        "Assets/Resources/Dialogue/Trees is the authored pack. "
+        "This generator would overwrite those JSON files, so it does not run."
+    )
     data = json.loads(AFFILIATES.read_text(encoding="utf-8"))
     interviewees = [a for a in data.get("affiliates", []) if a.get("tier") == "interviewee"]
     if len(interviewees) < 8:

@@ -211,7 +211,8 @@ namespace CaseClosed.CaseCore
                 suspects,
                 directory,
                 template.scene,
-                template.act);
+                template.act,
+                template.alibiPlace);
         }
 
         /// <summary>Playable interviewee pool size (catalog when loaded, else embedded 8).</summary>

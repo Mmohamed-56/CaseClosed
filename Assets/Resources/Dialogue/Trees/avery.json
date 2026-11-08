@@ -7,215 +7,47 @@
       "questions": [
         {
           "id": "avery_access_q1",
-          "prompt": "You told me you were gone. This says you weren't. Talk.",
+          "prompt": "This puts you right there. Explain it.",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I left that building and I stayed on the rest of the linen route. I radioed where I was.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I'm too tired to invent a second visit. I was on the loop with the radio. I didn't turn around.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "You can raise your voice. I was on the route. I didn't leave it for a personal stop.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "I was on the linen route. I didn't leave it. The photo doesn't change that.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "A facilities badge in a hallway looks like work. I was supposed to be on the next building. I was.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I was tired and I kept walking. I had already moved on to the next building.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I was on the route. I'm sweaty from the cart and I still didn't go back.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I left the route and I did it. I {act}. The radio call was after I was gone.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Chief, I've been on my feet since five. I was {alibi}. I don't have the energy to be somewhere I wasn't." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfInnocent": true, "line": "That's wrong. I don't know how, but it's wrong. I was {alibi}, and the radio log will say so." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "onlyIfInnocent": true, "line": "I've got nine buildings on my route and you're asking me to explain a tenth. I was {alibi}." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "I was {alibi}. Say it's wrong and let me get back to work, or don't, I'll still have been there." },
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfCulprit": true, "line": "Huh. Badge readers glitch, chief. Mine's been double-reading for a month. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "I was {alibi}. That's the shift. I don't make side trips, I don't have the legs for it." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "I was {alibi}. I'm tired. I'm telling you I was {alibi}. Can we leave it there." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Ah, hell. Alright. I {act}. I wasn't {alibi}. I'm too tired to keep two stories straight, so there's the one." }
           ]
         },
         {
           "id": "avery_access_q2",
-          "prompt": "You told me one thing. This says another. Which one's true?",
-          "aggressive": true,
+          "prompt": "Walk me through your night again. Slowly.",
+          "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Facilities nights are hallways and radios. Mine's written down. I kept walking the route.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A badge read can be wrong. I wasn't. I was on the loop.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "You can keep asking. I was on the route. I didn't go back off it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "Last time. I was on the route. I radioed in. I didn't go back.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The log puts my badge where the route says I wasn't. I hear it. I had already moved on.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I almost said I only checked a door. I didn't. I stayed on the route.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I kept walking the route. The radio log is what I actually did.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "It was me. I did it. I {act}. I wasn't on the route.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Clock in. Cart. Route. Then {alibi}. Then I sit in my truck for ten minutes before I can drive. That's the night, every night." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfInnocent": true, "line": "Same as before. Route, then {alibi}, then home. There's no slow version, it's just a short night." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "onlyIfInnocent": true, "line": "I don't have a slower speed left in me. I was {alibi}. Done." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "No. I've walked that route for real tonight. I'm not walking it again for you. I was {alibi}." },
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfCulprit": true, "line": "Clocked in, pushed the cart, hit the buildings, ended up {alibi}. Then home. Nothing to it." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "Route. Then {alibi}. Then home. I've said it. I'll say it again if you want but it won't get longer." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "Route, then, uh, {alibi}. Then home. I think. Yeah. Home. I'm running on fumes here, chief." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Route. Then I stepped off it. I {act}. Then I got back on like nothing happened and finished the buildings. Slow enough for you?" }
           ]
         },
         {
           "id": "avery_access_q3",
-          "prompt": "Slow down. Where were you actually standing?",
-          "aggressive": false,
+          "prompt": "You're lying to me. I can see it on you.",
+          "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "On the linen route, in the hallway I radioed from. That's where I was standing.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Wherever the radio check says. I was in that hall with a cart. I wasn't somewhere else.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Check the radio log. I was in the hall I was assigned.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "The hall on the route. I'm done. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The next building on the linen route. That's the spot.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I was on the linen route. I wasn't in some other room.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I was in the hall with the cart. I didn't go somewhere else.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I wasn't on that hall with the cart. I did it. I {act}.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "What you see is twelve hours of hallway. I was {alibi}. Tired looks like guilty under these lights." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfInnocent": true, "line": "I'm not lying. I'm exhausted. Those aren't the same, even if they sit the same." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "onlyIfInnocent": true, "line": "You see a guy who'd like to go home. That's all. I was {alibi}." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "I've been lied to by better than you, chief. I was {alibi}. I don't lie, I don't have the time." },
+            { "minStress": 0, "maxStress": 29, "emotion": "defensive", "onlyIfCulprit": true, "line": "I look like this at every shift change. Ask the night lead. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "You see a long night. That's it. I was {alibi}." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "Don't. I was {alibi}. I don't have it in me to argue about my own face." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Yeah. You can. I {act}. I'm too beat to hide it anymore. Just write it down." }
           ]
         }
       ]
@@ -224,108 +56,36 @@
       "evidenceKey": "red_herring",
       "questions": [
         {
-          "id": "avery_herring_q1",
-          "prompt": "What's this for?",
+          "id": "avery_rh_q1",
+          "prompt": "What's this about?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "That's linen, or a cart, or a tool for the route. It did the job it was signed out for."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I sign for equipment every shift. This one went back, or it did the round it was for."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "It looks like prep because the job is prep. It's a route supply."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "It's a work slip for the linen round. That's all it is."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "That's a work slip, chief. Facilities signs for gear and keys all night. That one's for the route, and it went back." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It's a checkout for the job. I sign twenty of those a week. Nothing on it is mine." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "It's the job. Read the top of the form. It says what it's for right there." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Work. It's work. If you want to fire me for doing it, get in line behind my supervisor." }
           ]
         },
         {
-          "id": "avery_herring_q2",
-          "prompt": "You've got this from today. Why'd you have it?",
+          "id": "avery_rh_q2",
+          "prompt": "Funny timing on this, don't you think?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Because the cart was short a stack. I signed it out at the start of the route. Ordinary."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Same day is every day for facilities. I had it so the round wouldn't stall."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I had it because nights run out of clean stock. I replaced it and I moved on."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I had it for the route. The time is when I signed it out for linen."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Every slip I sign has today's date on it. That's not timing, that's a calendar." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "I signed it the day I worked because I work every day. There's no clever in it." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "The timing is a shift. You've got a slip with a date on it. Congratulations." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Funny would be me having time to plan something. I don't. I barely have time to eat." }
           ]
         },
         {
-          "id": "avery_herring_q3",
-          "prompt": "Does this have anything to do with what happened?",
+          "id": "avery_rh_q3",
+          "prompt": "Convince me this has nothing to do with it.",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. It's a route supply. It doesn't have anything to do with what you're on about."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "It stayed on the cart. I'm telling you it isn't part of this."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No. I used it on the route and I kept walking. It isn't part of this."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. It was gear for the route. I'm done with that slip."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Call the night lead. He signed the return. The stuff's back in the cage with my initials on the tag. Takes one phone call, chief." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It's signed back in. There's a return line and a supervisor's name on it. That's the whole story." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I don't do convincing. I do my route. The gear went back. Ask the guy who took it back." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "The return line is signed. If that's not enough, nothing I say in this chair will be." }
           ]
         }
       ]
@@ -335,107 +95,35 @@
       "questions": [
         {
           "id": "avery_alibi_q1",
-          "prompt": "This is what you're leaning on. Were you really there?",
-          "aggressive": false,
+          "prompt": "This is your alibi? It doesn't cover the window.",
+          "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Yes. The radio check is where I was. I called it from the loop and I stayed on the loop."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I don't go back unless dispatch sends me, and dispatch didn't. I stayed on the route."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "It's in the radio log. I was there."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "If that check-in is wrong, the whole night's radios are wrong. They aren't. I was there."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "It's not an alibi, chief, it's a radio check. I called in where I was. I was {alibi}. Nobody checks in every ninety seconds." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It covers where I was. I was {alibi}. If you want minute-by-minute, put a camera on the cart." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "Nothing covers a window on nights. You get a radio log and you take it. I was {alibi}." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Then it doesn't cover it. I was still {alibi}. I don't have a better record because nobody makes one." }
           ]
         },
         {
           "id": "avery_alibi_q2",
-          "prompt": "Could you have gone back after this?",
-          "aggressive": true,
+          "prompt": "Who can back this up?",
+          "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. Dispatch didn't send me back. I went to the next building on the list."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "After that radio check I went to the next hall. I didn't spin around."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I couldn't have. The next building was already expecting the cart."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I didn't go back. The route only runs one direction when we're behind."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Dispatch heard me. The night lead was on the channel. A kid held a door for the cart. I didn't get his name, I got the door." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "The night lead. Dispatch. That's who nights has. We don't travel in packs." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "Ask the lead. He'll tell you where I was before you finish the question." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "The lead and the radio. If that's not good enough, there's no one on campus good enough." }
           ]
         },
         {
           "id": "avery_alibi_q3",
-          "prompt": "If this is off, who actually saw you?",
+          "prompt": "What did you do after this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Dispatch. They logged the check. That's who had me, even if they didn't see my face."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "The resident who held the door on that hall. They saw the cart. They saw me."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Ask the night lead. They were on the radio with me. I told them where I was."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "The night lead, and the radio log. Those are who knew where I was."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Finished the route. Dumped the cart. Sat in my truck until my hands stopped buzzing. Drove home. Same as always." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Finished the buildings, clocked out, went home. You want the mileage too?" },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I finished my route and I went home. There's no after on nights. There's just bed." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Home. I went home. I'd like to do that again sometime tonight." }
           ]
         }
       ]
@@ -445,107 +133,35 @@
       "questions": [
         {
           "id": "avery_roster_q1",
-          "prompt": "You're on this list. When did you leave?",
+          "prompt": "Why is your name on this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The board gave me a loop, not a spare hour. I worked the loop and I left it when it ended."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "When the route sheet ended. I had doors to check. I checked them and I moved."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "End of the loop. Being assigned isn't the same as hanging around after."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I didn't linger. Lingering is how you miss the next building, and I don't miss buildings."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Because somebody at a desk typed it there. I'm on every route board in this place. Nobody asks me first." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "I work nights. My name's on everything that happens at night. That's the job, not a motive." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "Because I'm staff. Staff is on lists. You want someone who isn't on a list, go find a ghost." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "It's a board, chief. My name's on a board. Hang me for that and you'll hang the whole crew." }
           ]
         },
         {
           "id": "avery_roster_q2",
-          "prompt": "Did being on this let you stay late?",
+          "prompt": "Being on this got you access, didn't it?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. The route list let me into the halls on the sheet. I didn't stay after."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "It gave me a cart and a sequence. I followed the sequence. Then I was off."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No. Assignment isn't a reason to still be out. I finished the names on the sheet."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. Being on the route board didn't let me go wherever. I did the loop."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "It got me a cart and a list of doors. Every key goes back on the board when I'm done, and the board gets counted." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "I can open hallways. Everybody in a vest can. That's not access, that's mopping." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "If I wanted in somewhere I'd use the key I'm issued, and it'd be logged, and you'd have it. You don't." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Access. Sure. To the trash room. Lock me up." }
           ]
         },
         {
           "id": "avery_roster_q3",
-          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
+          "prompt": "Who else on this list would do something like this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Because I'm on nights. The list is the loop. I was on that loop, which is what I said."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "My name's there because they scheduled the linen round. I did the round."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "It's a route assignment. I can be on it and still have been in the hall I radioed from."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "The list is the work I did. I said I did the work. I didn't take a second trip."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Not my business, chief. I don't watch people. I watch floors. Can't help you there." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Everyone on nights is tired and broke. That doesn't make them this. Doesn't make me this either." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I'm not ratting on a crew I've got to see at five tomorrow. Find your own guy." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Nobody. You want a name, pull one off the board yourself." }
           ]
         }
       ]
@@ -554,108 +170,36 @@
       "evidenceKey": "sign_in",
       "questions": [
         {
-          "id": "avery_sign_q1",
-          "prompt": "You signed this. When did you actually leave?",
+          "id": "avery_signin_q1",
+          "prompt": "You signed in. When did you sign out?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I signed the shift start like everyone on nights. Then I walked the route. Then I was done."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "The sign-in is the start of the loop. It isn't a promise to be in some other room later."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I left the first building and I kept going. The signature is just the start."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I signed in at the start of the shift, then I walked the route."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "When the route sent me on. Those sheets are for the start. Nobody on nights signs out of a building, we just push the cart to the next one." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "I left when that stop was done. The paper doesn't know that. The radio does." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "When I was done. I don't stand around in buildings I've finished. I was {alibi} after." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I left when the floor was done. A sheet doesn't follow me out. It stays on the wall." }
           ]
         },
         {
-          "id": "avery_sign_q2",
-          "prompt": "This puts you in the building. How late were you there?",
+          "id": "avery_signin_q2",
+          "prompt": "There's no time out on here. You never left, did you?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Until the route moved me on. I was in the building on the sheet, then I wasn't."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Long enough to do that hall. Then the radio says the next one. I went."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Through the hall I was assigned. That's how late. Then I was elsewhere on the loop."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "As late as that stop on the route. Then I left it. I wasn't stuck there."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Chief, there's never a time out. Pull last month's sheets. Same blank column on every one. I left." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "I left. The cart doesn't push itself to the next building. I was {alibi}." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I left. Blank column means I had my hands full, not that I set up camp." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I left. I was {alibi}. If a clipboard says otherwise, the clipboard's wrong." }
           ]
         },
         {
-          "id": "avery_sign_q3",
-          "prompt": "Did signing this get you a key?",
+          "id": "avery_signin_q3",
+          "prompt": "Why were you even there?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. Signing the night sheet didn't give me my own key. Keys go back on the board."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A sign-in starts the shift. The keys I touch are logged, and I put them back."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No spare key from a signature. If I had one, it'd be on the board."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I got a route. I didn't get a key of my own. That's the job."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "It's on my route. Same reason I'm in every building. Somebody has to." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Because it's a stop on the sheet. I don't pick the buildings, dispatch does." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "Work. I was there for work. I don't go to that building for the ambiance." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Because I'm facilities, chief. I'm everywhere. That's the whole problem with your question." }
           ]
         }
       ]
@@ -668,38 +212,10 @@
           "prompt": "HOLD",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Look, I was on the linen route. I'm tired, and I know which building I was in. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "Come on. I didn't do it. I've been on my feet since five and I was on the route.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 84,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I was halfway through the linen route. You're sitting me down and the radios are still going. I didn't do this.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Alright. I did it. I {act}. I stepped off the linen route to do it.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "You're holding me. I've got three buildings left and a lead who's going to think I walked off. I was {alibi}. I didn't do this." },
+            { "minStress": 0, "maxStress": 100, "emotion": "defensive", "onlyIfInnocent": true, "line": "Fine. Hold me. Somebody call dispatch and tell them the cart's sitting in a hallway. I was {alibi}. Wrong guy." },
+            { "minStress": 0, "maxStress": 84, "emotion": "defensive", "onlyIfCulprit": true, "line": "Alright. You do what you've got to do. I was {alibi}, and I'll be saying that when they let me go." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Yeah. Figured. I {act}. I'm not going to fight you on it, chief. I'm too tired to fight anybody." }
           ]
         }
       ]
@@ -712,30 +228,9 @@
           "prompt": "RELEASE",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Appreciate it. I'm going back to the route before the next building thinks I vanished.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 84,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Fine by me. I was on the route, and I'm gonna go finish it.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Letting me walk doesn't undo it. I did it. I {act}. I left the route.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 100, "emotion": "calm", "onlyIfInnocent": true, "line": "Appreciate it, chief. I was {alibi}. Now I've got to go explain to the lead why a cart's been sitting unattended for an hour." },
+            { "minStress": 0, "maxStress": 84, "emotion": "calm", "onlyIfCulprit": true, "line": "Good. I was {alibi}. I'm going to go finish my buildings before anyone else decides I'm interesting." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "You're letting me walk after that? Chief, I just told you I {act}. I'll go. But I said it, and I'm not unsaying it." }
           ]
         }
       ]
