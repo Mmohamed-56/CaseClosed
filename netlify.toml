@@ -1,0 +1,42 @@
+# Case Closed — UPSR site + API proxy (Gemini / ElevenLabs)
+# Live: https://ubcaseclosed.netlify.app/
+# Site id: 77866f37-2c33-44a0-a846-3d44200be13b
+
+[build]
+  publish = "site"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+  directory = "netlify/functions"
+
+# Pretty API paths for Unity clients
+[[redirects]]
+  from = "/api/gemini"
+  to = "/.netlify/functions/gemini"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/tts"
+  to = "/.netlify/functions/tts"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/health"
+  to = "/.netlify/functions/health"
+  status = 200
+  force = true
+
+# SPA-ish fallbacks for records pages (keep last)
+[[redirects]]
+  from = "/search"
+  to = "/search.html"
+  status = 200
+
+[[headers]]
+  for = "/api/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Cache-Control = "no-store"

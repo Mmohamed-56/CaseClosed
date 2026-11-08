@@ -5,7 +5,8 @@ using UnityEngine;
 namespace CaseClosed.Voice
 {
     /// <summary>
-    /// Resolves the ElevenLabs API key without hardcoding.
+    /// Resolves the ElevenLabs API key for Editor / local fallback only.
+    /// Player builds should use the cloud proxy (<see cref="CaseClosed.Networking.ApiProxySettings"/>).
     /// Order: process env → user env → machine env → optional local key file (gitignored).
     /// Missing key is silent: TTS is skipped, gameplay continues.
     /// </summary>
@@ -16,8 +17,20 @@ namespace CaseClosed.Voice
         /// <summary>Optional local fallback path relative to the project (Editor) or persistentDataPath (player).</summary>
         public const string LocalKeyFileName = "elevenlabs.key";
 
-        /// <summary>Attempts to read a non-empty API key. Returns false when none is configured.</summary>
+        /// <summary>Attempts to read a non-empty direct API key. Returns false when none is configured.</summary>
         public static bool TryGet(out string apiKey)
+        {
+#if !UNITY_EDITOR
+            // Player builds must not rely on a baked-in or env provider key.
+            apiKey = null;
+            return false;
+#else
+            return TryGetDirect(out apiKey);
+#endif
+        }
+
+        /// <summary>Editor / local direct key lookup (also used when proxy allows Editor fallback).</summary>
+        public static bool TryGetDirect(out string apiKey)
         {
             apiKey = ReadEnvironment(EnvVarName);
             if (!string.IsNullOrWhiteSpace(apiKey))

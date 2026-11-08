@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=77866f37-2c33-44a0-a846-3d44200be13b
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>University Public Safety Records — Suspect</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="shell">
+    <p style="margin:0 0 8px"><a href='/'>&larr; Case desk</a> · <a href='/search'>Search</a></p>
+
+    <section class="panel">
+      <div class="panel-h">
+        <span>Suspect dossier</span>
+        <span class="tag" id="suspect-id-tag">—</span>
+      </div>
+      <div class="panel-b">
+        <div class="person-head" id="person-head">
+          <div class="avatar" id="avatar">?</div>
+          <div>
+            <h1 id="person-name">…</h1>
+            <div class="person-stats">
+              <span class="k">Role</span><span class="v" id="person-role">—</span>
+              <span class="k">Suspect ID</span><span class="v" id="person-id">—</span>
+              <span class="k">Records</span><span class="v" id="person-rec-count">—</span>
+            </div>
+          </div>
+        </div>
+        <div class="statement-box">
+          <div class="label">Statement on file</div>
+          <div id="person-statement"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-h">
+        <span>Public records</span>
+        <span class="tag">categories are display-only</span>
+      </div>
+      <div class="panel-b">
+        <div class="tabs" id="tabs" role="tablist"></div>
+        <table class="data" id="records-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Title</th>
+              <th>Record ID</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="records-body"></tbody>
+        </table>
+        <div class="empty" id="records-empty" hidden>No public records for this suspect.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/unity-bridge.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/chrome.js"></script>
+  <script>
+    (function () {
+      UBPDChrome.ensureShell();
+      var activeCat = UBPDApp.qs("cat") || "all";
+      var suspectId = UBPDApp.qs("id");
+
+      function renderRecords(suspect) {
+        var records = suspect.records || [];
+        var cats = { all: records };
+        records.forEach(function (r) {
+          var c = UBPDApp.inferCategory(r);
+          if (!cats[c]) cats[c] = [];
+          cats[c].push(r);
+        });
+
+        var order = ["all", "context", "access", "purchase", "phone", "social", "other"];
+        var tabs = document.getElementById("tabs");
+        tabs.innerHTML = "";
+        order.forEach(function (key) {
+          if (key !== "all" && !cats[key]) return;
+          var count = (cats[key] || []).length;
+          if (key !== "all" && count === 0) return;
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = key === activeCat ? "active" : "";
+          btn.textContent =
+            (key === "all" ? "All" : UBPDApp.categoryLabel(key)) + " (" + count + ")";
+          btn.addEventListener("click", function () {
+            activeCat = key;
+            renderRecords(suspect);
+          });
+          tabs.appendChild(btn);
+        });
+
+        var list = cats[activeCat] || [];
+        var body = document.getElementById("records-body");
+        var empty = document.getElementById("records-empty");
+        var table = document.getElementById("records-table");
+        body.innerHTML = "";
+        if (!list.length) {
+          table.hidden = true;
+          empty.hidden = false;
+          return;
+        }
+        table.hidden = false;
+        empty.hidden = true;
+        list.forEach(function (r) {
+          var cat = UBPDApp.inferCategory(r);
+          var tr = document.createElement("tr");
+          tr.innerHTML =
+            "<td><span class=\"type-pill\">" + UBPDApp.escapeHtml(UBPDApp.categoryLabel(cat)) + "</span></td>" +
+            "<td>" + UBPDApp.escapeHtml(r.title || "") + "</td>" +
+            '<td class="mono">' + UBPDApp.escapeHtml(r.id) + "</td>" +
+            '<td><a href="record.html?id=' + encodeURIComponent(r.id) + '">Open</a></td>';
+          body.appendChild(tr);
+        });
+      }
+
+      function render(caseData, source) {
+        UBPDApp.paintChrome(caseData, source);
+        if (!suspectId) {
+          document.getElementById("person-name").textContent = "Missing suspect id";
+          return;
+        }
+        var s = UBPDApp.findSuspect(caseData, suspectId);
+        if (!s) {
+          document.getElementById("person-name").textContent = "Suspect not in case payload";
+          document.getElementById("person-statement").textContent =
+            "No dossier for id " + suspectId + " in the loaded public case.";
+          return;
+        }
+        document.title = "UPSR — " + s.name;
+        document.getElementById("suspect-id-tag").textContent = s.id;
+        document.getElementById("person-name").textContent = s.name;
+        document.getElementById("person-role").textContent = s.role || "—";
+        document.getElementById("person-id").textContent = s.id;
+        document.getElementById("person-rec-count").textContent = String((s.records || []).length);
+        document.getElementById("person-statement").textContent = s.statement || "";
+        var av = document.getElementById("avatar");
+        av.textContent = UBPDApp.initials(s.name);
+        av.style.background = UBPDApp.avatarColor(s.id);
+        renderRecords(s);
+      }
+
+      UBPDApp.loadCaseData()
+        .then(function (res) { render(res.data, res.source); })
+        .catch(function (err) {
+          document.getElementById("person-name").textContent = "Load failed";
+          document.getElementById("person-statement").textContent = String(err);
+        });
+    })();
+  </script>
+</body>
+</html>

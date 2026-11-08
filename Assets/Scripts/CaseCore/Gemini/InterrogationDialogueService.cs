@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CaseClosed.Networking;
 using CaseClosed.Voice;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace CaseClosed.CaseCore.Gemini
         [SerializeField] private CaseShiftController shiftController;
         [SerializeField] private GeminiApiClient geminiClient;
         [SerializeField] private GeminiApiKeySettings apiKeySettings;
+        [SerializeField] private ApiProxySettings proxySettings;
 
         [Header("Instant Reaction")]
         [Tooltip("Plays a short bark on ValidQuestionAsked while Gemini/ElevenLabs load. Added when missing.")]
@@ -52,19 +54,27 @@ namespace CaseClosed.CaseCore.Gemini
             if (geminiClient == null)
                 geminiClient = gameObject.AddComponent<GeminiApiClient>();
             if (apiKeySettings != null)
-                geminiClient.Configure(apiKeySettings);
+                geminiClient.Configure(apiKeySettings, proxySettings);
             EnsureBarkPlayer();
         }
 
         /// <summary>Optional runtime wiring used by prototype UI bootstrap.</summary>
         public void Configure(CaseShiftController controller, GeminiApiKeySettings settings)
         {
+            Configure(controller, settings, proxySettings);
+        }
+
+        public void Configure(CaseShiftController controller, GeminiApiKeySettings settings, ApiProxySettings proxy)
+        {
             shiftController = controller;
             apiKeySettings = settings;
+            proxySettings = proxy;
             if (geminiClient == null)
                 geminiClient = GetComponent<GeminiApiClient>() ?? gameObject.AddComponent<GeminiApiClient>();
             if (apiKeySettings != null)
-                geminiClient.Configure(apiKeySettings);
+                geminiClient.Configure(apiKeySettings, proxySettings);
+            else if (proxySettings != null)
+                geminiClient.Configure(null, proxySettings);
             EnsureBarkPlayer();
         }
 
