@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CaseClosed.CameraControl;
 using CaseClosed.CaseCore;
 using CaseClosed.CaseCore.Dialogue;
 using CaseClosed.CaseCore.Gemini;
@@ -21,7 +22,6 @@ namespace CaseClosed.UI
     {
         private const int MaxTranscriptLines = 40;
         private const int MinEvidenceToCallIn = 2;
-        private const string PublicRecordsUrl = "https://ubcaseclosed.netlify.app/";
 
         private enum HudTag
         {
@@ -82,7 +82,7 @@ namespace CaseClosed.UI
 
         private SuspectEnterController enterController;
         private SuspectEnterShiftBinder enterBinder;
-        private CaseWebsiteBridge websiteBridge;
+        private MonitorFocusController monitorFocus;
         private bool waitingForSeat;
 
         /// <summary>True while the desk file panel is visible.</summary>
@@ -119,7 +119,7 @@ namespace CaseClosed.UI
 
             enterController = FindAnyObjectByType<SuspectEnterController>();
             enterBinder = FindAnyObjectByType<SuspectEnterShiftBinder>();
-            websiteBridge = FindAnyObjectByType<CaseWebsiteBridge>();
+            monitorFocus = FindAnyObjectByType<MonitorFocusController>();
 
             EnsureEventSystem();
             if ((hudCanvas == null || panelRoot == null) && buildRuntimeUiIfMissing)
@@ -380,22 +380,31 @@ namespace CaseClosed.UI
             RefreshAll();
         }
 
+        /// <summary>Zooms the player camera onto the desk monitor / CEF records browser. Never opens an OS browser tab.</summary>
         private void OpenPublicRecords()
         {
             activeTag = HudTag.CaseFile;
-            string url = PublicRecordsUrl;
-            if (websiteBridge == null)
-                websiteBridge = FindAnyObjectByType<CaseWebsiteBridge>();
-            if (websiteBridge != null)
+            if (monitorFocus == null)
+                monitorFocus = FindAnyObjectByType<MonitorFocusController>();
+
+            if (monitorFocus == null || !monitorFocus.TryEnterFocus())
             {
-                string hash = websiteBridge.GetCurrentCaseHashFragment();
-                if (!string.IsNullOrWhiteSpace(hash))
-                    url = PublicRecordsUrl.TrimEnd('/') + "/index.html" + (hash.StartsWith("#") ? hash : "#" + hash);
+                statusMessage = "Desk computer unavailable — zoom to the monitor yourself (click screen / F).";
+                RefreshAll();
+                return;
             }
 
-            Application.OpenURL(url);
-            statusMessage = "Public records opened. Collect ≥" + MinEvidenceToCallIn + " on the CASE FILE clipboard.";
-            RefreshAll();
+            SetPanelOpen(false);
+            statusMessage = "Zoomed to desk computer. Collect ≥" + MinEvidenceToCallIn + " on the CASE FILE clipboard.";
+            RefreshStatus();
+        }
+
+        /// <summary>True when SampleScene can zoom the camera onto the desk monitor. No path ⇒ hide the HUD button.</summary>
+        private bool HasInGamePublicRecordsPath()
+        {
+            if (monitorFocus == null)
+                monitorFocus = FindAnyObjectByType<MonitorFocusController>();
+            return monitorFocus != null && monitorFocus.CanEnterFocus;
         }
 
         private void CallSuspectIn()
@@ -727,7 +736,8 @@ namespace CaseClosed.UI
 
             SetContentBody(sb.ToString().TrimEnd());
 
-            if (shiftController.Phase == CaseShiftPhase.Briefing || shiftController.Phase == CaseShiftPhase.Investigating)
+            if ((shiftController.Phase == CaseShiftPhase.Briefing || shiftController.Phase == CaseShiftPhase.Investigating) &&
+                HasInGamePublicRecordsPath())
             {
                 AddAction("Open public records", OpenPublicRecords);
             }
@@ -785,13 +795,14 @@ namespace CaseClosed.UI
                 {
                     SetContentBody(
                         "Need ≥" + MinEvidenceToCallIn + " records before calling " + suspect.DisplayName +
-                        " in.\nFiled so far: " + filed + ".\nOpen CASE FILE to collect, or open the public records site.");
+                        " in.\nFiled so far: " + filed + ".\nOpen CASE FILE to collect, or zoom to the desk computer.");
                     AddAction("Open CASE FILE", () =>
                     {
                         activeTag = HudTag.CaseFile;
                         RefreshAll();
                     });
-                    AddAction("Open public records", OpenPublicRecords);
+                    if (HasInGamePublicRecordsPath())
+                        AddAction("Open public records", OpenPublicRecords);
                     return;
                 }
 

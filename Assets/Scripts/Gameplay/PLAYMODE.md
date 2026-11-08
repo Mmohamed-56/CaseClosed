@@ -18,7 +18,7 @@ Open `Assets/Scenes/SampleScene.unity` → **Play**.
 
 1. **Start** — Play auto-starts seed `42` / 2 suspects via `CaseGameplayPrototype`.
 2. **Briefing** — Top tags: **ACTIONS** | **CASE FILE** | **DECISION**. Open **CASE FILE**.
-3. **Open records** — Press **Open public records** (browser → https://ubcaseclosed.netlify.app/ with case hash) *or* stay in CASE FILE.
+3. **Open records** — Press **Open public records** (in-game zoom to desk monitor / CEF — **no OS browser tab**) *or* click the monitor / press **F**, *or* stay in CASE FILE.
 4. **Collect ≥2 evidence** — Press **Collect · …** on at least two case records (real `CaseGenerator` titles, not placeholders).
 5. **Call suspect in** — Open **ACTIONS** → **Call in — Name** (enter/sit hooks fire when Bezi anchors exist; otherwise interview opens immediately).
 6. **Sit / talk** — When seated:

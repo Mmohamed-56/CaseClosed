@@ -12,6 +12,7 @@
   function navHtml(active) {
     var items = [
       { href: "index.html", id: "index.html", label: "Case desk" },
+      { href: "directory.html", id: "directory.html", label: "Directory" },
       { href: "search.html", id: "search.html", label: "Search" }
     ];
     var html = "";
@@ -33,11 +34,11 @@
       '    <div class="badge">UPSR</div>' +
       '    <div class="brand-text">' +
       '      <div class="brand-name">University Public Safety — Records</div>' +
-      '      <div class="brand-sub">Fictional campus intranet · Night Shift Desk</div>' +
+      '      <div class="brand-sub">Campus Records Terminal · Night Shift Desk</div>' +
       "    </div>" +
       "  </a>" +
       '  <div class="topmeta">' +
-      "    <div>SYSTEM: UPSR-RECORDS-V1</div>" +
+      "    <div>SYSTEM: UPSR-RECORDS / RCS-1</div>" +
       '    <div id="clock">--</div>' +
       "  </div>" +
       "</header>" +
@@ -45,15 +46,15 @@
       '<div class="statusline">' +
       '  <span id="active-case">NO CASE LOADED</span>' +
       "  <span>" +
-      '    <span id="data-source">DATA: —</span> · ' +
-      '    <span id="conn-status">UNITY LINK: —</span>' +
+      '    <span id="data-source">SOURCE: —</span> · ' +
+      '    <span id="conn-status">DESK LINK: —</span>' +
       "  </span>" +
       "</div>";
 
     var footer =
       '<footer class="footer">' +
-      "  <span>Authorized training use only. Fictional public-safety records — not a real police agency.</span>" +
-      "  <span>Case Closed · desk monitor build</span>" +
+      "  <span>Northbridge State University · University Public Safety Records · Authorized personnel only.</span>" +
+      "  <span>UPSR-RECORDS · night-shift terminal</span>" +
       "</footer>" +
       '<div id="toast" class="toast" role="status" aria-live="polite"></div>' +
       '<div id="loader" class="loader" aria-hidden="true">' +
