@@ -130,13 +130,22 @@ namespace CaseClosed.CaseCore.Gemini
 
                 yield return request.SendWebRequest();
 
+                string responseText = request.downloadHandler != null ? request.downloadHandler.text : string.Empty;
+
                 if (request.result != UnityWebRequest.Result.Success)
                 {
-                    onError?.Invoke("Gemini HTTP " + request.responseCode + ": " + request.error);
+                    onError?.Invoke(FormatGeminiHttpError(request.responseCode, request.error, responseText));
                     yield break;
                 }
 
-                string responseText = request.downloadHandler != null ? request.downloadHandler.text : string.Empty;
+                // Proxy may return HTTP 200 with {error:...} only in odd cases; also catch billing copy in body.
+                string billingNote;
+                if (TryExtractBillingError(responseText, out billingNote))
+                {
+                    onError?.Invoke(billingNote);
+                    yield break;
+                }
+
                 string modelText;
                 bool ok = directGeminiResponse
                     ? TryExtractModelText(responseText, out modelText)
@@ -150,6 +159,41 @@ namespace CaseClosed.CaseCore.Gemini
 
                 onComplete?.Invoke(modelText);
             }
+        }
+
+        /// <summary>Maps HTTP failures — especially 402 billing — to a short HUD/console note.</summary>
+        public static string FormatGeminiHttpError(long responseCode, string transportError, string responseBody)
+        {
+            string billingNote;
+            if (responseCode == 402 || TryExtractBillingError(responseBody, out billingNote))
+            {
+                return string.IsNullOrEmpty(billingNote)
+                    ? "Gemini billing required (HTTP 402). Pay the Default Gemini Project balance, then retry."
+                    : billingNote;
+            }
+
+            string detail = string.IsNullOrWhiteSpace(transportError) ? "request failed" : transportError;
+            return "Gemini HTTP " + responseCode + ": " + detail;
+        }
+
+        /// <summary>True when proxy/upstream body mentions payment / outstanding balance.</summary>
+        public static bool TryExtractBillingError(string responseBody, out string note)
+        {
+            note = null;
+            if (string.IsNullOrWhiteSpace(responseBody)) return false;
+
+            string lower = responseBody.ToLowerInvariant();
+            bool looksBilling =
+                lower.Contains("\"status\":402") ||
+                lower.Contains("payment required") ||
+                lower.Contains("outstanding balance") ||
+                lower.Contains("requires your attention") ||
+                (lower.Contains("billing") && (lower.Contains("denied") || lower.Contains("deny") || lower.Contains("402")));
+
+            if (!looksBilling) return false;
+
+            note = "Gemini billing blocked this ask (402 / outstanding balance). Settle the Default Gemini Project bill, then retry.";
+            return true;
         }
 
         private static string BuildProxyRequestJson(

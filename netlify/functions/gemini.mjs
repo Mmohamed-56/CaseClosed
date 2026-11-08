@@ -194,10 +194,17 @@ export async function handler(event) {
 
   const raw = await upstream.text();
   if (!upstream.ok) {
+    const status =
+      upstream.status >= 400 && upstream.status < 600 ? upstream.status : 502;
+    const billing =
+      status === 402 ||
+      /payment required|outstanding balance|requires your attention/i.test(raw);
     return json(
-      upstream.status >= 400 && upstream.status < 600 ? upstream.status : 502,
+      status,
       {
-        error: "Gemini upstream error",
+        error: billing
+          ? "Gemini billing blocked this ask (402 / outstanding balance). Settle the Default Gemini Project bill, then retry."
+          : "Gemini upstream error",
         status: upstream.status,
         detail: raw.slice(0, 500),
       },
