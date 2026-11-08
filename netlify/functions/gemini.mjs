@@ -7,8 +7,8 @@
  * {
  *   "systemPrompt": string,
  *   "userPrompt": string,
- *   "model"?: string,            // default gemini-3.8-flash
- *   "maxOutputTokens"?: number,  // default 120, clamp 40–256
+ *   "model"?: string,            // default gemini-3.5-flash-lite
+ *   "maxOutputTokens"?: number,  // default 60, clamp 40–120
  *   "temperature"?: number       // default 0.6, clamp 0–1.5
  * }
  *
@@ -25,19 +25,21 @@ import {
 
 const MAX_BODY = 24 * 1024; // 24 KB — short interrogation prompts only
 const MAX_RPM = 40;
-const DEFAULT_MODEL = "gemini-3.8-flash";
+/** Fastest live flash-lite for short suspect barks (2.5-* currently 503/unavailable). */
+const DEFAULT_MODEL = "gemini-3.5-flash-lite";
 
-/** Retired / blocked-for-new-users model ids → current flash default. */
+/** Retired / overloaded model ids → snappy flash-lite default. */
 const RETIRED_MODEL_MAP = {
   "gemini-2.0-flash": DEFAULT_MODEL,
   "gemini-2.0-flash-001": DEFAULT_MODEL,
   "gemini-2.0-flash-lite": DEFAULT_MODEL,
   "gemini-2.0-flash-lite-001": DEFAULT_MODEL,
-  "gemini-2.5-flash": DEFAULT_MODEL,
-  "gemini-2.5-flash-lite": DEFAULT_MODEL,
   "gemini-1.5-flash": DEFAULT_MODEL,
   "gemini-1.5-flash-latest": DEFAULT_MODEL,
   "gemini-1.5-pro": DEFAULT_MODEL,
+  // 3.8 is too slow / overloaded for interrogation (30s Netlify timeouts).
+  "gemini-3.8-flash": DEFAULT_MODEL,
+  "gemini-flash-latest": DEFAULT_MODEL,
 };
 
 function clamp(n, lo, hi, fallback) {
@@ -52,6 +54,10 @@ function resolveModel(requested) {
   return mapped;
 }
 
+function isGemini25Family(modelId) {
+  return /^gemini-2\.5-/i.test(modelId);
+}
+
 function extractModelText(responseJson) {
   try {
     const data = typeof responseJson === "string" ? JSON.parse(responseJson) : responseJson;
@@ -59,7 +65,6 @@ function extractModelText(responseJson) {
     if (!Array.isArray(parts)) return "";
     return parts
       .map((p) => {
-        // Gemini 3 thinking models may include thought parts — skip those.
         if (p?.thought === true) return "";
         return typeof p?.text === "string" ? p.text : "";
       })
@@ -102,13 +107,12 @@ export async function handler(event) {
   }
 
   const modelRaw = resolveModel(body.model);
-  // Allow only gemini-* model ids (block URL injection)
   if (!/^gemini-[a-z0-9._-]+$/i.test(modelRaw)) {
     return json(400, { error: "Invalid model id" }, headers);
   }
 
-  // Slightly higher cap: Gemini 3 thinking still reserves some budget even at "low".
-  const maxOutputTokens = clamp(body.maxOutputTokens, 40, 256, 120);
+  // Keep replies tiny — interrogation barks only.
+  const maxOutputTokens = clamp(body.maxOutputTokens, 40, 120, 60);
   const temperature = clamp(body.temperature, 0, 1.5, 0.6);
 
   const url =
@@ -117,16 +121,24 @@ export async function handler(event) {
     ":generateContent?key=" +
     encodeURIComponent(apiKey);
 
+  const generationConfig = {
+    temperature,
+    maxOutputTokens,
+    responseMimeType: "application/json",
+  };
+
+  // 2.5 family: thinkingBudget 0 disables thinking (fast).
+  // 3.x family: thinking cannot be off — use lowest level ("low"; "minimal" errors on 3.8).
+  if (isGemini25Family(modelRaw)) {
+    generationConfig.thinkingConfig = { thinkingBudget: 0 };
+  } else {
+    generationConfig.thinkingConfig = { thinkingLevel: "low" };
+  }
+
   const payload = {
     system_instruction: { parts: [{ text: systemPrompt }] },
     contents: [{ role: "user", parts: [{ text: userPrompt }] }],
-    generationConfig: {
-      temperature,
-      maxOutputTokens,
-      responseMimeType: "application/json",
-      // Default thinking is "medium" on 3.8-flash — too slow for interrogation barks.
-      thinkingConfig: { thinkingLevel: "low" },
-    },
+    generationConfig,
   };
 
   let upstream;
@@ -176,5 +188,5 @@ export async function handler(event) {
     );
   }
 
-  return json(200, { text }, headers);
+  return json(200, { text, model: modelRaw }, headers);
 }
