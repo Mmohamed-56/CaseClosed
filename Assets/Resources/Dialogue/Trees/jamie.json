@@ -7,7 +7,7 @@
       "questions": [
         {
           "id": "jamie_access_q1",
-          "prompt": "This access record puts you inside the incident window after you said you left. Explain.",
+          "prompt": "This page puts you inside the incident window after you said you were gone. Explain it.",
           "aggressive": true,
           "replies": [
             {
@@ -15,34 +15,70 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "That record is wrong. I was already gone."
+              "line": "I keep replaying the walk after my shift because I was counting the bus lights, and I did not turn around. If this page puts me back inside the window, the page is wrong.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That timestamp can't be me. I left earlier."
+              "line": "I get nervous when a timestamp argues with me, but nervous is not a confession. I left when I said I left, and I can still tell you which bus I watched.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "Okay \u2014 I went back. Just for a second. Not for what went missing."
+              "slip": false,
+              "line": "Please slow down. I am scared of how sure you sound, and I am still telling you I was gone. I would remember turning around. I did not.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "angry",
+              "slip": false,
+              "line": "I am not going to invent a return trip to make this interview end. I was gone. Hold that sentence still.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "I know how that page looks next to a volunteer who talks too much. I still say I had left, and I need a second before I start agreeing with a clock just to make this stop.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "If I fill the silence you will write the silence down as guilt. I left. That is the sentence I am holding onto.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I went near it. I keep wanting to say I only looked. I am not ready to give you the rest, and I am not going to pretend the page is a stranger.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Fine. I opened that door after I said I left. I did it. I went back."
+              "line": "Stop. I went back during the window. I told you I had left because I thought a clean story would hold. It was me. I am not walking that back.",
+              "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "jamie_access_q2",
-          "prompt": "Your campus credential hit a restricted reader inside the incident window.",
+          "prompt": "Your statement and this record do not match. Which one should I keep?",
           "aggressive": true,
           "replies": [
             {
@@ -50,34 +86,70 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I never went back in. Check the cameras \u2014 not me."
+              "line": "The page and my night are two different stories, and mine has a bus in it. I finished what I was doing and I left. I did not drift back.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Someone could have borrowed my card. It happens."
+              "line": "I know a clean denial sounds rehearsed. It is rehearsed because I have been saying the true version since I sat down. I was not in that window.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "I\u2026 might have swiped back in. I needed something from the cart."
+              "slip": false,
+              "line": "My hands are shaking and I hate that it looks like guilt. It is the room. I did not go back.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "angry",
+              "slip": false,
+              "line": "You can ask it a fourth way. The answer stays the same. I was already gone.",
+              "onlyIfInnocent": true
+            },
+            {
+              "minStress": 0,
+              "maxStress": 29,
+              "emotion": "calm",
+              "slip": false,
+              "line": "A lanyard and a clock are a hard combination, and I am still asking you to hear the version where I had already gone. Give me the page again before you decide I am done.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 30,
+              "maxStress": 59,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "I can hear myself picking smaller and smaller words. That is fear, not a map of where I was. I said I left.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 60,
+              "maxStress": 84,
+              "emotion": "scared",
+              "slip": false,
+              "line": "I doubled back and I have been trying not to say so. I am not giving you the act yet. I am telling you the alibi was neat on purpose.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "It was me. I did it. I went back."
+              "line": "The statement was a lie. I was there during the window and I did it. Write that, not the bus story.",
+              "onlyIfCulprit": true
             }
           ]
         },
         {
           "id": "jamie_access_q3",
-          "prompt": "You claimed: \"I finished my shift early and headed for the west bus loop.\" How does that access fit?",
+          "prompt": "Walk this page slowly. Where were you actually standing?",
           "aggressive": false,
           "replies": [
             {
@@ -85,63 +157,64 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "It doesn't \u2014 because I wasn't there. The log is dirty."
+              "line": "I keep replaying the walk after my shift because I was counting the bus lights, and I did not turn around. If this page puts me back inside the window, the page is wrong. That is the order of it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I stick by that statement. The access log has to be a glitch."
+              "line": "I get nervous when a timestamp argues with me, but nervous is not a confession. I left when I said I left, and I can still tell you which bus I watched. That is the order of it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "I left, then panicked and came back. Stupid."
+              "slip": false,
+              "line": "Please slow down. I am scared of how sure you sound, and I am still telling you I was gone. I would remember turning around. I did not. That is the order of it.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "The statement was a lie. I went back during the window."
-            }
-          ]
-        },
-        {
-          "id": "jamie_access_q4",
-          "prompt": "If you left when you said, why is your credential on that door inside the window?",
-          "aggressive": true,
-          "replies": [
+              "emotion": "angry",
+              "slip": false,
+              "line": "I am not going to invent a return trip to make this interview end. I was gone. Hold that sentence still. That is the order of it.",
+              "onlyIfInnocent": true
+            },
             {
               "minStress": 0,
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Ask security about false reads. I was not in that room."
+              "line": "I know how that page looks next to a volunteer who talks too much. I still say I had left, and I need a second before I start agreeing with a clock just to make this stop. I am not adding a third version.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I don't have a clean answer \u2014 but I didn't do it."
+              "line": "If I fill the silence you will write the silence down as guilt. I left. That is the sentence I am holding onto. I am not adding a third version.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
-              "slip": true,
-              "line": "Because I went back. I shouldn't have."
+              "slip": false,
+              "line": "I went near it. I keep wanting to say I only looked. I am not ready to give you the rest, and I am not going to pretend the page is a stranger. I am not adding a third version.",
+              "onlyIfCulprit": true
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "Because I did it. That's why."
+              "line": "Stop. I went back during the window. I told you I had left because I thought a clean story would hold. It was me. I am not walking that back. I am not adding a third version.",
+              "onlyIfCulprit": true
             }
           ]
         }
@@ -152,7 +225,7 @@
       "questions": [
         {
           "id": "jamie_herring_q1",
-          "prompt": "This record: A hardware-store receipt shows Jamie bought packing tape and zip ties that afternoon. Explain it.",
+          "prompt": "This record looks like preparation. What was it actually for?",
           "aggressive": false,
           "replies": [
             {
@@ -160,34 +233,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Jamie used them for club table setup supplies."
+              "line": "That page is my ordinary errand, earlier than the window, and it looks ugly because the words are ugly. It does not put my hands on the incident. I am sorry that ran long. I would rather be exact than clever."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That looks bad, I know. Jamie used them for club table setup supplies."
+              "line": "I buy and borrow things for setups all week. I can see why you flinched. The time on it is wrong for the incident, and the reason is my actual job. I am sorry that ran long. I would rather be exact than clever."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I bought / borrowed that for ordinary work \u2014 not for the incident."
+              "line": "I am rattled because it looks like planning. It was planning for a table, a shift, a normal night. Not for this. I am sorry that ran long. I would rather be exact than clever."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Believe what you want. It still doesn't put me at the scene during the window."
+              "slip": false,
+              "line": "Stamp the person the hard page names. This one is my boring paperwork, and I am done apologizing for it. I am sorry that ran long. I would rather be exact than clever."
             }
           ]
         },
         {
           "id": "jamie_herring_q2",
-          "prompt": "Looks like prep for moving or cutting something. Was it for what went missing?",
+          "prompt": "Someone will tell me to hold you on this page alone. Why is that wrong?",
           "aggressive": true,
           "replies": [
             {
@@ -195,34 +268,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Ordinary campus work only."
+              "line": "That page is my ordinary errand, earlier than the window, and it looks ugly because the words are ugly. It does not put my hands on the incident. That is the whole walk, including the boring part."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "People always jump to that. It was unrelated gear."
+              "line": "I buy and borrow things for setups all week. I can see why you flinched. The time on it is wrong for the incident, and the reason is my actual job. That is the whole walk, including the boring part."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I get why you'd ask. Still not me on what went missing."
+              "line": "I am rattled because it looks like planning. It was planning for a table, a shift, a normal night. Not for this. That is the whole walk, including the boring part."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I didn't do it. That record is a red herring and you know it."
+              "slip": false,
+              "line": "Stamp the person the hard page names. This one is my boring paperwork, and I am done apologizing for it. That is the whole walk, including the boring part."
             }
           ]
         },
         {
           "id": "jamie_herring_q3",
-          "prompt": "Walk me through this suspicious record against your alibi: At the west bus loop after leaving campus buildings.",
+          "prompt": "Set this beside the incident clock. Does it still touch the scene?",
           "aggressive": false,
           "replies": [
             {
@@ -230,63 +303,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Easy \u2014 At the west bus loop after leaving campus buildings.. The purchase / checkout was earlier, for setup."
+              "line": "That page is my ordinary errand, earlier than the window, and it looks ugly because the words are ugly. It does not put my hands on the incident. If you write it down, write it that way."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Alibi first: At the west bus loop after leaving campus buildings.. The record is unrelated."
+              "line": "I buy and borrow things for setups all week. I can see why you flinched. The time on it is wrong for the incident, and the reason is my actual job. If you write it down, write it that way."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I'm rattled, but the timeline still clears me."
+              "line": "I am rattled because it looks like planning. It was planning for a table, a shift, a normal night. Not for this. If you write it down, write it that way."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Pin the incident on someone with a hard access hit. Not this."
-            }
-          ]
-        },
-        {
-          "id": "jamie_herring_q4",
-          "prompt": "Why should we trust you after this shows up under your name?",
-          "aggressive": true,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
               "slip": false,
-              "line": "Because I'm on camera / logs elsewhere during the window."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Trust the other records \u2014 not one ugly receipt."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm nervous because it looks bad. That doesn't make me guilty."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I've answered. Stamp someone else."
+              "line": "Stamp the person the hard page names. This one is my boring paperwork, and I am done apologizing for it. If you write it down, write it that way."
             }
           ]
         }
@@ -297,7 +335,7 @@
       "questions": [
         {
           "id": "jamie_alibi_q1",
-          "prompt": "Transit tap receipt: A transit-card tap places Jamie at the west bus loop shortly after they said they left. Does that match your story?",
+          "prompt": "This is the page you are using as an alibi. Does it still hold?",
           "aggressive": false,
           "replies": [
             {
@@ -305,69 +343,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Yes. At the west bus loop after leaving campus buildings."
+              "line": "Yes. That support page is the place I went, and it matches the walk I have been describing. I stayed there. I am sorry that ran long. I would rather be exact than clever."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "That's exactly where I was. At the west bus loop after leaving campus buildings."
+              "line": "Once I got there I stayed. Doubling back would show on something else, and it does not, not on me. I am sorry that ran long. I would rather be exact than clever."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "It should. Unless the clock is off, I was there."
+              "line": "People saw me. I was not hiding in a corner inventing a room. The page is the witness I have when names fail me. I am sorry that ran long. I would rather be exact than clever."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I need you to believe that log. I wasn't at the scene."
+              "slip": false,
+              "line": "If you throw out the support page I still have the order of the night. I am not building a second story. I am sorry that ran long. I would rather be exact than clever."
             }
           ]
         },
         {
           "id": "jamie_alibi_q2",
-          "prompt": "You said you left before the incident. Prove At the west bus loop after leaving campus buildings..",
-          "aggressive": false,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The support record does. Read Transit tap receipt."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I left early. Then At the west bus loop after leaving campus buildings.."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm telling the same story. Check the timestamp again."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "If that support log is real, I'm clear."
-            }
-          ]
-        },
-        {
-          "id": "jamie_alibi_q3",
-          "prompt": "Could you have doubled back to the scene after this alibi stamp?",
+          "prompt": "Could you have doubled back after this stamp?",
           "aggressive": true,
           "replies": [
             {
@@ -375,34 +378,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Once I left, I stayed put."
+              "line": "Yes. That support page is the place I went, and it matches the walk I have been describing. I stayed there. That is the whole walk, including the boring part."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Not without showing up on something else \u2014 and I don't."
+              "line": "Once I got there I stayed. Doubling back would show on something else, and it does not, not on me. That is the whole walk, including the boring part."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I\u2026 don't think so. I was tired. I went straight there."
+              "line": "People saw me. I was not hiding in a corner inventing a room. The page is the witness I have when names fail me. That is the whole walk, including the boring part."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Doubling back would be insane. I didn't."
+              "slip": false,
+              "line": "If you throw out the support page I still have the order of the night. I am not building a second story. That is the whole walk, including the boring part."
             }
           ]
         },
         {
-          "id": "jamie_alibi_q4",
-          "prompt": "Who saw you during the window if Transit tap receipt is wrong?",
+          "id": "jamie_alibi_q3",
+          "prompt": "If this support page is wrong, who actually saw you?",
           "aggressive": false,
           "replies": [
             {
@@ -410,28 +413,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "It's not wrong. Ask around the area."
+              "line": "Yes. That support page is the place I went, and it matches the walk I have been describing. I stayed there. If you write it down, write it that way."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "People were there. I wasn't hiding."
+              "line": "Once I got there I stayed. Doubling back would show on something else, and it does not, not on me. If you write it down, write it that way."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I can't name everyone. The record should be enough."
+              "line": "People saw me. I was not hiding in a corner inventing a room. The page is the witness I have when names fail me. If you write it down, write it that way."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I don't have a crowd of witnesses. I have that log."
+              "slip": false,
+              "line": "If you throw out the support page I still have the order of the night. I am not building a second story. If you write it down, write it that way."
             }
           ]
         }
@@ -442,7 +445,7 @@
       "questions": [
         {
           "id": "jamie_roster_q1",
-          "prompt": "Volunteer duty roster puts you on site that evening. When did you actually leave?",
+          "prompt": "This listing puts you on tonight's work. When did you leave it?",
           "aggressive": false,
           "replies": [
             {
@@ -450,69 +453,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Before the incident window. Same as my statement."
+              "line": "The listing means I was helping earlier. I left before the window. A name on a crew is not a key to the scene. I am sorry that ran long. I would rather be exact than clever."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Shift / duty ended; I walked out before the window."
+              "line": "Lots of people were listed. I had a task, I finished it, and I walked. The roster does not keep me there. I am sorry that ran long. I would rather be exact than clever."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I might've lingered a minute \u2014 not through the whole window."
+              "line": "You can stack the roster on the alibi and it still says I was done. I am not going to confess to a spreadsheet. I am sorry that ran long. I would rather be exact than clever."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "I left when I said I left. Don't twist the roster."
+              "slip": false,
+              "line": "I did not stay late. Late people exist. I was not one of them tonight. I am sorry that ran long. I would rather be exact than clever."
             }
           ]
         },
         {
           "id": "jamie_roster_q2",
-          "prompt": "This roster listing: Jamie is listed on the evening volunteer crew for a campus event. Did that give you special access?",
-          "aggressive": false,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Being listed isn't a key to the scene."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Lots of people were listed. Only one culprit."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I had a job to do. I finished and left."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Roster presence \u2260 guilt. Move on."
-            }
-          ]
-        },
-        {
-          "id": "jamie_roster_q3",
-          "prompt": "Why does the roster still matter if you claim At the west bus loop after leaving campus buildings.?",
+          "prompt": "Did this listing give you a key, a login, or a reason to stay through the window?",
           "aggressive": true,
           "replies": [
             {
@@ -520,34 +488,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "It just shows I was helping earlier. Then I left."
+              "line": "The listing means I was helping earlier. I left before the window. A name on a crew is not a key to the scene. That is the whole walk, including the boring part."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Context only. The alibi is the point."
+              "line": "Lots of people were listed. I had a task, I finished it, and I walked. The roster does not keep me there. That is the whole walk, including the boring part."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "You're stacking paper. My exit time is what counts."
+              "line": "You can stack the roster on the alibi and it still says I was done. I am not going to confess to a spreadsheet. That is the whole walk, including the boring part."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Stamp me or don't \u2014 the roster isn't a confession."
+              "slip": false,
+              "line": "I did not stay late. Late people exist. I was not one of them tonight. That is the whole walk, including the boring part."
             }
           ]
         },
         {
-          "id": "jamie_roster_q4",
-          "prompt": "Anyone on this roster could've stayed late. Did you?",
+          "id": "jamie_roster_q3",
+          "prompt": "Why does this roster matter if your alibi is somewhere else?",
           "aggressive": false,
           "replies": [
             {
@@ -555,28 +523,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No. Out before the window."
+              "line": "The listing means I was helping earlier. I left before the window. A name on a crew is not a key to the scene. If you write it down, write it that way."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "I didn't stay for the incident window."
+              "line": "Lots of people were listed. I had a task, I finished it, and I walked. The roster does not keep me there. If you write it down, write it that way."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I wanted to go. I went."
+              "line": "You can stack the roster on the alibi and it still says I was done. I am not going to confess to a spreadsheet. If you write it down, write it that way."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Late stayers exist. I wasn't one."
+              "slip": false,
+              "line": "I did not stay late. Late people exist. I was not one of them tonight. If you write it down, write it that way."
             }
           ]
         }
@@ -587,7 +555,7 @@
       "questions": [
         {
           "id": "jamie_sign_q1",
-          "prompt": "Sign-in shows Jamie on site earlier. When did you sign out?",
+          "prompt": "The sign-in puts you on site earlier. When did you actually leave?",
           "aggressive": false,
           "replies": [
             {
@@ -595,34 +563,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "I was done and gone before the incident window."
+              "line": "I signed in, I did the work, and I was gone before the window. A signature is the start of the night, not the crime. I am sorry that ran long. I would rather be exact than clever."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Sign-in isn't a life sentence. I left."
+              "line": "Near the building earlier is not inside the window. I know it is convenient. Convenience is not a stamp. I am sorry that ran long. I would rather be exact than clever."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I signed in earlier. I did not hang around for the incident."
+              "line": "Signing a sheet did not hand me a key. If a credential moved, it did not move because I wrote my name. I am sorry that ran long. I would rather be exact than clever."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Setup, then exit. That's the whole sheet."
+              "slip": false,
+              "line": "Same story, said plainly: signed in, worked, left. I am not decorating it. I am sorry that ran long. I would rather be exact than clever."
             }
           ]
         },
         {
           "id": "jamie_sign_q2",
-          "prompt": "Being on the sign-in sheet put you near the scene. Convenient?",
+          "prompt": "Being on that sheet put you near the scene. How near, and how late?",
           "aggressive": true,
           "replies": [
             {
@@ -630,34 +598,34 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "Convenient for volunteering. Not for the incident."
+              "line": "I signed in, I did the work, and I was gone before the window. A signature is the start of the night, not the crime. That is the whole walk, including the boring part."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Near the scene earlier \u2260 inside during the window."
+              "line": "Near the building earlier is not inside the window. I know it is convenient. Convenience is not a stamp. That is the whole walk, including the boring part."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "I don't like how that sounds, but it's still not proof."
+              "line": "Signing a sheet did not hand me a key. If a credential moved, it did not move because I wrote my name. That is the whole walk, including the boring part."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Stop fishing. Sign-in is earlier activity only."
+              "slip": false,
+              "line": "Same story, said plainly: signed in, worked, left. I am not decorating it. That is the whole walk, including the boring part."
             }
           ]
         },
         {
           "id": "jamie_sign_q3",
-          "prompt": "Did signing in get you a key or special credential?",
+          "prompt": "Did signing in hand you a key or any other credential?",
           "aggressive": false,
           "replies": [
             {
@@ -665,63 +633,28 @@
               "maxStress": 29,
               "emotion": "calm",
               "slip": false,
-              "line": "No special access from a name on a sheet."
+              "line": "I signed in, I did the work, and I was gone before the window. A signature is the start of the night, not the crime. If you write it down, write it that way."
             },
             {
               "minStress": 30,
               "maxStress": 59,
               "emotion": "nervous",
               "slip": false,
-              "line": "Volunteers don't get free raids on restricted rooms."
+              "line": "Near the building earlier is not inside the window. I know it is convenient. Convenience is not a stamp. If you write it down, write it that way."
             },
             {
               "minStress": 60,
               "maxStress": 84,
               "emotion": "scared",
               "slip": false,
-              "line": "If keys moved, it wasn't because of my signature."
+              "line": "Signing a sheet did not hand me a key. If a credential moved, it did not move because I wrote my name. If you write it down, write it that way."
             },
             {
               "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
-              "slip": true,
-              "line": "Ask who held keys. My name on paper isn't that."
-            }
-          ]
-        },
-        {
-          "id": "jamie_sign_q4",
-          "prompt": "Reconcile the sign-in with: \"I finished my shift early and headed for the west bus loop.\"",
-          "aggressive": false,
-          "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
               "slip": false,
-              "line": "Signed in, worked, left before the window. Consistent."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Same story every time."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I keep repeating it because it's true."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Sign-in earlier, departure as stated. Done."
+              "line": "Same story, said plainly: signed in, worked, left. I am not decorating it. If you write it down, write it that way."
             }
           ]
         }
@@ -740,21 +673,32 @@
               "maxStress": 100,
               "emotion": "scared",
               "slip": false,
-              "line": "You're holding me? I didn't do this."
+              "line": "You can hold the chair. I did not do this. I have been telling you the same walk since I sat down, and I want that denial on the sheet.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 0,
               "maxStress": 100,
               "emotion": "angry",
               "slip": false,
-              "line": "This is a mistake. I want that on the record."
+              "line": "This is a mistake, and I am scared, and I am still not the person. Do not write my shaking as a yes.",
+              "onlyIfInnocent": true
             },
             {
-              "minStress": 60,
+              "minStress": 0,
+              "maxStress": 84,
+              "emotion": "nervous",
+              "slip": false,
+              "line": "Holding me does not turn a bad page into a confession. I am scared, and I am still saying I was not the one in that window.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 85,
               "maxStress": 100,
               "emotion": "broken",
               "slip": true,
-              "line": "\u2026I can't keep this up. Check the access trail for my prints."
+              "line": "Then hold me. I already let it slip because I did it, and I am not going to sit here and pretend the trail belongs to someone else.",
+              "onlyIfCulprit": true
             }
           ]
         }
@@ -773,14 +717,24 @@
               "maxStress": 100,
               "emotion": "calm",
               "slip": false,
-              "line": "Thank you. I told you I wasn't the one."
+              "line": "Thank you. I am going to go before my hands shake this cup off the table. If you call me back, bring a page that actually puts me there.",
+              "onlyIfInnocent": true
             },
             {
               "minStress": 0,
-              "maxStress": 100,
+              "maxStress": 84,
               "emotion": "nervous",
               "slip": false,
-              "line": "Okay. I'm leaving. Don't call me back unless you have proof."
+              "line": "Right. Good. I will get out of the hallway. I said I was clear, so I am going to leave it there.",
+              "onlyIfCulprit": true
+            },
+            {
+              "minStress": 85,
+              "maxStress": 100,
+              "emotion": "broken",
+              "slip": true,
+              "line": "You are releasing me after I already said I did it? I am not taking the words back just because the stamp changed.",
+              "onlyIfCulprit": true
             }
           ]
         }

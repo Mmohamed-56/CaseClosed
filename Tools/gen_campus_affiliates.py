@@ -461,7 +461,7 @@ def main(batch: int = 100) -> None:
         for intent, line in [
             ("hold", f"HOLD? I was on duty as {p['campusRole']}."),
             ("release", "Release. Put the energy on storage access."),
-            ("accusation", "I didn't take the mascot head."),
+            ("accusation", "I was not in that window."),
             ("evidence", "That paper fits my job, not a theft."),
             ("slip", "I... went back by storage. Just for a second."),
         ]:

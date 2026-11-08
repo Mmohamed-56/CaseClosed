@@ -137,7 +137,20 @@ namespace CaseClosed.CaseCore
             return template != null ? template.treeHook : string.Empty;
         }
 
-        /// <summary>Generates a seeded case with two to four suspects and exactly one planted contradiction.</summary>
+        /// <summary>Preview easy / medium / hard for this seed.</summary>
+        public static string PeekDifficulty(int seed)
+        {
+            CaseTemplateCatalog.CaseTemplate template = CaseTemplateCatalog.PickForSeed(seed);
+            return template != null && !string.IsNullOrWhiteSpace(template.difficulty)
+                ? template.difficulty
+                : "medium";
+        }
+
+        /// <summary>
+        /// Generates a seeded case with two to four suspects.
+        /// The culprit still carries one EvidenceKind.Contradiction on the _access id.
+        /// Hard templates write that card so it stays ambiguous until _sign_in and _alibi_support or _roster are read with it.
+        /// </summary>
         /// <param name="seed">A stable seed used to reproduce template pick, suspect selection, and culprit assignment.</param>
         /// <param name="suspectCount">The number of suspects, clamped to the supported range of two to four.</param>
         public static CaseFile Generate(int seed, int suspectCount = MaximumSuspectCount)
@@ -279,18 +292,33 @@ namespace CaseClosed.CaseCore
                     : template.signInDescription,
                 profile.DisplayName);
 
+            bool rosterOverride = template != null
+                && !string.IsNullOrWhiteSpace(template.rosterTitle)
+                && !string.IsNullOrWhiteSpace(template.rosterDescription);
+            bool alibiOverride = template != null
+                && !string.IsNullOrWhiteSpace(template.alibiTitle)
+                && !string.IsNullOrWhiteSpace(template.alibiDescription);
+            string rosterTitle = rosterOverride ? template.rosterTitle.Trim() : profile.ContextTitleA;
+            string rosterBody = rosterOverride
+                ? CaseTemplateCatalog.FormatName(template.rosterDescription, profile.DisplayName)
+                : profile.ContextDescriptionA;
+            string alibiTitle = alibiOverride ? template.alibiTitle.Trim() : profile.AlibiSupportTitle;
+            string alibiBody = alibiOverride
+                ? CaseTemplateCatalog.FormatName(template.alibiDescription, profile.DisplayName)
+                : profile.AlibiSupportDescription;
+
             var records = new List<EvidenceRecord>(4)
             {
                 new EvidenceRecord(
                     caseId + "_" + profile.Id + "_roster",
-                    profile.ContextTitleA,
-                    profile.ContextDescriptionA,
+                    rosterTitle,
+                    rosterBody,
                     EvidenceKind.Context,
                     string.Empty),
                 new EvidenceRecord(
                     caseId + "_" + profile.Id + "_alibi_support",
-                    profile.AlibiSupportTitle,
-                    profile.AlibiSupportDescription,
+                    alibiTitle,
+                    alibiBody,
                     EvidenceKind.Context,
                     string.Empty),
                 new EvidenceRecord(

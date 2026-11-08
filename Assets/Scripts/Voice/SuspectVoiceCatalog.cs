@@ -60,13 +60,14 @@ namespace CaseClosed.Voice
         /// <summary>
         /// Resolves the full voice profile for a suspect id (<c>jamie</c> or <c>suspect_jamie</c>).
         /// Character generation should prefer this over raw voice ids.
+        /// <see cref="SuspectVoiceProfile.Look"/> is attached from suspect data when present.
         /// </summary>
         public static SuspectVoiceProfile GetProfile(string suspectId)
         {
             SuspectVoiceProfile profile;
             if (TryGetProfile(suspectId, out profile))
                 return profile;
-            return DefaultProfile;
+            return AttachLook(suspectId, DefaultProfile);
         }
 
         /// <summary>True when the catalog has an authored profile for this suspect key.</summary>
@@ -77,10 +78,25 @@ namespace CaseClosed.Voice
             if (string.IsNullOrEmpty(key))
                 return false;
 
-            if (ProfileBySuspectKey.TryGetValue(key, out profile))
-                return true;
+            if (!ProfileBySuspectKey.TryGetValue(key, out profile))
+                return false;
 
-            return false;
+            profile = AttachLook(key, profile);
+            return true;
+        }
+
+        /// <summary>
+        /// Copies the affiliate look onto the voice profile so gender and slots travel together.
+        /// </summary>
+        private static SuspectVoiceProfile AttachLook(string suspectId, SuspectVoiceProfile profile)
+        {
+            if (profile.Look != null && !string.IsNullOrWhiteSpace(profile.Look.body))
+                return profile;
+
+            SuspectLook look = CaseClosed.CaseCore.CampusAffiliateCatalog.TryGetLook(suspectId);
+            if (look != null)
+                profile.Look = look;
+            return profile;
         }
 
         /// <summary>Gender for character generation. Defaults to Male when unmapped.</summary>

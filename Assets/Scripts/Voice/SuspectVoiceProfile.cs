@@ -14,12 +14,15 @@ namespace CaseClosed.Voice
         public float Pitch;
         /// <summary>ElevenLabs premade / case voice id.</summary>
         public string VoiceId;
+        /// <summary>Mix-and-match look beside <see cref="Gender"/>. Null until affiliates load.</summary>
+        public SuspectLook Look;
 
-        public SuspectVoiceProfile(SuspectVoiceGender gender, float pitch, string voiceId)
+        public SuspectVoiceProfile(SuspectVoiceGender gender, float pitch, string voiceId, SuspectLook look = null)
         {
             Gender = gender;
             Pitch = pitch <= 0.01f ? 1f : pitch;
             VoiceId = voiceId ?? string.Empty;
+            Look = look;
         }
 
         public bool IsValid

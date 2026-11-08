@@ -291,8 +291,8 @@ namespace CaseClosed.CaseCore.Gemini
         {
             if (string.IsNullOrWhiteSpace(line)) return "...";
             string trimmed = line.Trim();
-            if (trimmed.Length <= 160) return trimmed;
-            return trimmed.Substring(0, 157).TrimEnd() + "...";
+            if (trimmed.Length <= 320) return trimmed;
+            return trimmed.Substring(0, 317).TrimEnd() + "...";
         }
 
         private static string ExtractJsonObject(string text)

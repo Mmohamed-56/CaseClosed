@@ -126,7 +126,7 @@ function poiJamie() {
         id: `${CASE_ID}_jamie_social`,
         title: "CampusConnect post — @jamie.r_spirit",
         description:
-          "PUBLIC POST CAPTURE · 05 Nov 21:12\nAccount: @jamie.r_spirit\nText: Spirit table lives! Nordy would be proud (if he still had a head lmao)\nGeotag: Mill Student Center\nVisibility: campus network."
+          "PUBLIC POST CAPTURE · 05 Nov 21:12\nAccount: @jamie.r_spirit\nText: Spirit table lives. Victor the Bull would charge the quad if his suit were still on the rack.\nGeotag: Mill Student Center\nVisibility: campus network."
       }
     ]
   };
@@ -145,7 +145,7 @@ function poiSam() {
         id: `${CASE_ID}_sam_context`,
         title: "Equipment cage close-out log — E-12",
         description:
-          "FORM ATH-EQ-12 · Cedar Pavilion\nClose-out signed: TORVALD, S. at 21:03\nMascot head (Nordy primary): marked PRESENT\nLock serial noted on form.\nNext scheduled open: 06 Nov 07:30 athletics staff."
+          "FORM ATH-EQ-12 · Cedar Pavilion\nClose-out signed: TORVALD, S. at 21:03\nVictor the Bull home-game suit: marked PRESENT on the rack\nLock serial noted on form.\nNext scheduled open: 06 Nov 07:30 athletics staff."
       },
       {
         id: `${CASE_ID}_sam_access`,
@@ -182,7 +182,7 @@ function poiPriya() {
     name: "Priya Nair",
     role: "Marching band — brass section leader",
     statement:
-      "Band rehearsal ran in Harper Hall until 22:00. After that I was with section members getting food at West Residences. I do not have equipment-cage keys and would not know the head storage location.",
+      "Band rehearsal ran in Harper Hall until 22:00. After that I was with section members getting food at West Residences. I do not have equipment-cage keys and I would not know which rack holds Victor the Bull's suit.",
     records: [
       {
         id: `${CASE_ID}_priya_context`,
@@ -206,7 +206,7 @@ function poiPriya() {
         id: `${CASE_ID}_priya_social`,
         title: "CampusConnect post — @priya.brass",
         description:
-          "PUBLIC POST CAPTURE · 05 Nov 22:31\nAccount: @priya.brass\nText: If anyone 'borrows' Nordy's head for a prank I will personally conduct your apology.\nGeotag: none\nVisibility: friends + campus."
+          "PUBLIC POST CAPTURE · 05 Nov 22:31\nAccount: @priya.brass\nText: If anyone borrows Victor the Bull's suit for a prank I will personally conduct your apology.\nGeotag: none\nVisibility: friends + campus."
       }
     ]
   };
@@ -379,9 +379,9 @@ for (const [first, last] of pairs) {
 const payload = {
   schemaVersion: 1,
   caseId: CASE_ID,
-  title: "Theft — Athletic Mascot Property (Cedar Pavilion)",
+  title: "Theft — Victor the Bull Suit (Cedar Pavilion)",
   briefing:
-    "INCIDENT SUMMARY (open file)\n\nOn 06 Nov, approx. 07:40, Athletics Equipment reported the Nordy the Owl mascot head missing from Cedar Pavilion Equipment Cage E-12. Cage exterior lock found secured at morning inventory; interior count shows head absent and spare jersey displaced. Estimated loss window: 21:00–23:00 on 05 Nov (night before Founders Weekend).\n\nFour persons of interest are flagged on this file. Campus directory and related-person cards are available for cross-reference. Pull public records, compare against sworn statements, and attach relevant items to the working case file before referral.",
+    "INCIDENT SUMMARY (open file)\n\nOn 06 Nov, approx. 07:40, Athletics Equipment reported Victor the Bull's home-game suit missing from Cedar Pavilion Equipment Cage E-12. The suit was on its rack at the 21:03 close-out. The cage door was locked again by morning. Loss window: 21:00–23:00 on 05 Nov, the night before Founders Weekend.\n\nThis is the suit, not a generic head and not a storage-room sweep. Four persons of interest are flagged. Jamie's east-service badge, the 22:44 text, and the cage close-out do not agree with each other. A bolt-cutter receipt and a band-hall alibi are both in the file. Pull the pages before you decide who walked out with Victor.",
   suspects
 };
 

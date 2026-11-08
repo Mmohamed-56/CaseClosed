@@ -157,7 +157,7 @@ def build_suspect(sid: str, meta: dict) -> list:
         ],
         "broken": [
             f"I've explained the {herring} as far as I can.",
-            "Whatever that paper says, I didn't take the mascot head.",
+            "Whatever that paper says, I was not in that window.",
             f"Stamp whatever you want. My answer stays the {alibi}.",
         ],
     }
@@ -277,7 +277,7 @@ def build_suspect(sid: str, meta: dict) -> list:
     # Accusation
     accuse = {
         "calm": [
-            "I didn't take the mascot head. Period.",
+            "I was not in that window. Period.",
             f"Accuse me after you check the {alibi}.",
             "Calling me a thief doesn't make it true.",
         ],
@@ -442,7 +442,7 @@ def build_suspect(sid: str, meta: dict) -> list:
         ("cracking", "Don't look at the access time. Please."),
         ("broken", "I was there that night. Past my story."),
         ("broken", "The head — I moved it. I panicked."),
-        ("broken", "Storage. 9:37. That's me. I'm sorry."),
+        ("broken", "I was there during the window. That is me. I am sorry."),
     ]
     for i, (stress, line) in enumerate(slips, 1):
         rows.append(

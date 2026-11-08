@@ -18,6 +18,17 @@
       "alibiSupportDescription": "A transit-card tap places Jamie at the west bus loop shortly after they said they left.",
       "contextTitleA": "Volunteer duty roster",
       "contextDescriptionA": "Jamie is listed on the evening volunteer crew for a campus event.",
+      "look": {
+        "body": "normal",
+        "hair": "short wavy dark brown, tucked behind one ear",
+        "skinTone": "warm medium",
+        "top": "faded blue volunteer polo",
+        "bottoms": "dark jeans",
+        "outfitColor": "faded blue and indigo",
+        "genderPresentation": "woman",
+        "accessories": "yellow lanyard, canvas tote strap",
+        "summary": "Normal build, woman presentation, same side as voice Female. Mix short dark wavy hair, warm-medium skin, faded-blue polo, dark jeans, yellow lanyard. Do not lock one prefab; normal + woman is only a starting family."
+      },
       "recordHooks": [
         {
           "suffix": "directory",
@@ -40,6 +51,17 @@
       "alibiSupportDescription": "Morgan's hall exterior door registered an entry after their stated departure from work.",
       "contextTitleA": "Events desk schedule",
       "contextDescriptionA": "Morgan's posted events desk shift ended on time according to the roster.",
+      "look": {
+        "body": "normal",
+        "hair": "neat side-part black",
+        "skinTone": "light olive",
+        "top": "charcoal button-down, sleeves rolled",
+        "bottoms": "black slacks",
+        "outfitColor": "charcoal and black",
+        "genderPresentation": "man",
+        "accessories": "thin metal watch, visitor badge reel",
+        "summary": "Normal build, man presentation, same side as voice Male. Side-part black hair, light-olive skin, charcoal shirt, black slacks. Mix slots; do not lock a single mesh."
+      },
       "recordHooks": [
         {
           "suffix": "directory",
@@ -62,6 +84,17 @@
       "alibiSupportDescription": "Avery radioed a wing check-in during the period they claim as their alibi.",
       "contextTitleA": "Facilities assignment board",
       "contextDescriptionA": "Avery was assigned evening porter duties spanning multiple campus buildings.",
+      "look": {
+        "body": "strong",
+        "hair": "buzzed dark, no part",
+        "skinTone": "deep brown",
+        "top": "grey work shirt with a reflective strip",
+        "bottoms": "dark cargo pants",
+        "outfitColor": "grey and safety yellow",
+        "genderPresentation": "androgynous",
+        "accessories": "radio clip, work gloves in a pocket",
+        "summary": "Strong build, androgynous, same side as voice Neutral. Buzz cut, deep-brown skin, grey work shirt. Man or woman mesh is fine if those slots read. Do not lock a gendered prefab."
+      },
       "recordHooks": [
         {
           "suffix": "directory",
@@ -84,6 +117,17 @@
       "alibiSupportDescription": "Study room B was reserved under Riley's name for a multi-hour evening block.",
       "contextTitleA": "Club chat notice",
       "contextDescriptionA": "Riley posted that the treasurer report was finished before leaving the meeting space.",
+      "look": {
+        "body": "normal",
+        "hair": "long straight black, low clip",
+        "skinTone": "light brown",
+        "top": "cream cardigan over a rust tee",
+        "bottoms": "brown trousers",
+        "outfitColor": "cream, rust, and brown",
+        "genderPresentation": "woman",
+        "accessories": "round glasses, slim ledger folder",
+        "summary": "Normal build, woman presentation, voice Female. Long black hair in a low clip, light-brown skin, cream cardigan, brown trousers, round glasses. Mix; do not lock one prefab."
+      },
       "recordHooks": [
         {
           "suffix": "directory",
@@ -106,6 +150,17 @@
       "alibiSupportDescription": "Casey's badge opened the costume workshop annex after their stated departure from practice.",
       "contextTitleA": "Squad practice note",
       "contextDescriptionA": "Casey was marked present at afternoon drill and listed for evening shell maintenance.",
+      "look": {
+        "body": "normal",
+        "hair": "high ponytail, dark with a blue streak",
+        "skinTone": "light",
+        "top": "royal-blue squad hoodie",
+        "bottoms": "black joggers",
+        "outfitColor": "royal blue and black",
+        "genderPresentation": "woman",
+        "accessories": "white sneakers, small bull pin",
+        "summary": "Normal build, woman presentation, voice Female. High ponytail with a blue streak, light skin, royal-blue hoodie, black joggers, small bull pin. The pin is not a mascot mesh. Mix slots."
+      },
       "recordHooks": [
         {
           "suffix": "directory",
@@ -128,6 +183,17 @@
       "alibiSupportDescription": "Drew's aide fob pinged the south quad checkpoint during their claimed patrol window.",
       "contextTitleA": "Aide duty roster",
       "contextDescriptionA": "Drew was scheduled for the evening student-aide patrol block.",
+      "look": {
+        "body": "strong",
+        "hair": "short cropped black",
+        "skinTone": "deep brown",
+        "top": "navy aide jacket over a white tee",
+        "bottoms": "khaki duty pants",
+        "outfitColor": "navy and khaki",
+        "genderPresentation": "man",
+        "accessories": "earpiece, flashlight loop",
+        "summary": "Strong build, man presentation, voice Male. Cropped black hair, deep-brown skin, navy aide jacket, khaki pants, earpiece. Mix; do not lock one prefab."
+      },
       "recordHooks": [
         {
           "suffix": "directory",
@@ -150,6 +216,17 @@
       "alibiSupportDescription": "Quinn logged into a media-lab workstation during their claimed upload window.",
       "contextTitleA": "Press pass list",
       "contextDescriptionA": "Quinn appears on the approved photographer list for the evening event.",
+      "look": {
+        "body": "normal",
+        "hair": "curly auburn, shoulder length",
+        "skinTone": "fair with freckles",
+        "top": "olive overshirt",
+        "bottoms": "black jeans",
+        "outfitColor": "olive and black",
+        "genderPresentation": "androgynous",
+        "accessories": "camera strap, silver ear cuff",
+        "summary": "Normal build, androgynous, voice Neutral. Curly auburn hair, freckles, olive overshirt, camera strap. Man or woman mesh both work. Do not lock a gender."
+      },
       "recordHooks": [
         {
           "suffix": "directory",
@@ -172,6 +249,17 @@
       "alibiSupportDescription": "The cafe register closeout was stamped complete under Sam's employee number.",
       "contextTitleA": "Closing checklist",
       "contextDescriptionA": "Sam is the named closer on the cafe evening checklist.",
+      "look": {
+        "body": "stout",
+        "hair": "short sandy, slightly messy",
+        "skinTone": "fair",
+        "top": "white kitchen tee under an open red cafe apron",
+        "bottoms": "dark work pants",
+        "outfitColor": "white, red, and dark navy",
+        "genderPresentation": "man",
+        "accessories": "dish towel over one shoulder",
+        "summary": "Stout build, man presentation, voice Male. Sandy hair, fair skin, red apron over a white tee. The apron is the read. Mix slots; do not lock one prefab."
+      },
       "recordHooks": [
         {
           "suffix": "directory",
@@ -194,6 +282,17 @@
       "alibiSupportDescription": "A duty-desk camera still shows Taylor at the north hall desk during their claimed alibi window.",
       "contextTitleA": "RA coverage roster",
       "contextDescriptionA": "Taylor is listed as the evening RA on duty for the north hall block.",
+      "look": {
+        "body": "normal",
+        "hair": "dark shoulder-length, center part",
+        "skinTone": "light olive",
+        "top": "maroon RA pullover",
+        "bottoms": "black pants",
+        "outfitColor": "maroon and black",
+        "genderPresentation": "woman",
+        "accessories": "radio, RA lanyard, pen behind one ear",
+        "summary": "Normal build, woman presentation, voice Female. Center-part dark hair, light-olive skin, maroon RA pullover, radio and lanyard. Mix; do not lock one prefab."
+      },
       "recordHooks": [
         {
           "suffix": "directory",
@@ -216,6 +315,17 @@
       "alibiSupportDescription": "Jordan's helpdesk account shows ticket activity from a housing IP during the alibi window.",
       "contextTitleA": "IT student-worker board",
       "contextDescriptionA": "Jordan is posted for the evening helpdesk / ticket block.",
+      "look": {
+        "body": "normal",
+        "hair": "straight black, a bit long at the collar",
+        "skinTone": "medium tan",
+        "top": "heather-grey hoodie",
+        "bottoms": "dark jeans",
+        "outfitColor": "heather grey and indigo",
+        "genderPresentation": "man",
+        "accessories": "headphones around the neck, retractable badge reel",
+        "summary": "Normal build, man presentation, voice Male. Collar-length black hair, medium-tan skin, grey hoodie, headphones on the neck. Mix slots."
+      },
       "recordHooks": [
         {
           "suffix": "directory",
@@ -238,6 +348,17 @@
       "alibiSupportDescription": "Harper's research badge opened the bio prep kitchen during their claimed cleanup window.",
       "contextTitleA": "Lab cohort roster",
       "contextDescriptionA": "Harper is listed on the afternoon bio lab cohort and cleanup rotation.",
+      "look": {
+        "body": "normal",
+        "hair": "black braid over one shoulder",
+        "skinTone": "medium brown",
+        "top": "white lab coat over a teal shirt",
+        "bottoms": "black trousers",
+        "outfitColor": "white, teal, and black",
+        "genderPresentation": "woman",
+        "accessories": "safety glasses pushed up, nitrile gloves in a coat pocket",
+        "summary": "Normal build, woman presentation, voice Female. Black braid, medium-brown skin, lab coat over teal, glasses on the head. Mix; do not lock one prefab."
+      },
       "recordHooks": [
         {
           "suffix": "directory",
@@ -260,6 +381,17 @@
       "alibiSupportDescription": "Reese's rec membership card entered the turnstile during their claimed workout window.",
       "contextTitleA": "Intramural roster",
       "contextDescriptionA": "Reese appears on the evening intramural team sheet.",
+      "look": {
+        "body": "strong",
+        "hair": "undercut, dark top longer and swept",
+        "skinTone": "olive",
+        "top": "green rec tank under an open grey zip jacket",
+        "bottoms": "black track pants",
+        "outfitColor": "green, grey, and black",
+        "genderPresentation": "androgynous",
+        "accessories": "wrist sweatband, gym bag strap",
+        "summary": "Strong build, androgynous, voice Neutral. Undercut, olive skin, green tank, grey jacket, black track pants. Man or woman mesh both work. Do not lock a gender."
+      },
       "recordHooks": [
         {
           "suffix": "directory",
