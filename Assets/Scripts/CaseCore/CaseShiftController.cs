@@ -41,7 +41,7 @@ namespace CaseClosed.CaseCore
     /// <summary>
     /// Coordinates suspect decisions, interrogation, scoring, and local result saving for one shift.
     /// Flow: briefing → investigate → HOLD/RELEASE stamp → next suspect (repeat) → final charge → morning headline.
-    /// Bezi: bind Inspector UnityEvents under "Bezi / UI Hooks", or subscribe to the matching C# events.
+    /// Bind Inspector UnityEvents under "UI Hooks", or subscribe to the matching C# events.
     /// </summary>
     public sealed class CaseShiftController : MonoBehaviour
     {
@@ -73,7 +73,7 @@ namespace CaseClosed.CaseCore
         [Tooltip("Interrogation controller on this object. One is added automatically when missing.")]
         [SerializeField] private InterrogationController interrogationController;
 
-        [Header("Bezi / UI Hooks")]
+        [Header("UI Hooks")]
         [Tooltip(CaseShiftFlowEventNames.PhaseChanged)]
         [SerializeField] private CaseShiftPhaseUnityEvent onPhaseChanged = new CaseShiftPhaseUnityEvent();
 
