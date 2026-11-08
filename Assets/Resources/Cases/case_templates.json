@@ -28,7 +28,16 @@
       "redHerringDescription": "A receipt on {name}'s card, 3:40 PM. Two cans of exterior primer and a roll of painter's tape.",
       "redHerringExplanation": "{name} bought the primer for a club parade float. Both cans are still sealed in the club storage cage. The mural was done in blue spray paint, not primer.",
       "statementTemplate": "I was at my club table in the Union the whole time. I didn't step outside until teardown.",
-      "preferSuspectIds": ["casey", "jamie", "quinn", "reese"]
+      "decoySuspectId": "jamie",
+      "decoyAccessTitle": "Union front door swipe",
+      "decoyAccessDescription": "Student Union front doors. {name}'s card swiped IN at 2:55 PM. That door is the public entrance for the club fair. There is no swipe for {name} on the loading dock.",
+      "decoyAccessExplanation": "{name} came in the front door for the club fair at 2:55 PM. That swipe is not the dock door by the mural.",
+      "preferSuspectIds": [
+        "casey",
+        "jamie",
+        "quinn",
+        "reese"
+      ]
     },
     {
       "id": "norton_badge",
@@ -56,7 +65,16 @@
       "redHerringDescription": "{name} signed out Norton hallway key K-3 at 8:40 PM and returned it at 9:50 PM. Key K-3 opens the classroom wing on the same floor as the faculty offices.",
       "redHerringExplanation": "{name} was locking up Norton classrooms after a review session in the other wing. Key K-3 is a classroom key. The faculty office is a card reader door, and no key fits it.",
       "statementTemplate": "I was at the gym at Alumni. My own card was in my pocket the whole night, and I never touched that office.",
-      "preferSuspectIds": ["jordan", "morgan", "drew", "riley"]
+      "decoySuspectId": "morgan",
+      "decoyAccessTitle": "ID office replacement card",
+      "decoyAccessDescription": "ID Office card writer. At 2:10 PM a replacement student ID was written while {name} was logged in as the operator. The card number is the student's own ID. The student signed for it at the window. The card is not SE-B.",
+      "decoyAccessExplanation": "{name} wrote a named replacement ID at 2:10 PM. That card is not SE-B, and the student signed for it.",
+      "preferSuspectIds": [
+        "jordan",
+        "morgan",
+        "drew",
+        "riley"
+      ]
     },
     {
       "id": "hadley_party",
@@ -84,7 +102,16 @@
       "redHerringDescription": "{name} signed a non-resident guest into Hadley at 10:15 PM. The guest's name is not on the 4B list.",
       "redHerringExplanation": "{name}'s guest was a cousin dropping off a textbook. The guest signed out at 10:50 PM, and the desk worker initialed it.",
       "statementTemplate": "I was in the laundry room. I heard the music like everybody else. I wasn't in 4B.",
-      "preferSuspectIds": ["taylor", "reese", "casey", "sam"]
+      "decoySuspectId": "taylor",
+      "decoyAccessTitle": "Floor lounge delivery",
+      "decoyAccessDescription": "A food delivery to the Hadley third-floor lounge at 8:05 PM, ordered from {name}'s account. Two pizzas for a floor meeting. The delivery note says 'leave at the RA desk.' It was not addressed to unit 4B.",
+      "decoyAccessExplanation": "{name} ordered pizza for a floor meeting at 8:05 PM. The order went to the RA desk, not unit 4B.",
+      "preferSuspectIds": [
+        "taylor",
+        "reese",
+        "casey",
+        "sam"
+      ]
     },
     {
       "id": "chem_key",
@@ -112,7 +139,16 @@
       "redHerringDescription": "A USB drive turned in to lost-and-found under {name}'s student number. The sticker says 201-KEY. Return time on the slip: 6:00 PM.",
       "redHerringExplanation": "{name}'s drive is a practice key from office hours. It was turned in at 6 PM, seven hours before the print job, and the files on it are practice problems.",
       "statementTemplate": "I left 214 a little after one and walked straight to Capen. The printer wasn't running when I left.",
-      "preferSuspectIds": ["harper", "riley", "jamie", "jordan"]
+      "decoySuspectId": "harper",
+      "decoyAccessTitle": "Afternoon print release",
+      "decoyAccessDescription": "Furnas 214 printer. A job named chem201_practice.pdf was released at 6:05 PM when {name} tapped their card. The file is the practice set from office hours. It is not chem201_key_FINAL, and 6:05 PM is hours before the print at 1:17 AM.",
+      "decoyAccessExplanation": "{name} released a practice set at 6:05 PM. That is not the answer-key file, and it is not 1:17 AM.",
+      "preferSuspectIds": [
+        "harper",
+        "riley",
+        "jamie",
+        "jordan"
+      ]
     },
     {
       "id": "ellicott_shove",
@@ -140,7 +176,16 @@
       "redHerringDescription": "A photo posted from {name}'s account at 11:40 PM. A fresh bruise on a forearm. Caption: 'tunnel night.'",
       "redHerringExplanation": "The photo's file data says it was taken at 5:12 PM. 'Tunnel night' is what the rugby team calls their Thursday tackle drill. {name} got the bruise at practice.",
       "statementTemplate": "I left the review and went back to my dorm. I never saw them after the meeting.",
-      "preferSuspectIds": ["reese", "drew", "quinn", "casey"]
+      "decoySuspectId": "drew",
+      "decoyAccessTitle": "Tunnel entrance radio check",
+      "decoyAccessDescription": "Ellicott tunnel entrance. {name}'s radio checked in at 10:50 PM at the mouth of the tunnel. That radio point does not reach the mid-section. The shove was logged on the mid-section access point at 11:15 PM.",
+      "decoyAccessExplanation": "{name} checked in at the tunnel mouth at 10:50 PM. The shove was on the mid-section point at 11:15 PM.",
+      "preferSuspectIds": [
+        "reese",
+        "drew",
+        "quinn",
+        "casey"
+      ]
     },
     {
       "id": "goodyear_bike",
@@ -168,7 +213,16 @@
       "redHerringDescription": "Theater scene shop checkout. {name} signed out a pair of bolt cutters at 4:50 PM.",
       "redHerringExplanation": "{name} cut a rusted padlock off a set piece and returned the bolt cutters at 5:40 PM. The shop supervisor signed the return line.",
       "statementTemplate": "I played in the intramural game and then I hung around the courts. I don't even know what a Trek looks like.",
-      "preferSuspectIds": ["avery", "reese", "sam", "drew"]
+      "decoySuspectId": "reese",
+      "decoyAccessTitle": "Marketplace helmet listing",
+      "decoyAccessDescription": "A listing posted to the campus marketplace at 4:10 PM from {name}'s account. 'Bike helmet, size large, cash.' The photo is a black helmet. The listing is still up. It is not a blue Trek, and 4:10 PM is before the cage was hit.",
+      "decoyAccessExplanation": "{name} listed a helmet at 4:10 PM. The stolen bike was a blue Trek listed after 7:40 PM.",
+      "preferSuspectIds": [
+        "avery",
+        "reese",
+        "sam",
+        "drew"
+      ]
     },
     {
       "id": "lockwood_threats",
@@ -196,7 +250,16 @@
       "redHerringDescription": "An email from {name} to the lab partner at 7:20 PM. Subject: 'you know what you did.' The body calls them a thief and says they'll answer for it.",
       "redHerringExplanation": "{name} sent the email from their dorm. The partner replied at 7:35 PM, and the two argued over email for an hour. Somebody writing emails from a dorm wasn't taping notes in Lockwood.",
       "statementTemplate": "I badged out of Lockwood at 6:40 and I didn't go back in. Whatever I think of them, I don't leave notes.",
-      "preferSuspectIds": ["riley", "harper", "quinn", "jamie"]
+      "decoySuspectId": "jamie",
+      "decoyAccessTitle": "Study room 104 booking",
+      "decoyAccessDescription": "Lockwood study room 104 was booked under {name} from 5:00 PM to 6:00 PM. The booking was made on the website at 4:40 PM. Room 104 is on the first floor. The notes were found in room 212, which this booking does not open.",
+      "decoyAccessExplanation": "{name} booked room 104 before the window. The notes were in room 212.",
+      "preferSuspectIds": [
+        "riley",
+        "harper",
+        "quinn",
+        "jamie"
+      ]
     },
     {
       "id": "fronczak_lens",
@@ -224,7 +287,16 @@
       "redHerringDescription": "A physics department work order at 3:00 PM. {name} signed out a telescope lens for cleaning.",
       "redHerringExplanation": "{name} cleaned teaching lens T-14 and signed it back in at 3:40 PM. T-14 is on the shelf. The missing lens is L-88, the big one.",
       "statementTemplate": "I signed out of the roof at 8:05 and went down to shoot the quad. The telescope was fine when I left.",
-      "preferSuspectIds": ["quinn", "harper", "riley", "drew"]
+      "decoySuspectId": "harper",
+      "decoyAccessTitle": "Afternoon case return",
+      "decoyAccessDescription": "Media Cage equipment return, 3:15 PM, under {name}. A soft camera bag. The foam is intact, and the slip says teaching lens T-14. T-14 was back on the shelf at 3:40 PM. The missing lens is L-88, returned in a hard case at 9:40 PM.",
+      "decoyAccessExplanation": "{name} returned a soft bag with teaching lens T-14 at 3:15 PM. The missing lens is L-88.",
+      "preferSuspectIds": [
+        "quinn",
+        "harper",
+        "riley",
+        "drew"
+      ]
     },
     {
       "id": "hochstetter_incubator",
@@ -252,7 +324,16 @@
       "redHerringDescription": "Cold-pack checkout slip, 9:00 AM. {name} signed out six cold packs. Cold packs are what you'd use to carry live cultures out of a building.",
       "redHerringExplanation": "{name} restocked the teaching lab fridge with those cold packs at 9 AM. All six are still in that fridge, unopened.",
       "statementTemplate": "I finished cleanup and went to the prep kitchen. Incubator B was humming when I walked past it.",
-      "preferSuspectIds": ["harper", "riley", "jamie", "sam"]
+      "decoySuspectId": "jamie",
+      "decoyAccessTitle": "Morning incubator check",
+      "decoyAccessDescription": "Incubator A alarm panel. The door was opened at 9:12 AM and the alarm was silenced with lab PIN 2204, which belongs to {name}. Incubator A is the teaching unit. The dead cultures were in incubator B, and PIN 2204 was not used on B.",
+      "decoyAccessExplanation": "{name} silenced incubator A in the morning with PIN 2204. The dead cultures were in incubator B.",
+      "preferSuspectIds": [
+        "harper",
+        "riley",
+        "jamie",
+        "sam"
+      ]
     },
     {
       "id": "silverman_book",
@@ -280,7 +361,16 @@
       "redHerringDescription": "A bookstore receipt, 9:15 AM. {name} bought a copy of Organic Chemistry II.",
       "redHerringExplanation": "{name} bought the third edition. It's in their backpack with the receipt in it. Someone who owns the book has no reason to steal it.",
       "statementTemplate": "I waited for the book, gave up, and booked a study room. I never went behind the desk.",
-      "preferSuspectIds": ["riley", "jamie", "jordan", "harper"]
+      "decoySuspectId": "jordan",
+      "decoyAccessTitle": "Morning self-checkout",
+      "decoyAccessDescription": "Silverman self-checkout kiosk, 11:02 AM. {name}'s card checked out a circulating copy of Organic Chemistry I. The kiosk accepted it, and the book was returned at 2:00 PM. It is not the reserve copy of Organic Chemistry II.",
+      "decoyAccessExplanation": "{name} checked out a regular copy of Organic Chemistry I in the morning and returned it. That is not the reserve copy of Organic Chemistry II.",
+      "preferSuspectIds": [
+        "riley",
+        "jamie",
+        "jordan",
+        "harper"
+      ]
     },
     {
       "id": "crosby_greenhouse",
@@ -308,7 +398,16 @@
       "redHerringDescription": "A facilities work order with {name}'s name on it for a cracked greenhouse window. Dated last week.",
       "redHerringExplanation": "That work order is for a cracked pane in bay 2, and the repair is scheduled for tomorrow. This morning's break is the bench window in bay 1. Different glass, different room.",
       "statementTemplate": "I was out on the service road at dawn. I haven't been inside that greenhouse since my watering rotation ended.",
-      "preferSuspectIds": ["avery", "harper", "drew", "sam"]
+      "decoySuspectId": "drew",
+      "decoyAccessTitle": "Afternoon tour code",
+      "decoyAccessDescription": "Crosby greenhouse door keypad, 4:30 PM yesterday. Code 1001 was accepted. Code 1001 is the daytime tour code posted on the board, and {name} was on the afternoon tour list. The morning break used code 2208, which is a different code.",
+      "decoyAccessExplanation": "{name} used the public tour code 1001 the afternoon before. The morning break used code 2208.",
+      "preferSuspectIds": [
+        "avery",
+        "harper",
+        "drew",
+        "sam"
+      ]
     },
     {
       "id": "slee_amp",
@@ -336,7 +435,16 @@
       "redHerringDescription": "{name}'s room 3 reservation card for 8:00 AM tomorrow. In the notes: 'borrowing the loud one.'",
       "redHerringExplanation": "'The loud one' is the house amp, and the note is a request to use it at 8 AM tomorrow. The room manager approved and initialed it. Somebody with permission for tomorrow doesn't steal it tonight.",
       "statementTemplate": "I dropped my key in the box before 9:30 and left. The amp was in the room when I closed the door.",
-      "preferSuspectIds": ["casey", "quinn", "reese", "sam"]
+      "decoySuspectId": "casey",
+      "decoyAccessTitle": "Afternoon hand truck",
+      "decoyAccessDescription": "Slee Hall loading dock. A hand truck was signed out to {name} at 2:00 PM and signed back in at 2:40 PM. The dock camera at 2:15 PM shows folding chairs on it. The amp left on a hand truck at 10:05 PM, and that truck was not signed back in.",
+      "decoyAccessExplanation": "{name} used a hand truck in the afternoon for folding chairs and signed it back in. The amp left at 10:05 PM on a truck that was not returned.",
+      "preferSuspectIds": [
+        "casey",
+        "quinn",
+        "reese",
+        "sam"
+      ]
     },
     {
       "id": "baldy_alarm",
@@ -364,7 +472,16 @@
       "redHerringDescription": "A message from {name} in the class group chat at 7:52 PM. 'if this quiz is real I'm pulling the alarm lol.'",
       "redHerringExplanation": "{name} sent that joke to forty people and was in their seat when the alarm went off. Three classmates confirmed it. The person who actually did it didn't announce it.",
       "statementTemplate": "I was in my seat when it went off. I filed out with everybody else.",
-      "preferSuspectIds": ["casey", "jamie", "reese", "jordan"]
+      "decoySuspectId": "jamie",
+      "decoyAccessTitle": "Afternoon health desk visit",
+      "decoyAccessDescription": "Health desk log, 4:10 PM. {name} came in for a paper cut on their left thumb. The note says no dye and no stain. The alarm dye is blue, and the 8:40 PM visit was a right hand.",
+      "decoyAccessExplanation": "{name} went to the health desk at 4:10 PM for a paper cut. There was no blue dye, and it was not 8:40 PM.",
+      "preferSuspectIds": [
+        "casey",
+        "jamie",
+        "reese",
+        "jordan"
+      ]
     },
     {
       "id": "obrian_grade",
@@ -392,7 +509,16 @@
       "redHerringDescription": "{name} is on the O'Brian night class list. The grade that was changed is in a course {name} is currently failing.",
       "redHerringExplanation": "{name} is failing that course, but they were marked present in the lecture hall at 12:30 AM, and their student card doesn't open the staff side door.",
       "statementTemplate": "I signed the close-out sheet, signed out at 12:10, and went home. I didn't go back into the suite.",
-      "preferSuspectIds": ["morgan", "jordan", "riley", "taylor"]
+      "decoySuspectId": "taylor",
+      "decoyAccessTitle": "Front door entry",
+      "decoyAccessDescription": "O'Brian Hall front door. {name}'s card entered at 11:02 PM and left at 11:18 PM. The front door does not open the registrar suite after the desk closes. The grade change used the staff side door at 12:31 AM.",
+      "decoyAccessExplanation": "{name} used the front door at 11:02 PM and left at 11:18 PM. The grade change used the staff side door at 12:31 AM.",
+      "preferSuspectIds": [
+        "morgan",
+        "jordan",
+        "riley",
+        "taylor"
+      ]
     }
   ]
 }

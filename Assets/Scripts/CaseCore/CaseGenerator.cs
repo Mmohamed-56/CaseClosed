@@ -148,8 +148,9 @@ namespace CaseClosed.CaseCore
 
         /// <summary>
         /// Generates a seeded case with two to four suspects.
-        /// The culprit still carries one EvidenceKind.Contradiction on the _access id.
-        /// Hard templates write that card so it stays ambiguous until _sign_in and _alibi_support or _roster are read with it.
+        /// The culprit carries one EvidenceKind.Contradiction on the _access id.
+        /// One other interviewee carries a decoy _access card. It is not a contradiction, and that person is not the culprit.
+        /// Hard templates write the real card so it stays ambiguous until _sign_in and _alibi_support or _roster are read with it.
         /// </summary>
         /// <param name="seed">A stable seed used to reproduce template pick, suspect selection, and culprit assignment.</param>
         /// <param name="suspectCount">The number of suspects, clamped to the supported range of two to four.</param>
@@ -171,7 +172,12 @@ namespace CaseClosed.CaseCore
                 availableProfiles.RemoveAt(selectedIndex);
             }
 
-            int culpritIndex = random.Next(selectedProfiles.Count);
+            string decoyId = template == null || string.IsNullOrWhiteSpace(template.decoySuspectId)
+                ? string.Empty
+                : template.decoySuspectId.Trim().ToLowerInvariant();
+            EnsureDecoyIsInterviewed(selectedProfiles, availableProfiles, decoyId, random);
+
+            int culpritIndex = PickCulpritIndex(selectedProfiles, decoyId, random);
             SuspectProfile culprit = selectedProfiles[culpritIndex];
             string caseId = seed < 0
                 ? "UB-N" + Math.Abs((long)seed).ToString("D10", CultureInfo.InvariantCulture)
@@ -182,6 +188,7 @@ namespace CaseClosed.CaseCore
             {
                 SuspectProfile profile = selectedProfiles[i];
                 bool isCulprit = i == culpritIndex;
+                bool isDecoy = !isCulprit && profile.Id == decoyId;
                 string suspectId = "suspect_" + profile.Id;
                 string statement = string.IsNullOrWhiteSpace(template.statementTemplate)
                     ? profile.Statement
@@ -192,7 +199,7 @@ namespace CaseClosed.CaseCore
                     profile.CampusRole,
                     statement,
                     profile.Alibi,
-                    BuildEvidenceForSuspect(caseId, profile, isCulprit, template),
+                    BuildEvidenceForSuspect(caseId, profile, isCulprit, isDecoy, template),
                     CaseClosed.Voice.SuspectVoiceCatalog.GetProfile(suspectId).VoiceId));
             }
 
@@ -278,10 +285,60 @@ namespace CaseClosed.CaseCore
             return new List<SuspectProfile>(SuspectPool);
         }
 
+        private static void EnsureDecoyIsInterviewed(
+            List<SuspectProfile> selected,
+            List<SuspectProfile> available,
+            string decoyId,
+            Random random)
+        {
+            if (string.IsNullOrEmpty(decoyId) || selected.Count == 0)
+                return;
+
+            for (int i = 0; i < selected.Count; i++)
+            {
+                if (selected[i].Id == decoyId)
+                    return;
+            }
+
+            int availableIndex = -1;
+            for (int i = 0; i < available.Count; i++)
+            {
+                if (available[i].Id == decoyId)
+                {
+                    availableIndex = i;
+                    break;
+                }
+            }
+
+            if (availableIndex < 0)
+                return;
+
+            int replace = random.Next(selected.Count);
+            SuspectProfile displaced = selected[replace];
+            selected[replace] = available[availableIndex];
+            available[availableIndex] = displaced;
+        }
+
+        private static int PickCulpritIndex(List<SuspectProfile> selected, string decoyId, Random random)
+        {
+            var choices = new List<int>(selected.Count);
+            for (int i = 0; i < selected.Count; i++)
+            {
+                if (string.IsNullOrEmpty(decoyId) || selected[i].Id != decoyId)
+                    choices.Add(i);
+            }
+
+            if (choices.Count == 0)
+                return random.Next(selected.Count);
+
+            return choices[random.Next(choices.Count)];
+        }
+
         private static List<EvidenceRecord> BuildEvidenceForSuspect(
             string caseId,
             SuspectProfile profile,
             bool isCulprit,
+            bool isDecoy,
             CaseTemplateCatalog.CaseTemplate template)
         {
             // Public website sees id/title/description only. Kind + Explanation stay Unity-side.
@@ -376,6 +433,21 @@ namespace CaseClosed.CaseCore
                     herringBody,
                     EvidenceKind.RedHerring,
                     herringExplain));
+
+                if (isDecoy
+                    && !string.IsNullOrWhiteSpace(template.decoyAccessTitle)
+                    && !string.IsNullOrWhiteSpace(template.decoyAccessDescription))
+                {
+                    string decoyExplanation = CaseTemplateCatalog.FormatName(
+                        template.decoyAccessExplanation ?? string.Empty,
+                        profile.DisplayName);
+                    records.Insert(0, new EvidenceRecord(
+                        caseId + "_" + profile.Id + "_access",
+                        template.decoyAccessTitle.Trim(),
+                        CaseTemplateCatalog.FormatName(template.decoyAccessDescription, profile.DisplayName),
+                        EvidenceKind.Context,
+                        decoyExplanation));
+                }
             }
 
             return records;

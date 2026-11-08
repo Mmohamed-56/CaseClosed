@@ -47,6 +47,11 @@ namespace CaseClosed.CaseCore
             public string accessTitle;
             public string accessDescription;
             public string contradictionExplanation;
+            /// <summary>One innocent in the interview. Their access card is a decoy, not EvidenceKind.Contradiction.</summary>
+            public string decoySuspectId;
+            public string decoyAccessTitle;
+            public string decoyAccessDescription;
+            public string decoyAccessExplanation;
             public string signInTitle;
             public string signInDescription;
             public string rosterTitle;
