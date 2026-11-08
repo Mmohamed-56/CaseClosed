@@ -39,12 +39,19 @@ namespace CaseClosed.CaseCore
             public string scene;
             /// <summary>What they did, as a verb phrase after "I ". Slip lines fill {act} from this at speak time.</summary>
             public string act;
+            /// <summary>Where they said they were, as a phrase after "I was". Lines fill {alibi} from this at speak time.</summary>
+            public string alibiPlace;
             public string windowStart;
             public string windowEnd;
             public string accessTime;
             public string accessTitle;
             public string accessDescription;
             public string contradictionExplanation;
+            /// <summary>One innocent in the interview. Their access card is a decoy, not EvidenceKind.Contradiction.</summary>
+            public string decoySuspectId;
+            public string decoyAccessTitle;
+            public string decoyAccessDescription;
+            public string decoyAccessExplanation;
             public string signInTitle;
             public string signInDescription;
             public string rosterTitle;
@@ -164,6 +171,7 @@ namespace CaseClosed.CaseCore
                     treeHook = "banner_cutdown",
                     scene = "Over the court in the Field House",
                     act = "cut down the spirit banner",
+                    alibiPlace = "at dinner",
                     windowStart = "6:05 PM",
                     windowEnd = "6:35 PM",
                     accessTime = "6:21 PM",

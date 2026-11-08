@@ -7,215 +7,47 @@
       "questions": [
         {
           "id": "jordan_access_q1",
-          "prompt": "You told me you were gone. This says you weren't. Talk.",
+          "prompt": "This puts you right there. Explain it.",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I left the helpdesk counter and I opened the queue from my room. I was on the laptop. I didn't come back.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A log with my account makes me sarcastic. I was in my room. The tickets will show the typing.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Slow down. Room. Queue. I can tell you the ticket numbers. I wasn't at a door.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "I was in my room. I'm not inventing a commute to make this shorter. I didn't do it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I know a helpdesk login looks like I can be anywhere. I was in my room. The queue was remote on purpose.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Don't wait. There isn't a second version. I was on the tickets.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I was in the room. You can be sure and still be wrong. I didn't leave the laptop.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I did it. I {act}. The remote queue was me buying time. I wasn't in that room.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Have you tried turning the database off and on again? I was {alibi}. That log's wrong. I fix wrong logs for a living." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfInnocent": true, "line": "I was {alibi}. If you want, I can explain how card logs get corrupted. It'll take an hour and you won't enjoy it." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "onlyIfInnocent": true, "line": "I was {alibi}. That record is a bug. I'd file a ticket if I thought anyone would read it." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "I was {alibi}. Close the ticket. Mark it resolved. User error." },
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfCulprit": true, "line": "Huh. Weird. Those systems are held together with duct tape, you know. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "I was {alibi}. Logs glitch. I see it every day. That's one of them." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "I was {alibi}. I'm not gonna debug your evidence for you." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Fine. It's not a glitch. I {act}. I knew how the system worked and I thought that meant I knew how to beat it. Turns out those aren't the same thing." }
           ]
         },
         {
           "id": "jordan_access_q2",
-          "prompt": "You told me one thing. This says another. Which one's true?",
-          "aggressive": true,
+          "prompt": "Walk me through your night again. Slowly.",
+          "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The room is the true one. Counter, then housing, then tickets. I didn't add a stop.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A short answer isn't a script. It's short because the tickets are the whole night. I was home.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm gripping the chair and I resent it. I was in my room. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "Ask the queue if you don't believe me. My room. I didn't do it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I want the room in your notes because the tickets came from there. I'm not moving them.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I keep almost saying I walked back to the lab. I didn't. Room.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm staying with the room. The counter closed and I went home to the queue.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "The remote queue was me stalling. I did it. I {act}. I wasn't in my room.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Counter shift. Then {alibi}. Then I closed eleven tickets, nine of which were people who didn't plug something in. Then sleep." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfInnocent": true, "line": "Counter, {alibi}, tickets, bed. Running it at half speed doesn't add frames." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "onlyIfInnocent": true, "line": "I've given you the same output three times. That's called reproducible. I was {alibi}." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "No. I was {alibi}. End of log." },
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfCulprit": true, "line": "Counter shift, then {alibi}, then tickets, then bed. Pretty standard." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "Counter. {alibi}. Tickets. Bed. Same as always." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "Counter, then {alibi}, then, tickets. Then bed. I'm getting the order right, give me a sec." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Counter. Then I didn't go {alibi}. I {act}. Then I opened the ticket queue so there'd be a timestamp. There. Full stack trace." }
           ]
         },
         {
           "id": "jordan_access_q3",
-          "prompt": "Slow down. Where were you actually standing?",
-          "aggressive": false,
+          "prompt": "You're lying to me. I can see it on you.",
+          "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "In my room, at the desk, laptop on the queue. That's where I was sitting.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "At that desk. I can tell you which ticket I was rude on. I wasn't in a hallway.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "My room. Don't picture me at a door. I was on the laptop.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "The desk in my room. I'm done describing it. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "My room, at the desk, queue up. That's the spot I was in.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I keep saying the laptop because the work was on the laptop. I was doing the work.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I was in that chair in my room. I'm not commuting for you.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I wasn't in the chair in my room. I did it. I {act}.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "That's just my 'I've reset forty passwords today' face. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfInnocent": true, "line": "You see sarcasm. Sarcasm isn't guilt. It's helpdesk." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "onlyIfInnocent": true, "line": "You see someone who's tired of being treated like a suspect for knowing how computers work. I was {alibi}." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "I don't lie. I just explain things slowly to people who aren't listening. I was {alibi}." },
+            { "minStress": 0, "maxStress": 29, "emotion": "defensive", "onlyIfCulprit": true, "line": "Pretty sure that's just resting helpdesk face. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "Okay. Sure. I was {alibi}. Got anything other than vibes?" },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "I was {alibi}. Stop staring. You're like a frozen loading screen." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Yeah. Okay. I {act}. I'm better at faking logs than faces." }
           ]
         }
       ]
@@ -224,108 +56,36 @@
       "evidenceKey": "red_herring",
       "questions": [
         {
-          "id": "jordan_herring_q1",
-          "prompt": "What's this for?",
+          "id": "jordan_rh_q1",
+          "prompt": "What's this about?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "That's a helpdesk checkout. I took it for a ticket and I closed the ticket. The gear went back."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "We check adapters out all day. This one has a ticket number. Read the number."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "It looks like access because the job is access. It was a ticket. It closed."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "Gear for a ticket. I'm done performing surprise over a form I fill out hourly."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Ticket gear. Some professor couldn't get the projector to work. It was the HDMI cable. It's always the HDMI cable." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It's for a ticket. There's a ticket number on it. Look up the ticket." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "It's helpdesk stuff. It's in the system. It's closed. Move on." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Ticket. Closed. Resolved. Next." }
           ]
         },
         {
-          "id": "jordan_herring_q2",
-          "prompt": "You've got this from today. Why'd you have it?",
+          "id": "jordan_rh_q2",
+          "prompt": "Funny timing on this, don't you think?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Because the ticket came in today. I checked the gear out, I fixed it, I brought it back."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Same day is the queue. I didn't keep it for a side project."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I had it because the user couldn't connect. I had it for them. Then I didn't."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I had it for a ticket. The date is the ticket date. Not a plot."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Everything at helpdesk is same-day. Nobody submits a ticket in advance. People break things and panic in real time." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Correlation isn't causation. Took one stats class and I'll never let anyone forget it." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "It's a timestamp on a ticket. That's what timestamps do." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Not funny. Just a date." }
           ]
         },
         {
-          "id": "jordan_herring_q3",
-          "prompt": "Does this have anything to do with what happened?",
+          "id": "jordan_rh_q3",
+          "prompt": "Convince me this has nothing to do with it.",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. It's a closed ticket. It doesn't have anything to do with this."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "The gear is back on the hook. I'm telling you the ticket's shut."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Don't bolt it onto the night. I used it for the user and I returned it."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. It was ticket gear, and it's closed. I'm done with that row."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Sure. Ticket opened, gear checked out, problem fixed, gear returned, ticket closed. Five timestamps. All in the system. All boring." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It's a closed ticket with a full audit trail. Pull the audit trail." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "The system convinces you. Not me. Go read it." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Audit trail. Read it." }
           ]
         }
       ]
@@ -335,107 +95,35 @@
       "questions": [
         {
           "id": "jordan_alibi_q1",
-          "prompt": "This is what you're leaning on. Were you really there?",
-          "aggressive": false,
+          "prompt": "This is your alibi? It doesn't cover the window.",
+          "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Yes. I was in my room. The ticket timestamps match a person sitting still, which was me."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Once I opened the queue I stayed on it. Walking away dumps the session. It didn't dump."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "My roommate heard me swearing at a printer ticket. I was in the room."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "If you ignore the queue, the roommate still heard me. I was there."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Yeah, I know. If I were faking an alibi I'd have made a better one. I know how. I was just {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Real data has gaps. Fake data doesn't. Think about which one you'd rather see." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "Then there's a gap. I was still {alibi}. Gaps aren't evidence." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I was {alibi}. A missing row isn't a confession." }
           ]
         },
         {
           "id": "jordan_alibi_q2",
-          "prompt": "Could you have gone back after this?",
-          "aggressive": true,
+          "prompt": "Who can back this up?",
+          "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. I had a stack. I didn't pause a remote session and sprint across campus."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "After I sat down I was in tickets until the queue thinned. I didn't tour."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I couldn't have. The session would've dropped. It didn't drop."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I didn't go back out. My room was the rest of the shift."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "My roommate heard me yelling at a printer ticket. And a user was on the phone with me for twenty minutes. That's two independent witnesses." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Roommate. And the user on the call. That's who." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I gave you two. I'm not making up a third." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Roommate. User. Go ask." }
           ]
         },
         {
           "id": "jordan_alibi_q3",
-          "prompt": "If this is off, who actually saw you?",
+          "prompt": "What did you do after this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "My roommate. They were on the other bed with headphones half off. They heard me."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "The user on the printer ticket. They were on the phone with me. I was clearly not at their door."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Ask the roommate. Don't ask me to produce a crowd. One person was in the room."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "Roommate. That's enough. I'm not adding the whole floor."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Played games until 2 AM. Lost a lot. Went to bed angry. Pretty typical." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Games. Bed. That's it." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I went to bed. Eventually." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Bed." }
           ]
         }
       ]
@@ -445,107 +133,35 @@
       "questions": [
         {
           "id": "jordan_roster_q1",
-          "prompt": "You're on this list. When did you leave?",
+          "prompt": "Why is your name on this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The list is the helpdesk shift. The counter part ended. I went to my room for the remote half."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "When the counter block ended. Other techs are on that list. Mine went remote."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "End of the counter block. A name on the helpdesk list isn't me still at the counter."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I didn't stay on the counter. The remote half is in my room. That's on the schedule if you read it."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "IT people are on everything. We have to be. Somebody needs to fix the thing when it breaks, and it always breaks." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It's a staff list. I'm staff. Not exactly a mystery." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I'm on it because I work there. That's the whole query." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Staff list. I'm staff. Done." }
           ]
         },
         {
           "id": "jordan_roster_q2",
-          "prompt": "Did being on this let you stay late?",
+          "prompt": "Being on this got you access, didn't it?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. The helpdesk list let me on the counter, then on the queue. It didn't let me into a building."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "It gave me a login and a block. I did the block from my room after the counter."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No. Being scheduled isn't a pass into every room. I had tickets. I did tickets."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I'm not gonna read a staffing list like a master credential. I had a queue."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Here's the funny part. Everyone assumes IT has god mode. I have a login that resets passwords and a drawer full of dongles." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "No. Helpdesk access is logged and limited. I can't just open doors." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "Everybody thinks IT can do anything. We can't. We can barely do our jobs." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "No. Check the permissions table." }
           ]
         },
         {
           "id": "jordan_roster_q3",
-          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
+          "prompt": "Who else on this list would do something like this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Because I work the desk. The list is the shift. After the counter, I was in my room, like I said."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "My name's there because they staffed me. I worked it. Counter, then room."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "It's a shift list. I can be on it and still have been in my room for the remote half."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "The list is the shift I worked. I said I worked it. Same shift."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "I'm not gonna guess. But if somebody asked me how card readers work last week, I'd want to know about it. Just saying." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Not my job to profile people. My job is to fix their laptops." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "No. Find someone else to dox." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "No names." }
           ]
         }
       ]
@@ -554,108 +170,36 @@
       "evidenceKey": "sign_in",
       "questions": [
         {
-          "id": "jordan_sign_q1",
-          "prompt": "You signed this. When did you actually leave?",
+          "id": "jordan_signin_q1",
+          "prompt": "You signed in. When did you sign out?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I signed the helpdesk sheet, I did the counter, and I signed the remote handoff when I left for my room."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "The signature is the start of the counter. The remote note is me leaving it. Then I was home."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I left the counter on time. Signing in didn't keep me at the bench."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "Remote handoff. That's when I left the building. I'm not gonna drag it."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Paper sign-out sheets. In this century. I left when my shift ended. The digital clock-out has the actual time." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "I left at end of shift. Check the system clock, not the clipboard." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I left. I was {alibi}. Blank cells aren't data." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I left. Check the real log." }
           ]
         },
         {
-          "id": "jordan_sign_q2",
-          "prompt": "This puts you in the building. How late were you there?",
+          "id": "jordan_signin_q2",
+          "prompt": "There's no time out on here. You never left, did you?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Until the counter block ended. After that I was in my room, not at the bench."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Long enough to burn through the walk-ups. Then I went home and kept the queue."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Through the counter hours. That's how late in the lab. Then my room."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "As late as the counter schedule. Then I left. Don't leave me on the bench."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Null isn't a value. It's an absence of one. I left. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "A null field doesn't mean I stayed. It means nobody wrote anything." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I left. You're treating a blank like it's a location." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I left. Null is null." }
           ]
         },
         {
-          "id": "jordan_sign_q3",
-          "prompt": "Did signing this get you a key?",
+          "id": "jordan_signin_q3",
+          "prompt": "Why were you even there?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. Signing the helpdesk sheet got me the counter login. It didn't get me a building key."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A sign-in is how the lead knows the bench is covered. It isn't a key."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No key. I signed a shift sheet. My name, a login, a queue."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I got the queue. I didn't get a key. The key cabinet is a different tech."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Somebody's thing was broken. That's always why I'm anywhere. Things break, I show up, I sigh, I fix it." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "A ticket. I was there for a ticket." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "Work. I was there for work." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Ticket." }
           ]
         }
       ]
@@ -668,38 +212,10 @@
           "prompt": "HOLD",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I was in my room on the ticket queue. I didn't do this, and I'm not thrilled you pulled me out of a shift.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "Wrong room. I was on the ticket queue. I didn't do it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 84,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Stamp it. I was in my room on the ticket queue. You don't get another login out of me.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Alright. I did it. I {act}. I wasn't on the ticket queue. Happy?",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "Cool. Great. I was {alibi}. When you find out the log was wrong, I want a formal apology. In writing. With a ticket number." },
+            { "minStress": 0, "maxStress": 100, "emotion": "defensive", "onlyIfInnocent": true, "line": "Wrong call. I was {alibi}. I'm logging this whole thing, by the way. Mentally." },
+            { "minStress": 0, "maxStress": 84, "emotion": "defensive", "onlyIfCulprit": true, "line": "Sure. I was {alibi}. The logs'll sort it out. They usually do." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Yeah. Fair. I {act}. Somebody close my open tickets. I don't want my queue to look bad on top of this." }
           ]
         }
       ]
@@ -712,30 +228,9 @@
           "prompt": "RELEASE",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Cool. I'll go close the rest of the tickets. I was in my room.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 84,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I'll take the door. I was on the queue. I didn't do it.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Letting me leave is your call. I did it. I {act}. That's still true when I walk out.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 100, "emotion": "calm", "onlyIfInnocent": true, "line": "Thanks. I was {alibi}. I've got fourteen tickets waiting. Pray for me." },
+            { "minStress": 0, "maxStress": 84, "emotion": "calm", "onlyIfCulprit": true, "line": "Appreciate it. I was {alibi}. Have a good one." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "You're letting me go after I said I {act}? That's a critical bug in your process. Just so you know." }
           ]
         }
       ]

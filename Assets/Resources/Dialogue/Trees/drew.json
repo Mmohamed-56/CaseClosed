@@ -7,215 +7,47 @@
       "questions": [
         {
           "id": "drew_access_q1",
-          "prompt": "You told me you were gone. This says you weren't. Talk.",
+          "prompt": "This puts you right there. Explain it.",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I left the aide desk and I walked the south quad loop. I hit the checkpoints in order. I didn't peel off.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A bad checkpoint makes me careful. I was on the quad. I have the order of the lamps.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Don't raise it. I was on the south quad. I would have logged a stop if I'd made one.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "South quad. Checkpoints. I didn't do this. Write the loop.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I know an aide badge looks like access. I was on the assigned loop. I'm not expanding it.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I was on the south quad. I'm not adding a stop I didn't walk.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I walked the loop. I'm flat about it because it was flat. I didn't leave it.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I did it. I {act}. I left the south quad. The loop I reported wasn't the night.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Understood, officer. For the record, I was {alibi}. I'd recommend verifying that entry against the source system. Readers misfire." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfInnocent": true, "line": "Negative. I was {alibi}. I want my objection on the report, timestamped." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "onlyIfInnocent": true, "line": "I train people to document accurately. That document is not accurate. I was {alibi}." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "I was {alibi}. I'm not amending a true statement to match a false record. That's not how this works." },
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfCulprit": true, "line": "Noted. I was {alibi}. Readers in that building have a documented error history. I can point you to the maintenance tickets." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "I was {alibi}. My statement stands as given." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "I was {alibi}. I'd like to stop repeating it. Repetition doesn't change a report." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Correction to my statement. I wasn't {alibi}. I {act}. I wrote incident reports about people like me for a year. I know exactly how this reads." }
           ]
         },
         {
           "id": "drew_access_q2",
-          "prompt": "You told me one thing. This says another. Which one's true?",
-          "aggressive": true,
+          "prompt": "Walk me through your night again. Slowly.",
+          "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The loop is the true report. Desk, then south quad, in order. I didn't add a stop.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A clean report sounds drilled because we drill them. This one happens to be what I walked.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm not gonna invent a stop to match you. I was on the quad.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "Same report. South quad. I didn't do this. Write the loop the way I walked it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I want the loop on the report because I walked it. I'm not amending a true round.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I keep almost adding 'except.' There isn't an except. South quad.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm staying with the loop. Desk, then the quad. That's the patrol.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "The loop was a false report. I did it. I {act}. I left the quad.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Copy. Shift start, radio checkout, then {alibi}, then return to desk and sign-out. Standard sequence. No deviations." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfInnocent": true, "line": "Same sequence as previously reported. Start, {alibi}, sign-out. Slower doesn't add steps." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "onlyIfInnocent": true, "line": "I've given the timeline three times without variance. I was {alibi}. Variance would be the red flag, not consistency." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "Timeline is final. I was {alibi}. End of report." },
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfCulprit": true, "line": "Shift start, then {alibi}, then sign-out. Nothing to report beyond that." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "Start. {alibi}. Sign-out. I've reported it. The report hasn't changed." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "Start, then {alibi}, then, sign-out. Yes. In that order. Let me get the order right." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Revised timeline. Start. Then I left my post. I {act}. Then I came back and signed out like it was a normal night." }
           ]
         },
         {
           "id": "drew_access_q3",
-          "prompt": "Slow down. Where were you actually standing?",
-          "aggressive": false,
+          "prompt": "You're lying to me. I can see it on you.",
+          "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "South quad, between the two lamps by the library path. That's where the loop had me.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "On the path. I can give you the checkpoint order. I wasn't inside a building.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "The quad. Don't stand over me. I was on the path I was assigned.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "South quad path. I'm done pointing at it. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "South quad, library path. That's the coordinate I'm giving you.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I keep saying the path because the path is what I walked. I didn't branch.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I was on that path. I'm not moving the pin for you.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I wasn't on the library path at all. I did it. I {act}.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Respectfully, demeanor isn't evidence. We're taught that in week one. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfInnocent": true, "line": "You're reading posture. I stand like this because I was trained to. I was {alibi}." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "onlyIfInnocent": true, "line": "That's an observation, not a finding. Put it in the report as an observation. I was {alibi}." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "I don't lie on reports and I don't lie in this chair. I was {alibi}." },
+            { "minStress": 0, "maxStress": 29, "emotion": "defensive", "onlyIfCulprit": true, "line": "Demeanor's not evidence, officer. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "I'm composed because I'm trained to be composed. I was {alibi}." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "I'd ask you not to characterize my demeanor. I was {alibi}. Stick to the facts." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Affirmative. You can. I {act}. Write it plainly. I'd write it plainly." }
           ]
         }
       ]
@@ -224,108 +56,36 @@
       "evidenceKey": "red_herring",
       "questions": [
         {
-          "id": "drew_herring_q1",
-          "prompt": "What's this for?",
+          "id": "drew_rh_q1",
+          "prompt": "What's this about?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "That's aide equipment. I signed it for the patrol and I turned it back in at the desk."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "We check gear out every shift. This was for the loop, and it came back."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "It looks official because the job is official. It was patrol gear."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I'm done reading a gear line out loud. It was for the south quad round."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "That's a logged item. Purpose is on the form, and it was returned and countersigned. Standard procedure." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It's documented. Purpose, time, return. Everything a good record should have." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "It's a closed record. If you'd read the return line you'd see it's resolved." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Closed record. Countersigned. Move to the next item." }
           ]
         },
         {
-          "id": "drew_herring_q2",
-          "prompt": "You've got this from today. Why'd you have it?",
+          "id": "drew_rh_q2",
+          "prompt": "Funny timing on this, don't you think?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Because the shift starts with a checkout. I had it so the loop was legal. That's why today."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Same day is the shift. I didn't carry it off for something else."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I had it because an aide without the gear doesn't walk. I walked with it, then I returned it."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I had it for the patrol. The date is the shift date. That's not clever."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Proximity in time isn't causation, officer. It's dated the day of because that's when it happened." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "The timing has a documented explanation. Check the purpose field." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "You're building a narrative off a date. I'd flag that in any report I reviewed." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "It's not funny. It's a timestamp. Read what it's attached to." }
           ]
         },
         {
-          "id": "drew_herring_q3",
-          "prompt": "Does this have anything to do with what happened?",
+          "id": "drew_rh_q3",
+          "prompt": "Convince me this has nothing to do with it.",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. It's patrol gear. It doesn't touch what you're asking about."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "It was back on the aide hook. I'm telling you it made the loop and came home."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Don't attach it to the night. I used it for checkpoints and I signed it in."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. Aide gear. I've returned it. We're good on that line."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Three points. One, the purpose is documented. Two, there's a countersigned return. Three, the item doesn't match your incident. That's the whole brief." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Documented purpose, documented return, wrong item for the incident. That should close it." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I've given you the three points. Verify them or don't. They stay true either way." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "The record convinces you. I don't have to. Verify it." }
           ]
         }
       ]
@@ -335,107 +95,35 @@
       "questions": [
         {
           "id": "drew_alibi_q1",
-          "prompt": "This is what you're leaning on. Were you really there?",
-          "aggressive": false,
+          "prompt": "This is your alibi? It doesn't cover the window.",
+          "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Yes. I was on the south quad. The checkpoint order matches the walk I reported."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Once I started the loop I finished it in order. I don't skip and I don't spin back."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "The desk logged the checks as I called them. I was on the path."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "If you toss the checks, the order I remember is the same order. I was out there."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Acknowledged. It's a partial record. I was {alibi}. I'm not going to overstate my own evidence. That's how reports get thrown out." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It doesn't cover the full window, correct. I was still {alibi}. A gap isn't a contradiction." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I'd rather give you an honest gap than an invented check-in. I was {alibi}." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Then the window's uncovered. I was {alibi}. I won't fabricate coverage." }
           ]
         },
         {
           "id": "drew_alibi_q2",
-          "prompt": "Could you have gone back after this?",
-          "aggressive": true,
+          "prompt": "Who can back this up?",
+          "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. A loop doesn't run backward unless the desk retasks you. They didn't."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "After the library-path check I went to the next lamp. I didn't return to a building."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I couldn't have. The next checkpoint had a time, and I made it."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I didn't go back. The loop ended at the aide desk, and that was me done."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "The desk sergeant took my checks. One student nodded at me on the path. I didn't get a name. I'd note that as a weak witness." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Desk sergeant. That's the reliable one. Everything else is secondary." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I've given you the desk. I'm not padding the witness list." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "The desk sergeant. That's who exists. Contact them." }
           ]
         },
         {
           "id": "drew_alibi_q3",
-          "prompt": "If this is off, who actually saw you?",
+          "prompt": "What did you do after this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The aide desk. They took the radio checks. They didn't see my face. They heard the loop."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A student cutting across the quad nodded at the radio. They saw me on the path."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Ask the desk sergeant before you ask me for a crowd. The checks are the witness."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "Desk, and one student on the path. I'm not padding the report."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Returned the radio, signed out, walked home. Made a sandwich. Went to bed. In that order." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Radio return, sign-out, home. That's the end of the report." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I went home. There's nothing after home. I'm not a late-night person." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Home. Report ends at home." }
           ]
         }
       ]
@@ -445,107 +133,35 @@
       "questions": [
         {
           "id": "drew_roster_q1",
-          "prompt": "You're on this list. When did you leave?",
+          "prompt": "Why is your name on this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The list is the aide shift. The shift had a loop. I walked it and I came back to the desk."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "When the loop closed. Other aides are on that list. Mine was the south quad."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "End of the patrol block. A name on the aide roster isn't a reason I stayed out."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I didn't stay past the loop. Extra time would be on the desk sheet. It isn't there."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "I'm on it because I'm staffed on it. Aides are listed by assignment. It's an administrative record." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Assignment. Same as everyone else on that page. It establishes duty, not motive." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "It's a roster. Rosters establish who was scheduled. That's all they establish." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Scheduled. That's the connection. Nothing more." }
           ]
         },
         {
           "id": "drew_roster_q2",
-          "prompt": "Did being on this let you stay late?",
+          "prompt": "Being on this got you access, didn't it?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. The aide list let me walk the assigned loop. It didn't let me freelance a building."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "It gave me a radio and a path. I used both and I brought the radio back."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No. Being scheduled isn't permission to still be out. I closed the loop."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I'm not reading the roster like it covers the whole campus. I had one loop."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "It got me a radio and a patrol route. Building keys are a separate authorization. I don't have that authorization." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "No. Aides don't get building access. That's in the training manual, section four." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I get a radio. I return the radio. The radio doesn't open doors." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "No access. Radio only. Check the authorization list." }
           ]
         },
         {
           "id": "drew_roster_q3",
-          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
+          "prompt": "Who else on this list would do something like this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Because I'm an aide tonight. The list is the shift. I was on the south quad, which I reported."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "My name's there because they staffed the quad. I staffed the quad."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "It's an aide roster. I can be on it and still have been on the path, which is what I said."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "The list is the shift. I said I worked the shift. Same report."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "I don't speculate on colleagues. If I had a documented concern, I'd have filed it. I haven't filed anything." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "No comment without evidence. That's the standard I'd want applied to me." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I won't name anyone on a hunch. You're doing that to me right now and I can tell you it's not great." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "No names. Find evidence. Then you won't need me to guess." }
           ]
         }
       ]
@@ -554,108 +170,36 @@
       "evidenceKey": "sign_in",
       "questions": [
         {
-          "id": "drew_sign_q1",
-          "prompt": "You signed this. When did you actually leave?",
+          "id": "drew_signin_q1",
+          "prompt": "You signed in. When did you sign out?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I signed the aide sheet, I took the radio, and I left on the loop. I signed back when the loop closed."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "The signature is the start of the aide shift. The loop is the work. Then I was back."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I left the desk on time for the path. Signing in didn't keep me at the desk."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "Start of shift, loop, back. I'm not gonna narrate a straight walk like it's complicated."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "At end of shift. If the field's blank, that's a records issue. I'd want it flagged so it doesn't happen to the next person." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "I signed out at end of shift. The paper may disagree. The radio return log won't." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "End of shift. I was {alibi} before that. The blank is a clerical failure." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "End of shift. Check the radio log. It's the authoritative record." }
           ]
         },
         {
-          "id": "drew_sign_q2",
-          "prompt": "This puts you in the building. How late were you there?",
+          "id": "drew_signin_q2",
+          "prompt": "There's no time out on here. You never left, did you?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Until the loop sent me out. After the sign-in I was on the quad, not in the office."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Long enough to grab the radio. Then I was outside. That's the point of the sign-in."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Through the handover. That's how late at the desk. Then the path."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "As late as the handover. Then I was on the quad. Don't leave me in the office."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "A missing entry isn't proof of presence, officer. I left. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "You're inferring from an absence. I'd send that back on any report I reviewed." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I left. I was {alibi}. A blank field is not a location." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I left. That's my statement. The blank is the sheet's problem." }
           ]
         },
         {
-          "id": "drew_sign_q3",
-          "prompt": "Did signing this get you a key?",
+          "id": "drew_signin_q3",
+          "prompt": "Why were you even there?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. Signing the aide sheet got me a radio for the loop. The radio isn't a building key."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A sign-in is accountability. Keys, if any, are a separate hook, and I didn't take one."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No building key. I signed for a radio. I brought the radio back."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I got the radio. I didn't get a key. Log it that way."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Assigned. I go where the schedule puts me. I don't pick my posts." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Duty assignment. It's on the schedule. You have the schedule." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I was posted there. That's the reason. It's always the reason." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Assignment. Read the schedule." }
           ]
         }
       ]
@@ -668,38 +212,10 @@
           "prompt": "HOLD",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I didn't do this. I was on the south quad loop. I walked the whole thing.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "Wrong person. I walked the south quad. I didn't do it, and I'm not gonna help you force it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 84,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I was walking the south quad. You're keeping me and I was on that loop. I didn't do this.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "It was me. I did it. I {act}. I left the south quad loop.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "Understood. I want my statement on the record exactly as given. I was {alibi}. I'll be requesting review." },
+            { "minStress": 0, "maxStress": 100, "emotion": "defensive", "onlyIfInnocent": true, "line": "Copy. Wrong call, officer. I was {alibi}. I hope you document why you made it." },
+            { "minStress": 0, "maxStress": 84, "emotion": "defensive", "onlyIfCulprit": true, "line": "Acknowledged. I was {alibi}. I expect the review to correct this." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Acknowledged. I {act}. I left my post to do it. Please put that in the report the way I said it." }
           ]
         }
       ]
@@ -712,30 +228,9 @@
           "prompt": "RELEASE",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Thanks. I'll badge out and get back on the loop if they'll still have me. I was on the south quad.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 84,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I'll head out. I was on the south quad loop. I didn't leave it.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Letting me go doesn't change it. I did it. I {act}. I left the patrol.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 100, "emotion": "calm", "onlyIfInnocent": true, "line": "Thank you, officer. I was {alibi}. I'll check in with the desk and see if they still want me on tonight." },
+            { "minStress": 0, "maxStress": 84, "emotion": "calm", "onlyIfCulprit": true, "line": "Copy. I was {alibi}. Appreciate the review." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "You're releasing me after a confession? I just told you I {act}. I'd flag that call if I saw it on a report." }
           ]
         }
       ]

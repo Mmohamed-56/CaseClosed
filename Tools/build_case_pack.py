@@ -617,6 +617,10 @@ CASES = [
 
 
 def main() -> None:
+    raise SystemExit(
+        "Assets/Resources/Cases/case_templates.json is the authored pack. "
+        "This generator would overwrite that file, so it does not run."
+    )
     ids = [c["id"] for c in CASES]
     if len(ids) != len(set(ids)):
         raise SystemExit("duplicate ids")

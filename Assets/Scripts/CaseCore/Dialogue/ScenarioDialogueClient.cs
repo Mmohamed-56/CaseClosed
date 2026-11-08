@@ -161,7 +161,10 @@ namespace CaseClosed.CaseCore.Dialogue
                 ? EmotionForStress(context)
                 : GeminiSuspectReply.NormalizeEmotion(pick.emotion);
 
-            string spoken = FillSpokenAct(pick.line, context != null ? context.SpokenAct : null);
+            string spoken = FillSpokenAct(
+                pick.line,
+                context != null ? context.SpokenAct : null,
+                context != null ? context.SpokenAlibi : null);
             if (logMatches)
             {
                 Debug.Log(
@@ -188,7 +191,8 @@ namespace CaseClosed.CaseCore.Dialogue
             bool isCulprit,
             out GeminiSuspectReply reply,
             bool hasSlipped = false,
-            string spokenAct = null)
+            string spokenAct = null,
+            string spokenAlibi = null)
         {
             var ctx = new ScenarioAskContext
             {
@@ -201,7 +205,8 @@ namespace CaseClosed.CaseCore.Dialogue
                 StressResult = lastStress,
                 HasEvidence = false,
                 Aggressive = false,
-                SpokenAct = spokenAct
+                SpokenAct = spokenAct,
+                SpokenAlibi = spokenAlibi
             };
             return TryResolve(ctx, out reply);
         }
@@ -504,14 +509,23 @@ namespace CaseClosed.CaseCore.Dialogue
         }
 
         /// <summary>
-        /// Shared trees store {act}. The chair's case supplies the verb phrase, so Sam names paint on the mural and a different act on any other case.
+        /// Shared trees store {act} and {alibi}. The chair's case supplies both, so the same line names a different crime and a different place on the next case. Braces are gone before ElevenLabs speaks.
         /// </summary>
-        private static string FillSpokenAct(string line, string act)
+        private static string FillSpokenAct(string line, string act, string spokenAlibi)
         {
-            if (string.IsNullOrEmpty(line) || line.IndexOf("{act}", StringComparison.Ordinal) < 0)
-                return line ?? string.Empty;
-            string phrase = string.IsNullOrWhiteSpace(act) ? "did this" : act.Trim();
-            return line.Replace("{act}", phrase);
+            if (string.IsNullOrEmpty(line))
+                return string.Empty;
+            if (line.IndexOf("{act}", StringComparison.Ordinal) >= 0)
+            {
+                string phrase = string.IsNullOrWhiteSpace(act) ? "did this" : act.Trim();
+                line = line.Replace("{act}", phrase);
+            }
+
+            string alibi = string.IsNullOrWhiteSpace(spokenAlibi)
+                ? "where I said I was"
+                : spokenAlibi.Trim();
+            line = line.Replace("{alibi}", alibi);
+            return line;
         }
 
         private static GeminiSuspectReply FallbackReply(ScenarioAskContext context)

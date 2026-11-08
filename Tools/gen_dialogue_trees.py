@@ -17,6 +17,20 @@ ROOT = Path(__file__).resolve().parents[1]
 AFFILIATES = ROOT / "Assets" / "Resources" / "Campus" / "affiliates.json"
 OUT = ROOT / "Assets" / "Resources" / "Dialogue" / "Trees"
 
+# Mizuki's replacements are the whole line, even when they are shorter than the usual floor.
+SHORT_PLAIN = {
+    "It's in the radio log. I was there.",
+    "No. I practiced and I went to sew.",
+    "No. I set a table and I left.",
+    "I hear you. The shift still ended.",
+    "No. I practiced and I left for a run.",
+}
+
+# Same answer on every stress band of Quinn's first "you were gone" question.
+REPEATABLE = {
+    "I wasn't gone. I was at the edit desk the whole time. I didn't leave.",
+}
+
 
 def new_guid() -> str:
     return uuid.uuid4().hex
@@ -64,7 +78,7 @@ def build_tree(a: dict) -> dict:
             replies = replies_for(sid, key, index)
             for reply in replies:
                 length = len(reply["line"])
-                if length < 50 or length > 320:
+                if reply["line"] not in SHORT_PLAIN and (length < 50 or length > 320):
                     raise SystemExit(f"{sid} {key} {suffix} line length {length}: {reply['line'][:60]}")
                 if reply.get("slip") and reply["minStress"] < 85:
                     raise SystemExit(f"{sid} casual slip before 85 on {key}")
@@ -85,6 +99,10 @@ def build_tree(a: dict) -> dict:
 
 
 def main() -> None:
+    raise SystemExit(
+        "Assets/Resources/Dialogue/Trees is the authored pack. "
+        "This generator would overwrite those JSON files, so it does not run."
+    )
     data = json.loads(AFFILIATES.read_text(encoding="utf-8"))
     interviewees = [a for a in data.get("affiliates", []) if a.get("tier") == "interviewee"]
     if len(interviewees) < 8:
@@ -102,6 +120,18 @@ def main() -> None:
         for banned in (
             "9:37", "9:15", "storage-room", "event-storage", "mascot head", "took the head", "nordy",
             "incident window", "the trap", "checklist", "upstairs", "the page", "motive on the table",
+            "the quiet", "better version", "final version", "second version", "first version",
+            "blank check", "hall pass", "all-access", "all-campus pass", "new location",
+            "spot i'm giving", "coordinate i'm giving", "path i'm giving", "different crop",
+            "that's the cut", "covered my slice", "monitor in your head", "dressing it up",
+            "neater sentence", "stop circling", "treat a ", "treat the ",
+            "wasn't the night", "a wrong night from me", "the log did",
+            "doesn't move me", "because it was flat", "keep the kitchen",
+            "wrong pair of hands", "getting smaller", "isn't a mood",
+            "the clock-out was for you", "jogging you", "the study room stands",
+            "add it into the night", "a minute attached", "a second line",
+            "list isn't a key", "roster isn't a key", "isn't a key to the rest",
+            "isn't a pass", "a pass to", "a pass into", "didn't give me a key",
         ):
             if banned in blob:
                 raise SystemExit(f"Banned phrase {banned!r} in tree {a['id']}")
@@ -118,7 +148,7 @@ def main() -> None:
                                 raise SystemExit(f"{a['id']} slip still has {banned_slip!r}: {line[:80]}")
                     elif "{act}" in line:
                         raise SystemExit(f"{a['id']} non-slip line names the act: {line[:80]}")
-                    if line in seen:
+                    if line in seen and line not in REPEATABLE:
                         raise SystemExit(f"duplicate line in {a['id']}: {line[:80]}")
                     seen.add(line)
         path = OUT / f"{a['id']}.json"

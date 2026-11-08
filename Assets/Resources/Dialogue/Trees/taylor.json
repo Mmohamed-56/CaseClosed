@@ -7,215 +7,47 @@
       "questions": [
         {
           "id": "taylor_access_q1",
-          "prompt": "You told me you were gone. This says you weren't. Talk.",
+          "prompt": "This puts you right there. Explain it.",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I was on the north hall desk for my whole block. I didn't get up except to hand out a package.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "My voice shakes on this and I need you to hear the words anyway. I was at the desk.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Please. North desk. I signed people in. I didn't leave the chair for this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "I was at the north desk. I'm not gonna invent a walk so you'll let me go. I didn't do it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I know an RA near a write-up looks like the write-up. I was on the north desk. I'm staying there.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Don't make me fill the quiet. I was at the desk. I didn't get up.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I keep thinking about the conduct file, and I still didn't leave the desk.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I did it. I {act}. I left the north desk. I wasn't sitting there.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Okay, I hear you, and I really want to help. But I was {alibi}. I think there's a mistake somewhere, and I'd love to help you find it." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "onlyIfInnocent": true, "line": "I understand why you'd think that. I do. But I was {alibi}. I'm an RA, I can't afford to be anywhere I'm not supposed to be." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "onlyIfInnocent": true, "line": "Please. I was {alibi}. If housing sees this, I lose my room. I didn't do anything." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "I was {alibi}. I've been nice this whole time and I'm done being nice. I didn't do it." },
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfCulprit": true, "line": "Oh, that's so weird. I totally get why that's concerning. I was {alibi}, though. Maybe it's a system thing?" },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "I was {alibi}. I'm sorry, I know that's not what you want to hear. It's just where I was." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "I was {alibi}. I really was. Please don't send anything to housing until you're sure." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "I'm sorry. I'm so sorry. I {act}. I wasn't {alibi}. I tell my residents to own their mistakes every week and I couldn't do it once." }
           ]
         },
         {
           "id": "taylor_access_q2",
-          "prompt": "You told me one thing. This says another. Which one's true?",
-          "aggressive": true,
+          "prompt": "Walk me through your night again. Slowly.",
+          "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The desk is the true one. I had duty. I stayed. I didn't slip out.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I know it sounds like the speech we give residents. It's also just where I was. The north desk.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "My hands are under my legs so you won't see them. I was at the desk. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "You can ask the duty group chat. North desk. I didn't do it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I need the desk to be what you write, because it's what I did. I didn't leave.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I almost said I walked a floor. I walked one package to a door and I came straight back.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm staying with the desk. Duty started, duty ran, I was in the chair.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "The desk wasn't the night. I did it. I {act}. I left the north hall stool.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Of course! So I finished up my duties, went {alibi}, answered about nine texts from residents about the microwave, and then went to bed. The microwave is fine, by the way." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "onlyIfInnocent": true, "line": "Sure, sorry. Duties, then {alibi}, then bed. I know it's short. I'm trying to be helpful." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "onlyIfInnocent": true, "line": "I keep telling it the same way because it's what happened. I was {alibi}. Please believe me." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "No. I've done it three times. I was {alibi}. I'm not doing it again." },
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfCulprit": true, "line": "Happy to! I wrapped up, went {alibi}, and then went to bed. Super normal night." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "Wrapped up. {alibi}. Bed. I'm sorry it's not more interesting." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "Wrapped up, then {alibi}, then, bed. Yes. I'm sorry, I'm just really tired." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Wrapped up. Then I didn't go {alibi}. I {act}. Then I went back and answered a resident text like everything was fine." }
           ]
         },
         {
           "id": "taylor_access_q3",
-          "prompt": "Slow down. Where were you actually standing?",
-          "aggressive": false,
+          "prompt": "You're lying to me. I can see it on you.",
+          "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "At the north hall desk, on the stool, facing the door. That's where I was.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "On the stool. I can tell you who I signed in. I wasn't down a side hall.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "The desk. Please don't stand so close. I was on the stool the whole block.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "North desk, the stool. I'm done. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "North hall desk. The stool. That's the spot I'm giving you.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I keep saying the stool because I was on it. I didn't tour the building.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I was at that desk. I'm not relocating myself to make the file easier.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I wasn't on that north-desk stool. I did it. I {act}.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "I promise I'm not. I'm just nervous. Authority makes me nervous, which is funny since I am kind of authority. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "onlyIfInnocent": true, "line": "I'm not lying, I'm scared. They look the same, I know. I was {alibi}." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "onlyIfInnocent": true, "line": "Please stop. I was {alibi}. I can't control what my face does right now." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "You see someone who's terrified of losing their housing. That's all you see. I was {alibi}." },
+            { "minStress": 0, "maxStress": 29, "emotion": "defensive", "onlyIfCulprit": true, "line": "Oh no, I'm just anxious! I'm always anxious. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "I'm not, I promise. I was {alibi}. I'm sorry if I seem weird." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "Please don't say that. I was {alibi}. I'm trying really hard here." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "You're right. I'm sorry. I {act}. I don't know why I thought I could just keep smiling through it." }
           ]
         }
       ]
@@ -224,108 +56,36 @@
       "evidenceKey": "red_herring",
       "questions": [
         {
-          "id": "taylor_herring_q1",
-          "prompt": "What's this for?",
+          "id": "taylor_rh_q1",
+          "prompt": "What's this about?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "That's a hall purchase. I bought it for a floor program I already had on the calendar."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "RAs buy cups and snacks for programs. This was the program. I have the signup."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "It looks like I was setting something up. I was. A floor program. Not this."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "Program supplies. I'm not gonna apologize for doing the RA job in the afternoon."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Oh! That's for my floor. RAs do programs. That's from one of them. I can show you the flyer, it has a cartoon cat on it." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "It's for residents. I know it looks weird out of context. There's a signup sheet." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "It's for my floor, I promise. Housing approved it. Please check with housing." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "It's for a floor program. I'm not going to apologize for doing my job." }
           ]
         },
         {
-          "id": "taylor_herring_q2",
-          "prompt": "You've got this from today. Why'd you have it?",
+          "id": "taylor_rh_q2",
+          "prompt": "Funny timing on this, don't you think?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Because the program was tonight, earlier than my desk block. I bought it so residents would show."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Same day is how programming works. I had it for the floor, not for this."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I had it because a program without supplies is me standing in an empty lounge. I bought the supplies."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I had it for the residents. The date is the program date. That's all."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "I can see why! But I always do things last minute for programs. Residents only RSVP the day of, it's a whole thing." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "It's just bad luck, I promise. The program was that day." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "It's a coincidence. I know you hate that word. It's still true." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "It's not funny. It's a program. I run one every week." }
           ]
         },
         {
-          "id": "taylor_herring_q3",
-          "prompt": "Does this have anything to do with what happened?",
+          "id": "taylor_rh_q3",
+          "prompt": "Convince me this has nothing to do with it.",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. It's for the floor program. It doesn't have anything to do with this."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "The signup sheet ate the supplies. I'm telling you they were for that, and they're gone that way."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Don't put it on what happened. I used it for a program I advertised."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. It was a floor program. I'm done defending snacks."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Okay! So there's a signup sheet, my supervisor approved it, and twelve residents came. Any of them would tell you. I'd love for you to talk to them." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "My supervisor signed off on it. The residents were there. Please ask them." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I don't know how to convince you. Just ask my supervisor. Please." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Ask my supervisor. I'm done begging." }
           ]
         }
       ]
@@ -335,107 +95,35 @@
       "questions": [
         {
           "id": "taylor_alibi_q1",
-          "prompt": "This is what you're leaning on. Were you really there?",
-          "aggressive": false,
+          "prompt": "This is your alibi? It doesn't cover the window.",
+          "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Yes. I was on the north desk. The duty log and the night I described are the same chair."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Once I sat for duty I stayed. Getting up for a package is not leaving the hall."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Residents came for keys. They saw me. I was on the stool."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "If you ignore the duty log, the residents still saw me. I was there."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Oh, I'm sorry. I didn't realize it needed to. I was {alibi}. I'm happy to help you find more records if that helps." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "I was {alibi}. I'm sorry I don't have a better record. I didn't know I'd need one." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I was still {alibi}. I know it doesn't cover everything. That doesn't mean I left." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Then it doesn't cover it. I was {alibi}. I'm done apologizing for that." }
           ]
         },
         {
           "id": "taylor_alibi_q2",
-          "prompt": "Could you have gone back after this?",
-          "aggressive": true,
+          "prompt": "Who can back this up?",
+          "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. Duty doesn't let me vanish. I didn't leave the desk and double back from somewhere."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "After the package I was back on the stool in a minute. I didn't go on a trip."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I couldn't have. The hall phone rings on that desk. I answered it."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I didn't go out. The north desk was the whole block."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Oh, so many residents! Like four of them came by for things. And the RA who relieved me. I can give you all their names. I have them memorized." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "The relief RA. And residents. I can make you a list. I'm good at lists." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "The relief RA saw me. Please ask her." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "The relief RA. Ask her. I'm done." }
           ]
         },
         {
           "id": "taylor_alibi_q3",
-          "prompt": "If this is off, who actually saw you?",
+          "prompt": "What did you do after this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Residents who picked up keys. A few of them. They saw me on the stool."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "The RA who relieved me. They saw me still there at the end of the block."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Ask the person who took the next shift. They didn't find an empty desk."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "The relief RA. That's a named person. I'm not inventing a friend."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Went to bed! After answering, like, three resident texts. Someone's roommate was microwaving fish again. It's an ongoing situation." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "Bed. And some resident texts. That's it, I promise." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I just went to bed. I don't do anything after. I'm exhausted all the time." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Bed. I went to bed." }
           ]
         }
       ]
@@ -445,107 +133,35 @@
       "questions": [
         {
           "id": "taylor_roster_q1",
-          "prompt": "You're on this list. When did you leave?",
+          "prompt": "Why is your name on this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The list is the duty roster. My block ended when the next RA sat down. I was on the desk until then."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "When relief showed up. Other RAs are on that list. Mine was the north desk block."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "End of my duty block. A name on the RA list isn't me loose in the building after."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I didn't stay past relief. The next name on the roster took the stool."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Oh, RAs are on basically everything. It's part of the job. Housing puts us on every list so we can be contacted." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "I'm an RA. I'm on so many lists. I'm sorry, I know that doesn't help." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "It's an RA thing. Housing puts us on everything. Please don't read into it." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Because housing put me there. That's it." }
           ]
         },
         {
           "id": "taylor_roster_q2",
-          "prompt": "Did being on this let you stay late?",
+          "prompt": "Being on this got you access, didn't it?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. The duty list put me on the north desk. It didn't send me anywhere else."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "It gave me a stool and a phone. I used both. Then relief came."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No. Being the RA on duty isn't a pass to leave the desk. I stayed."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I'm not gonna read a duty roster like permission. I had one desk."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Honestly, less than you'd think! I get a package key box and a lot of responsibility. That's mostly it." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "No, I don't get master keys. RAs never get master keys. Housing is really strict about it." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "No! I don't have access to anything like that. I'd get fired." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "No. Check with housing. They'll tell you." }
           ]
         },
         {
           "id": "taylor_roster_q3",
-          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
+          "prompt": "Who else on this list would do something like this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Because I'm the RA on duty. The list is the block. I was on the north desk, which is what I said."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "My name's there because housing scheduled me. I did the block."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "It's a duty roster. I can be on it and still have been on the stool. That's the point of the list."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "The list is the desk I worked. I said I worked the desk. Same thing."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Oh, I couldn't say. I really try not to think the worst of people. It's kind of my whole job." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "I don't want to accuse anyone. I'd hate it if someone did that to me. Which, I mean, is happening." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I'm not going to name anyone. I'm sorry. I can't." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "No. I won't do to someone else what you're doing to me." }
           ]
         }
       ]
@@ -554,108 +170,36 @@
       "evidenceKey": "sign_in",
       "questions": [
         {
-          "id": "taylor_sign_q1",
-          "prompt": "You signed this. When did you actually leave?",
+          "id": "taylor_signin_q1",
+          "prompt": "You signed in. When did you sign out?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I signed the duty sheet when I sat down, and I signed the handoff when relief got there."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "The signature is the start of the desk block. The handoff is the end. I was there between them."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I stayed until relief. Signing in didn't send me on a round."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "Handoff. That's when I left the stool. I'm not gonna stretch the block."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Oh no, did I forget? I'm so sorry. I usually remember. I left when my part was done and went {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "I'm sorry, I must have forgotten. I left. I was {alibi}." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I forgot one box. I'm sorry. I still left." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I forgot to sign out. That's not a crime." }
           ]
         },
         {
-          "id": "taylor_sign_q2",
-          "prompt": "This puts you in the building. How late were you there?",
+          "id": "taylor_signin_q2",
+          "prompt": "There's no time out on here. You never left, did you?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The whole block, until relief. I was at the north desk. I wasn't out in the hall doing this."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Late enough that residents were still coming for keys. I was on the stool for them."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Through my duty block. That's how late. Then the next RA had it."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "As late as the roster says my block runs. Then I handed it off. Don't add time."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "I definitely left! I just forgot to write it down. I'm sorry. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "I left, I promise. I was {alibi}. I'm sorry about the box." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I left. Please. I was {alibi}." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I left. I was {alibi}. Stop." }
           ]
         },
         {
-          "id": "taylor_sign_q3",
-          "prompt": "Did signing this get you a key?",
+          "id": "taylor_signin_q3",
+          "prompt": "Why were you even there?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. Signing the duty sheet got me the desk phone and the key box for packages. I didn't take a master."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A sign-in is how housing knows the desk is covered. It isn't a personal key."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No key for me. The box opens for packages and it stays at the desk."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I got the desk. I didn't get a key to carry around. The box doesn't leave."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "I was helping! Someone asked if I could cover, and I can never say no. It's a problem my therapist and I are working on." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "Someone needed help. I always help. I'm sorry." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I was asked to be there. I didn't want to let anyone down." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Because I said yes to something. I always say yes. Clearly I should stop." }
           ]
         }
       ]
@@ -668,38 +212,10 @@
           "prompt": "HOLD",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I was on the north desk the whole block. Please don't keep me. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "You can't pin this on the RA who stayed at the desk. I didn't do it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 84,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Wait, you're actually keeping me? I was on the north desk. I didn't get up. Please, I didn't do this.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I did it. I left the north desk. I {act}.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 100, "emotion": "scared", "onlyIfInnocent": true, "line": "Oh. Okay. I was {alibi}. Please, if housing calls, can you tell them it's not confirmed? I'll lose my room." },
+            { "minStress": 0, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "You're making a mistake. I was {alibi}. I've been nothing but polite and you're holding me anyway." },
+            { "minStress": 0, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "Okay. I understand. I was {alibi}. I'm sure it'll get cleared up. Things always get cleared up." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "I know. I deserve it. I {act}. Please tell my residents I'm sorry. They're going to hear about it before I can tell them." }
           ]
         }
       ]
@@ -712,30 +228,9 @@
           "prompt": "RELEASE",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Thank you. I'll go back to the desk before the hall thinks I abandoned it. I was there.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 84,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Okay. I'll go. I was on the north desk. Please write that, not a guess.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I already said it. I did it. I {act}. I'm not gonna clean it up on the way out.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 100, "emotion": "calm", "onlyIfInnocent": true, "line": "Thank you so much. Really. I was {alibi}. I'm going to go answer forty unread texts now." },
+            { "minStress": 0, "maxStress": 84, "emotion": "calm", "onlyIfCulprit": true, "line": "Thank you! I was {alibi}. I really appreciate you being fair about this." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "You're letting me go? I told you I {act}. I don't think I can just go back to my floor and pretend." }
           ]
         }
       ]

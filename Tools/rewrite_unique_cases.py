@@ -513,6 +513,10 @@ INTERVIEWEE_PATCH = {
 
 
 def main() -> None:
+    raise SystemExit(
+        "Assets/Resources/Cases/case_templates.json is the authored pack. "
+        "This rewrite would overwrite that file, so it does not run."
+    )
     assert len(TEMPLATES_DATA) == 18, len(TEMPLATES_DATA)
     ids = [t["id"] for t in TEMPLATES_DATA]
     titles = [t["title"] for t in TEMPLATES_DATA]

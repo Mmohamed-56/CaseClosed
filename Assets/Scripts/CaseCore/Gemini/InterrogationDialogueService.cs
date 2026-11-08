@@ -228,7 +228,8 @@ namespace CaseClosed.CaseCore.Gemini
                     IsShutdown = stressResult.IsShutdown,
                     HasSlipped = slippedSuspectIds.Contains(suspect.Id),
                     StressResult = stressResult,
-                    SpokenAct = shiftController.ActiveSession.Case.SpokenAct
+                    SpokenAct = shiftController.ActiveSession.Case.SpokenAct,
+                    SpokenAlibi = shiftController.ActiveSession.Case.SpokenAlibi
                 };
 
                 GeminiSuspectReply scenarioReply;
@@ -334,7 +335,8 @@ namespace CaseClosed.CaseCore.Gemini
                     isCulprit,
                     out reply,
                     hasSlipped,
-                    shiftController.ActiveSession.Case.SpokenAct))
+                    shiftController.ActiveSession.Case.SpokenAct,
+                    shiftController.ActiveSession.Case.SpokenAlibi))
                 return;
 
             Action started = QuestionStarted;

@@ -7,215 +7,47 @@
       "questions": [
         {
           "id": "reese_access_q1",
-          "prompt": "You told me you were gone. This says you weren't. Talk.",
+          "prompt": "This puts you right there. Explain it.",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I cut through campus after practice and I went straight to the rec courts. I was in a run. I didn't peel off.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A camera that says otherwise makes me laugh, and then it doesn't. I was on the court.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Slow down. Rec. I was playing. I would've been sweaty in a different building and I wasn't.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "I was on the court. I'm not inventing a side trip. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I know athletes get the first look. I was at rec after practice. I'm keeping the court.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Don't stare me into a shortcut. I went to rec. I played.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I was on the court. You can be loud. I didn't leave the run.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I did it. I {act}. I wasn't at rec like I wanted you to think.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Nah, that's a flag on the play. I was {alibi}. Run the tape back, you'll see." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfInnocent": true, "line": "I was {alibi}. Bad call, ref. I didn't go anywhere." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "onlyIfInnocent": true, "line": "Bro, I was {alibi}. You're about to cost me my eligibility over a broken scanner." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "I was {alibi}. I'm not taking a fall for something I didn't do. Not happening." },
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfCulprit": true, "line": "Ha. That's wild. Those things are always buggin'. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "I was {alibi}. That's my answer. Ask anybody." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "I was {alibi}, man. Can we wrap this up? I got practice at six." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Yeah. Alright. I {act}. I wasn't {alibi}. Coach is gonna bench me for the season. I deserve it." }
           ]
         },
         {
           "id": "reese_access_q2",
-          "prompt": "You told me one thing. This says another. Which one's true?",
-          "aggressive": true,
+          "prompt": "Walk me through your night again. Slowly.",
+          "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The court is the true one. Practice, then rec, then a run that went long. I didn't add a stop.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A quick no is just how I talk. It's also where I was. The court at rec.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "My heel's tapping and you can hear it. I was at rec. I didn't do it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "Run it back if you want. Rec court. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I want the court in the report because I was on it. I'm not drawing a different path.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I almost said I grabbed water and left. I grabbed water and I checked back in. I stayed.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm staying with rec. Practice ended and I played. That's the night.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "The rec run wasn't the night. I did it. I {act}. I wasn't on that court.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Practice ended, I went {alibi}, I ate like four protein bars, I went home, I iced my knee. Same as every night." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfInnocent": true, "line": "Practice, {alibi}, home. That's the playbook. No trick plays." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "onlyIfInnocent": true, "line": "I ran it for you three times. I was {alibi}. Same play every time." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "No more reps. I was {alibi}." },
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfCulprit": true, "line": "Practice, then {alibi}, then home. Chill night." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "Practice. {alibi}. Home. That's it." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "Practice, then, uh, {alibi}. Then home. Yeah." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Practice. Then I didn't go {alibi}. I {act}. Then I went home and acted like nothing happened. That's the real play." }
           ]
         },
         {
           "id": "reese_access_q3",
-          "prompt": "Slow down. Where were you actually standing?",
-          "aggressive": false,
+          "prompt": "You're lying to me. I can see it on you.",
+          "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "On the rec court, near the far basket, in a run. That's where I was standing between points.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Far basket. I can tell you the score we were dumb about. I wasn't outside.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "The court. Don't box me into a corner. I was in the run.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "Far court at rec. I'm done describing the run. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Rec, far basket. That's the spot. We were playing.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I keep saying the basket because that's where the ball was. I was with the ball.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I was on that court. I'm not jogging you a different map.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I wasn't on that rec court at all. I did it. I {act}.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "That's game face. I can't turn it off. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfInnocent": true, "line": "Nah. You're seeing me annoyed. I was {alibi}." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "onlyIfInnocent": true, "line": "You don't know my face. I was {alibi}." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "I don't lie. Coach would kill me. I was {alibi}." },
+            { "minStress": 0, "maxStress": 29, "emotion": "defensive", "onlyIfCulprit": true, "line": "Nah, that's just me. I was {alibi}." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "You're reaching. I was {alibi}." },
+            { "minStress": 60, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "Stop staring, man. I was {alibi}." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Yeah. You can. I {act}. I've never been good at hiding it when I mess up." }
           ]
         }
       ]
@@ -224,108 +56,36 @@
       "evidenceKey": "red_herring",
       "questions": [
         {
-          "id": "reese_herring_q1",
-          "prompt": "What's this for?",
+          "id": "reese_rh_q1",
+          "prompt": "What's this about?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "That's rec gear. I borrowed it for the run and I put it back on the cage when we stopped."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I borrow stuff for team nights all the time. This was the run. It went back."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "It looks like I was gearing up for something else. I was gearing up to play. That's it."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "Rec gear. I'm done acting shocked that an athlete borrowed a ball."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Oh, that's team stuff. We're always grabbing random things. Coach has a list." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It's for practice. There's a reason. It's legit." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "It's team gear, man. Read it." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Team stuff. Next." }
           ]
         },
         {
-          "id": "reese_herring_q2",
-          "prompt": "You've got this from today. Why'd you have it?",
+          "id": "reese_rh_q2",
+          "prompt": "Funny timing on this, don't you think?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Because we had a run tonight. I checked it out so we'd have a ball that wasn't dead. That's why."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Same night is the run. I didn't carry it off campus for a scheme."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I had it because the good ball was signed out to us. I played with it."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I had it for rec. The time is the run. Not a plan."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Nah. Same day's how we do it. Practice every day." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It's dated the day I needed it. That's all." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "It's not funny. It's practice." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "You're reaching, ref." }
           ]
         },
         {
-          "id": "reese_herring_q3",
-          "prompt": "Does this have anything to do with what happened?",
+          "id": "reese_rh_q3",
+          "prompt": "Convince me this has nothing to do with it.",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. It's a ball and a pinny. It doesn't have anything to do with this."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "It's back on the rec cage. I'm telling you the run used it and the run ended."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Don't fold that gear into the night. I played with it and I brought it back."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. Rec gear. Returned. I'm done with that checkout."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Ask Coach. Ask anybody on the team. They'll tell you what it was for in like two seconds." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Coach can vouch. It's all legit." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "Talk to Coach. I'm done explaining." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Ask Coach." }
           ]
         }
       ]
@@ -335,107 +95,35 @@
       "questions": [
         {
           "id": "reese_alibi_q1",
-          "prompt": "This is what you're leaning on. Were you really there?",
-          "aggressive": false,
+          "prompt": "This is your alibi? It doesn't cover the window.",
+          "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Yes. I was on the rec court. The run matches what I told you, including the score we argued about."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Once the run started I stayed in it. I don't sub out and wander."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Four other people were on the court. They saw me. I wasn't a ghost in the corner."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "If you toss the court sheet, the people in the run still saw me. I was playing."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Didn't know I needed it to. I was {alibi}. That's just where I was." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "I was still {alibi}. It's not like I'm wearing a GPS." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "Then it doesn't cover it. I was still there, man." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I was {alibi}. Gap or no gap." }
           ]
         },
         {
           "id": "reese_alibi_q2",
-          "prompt": "Could you have gone back after this?",
-          "aggressive": true,
+          "prompt": "Who can back this up?",
+          "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. A run doesn't pause so I can jog across campus and jog back sweaty in a new way."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "After I checked in I was in the game. I didn't take a mysterious water break off site."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I couldn't have. They would've played four-on-four and yelled. They didn't yell."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I didn't leave the court. The run was the night."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Literally the whole team. And the guy at the desk. And probably the cameras. I'm hard to miss." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "My teammates. Ask any of 'em." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "The team. I told you." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "The team. Go ask." }
           ]
         },
         {
           "id": "reese_alibi_q3",
-          "prompt": "If this is off, who actually saw you?",
+          "prompt": "What did you do after this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The people in the run. They'll remember the argument about the score. I was in it."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "The rec attendant who handed me the ball. They saw me come in and they didn't see me leave early."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Ask the run. Don't ask me to invent a ref. We didn't have one. We had each other."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "The run. Real names if you pull the court. I'm not adding a coach."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Went home. Ate a whole chicken. Not proud of it. Iced my knee. Watched film. Slept." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Home. Food. Bed." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I went home, man." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Home." }
           ]
         }
       ]
@@ -445,107 +133,35 @@
       "questions": [
         {
           "id": "reese_roster_q1",
-          "prompt": "You're on this list. When did you leave?",
+          "prompt": "Why is your name on this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The list is practice. Practice ended. I went to rec."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "When the coach released us. Half the team is on that list. I went to play more, because I'm like that."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "End of practice. A name on the practice list isn't me still in the practice gym."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I didn't stay at practice. Extra time was at rec, by choice, on a different court."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Athletes are on everything. Coach signs us up for stuff we don't even know about." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It's a list. Half the team's on it." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "It's a list, man. Doesn't mean nothing." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "It's a list." }
           ]
         },
         {
           "id": "reese_roster_q2",
-          "prompt": "Did being on this let you stay late?",
+          "prompt": "Being on this got you access, didn't it?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. The practice list let me into the team gym. It didn't let me into the rest of campus after."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "It gave me a jersey for the session. I did the session. Then rec, on my own."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No. Team roster isn't a key. I practiced and I left for a run."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I'm not gonna treat a practice sheet like an all-campus pass. I went to rec."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "It got me a locker and a jersey. That's about it." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "No. Athletes don't get keys. We barely get Gatorade." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "No. I don't have access to nothing." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "No." }
           ]
         },
         {
           "id": "reese_roster_q3",
-          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
+          "prompt": "Who else on this list would do something like this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Because I play. The list is practice. After it, I was at rec, which is what I said."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "My name's there because I don't skip. I made practice, then I played more."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "It's a practice roster. I can be on it and still have been on the rec court after."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "The list is practice. I said I went to practice and then rec. One night, two gyms."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "I don't rat on teammates. That's like rule one." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "Not my job. I'm not snitching." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "No. Figure it out yourself." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Nope." }
           ]
         }
       ]
@@ -554,108 +170,36 @@
       "evidenceKey": "sign_in",
       "questions": [
         {
-          "id": "reese_sign_q1",
-          "prompt": "You signed this. When did you actually leave?",
+          "id": "reese_signin_q1",
+          "prompt": "You signed in. When did you sign out?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I signed the practice sheet, I did the workout, and I left for rec when the coach blew it dead."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "The signature is the start of practice. Rec is where I went after. Different building."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I left when practice ended. Signing in didn't chain me to that gym."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "End of practice. Then rec. I'm not gonna add a lap I didn't run."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Never do. Nobody does. I just bounce when it's over." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "I didn't. But I left. Went {alibi}." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I left. A blank box doesn't mean nothing." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I left." }
           ]
         },
         {
-          "id": "reese_sign_q2",
-          "prompt": "This puts you in the building. How late were you there?",
+          "id": "reese_signin_q2",
+          "prompt": "There's no time out on here. You never left, did you?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Until the coach released us. After that I was at rec, not in the practice building."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Long enough to get smoked and released. Then I went to play for fun, which is rec."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Through practice. That's how late in that gym. Then the rec court."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "As late as practice. Then I left. Don't keep me in the team gym."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Nah, I left. I was {alibi}. Ask around." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "I left. Nobody signs out." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "I left. I was {alibi}." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I left." }
           ]
         },
         {
-          "id": "reese_sign_q3",
-          "prompt": "Did signing this get you a key?",
+          "id": "reese_signin_q3",
+          "prompt": "Why were you even there?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. Signing practice got me into the team session. It didn't hand me a key."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A sign-in is how the coach counts who showed. It isn't a key."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No key. I signed a practice sheet. My name, then I sweated, then I left."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I got counted at practice. I didn't get a key. Rec has its own desk."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Team thing. We had to show up. Coach makes us do everything." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It was a team thing. Mandatory." },
+            { "minStress": 60, "maxStress": 84, "emotion": "angry", "line": "Because I had to be. Coach." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Team." }
           ]
         }
       ]
@@ -668,38 +212,10 @@
           "prompt": "HOLD",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I didn't do this. I'm jumpy because you pulled me off the court. I was at rec.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "Come on. I didn't do it. I was on the court at rec.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 84,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "This is a bad call. I was on the court at rec. Hold me all night. I didn't leave.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Yeah, it was me. I {act}. I wasn't on the court.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "You're kidding. I was {alibi}. If I miss practice, Coach is gonna lose it." },
+            { "minStress": 0, "maxStress": 100, "emotion": "defensive", "onlyIfInnocent": true, "line": "Bad call. I was {alibi}. You'll see." },
+            { "minStress": 0, "maxStress": 84, "emotion": "defensive", "onlyIfCulprit": true, "line": "Whatever. I was {alibi}. Do what you gotta do." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Yeah. I know. I {act}. Somebody tell Coach before he hears it from somebody else." }
           ]
         }
       ]
@@ -712,30 +228,9 @@
           "prompt": "RELEASE",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Appreciate it. I'm gonna go. I was on the court, and I've still got legs for it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 84,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Bet. I'm out. I was at rec. I said I didn't do it.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "You heard me. I did it. I {act}. Walking out doesn't change that.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 100, "emotion": "calm", "onlyIfInnocent": true, "line": "Good call. I was {alibi}. I'm out." },
+            { "minStress": 0, "maxStress": 84, "emotion": "calm", "onlyIfCulprit": true, "line": "Bet. I was {alibi}. Later." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "You're letting me go? I just said I {act}. That's a terrible call, ref. But I'm not gonna argue." }
           ]
         }
       ]

@@ -7,215 +7,47 @@
       "questions": [
         {
           "id": "jamie_access_q1",
-          "prompt": "You told me you were gone. This says you weren't. Talk.",
+          "prompt": "This puts you right there. Explain it.",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I finished my volunteer shift and I walked to the west bus loop. I watched the buses. I didn't come back.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I get shaky when something says otherwise. I still walked to the bus loop, and I stayed under the shelter.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Please slow down. I was at the west bus loop. I would remember turning around. I didn't.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "I'm not inventing a trip just so this can end. I was at the bus loop. I didn't do it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I know how that looks. I talk too much. I went to the bus loop after my shift, and I'm staying with that.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "If I rush to fill the quiet, you'll write it down wrong. I was at the west bus loop.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "My hands won't stay still. I was at the bus loop. I didn't come back onto campus.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "Stop. I did it. I {act}. The bus loop is what I wanted you to picture.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Okay, um, I can see why that looks bad, but I was {alibi}. I'd remember leaving, I'm not a leaving person, I overthink leaving." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "onlyIfInnocent": true, "line": "Sorry, give me a second. That's wrong. It has to be wrong. I was {alibi} and I didn't go anywhere, I promise." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "onlyIfInnocent": true, "line": "Please don't look at me like that. I was {alibi}. I don't know how to prove a thing I didn't do." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "No. Stop. I was {alibi} and I'm not making up a story so your paper looks right. I didn't do it." },
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfCulprit": true, "line": "Oh. Huh. Okay. I mean, I was {alibi}, so I don't really know what that is. Systems glitch all the time, right? Sorry, I'm rambling." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "onlyIfCulprit": true, "line": "I was {alibi}. I don't know what else you want me to say. I was there. That's where I was." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "onlyIfCulprit": true, "line": "Can I have some water? Sorry. I was {alibi}. I keep saying it because it's true. Mostly. It's true." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Okay. Okay okay okay. I wasn't {alibi}. I {act}. I'm sorry. I'm so sorry, I didn't think it would be a whole thing." }
           ]
         },
         {
           "id": "jamie_access_q2",
-          "prompt": "You told me one thing. This says another. Which one's true?",
-          "aggressive": true,
+          "prompt": "Walk me through your night again. Slowly.",
+          "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "The bus loop is the true one. I finished volunteering and I left. I didn't drift back.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I know a clean answer sounds practiced. I've said this since I sat down. I was at the bus loop.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "My hands are shaking and I hate it. I was at the west bus loop. I didn't do it.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "You can ask it again. I was already at the bus loop. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I want the bus loop to be the one you keep. I went there after volunteering. That's what I'm giving you.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I can hear myself getting smaller. I was at the west bus loop. That's the answer.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I'm staying with the bus loop. I finished the shift and I left. That's what happened.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "The bus loop was wrong. I did it. I {act}. Write that down, not the buses.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "Sure, yeah. I finished what I was doing, I went {alibi}, I stayed there, and then I went home and ate cereal standing up. That's the whole night." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "onlyIfInnocent": true, "line": "Slowly, okay. Um. I went {alibi}. Then nothing. That's the part that's hard, there's just nothing to tell you." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "onlyIfInnocent": true, "line": "I've walked you through it twice. I was {alibi}. Every time I say it slower it sounds more like a lie and it isn't." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "There is no slower. I was {alibi}. I didn't do this. I'm done being walked anywhere." },
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfCulprit": true, "line": "Okay so, I finished up, then I went {alibi}, and I just sort of hung out, and then home. Pretty boring honestly. Sorry." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "onlyIfCulprit": true, "line": "I went {alibi}. I stayed. I went home. I'm trying to go slow but there's not a lot of night to go through." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "onlyIfCulprit": true, "line": "I keep losing the order. Sorry. I was {alibi}, and then, I think, home. I'm tired. Can we not do this again?" },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Fine. Slowly. I said I was {alibi}. I wasn't. I {act}. There. That's the real walk-through." }
           ]
         },
         {
           "id": "jamie_access_q3",
-          "prompt": "Slow down. Where were you actually standing?",
-          "aggressive": false,
+          "prompt": "You're lying to me. I can see it on you.",
+          "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "At the west bus loop, under the shelter, watching the lights. That's where I was standing.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I was under the shelter. I can tell you which bus I let go. I wasn't back in a building.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Please. The bus shelter. I was standing there. I didn't turn around.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "The shelter. I'm done describing it. I was there, and I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "West bus loop. The shelter. That's the spot I'm giving you, and I'm not dressing it up.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "I keep saying the shelter because that's where I was standing. Don't push me off it.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I was at the bus shelter. I'm tired and I'm not moving off that spot.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I wasn't standing at that shelter at all. I did it. I {act}.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "onlyIfInnocent": true, "line": "I look like this all the time. Ask anyone. I look guilty buying gum. I was {alibi}, I swear." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "onlyIfInnocent": true, "line": "That's not fair, my face just does this. I was {alibi}. I'm shaking because you're yelling, not because I did something." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "onlyIfInnocent": true, "line": "Please stop. I know how I look. I was {alibi}. I can't make my hands stop, that's not a confession." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "You know what you can see? Someone who's scared of you. That's it. I was {alibi}. I didn't do it." },
+            { "minStress": 0, "maxStress": 29, "emotion": "defensive", "onlyIfCulprit": true, "line": "I always look like I'm lying, it's a whole problem. I was {alibi}. Honestly. Well, not honestly, that sounds bad, I mean truly." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "onlyIfCulprit": true, "line": "I'm not. I'm not lying. I was {alibi}. Why would I lie about something so boring?" },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "onlyIfCulprit": true, "line": "Stop saying that. I was {alibi}. If you keep saying it I'm going to start believing you and that's not fair." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "Yeah. You can. I'm lying. I {act}. I've been sitting here trying to figure out how to say it since you walked in." }
           ]
         }
       ]
@@ -224,108 +56,36 @@
       "evidenceKey": "red_herring",
       "questions": [
         {
-          "id": "jamie_herring_q1",
-          "prompt": "What's this for?",
+          "id": "jamie_rh_q1",
+          "prompt": "What's this about?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "That was for the volunteer table. I picked it up so the setup would be ready. That's what it's for."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "It's a supply from the volunteer run. I used it while we were setting tables."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I can see why it looks planned. It was planned for a club table. I didn't use it for this."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "It's table stuff. I'm done apologizing for a supply I actually needed for setup."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Oh that! Okay, that looks weird, I get it. It's for a club thing, I was helping set up. There's a whole explanation, do you want the whole explanation?" },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "It's a club thing. I help with setup for like three different groups, I say yes to everything. That's from one of them." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I know what it looks like. It's not that. It's setup stuff. Check with the club, please, they'll tell you." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "It's for a club. I've said that. I volunteer too much and now it's evidence, apparently." }
           ]
         },
         {
-          "id": "jamie_herring_q2",
-          "prompt": "You've got this from today. Why'd you have it?",
+          "id": "jamie_rh_q2",
+          "prompt": "Funny timing on this, don't you think?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Because the table ran short. I grabbed it on the way into my shift. That's the whole reason."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Same day doesn't make it part of this. I needed it so the volunteer table would work."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I had it because setup doesn't happen on its own. I got it for the table."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I had it for the table. You can hate the timestamp. It's still a volunteer supply."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "I mean, kind of? But everything I do is same-day, I'm not a planner. I grabbed it on the way because I always forget." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It's the same day because I'm disorganized, not because I'm clever. I wish I were clever. I'm really not." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "The timing is bad luck. I know how that sounds. It was for the club and the club will say so." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "It's funny timing because I have bad timing about everything. Ask my professors. It was for the club." }
           ]
         },
         {
-          "id": "jamie_herring_q3",
-          "prompt": "Does this have anything to do with what happened?",
+          "id": "jamie_rh_q3",
+          "prompt": "Convince me this has nothing to do with it.",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. It was for the table I was setting up. It doesn't belong in what happened."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "It stayed with the volunteer bins. I'm telling you it isn't part of this."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "You're trying to glue it onto the night. It's a table supply. Leave it there."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. Volunteer table. Not this. I'm done going over that one."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Okay. So. The club has a sheet for everything, and that's on the sheet, and the stuff is still where I left it. You can go look. I'll show you." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "It's on a club sheet with my name and a time. It never left the club closet. I don't know how else to convince you." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I can't convince you of anything, that's the problem, I just get quieter. Check the closet. It's all still there." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I'm not a convincing person. I'm a check-the-closet person. Go check the closet." }
           ]
         }
       ]
@@ -335,107 +95,35 @@
       "questions": [
         {
           "id": "jamie_alibi_q1",
-          "prompt": "This is what you're leaning on. Were you really there?",
-          "aggressive": false,
+          "prompt": "This is your alibi? It doesn't cover the window.",
+          "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Yes. I was at the west bus loop. I got there after my shift and I stayed under the shelter."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Once I reached the shelter I stayed. I didn't walk back onto campus."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "People waiting at the stop saw me. I wasn't hiding. I was waiting on a bus."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "Shift, then the bus loop. That's the night. I didn't build a second trip."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Oh. I didn't know I needed it to, um, cover a window. It's just where I was. I was {alibi}. I didn't know there'd be a window." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "It's not an alibi, it's just my night. I was {alibi}. I don't have a receipt for every minute, I'm sorry." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I don't know how to cover a window. I was {alibi} and I stayed. Nobody stamps you for staying." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Then it doesn't cover it. I was still {alibi}. Being bad at alibis isn't a crime." }
           ]
         },
         {
           "id": "jamie_alibi_q2",
-          "prompt": "Could you have gone back after this?",
-          "aggressive": true,
+          "prompt": "Who can back this up?",
+          "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. After I got to the shelter I stayed until a bus I knew. I didn't double back."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Go back? I was counting buses. I would've missed mine if I'd left the shelter."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I couldn't have. I was standing there. I can tell you which route I skipped."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I didn't go back. The shelter was where my night stopped."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Um, a few people saw me, I think? I talked to someone about their dog for like ten minutes. I don't know their name. The dog was Biscuit." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "People were around. I didn't take attendance. I wish I had. I'd have a sheet for you." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I don't have names. I have a dog named Biscuit and a feeling. That's not enough, is it?" },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Nobody official. I don't travel with witnesses. I was {alibi} and that's the truth whether anyone wrote it down." }
           ]
         },
         {
           "id": "jamie_alibi_q3",
-          "prompt": "If this is off, who actually saw you?",
+          "prompt": "What did you do after this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Whoever was waiting on the west loop saw me. I was under the shelter the whole time."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A couple of people at the stop. I don't have their names. They saw me standing there."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "The driver on the bus I didn't take looked right at me. I was at that shelter."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I'm not gonna invent a roommate. The people at the shelter saw me. That's who."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "After? I stayed {alibi} for a while, then I went home and did the dishes I'd been avoiding. Then I did not do my reading. That's it." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "I stayed, and then I went home. I know that's not exciting. My nights aren't exciting." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "Home. I went home. I keep saying it and it keeps not being enough." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Home. I went home. There's no after. There's never an after with me." }
           ]
         }
       ]
@@ -445,107 +133,35 @@
       "questions": [
         {
           "id": "jamie_roster_q1",
-          "prompt": "You're on this list. When did you leave?",
+          "prompt": "Why is your name on this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I left when the volunteer block ended. My name on there is the shift, and then I walked."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "When the setup was done. I don't hang around after the tables come down."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "End of the volunteer block. I went to the bus. Being listed doesn't keep me after that."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "I left when setup ended. The list is who helped. I helped, and then I left."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Because I sign up for everything. I have a problem. Somebody asks and I say yes before they finish the sentence." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "I'm on a lot of lists. I don't even remember joining half of them. That one's probably from a tabling event." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "Because I said yes to something. I always say yes. It's a list, not a plan." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Because I'm a yes person. That's why. It's not a confession, it's a personality flaw." }
           ]
         },
         {
           "id": "jamie_roster_q2",
-          "prompt": "Did being on this let you stay late?",
+          "prompt": "Being on this got you access, didn't it?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. Being on the volunteer list let me set a table. It didn't let me stay out after."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "It let me help with setup. That's what I signed up for. Then I was done."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No. The list is who showed up to help. I showed up, I finished, I walked to the bus."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. A crew list isn't a key. I set a table and I left."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Access to what, a folding table? That list gets you a lanyard and a free pen. I still have the pen." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "It got me a shift and a name tag. I'm not important enough for access. I'm barely important enough for the name tag." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "No. It didn't get me anything. I've never had access to anything in my life." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "Nothing on that list opens a door. If it did, I'd have lost the key by now." }
           ]
         },
         {
           "id": "jamie_roster_q3",
-          "prompt": "Your name's here. You said you were somewhere else. Explain that.",
+          "prompt": "Who else on this list would do something like this?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Because I volunteered. I was at the bus loop after the shift, like I said."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "My name's there because I helped set up. Then I left for the bus. Those fit."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "It's the volunteer block. I can be on it and still have been at the shelter after."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "The list is the setup. I did the setup and then I left. That's one night."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Oh, I don't want to say. I mean, everyone was kind of stressed, but that's just college. I don't think anyone's a bad person. Sorry, that's not helpful." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "I don't know. I really don't. There were some people being weird about it, but weird isn't guilty. I'm weird." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I'm not going to point at someone to get myself out of this chair. That feels worse than sitting here." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I'm not doing that. You want names, you can scare them out of someone else." }
           ]
         }
       ]
@@ -554,108 +170,36 @@
       "evidenceKey": "sign_in",
       "questions": [
         {
-          "id": "jamie_sign_q1",
-          "prompt": "You signed this. When did you actually leave?",
+          "id": "jamie_signin_q1",
+          "prompt": "You signed in. When did you sign out?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "I signed in for the volunteer block and I left when it ended. Then I was at the bus."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Start of setup, then the work, then the walk to the bus. I didn't hang around after."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "I left when the tables were done. The signature is just the start of that block."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "When setup ended. I'm not gonna keep redrawing the walk from the table to the bus."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "Oh no, did I not sign out? I never sign out. I get distracted and just leave. I'm sorry, that's a me problem." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "I probably didn't. I'm bad at the out column. I left when it ended and went {alibi}." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I left when everyone left. I didn't write it down. I didn't know not writing it down would matter this much." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I didn't sign out. I never sign out. That's a habit, not a crime." }
           ]
         },
         {
-          "id": "jamie_sign_q2",
-          "prompt": "This puts you in the building. How late were you there?",
+          "id": "jamie_signin_q2",
+          "prompt": "There's no time out on here. You never left, did you?",
           "aggressive": true,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Until the setup ended. After that I was at the bus loop, not roaming the building."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Long enough to finish one table. Then I left. I wasn't your problem after that."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Through the volunteer block. That's how late. Then the shelter."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "As late as setup needed me. Then I left for the bus. Don't stretch it."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "I left! I just didn't write that I left. There's a difference, I think. I hope. I left." },
+            { "minStress": 30, "maxStress": 59, "emotion": "defensive", "line": "A blank line means I forgot a pen, not that I stayed. I went {alibi}." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "I left. Please. I forgot one column on one sheet and now I live here apparently." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I left. The sheet doesn't know where I went. I do. I was {alibi}." }
           ]
         },
         {
-          "id": "jamie_sign_q3",
-          "prompt": "Did signing this get you a key?",
+          "id": "jamie_signin_q3",
+          "prompt": "Why were you even there?",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 29,
-              "emotion": "calm",
-              "slip": false,
-              "line": "No. Signing in got me a spot at a folding table. It didn't hand me a key."
-            },
-            {
-              "minStress": 30,
-              "maxStress": 59,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "A sign-in puts me on the volunteer block. It doesn't put me in a locked room."
-            },
-            {
-              "minStress": 60,
-              "maxStress": 84,
-              "emotion": "scared",
-              "slip": false,
-              "line": "No key. I signed a volunteer sheet. That's my name on a clipboard, nothing else."
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": false,
-              "line": "No. I got a table to set. I didn't get a key. We can leave that there."
-            }
+            { "minStress": 0, "maxStress": 29, "emotion": "calm", "line": "I was helping. Someone needed a hand and I have two of them. That's genuinely the whole reason." },
+            { "minStress": 30, "maxStress": 59, "emotion": "nervous", "line": "Because somebody asked. I don't need a better reason than that, usually. Apparently I should start needing one." },
+            { "minStress": 60, "maxStress": 84, "emotion": "scared", "line": "To help. I was there to help. I don't know how that turned into this." },
+            { "minStress": 85, "maxStress": 100, "emotion": "angry", "line": "I was there because I'm always there. I show up. That's the thing I do. It's not a motive." }
           ]
         }
       ]
@@ -668,38 +212,10 @@
           "prompt": "HOLD",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "scared",
-              "slip": false,
-              "line": "Please don't keep me. I finished volunteering and I went to the west bus loop. I didn't do this.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "angry",
-              "slip": false,
-              "line": "No. I didn't do it. I was at the west bus loop, and I'm not gonna make something up because you're staring.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 84,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "You're keeping me? I went to the west bus loop after my shift. I didn't do this. Please.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "I'm sorry. I did it. I {act}. I wasn't at the bus loop.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 100, "emotion": "scared", "onlyIfInnocent": true, "line": "Wait, you're keeping me? Please, I was {alibi}. Can I call someone? I don't even know who I'd call. I didn't do this." },
+            { "minStress": 0, "maxStress": 100, "emotion": "angry", "onlyIfInnocent": true, "line": "No. I didn't do it. I was {alibi} and I'm not going to cry in here just because you want me to. Okay. I might. But I didn't do it." },
+            { "minStress": 0, "maxStress": 84, "emotion": "scared", "onlyIfCulprit": true, "line": "Okay. Okay. I was {alibi}, so, this is a mistake, and someone's going to figure that out, right? Somebody always figures it out." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "I know. I know. I {act}. I'm sorry. Can you tell them I said sorry? I don't think I can say it to them." }
           ]
         }
       ]
@@ -712,30 +228,9 @@
           "prompt": "RELEASE",
           "aggressive": false,
           "replies": [
-            {
-              "minStress": 0,
-              "maxStress": 100,
-              "emotion": "calm",
-              "slip": false,
-              "line": "Thank you. I'm gonna go before I fall apart in this chair. I was at the bus loop.",
-              "onlyIfInnocent": true
-            },
-            {
-              "minStress": 0,
-              "maxStress": 84,
-              "emotion": "nervous",
-              "slip": false,
-              "line": "Okay. I'll go. I went to the west bus loop. I didn't do it.",
-              "onlyIfCulprit": true
-            },
-            {
-              "minStress": 85,
-              "maxStress": 100,
-              "emotion": "broken",
-              "slip": true,
-              "line": "You're letting me leave after I said it? I did it. I {act}. I'm not taking that back.",
-              "onlyIfCulprit": true
-            }
+            { "minStress": 0, "maxStress": 100, "emotion": "calm", "onlyIfInnocent": true, "line": "Oh thank god. Thank you. I'm going to go sit in my car and shake for a bit. I was {alibi}, by the way. Still. Okay. Bye." },
+            { "minStress": 0, "maxStress": 84, "emotion": "nervous", "onlyIfCulprit": true, "line": "Okay. Great. Yeah. I was {alibi}, so. Thank you. I'm just going to go. Quickly. Thank you." },
+            { "minStress": 85, "maxStress": 100, "emotion": "broken", "slip": true, "onlyIfCulprit": true, "line": "You're letting me go? I just told you I {act}. I don't know what to do with that. I don't think I can walk out of here and pretend I didn't say it." }
           ]
         }
       ]
