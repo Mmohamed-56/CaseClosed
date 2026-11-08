@@ -567,13 +567,7 @@ namespace CaseClosed.UI
 
         private static void SetTagVisual(Button button, bool active)
         {
-            if (button == null) return;
-            Image image = button.GetComponent<Image>();
-            if (image != null)
-                image.color = active ? DeskUiPalette.TabActive : DeskUiPalette.Navy;
-            Text label = button.GetComponentInChildren<Text>();
-            if (label != null)
-                label.color = active ? DeskUiPalette.Ink : DeskUiPalette.White;
+            DeskUiPalette.StyleFolderTag(button, active);
         }
 
         private void RefreshStatus()
@@ -986,23 +980,29 @@ namespace CaseClosed.UI
             GameObject go = new GameObject("Action_" + label, typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
             go.transform.SetParent(contentRoot, false);
             Image image = go.GetComponent<Image>();
-            image.color = fill;
             bool tall = label.Length > 42;
             LayoutElement layout = go.GetComponent<LayoutElement>();
-            layout.minHeight = tall ? 52f : 36f;
-            layout.preferredHeight = tall ? 52f : 36f;
+            layout.minHeight = tall ? 52f : 34f;
+            layout.preferredHeight = tall ? 52f : 34f;
+
+            bool isStampAction = fill == DeskUiPalette.StampHold || fill == DeskUiPalette.StampRelease || fill == DeskUiPalette.Charge;
+            DeskUiPalette.AddAccentStripe(go.transform, isStampAction ? fill : DeskUiPalette.Hairline, isStampAction ? 5f : 3f);
 
             GameObject labelGo = new GameObject("Label", typeof(RectTransform), typeof(Text));
             labelGo.transform.SetParent(go.transform, false);
             Text text = labelGo.GetComponent<Text>();
-            DeskUiPalette.StyleLabel(text, tall ? 12 : 14, textColor, FontStyle.Bold, TextAnchor.MiddleCenter);
             text.text = label;
             text.horizontalOverflow = HorizontalWrapMode.Wrap;
             text.verticalOverflow = VerticalWrapMode.Truncate;
-            Stretch(labelGo.GetComponent<RectTransform>(), 10f, 4f);
+            Stretch(labelGo.GetComponent<RectTransform>(), 14f, 4f);
 
             Button button = go.GetComponent<Button>();
-            DeskUiPalette.StyleButton(button, image, text, fill, textColor);
+            if (isStampAction)
+                DeskUiPalette.StyleStampButton(button, image, text, fill, true);
+            else
+                DeskUiPalette.StyleFormRow(button, image, text, fill, textColor, interactable && onClick != null);
+            if (tall)
+                text.fontSize = 12;
             button.interactable = interactable && onClick != null;
             if (onClick != null)
                 button.onClick.AddListener(() => onClick());
@@ -1031,17 +1031,18 @@ namespace CaseClosed.UI
             scaler.referenceResolution = new Vector2(1920f, 1080f);
             scaler.matchWidthOrHeight = 0.5f;
 
-            // Top-level tags sit side-by-side (not buried inside the panel).
+            // Manila folder tabs — kraft stock + stamped type (not navy SaaS pills).
             GameObject tags = new GameObject("TopTags", typeof(RectTransform), typeof(HorizontalLayoutGroup));
             tags.transform.SetParent(canvasGo.transform, false);
             RectTransform tagsRect = tags.GetComponent<RectTransform>();
             tagsRect.anchorMin = new Vector2(0f, 1f);
             tagsRect.anchorMax = new Vector2(0f, 1f);
             tagsRect.pivot = new Vector2(0f, 1f);
-            tagsRect.anchoredPosition = new Vector2(12f, -12f);
-            tagsRect.sizeDelta = new Vector2(430f, 40f);
+            tagsRect.anchoredPosition = new Vector2(12f, -10f);
+            tagsRect.sizeDelta = new Vector2(448f, 34f);
             HorizontalLayoutGroup tagLayout = tags.GetComponent<HorizontalLayoutGroup>();
-            tagLayout.spacing = 6f;
+            tagLayout.spacing = 3f;
+            tagLayout.padding = new RectOffset(4, 4, 0, 0);
             tagLayout.childForceExpandWidth = true;
             tagLayout.childForceExpandHeight = true;
             tagLayout.childControlWidth = true;
@@ -1056,39 +1057,49 @@ namespace CaseClosed.UI
             panel.transform.SetParent(canvasGo.transform, false);
             panelRoot = panel;
             Image panelImage = panel.GetComponent<Image>();
-            panelImage.color = DeskUiPalette.Manila;
+            DeskUiPalette.ApplyFill(panelImage, DeskUiPalette.Manila);
             RectTransform panelRect = panel.GetComponent<RectTransform>();
             panelRect.anchorMin = new Vector2(0f, 0f);
             panelRect.anchorMax = new Vector2(0f, 1f);
             panelRect.pivot = new Vector2(0f, 0.5f);
             panelRect.offsetMin = new Vector2(12f, 12f);
-            panelRect.offsetMax = new Vector2(460f, -60f);
+            panelRect.offsetMax = new Vector2(460f, -48f);
+            DeskUiPalette.AddFolderFrame(panel.transform, 2f, 2f);
 
-            GameObject header = CreateBox(panel.transform, "Header", DeskUiPalette.Navy);
+            GameObject header = CreateBox(panel.transform, "Header", DeskUiPalette.NavyDark);
+            DeskUiPalette.ApplyFill(header.GetComponent<Image>(), DeskUiPalette.NavyDark);
             RectTransform headerRect = header.GetComponent<RectTransform>();
             headerRect.anchorMin = new Vector2(0f, 1f);
             headerRect.anchorMax = new Vector2(1f, 1f);
             headerRect.pivot = new Vector2(0.5f, 1f);
-            headerRect.sizeDelta = new Vector2(0f, 52f);
-            headerRect.anchoredPosition = Vector2.zero;
+            headerRect.sizeDelta = new Vector2(-8f, 58f);
+            headerRect.anchoredPosition = new Vector2(0f, -4f);
 
-            headerTitleText = CreateLabel(header.transform, "Title", "CASE FILE", 17, DeskUiPalette.White, FontStyle.Bold);
-            AnchorTopLeft(headerTitleText.rectTransform, 14f, -8f, 260f, 22f);
-            headerCaseText = CreateLabel(header.transform, "Case", string.Empty, 12, DeskUiPalette.ManilaLight, FontStyle.Normal);
-            AnchorTopLeft(headerCaseText.rectTransform, 14f, -28f, 340f, 18f);
+            Text agency = CreateLabel(header.transform, "Agency", "UB CAMPUS POLICE  ·  DESK FILE", 10, DeskUiPalette.AccentOlive, FontStyle.Bold);
+            DeskUiPalette.StyleLabel(agency, 10, DeskUiPalette.AccentOlive, DeskUiPalette.TypeRole.Stamp, FontStyle.Bold, TextAnchor.UpperLeft);
+            AnchorTopLeft(agency.rectTransform, 12f, -5f, 320f, 14f);
 
-            closeButton = CreateChromeButton(header.transform, "Close", "CLOSE", new Vector2(-10f, -10f), new Vector2(72f, 28f), DeskUiPalette.NavyDark, DeskUiPalette.White, TextAnchor.UpperRight);
+            headerTitleText = CreateLabel(header.transform, "Title", "CASE FILE", 18, DeskUiPalette.White, FontStyle.Bold);
+            DeskUiPalette.StyleLabel(headerTitleText, 18, DeskUiPalette.White, DeskUiPalette.TypeRole.Stamp, FontStyle.Bold, TextAnchor.UpperLeft);
+            AnchorTopLeft(headerTitleText.rectTransform, 12f, -18f, 280f, 22f);
+            headerCaseText = CreateLabel(header.transform, "Case", string.Empty, 11, DeskUiPalette.ManilaLight, FontStyle.Normal);
+            DeskUiPalette.StyleLabel(headerCaseText, 11, DeskUiPalette.ManilaLight, DeskUiPalette.TypeRole.Body, FontStyle.Italic, TextAnchor.UpperLeft);
+            AnchorTopLeft(headerCaseText.rectTransform, 12f, -38f, 340f, 16f);
+            DeskUiPalette.AddHairline(header.transform, "HeaderRule", 56f, 2f, false);
+
+            closeButton = CreateChromeButton(header.transform, "Close", "FILE", new Vector2(-12f, -14f), new Vector2(64f, 28f), DeskUiPalette.Navy, DeskUiPalette.White, TextAnchor.UpperRight, stampOutline: true);
 
             // Content scroll — room for ask row / stamp footer depending on tag.
             GameObject scrollGo = new GameObject("ContentScroll", typeof(RectTransform), typeof(Image), typeof(ScrollRect));
             scrollGo.transform.SetParent(panel.transform, false);
             Image scrollBg = scrollGo.GetComponent<Image>();
-            scrollBg.color = DeskUiPalette.ManilaLight;
+            DeskUiPalette.ApplyFill(scrollBg, DeskUiPalette.ManilaLight);
             RectTransform scrollRect = scrollGo.GetComponent<RectTransform>();
             scrollRect.anchorMin = new Vector2(0f, 0f);
             scrollRect.anchorMax = new Vector2(1f, 1f);
             scrollRect.offsetMin = new Vector2(10f, 200f);
-            scrollRect.offsetMax = new Vector2(-10f, -60f);
+            scrollRect.offsetMax = new Vector2(-10f, -68f);
+            DeskUiPalette.AddHairline(scrollGo.transform, "ContentTopRule", 0f, 1.5f, true);
             contentScroll = scrollGo.GetComponent<ScrollRect>();
             contentScroll.horizontal = false;
 
@@ -1133,38 +1144,42 @@ namespace CaseClosed.UI
             GameObject askRow = new GameObject("AskRow", typeof(RectTransform), typeof(Image));
             askRow.transform.SetParent(panel.transform, false);
             askRowRoot = askRow;
-            askRow.GetComponent<Image>().color = DeskUiPalette.Blotter;
+            DeskUiPalette.ApplyFill(askRow.GetComponent<Image>(), DeskUiPalette.Blotter);
             RectTransform askRect = askRow.GetComponent<RectTransform>();
             askRect.anchorMin = new Vector2(0f, 0f);
             askRect.anchorMax = new Vector2(1f, 0f);
             askRect.pivot = new Vector2(0.5f, 0f);
-            askRect.offsetMin = new Vector2(0f, 148f);
-            askRect.offsetMax = new Vector2(0f, 200f);
+            askRect.offsetMin = new Vector2(4f, 148f);
+            askRect.offsetMax = new Vector2(-4f, 200f);
+            DeskUiPalette.AddHairline(askRow.transform, "AskTopRule", 0f, 1.5f, false);
 
-            askHintText = CreateLabel(askRow.transform, "AskHint", "Present a record, then pick a question.", 13, DeskUiPalette.Ink, FontStyle.Normal);
+            askHintText = CreateLabel(askRow.transform, "AskHint", "Present a record, then pick a question.", 13, DeskUiPalette.ManilaLight, FontStyle.Normal);
+            DeskUiPalette.StyleLabel(askHintText, 13, DeskUiPalette.ManilaLight, DeskUiPalette.TypeRole.Body, FontStyle.Italic, TextAnchor.MiddleLeft);
             Stretch(askHintText.rectTransform, 12f, 8f);
             askHintText.alignment = TextAnchor.MiddleLeft;
             askHintText.horizontalOverflow = HorizontalWrapMode.Wrap;
 
-            // Stamp footer (DECISION only)
+            // Stamp footer (visibility owned by RefreshStampFooter — Futaba may use DECISION).
             GameObject stampFooter = new GameObject("StampFooter", typeof(RectTransform), typeof(Image));
             stampFooter.transform.SetParent(panel.transform, false);
             stampFooterRoot = stampFooter;
-            stampFooter.GetComponent<Image>().color = DeskUiPalette.Blotter;
+            DeskUiPalette.ApplyFill(stampFooter.GetComponent<Image>(), DeskUiPalette.Blotter);
             RectTransform stampRect = stampFooter.GetComponent<RectTransform>();
             stampRect.anchorMin = new Vector2(0f, 0f);
             stampRect.anchorMax = new Vector2(1f, 0f);
             stampRect.pivot = new Vector2(0.5f, 0f);
-            stampRect.offsetMin = new Vector2(0f, 42f);
-            stampRect.offsetMax = new Vector2(0f, 100f);
+            stampRect.offsetMin = new Vector2(4f, 42f);
+            stampRect.offsetMax = new Vector2(-4f, 100f);
+            DeskUiPalette.AddHairline(stampFooter.transform, "StampTopRule", 0f, 1.5f, false);
 
-            holdFooterButton = CreateChromeButton(stampFooter.transform, "Hold", "HOLD", new Vector2(18f, 0f), new Vector2(180f, 40f), DeskUiPalette.StampHold, DeskUiPalette.White, TextAnchor.MiddleLeft);
-            releaseFooterButton = CreateChromeButton(stampFooter.transform, "Release", "RELEASE", new Vector2(-18f, 0f), new Vector2(180f, 40f), DeskUiPalette.StampRelease, DeskUiPalette.White, TextAnchor.MiddleRight);
+            holdFooterButton = CreateChromeButton(stampFooter.transform, "Hold", "HOLD", new Vector2(18f, -4f), new Vector2(180f, 38f), DeskUiPalette.StampHold, DeskUiPalette.White, TextAnchor.MiddleLeft, stampOutline: true);
+            releaseFooterButton = CreateChromeButton(stampFooter.transform, "Release", "RELEASE", new Vector2(-18f, -4f), new Vector2(180f, 38f), DeskUiPalette.StampRelease, DeskUiPalette.White, TextAnchor.MiddleRight, stampOutline: true);
 
-            // Transcript (ACTIONS)
+            // Transcript (ACTIONS) — clean off-white / manila pad leaf.
             GameObject transcriptGo = new GameObject("Transcript", typeof(RectTransform), typeof(Image), typeof(VerticalLayoutGroup));
             transcriptGo.transform.SetParent(panel.transform, false);
-            transcriptGo.GetComponent<Image>().color = DeskUiPalette.TranscriptBg;
+            DeskUiPalette.ApplyFill(transcriptGo.GetComponent<Image>(), DeskUiPalette.TranscriptBg);
+            DeskUiPalette.AddAccentStripe(transcriptGo.transform, DeskUiPalette.StampHold, 3f);
             RectTransform tr = transcriptGo.GetComponent<RectTransform>();
             tr.anchorMin = new Vector2(0f, 0f);
             tr.anchorMax = new Vector2(1f, 0f);
@@ -1172,24 +1187,26 @@ namespace CaseClosed.UI
             tr.offsetMin = new Vector2(10f, 42f);
             tr.offsetMax = new Vector2(-10f, 142f);
             VerticalLayoutGroup tlg = transcriptGo.GetComponent<VerticalLayoutGroup>();
-            tlg.padding = new RectOffset(8, 8, 6, 6);
-            tlg.spacing = 3f;
+            tlg.padding = new RectOffset(12, 8, 6, 6);
+            tlg.spacing = 2f;
             tlg.childForceExpandWidth = true;
             tlg.childForceExpandHeight = false;
             transcriptRoot = transcriptGo.transform;
 
-            // Status
+            // Status — carbon strip
             GameObject statusGo = new GameObject("Status", typeof(RectTransform), typeof(Image));
             statusGo.transform.SetParent(panel.transform, false);
-            statusGo.GetComponent<Image>().color = DeskUiPalette.NavyDark;
+            DeskUiPalette.ApplyFill(statusGo.GetComponent<Image>(), DeskUiPalette.NavyDark);
             RectTransform statusRect = statusGo.GetComponent<RectTransform>();
             statusRect.anchorMin = new Vector2(0f, 0f);
             statusRect.anchorMax = new Vector2(1f, 0f);
             statusRect.pivot = new Vector2(0.5f, 0f);
-            statusRect.sizeDelta = new Vector2(0f, 36f);
-            statusRect.anchoredPosition = Vector2.zero;
-            statusText = CreateLabel(statusGo.transform, "StatusText", string.Empty, 12, DeskUiPalette.ManilaLight, FontStyle.Normal);
-            Stretch(statusText.rectTransform, 10f, 6f);
+            statusRect.sizeDelta = new Vector2(-8f, 34f);
+            statusRect.anchoredPosition = new Vector2(0f, 4f);
+            DeskUiPalette.AddHairline(statusGo.transform, "StatusTopRule", 0f, 2f, false);
+            statusText = CreateLabel(statusGo.transform, "StatusText", string.Empty, 11, DeskUiPalette.ManilaLight, FontStyle.Normal);
+            DeskUiPalette.StyleLabel(statusText, 11, DeskUiPalette.ManilaLight, DeskUiPalette.TypeRole.Stamp, FontStyle.Normal, TextAnchor.MiddleLeft);
+            Stretch(statusText.rectTransform, 10f, 4f);
             statusText.alignment = TextAnchor.MiddleLeft;
         }
 
@@ -1197,17 +1214,16 @@ namespace CaseClosed.UI
         {
             GameObject go = new GameObject("Tag_" + label, typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
             go.transform.SetParent(parent, false);
-            Image image = go.GetComponent<Image>();
-            image.color = DeskUiPalette.Navy;
-            Text text = CreateLabel(go.transform, "Label", label, 13, DeskUiPalette.White, FontStyle.Bold);
+            go.GetComponent<LayoutElement>().minWidth = 120f;
+            Text text = CreateLabel(go.transform, "Label", label, 12, DeskUiPalette.Ink, FontStyle.Bold);
             text.alignment = TextAnchor.MiddleCenter;
-            Stretch(text.rectTransform);
+            Stretch(text.rectTransform, 4f, 2f);
             Button button = go.GetComponent<Button>();
-            DeskUiPalette.StyleButton(button, image, text, DeskUiPalette.Navy, DeskUiPalette.White);
+            DeskUiPalette.StyleFolderTag(button, false);
             return button;
         }
 
-        private Button CreateChromeButton(Transform parent, string name, string label, Vector2 anchoredPos, Vector2 size, Color fill, Color textColor, TextAnchor anchor)
+        private Button CreateChromeButton(Transform parent, string name, string label, Vector2 anchoredPos, Vector2 size, Color fill, Color textColor, TextAnchor anchor, bool stampOutline = false)
         {
             GameObject go = new GameObject(name, typeof(RectTransform), typeof(Image), typeof(Button));
             go.transform.SetParent(parent, false);
@@ -1238,12 +1254,21 @@ namespace CaseClosed.UI
             rect.anchoredPosition = anchoredPos;
             rect.sizeDelta = size;
             Image image = go.GetComponent<Image>();
-            image.color = fill;
             Text text = CreateLabel(go.transform, "Label", label, 14, textColor, FontStyle.Bold);
             text.alignment = TextAnchor.MiddleCenter;
-            Stretch(text.rectTransform);
+            Stretch(text.rectTransform, 4f, 2f);
             Button button = go.GetComponent<Button>();
-            DeskUiPalette.StyleButton(button, image, text, fill, textColor);
+            if (stampOutline)
+            {
+                bool filled = name == "Close";
+                DeskUiPalette.StyleStampButton(button, image, text, fill, filled);
+                if (name == "Hold" || name == "Release")
+                    DeskUiPalette.AddFolderFrame(go.transform, 2f, 2f);
+            }
+            else
+            {
+                DeskUiPalette.StyleButton(button, image, text, fill, textColor);
+            }
             return button;
         }
 
@@ -1251,7 +1276,7 @@ namespace CaseClosed.UI
         {
             GameObject go = new GameObject(name, typeof(RectTransform), typeof(Image));
             go.transform.SetParent(parent, false);
-            go.GetComponent<Image>().color = color;
+            DeskUiPalette.ApplyFill(go.GetComponent<Image>(), color);
             return go;
         }
 
@@ -1260,8 +1285,7 @@ namespace CaseClosed.UI
             GameObject go = new GameObject(name, typeof(RectTransform), typeof(Text));
             go.transform.SetParent(parent, false);
             Text text = go.GetComponent<Text>();
-            DeskUiPalette.StyleLabel(text, size, color, style);
-            text.font = uiFont != null ? uiFont : DeskUiPalette.ResolveFont();
+            DeskUiPalette.StyleLabel(text, size, color, DeskUiPalette.TypeRole.Ui, style);
             text.text = value ?? string.Empty;
             return text;
         }
@@ -1269,6 +1293,7 @@ namespace CaseClosed.UI
         private Text CreateBodyText(Transform parent, string value, int size, Color color)
         {
             Text text = CreateLabel(parent, "Body", value, size, color, FontStyle.Normal);
+            DeskUiPalette.StyleLabel(text, size, color, DeskUiPalette.TypeRole.Body, FontStyle.Normal);
             LayoutElement layout = text.gameObject.GetComponent<LayoutElement>();
             if (layout == null)
                 layout = text.gameObject.AddComponent<LayoutElement>();

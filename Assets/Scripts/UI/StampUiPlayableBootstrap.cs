@@ -116,18 +116,20 @@ namespace CaseClosed.UI
                 rightSideBoard ? new Vector2(1f, 0.5f) : new Vector2(0f, 0.5f),
                 rightSideBoard ? new Vector2(-280f, 0f) : new Vector2(280f, 0f),
                 new Vector2(520f, 640f));
-            boardPanel.GetComponent<Image>().color = DeskUiPalette.NavyDark;
+            DeskUiPalette.ApplyFill(boardPanel.GetComponent<Image>(), DeskUiPalette.Manila);
+            DeskUiPalette.AddFolderFrame(boardPanel.transform, 3f, 2f);
 
             GameObject titleGo = CreateText(boardPanel.transform, "BoardTitle", "EVIDENCE", 18, FontStyle.Bold,
                 new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -22f), new Vector2(480f, 32f));
-            titleGo.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
-            titleGo.GetComponent<Text>().color = DeskUiPalette.ManilaLight;
+            Text boardTitle = titleGo.GetComponent<Text>();
+            boardTitle.alignment = TextAnchor.MiddleCenter;
+            DeskUiPalette.StyleLabel(boardTitle, 18, DeskUiPalette.Ink, DeskUiPalette.TypeRole.Stamp, FontStyle.Bold, TextAnchor.MiddleCenter);
 
             GameObject toastGo = CreateText(boardPanel.transform, "Toast", string.Empty, 14, FontStyle.Normal,
                 new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -50f), new Vector2(480f, 24f));
             Text toast = toastGo.GetComponent<Text>();
             toast.alignment = TextAnchor.MiddleCenter;
-            toast.color = DeskUiPalette.Manila;
+            DeskUiPalette.StyleLabel(toast, 13, DeskUiPalette.InkMuted, DeskUiPalette.TypeRole.Body, FontStyle.Italic, TextAnchor.MiddleCenter);
             toastGo.SetActive(false);
 
             GameObject tabsGo = new GameObject("SuspectTabs", typeof(RectTransform), typeof(HorizontalLayoutGroup));
@@ -149,7 +151,7 @@ namespace CaseClosed.UI
                 new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0f, 40f), new Vector2(440f, 80f));
             Text emptyHint = emptyGo.GetComponent<Text>();
             emptyHint.alignment = TextAnchor.MiddleCenter;
-            emptyHint.color = DeskUiPalette.ManilaLight;
+            DeskUiPalette.StyleLabel(emptyHint, 13, DeskUiPalette.InkMuted, DeskUiPalette.TypeRole.Body, FontStyle.Italic, TextAnchor.MiddleCenter);
             emptyGo.SetActive(false);
 
             GameObject cardContainerGo = new GameObject("CardContainer", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
@@ -185,12 +187,14 @@ namespace CaseClosed.UI
         {
             GameObject stampPanel = CreatePanel(overlayRoot.transform, "StampPadPanel",
                 new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0f, 90f), new Vector2(420f, 120f));
-            stampPanel.GetComponent<Image>().color = DeskUiPalette.NavyDark;
+            DeskUiPalette.ApplyFill(stampPanel.GetComponent<Image>(), DeskUiPalette.Blotter);
+            DeskUiPalette.AddFolderFrame(stampPanel.transform, 3f, 2f);
 
-            GameObject stampLabel = CreateText(stampPanel.transform, "StampLabel", "STAMP", 16, FontStyle.Bold,
-                new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -22f), new Vector2(380f, 28f));
-            stampLabel.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
-            stampLabel.GetComponent<Text>().color = DeskUiPalette.ManilaLight;
+            GameObject stampLabel = CreateText(stampPanel.transform, "StampLabel", "RUBBER STAMP", 14, FontStyle.Bold,
+                new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -18f), new Vector2(380f, 24f));
+            Text stampTitle = stampLabel.GetComponent<Text>();
+            stampTitle.alignment = TextAnchor.MiddleCenter;
+            DeskUiPalette.StyleLabel(stampTitle, 14, DeskUiPalette.ManilaLight, DeskUiPalette.TypeRole.Stamp, FontStyle.Bold, TextAnchor.MiddleCenter);
 
             Button holdButton = CreateStampButton(stampPanel.transform, "HoldButton", "HOLD",
                 new Vector2(-100f, -20f), DeskUiPalette.StampHold);
@@ -239,10 +243,7 @@ namespace CaseClosed.UI
             rect.anchoredPosition = anchoredPos;
             rect.sizeDelta = size;
             Text text = go.GetComponent<Text>();
-            text.font = DeskUiPalette.ResolveFont();
-            text.fontSize = fontSize;
-            text.fontStyle = style;
-            text.color = DeskUiPalette.White;
+            DeskUiPalette.StyleLabel(text, fontSize, DeskUiPalette.White, DeskUiPalette.TypeRole.Ui, style, TextAnchor.MiddleCenter);
             text.text = value;
             return go;
         }
@@ -258,13 +259,15 @@ namespace CaseClosed.UI
             rect.anchoredPosition = anchoredPos;
             rect.sizeDelta = new Vector2(160f, 52f);
             Image image = go.GetComponent<Image>();
-            image.color = color;
             Button button = go.GetComponent<Button>();
             button.targetGraphic = image;
 
             GameObject labelGo = CreateText(go.transform, "Label", label, 18, FontStyle.Bold,
                 new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(150f, 44f));
-            labelGo.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
+            Text labelText = labelGo.GetComponent<Text>();
+            labelText.alignment = TextAnchor.MiddleCenter;
+            DeskUiPalette.StyleStampButton(button, image, labelText, color, filled: false);
+            DeskUiPalette.AddFolderFrame(go.transform, 2f, 2f);
             return button;
         }
 

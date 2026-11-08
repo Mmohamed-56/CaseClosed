@@ -420,8 +420,6 @@ namespace CaseClosed.UI
             GameObject go = new GameObject("Tab_" + (string.IsNullOrEmpty(suspectId) ? "All" : suspectId),
                 typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
             go.transform.SetParent(tabContainer, false);
-            Image image = go.GetComponent<Image>();
-            image.color = DeskUiPalette.Navy;
             LayoutElement layout = go.GetComponent<LayoutElement>();
             layout.minHeight = 28f;
             layout.preferredHeight = 28f;
@@ -429,11 +427,6 @@ namespace CaseClosed.UI
             GameObject labelGo = new GameObject("Label", typeof(RectTransform), typeof(Text));
             labelGo.transform.SetParent(go.transform, false);
             Text text = labelGo.GetComponent<Text>();
-            text.font = uiFont != null ? uiFont : DeskUiPalette.ResolveFont();
-            text.fontSize = 12;
-            text.fontStyle = FontStyle.Bold;
-            text.alignment = TextAnchor.MiddleCenter;
-            text.color = DeskUiPalette.White;
             text.text = label;
             RectTransform textRect = labelGo.GetComponent<RectTransform>();
             textRect.anchorMin = Vector2.zero;
@@ -442,6 +435,7 @@ namespace CaseClosed.UI
             textRect.offsetMax = Vector2.zero;
 
             Button button = go.GetComponent<Button>();
+            DeskUiPalette.StyleFolderTag(button, false);
             string id = suspectId;
             button.onClick.AddListener(() => SetActiveSuspectTab(id));
             tabButtons.Add(button);
@@ -456,12 +450,7 @@ namespace CaseClosed.UI
                 if (button == null) continue;
                 string id = i < tabSuspectIds.Count ? tabSuspectIds[i] : AllTabId;
                 bool active = string.Equals(id, activeTabSuspectId, StringComparison.Ordinal);
-                Image image = button.GetComponent<Image>();
-                if (image != null)
-                    image.color = active ? DeskUiPalette.TabActive : DeskUiPalette.Navy;
-                Text label = button.GetComponentInChildren<Text>();
-                if (label != null)
-                    label.color = active ? DeskUiPalette.Ink : DeskUiPalette.White;
+                DeskUiPalette.StyleFolderTag(button, active);
             }
         }
 
@@ -522,42 +511,38 @@ namespace CaseClosed.UI
             rect.sizeDelta = new Vector2(220f, 96f);
 
             Image background = root.GetComponent<Image>();
-            background.color = DeskUiPalette.ManilaLight;
+            DeskUiPalette.ApplyFill(background, DeskUiPalette.ManilaLight);
+            DeskUiPalette.AddFolderFrame(root.transform, 1f, 1.5f);
+            DeskUiPalette.AddAccentStripe(root.transform, DeskUiPalette.Hairline, 3f);
+            DeskUiPalette.AddHairline(root.transform, "CardRule", 42f, 1f, true);
 
             GameObject titleGo = new GameObject("Title", typeof(RectTransform), typeof(Text));
             titleGo.transform.SetParent(root.transform, false);
             Text title = titleGo.GetComponent<Text>();
-            title.font = uiFont != null ? uiFont : DeskUiPalette.ResolveFont();
-            title.fontSize = 15;
-            title.fontStyle = FontStyle.Bold;
-            title.color = DeskUiPalette.Ink;
-            title.alignment = TextAnchor.UpperLeft;
+            DeskUiPalette.StyleLabel(title, 14, DeskUiPalette.Ink, DeskUiPalette.TypeRole.Stamp, FontStyle.Bold, TextAnchor.UpperLeft);
             RectTransform titleRect = title.GetComponent<RectTransform>();
             titleRect.anchorMin = new Vector2(0f, 0.55f);
             titleRect.anchorMax = new Vector2(1f, 1f);
-            titleRect.offsetMin = new Vector2(8f, 0f);
+            titleRect.offsetMin = new Vector2(12f, 0f);
             titleRect.offsetMax = new Vector2(-8f, -6f);
 
             GameObject bodyGo = new GameObject("Body", typeof(RectTransform), typeof(Text));
             bodyGo.transform.SetParent(root.transform, false);
             Text body = bodyGo.GetComponent<Text>();
-            body.font = title.font;
-            body.fontSize = 12;
-            body.color = DeskUiPalette.InkMuted;
-            body.alignment = TextAnchor.UpperLeft;
+            DeskUiPalette.StyleLabel(body, 12, DeskUiPalette.InkMuted, DeskUiPalette.TypeRole.Body, FontStyle.Normal, TextAnchor.UpperLeft);
             body.horizontalOverflow = HorizontalWrapMode.Wrap;
             body.verticalOverflow = VerticalWrapMode.Truncate;
             RectTransform bodyRect = body.GetComponent<RectTransform>();
             bodyRect.anchorMin = new Vector2(0f, 0f);
             bodyRect.anchorMax = new Vector2(1f, 0.55f);
-            bodyRect.offsetMin = new Vector2(8f, 6f);
+            bodyRect.offsetMin = new Vector2(12f, 6f);
             bodyRect.offsetMax = new Vector2(-8f, 0f);
 
             GameObject highlight = new GameObject("SelectedHighlight", typeof(RectTransform), typeof(Image));
             highlight.transform.SetParent(root.transform, false);
             highlight.SetActive(false);
             Image highlightImage = highlight.GetComponent<Image>();
-            highlightImage.color = new Color(DeskUiPalette.Blotter.r, DeskUiPalette.Blotter.g, DeskUiPalette.Blotter.b, 0.35f);
+            DeskUiPalette.ApplyFill(highlightImage, new Color(DeskUiPalette.StampHold.r, DeskUiPalette.StampHold.g, DeskUiPalette.StampHold.b, 0.18f));
             RectTransform highlightRect = highlight.GetComponent<RectTransform>();
             highlightRect.anchorMin = Vector2.zero;
             highlightRect.anchorMax = Vector2.one;

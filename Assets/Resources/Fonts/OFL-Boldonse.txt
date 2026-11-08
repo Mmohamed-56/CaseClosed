@@ -1,0 +1,6 @@
+Boldonse-Regular.ttf — SIL Open Font License 1.1
+Copyright 2024 The Boldonse Project Authors (https://github.com/googlefonts/boldonse)
+
+The store copy of Boldonse-Regular.ttf (~4.5KB) was truncated (license text only).
+This file was replaced with the full OFL TTF from the upstream Google Fonts repo for ship.
+Magdy: re-upload your preferred Boldonse build into media/hud-fonts if it differs.
