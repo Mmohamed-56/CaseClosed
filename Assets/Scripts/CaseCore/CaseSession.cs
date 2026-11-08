@@ -43,6 +43,23 @@ namespace CaseClosed.CaseCore
                     if (collectedEvidenceIds.Contains(evidence.Id)) result.Add(evidence);
                 }
             }
+
+            IReadOnlyList<WebsiteSuspectRecord> directory = caseFile.CampusDirectory;
+            if (directory != null)
+            {
+                for (int i = 0; i < directory.Count; i++)
+                {
+                    WebsiteSuspectRecord person = directory[i];
+                    if (person == null || person.records == null) continue;
+                    for (int j = 0; j < person.records.Count; j++)
+                    {
+                        WebsiteEvidenceRecord row = person.records[j];
+                        if (row == null || !collectedEvidenceIds.Contains(row.id)) continue;
+                        result.Add(ToContextEvidence(row));
+                    }
+                }
+            }
+
             return result;
         }
 
@@ -104,7 +121,34 @@ namespace CaseClosed.CaseCore
                     if (evidence.Id == evidenceId) return evidence;
                 }
             }
+
+            IReadOnlyList<WebsiteSuspectRecord> directory = caseFile.CampusDirectory;
+            if (directory != null)
+            {
+                for (int i = 0; i < directory.Count; i++)
+                {
+                    WebsiteSuspectRecord person = directory[i];
+                    if (person == null || person.records == null) continue;
+                    for (int j = 0; j < person.records.Count; j++)
+                    {
+                        WebsiteEvidenceRecord row = person.records[j];
+                        if (row != null && row.id == evidenceId)
+                            return ToContextEvidence(row);
+                    }
+                }
+            }
+
             return null;
+        }
+
+        private static EvidenceRecord ToContextEvidence(WebsiteEvidenceRecord row)
+        {
+            return new EvidenceRecord(
+                row.id,
+                row.title ?? string.Empty,
+                row.description ?? string.Empty,
+                EvidenceKind.Context,
+                string.Empty);
         }
 
         private void EnsureActive()

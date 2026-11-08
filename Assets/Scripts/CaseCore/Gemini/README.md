@@ -1,23 +1,13 @@
-# Gemini interrogation (Case Closed)
+# Interrogation dialogue (Case Closed)
 
-Snappy Gemini dialogue on top of CaseCore. Code owns stress/truth; Gemini only performs short spoken lines.
+**Preferred path:** offline `ScenarioDialogueClient` + JSON under `Assets/Resources/Dialogue/`.
+See `Assets/Scripts/CaseCore/Dialogue/README.md`.
 
-## Quick start (shipped builds → cloud proxy)
+ElevenLabs still consumes `InterrogationDialogueService.SuspectLineReady`.
 
-1. Assign `ApiProxySettings` (default base URL `https://ubcaseclosed.netlify.app`) on `InterrogationDialogueService` / `GeminiApiClient`.
-2. Set the same **App Token** as Netlify env `CASE_CLOSED_APP_TOKEN` (menu: **Case Closed → API Proxy**).
-3. Typed questions go through `InterrogationDialogueService.AskCurrentSuspect`.
-4. Subscribe to `SuspectLineReady` for ElevenLabs (see `ElevenLabsVoiceSink`).
+## Legacy Gemini / Netlify
 
-Player builds call `POST {ProxyBaseUrl}/api/gemini`. Provider keys stay on Netlify only.
+`GeminiApiClient` and `netlify/functions/gemini.mjs` remain in tree. Player proxy is off by
+default (`allowGeminiFallback = false`). Sibling branch strips Gemini; do not delete Netlify here.
 
-## Editor fallback (local only)
-
-Without proxy, or when testing offline keys:
-
-1. Set `GEMINI_API_KEY` via env, PlayerPrefs (**Case Closed → Gemini**), or a `GeminiApiKeySettings` asset.
-2. Direct calls hit `generativelanguage.googleapis.com` with `?key=…` (Editor only when allowed).
-
-Without proxy and without a key, mock/offline fallback lines are used automatically.
-
-See Project store doc: `docs/api-proxy.md`.
+Mock `FallbackLine` / CaseCore slip strings are the last resort when the scenario bank is missing.

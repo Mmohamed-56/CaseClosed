@@ -100,11 +100,13 @@ namespace CaseClosed.Networking
             }
         }
 
+        /// <summary>Legacy ask-proxy URL. Gameplay no longer calls this by default (ScenarioDialogueClient).</summary>
         public string GeminiProxyUrl
         {
             get { return ProxyBaseUrl + "/api/gemini"; }
         }
 
+        /// <summary>ElevenLabs TTS proxy — still used by voice clients.</summary>
         public string TtsProxyUrl
         {
             get { return ProxyBaseUrl + "/api/tts"; }

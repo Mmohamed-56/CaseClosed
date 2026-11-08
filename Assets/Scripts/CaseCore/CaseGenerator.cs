@@ -17,7 +17,11 @@ namespace CaseClosed.CaseCore
         private const string CaseBriefing =
             "The university mascot head vanished from the student-union storage room between 9:15 PM and 9:45 PM. Check the records against each suspect's statement before deciding who to hold.";
 
-        /// <summary>Handwritten pool (GDD: 6–8). Each shift draws 2–4; exactly one selected suspect becomes the culprit.</summary>
+        /// <summary>
+        /// Embedded fallback interviewee pool (original 8). Prefer
+        /// <see cref="CampusAffiliateCatalog.Interviewees"/> when Resources JSON is present (~12 playable).
+        /// Clue id suffixes stay: roster, alibi_support, sign_in, access, red_herring.
+        /// </summary>
         private static readonly SuspectProfile[] SuspectPool =
         {
             new SuspectProfile(
@@ -125,7 +129,10 @@ namespace CaseClosed.CaseCore
         {
             int clampedSuspectCount = Math.Max(MinimumSuspectCount, Math.Min(MaximumSuspectCount, suspectCount));
             var random = new Random(seed);
-            var availableProfiles = new List<SuspectProfile>(SuspectPool);
+            var availableProfiles = new List<SuspectProfile>(GetIntervieweePool());
+            if (availableProfiles.Count < clampedSuspectCount)
+                clampedSuspectCount = Math.Max(MinimumSuspectCount, availableProfiles.Count);
+
             var selectedProfiles = new List<SuspectProfile>(clampedSuspectCount);
 
             for (int i = 0; i < clampedSuspectCount; i++)
@@ -158,16 +165,58 @@ namespace CaseClosed.CaseCore
             }
 
             Shuffle(suspects, random);
+
+            // Seeded witness slice for records site (~half of witness pool tonight; grows with affiliates.json).
+            int witnessCap = Math.Min(24, Math.Max(8, CampusAffiliateCatalog.Witnesses.Count));
+            List<WebsiteSuspectRecord> directory =
+                CampusAffiliateCatalog.BuildDirectoryPayload(caseId, seed, witnessCap);
+
             return new CaseFile(
                 caseId,
                 CaseTitle,
                 CaseBriefing,
                 "suspect_" + culprit.Id,
-                suspects);
+                suspects,
+                directory);
         }
 
-        /// <summary>Size of the handwritten suspect pool available for seeded draws.</summary>
-        public static int SuspectPoolCount { get { return SuspectPool.Length; } }
+        /// <summary>Playable interviewee pool size (catalog when loaded, else embedded 8).</summary>
+        public static int SuspectPoolCount { get { return GetIntervieweePool().Count; } }
+
+        /// <summary>Total campus affiliates in the records/dialogue pool (interviewees + witnesses).</summary>
+        public static int CampusPoolCount { get { return CampusAffiliateCatalog.TotalCount; } }
+
+        private static List<SuspectProfile> GetIntervieweePool()
+        {
+            IReadOnlyList<CampusAffiliateCatalog.CampusAffiliate> catalog = CampusAffiliateCatalog.Interviewees;
+            if (catalog != null && catalog.Count >= MinimumSuspectCount)
+            {
+                var fromCatalog = new List<SuspectProfile>(catalog.Count);
+                for (int i = 0; i < catalog.Count; i++)
+                {
+                    CampusAffiliateCatalog.CampusAffiliate a = catalog[i];
+                    if (a == null || string.IsNullOrWhiteSpace(a.id)) continue;
+                    if (string.IsNullOrWhiteSpace(a.statement) || string.IsNullOrWhiteSpace(a.alibi)) continue;
+                    fromCatalog.Add(new SuspectProfile(
+                        a.id,
+                        a.displayName,
+                        a.campusRole,
+                        a.statement,
+                        a.alibi,
+                        a.redHerringRecord ?? string.Empty,
+                        a.redHerringExplanation ?? string.Empty,
+                        a.alibiSupportTitle ?? "Alibi support",
+                        a.alibiSupportDescription ?? string.Empty,
+                        a.contextTitleA ?? "Directory listing",
+                        a.contextDescriptionA ?? a.bio ?? string.Empty));
+                }
+
+                if (fromCatalog.Count >= MinimumSuspectCount)
+                    return fromCatalog;
+            }
+
+            return new List<SuspectProfile>(SuspectPool);
+        }
 
         private static List<EvidenceRecord> BuildEvidenceForSuspect(string caseId, SuspectProfile profile, bool isCulprit)
         {

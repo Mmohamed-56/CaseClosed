@@ -1,6 +1,8 @@
 /**
  * POST /api/gemini
- * Proxies Unity interrogation prompts to Google Gemini.
+ * LEGACY / UNUSED by default gameplay (ScenarioDialogueClient owns ask turns).
+ * Kept so Magdy can drop GEMINI_API_KEY later without a hard deploy break.
+ * Proxies Unity interrogation prompts to Google Gemini when opt-in useGeminiApi is on.
  * Server injects GEMINI_API_KEY — never returned to the client.
  *
  * Request JSON (matches GeminiApiClient proxy path):
