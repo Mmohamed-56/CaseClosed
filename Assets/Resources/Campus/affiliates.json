@@ -1,0 +1,1168 @@
+{
+  "schemaVersion": 1,
+  "batch": 1,
+  "targetPoolSize": 100,
+  "count": 40,
+  "affiliates": [
+    {
+      "id": "jamie",
+      "displayName": "Jamie Rivera",
+      "campusRole": "Student volunteer",
+      "tier": "interviewee",
+      "bio": "Evening setup volunteer who lives off the west bus loop.",
+      "statement": "I left the student union before 9:15 PM and went straight to the bus stop.",
+      "alibi": "At the west bus loop from 9:20 PM onward.",
+      "redHerringRecord": "A hardware-store receipt shows Jamie bought a utility knife that afternoon.",
+      "redHerringExplanation": "Jamie used it to cut tape and cardboard for event decorations.",
+      "alibiSupportTitle": "Transit receipt",
+      "alibiSupportDescription": "A transit-card tap places Jamie at the west bus loop at 9:24 PM.",
+      "contextTitleA": "Volunteer roster",
+      "contextDescriptionA": "Jamie is listed on the evening setup crew for the student-union event.",
+      "recordHooks": [
+        {
+          "suffix": "directory",
+          "title": "Campus directory — Jamie Rivera",
+          "description": "Evening setup volunteer who lives off the west bus loop."
+        }
+      ]
+    },
+    {
+      "id": "morgan",
+      "displayName": "Morgan Lee",
+      "campusRole": "Student events assistant",
+      "tier": "interviewee",
+      "bio": "Events desk assistant with after-hours key privileges.",
+      "statement": "I left the student union before 9:15 PM and went home.",
+      "alibi": "At home from 9:10 PM onward.",
+      "redHerringRecord": "An event sign-out sheet shows Morgan borrowed the storage-room key earlier that day.",
+      "redHerringExplanation": "Morgan was inventorying decorations and returned the key before the theft window.",
+      "alibiSupportTitle": "Residence hall door log",
+      "alibiSupportDescription": "Morgan's hall exterior door registered an entry at 9:18 PM.",
+      "contextTitleA": "Staff schedule",
+      "contextDescriptionA": "Morgan's events shift ended at 9:00 PM according to the posted roster.",
+      "recordHooks": [
+        {
+          "suffix": "directory",
+          "title": "Campus directory — Morgan Lee",
+          "description": "Events desk assistant with after-hours key privileges."
+        }
+      ]
+    },
+    {
+      "id": "avery",
+      "displayName": "Avery Patel",
+      "campusRole": "Campus facilities worker",
+      "tier": "interviewee",
+      "bio": "Night facilities tech covering linen and wing checks.",
+      "statement": "I left the student union before 9:15 PM and continued my shift in the library wing.",
+      "alibi": "Library wing maintenance corridor from 9:20 PM onward.",
+      "redHerringRecord": "A work order shows Avery checked out a large laundry cart.",
+      "redHerringExplanation": "Avery used it to move event linens to the laundry room.",
+      "alibiSupportTitle": "Work radio check-in",
+      "alibiSupportDescription": "Avery radioed a library-wing check-in at 9:28 PM.",
+      "contextTitleA": "Facilities assignment board",
+      "contextDescriptionA": "Avery was assigned to evening linen pickup in the student union before relocating to the library wing.",
+      "recordHooks": [
+        {
+          "suffix": "directory",
+          "title": "Campus directory — Avery Patel",
+          "description": "Night facilities tech covering linen and wing checks."
+        }
+      ]
+    },
+    {
+      "id": "riley",
+      "displayName": "Riley Brooks",
+      "campusRole": "Club treasurer",
+      "tier": "interviewee",
+      "bio": "Club treasurer finishing paperwork after the fair setup.",
+      "statement": "I left the student union before 9:15 PM and went to a study group.",
+      "alibi": "Science library study room B from 9:25 PM onward.",
+      "redHerringRecord": "A club receipt shows Riley bought a roll of heavy-duty tape.",
+      "redHerringExplanation": "Riley used it to repair a display board for the club fair.",
+      "alibiSupportTitle": "Room reservation log",
+      "alibiSupportDescription": "Study room B was reserved under Riley's name from 9:15 PM to 10:30 PM.",
+      "contextTitleA": "Club chat notice",
+      "contextDescriptionA": "Riley posted in the club chat that the treasurer report was finished before leaving the union.",
+      "recordHooks": [
+        {
+          "suffix": "directory",
+          "title": "Campus directory — Riley Brooks",
+          "description": "Club treasurer finishing paperwork after the fair setup."
+        }
+      ]
+    },
+    {
+      "id": "casey",
+      "displayName": "Casey Nguyen",
+      "campusRole": "Mascot squad member",
+      "tier": "interviewee",
+      "bio": "Mascot squad tech who handles spare shells.",
+      "statement": "I left the student union before 9:15 PM and went to costume storage across campus.",
+      "alibi": "Costume workshop annex from 9:20 PM onward.",
+      "redHerringRecord": "A locker checkout shows Casey removed a spare mascot torso shell that afternoon.",
+      "redHerringExplanation": "Casey was fitting a replacement shell for tomorrow's pep rally.",
+      "alibiSupportTitle": "Annex badge swipe",
+      "alibiSupportDescription": "Casey's badge opened the costume workshop annex at 9:22 PM.",
+      "contextTitleA": "Squad practice note",
+      "contextDescriptionA": "Casey was marked present at afternoon mascot drill and listed for evening shell maintenance.",
+      "recordHooks": [
+        {
+          "suffix": "directory",
+          "title": "Campus directory — Casey Nguyen",
+          "description": "Mascot squad tech who handles spare shells."
+        }
+      ]
+    },
+    {
+      "id": "drew",
+      "displayName": "Drew Okonkwo",
+      "campusRole": "Campus security student aide",
+      "tier": "interviewee",
+      "bio": "Student aide on south-quad patrol with hallway key access.",
+      "statement": "I left the student union before 9:15 PM and walked the south quad patrol loop.",
+      "alibi": "South quad patrol from 9:15 PM onward.",
+      "redHerringRecord": "A key cabinet log shows Drew signed out a master hallway key for the union.",
+      "redHerringExplanation": "Drew was locking perimeter classrooms after the event and returned the key at 9:05 PM.",
+      "alibiSupportTitle": "Patrol checkpoint ping",
+      "alibiSupportDescription": "Drew's aide fob pinged the south quad checkpoint at 9:31 PM.",
+      "contextTitleA": "Aide duty roster",
+      "contextDescriptionA": "Drew was scheduled for the 8:00 PM to 11:00 PM student-aide patrol.",
+      "recordHooks": [
+        {
+          "suffix": "directory",
+          "title": "Campus directory — Drew Okonkwo",
+          "description": "Student aide on south-quad patrol with hallway key access."
+        }
+      ]
+    },
+    {
+      "id": "quinn",
+      "displayName": "Quinn Alvarez",
+      "campusRole": "Student media photographer",
+      "tier": "interviewee",
+      "bio": "Campus photographer covering union events.",
+      "statement": "I left the student union before 9:15 PM and uploaded photos from the media lab.",
+      "alibi": "Media lab edit bay from 9:20 PM onward.",
+      "redHerringRecord": "An equipment loan shows Quinn checked out a large rolling camera case.",
+      "redHerringExplanation": "Quinn used the case to move lights and stands after covering the event.",
+      "alibiSupportTitle": "Lab login record",
+      "alibiSupportDescription": "Quinn logged into a media-lab workstation at 9:26 PM.",
+      "contextTitleA": "Press pass list",
+      "contextDescriptionA": "Quinn appears on the approved photographer list for the student-union event.",
+      "recordHooks": [
+        {
+          "suffix": "directory",
+          "title": "Campus directory — Quinn Alvarez",
+          "description": "Campus photographer covering union events."
+        }
+      ]
+    },
+    {
+      "id": "sam",
+      "displayName": "Sam Torvald",
+      "campusRole": "Dining services closer",
+      "tier": "interviewee",
+      "bio": "Union cafe closer who seals inventory after events.",
+      "statement": "I left the student union before 9:15 PM and finished closing the cafe downstairs.",
+      "alibi": "Union cafe closing checklist from 9:15 PM onward.",
+      "redHerringRecord": "A supply request shows Sam ordered industrial zip ties that morning.",
+      "redHerringExplanation": "Sam used them to reseal bulk snack bags during inventory.",
+      "alibiSupportTitle": "POS closeout stamp",
+      "alibiSupportDescription": "The cafe register closeout was stamped complete under Sam's employee number at 9:33 PM.",
+      "contextTitleA": "Closing checklist",
+      "contextDescriptionA": "Sam is the named closer on the union cafe evening checklist.",
+      "recordHooks": [
+        {
+          "suffix": "directory",
+          "title": "Campus directory — Sam Torvald",
+          "description": "Union cafe closer who seals inventory after events."
+        }
+      ]
+    },
+    {
+      "id": "taylor",
+      "displayName": "Taylor Kim",
+      "campusRole": "RA on duty",
+      "tier": "interviewee",
+      "bio": "Residence hall RA covering late desk hours.",
+      "statement": "I left the student union before 9:15 PM and went back to the north hall desk.",
+      "alibi": "North hall RA desk from 9:20 PM onward.",
+      "redHerringRecord": "A master-key checkout shows Taylor borrowed a wing key earlier.",
+      "redHerringExplanation": "Taylor used it for a locked-out resident and returned it before 9:00 PM.",
+      "alibiSupportTitle": "RA desk punch log",
+      "alibiSupportDescription": "Taylor punched present at the north hall desk at 9:21 PM.",
+      "contextTitleA": "Duty calendar",
+      "contextDescriptionA": "Taylor is listed as the 8 PM–midnight RA on duty.",
+      "recordHooks": [
+        {
+          "suffix": "directory",
+          "title": "Campus directory — Taylor Kim",
+          "description": "Residence hall RA covering late desk hours."
+        }
+      ]
+    },
+    {
+      "id": "jordan",
+      "displayName": "Jordan Blake",
+      "campusRole": "IT helpdesk student",
+      "tier": "interviewee",
+      "bio": "Helpdesk student who resets lab machines after events.",
+      "statement": "I left the student union before 9:15 PM and opened a ticket shift in the IT closet.",
+      "alibi": "IT closet B from 9:18 PM onward.",
+      "redHerringRecord": "A badge trail shows Jordan near storage corridors that afternoon.",
+      "redHerringExplanation": "Jordan was tracing a network drop for the AV team.",
+      "alibiSupportTitle": "Ticket timestamp",
+      "alibiSupportDescription": "Jordan opened ticket HD-4412 at 9:19 PM from closet B.",
+      "contextTitleA": "Helpdesk roster",
+      "contextDescriptionA": "Jordan is scheduled for the evening escalations queue.",
+      "recordHooks": [
+        {
+          "suffix": "directory",
+          "title": "Campus directory — Jordan Blake",
+          "description": "Helpdesk student who resets lab machines after events."
+        }
+      ]
+    },
+    {
+      "id": "harper",
+      "displayName": "Harper Singh",
+      "campusRole": "Catering captain",
+      "tier": "interviewee",
+      "bio": "Student catering captain for union receptions.",
+      "statement": "I left the student union before 9:15 PM and walked trays back to the loading dock.",
+      "alibi": "Loading dock staging from 9:15 PM onward.",
+      "redHerringRecord": "A van sign-out lists Harper with a cargo van that evening.",
+      "redHerringExplanation": "Harper used the van to return chafing dishes to central kitchen.",
+      "alibiSupportTitle": "Dock camera note",
+      "alibiSupportDescription": "A dock attendant initialed Harper's tray return at 9:27 PM.",
+      "contextTitleA": "Catering run sheet",
+      "contextDescriptionA": "Harper is named captain on the union reception run sheet.",
+      "recordHooks": [
+        {
+          "suffix": "directory",
+          "title": "Campus directory — Harper Singh",
+          "description": "Student catering captain for union receptions."
+        }
+      ]
+    },
+    {
+      "id": "reese",
+      "displayName": "Reese Delgado",
+      "campusRole": "Campus bookstore closer",
+      "tier": "interviewee",
+      "bio": "Bookstore closer who cuts through the union after lockup.",
+      "statement": "I left the student union before 9:15 PM after cutting through from the bookstore.",
+      "alibi": "Bookstore register close from 9:10 PM onward.",
+      "redHerringRecord": "A safe-log entry shows Reese opened the till room late.",
+      "redHerringExplanation": "Reese was dropping the night deposit bag before walking home.",
+      "alibiSupportTitle": "Register Z-tape",
+      "alibiSupportDescription": "Bookstore Z-tape closes under Reese's ID at 9:12 PM.",
+      "contextTitleA": "Closer schedule",
+      "contextDescriptionA": "Reese is the assigned bookstore closer for the night.",
+      "recordHooks": [
+        {
+          "suffix": "directory",
+          "title": "Campus directory — Reese Delgado",
+          "description": "Bookstore closer who cuts through the union after lockup."
+        }
+      ]
+    },
+    {
+      "id": "noah",
+      "displayName": "Noah Chen",
+      "campusRole": "Chemistry TA",
+      "tier": "witness",
+      "bio": "Grad TA who graded quizzes in the science atrium.",
+      "statement": "I wasn't part of the storage crew. I'm Noah Chen, Chemistry TA.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Noah Chen's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Grad TA who graded quizzes in the science atrium.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Noah Chen",
+          "description": "Noah Chen, Chemistry TA. Grad TA who graded quizzes in the science atrium."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Noah",
+          "description": "A statement places Noah Chen near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Noah",
+          "description": "Peripheral badge or schedule noise for Noah Chen (Chemistry TA); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "mia",
+      "displayName": "Mia Okada",
+      "campusRole": "Library page",
+      "tier": "witness",
+      "bio": "Shelved reserves on the quiet floor until close.",
+      "statement": "I wasn't part of the storage crew. I'm Mia Okada, Library page.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Mia Okada's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Shelved reserves on the quiet floor until close.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Mia Okada",
+          "description": "Mia Okada, Library page. Shelved reserves on the quiet floor until close."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Mia",
+          "description": "A statement places Mia Okada near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Mia",
+          "description": "Peripheral badge or schedule noise for Mia Okada (Library page); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "lucas",
+      "displayName": "Lucas Grant",
+      "campusRole": "Intramural ref",
+      "tier": "witness",
+      "bio": "Officiated a late pickup game in the rec annex.",
+      "statement": "I wasn't part of the storage crew. I'm Lucas Grant, Intramural ref.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Lucas Grant's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Officiated a late pickup game in the rec annex.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Lucas Grant",
+          "description": "Lucas Grant, Intramural ref. Officiated a late pickup game in the rec annex."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Lucas",
+          "description": "A statement places Lucas Grant near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Lucas",
+          "description": "Peripheral badge or schedule noise for Lucas Grant (Intramural ref); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "zoe",
+      "displayName": "Zoe Martel",
+      "campusRole": "Dance ensemble lead",
+      "tier": "witness",
+      "bio": "Ran a rehearsal in the studio above the union.",
+      "statement": "I wasn't part of the storage crew. I'm Zoe Martel, Dance ensemble lead.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Zoe Martel's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Ran a rehearsal in the studio above the union.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Zoe Martel",
+          "description": "Zoe Martel, Dance ensemble lead. Ran a rehearsal in the studio above the union."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Zoe",
+          "description": "A statement places Zoe Martel near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Zoe",
+          "description": "Peripheral badge or schedule noise for Zoe Martel (Dance ensemble lead); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "ethan",
+      "displayName": "Ethan Brooks",
+      "campusRole": "Bus driver (campus shuttle)",
+      "tier": "witness",
+      "bio": "Drove the west-loop shuttle through 10 PM.",
+      "statement": "I wasn't part of the storage crew. I'm Ethan Brooks, Bus driver (campus shuttle).",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Ethan Brooks's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Drove the west-loop shuttle through 10 PM.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Ethan Brooks",
+          "description": "Ethan Brooks, Bus driver (campus shuttle). Drove the west-loop shuttle through 10 PM."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Ethan",
+          "description": "A statement places Ethan Brooks near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Ethan",
+          "description": "Peripheral badge or schedule noise for Ethan Brooks (Bus driver (campus shuttle)); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "ava",
+      "displayName": "Ava Rahman",
+      "campusRole": "Career center aide",
+      "tier": "witness",
+      "bio": "Closed the resume lab and logged machines.",
+      "statement": "I wasn't part of the storage crew. I'm Ava Rahman, Career center aide.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Ava Rahman's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Closed the resume lab and logged machines.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Ava Rahman",
+          "description": "Ava Rahman, Career center aide. Closed the resume lab and logged machines."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Ava",
+          "description": "A statement places Ava Rahman near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Ava",
+          "description": "Peripheral badge or schedule noise for Ava Rahman (Career center aide); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "ben",
+      "displayName": "Ben Okoye",
+      "campusRole": "HVAC vendor tech",
+      "tier": "witness",
+      "bio": "On-call vendor checking a union rooftop unit.",
+      "statement": "I wasn't part of the storage crew. I'm Ben Okoye, HVAC vendor tech.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Ben Okoye's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "On-call vendor checking a union rooftop unit.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Ben Okoye",
+          "description": "Ben Okoye, HVAC vendor tech. On-call vendor checking a union rooftop unit."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Ben",
+          "description": "A statement places Ben Okoye near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Ben",
+          "description": "Peripheral badge or schedule noise for Ben Okoye (HVAC vendor tech); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "lily",
+      "displayName": "Lily Tran",
+      "campusRole": "Orientation leader",
+      "tier": "witness",
+      "bio": "Collected leftover orientation swag from a closet.",
+      "statement": "I wasn't part of the storage crew. I'm Lily Tran, Orientation leader.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Lily Tran's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Collected leftover orientation swag from a closet.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Lily Tran",
+          "description": "Lily Tran, Orientation leader. Collected leftover orientation swag from a closet."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Lily",
+          "description": "A statement places Lily Tran near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Lily",
+          "description": "Peripheral badge or schedule noise for Lily Tran (Orientation leader); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "caleb",
+      "displayName": "Caleb Ruiz",
+      "campusRole": "Esports club president",
+      "tier": "witness",
+      "bio": "Streamed a practice match from the game lounge.",
+      "statement": "I wasn't part of the storage crew. I'm Caleb Ruiz, Esports club president.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Caleb Ruiz's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Streamed a practice match from the game lounge.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Caleb Ruiz",
+          "description": "Caleb Ruiz, Esports club president. Streamed a practice match from the game lounge."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Caleb",
+          "description": "A statement places Caleb Ruiz near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Caleb",
+          "description": "Peripheral badge or schedule noise for Caleb Ruiz (Esports club president); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "nina",
+      "displayName": "Nina Petrov",
+      "campusRole": "Health center clerk",
+      "tier": "witness",
+      "bio": "Filed evening intake forms at student health.",
+      "statement": "I wasn't part of the storage crew. I'm Nina Petrov, Health center clerk.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Nina Petrov's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Filed evening intake forms at student health.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Nina Petrov",
+          "description": "Nina Petrov, Health center clerk. Filed evening intake forms at student health."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Nina",
+          "description": "A statement places Nina Petrov near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Nina",
+          "description": "Peripheral badge or schedule noise for Nina Petrov (Health center clerk); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "owen",
+      "displayName": "Owen Farrell",
+      "campusRole": "Parking enforcement",
+      "tier": "witness",
+      "bio": "Ticketed the loading zone behind the union.",
+      "statement": "I wasn't part of the storage crew. I'm Owen Farrell, Parking enforcement.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Owen Farrell's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Ticketed the loading zone behind the union.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Owen Farrell",
+          "description": "Owen Farrell, Parking enforcement. Ticketed the loading zone behind the union."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Owen",
+          "description": "A statement places Owen Farrell near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Owen",
+          "description": "Peripheral badge or schedule noise for Owen Farrell (Parking enforcement); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "sara",
+      "displayName": "Sara Ibrahim",
+      "campusRole": "Language tutor",
+      "tier": "witness",
+      "bio": "Tutored Spanish in the learning commons.",
+      "statement": "I wasn't part of the storage crew. I'm Sara Ibrahim, Language tutor.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Sara Ibrahim's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Tutored Spanish in the learning commons.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Sara Ibrahim",
+          "description": "Sara Ibrahim, Language tutor. Tutored Spanish in the learning commons."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Sara",
+          "description": "A statement places Sara Ibrahim near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Sara",
+          "description": "Peripheral badge or schedule noise for Sara Ibrahim (Language tutor); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "kyle",
+      "displayName": "Kyle Nguyen",
+      "campusRole": "AV rental desk",
+      "tier": "witness",
+      "bio": "Returned wireless mics after the event.",
+      "statement": "I wasn't part of the storage crew. I'm Kyle Nguyen, AV rental desk.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Kyle Nguyen's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Returned wireless mics after the event.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Kyle Nguyen",
+          "description": "Kyle Nguyen, AV rental desk. Returned wireless mics after the event."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Kyle",
+          "description": "A statement places Kyle Nguyen near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Kyle",
+          "description": "Peripheral badge or schedule noise for Kyle Nguyen (AV rental desk); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "elena",
+      "displayName": "Elena Rossi",
+      "campusRole": "Alumni office intern",
+      "tier": "witness",
+      "bio": "Packed name badges from a donor mixer.",
+      "statement": "I wasn't part of the storage crew. I'm Elena Rossi, Alumni office intern.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Elena Rossi's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Packed name badges from a donor mixer.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Elena Rossi",
+          "description": "Elena Rossi, Alumni office intern. Packed name badges from a donor mixer."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Elena",
+          "description": "A statement places Elena Rossi near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Elena",
+          "description": "Peripheral badge or schedule noise for Elena Rossi (Alumni office intern); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "marcus",
+      "displayName": "Marcus Hale",
+      "campusRole": "Food truck vendor",
+      "tier": "witness",
+      "bio": "Parked a late taco truck on Alumni Drive.",
+      "statement": "I wasn't part of the storage crew. I'm Marcus Hale, Food truck vendor.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Marcus Hale's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Parked a late taco truck on Alumni Drive.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Marcus Hale",
+          "description": "Marcus Hale, Food truck vendor. Parked a late taco truck on Alumni Drive."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Marcus",
+          "description": "A statement places Marcus Hale near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Marcus",
+          "description": "Peripheral badge or schedule noise for Marcus Hale (Food truck vendor); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "priya",
+      "displayName": "Priya Desai",
+      "campusRole": "Bio lab assistant",
+      "tier": "witness",
+      "bio": "Locked the teaching lab cold room.",
+      "statement": "I wasn't part of the storage crew. I'm Priya Desai, Bio lab assistant.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Priya Desai's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Locked the teaching lab cold room.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Priya Desai",
+          "description": "Priya Desai, Bio lab assistant. Locked the teaching lab cold room."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Priya",
+          "description": "A statement places Priya Desai near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Priya",
+          "description": "Peripheral badge or schedule noise for Priya Desai (Bio lab assistant); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "dylan",
+      "displayName": "Dylan Morse",
+      "campusRole": "Theatre carpenter",
+      "tier": "witness",
+      "bio": "Broke down a flat for tomorrow's tech.",
+      "statement": "I wasn't part of the storage crew. I'm Dylan Morse, Theatre carpenter.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Dylan Morse's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Broke down a flat for tomorrow's tech.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Dylan Morse",
+          "description": "Dylan Morse, Theatre carpenter. Broke down a flat for tomorrow's tech."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Dylan",
+          "description": "A statement places Dylan Morse near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Dylan",
+          "description": "Peripheral badge or schedule noise for Dylan Morse (Theatre carpenter); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "chloe",
+      "displayName": "Chloe Park",
+      "campusRole": "Admissions tour guide",
+      "tier": "witness",
+      "bio": "Finished a VIP family walk near the fountain.",
+      "statement": "I wasn't part of the storage crew. I'm Chloe Park, Admissions tour guide.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Chloe Park's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Finished a VIP family walk near the fountain.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Chloe Park",
+          "description": "Chloe Park, Admissions tour guide. Finished a VIP family walk near the fountain."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Chloe",
+          "description": "A statement places Chloe Park near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Chloe",
+          "description": "Peripheral badge or schedule noise for Chloe Park (Admissions tour guide); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "ivan",
+      "displayName": "Ivan Sokolov",
+      "campusRole": "Night custodian",
+      "tier": "witness",
+      "bio": "Mopped the union lobby after the crowd left.",
+      "statement": "I wasn't part of the storage crew. I'm Ivan Sokolov, Night custodian.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Ivan Sokolov's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Mopped the union lobby after the crowd left.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Ivan Sokolov",
+          "description": "Ivan Sokolov, Night custodian. Mopped the union lobby after the crowd left."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Ivan",
+          "description": "A statement places Ivan Sokolov near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Ivan",
+          "description": "Peripheral badge or schedule noise for Ivan Sokolov (Night custodian); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "jade",
+      "displayName": "Jade Winters",
+      "campusRole": "Radio station DJ",
+      "tier": "witness",
+      "bio": "Hosted a late show from the basement booth.",
+      "statement": "I wasn't part of the storage crew. I'm Jade Winters, Radio station DJ.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Jade Winters's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Hosted a late show from the basement booth.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Jade Winters",
+          "description": "Jade Winters, Radio station DJ. Hosted a late show from the basement booth."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Jade",
+          "description": "A statement places Jade Winters near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Jade",
+          "description": "Peripheral badge or schedule noise for Jade Winters (Radio station DJ); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "parker",
+      "displayName": "Parker Ellis",
+      "campusRole": "Mailroom clerk",
+      "tier": "witness",
+      "bio": "Sorted late package drops for resident halls.",
+      "statement": "I wasn't part of the storage crew. I'm Parker Ellis, Mailroom clerk.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Parker Ellis's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Sorted late package drops for resident halls.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Parker Ellis",
+          "description": "Parker Ellis, Mailroom clerk. Sorted late package drops for resident halls."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Parker",
+          "description": "A statement places Parker Ellis near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Parker",
+          "description": "Peripheral badge or schedule noise for Parker Ellis (Mailroom clerk); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "sofia",
+      "displayName": "Sofia Mendes",
+      "campusRole": "Swim team manager",
+      "tier": "witness",
+      "bio": "Logged pool equipment after practice.",
+      "statement": "I wasn't part of the storage crew. I'm Sofia Mendes, Swim team manager.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Sofia Mendes's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Logged pool equipment after practice.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Sofia Mendes",
+          "description": "Sofia Mendes, Swim team manager. Logged pool equipment after practice."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Sofia",
+          "description": "A statement places Sofia Mendes near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Sofia",
+          "description": "Peripheral badge or schedule noise for Sofia Mendes (Swim team manager); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "ryan",
+      "displayName": "Ryan Cho",
+      "campusRole": "Printing services",
+      "tier": "witness",
+      "bio": "Ran banner reprints for the pep rally.",
+      "statement": "I wasn't part of the storage crew. I'm Ryan Cho, Printing services.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Ryan Cho's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Ran banner reprints for the pep rally.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Ryan Cho",
+          "description": "Ryan Cho, Printing services. Ran banner reprints for the pep rally."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Ryan",
+          "description": "A statement places Ryan Cho near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Ryan",
+          "description": "Peripheral badge or schedule noise for Ryan Cho (Printing services); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "amara",
+      "displayName": "Amara Diallo",
+      "campusRole": "International student mentor",
+      "tier": "witness",
+      "bio": "Held drop-in hours in the global lounge.",
+      "statement": "I wasn't part of the storage crew. I'm Amara Diallo, International student mentor.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Amara Diallo's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Held drop-in hours in the global lounge.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Amara Diallo",
+          "description": "Amara Diallo, International student mentor. Held drop-in hours in the global lounge."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Amara",
+          "description": "A statement places Amara Diallo near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Amara",
+          "description": "Peripheral badge or schedule noise for Amara Diallo (International student mentor); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "theo",
+      "displayName": "Theo Lindqvist",
+      "campusRole": "Bike shop mechanic",
+      "tier": "witness",
+      "bio": "Closed the campus bike co-op register.",
+      "statement": "I wasn't part of the storage crew. I'm Theo Lindqvist, Bike shop mechanic.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Theo Lindqvist's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Closed the campus bike co-op register.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Theo Lindqvist",
+          "description": "Theo Lindqvist, Bike shop mechanic. Closed the campus bike co-op register."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Theo",
+          "description": "A statement places Theo Lindqvist near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Theo",
+          "description": "Peripheral badge or schedule noise for Theo Lindqvist (Bike shop mechanic); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "grace",
+      "displayName": "Grace Okonkwo",
+      "campusRole": "Chaplain intern",
+      "tier": "witness",
+      "bio": "Locked the meditation room after a group.",
+      "statement": "I wasn't part of the storage crew. I'm Grace Okonkwo, Chaplain intern.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Grace Okonkwo's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Locked the meditation room after a group.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Grace Okonkwo",
+          "description": "Grace Okonkwo, Chaplain intern. Locked the meditation room after a group."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Grace",
+          "description": "A statement places Grace Okonkwo near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Grace",
+          "description": "Peripheral badge or schedule noise for Grace Okonkwo (Chaplain intern); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "felix",
+      "displayName": "Felix Ortega",
+      "campusRole": "Vending contractor",
+      "tier": "witness",
+      "bio": "Restocked snack spirals on level two.",
+      "statement": "I wasn't part of the storage crew. I'm Felix Ortega, Vending contractor.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Felix Ortega's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Restocked snack spirals on level two.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Felix Ortega",
+          "description": "Felix Ortega, Vending contractor. Restocked snack spirals on level two."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Felix",
+          "description": "A statement places Felix Ortega near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Felix",
+          "description": "Peripheral badge or schedule noise for Felix Ortega (Vending contractor); useful color, not a storage open."
+        }
+      ]
+    },
+    {
+      "id": "hana",
+      "displayName": "Hana Suzuki",
+      "campusRole": "Museum gallery attendant",
+      "tier": "witness",
+      "bio": "Closed the small campus gallery.",
+      "statement": "I wasn't part of the storage crew. I'm Hana Suzuki, Museum gallery attendant.",
+      "alibi": "Elsewhere on campus during the theft window.",
+      "redHerringRecord": "",
+      "redHerringExplanation": "",
+      "alibiSupportTitle": "Peripheral schedule",
+      "alibiSupportDescription": "Hana Suzuki's ordinary duties keep them away from event storage.",
+      "contextTitleA": "Directory listing",
+      "contextDescriptionA": "Closed the small campus gallery.",
+      "recordHooks": [
+        {
+          "suffix": "bio",
+          "title": "Campus directory — Hana Suzuki",
+          "description": "Hana Suzuki, Museum gallery attendant. Closed the small campus gallery."
+        },
+        {
+          "suffix": "sighting",
+          "title": "Witness note — Hana",
+          "description": "A statement places Hana Suzuki near campus activity around the theft window, but not inside event storage."
+        },
+        {
+          "suffix": "badge",
+          "title": "Access adjacent — Hana",
+          "description": "Peripheral badge or schedule noise for Hana Suzuki (Museum gallery attendant); useful color, not a storage open."
+        }
+      ]
+    }
+  ]
+}

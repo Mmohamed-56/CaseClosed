@@ -94,12 +94,30 @@ namespace CaseClosed.CaseCore
         public string Briefing { get; private set; }
         public IReadOnlyList<SuspectRecord> Suspects { get { return suspects; } }
 
+        /// <summary>
+        /// Public campus directory rows (bios / witness record hooks). Not interrogated.
+        /// Ids use <c>affiliate_*</c>; clue ids use <c>{caseId}_aff_{id}_{suffix}</c>.
+        /// </summary>
+        public IReadOnlyList<WebsiteSuspectRecord> CampusDirectory { get { return campusDirectory; } }
+
         /// <summary>Hidden truth id. Exposed to interrogation / scoring only; omitted from the public records JSON.</summary>
         internal string CulpritSuspectId { get; private set; }
 
         private readonly List<SuspectRecord> suspects;
+        private readonly List<WebsiteSuspectRecord> campusDirectory;
 
         public CaseFile(string caseId, string title, string briefing, string culpritSuspectId, IEnumerable<SuspectRecord> caseSuspects)
+            : this(caseId, title, briefing, culpritSuspectId, caseSuspects, null)
+        {
+        }
+
+        public CaseFile(
+            string caseId,
+            string title,
+            string briefing,
+            string culpritSuspectId,
+            IEnumerable<SuspectRecord> caseSuspects,
+            IEnumerable<WebsiteSuspectRecord> directoryAffiliates)
         {
             if (string.IsNullOrWhiteSpace(caseId)) throw new ArgumentException("Case needs an ID.", "caseId");
             if (string.IsNullOrWhiteSpace(culpritSuspectId)) throw new ArgumentException("Case needs a culprit ID.", "culpritSuspectId");
@@ -110,6 +128,9 @@ namespace CaseClosed.CaseCore
             Briefing = briefing ?? string.Empty;
             CulpritSuspectId = culpritSuspectId;
             suspects = new List<SuspectRecord>(caseSuspects);
+            campusDirectory = directoryAffiliates == null
+                ? new List<WebsiteSuspectRecord>()
+                : new List<WebsiteSuspectRecord>(directoryAffiliates);
 
             if (suspects.Count < 2) throw new ArgumentException("A case needs at least two suspects.", "caseSuspects");
             if (!suspects.Exists(suspect => suspect != null && suspect.Id == culpritSuspectId))
