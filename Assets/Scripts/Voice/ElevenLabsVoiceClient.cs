@@ -57,8 +57,8 @@ namespace CaseClosed.Voice
         [SerializeField] private int maxCachedClips = 48;
 
         [Header("Debug")]
-        [SerializeField] private bool logSkippedMissingKey;
-        [SerializeField] private bool logErrors;
+        [SerializeField] private bool logSkippedMissingKey = true;
+        [SerializeField] private bool logErrors = true;
 
         private readonly Dictionary<string, AudioClip> clipCache = new Dictionary<string, AudioClip>();
         private readonly LinkedList<string> cacheOrder = new LinkedList<string>();
@@ -69,10 +69,12 @@ namespace CaseClosed.Voice
         private bool keyMissingLogged;
         private bool speechPlaybackActive;
         private string activeSpeechSuspectId;
+        private ApiProxySettings runtimeProxyFallback;
 
         public void Configure(ApiProxySettings proxy)
         {
-            proxySettings = proxy;
+            if (proxy != null)
+                proxySettings = proxy;
         }
 
         /// <inheritdoc />
@@ -80,11 +82,12 @@ namespace CaseClosed.Voice
         {
             get
             {
-                if (proxySettings != null && proxySettings.ShouldUseProxy)
+                ApiProxySettings proxy = ResolveProxySettings();
+                if (proxy != null && proxy.ShouldUseProxy)
                     return true;
 
                 string unused;
-                return proxySettings != null && proxySettings.ShouldAllowDirectKeys &&
+                return proxy != null && proxy.ShouldAllowDirectKeys &&
                        ElevenLabsApiKey.TryGetDirect(out unused);
             }
         }
@@ -132,17 +135,20 @@ namespace CaseClosed.Voice
             if (request.CancelPrevious)
                 CancelInFlight();
 
-            bool useProxy = proxySettings != null && proxySettings.ShouldUseProxy;
+            ApiProxySettings proxy = ResolveProxySettings();
+            bool useProxy = proxy != null && proxy.ShouldUseProxy;
             string apiKey = null;
             if (!useProxy)
             {
-                bool allowDirect = proxySettings == null || proxySettings.ShouldAllowDirectKeys;
+                bool allowDirect = proxy == null || proxy.ShouldAllowDirectKeys;
                 if (!allowDirect || !ElevenLabsApiKey.TryGetDirect(out apiKey))
                 {
                     if (logSkippedMissingKey && !keyMissingLogged)
                     {
                         keyMissingLogged = true;
-                        Debug.LogWarning("[ElevenLabs] Proxy/API key missing — TTS skipped silently.");
+                        Debug.LogWarning(
+                            "[ElevenLabs] Proxy/API key missing — TTS skipped. " +
+                            "Set PlayerPrefs CASE_CLOSED_APP_TOKEN or ELEVENLABS_API_KEY.");
                     }
                     return;
                 }
@@ -154,7 +160,7 @@ namespace CaseClosed.Voice
             string suspectId = request.SuspectId ?? string.Empty;
             generation++;
             int gen = generation;
-            activeRoutine = StartCoroutine(SpeakRoutine(gen, useProxy, apiKey, voiceId, cleaned, suspectId));
+            activeRoutine = StartCoroutine(SpeakRoutine(gen, useProxy, apiKey, voiceId, cleaned, suspectId, proxy));
         }
 
         /// <summary>Speak using resolved catalog / record voice id.</summary>
@@ -222,7 +228,8 @@ namespace CaseClosed.Voice
             string apiKey,
             string voiceId,
             string fullText,
-            string suspectId)
+            string suspectId,
+            ApiProxySettings proxy)
         {
             // try/finally so errors (e.g. TTS 401), early yield break, and StopCoroutine
             // always release IsBusy — otherwise a failed request leaves activeRoutine stuck.
@@ -245,7 +252,7 @@ namespace CaseClosed.Voice
 
                     byte[] audioBytes = null;
                     if (useProxy)
-                        yield return DownloadSpeechViaProxy(gen, voiceId, chunk, bytes => audioBytes = bytes);
+                        yield return DownloadSpeechViaProxy(gen, proxy, voiceId, chunk, bytes => audioBytes = bytes);
                     else
                         yield return DownloadSpeechDirect(gen, apiKey, voiceId, chunk, bytes => audioBytes = bytes);
                     if (gen != generation || audioBytes == null || audioBytes.Length == 0)
@@ -271,6 +278,10 @@ namespace CaseClosed.Voice
 
         private IEnumerator PlayClip(int gen, AudioClip clip, string suspectId)
         {
+            EnsureAudioSource();
+            audioSource.mute = false;
+            if (audioSource.volume <= 0.001f)
+                audioSource.volume = 1f;
             audioSource.clip = clip;
             audioSource.Play();
             NotifySpeechStarted(suspectId);
@@ -334,9 +345,14 @@ namespace CaseClosed.Voice
             activeRoutine = null;
         }
 
-        private IEnumerator DownloadSpeechViaProxy(int gen, string voiceId, string text, Action<byte[]> onComplete)
+        private IEnumerator DownloadSpeechViaProxy(
+            int gen,
+            ApiProxySettings proxy,
+            string voiceId,
+            string text,
+            Action<byte[]> onComplete)
         {
-            string url = proxySettings.TtsProxyUrl;
+            string url = proxy.TtsProxyUrl;
             string body = BuildProxyRequestJson(voiceId, text);
             byte[] bodyRaw = Encoding.UTF8.GetBytes(body);
 
@@ -345,9 +361,17 @@ namespace CaseClosed.Voice
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
             request.SetRequestHeader("Accept", "audio/mpeg");
-            string token = proxySettings.AppToken;
+            string token = proxy.AppToken;
             if (!string.IsNullOrWhiteSpace(token))
                 request.SetRequestHeader("X-Case-Closed-Token", token);
+            else if (logErrors && !keyMissingLogged)
+            {
+                keyMissingLogged = true;
+                Debug.LogWarning(
+                    "[ElevenLabs] CASE_CLOSED_APP_TOKEN missing — proxy TTS will 401. " +
+                    "Case Closed → API Proxy → Set PlayerPrefs (Editor menu).");
+            }
+
             request.timeout = 12;
 
             activeRequest = request;
@@ -568,18 +592,52 @@ namespace CaseClosed.Voice
             cacheOrder.AddLast(key);
         }
 
+        /// <summary>
+        /// Prefers assigned proxy, else a runtime fallback that still hits
+        /// https://ubcaseclosed.netlify.app/api/tts and reads X-Case-Closed-Token from PlayerPrefs.
+        /// </summary>
+        private ApiProxySettings ResolveProxySettings()
+        {
+            if (proxySettings != null)
+                return proxySettings;
+
+            if (runtimeProxyFallback == null)
+                runtimeProxyFallback = ApiProxySettings.CreateRuntimeDefault();
+
+            return runtimeProxyFallback;
+        }
+
         private void EnsureAudioSource()
         {
             if (audioSource != null)
+            {
+                audioSource.mute = false;
+                audioSource.playOnAwake = false;
+                audioSource.loop = false;
+                if (audioSource.volume <= 0.001f)
+                    audioSource.volume = 1f;
                 return;
+            }
 
-            audioSource = GetComponent<AudioSource>();
+            // Dedicated child source so BarkPlayer / SfxPlayer Stop() cannot mute reply TTS.
+            Transform existing = transform.Find("ElevenLabsAudio");
+            GameObject host = existing != null ? existing.gameObject : new GameObject("ElevenLabsAudio");
+            if (existing == null)
+            {
+                host.transform.SetParent(transform, false);
+                host.transform.localPosition = Vector3.zero;
+            }
+
+            audioSource = host.GetComponent<AudioSource>();
             if (audioSource == null)
-                audioSource = gameObject.AddComponent<AudioSource>();
+                audioSource = host.AddComponent<AudioSource>();
 
             audioSource.playOnAwake = false;
             audioSource.spatialBlend = 0f;
             audioSource.loop = false;
+            audioSource.mute = false;
+            audioSource.volume = 1f;
+            audioSource.priority = 32;
         }
 
         private static string EscapeJson(string value)
