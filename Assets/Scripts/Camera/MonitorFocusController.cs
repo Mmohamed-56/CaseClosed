@@ -46,10 +46,31 @@ namespace CaseClosed.CameraControl
         /// <summary>Whether the player is focused on the monitor or transitioning into it.</summary>
         public bool IsFocused { get { return isFocused; } }
 
+        /// <summary>True when camera + browser display surface are resolved so focus can run in-game.</summary>
+        public bool CanEnterFocus
+        {
+            get
+            {
+                EnsureMonitorRefs();
+                return playerCamera != null && displaySurface != null;
+            }
+        }
+
         private void Awake()
         {
-            playerCamera = GetComponent<Camera>();
-            if (playerCamera == null) playerCamera = Camera.main;
+            EnsureMonitorRefs();
+
+            if (browserManager != null)
+                browserManager.SetDisplayInputEnabled(false);
+        }
+
+        private void EnsureMonitorRefs()
+        {
+            if (playerCamera == null)
+            {
+                playerCamera = GetComponent<Camera>();
+                if (playerCamera == null) playerCamera = Camera.main;
+            }
 
             if (displaySurface == null)
             {
@@ -62,9 +83,6 @@ namespace CaseClosed.CameraControl
 
             if (browserManager == null)
                 browserManager = FindAnyObjectByType<RecordsWebsiteBrowserManager>();
-
-            if (browserManager != null)
-                browserManager.SetDisplayInputEnabled(false);
         }
 
         private void Update()
@@ -91,7 +109,20 @@ namespace CaseClosed.CameraControl
         /// <summary>Focuses the camera on the browser surface and enables its web input.</summary>
         public void EnterFocus()
         {
-            if (playerCamera == null || displaySurface == null || isFocused || isTransitioning) return;
+            TryEnterFocus();
+        }
+
+        /// <summary>Starts monitor focus when the camera and display surface are available. Never opens an external browser.</summary>
+        public bool TryEnterFocus()
+        {
+            EnsureMonitorRefs();
+            if (playerCamera == null || displaySurface == null) return false;
+            if (isFocused || isTransitioning)
+            {
+                if (isFocused && !isTransitioning && browserManager != null)
+                    browserManager.SetDisplayInputEnabled(true);
+                return true;
+            }
 
             returnPosition = playerCamera.transform.position;
             returnRotation = playerCamera.transform.rotation;
@@ -108,6 +139,7 @@ namespace CaseClosed.CameraControl
 
             isFocused = true;
             BeginTransition();
+            return true;
         }
 
         /// <summary>Returns the camera to its previous position and disables web input.</summary>
