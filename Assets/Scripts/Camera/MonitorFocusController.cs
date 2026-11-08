@@ -32,6 +32,7 @@ namespace CaseClosed.CameraControl
         [SerializeField] private Key focusToggleKey = Key.F;
 
         private Camera playerCamera;
+        private CameraLookController cameraLookController;
         private Vector3 returnPosition;
         private Quaternion returnRotation;
         private float returnFieldOfView;
@@ -45,6 +46,9 @@ namespace CaseClosed.CameraControl
 
         /// <summary>Whether the player is focused on the monitor or transitioning into it.</summary>
         public bool IsFocused { get { return isFocused; } }
+
+        /// <summary>Whether the player is focused on the monitor or transitioning between desk and monitor views.</summary>
+        public bool IsTransitioning { get { return isTransitioning; } }
 
         /// <summary>True when camera + browser display surface are resolved so focus can run in-game.</summary>
         public bool CanEnterFocus
@@ -83,6 +87,9 @@ namespace CaseClosed.CameraControl
 
             if (browserManager == null)
                 browserManager = FindAnyObjectByType<RecordsWebsiteBrowserManager>();
+
+            if (cameraLookController == null)
+                cameraLookController = GetComponent<CameraLookController>();
         }
 
         private void Update()
@@ -92,8 +99,9 @@ namespace CaseClosed.CameraControl
 
             if (!isFocused && !isTransitioning)
             {
-                bool togglePressed = keyboard != null && keyboard[focusToggleKey].wasPressedThisFrame;
-                bool surfaceClicked = mouse != null && mouse.leftButton.wasPressedThisFrame && IsPointerOverDisplay(mouse.position.ReadValue());
+                bool togglePressed = Time.timeScale > 0f && keyboard != null && keyboard[focusToggleKey].wasPressedThisFrame &&
+                                     IsPointerOverDisplay(new Vector2(Screen.width * 0.5f, Screen.height * 0.5f));
+                bool surfaceClicked = Time.timeScale > 0f && mouse != null && mouse.leftButton.wasPressedThisFrame && IsPointerOverDisplay(mouse.position.ReadValue());
                 if (togglePressed || surfaceClicked) EnterFocus();
             }
             else if (isFocused && !isTransitioning)
@@ -127,6 +135,8 @@ namespace CaseClosed.CameraControl
             returnPosition = playerCamera.transform.position;
             returnRotation = playerCamera.transform.rotation;
             returnFieldOfView = playerCamera.fieldOfView;
+            if (cameraLookController != null)
+                cameraLookController.SetLookEnabled(false);
 
             Vector3 viewerSide = (playerCamera.transform.position - displaySurface.position).normalized;
             Vector3 screenFacing = Vector3.Dot(displaySurface.forward, viewerSide) >= 0f
@@ -188,6 +198,8 @@ namespace CaseClosed.CameraControl
 
             if (isFocused && browserManager != null)
                 browserManager.SetDisplayInputEnabled(true);
+            else if (cameraLookController != null)
+                cameraLookController.SetLookEnabled(true);
         }
 
         private bool IsPointerOverDisplay(Vector2 screenPosition)
