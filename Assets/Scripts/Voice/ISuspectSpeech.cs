@@ -1,7 +1,7 @@
 namespace CaseClosed.Voice
 {
     /// <summary>
-    /// Shared speech hook for Magdy / Bezi / Mikasa.
+    /// Shared speech hook for Magdy / Mikasa.
     /// Gemini raises <see cref="SuspectDialogueEvents.ReplyReady"/>; any <see cref="ISuspectSpeech"/>
     /// implementation (ElevenLabs) plays the line without blocking gameplay.
     /// </summary>
