@@ -9,7 +9,7 @@ namespace CaseClosed.CaseCore.Gemini
 {
     /// <summary>
     /// Legacy Unity Gemini client (ask turns). Default gameplay keeps
-    /// <see cref="InterrogationDialogueService"/> <c>useGeminiApi</c> OFF and uses
+    /// <see cref="InterrogationDialogueService"/> <c>allowGeminiFallback</c> OFF and uses
     /// <see cref="CaseClosed.CaseCore.Dialogue.ScenarioDialogueClient"/> instead.
     /// Player builds historically used the cloud proxy; Editor may use a direct key.
     /// </summary>
