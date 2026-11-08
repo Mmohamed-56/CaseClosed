@@ -1,3 +1,4 @@
+using CaseClosed.Networking;
 using CaseClosed.Voice;
 using UnityEngine;
 
@@ -13,34 +14,34 @@ namespace CaseClosed.CaseCore.Gemini
     }
 
     /// <summary>
-    /// Bridges Mikasa's Gemini dialogue events to the ElevenLabs TTS client.
+    /// Bridges dialogue events to the ElevenLabs TTS client.
     /// Listens to <c>SuspectLineReady</c> and <c>QuestionStarted</c> on
     /// <see cref="InterrogationDialogueService"/>, cancels in-flight audio on a new question,
     /// and republishes on <see cref="SuspectDialogueEvents.ReplyReady"/> for
     /// <see cref="ElevenLabsVoiceClient"/>.
+    /// Choice-tree / Asuka answers can call <see cref="SpeakAnswer"/> directly.
     /// </summary>
     [DisallowMultipleComponent]
     public sealed class ElevenLabsVoiceSink : MonoBehaviour, ISuspectVoiceSink
     {
         [SerializeField] private InterrogationDialogueService dialogueService;
         [SerializeField] private ElevenLabsVoiceClient voiceClient;
+        [SerializeField] private ApiProxySettings proxySettings;
         [Tooltip("When enabled, logs each spoken line (useful without an API key).")]
         [SerializeField] private bool logLines;
 
         private void Awake()
         {
-            if (dialogueService == null)
-                dialogueService = GetComponent<InterrogationDialogueService>();
-            if (voiceClient == null)
-                voiceClient = GetComponent<ElevenLabsVoiceClient>();
-            if (voiceClient == null)
-                voiceClient = gameObject.AddComponent<ElevenLabsVoiceClient>();
+            EnsureWired();
         }
 
         private void OnEnable()
         {
+            EnsureWired();
             if (dialogueService != null)
             {
+                dialogueService.SuspectLineReady -= HandleSuspectLine;
+                dialogueService.QuestionStarted -= HandleQuestionStarted;
                 dialogueService.SuspectLineReady += HandleSuspectLine;
                 dialogueService.QuestionStarted += HandleQuestionStarted;
             }
@@ -55,23 +56,84 @@ namespace CaseClosed.CaseCore.Gemini
             }
         }
 
+        /// <summary>Runtime wiring used by <see cref="CaseClosed.Gameplay.CaseGameplayPrototype"/>.</summary>
+        public void Configure(InterrogationDialogueService service, ApiProxySettings proxy = null)
+        {
+            if (dialogueService != null && dialogueService != service)
+            {
+                dialogueService.SuspectLineReady -= HandleSuspectLine;
+                dialogueService.QuestionStarted -= HandleQuestionStarted;
+            }
+
+            dialogueService = service;
+            if (proxy != null)
+                proxySettings = proxy;
+
+            EnsureWired();
+
+            if (isActiveAndEnabled && dialogueService != null)
+            {
+                dialogueService.SuspectLineReady -= HandleSuspectLine;
+                dialogueService.QuestionStarted -= HandleQuestionStarted;
+                dialogueService.SuspectLineReady += HandleSuspectLine;
+                dialogueService.QuestionStarted += HandleQuestionStarted;
+            }
+        }
+
         private void HandleQuestionStarted()
         {
             if (voiceClient != null)
                 voiceClient.CancelInFlight();
         }
 
-        /// <summary>Consumes Gemini (or mock) spoken text and starts ElevenLabs playback via the shared bus.</summary>
+        /// <summary>
+        /// Speak an authored reply from any path: scenario bank, scripted mock, or choice-tree (Asuka).
+        /// Always publishes <see cref="SuspectDialogueEvents.ReplyReady"/> so the voice client Speaks.
+        /// </summary>
+        public void SpeakAnswer(string suspectId, string text, string emotion = null, string voiceId = null)
+        {
+            HandleSuspectLine(new SuspectVoiceLine
+            {
+                SuspectId = suspectId ?? string.Empty,
+                SuspectName = string.Empty,
+                Text = text,
+                Emotion = emotion,
+                VoiceId = voiceId,
+                UsedMock = false,
+                Slip = false
+            });
+        }
+
+        /// <summary>Consumes Gemini / scenario / scripted spoken text and starts ElevenLabs playback.</summary>
         public void HandleSuspectLine(SuspectVoiceLine line)
         {
             if (line == null || string.IsNullOrWhiteSpace(line.Text))
                 return;
 
+            EnsureWired();
+
             if (logLines)
                 Debug.Log("[ElevenLabsVoiceSink] TTS: " + line.SuspectName + " / " + line.Emotion + " → " + line.Text);
 
-            // ElevenLabsVoiceClient subscribes to SuspectDialogueEvents.ReplyReady.
+            // ElevenLabsVoiceClient subscribes to ReplyReady in OnEnable and Speaks.
+            // Choice-tree (Asuka) answers should call SpeakAnswer / HandleSuspectLine so they hit this same bus.
             SuspectDialogueEvents.PublishReply(line.SuspectId, line.Text, line.Emotion, line.VoiceId);
+        }
+
+        private void EnsureWired()
+        {
+            if (dialogueService == null)
+                dialogueService = GetComponent<InterrogationDialogueService>();
+            if (dialogueService == null)
+                dialogueService = FindFirstObjectByType<InterrogationDialogueService>();
+
+            if (voiceClient == null)
+                voiceClient = GetComponent<ElevenLabsVoiceClient>();
+            if (voiceClient == null)
+                voiceClient = gameObject.AddComponent<ElevenLabsVoiceClient>();
+
+            if (proxySettings != null)
+                voiceClient.Configure(proxySettings);
         }
     }
 }

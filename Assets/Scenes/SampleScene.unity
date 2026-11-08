@@ -14123,8 +14123,10 @@ MonoBehaviour:
   suspectCount: 2
   shiftController: {fileID: 1467552879}
   geminiApiKeySettings: {fileID: 0}
+  apiProxySettings: {fileID: 11400000, guid: d4e5f60718293a4b5c6d7e8f901a2b3c, type: 2}
   dialogueService: {fileID: 1467552882}
   voiceSink: {fileID: 1467552884}
+  voiceClient: {fileID: 1467552883}
 --- !u!114 &1467552881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14138,7 +14140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.CaseCore.Gemini.GeminiApiClient
   settings: {fileID: 0}
-  proxySettings: {fileID: 11400000, guid: 8cb6b46f779bd9b40bfdf82016cc589f, type: 2}
+  proxySettings: {fileID: 11400000, guid: d4e5f60718293a4b5c6d7e8f901a2b3c, type: 2}
 --- !u!114 &1467552882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14154,7 +14156,7 @@ MonoBehaviour:
   shiftController: {fileID: 1467552879}
   geminiClient: {fileID: 1467552881}
   apiKeySettings: {fileID: 0}
-  proxySettings: {fileID: 11400000, guid: 8cb6b46f779bd9b40bfdf82016cc589f, type: 2}
+  proxySettings: {fileID: 11400000, guid: d4e5f60718293a4b5c6d7e8f901a2b3c, type: 2}
   barkPlayer: {fileID: 0}
   allowOfflineMock: 1
 --- !u!114 &1467552883
@@ -14169,7 +14171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a0445311817fa09d7a063f51ea360b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.Voice.ElevenLabsVoiceClient
-  proxySettings: {fileID: 11400000, guid: 8cb6b46f779bd9b40bfdf82016cc589f, type: 2}
+  proxySettings: {fileID: 11400000, guid: d4e5f60718293a4b5c6d7e8f901a2b3c, type: 2}
   audioSource: {fileID: 0}
   modelId: eleven_flash_v2_5
   outputFormat: mp3_22050_32
@@ -14180,7 +14182,7 @@ MonoBehaviour:
   similarityBoost: 0.75
   enableClipCache: 1
   maxCachedClips: 48
-  logSkippedMissingKey: 0
+  logSkippedMissingKey: 1
   logErrors: 1
 --- !u!114 &1467552884
 MonoBehaviour:
@@ -14196,7 +14198,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CaseClosed.CaseCore.Gemini.ElevenLabsVoiceSink
   dialogueService: {fileID: 1467552882}
   voiceClient: {fileID: 1467552883}
-  logLines: 0
+  proxySettings: {fileID: 11400000, guid: d4e5f60718293a4b5c6d7e8f901a2b3c, type: 2}
+  logLines: 1
 --- !u!114 &1467552885
 MonoBehaviour:
   m_ObjectHideFlags: 0

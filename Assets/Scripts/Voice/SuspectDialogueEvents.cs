@@ -5,10 +5,11 @@ namespace CaseClosed.Voice
     /// <summary>
     /// Cross-system dialogue bus for Case Closed interrogation.
     ///
-    /// Primary Gemini path (Mikasa): <c>InterrogationDialogueService.SuspectLineReady</c>
+    /// Ask / scenario / scripted path: <c>InterrogationDialogueService.SuspectLineReady</c>
     /// + <c>QuestionStarted</c>. <c>ElevenLabsVoiceSink</c> bridges those into this bus.
     ///
-    /// Alternate / direct hook: call <see cref="PublishReply(SuspectSpeechRequest)"/> when a line is ready.
+    /// Choice-tree (Asuka): call <c>ElevenLabsVoiceSink.SpeakAnswer</c> or
+    /// <see cref="PublishReply(SuspectSpeechRequest)"/> when a node answer is ready.
     /// Event name constant: <see cref="ReplyReadyEventName"/>.
     ///
     /// Voice: <see cref="ElevenLabsVoiceClient"/> subscribes to <see cref="ReplyReady"/> in OnEnable

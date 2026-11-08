@@ -127,6 +127,20 @@ namespace CaseClosed.Networking
             PlayerPrefs.Save();
         }
 
+        /// <summary>
+        /// Runtime fallback when a scene reference is missing/broken.
+        /// Still reads <see cref="PlayerPrefsAppTokenKey"/> for X-Case-Closed-Token.
+        /// </summary>
+        public static ApiProxySettings CreateRuntimeDefault()
+        {
+            ApiProxySettings settings = CreateInstance<ApiProxySettings>();
+            settings.hideFlags = HideFlags.HideAndDontSave;
+            settings.proxyBaseUrl = DefaultProxyBaseUrl;
+            settings.preferProxyInPlayer = true;
+            settings.allowDirectKeysInEditor = true;
+            return settings;
+        }
+
         private static string TrimBase(string url)
         {
             if (string.IsNullOrWhiteSpace(url))

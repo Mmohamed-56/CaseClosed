@@ -2,6 +2,7 @@ using CaseClosed.CaseCore;
 using CaseClosed.CaseCore.Gemini;
 using CaseClosed.Networking;
 using CaseClosed.UI;
+using CaseClosed.Voice;
 using UnityEngine;
 
 namespace CaseClosed.Gameplay
@@ -9,6 +10,7 @@ namespace CaseClosed.Gameplay
     /// <summary>
     /// Boots the first-run prototype loop and wires offline dialogue / voice / desk HUD.
     /// Ask path: CaseCore stress → <see cref="InterrogationDialogueService"/> → ScenarioDialogueClient bank.
+    /// Voice: SuspectLineReady → <see cref="ElevenLabsVoiceSink"/> → ElevenLabs via Netlify /api/tts.
     /// Visual interrogation UI lives on <see cref="InterrogationActionHud"/> (UGUI).
     /// Runs before <see cref="StampUiPlayableBootstrap"/> so the HUD can claim Case File chrome.
     /// </summary>
@@ -29,7 +31,7 @@ namespace CaseClosed.Gameplay
         [Header("Dialogue (offline bank preferred)")]
         [Tooltip("Optional legacy Gemini key settings. Unused while allowGeminiFallback is OFF.")]
         [SerializeField] private GeminiApiKeySettings geminiApiKeySettings;
-        [Tooltip("Optional cloud proxy settings (Netlify). Keep assigned; ask path does not need it.")]
+        [Tooltip("Cloud proxy for ElevenLabs TTS (Netlify). Assign Assets/Settings/ApiProxySettings.")]
         [SerializeField] private ApiProxySettings apiProxySettings;
         [Tooltip("Dialogue bridge: stress from CaseCore, spoken lines from ScenarioDialogueClient.")]
         [SerializeField] private InterrogationDialogueService dialogueService;
@@ -37,6 +39,7 @@ namespace CaseClosed.Gameplay
         [Header("Voice")]
         [Tooltip("Bridges SuspectLineReady → ElevenLabs. Added automatically when empty.")]
         [SerializeField] private ElevenLabsVoiceSink voiceSink;
+        [SerializeField] private ElevenLabsVoiceClient voiceClient;
 
         [Header("Desk HUD")]
         [Tooltip("UGUI desk file panel. Added automatically when empty.")]
@@ -54,6 +57,11 @@ namespace CaseClosed.Gameplay
             if (dialogueService == null)
                 dialogueService = gameObject.AddComponent<InterrogationDialogueService>();
 
+            if (voiceClient == null)
+                voiceClient = GetComponent<ElevenLabsVoiceClient>();
+            if (voiceClient == null)
+                voiceClient = gameObject.AddComponent<ElevenLabsVoiceClient>();
+
             if (voiceSink == null)
                 voiceSink = GetComponent<ElevenLabsVoiceSink>();
             if (voiceSink == null)
@@ -65,6 +73,9 @@ namespace CaseClosed.Gameplay
                 actionHud = gameObject.AddComponent<InterrogationActionHud>();
 
             dialogueService.Configure(shiftController, geminiApiKeySettings, apiProxySettings);
+            // TTS still needs the Netlify proxy even though ask turns are offline.
+            voiceClient.Configure(apiProxySettings);
+            voiceSink.Configure(dialogueService, apiProxySettings);
             CaseGameplayBootstrap.StartCaseHandler = HandleBootstrapStartCase;
         }
 
